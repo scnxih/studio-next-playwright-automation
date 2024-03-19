@@ -1,6 +1,5 @@
 from Tools.scripts.summarize_stats import Section
 
-# Just for test
 class Data:
     USER_ID = "User ID"
     PASSWORD = "Password"
