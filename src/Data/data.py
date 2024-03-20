@@ -1,5 +1,6 @@
 from Tools.scripts.summarize_stats import Section
 
+
 class Data:
     USER_ID = "User ID"
     PASSWORD = "Password"
@@ -299,7 +300,7 @@ class Data:
 
     FILTER = "Filter"
 
-    """Added bu Alice on 01/25/2024 start"""
+    """Added by Alice on 01/25/2024 start"""
     CHECK_BOX = "Check Box"
     COLOR_PICKER = "Color Picker"
     DATE_AND_TIME_PICKER = "Date and Time Picker"
@@ -316,7 +317,7 @@ class Data:
     INPUT_TABLE = "Input Table"
     NEW_COLUMN = "New Column"
     OUTPUT_TABLE = "Output Table"
-    """Added bu Alice on 01/25/2024 end"""
+    """Added by Alice on 01/25/2024 end"""
 
     NODE = "Node"
     TABLE_PROPERTIES = "Table Prooperties"
@@ -324,9 +325,6 @@ class Data:
     PREVIEW_DATA= "Preview Data"
     NODE_NAME= "Node name"
 
-    NEXT_MATCH="Next Match (Enter)"
-    PREVIOUS_MATCH = "Previous Match (Shift+Enter)"
-    CLOSE_ESCAPE = "Close (Escape)"
-
-    MATCH_CASE = "Match Case (Alt+C)"
-    MATCH_WHOLE_WORD = "Match Whole Word (Alt+W)"
+    """ ----- Added by Frank 2024/03/19 Begin ----- """
+    SELECT_A_TABLE = "Select a Table"
+    """ ----- Added by Frank 2024/03/19 End ----- """
