@@ -71,6 +71,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
 
 def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
+    """
+    Run a *.sas program, then open summary/code/log/results/listing in a new tab.
+    """
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
