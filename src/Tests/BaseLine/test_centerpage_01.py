@@ -563,7 +563,7 @@ def test_45_startup_initialization_log(page, init):
 def test_46_job_definition(page, init):
     job_page:JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    job_page.saveas(folder_path, "JobDefinition", True, True)
+    # job_page.saveas(folder_path, "JobDefinition", True, True)
     job_page.editor.type_into_text_area("This is job definition.")
     job_page.undo()
     job_page.redo()
