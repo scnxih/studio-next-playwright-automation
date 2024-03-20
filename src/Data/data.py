@@ -328,3 +328,12 @@ class Data:
     """ ----- Added by Frank 2024/03/19 Begin ----- """
     SELECT_A_TABLE = "Select a Table"
     """ ----- Added by Frank 2024/03/19 End ----- """
+
+    """Added by Alice on 2024/03/20 start"""
+    NEXT_MATCH = "Next Match (Enter)"
+    PREVIOUS_MATCH = "Previous Match (Shift+Enter)"
+    CLOSE_ESCAPE = "Close (Escape)"
+
+    MATCH_CASE = "Match Case (Alt+C)"
+    MATCH_WHOLE_WORD = "Match Whole Word (Alt+W)"
+    """Added by Alice on 2024/03/20 end"""
