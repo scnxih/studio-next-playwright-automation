@@ -79,8 +79,8 @@ class SettingsDialogTest(Dialog):
     def set_save_interval(self, interval: str):
         self.fill_text("saveInterval-input-input", interval)
 
-    def set_max_log_lines(self, value: str):
-        self.fill_text("maxLogLines-input-input", value)
+    # def set_max_log_lines(self, value: str):
+    #     self.fill_text("maxLogSize-input-input", value)
 
     def set_max_size(self, value: str):
-        self.fill_text("maxSize-input-input", value)
+        self.fill_text("maxLogSize-input-input", value)
