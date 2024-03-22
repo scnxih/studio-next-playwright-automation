@@ -33,7 +33,7 @@ class TreeViewFlow(CommonComponent):
         for i in range(len(element_path)):
             label = element_path[i]
             Helper.logger.debug(" i =" + str(i))
-            time.sleep(1)
+            time.sleep(0.5)
             if i == len(element_path) - 1:
                 Helper.logger.debug(" i =" + str(i))
                 element = self.label_element_name(label)

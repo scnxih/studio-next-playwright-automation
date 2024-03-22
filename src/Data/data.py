@@ -337,3 +337,11 @@ class Data:
     MATCH_CASE = "Match Case (Alt+C)"
     MATCH_WHOLE_WORD = "Match Whole Word (Alt+W)"
     """Added by Alice on 2024/03/20 end"""
+
+    """Added by Alice on 024/03/21 start"""
+    TOGGLE_REPLACE = "Toggle Replace"
+    PRESERVE_CASE = "Preserve Case(Alt + P)"
+    REPLACE_ENTER = "Replace (Enter)"
+    REPLACE_ALL_ENTER= "Replace All (Ctrl+Alt+Enter)"
+
+    """Added by Alice on 024/03/21 end"""
