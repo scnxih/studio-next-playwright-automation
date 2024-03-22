@@ -210,3 +210,8 @@ class DesignerControlType(Enum):
 class SortWay(Enum):
     ascending = 0
     descending = 1
+
+
+class FindOrReplace(Enum):
+    find = 0
+    replace = 1

@@ -81,7 +81,8 @@ class BaseEditor(BasePage):
         """ Added by Jacky(ID: jawang) on Sept. 6th, 2023 """
         # time.sleep(3)
         save_as_dialog = SaveAsDialog(self.page)
-        save_as_dialog.wait_for(save_as_dialog.input_file_name)
+        # save_as_dialog.wait_for(save_as_dialog.input_file_name)
+        time.sleep(1)
         """ Added by Jacky(ID: jawang) on Sept. 6th, 2023 """
 
         Helper.logger.debug("create SaveAsDialog instance")
