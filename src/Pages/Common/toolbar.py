@@ -150,6 +150,10 @@ class Toolbar(CommonComponent):
         time.sleep(0.3)
         self.uncheck_menu_item(*menu_item_text)
 
+    def click_more_options(self):
+        enabled = self.click_btn_by_title(Helper.data_locale.MORE_OPTIONS)
+        return enabled
+
     def click_menu_in_more_options(self, *menu_item_text):
         enabled = self.click_btn_by_title(Helper.data_locale.MORE_OPTIONS)
         if not enabled:

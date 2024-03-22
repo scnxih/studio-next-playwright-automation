@@ -1,9 +1,15 @@
+from pip._internal.cli.cmdoptions import python
+
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
+    WholePage(page).screenshot_trivial_self("login")
     PageHelper.new_sas_program(page)
+    WholePage(page).screenshot_trivial_self("newprogram")
+
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
     editor.run(True)
@@ -17,6 +23,7 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     editor.save()
 
 
+
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -24,6 +31,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1: Page = page
     time.sleep(0.5)
     page1.keyboard.press("Enter")
+    WholePage(page).screenshot_trivial_self("01")
     time.sleep(0.5)
     page1.keyboard.press("/")
     page1.keyboard.press("*")
@@ -43,31 +51,45 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("Space")
     page1.keyboard.press("*")
     page1.keyboard.press("/")
-
+    WholePage(page).screenshot_trivial_self("02")
     for i in range(3):
         editor.undo()
         time.sleep(0.5)
-
+    WholePage(page).screenshot_trivial_self("03")
     for i in range(3):
         editor.redo()
         time.sleep(0.5)
+    WholePage(page).screenshot_trivial_self("04")
     editor.run(True)
     time.sleep(0.5)
 
     editor.format_program()
+    WholePage(page).screenshot_trivial_self("05")
     time.sleep(0.5)
     editor.debug()
+    WholePage(page).screenshot_trivial_self("06")
     time.sleep(0.5)
     editor.code_to_flow()
+    WholePage(page).screenshot_trivial_self("07")
     time.sleep(0.5)
     editor.add_to_snippets()
+    WholePage(page).screenshot_trivial_self("08")
     time.sleep(0.5)
     editor.clear_code()
+    WholePage(page).screenshot_trivial_self("09")
     editor.clear_log()
+    WholePage(page).screenshot_trivial_self("10")
     editor.clear_output_data()
+    WholePage(page).screenshot_trivial_self("11")
     editor.clear_results()
+    time.sleep(0.5)
+    WholePage(page).screenshot_trivial_self("12")
     editor.clear_listing()
+    time.sleep(0.5)
+    WholePage(page).screenshot_trivial_self("13")
     editor.clear_all()
+    time.sleep(0.5)
+    WholePage(page).screenshot_trivial_self("14")
 
 
 def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
@@ -580,3 +602,5 @@ def test_47_run_big_program(page,init):
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
+
+
