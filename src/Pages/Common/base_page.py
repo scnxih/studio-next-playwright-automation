@@ -535,32 +535,30 @@ class BasePage:
 
         # Revised Version:
         # folder name = testfile_abbreviation + testmethod_number
-        screenshot_file_base = (
-            # directory name
-                output_path + "\\" +  # screenshot storage root directory: ~src/Output
-                testfile_abbreviation + "_" + testmethod_number + "\\" +  # directory for method of a testfile: ~src/Output/codeeditor_01_01
-
-                # screenshot name
-                testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
+        file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
                 class_name + "_" +  # screenshot name part-2: Specific Class Name
                 function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                pic_name)  # screenshot name part-4: Defined in specific page
-        """Added by Alice on 2024/3/25 start"""
-        # When length is larger, truncate name.
-        if len(screenshot_file_base) >= 78:
+                pic_name)
+
+        if len(file_name) >= 78:
             class_name = class_name[0:20]
             function_name = function_name[0:30]
             pic_name = pic_name[0:10]
-            screenshot_file_base = (
-                # directory name
-                    output_path + "\\" +  # screenshot storage root directory: ~src/Output
-                    testfile_abbreviation + "_" + testmethod_number + "\\" +  # directory for method of a testfile: ~src/Output/codeeditor_01_01
+            file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
+                class_name + "_" +  # screenshot name part-2: Specific Class Name
+                function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
+                pic_name)
 
-                    # screenshot name
-                    testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
-                    class_name + "_" +  # screenshot name part-2: Specific Class Name
-                    function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                    pic_name)  # screenshot name part-4: Defined in specific page
+        screenshot_file_base = (
+            # directory name
+                output_path + "\\" +  # screenshot storage root directory: ~src/Output
+                testfile_abbreviation + "_" + testmethod_number + "\\" +file_name)  # directory for method of a testfile: ~src/Output/codeeditor_01_01
+
+
+        """Added by Alice on 2024/3/25 start"""
+        # When length is larger, truncate name.
+
+
         """Added by Alice on 2024/3/25 end"""
         # NOTE: CPython implementation detail:
         # This function relies on Python stack frame support in the interpreter,
