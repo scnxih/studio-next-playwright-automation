@@ -1,7 +1,7 @@
 """
 Author: Alice
 Date: November 07, 2023
-Description: CustomStepPage will inherit from CenterPage class。
+Description: CustomStepPage will inherit from CenterPage  serclass。
 """
 
 from src.Pages.Common.DesignerControls.designer_control_factory import *

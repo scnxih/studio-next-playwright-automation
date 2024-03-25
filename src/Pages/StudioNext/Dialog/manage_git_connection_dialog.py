@@ -60,3 +60,19 @@ class ManageGitConnectionDialog(Dialog):
             Helper.logger.debug("Profile is set as default.")
         else:
             Helper.logger.debug("Profile does not exist.")
+
+    def wait_for_open(self):
+        time.sleep(2)
+
+    @property
+    def tab_profile(self):
+        return self.locate_xpath("//div[@data-testid='gitDialog-mgtConnection-navPane-profileTab']")
+    @property
+    def tab_repository(self):
+        return self.locate_xpath("//div[@data-testid='gitDialog-mgtConnection-navPane-repositoryTab']")
+
+    def click_tab_profile(self):
+        self.click(self.tab_profile)
+
+    def click_tab_repository(self):
+        self.click(self.tab_repository)

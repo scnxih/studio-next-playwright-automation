@@ -45,6 +45,14 @@ class AccordionPage(BasePage):
         return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-gitRepositories-tabItem']")
 
     @property
+    def tab_file_references(self):
+        return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-fileReferences-tabItem']")
+
+    @property
+    def tab_clinical_repository(self):
+        return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-clinicalRepository-tabItem']")
+
+    @property
     def accordion_pane(self):
         return self.page.locator(
             "//div[@class='sas_components-PropertyPaneLayout-PropertyPaneLayout_start-pane-container "
@@ -78,6 +86,14 @@ class AccordionPage(BasePage):
     def pane_git(self):
         return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-gitRepositories']")
 
+    @property
+    def pane_file_references(self):
+        return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-fileReferences']")
+
+    @property
+    def pane_clinical_repository(self):
+        return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-clinicalRepository']")
+
     def get_pane(self, accordion_type: AccordionType):
         pane = self.pane_open_item
         match accordion_type:
@@ -95,6 +111,10 @@ class AccordionPage(BasePage):
                 pane = self.pane_libraries
             case accordion_type.git:
                 pane = self.pane_git
+            case accordion_type.file_references:
+                pane = self.pane_file_references
+            case accordion_type.clinical_repository:
+                pane = self.pane_clinical_repository
         return pane
 
     def get_tab(self, accordion_type: AccordionType):
@@ -114,6 +134,11 @@ class AccordionPage(BasePage):
                 tab = self.tab_libraries
             case accordion_type.git:
                 tab = self.tab_git
+            case accordion_type.file_references:
+                tab = self.tab_file_references
+            case accordion_type.clinical_repository:
+                tab = self.tab_clinical_repository
+
         return tab
 
     def show_accordion(self, accordion_type: AccordionType):

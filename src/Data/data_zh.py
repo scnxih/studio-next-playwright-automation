@@ -333,3 +333,8 @@ class DataZH(Data):
     REPLACE_ENTER = "替换 (Enter)"
     REPLACE_ALL_ENTER= "全部替换 (Ctrl+Alt+Enter)"
     """Added by Alice on 024/03/21 end"""
+
+
+    """Added by Alice on 2024/03/22 start"""
+    HELP= "帮助"
+    """Added by Alice on 2024/03/22 end"""

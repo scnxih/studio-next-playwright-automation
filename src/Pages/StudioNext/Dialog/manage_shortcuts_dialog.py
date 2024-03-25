@@ -139,3 +139,5 @@ class ManageShortcutsDialog(Dialog):
 
     def check_help(self):
         self.click(self.icon_help)
+    def wait_for_open(self):
+        time.sleep(2)

@@ -171,3 +171,9 @@ class AutoexecDialog(Dialog):
     def wait_for_open(self):
         self.wait_for(self.tab_Code)
         time.sleep(1)
+
+    def click_tab_log(self):
+        self.click(self.tab_log)
+
+    def click_tab_code(self):
+        self.click(self.tab_Code)

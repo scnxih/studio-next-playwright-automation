@@ -225,5 +225,13 @@ class CustomCodeDialog(Dialog):
         self.save()
 
     def wait_for_open(self):
+        time.sleep(2)
 
-        time.sleep(1)
+    def click_tab_preamble(self):
+        self.click(self.tab_preamble)
+
+    def click_tab_postamble(self):
+        self.click(self.tab_postamble)
+
+    def click_tab_option(self):
+        self.click(self.tab_vertical_option)

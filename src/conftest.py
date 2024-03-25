@@ -1,6 +1,6 @@
 import sys, os
 
-from src.Utilities.enums import TopMenuItem
+from src.Utilities.enums import TopMenuItem, AccordionType
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
@@ -53,5 +53,8 @@ def init(page):
     ''' Added by Jacky(ID: jawang) on Sept. 4th, 2023 '''
 
     PageHelper.close_all_tabs(page)
-
+    """Added by Alice on 2024/03/22 start"""
+    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_file_references)
+    PageHelper.show_accordion(page,AccordionType.open_item)
+    """Added by Alice on 2024/03/22 end"""
 

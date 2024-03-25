@@ -22,3 +22,15 @@ class TopRightToolbar(BasePage):
 
     def click_sign_out(self):
         self.toolbar.click_div_menu_by_title(Helper.data_locale.USER_OPTION,Helper.data_locale.SIGN_OUT)
+
+    def click_help(self):
+        self.toolbar.click_btn_by_title(Helper.data_locale.HELP)
+
+    def click_user_option(self):
+        self.toolbar.click_div_by_title(Helper.data_locale.USER_OPTION)
+
+    def click_about(self):
+        self.toolbar.click_div_menu_by_title(Helper.data_locale.USER_OPTION,Helper.data_locale.ABOUT)
+
+    def click_manage_features(self):
+        self.toolbar.click_div_menu_by_title(Helper.data_locale.USER_OPTION,Helper.data_locale.MANAGE_FEATURES)

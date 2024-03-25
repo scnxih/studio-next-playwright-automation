@@ -287,8 +287,9 @@ class BasePage:
                     i = i + 1
                 else:
                     self.click_dialog_title_or_studionext_header()
+                    time.sleep(0.3)
                     return
-
+        time.sleep(0.5)
 
     def uncheck_menu_item(self, *menu_item_text):
         item_count = len(menu_item_text)
@@ -308,7 +309,10 @@ class BasePage:
                     i = i + 1
                 else:
                     self.click_dialog_title_or_studionext_header()
+                    time.sleep(0.5)
                     return
+        time.sleep(0.5)
+
     """Added by Alice on 10/20/2023 end"""
 
     def menu_item_locator(self, menu_item_text):

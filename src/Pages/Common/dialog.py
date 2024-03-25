@@ -1,3 +1,5 @@
+import time
+
 from src.Helper.helper import Helper
 from src.Pages.Common.base_page import BasePage
 
@@ -42,6 +44,7 @@ class Dialog(BasePage):
 
     def close_dialog(self):
         self.click(self.btn_close)
+        time.sleep(0.5)
 
     def click_button_in_footer(self, button_text):
         self.click(self.btn_in_dialog_footer(button_text))

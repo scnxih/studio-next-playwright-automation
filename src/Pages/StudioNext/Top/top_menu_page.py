@@ -2,6 +2,8 @@ import time
 
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
+from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
+from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
 from src.Pages.StudioNext.Dialog.open_dialog import OpenDialog
 from src.Utilities.enums import *
 from src.Pages.Common.toolbar import *
@@ -24,7 +26,8 @@ class TopMenuPage(BasePage):
                     return
             case TopMenuItem.options_manage_keyboard_shortcuts:
                 self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.MANAGE_KEYBOARD_SHORTCUTS)
-                time.sleep(1)
+                if ManageShortcutsDialog(self.page).is_open():
+                    return
             case TopMenuItem.options_custom_code:
                 self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.CUSTOM_CODE)
                 custom_code = CustomCodeDialog(self.page)
@@ -32,7 +35,8 @@ class TopMenuPage(BasePage):
                     return
             case TopMenuItem.options_manage_git_connections:
                 self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.MANAGE_GIT_CONNECTION)
-                time.sleep(1)
+                if ManageGitConnectionDialog(self.page).is_open():
+                    return
             # ADDED
             # BEGIN <<< Added by Jacky(ID: jawang) on Oct.30th, 2023
 
@@ -108,6 +112,8 @@ class TopMenuPage(BasePage):
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
             case TopMenuItem.view_start_page:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.START_PAGE)
+            case TopMenuItem.view_startup_initialization_log:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.OPEN_ITEMS)
             case TopMenuItem.view_navigation_panes_sas_server:
@@ -135,6 +141,7 @@ class TopMenuPage(BasePage):
             case TopMenuItem.view_navigation_panes_clinical_repositories:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.CLINICAL_REPOSITORY)
+        time.sleep(0.3)
     def uncheck_view_item(self,top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-view-button"
         match top_menu:
@@ -146,6 +153,8 @@ class TopMenuPage(BasePage):
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
             case TopMenuItem.view_start_page:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.START_PAGE)
+            case TopMenuItem.view_startup_initialization_log:
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.OPEN_ITEMS)
             case TopMenuItem.view_navigation_panes_sas_server:
@@ -173,11 +182,14 @@ class TopMenuPage(BasePage):
             case TopMenuItem.view_navigation_panes_clinical_repositories:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.CLINICAL_REPOSITORY)
+        time.sleep(0.3)
 
     def show_view_startup_initialization_log(self):
         test_id = "appHeaderToolbar-view-button"
         self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.STARTUP_INITIALIZATION_LOG)
-
+    def show_document_recovery(self):
+        test_id = "appHeaderToolbar-view-button"
+        self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.DOCUMENT_RECOVERY)
     def click_menu_item_new(self):
         test_id = "appHeaderToolbar-new-button"
         self.toolbar.click_btn_by_test_id(test_id)
@@ -196,3 +208,7 @@ class TopMenuPage(BasePage):
     def click_menu_item_saveall(self):
         test_id = "appHeaderToolbar-saveall"
         self.toolbar.click_btn_by_test_id(test_id)
+
+    def click_menu_item_view_navigation(self):
+        test_id = "appHeaderToolbar-view-button"
+        self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES)
