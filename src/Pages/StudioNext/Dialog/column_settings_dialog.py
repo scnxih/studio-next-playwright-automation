@@ -78,14 +78,14 @@ class ColumnSettings(Dialog):
         self.input_filter().clear_text()
 
     def filter_column(self, col_label: str):
-        is_disabled = self.input_filter().get_attribute("aria-disabled")
+        is_disabled = self.input_filter().get_attr("aria-disabled")
         if is_disabled == "false":
             self.clear_filter()
             self.input_filter().fill_text(col_label)
 
     def click_undo_btn(self):
-        is_disabled = self.btn_undo.get_attribute("aria-disabled")
-        if is_disabled == "false":
+        # is_disabled = self.btn_undo.get_attribute("aria-disabled")
+        if self.is_enabled(self.btn_undo):
             Helper.logger.debug("Undo the previous operation.")
             self.click(self.btn_undo)
             return True
@@ -105,22 +105,28 @@ class ColumnSettings(Dialog):
     def add_a_column_to_display(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        title = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                  + "']/../following-sibling::div[1]/button").get_attribute("title")
-        if title == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        # title = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                           + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # if title == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        #     Helper.logger.debug("Add column " + col_label + " to Displayed columns list.")
+        #     self.click(self.btn_add)
+        # else:
+        #     Helper.logger.debug("The selected column is already in Displayed columns list.")
+        if self.is_visible(self.btn_add):
             Helper.logger.debug("Add column " + col_label + " to Displayed columns list.")
             self.click(self.btn_add)
         else:
-            Helper.logger.debug("The selected column is already in Displayed columns list.")
+            Helper.logger.debug("The column " + col_label + " is already in Displayed columns list.")
+        self.click_ok_btn()
 
     def add_all_columns_to_display(self):
-        is_hidden_list_empty = self.input_filter().get_attribute("aria-disabled")
-        is_btn_available = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                             + "']/../following-sibling::div[2]/button").get_attribute("title")
+        is_hidden_list_empty = self.input_filter().get_attr("aria-disabled")
+        # is_btn_available = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                                      + "']/../following-sibling::div[2]/button").get_attribute("title")
         if is_hidden_list_empty == "true":
             Helper.logger.debug("All columns have been added to Displayed columns list.")
         else:
-            if is_btn_available != Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_ALL_BTN:
+            if not self.is_visible(self.btn_add_all):
                 Helper.logger.debug("Select a column in Hidden columns list, then click Add all button.")
                 self.input_filter().clear_text()
                 self.click(self.locate_xpath("//label[contains(text(), '"
@@ -132,32 +138,35 @@ class ColumnSettings(Dialog):
                 Helper.logger.debug("Clear filter, then add all columns to Displayed columns list.")
                 self.input_filter().clear_text()
                 self.click(self.btn_add_all)
+        self.click_ok_btn()
 
     def remove_a_column_to_hidden(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        title = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                  + "']/../following-sibling::div[1]/button").get_attribute("title")
-        is_disabled = self.btn_remove.get_attribute("aria-disabled")
-        if title == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        # title = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                           + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # is_disabled = self.btn_remove.get_attribute("aria-disabled")
+        # if title == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        if self.is_visible(self.btn_add):
             Helper.logger.debug("The selected column is already in Hidden columns list.")
         else:
-            if is_disabled == "true":
-                Helper.logger.debug("The columns " + Helper.data_locale.SUBMISSION_SIDEBAR_COLUMNS_STATUS + ", "
-                                    + Helper.data_locale.SUBMISSION_SIDEBAR_COLUMNS_BACKGROUND_SUBMIT + " and "
-                                    + Helper.data_locale.SUBMISSION_SIDEBAR_COLUMNS_NAME
+            if not self.is_enabled(self.btn_remove):
+                Helper.logger.debug("The columns " + Helper.data_locale.SUBMISSION_COLUMN_HEADER_STATUS + ", "
+                                    + Helper.data_locale.SUBMISSION_COLUMN_HEADER_BACKGROUND_SUBMIT + " and "
+                                    + Helper.data_locale.SUBMISSION_COLUMN_HEADER_NAME
                                     + " can't be removed to Hidden columns list.")
             else:
                 Helper.logger.debug("Remove column " + col_label + " to Hidden columns list.")
                 self.click(self.btn_remove)
+        self.click_ok_btn()
 
     def move_a_column_to_top(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                  + "']/../following-sibling::div[1]/button").get_attribute("title")
-        is_disabled = self.btn_move_to_top.get_attribute("aria-disabled")
-        if is_displayed_column == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        # is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                                         + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # is_disabled = self.btn_move_to_top.get_attribute("aria-disabled")
+        if self.is_visible(self.btn_add):
             Helper.logger.debug("Column " + col_label + " is in Hidden columns list. "
                                                         "Add this column to Displayed columns list firstly, "
                                                         "then move it to the top.")
@@ -165,71 +174,67 @@ class ColumnSettings(Dialog):
             self.select_a_column(col_label)
             self.click(self.btn_move_to_top)
         else:
-            if is_disabled == "true":
+            if not self.is_enabled(self.btn_move_to_top):
                 Helper.logger.debug("Column " + col_label + " is already at the top.")
             else:
                 Helper.logger.debug("Column " + col_label + " is in Displayed columns list, and not at the top. "
                                                             "Now, move it to the top.")
                 self.click(self.btn_move_to_top)
+        self.click_ok_btn()
 
     def move_a_column_to_bottom(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                                + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                                         + "']/../following-sibling::div[1]/button").get_attribute("title")
         is_disabled = self.btn_move_to_bottom.get_attribute("aria-disabled")
-        if is_displayed_column == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
+        if self.is_visible(self.btn_add):
             Helper.logger.debug("Column " + col_label + " is in Hidden columns list. "
                                                         "Add this column to Displayed columns list firstly, "
                                                         "it will displays at the bottom.")
             self.click(self.btn_add)
         else:
-            if is_disabled == "true":
+            if not self.is_enabled(self.btn_move_to_bottom):
                 Helper.logger.debug("Column " + col_label + " is already at the bottom.")
             else:
                 Helper.logger.debug("Column " + col_label + " is in Displayed columns list, and not at the bottom. "
                                                             "Now, move it to the bottom.")
                 self.click(self.btn_move_to_bottom)
+        self.click_ok_btn()
 
     def move_a_column_up(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                                + "']/../following-sibling::div[1]/button").get_attribute("title")
-        is_disabled = self.btn_move_up.get_attribute("aria-disabled")
-        if is_displayed_column == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
-            Helper.logger.debug("Column " + col_label + " is in Hidden columns list. "
-                                                        "Add this column to Displayed columns list firstly, "
-                                                        "then move it up.")
-            self.click(self.btn_add)
-            self.select_a_column(col_label)
-            self.click(self.btn_move_up)
+        # is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                                         + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # is_disabled = self.btn_move_up.get_attribute("aria-disabled")
+        if self.is_visible(self.btn_add):
+            Helper.logger.debug("Column " + col_label + " is in Hidden columns list. It can not be moved up.")
         else:
-            if is_disabled == "true":
-                Helper.logger.debug("Column " + col_label + " is already at the top, can't move up.")
+            if not self.is_enabled(self.btn_move_up):
+                Helper.logger.debug("Column " + col_label + " is already at the top, can not be moved up.")
             else:
                 Helper.logger.debug("Column " + col_label + " is in Displayed columns list, and not at the top. "
                                                             "Now, move it up.")
                 self.click(self.btn_move_up)
+        self.click_ok_btn()
 
     def move_a_column_down(self, col_label: str):
         self.input_filter().clear_text()
         self.select_a_column(col_label)
-        is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
-                                                + "']/../following-sibling::div[1]/button").get_attribute("title")
-        is_disabled = self.btn_move_down.get_attribute("aria-disabled")
-        if is_displayed_column == Helper.data_locale.SUBMISSION_COLUMN_SETTINGS_ADD_BTN:
-            Helper.logger.debug("Column " + col_label + " is in Hidden columns list. "
-                                                        "Add this column to Displayed columns list firstly, "
-                                                        "it will displays at the bottom, no need to move down.")
-            self.click(self.btn_add)
+        # is_displayed_column = self.locate_xpath("//button[@title='" + Helper.data_locale.UNDO
+        #                                         + "']/../following-sibling::div[1]/button").get_attribute("title")
+        # is_disabled = self.btn_move_down.get_attribute("aria-disabled")
+        if self.is_visible(self.btn_add):
+            Helper.logger.debug("Column " + col_label + " is in Hidden columns list. It can not be moved down.")
         else:
-            if is_disabled == "true":
-                Helper.logger.debug("Column " + col_label + " is already at the bottom, can't move down.")
+            if not self.is_enabled(self.btn_move_down):
+                Helper.logger.debug("Column " + col_label + " is already at the bottom, can not be moved down.")
             else:
                 Helper.logger.debug("Column " + col_label + " is in Displayed columns list, and not at the bottom. "
                                                             "Now, move it down.")
                 self.click(self.btn_move_down)
+        self.click_ok_btn()
 
     def close_dialog(self):
         self.click(self.btn_close)

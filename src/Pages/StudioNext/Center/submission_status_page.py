@@ -214,3 +214,33 @@ class SubmissionStatusPage(CenterPage):
         for label in col_labels:
             self.col_settings_dialog.add_a_column_to_display(label)
         self.col_settings_dialog.click_ok_btn()
+
+    def remove_columns_from_page(self, *col_labels: str):
+        """
+        Description: remove some displayed columns from Submission Status page.
+        :param col_labels: labels of columns, separated with comma.
+        """
+        self.open_column_settings_dialog()
+        for label in col_labels:
+            self.col_settings_dialog.remove_a_column_to_hidden(label)
+        self.col_settings_dialog.click_ok_btn()
+
+    def move_a_column_to_left(self, col_label: str):
+        self.open_column_settings_dialog()
+        self.col_settings_dialog.move_a_column_up(col_label)
+        self.col_settings_dialog.click_ok_btn()
+
+    def move_a_column_to_right(self, col_label: str):
+        self.open_column_settings_dialog()
+        self.col_settings_dialog.move_a_column_down(col_label)
+        self.col_settings_dialog.click_ok_btn()
+
+    def move_a_column_to_leftmost(self, col_label: str):
+        self.open_column_settings_dialog()
+        self.col_settings_dialog.move_a_column_to_top(col_label)
+        self.col_settings_dialog.click_ok_btn()
+
+    def move_a_column_to_rightmost(self, col_label: str):
+        self.open_column_settings_dialog()
+        self.col_settings_dialog.move_a_column_to_bottom(col_label)
+        self.col_settings_dialog.click_ok_btn()
