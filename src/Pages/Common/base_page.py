@@ -195,6 +195,7 @@ class BasePage:
         r_locator = self.transform_to_locator(locator_or_xpath)
         self.clear(r_locator)
         r_locator.fill(text)
+
     #
     # '''Work round for code editor clear problem'''
     #
@@ -260,8 +261,8 @@ class BasePage:
                 menu_item_text) + "]/../preceding-sibling::span[1][@role='img'][contains(@class,'checkmark')]"
         else:
             xpath = (
-                        "xpath=//span[(contains(@class,'menu') or contains(@class,'Menu')) and text()='" + menu_item_text +
-                        "']/../preceding-sibling::span[1][@role='img'][contains(@class,'checkmark')]")
+                    "xpath=//span[(contains(@class,'menu') or contains(@class,'Menu')) and text()='" + menu_item_text +
+                    "']/../preceding-sibling::span[1][@role='img'][contains(@class,'checkmark')]")
         if self.is_visible(self.locator(xpath)):
             return True
         return False
@@ -340,7 +341,8 @@ class BasePage:
 
     """Added by Alice on 20/20/2023 end"""
     """Updated by Alice on 09/26/2023 Start"""
-    def click_menu_item_wait_until_enabled(self,*menu_item_text):
+
+    def click_menu_item_wait_until_enabled(self, *menu_item_text):
         enabled = True
         for item in menu_item_text:
             if self.wait_until_enabled(self.menu_item_locator(item)):
@@ -519,6 +521,9 @@ class BasePage:
         print("### Testmethod Number: " + testmethod_number)
 
         class_name = type(self).__name__
+        """Added by Alice on 2024/3/25 start"""
+        function_name = inspect.currentframe().f_back.f_back.f_code.co_name
+        """Added by Alice on 2024/3/25 end"""
         # print("### Test Class Name: " + class_name)
 
         # index to determine the duplicates
@@ -538,9 +543,25 @@ class BasePage:
                 # screenshot name
                 testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
                 class_name + "_" +  # screenshot name part-2: Specific Class Name
-                inspect.currentframe().f_back.f_back.f_code.co_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
+                function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
                 pic_name)  # screenshot name part-4: Defined in specific page
+        """Added by Alice on 2024/3/25 start"""
+        # When length is larger, truncate name.
+        if len(screenshot_file_base) >= 78:
+            class_name = class_name[0:20]
+            function_name = function_name[0:30]
+            pic_name = pic_name[0:10]
+            screenshot_file_base = (
+                # directory name
+                    output_path + "\\" +  # screenshot storage root directory: ~src/Output
+                    testfile_abbreviation + "_" + testmethod_number + "\\" +  # directory for method of a testfile: ~src/Output/codeeditor_01_01
 
+                    # screenshot name
+                    testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
+                    class_name + "_" +  # screenshot name part-2: Specific Class Name
+                    function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
+                    pic_name)  # screenshot name part-4: Defined in specific page
+        """Added by Alice on 2024/3/25 end"""
         # NOTE: CPython implementation detail:
         # This function relies on Python stack frame support in the interpreter,
         # which isn’t guaranteed to exist in all implementations of Python.
@@ -631,8 +652,9 @@ class BasePage:
             if r_locator.get_attribute("aria-disabled").lower() == "false":
                 return True
             return False
-        elif self.get_attribute(r_locator,"class").find("menu") != -1 or self.get_attribute(r_locator,"class").find("Menu") != -1:
-            if self.get_attribute(r_locator,"class").find("disabled") != -1:
+        elif self.get_attribute(r_locator, "class").find("menu") != -1 or self.get_attribute(r_locator, "class").find(
+                "Menu") != -1:
+            if self.get_attribute(r_locator, "class").find("disabled") != -1:
                 return False
             else:
                 return True
@@ -654,7 +676,7 @@ class BasePage:
     @property
     def div_dialog_title(self):
         return self.locator("//div[@class='sas_components-Dialog-Dialog_dialog-header "
-                                 "sas_components-Dialog-Dialog_drag-cursor']")
+                            "sas_components-Dialog-Dialog_drag-cursor']")
 
     def click_dialog_title_or_studionext_header(self):
         if self.div_dialog_title.is_visible():
@@ -704,28 +726,28 @@ class BasePage:
             return True
         return False
 
-    def is_button_pressed(self,locator_or_xpath):
+    def is_button_pressed(self, locator_or_xpath):
         is_pressed = self.get_attribute(locator_or_xpath, "aria-pressed")
         if is_pressed.lower() == "true":
             return True
-        return  False
+        return False
 
-    def wait_until_enabled(self,locator_or_xpath, wait_time= 5):
+    def wait_until_enabled(self, locator_or_xpath, wait_time=5):
         i = 0
-        while not self.is_enabled(locator_or_xpath) and i< wait_time*10:
+        while not self.is_enabled(locator_or_xpath) and i < wait_time * 10:
             time.sleep(0.1)
-            i = i+1
+            i = i + 1
 
         if self.is_enabled(locator_or_xpath):
             return True
         else:
             return False
 
-    def screenshot_trivial_self(self,pic_name):
-        self.screenshot_trivial(self.base_xpath,pic_name)
+    def screenshot_trivial_self(self, pic_name):
+        self.screenshot_trivial(self.base_xpath, pic_name)
 
-    def screenshot_general_self(self,pic_name):
-        self.screenshot_general(self.base_xpath,pic_name)
+    def screenshot_general_self(self, pic_name):
+        self.screenshot_general(self.base_xpath, pic_name)
 
-    def screenshot_critical_self(self,pic_name):
-        self.screenshot_critical(self.base_xpath,pic_name)
+    def screenshot_critical_self(self, pic_name):
+        self.screenshot_critical(self.base_xpath, pic_name)
