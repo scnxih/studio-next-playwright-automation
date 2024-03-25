@@ -55,7 +55,6 @@ class SettingsDialog(Dialog):
         if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
             self.screenshot_trivial(self.base_xpath, "uncheck")
 
-
     @property
     def disabled_reset_btn_in_current_tab_page(self):
         """
@@ -91,7 +90,6 @@ class SettingsDialog(Dialog):
         """
         if self.is_enabled(self.btn_reset):
             self.btn_reset.click()
-
             # TO-DO
             # Change to locale-dependent value
             alert = Alert(self.page, "重置为默认值")
@@ -293,9 +291,21 @@ class SettingsDialog(Dialog):
             Helper.logger.debug("Switch to: Global/General")
             self.switch_to_global_general()
 
+            # Since this would be used in initialization, comment out.
+            # Otherwise, too many screenshots are generated.
+
+            # time.sleep(1)
+            # self.screenshot_critical(self.base_xpath, "global_general")
+
         elif setting_tab_page == SettingsTabPages.sas_studio_general:
             Helper.logger.debug("Switch to: SAS Studio/General")
             self.switch_to_sas_studio_general()
+
+            # Since this would be used in initialization, comment out.
+            # Otherwise, too many screenshots are generated.
+
+            # time.sleep(1)
+            # self.screenshot_critical(self.base_xpath, "sas_studio_general")
 
         else:
 
@@ -320,6 +330,9 @@ class SettingsDialog(Dialog):
                 Helper.logger.exception("Tab page DOES NOT EXIST!")
 
             self.click(self.__assemble_tab_page_xpath(tab_page_text))
+
+            time.sleep(1)
+            self.screenshot_trivial(self.base_xpath, str(setting_tab_page).split('.')[-1])
 
     def reset_global_general(self):
         """

@@ -318,8 +318,24 @@ class DataZH(Data):
     NODE_NAME= "节点名称"
 
     """ ----- Added by Frank 2024/03/19 Begin ----- """
-    SELECT_A_TABLE = "选择一个表"
+    SELECT_A_TABLE = "Select a Table"
     """ ----- Added by Frank 2024/03/19 End ----- """
+
+    """Added by Alice on 2024/03/20 start"""
+    NEXT_MATCH="下一个匹配项 (Enter)"
+    PREVIOUS_MATCH = "上一个匹配项 (Shift+Enter)"
+    CLOSE_ESCAPE = "关闭 (Escape)"
+
+    MATCH_CASE = "区分大小写 (Alt+C)"
+    MATCH_WHOLE_WORD = "全字匹配 (Alt+W)"
+    """Added by Alice on 2024/03/20 end"""
+
+    """Added by Alice on 024/03/21 start"""
+    TOGGLE_REPLACE = "切换替换"
+    PRESERVE_CASE = "保留大小写 (Alt+P)"
+    REPLACE_ENTER = "替换 (Enter)"
+    REPLACE_ALL_ENTER = "全部替换 (Ctrl+Alt+Enter)"
+    """Added by Alice on 024/03/21 end"""
 
     """ ----- Added by Frank 2024/03/20 Begin ----- """
     REMOVE_TABLE = "删除表"

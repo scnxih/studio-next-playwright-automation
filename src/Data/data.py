@@ -327,6 +327,22 @@ class Data:
     SELECT_A_TABLE = "Select a Table"
     """ ----- Added by Frank 2024/03/19 End ----- """
 
+    """Added by Alice on 2024/03/20 start"""
+    NEXT_MATCH = "Next Match (Enter)"
+    PREVIOUS_MATCH = "Previous Match (Shift+Enter)"
+    CLOSE_ESCAPE = "Close (Escape)"
+
+    MATCH_CASE = "Match Case (Alt+C)"
+    MATCH_WHOLE_WORD = "Match Whole Word (Alt+W)"
+    """Added by Alice on 2024/03/20 end"""
+
+    """Added by Alice on 024/03/21 start"""
+    TOGGLE_REPLACE = "Toggle Replace"
+    PRESERVE_CASE = "Preserve Case(Alt + P)"
+    REPLACE_ENTER = "Replace (Enter)"
+    REPLACE_ALL_ENTER= "Replace All (Ctrl+Alt+Enter)"
+    """Added by Alice on 024/03/21 end"""
+
     """ ----- Added by Frank 2024/03/20 Begin ----- """
     REMOVE_TABLE = "Remove Table"
     PIN_COLUMN = "Pin Column"

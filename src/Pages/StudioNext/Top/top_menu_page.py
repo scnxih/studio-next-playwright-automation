@@ -177,3 +177,22 @@ class TopMenuPage(BasePage):
     def show_view_startup_initialization_log(self):
         test_id = "appHeaderToolbar-view-button"
         self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.STARTUP_INITIALIZATION_LOG)
+
+    def click_menu_item_new(self):
+        test_id = "appHeaderToolbar-new-button"
+        self.toolbar.click_btn_by_test_id(test_id)
+    def click_menu_item_options(self):
+        test_id = "appHeaderToolbar-options-button"
+        self.toolbar.click_btn_by_test_id(test_id)
+
+    def click_menu_item_view(self):
+        test_id = "appHeaderToolbar-view-button"
+        self.toolbar.click_btn_by_test_id(test_id)
+
+    def click_menu_item_open(self):
+        test_id = "appHeaderToolbar-open"
+        self.toolbar.click_btn_by_test_id(test_id)
+
+    def click_menu_item_saveall(self):
+        test_id = "appHeaderToolbar-saveall"
+        self.toolbar.click_btn_by_test_id(test_id)

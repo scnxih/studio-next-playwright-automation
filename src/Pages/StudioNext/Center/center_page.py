@@ -20,3 +20,6 @@ class CenterPage(BasePage):
         """Added by Alice on 09/22/2023 start"""
         self.center_toolbar_helper = CentralToolbarHelper(self.toolbar)
         """Added by Alice on 09/22/2023 end"""
+    def click_more_options(self):
+        self.toolbar.click_more_options()
+        time.sleep(1)
