@@ -66,7 +66,7 @@ class TreeGrid(CommonComponent):
         if name_text is None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
         if row_index is None:
-            return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]")
+            return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}'] | .//div[text()='{name_text}']]")
 
     def select_a_row(self, row_index=None, name_text=None):
         """
@@ -74,6 +74,7 @@ class TreeGrid(CommonComponent):
         :param row_index: start from 0
         :param name_text: the name text of a row
         """
+        self.scroll_if_needed(self.row_in_treegrid(row_index=row_index, name_text=name_text))
         self.click(self.row_in_treegrid(row_index=row_index, name_text=name_text))
 
     def column_in_a_row(self, col_id: str, row_index=None, name_text=None):

@@ -501,7 +501,7 @@ class PageHelper:
 
     # ----------Added by Allison, 9/20/2023 end---- #
 
-    # ---------- Added by Frank, 9/22/2023 begin ---------- #
+    ''' ----- Added by Frank, 9/22/2023 begin ----- '''
     @staticmethod
     def submission_status_fill_input_search_toolbar(page, fill_text: str):
         """
@@ -512,9 +512,9 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.fill_input_search_toolbar(fill_text)
+    ''' ----- Added by Frank, 9/22/2023 end ----- '''
 
-    # ---------- Added by Frank, 9/22/2023 end ---------- #
-    # ---------- Updated by Frank, 3/18/2024 begin ---------- #
+    ''' ----- Updated by Frank, 3/18/2024 begin ----- '''
     @staticmethod
     def submission_status_clear_input_search_toolbar(page):
         """
@@ -575,46 +575,6 @@ class PageHelper:
         ss = SubmissionStatusPage(page)
         ss.open_submission_result(row_index=row_index, name_text=name_text)
 
-    # @staticmethod
-    # def submission_status_open_sidebar_columns(page):
-    #     """
-    #     Description: open Columns side pane.
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.open_columns_pane()
-    #
-    # @staticmethod
-    # def submission_status_sidebar_columns_check_columns(page, *column_labels):
-    #     """
-    #     Description: check columns in Columns pane if they are unchecked.
-    #     :param page:
-    #     :param column_labels: labels of column checkboxes, separated with comma.
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.check_columns_in_columns_pane(*column_labels)
-    #
-    # @staticmethod
-    # def submission_status_sidebar_columns_uncheck_columns(page, *column_labels):
-    #     """
-    #     Description: uncheck columns in Columns pane if they are checked.
-    #     :param page:
-    #     :param column_labels: labels of column checkboxes, separated with comma.
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.uncheck_columns_in_columns_pane(*column_labels)
-    #
-    # @staticmethod
-    # def submission_status_open_sidebar_filters(page):
-    #     """
-    #     Description: open Filter side pane.
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.open_filters_pane()
-
     @staticmethod
     def submission_status_filter_pane_expand_status_section(page):
         """
@@ -632,26 +592,6 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.collapse_status_section_filter_pane()
-
-    # @staticmethod
-    # def submission_status_sidebar_filters_clear_input_search(page):
-    #     """
-    #     Description: open Filters side pane, then clear search field.
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.clear_input_search_sidebar_filters()
-    #
-    # @staticmethod
-    # def submission_status_sidebar_filters_fill_input_search(page, search_text: str):
-    #     """
-    #     Description: open Filters side pane, then fill search field.
-    #     :param page:
-    #     :param search_text:
-    #     """
-    #     PageHelper.show_submission_status(page)
-    #     ss = SubmissionStatusPage(page)
-    #     ss.fill_input_search_sidebar_filters(search_text)
 
     @staticmethod
     def submission_status_reset_filter_in_filter_pane(page):
@@ -693,7 +633,85 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.select_context_menu_item(*context_menu_text, row_index=row_index, name_text=name_text)
-    # ---------- Updated by Frank, 3/18/2024 end ---------- #
+    ''' ----- Updated by Frank, 3/18/2024 end ----- '''
+
+    ''' ----- Added by Frank, 3/18/2024 begin ----- '''
+    @staticmethod
+    def submission_status_open_overflow_menu(page):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.open_overflow_menu()
+
+    @staticmethod
+    def submission_status_close_overflow_menu(page):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.close_overflow_menu()
+
+    @staticmethod
+    def submission_status_select_show_all_submissions(page):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.check_show_all_submissions()
+
+    @staticmethod
+    def submission_status_deselect_show_all_submissions(page):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.uncheck_show_all_submissions()
+
+    @staticmethod
+    def submission_status_show_all_columns(page):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.show_all_columns()
+
+    @staticmethod
+    def submission_status_add_columns_to_page(page, *col_labels: str):
+        """
+        Description: add hidden columns to Submission Status page.
+        :param page:
+        :param col_labels: labels of columns, separated with comma.
+        """
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.add_columns_to_page(*col_labels)
+
+    @staticmethod
+    def submission_status_remove_columns_from_page(page, *col_labels: str):
+        """
+        Description: remove some displayed columns from Submission Status page.
+        :param page:
+        :param col_labels: labels of columns, separated with comma.
+        """
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.remove_columns_from_page(*col_labels)
+
+    @staticmethod
+    def submission_status_move_a_column_to_left(page, col_label: str):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.move_a_column_to_left(col_label)
+
+    @staticmethod
+    def submission_status_move_a_column_to_right(page, col_label: str):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.move_a_column_to_right(col_label)
+
+    @staticmethod
+    def submission_status_move_a_column_to_leftmost(page, col_label: str):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.move_a_column_to_leftmost(col_label)
+
+    @staticmethod
+    def submission_status_move_a_column_to_rightmost(page, col_label: str):
+        PageHelper.show_submission_status(page)
+        ss = SubmissionStatusPage(page)
+        ss.move_a_column_to_rightmost(col_label)
+    ''' ----- Added by Frank, 3/18/2024 end ----- '''
 
     # ADDED
     # <<< Added by Jacky(ID: jawang) on Oct.12nd, 2023

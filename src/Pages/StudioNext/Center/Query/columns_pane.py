@@ -13,12 +13,11 @@ from src.Pages.Common.context_menu import *
 class Columns(BasePage):
     def __init__(self, page):
         BasePage.__init__(self, page)
-        self.base_xpath = ("//div[@data-testid='query-columnsPane-container']"
-                           "[@class='sas_components-Layouts-Flow-Flow_flow_vertical sas_components-views-QueryViewPane"
-                           "-QueryBuilderTabs-QueryColumns_query-columns-pane-root-flow']")
+        self.base_xpath = "//div[@data-testid='query-columnsPane-container']"
         self.toolbar = Toolbar(self.base_xpath, page, data_test_id=TestID.QUERY_COLUMNS_PANE_TOOLBAR)
         self.table_tree = TreeViewCommon(self.base_xpath, page)
         self.st_dialog = SelectTableDialog(page)
+        self.alert_dialog = Alert(page, Helper.data_locale.REMOVE_TABLE)
         # self.cont_menu = ContextMenu(self, page)
         self.search_field = Text(self.base_xpath, page, data_test_id=TestID.QUERY_COLUMNS_PANE_SEARCH_INPUT)
 
@@ -50,17 +49,11 @@ class Columns(BasePage):
 
     def add_table_zero_state(self, lib_name: str, table_name: str):
         self.click_btn_add_table()
-        if self.is_visible(self.st_dialog.input_lib_name):
-            self.st_dialog.fill_input_lib_name(lib_name)
-            self.st_dialog.fill_input_table_name(table_name)
-            self.st_dialog.click_button_in_footer("选择")
+        self.st_dialog.select_a_table(lib_name, table_name)
 
     def add_table_from_toolbar(self, lib_name: str, table_name: str):
         self.toolbar.click_btn_menu_by_test_id(TestID.QUERY_COLUMNS_PANE_TOOLBAR_ADD, Helper.data_locale.TABLE)
-        if self.is_visible(self.st_dialog.input_lib_name):
-            self.st_dialog.fill_input_lib_name(lib_name)
-            self.st_dialog.fill_input_table_name(table_name)
-            self.st_dialog.click_button_in_footer("选择")
+        self.st_dialog.select_a_table(lib_name, table_name)
 
     def add_a_column_by_dbclick(self, table_label, col_name):
         """
@@ -100,7 +93,9 @@ class Columns(BasePage):
         Description: add a column from Columns pane to right pane by context menu.
         :param table_label: should be like "t1 (tablename)"
         """
-        self.table_tree.navigate_to_element_and_click_context_menu([table_label], Helper.data_locale.DELETE)
+        self.table_tree.navigate_to_element_and_click_context_menu([table_label], Helper.data_locale.REMOVE)
+        if self.alert_dialog.is_open():
+            self.alert_dialog.click_button_in_footer(Helper.data_locale.REMOVE)
 
     def delete_a_table_from_toolbar(self, table_label):
         """
@@ -109,6 +104,8 @@ class Columns(BasePage):
         """
         self.table_tree.navigate_to_element([table_label])
         self.toolbar.click_btn_by_test_id(TestID.QUERY_COLUMNS_PANE_TOOLBAR_DELETE)
+        if self.alert_dialog.is_open():
+            self.alert_dialog.click_button_in_footer(Helper.data_locale.REMOVE)
 
     def collapse_all_table_tree(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.COLLAPSE_ALL)

@@ -14,7 +14,7 @@ class SelectFilterGroups(BasePage):
         self.base_xpath = ("//div[@data-testid='tab-group-content-area']"
                            "[@class='sas_components-layouts-TabManager-TabGroup-TabContentContainer_tab-content"
                            "-wrapper']")
-        self.treegrid = TreeGrid(self.base_xpath, self.page)
+        self.treegrid = TreeGrid(self.base_xpath, page)
         self.toolbar = Toolbar(self.base_xpath, page, data_test_id=TestID.QUERY_SELECT_COLUMNS_TOOLBAR)
         self.center_toolbar_helper = CentralToolbarHelper(self.toolbar)
 
