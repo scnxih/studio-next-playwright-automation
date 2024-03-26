@@ -127,6 +127,21 @@ class BasePage:
         r_locator = self.transform_to_locator(locator_or_xpath)
         return r_locator.wait_for(timeout=timeout, state="visible")
 
+    """"Added by Alice on 2024/03/26 start"""
+
+    def transform_to_locators_list(self, list_locator_or_xpath: list):
+        if list_locator_or_xpath is None:
+            return None
+        if len(list_locator_or_xpath) == 0:
+            return []
+        locators: list = []
+        for element in list_locator_or_xpath:
+            locator = self.transform_to_locator(element)
+            locators.append(locator)
+        return locators
+
+    """"Added by Alice on 2024/03/26 end"""
+
     def transform_to_locator(self, locator_or_xpath) -> Locator:
         if is_locator(locator_or_xpath):
             return locator_or_xpath
@@ -486,7 +501,7 @@ class BasePage:
 
     ''' Added by Jacky(ID: jawang) on Aug 30th, 2023 '''
 
-    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False):
+    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
         """
         :param locator_or_xpath: Element xpath used to take screenshots, which will be combined into final total xpath.
         :param pic_name: Picture name that will be appended to image file name
@@ -503,8 +518,10 @@ class BasePage:
             Helper.logger.debug("User assigned xpath")
             # transform locator
             r_locator = self.transform_to_locator(locator_or_xpath)
+        # When using Jenkins, os.getcwd() gets c:\jenkins, so update below code
+        # output_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../..")), "Output\\")
+        output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
 
-        output_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../..")), "Output\\")
         # print("### Direct working dir: " + output_path)
 
         # Create Output folder
@@ -535,31 +552,28 @@ class BasePage:
 
         # Revised Version:
         # folder name = testfile_abbreviation + testmethod_number
-        file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
-                class_name + "_" +  # screenshot name part-2: Specific Class Name
-                function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                pic_name)
+        """Added by Alice on 2024/3/25 start"""
+        file_name = (
+                    testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
+                    class_name + "_" +  # screenshot name part-2: Specific Class Name
+                    function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
+                    pic_name)
 
         if len(file_name) >= 78:
             class_name = class_name[0:20]
             function_name = function_name[0:30]
             pic_name = pic_name[0:10]
-            file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
-                class_name + "_" +  # screenshot name part-2: Specific Class Name
-                function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                pic_name)
-
+            file_name = (
+                        testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
+                        class_name + "_" +  # screenshot name part-2: Specific Class Name
+                        function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
+                        pic_name)
+        """Added by Alice on 2024/3/25 end"""
         screenshot_file_base = (
             # directory name
                 output_path + "\\" +  # screenshot storage root directory: ~src/Output
-                testfile_abbreviation + "_" + testmethod_number + "\\" +file_name)  # directory for method of a testfile: ~src/Output/codeeditor_01_01
+                testfile_abbreviation + "_" + testmethod_number + "\\" + file_name)  # directory for method of a testfile: ~src/Output/codeeditor_01_01
 
-
-        """Added by Alice on 2024/3/25 start"""
-        # When length is larger, truncate name.
-
-
-        """Added by Alice on 2024/3/25 end"""
         # NOTE: CPython implementation detail:
         # This function relies on Python stack frame support in the interpreter,
         # which isn’t guaranteed to exist in all implementations of Python.
@@ -571,21 +585,16 @@ class BasePage:
         Helper.logger.debug("Screenshot path: " + screenshot_file_base)
 
         # Need to check if the screenshot already exist
-        if not os.path.exists(f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"):
-            r_locator.screenshot(path=f"{screenshot_file_base}{'_'}{index:02d}{'.png'}")
-            Helper.logger.debug("Generated Screenshot: " + f"{screenshot_file_base}{'_'}{index:02d}{'.png'}")
-
-        else:
-            # print("--- Need to manipulate ---")
-
-            # Split File Name
-            # file_base_name, extension = os.path.splitext(screenshot_file)
-            while os.path.exists(f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"):
-                index += 1
-            r_locator.screenshot(path=f"{screenshot_file_base}{'_'}{index:02d}{'.png'}")
-            Helper.logger.debug("Generated Screenshot:" + f"{screenshot_file_base}{'_'}{index:02d}{'.png'}")
-
-        Helper.logger.debug("Exit screenshot")
+        final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
+        while os.path.exists(final_full_path):
+            index += 1
+            final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
+        Helper.logger.debug("Screenshot final full path: " + final_full_path)
+        if mask is None:
+            r_locator.screenshot(path=final_full_path)
+            return
+        locators_mask = self.transform_to_locators_list(mask)
+        r_locator.screenshot(path=final_full_path, mask=locators_mask)
 
     ''' Added by Jacky(ID: jawang) on Aug 30th, 2023 '''
 
@@ -617,20 +626,20 @@ class BasePage:
     # Added new parameter user_assigned_xpath
     # If true, user-assigned xpath will be used for screenshot.
     # <<< Modified by Jacky(ID: jawang) on Sept.25th, 2023
-    def screenshot_trivial(self, locator_or_xpath, pic_name, user_assigned_xpath=False):
+    def screenshot_trivial(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
         if determine_importance():
             Helper.logger.debug("Screenshot level: Trivial")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath)
+            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
 
-    def screenshot_general(self, locator_or_xpath, pic_name, user_assigned_xpath=False):
+    def screenshot_general(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
         if determine_importance():
             Helper.logger.debug("Screenshot level: General")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath)
+            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
 
-    def screenshot_critical(self, locator_or_xpath, pic_name, user_assigned_xpath=False):
+    def screenshot_critical(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
         if determine_importance():
             Helper.logger.debug("Screenshot level: Critical")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath)
+            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
 
     # Modified by Jacky(ID: jawang) on Sept.25th, 2023 >>>
 
@@ -741,11 +750,11 @@ class BasePage:
         else:
             return False
 
-    def screenshot_trivial_self(self, pic_name):
-        self.screenshot_trivial(self.base_xpath, pic_name)
+    def screenshot_trivial_self(self, pic_name, mask=None):
+        self.screenshot_trivial(self.base_xpath, pic_name, mask=mask)
 
-    def screenshot_general_self(self, pic_name):
-        self.screenshot_general(self.base_xpath, pic_name)
+    def screenshot_general_self(self, pic_name, mask=None):
+        self.screenshot_general(self.base_xpath, pic_name, mask=mask)
 
-    def screenshot_critical_self(self, pic_name):
-        self.screenshot_critical(self.base_xpath, pic_name)
+    def screenshot_critical_self(self, pic_name, mask=None):
+        self.screenshot_critical(self.base_xpath, pic_name, mask=mask)

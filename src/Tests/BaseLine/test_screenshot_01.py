@@ -198,10 +198,12 @@ def test_05_screenshot_top_menu_view(page, init):
 
 
 def test_06_screenshot_top_right_items(page, init):
+    p: Page = page
     top = TopRightToolbar(page)
     top.click_search()
     time.sleep(1)
     Dialog(page).screenshot_trivial_self("search")
+
     Dialog(page).close_dialog()
 
     top.click_unread_notifications()
@@ -232,3 +234,14 @@ def test_06_screenshot_top_right_items(page, init):
     top.click_user_option()
     time.sleep(2)
     WholePage(page).screenshot_trivial_self("user_option")
+
+
+def test_07_mask(page, init):
+    top_menu_page = TopMenuPage(page)
+    top_menu_page.click_options(TopMenuItem.options_custom_code)
+    time.sleep(1)
+    cus = CustomCodeDialog(page)
+    cus.screenshot_trivial_self("custom_pre", mask=[cus.tab_Code,cus.tab_log,cus.tab_preamble,cus.btn_save])
+    cus.screenshot_trivial_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
+    cus.screenshot_trivial_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
+    cus.close_dialog()
