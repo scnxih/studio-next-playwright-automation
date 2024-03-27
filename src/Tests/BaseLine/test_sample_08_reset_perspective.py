@@ -42,3 +42,5 @@ def test_01_reset_view_pagehelper(page, init):
     """
     PageHelper.switch_to_interactive_perspective(page)
     PageHelper.switch_to_standard_perspective(page)
+    PageHelper.switch_to_standard_perspective_temp(page)
+

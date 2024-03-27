@@ -8,7 +8,7 @@ from src.conftest import *
 from src.Utilities.enums import TopMenuItem
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
-
+from src.Pages.Common.menu_page import MenuPage
 
 def test_01_sas_program_editor_context_menu(page, init):
     """
@@ -27,6 +27,9 @@ def test_01_sas_program_editor_context_menu(page, init):
 
     # Fill text area with program
     sas_program_editor.fill_text_area_with(sas_program)
+    # sas_program_editor.click_context_menu_by_right_click()
+    # MenuPage(page).screenshot_self("editor_context_menu")
+
 
     # Click Run from context menu
     sas_program_editor.click_context_menu(sas_program_editor.div_first_line, Helper.data_locale.RUN)
