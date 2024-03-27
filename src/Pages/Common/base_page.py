@@ -19,29 +19,6 @@ def is_locator(locator_or_xpath):
 ''' Added by Jacky(ID: jawang) on Sept. 5th, 2023 '''
 
 
-def determine_importance():
-    Helper.logger.info("Enter determine screenshot function")
-    importance = inspect.currentframe().f_back.f_code.co_name.split("_")[-1]
-
-    importance_dict = {
-        "trivial": 1,
-        "general": 2,
-        "critical": 3
-    }
-    if importance_dict[importance] >= importance_dict[global_screenshot_importance]:
-        if importance_dict[importance] == 1:
-            Helper.logger.debug("Trivial screenshot level")
-        elif importance_dict[importance] == 2:
-            Helper.logger.debug("General screenshot level")
-        elif importance_dict[importance] == 3:
-            Helper.logger.debug("Critical screenshot level")
-
-        return True
-
-
-''' Added by Jacky(ID: jawang) on Sept. 5th, 2023 '''
-
-
 class BasePage:
     current_frame = ""
 
@@ -457,192 +434,6 @@ class BasePage:
         r_locator = self.transform_to_locator(locator_or_xpath)
         return r_locator.inner_text()
 
-    # def screenshot_level_high(self,locator_or_xpath,pic_name):
-    #     if global == low:
-
-    # def wait_toast_disappear(self):
-    #     # toaster = self.locator("xpath=.//div[@id='static-area']["
-    #     #                        "@class='sas_components-MessageToast-MessageToaster_static-area']")
-    #     toaster = self.locator("xpath=//span[contains(@id,'message-toast')]")
-    #     Helper.logger.debug("wait_toast_disappear")
-    #     if toaster is None:
-    #         Helper.logger.debug("toast is none")
-    #         return
-    #     if toaster.is_visible():
-    #         Helper.logger.debug("toast is_visible:")
-    #     # if toaster.is_visible():
-    #         toaster.wait_for(state="hidden")
-    #         Helper.logger.debug("toast disappeared")
-    #         time.sleep(2)
-    #         Helper.logger.debug("toast disappeared 2 seconds later")
-
-    # def screenshot(self,locator_or_xpath,pic_name):
-    #
-    #     class_name = type(self).__name__
-    #     Helper.logger.debug("enter basepage::screenshot: type(self):"+class_name)
-    #     current_test = os.environ.get('PYTEST_CURRENT_TEST')
-    #     abs_path = os.path.abspath(__file__)
-    #     Helper.logger.debug("PYTEST_CURRENT_TEST in base="+current_test)
-    #     Helper.logger.debug("current abstract path="+abs_path)
-    # here store_path is just an example, need to be handled to the Output folder and file name
-    # need including test file prefix, test method prefix,class_name and pic_name
-    # store_path = abs_path+current_test+class_name+pic_name
-    #
-    # if exist(store_path):
-    #     store_path = store_path+"_1"
-
-    # r_locator = self.transform_to_locator(locator)
-    # r_locator.screenshot(path=store_path)
-
-    # def screenshot_level_samll(self):
-    #     if global_screenshot_level == ""
-    # def screenshot_level_middle(self):
-    # def screenshot_level_many(self):
-
-    ''' Added by Jacky(ID: jawang) on Aug 30th, 2023 '''
-
-    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
-        """
-        :param locator_or_xpath: Element xpath used to take screenshots, which will be combined into final total xpath.
-        :param pic_name: Picture name that will be appended to image file name
-        :param user_assigned_xpath: If true, user assigned xpath will be used.
-        :return:
-        """
-        if user_assigned_xpath:
-            Helper.logger.debug("User did not assign xpath")
-            if is_locator(locator_or_xpath):
-                r_locator = locator_or_xpath
-            else:
-                r_locator = self.locator(locator_or_xpath)
-        else:
-            Helper.logger.debug("User assigned xpath")
-            # transform locator
-            r_locator = self.transform_to_locator(locator_or_xpath)
-        # When using Jenkins, os.getcwd() gets c:\jenkins, so update below code
-        # output_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../..")), "Output\\")
-        output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
-
-        # print("### Direct working dir: " + output_path)
-
-        # Create Output folder
-        # Should be ~/src/Output
-        # Helper.create_folder(output_path, True)
-
-        # Obtain Testcase Name from os.environ.get('PYTEST_CURRENT_TEST') which is:
-        # Tests/CodeEditor/test_codeeditor_02.py::test_01_type_code (call)
-        testfile_abbreviation = Helper.get_testfile_abbreviation()
-        print("### Testcase Abbreviation: " + testfile_abbreviation)
-
-        # Similar to testfile_abbreviation, obtain test method name from os.environ.get('PYTEST_CURRENT_TEST')
-        testmethod_number = Helper.get_testmethod_number()
-        print("### Testmethod Number: " + testmethod_number)
-
-        class_name = type(self).__name__
-        """Added by Alice on 2024/3/25 start"""
-        function_name = inspect.currentframe().f_back.f_back.f_code.co_name
-        """Added by Alice on 2024/3/25 end"""
-        # print("### Test Class Name: " + class_name)
-
-        # index to determine the duplicates
-        index = 1
-        ''' Revised by Jacky(ID: jawang) on Sept. 4th, 2023 '''
-
-        # store path Last version INCORRECT screenshot_file_base = output_path + "\\" + testfile_abbreviation + "\\"
-        # + testfile_abbreviation + "_" + testmethod_number + "_" + class_name + "_" + pic_name
-
-        # Revised Version:
-        # folder name = testfile_abbreviation + testmethod_number
-        """Added by Alice on 2024/3/25 start"""
-        file_name = (
-                    testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
-                    class_name + "_" +  # screenshot name part-2: Specific Class Name
-                    function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                    pic_name)
-
-        if len(file_name) >= 78:
-            class_name = class_name[0:20]
-            function_name = function_name[0:30]
-            pic_name = pic_name[0:10]
-            file_name = (
-                        testfile_abbreviation + "_" + testmethod_number + "_" +  # screenshot name part-1: same as directory name
-                        class_name + "_" +  # screenshot name part-2: Specific Class Name
-                        function_name + "_" +  # screenshot name part-3: Return function name which is calling generate_screenshot()
-                        pic_name)
-        """Added by Alice on 2024/3/25 end"""
-        screenshot_file_base = (
-            # directory name
-                output_path + "\\" +  # screenshot storage root directory: ~src/Output
-                testfile_abbreviation + "_" + testmethod_number + "\\" + file_name)  # directory for method of a testfile: ~src/Output/codeeditor_01_01
-
-        # NOTE: CPython implementation detail:
-        # This function relies on Python stack frame support in the interpreter,
-        # which isn’t guaranteed to exist in all implementations of Python.
-        # If running in an implementation without Python stack frame support this function returns None.
-        # Reference Link: https://docs.python.org/3/library/inspect.html
-        ''' Revised by Jacky(ID: jawang) on Sept. 4th, 2023 '''
-
-        # print("### Screenshot path: " + screenshot_file_base)
-        Helper.logger.debug("Screenshot path: " + screenshot_file_base)
-
-        # Need to check if the screenshot already exist
-        final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
-        while os.path.exists(final_full_path):
-            index += 1
-            final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
-        Helper.logger.debug("Screenshot final full path: " + final_full_path)
-        if mask is None:
-            r_locator.screenshot(path=final_full_path)
-            return
-        locators_mask = self.transform_to_locators_list(mask)
-        r_locator.screenshot(path=final_full_path, mask=locators_mask)
-
-    ''' Added by Jacky(ID: jawang) on Aug 30th, 2023 '''
-
-    ''' Added by Jacky(ID: jawang) on Aug 31st, 2023 '''
-
-    # Screenshot Generation
-    # Default level is 3, which can be omitted
-    def generate_screenshot(self, locator_or_xpath, pic_name, screenshot_level=3):
-        Helper.logger.info("Enter screenshot control function")
-        if screenshot_level >= global_screenshot_level:
-            if screenshot_level == 1:
-                Helper.logger.debug("Lowest screenshot level")
-            elif screenshot_level == 2:
-                Helper.logger.debug("Low screenshot level")
-            elif screenshot_level == 3:
-                Helper.logger.debug("Middle screenshot level")
-            elif screenshot_level == 4:
-                Helper.logger.debug("High screenshot level")
-            elif screenshot_level == 5:
-                Helper.logger.debug("Highest screenshot level")
-
-            self.screenshot(locator_or_xpath, pic_name)
-
-    ''' Added by Jacky(ID: jawang) on Aug 31st, 2023 '''
-
-    ''' Added by Jacky(ID: jawang) on Sept. 5th, 2023 '''
-
-    # MODIFIED
-    # Added new parameter user_assigned_xpath
-    # If true, user-assigned xpath will be used for screenshot.
-    # <<< Modified by Jacky(ID: jawang) on Sept.25th, 2023
-    def screenshot_trivial(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
-        if determine_importance():
-            Helper.logger.debug("Screenshot level: Trivial")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
-
-    def screenshot_general(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
-        if determine_importance():
-            Helper.logger.debug("Screenshot level: General")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
-
-    def screenshot_critical(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
-        if determine_importance():
-            Helper.logger.debug("Screenshot level: Critical")
-            self.screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
-
-    # Modified by Jacky(ID: jawang) on Sept.25th, 2023 >>>
-
     """Added by Alice on 09/19/2023 start"""
 
     def right_click(self, locator_or_xpath):
@@ -750,11 +541,96 @@ class BasePage:
         else:
             return False
 
-    def screenshot_trivial_self(self, pic_name, mask=None):
-        self.screenshot_trivial(self.base_xpath, pic_name, mask=mask)
+    """Updated by Alice on 2024/03/26 start, below are __screenshot related methods"""
 
-    def screenshot_general_self(self, pic_name, mask=None):
-        self.screenshot_general(self.base_xpath, pic_name, mask=mask)
+    def generate_screenshot(self, locator_or_xpath, pic_name, screenshot_level=3):
+        Helper.logger.info("Enter __screenshot control function")
+        if screenshot_level >= global_screenshot_level:
+            if screenshot_level == 1:
+                Helper.logger.debug("Lowest __screenshot level")
+            elif screenshot_level == 2:
+                Helper.logger.debug("Low __screenshot level")
+            elif screenshot_level == 3:
+                Helper.logger.debug("Middle __screenshot level")
+            elif screenshot_level == 4:
+                Helper.logger.debug("High __screenshot level")
+            elif screenshot_level == 5:
+                Helper.logger.debug("Highest __screenshot level")
 
-    def screenshot_critical_self(self, pic_name, mask=None):
-        self.screenshot_critical(self.base_xpath, pic_name, mask=mask)
+            self.__screenshot(locator_or_xpath, pic_name)
+
+    def get_screenshot_full_path(self, pic_name):
+        output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
+        testfile_abbreviation = Helper.get_testfile_abbreviation()
+        testmethod_number = Helper.get_testmethod_number()
+        class_name = type(self).__name__
+        function_name = inspect.currentframe().f_back.f_back.f_code.co_name
+        index = 1
+        file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +
+                     class_name + "_" +
+                     function_name + "_" +
+                     pic_name)
+        if len(file_name) >= 78:
+            class_name = class_name[0:20]
+            function_name = function_name[0:30]
+            pic_name = pic_name[0:10]
+            file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +
+                         class_name + "_" +
+                         function_name + "_" +
+                         pic_name)
+        screenshot_file_base = (output_path + "\\" +
+                                testfile_abbreviation + "_" + testmethod_number + "\\" + file_name)
+        final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
+        while os.path.exists(final_full_path):
+            index += 1
+            final_full_path = f"{screenshot_file_base}{'_'}{index:02d}{'.png'}"
+        Helper.logger.debug("Screenshot final full path: " + final_full_path)
+        return final_full_path
+
+    def __screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
+        """
+        :param locator_or_xpath: Element xpath used to take screenshots, which will be combined into final total xpath.
+        :param pic_name: Picture name that will be appended to image file name.
+        :param user_assigned_xpath: If true, user assigned xpath will be used.
+        :param mask: list of xpath or locators or mixture of them.
+        :return:
+        """
+        if user_assigned_xpath:
+            Helper.logger.debug("User did not assign xpath")
+            if is_locator(locator_or_xpath):
+                r_locator = locator_or_xpath
+            else:
+                r_locator = self.locator(locator_or_xpath)
+        else:
+            Helper.logger.debug("User assigned xpath")
+            r_locator = self.transform_to_locator(locator_or_xpath)
+        final_full_path = self.get_screenshot_full_path(pic_name)
+        if mask is None:
+            r_locator.screenshot(path=final_full_path)
+            return
+        locators_mask = self.transform_to_locators_list(mask)
+        r_locator.screenshot(path=final_full_path, mask=locators_mask)
+
+    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
+        self.__screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
+
+
+
+    def screenshot_self(self, pic_name, mask=None):
+        self.screenshot(self.base_xpath, pic_name, mask=mask)
+
+    # Since it does NOT work (and I don't know why), comment it temporarily. Will investigate it later.
+    # def screenshot_full_page(self,pic_name,mask=None):
+    #     """"
+    #     :param pic_name: Picture name that will be appended to image file name.
+    #     :param mask: list of xpath or locators or mixture of them.
+    #     :return:
+    #     """
+    #     final_full_path = self.get_screenshot_full_path(pic_name)
+    #     if mask is None:
+    #         self.page.screenshot(path=final_full_path,full_page=True)
+    #         return
+    #     locators_mask = self.transform_to_locators_list(mask)
+    #     self.page.screenshot(path=final_full_path,mask=mask,full_page=True)
+
+    """Updated by Alice on 2024/03/26 end"""

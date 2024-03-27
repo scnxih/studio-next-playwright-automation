@@ -55,7 +55,7 @@ class CustomCodeDialog(Dialog):
         self.click(self.tab_preamble)
         # self.click(self.textarea)
         self.fill(self.textarea, text)
-        self.screenshot_critical("//div[@data-testid='customCodeEditorPreamble-editor']", "critical_user_custom_code")
+        self.screenshot("//div[@data-testid='customCodeEditorPreamble-editor']", "critical_user_custom_code")
 
     def type_codes_in_postamble(self, text):
         self.click(self.tab_postamble)

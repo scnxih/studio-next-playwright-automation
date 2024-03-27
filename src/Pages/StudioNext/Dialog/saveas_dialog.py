@@ -29,7 +29,7 @@ class SaveAsDialog(Dialog):
             return False
         self.fill(self.input_file_name, file_name)
         time.sleep(0.3)
-        self.screenshot_trivial(self.base_xpath,"save_file")
+        self.screenshot(self.base_xpath, "save_file")
         time.sleep(0.5)
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)

@@ -315,8 +315,8 @@ def test_11_pinpoint_tab_group_from_descendant_text(page, init):
     print("*** Tab Group Xpath:" + str(
         sas_program_editor.tab_group.current_tab_group_by_descendant_text(Helper.data_locale.RESULTS)))
 
-    # Get screenshot of current tab group according to descendant tab text
-    sas_program_editor.screenshot_critical(
+    # Get __screenshot of current tab group according to descendant tab text
+    sas_program_editor.screenshot(
         sas_program_editor.tab_group.current_tab_group_by_descendant_text(Helper.data_locale.RESULTS),
         "check_tab_group", user_assigned_xpath=True)
 
@@ -339,8 +339,8 @@ def test_12_pinpoint_tab_group_from_ancestor_testid(page, init):
     print("*** Tab Group Xpath:" + str(
         python_program_editor.tab_group.current_tab_group_by_ancestor_div_test_id("tab-group-bar-_root_")))
 
-    # Get screenshot of current tab group according based on descendant
-    python_program_editor.screenshot_critical(
+    # Get __screenshot of current tab group according based on descendant
+    python_program_editor.screenshot(
         python_program_editor.tab_group.current_tab_group_by_ancestor_div_test_id("tab-group-bar-_root_"),
         "check_tab_group", user_assigned_xpath=True)
 
@@ -371,7 +371,7 @@ def test_13_first_tab_page(page, init):
     python_program_editor.tab_group.click_first_tab_page_by_text("Python.py")
     time.sleep(3)
 
-    python_program_editor.tab_group.screenshot_critical(
+    python_program_editor.tab_group.screenshot(
         python_program_editor.tab_group.selected_tab_page_text("Python.py"),
         "selected_tab_group1",
         user_assigned_xpath=True)
@@ -380,7 +380,7 @@ def test_13_first_tab_page(page, init):
     python_program_editor.tab_group.last_tab_page_by_text("Python.py").click()
     time.sleep(3)
 
-    python_program_editor.tab_group.screenshot_critical(
+    python_program_editor.tab_group.screenshot(
         python_program_editor.tab_group.selected_tab_page_text("Python.py"),
         "selected_tab_group2",
         user_assigned_xpath=True)
@@ -412,7 +412,7 @@ def test_14_sas_program_tab_group_from_descendant_text(page, init):
     time.sleep(3)
 
     # Screenshot should be Log
-    sas_program_editor.tab_group.screenshot_critical(
+    sas_program_editor.tab_group.screenshot(
         sas_program_editor.tab_group.selected_tab_page_text(Helper.data_locale.OUTPUT_DATA),
         "selected_tab_group3",
         user_assigned_xpath=True

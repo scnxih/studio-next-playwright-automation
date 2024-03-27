@@ -177,7 +177,7 @@ class FlowPage(MainCenterPage):
         pass
 
     def flow_screenshot(self):
-        self.screenshot_critical(self.base_locator, "test")
+        self.screenshot(self.base_locator, "test")
 
     def select_node_in_flow_canvas(self, node_name):
         select_node_in_flow_canvas(self.page, node_name)

@@ -29,7 +29,7 @@ class libraryPage(AccordionPage):
         table_path = ["已连接", library_name, table_name]
         table = self.tree.navigate_to_element(table_path)
         self.dblclick(table)
-        self.screenshot_critical("//div[@data-testid='tab-group-content-area-_root_']", "critical_user_table")
+        self.screenshot("//div[@data-testid='tab-group-content-area-_root_']", "critical_user_table")
 
     def delete_table_btn(self, library_name, table_name):
         self.collapse_all()

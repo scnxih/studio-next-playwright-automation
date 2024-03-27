@@ -45,6 +45,6 @@ class EditorTextArea(CommonComponent):
         :return:
         """
         self.fill(self.get_text_area(), user_input)
-        self.screenshot_trivial(self.base_xpath, "text_area")
+        self.screenshot(self.base_xpath, "text_area")
 
 

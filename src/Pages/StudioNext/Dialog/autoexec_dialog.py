@@ -86,13 +86,13 @@ class AutoexecDialog(Dialog):
 
         # Added
         # <<< by Jacky(ID: jawang) on Sept. 6th, 2023
-        self.screenshot_critical("//div[@data-testid='autoexecCodeEditor-editor']", "critical_user_autoexe")
+        self.screenshot("//div[@data-testid='autoexecCodeEditor-editor']", "critical_user_autoexe")
         # Added by Jacky(ID: jawang) on Sept. 6th, 2023 >>>
 
         # ADDED
-        # Test screenshot function with user assigned xpath
+        # Test __screenshot function with user assigned xpath
         # <<< Added by Jacky(ID: jawang) on Sept.22nd, 2023
-        self.screenshot_critical("//div[@data-testid='basic-Dialog-header']", "uax_autoexec_header", user_assigned_xpath=True)
+        self.screenshot("//div[@data-testid='basic-Dialog-header']", "uax_autoexec_header", user_assigned_xpath=True)
         # Added by Jacky(ID: jawang) on Sept.22nd, 2023 >>>
 
         time.sleep(1)

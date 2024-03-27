@@ -90,67 +90,67 @@ class MainCenterPage(CenterPage):
     def apply_detail_layout_standard(self):
         self.center_toolbar_helper.apply_detail_layout_standard()
         time.sleep(3)
-        self.screenshot_trivial(self.base_xpath, "std")
+        self.screenshot(self.base_xpath, "std")
 
     def apply_detail_layout_horizontal(self):
         self.center_toolbar_helper.apply_detail_layout_horizontal()
         time.sleep(3)
-        self.screenshot_trivial(self.base_xpath, "horz")
+        self.screenshot(self.base_xpath, "horz")
 
     def apply_detail_layout_vertical(self):
         self.center_toolbar_helper.apply_detail_layout_vertical()
         time.sleep(3)
-        self.screenshot_trivial(self.base_xpath, "vert")
+        self.screenshot(self.base_xpath, "vert")
 
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "hide_code")
+        self.screenshot(self.base_xpath, "hide_code")
 
     def show_detail_tabs_code(self):
         self.center_toolbar_helper.show_detail_tabs_code()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "show_code")
+        self.screenshot(self.base_xpath, "show_code")
 
     def hide_detail_tabs_log(self):
         self.center_toolbar_helper.hide_detail_tabs_log()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "hide_log")
+        self.screenshot(self.base_xpath, "hide_log")
 
     def show_detail_tabs_log(self):
         self.center_toolbar_helper.show_detail_tabs_log()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "show_log")
+        self.screenshot(self.base_xpath, "show_log")
 
     def hide_detail_tabs_result(self):
         self.center_toolbar_helper.hide_detail_tabs_result()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "hide_result")
+        self.screenshot(self.base_xpath, "hide_result")
 
     def show_detail_tabs_result(self):
         self.center_toolbar_helper.show_detail_tabs_result()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "show_details")
+        self.screenshot(self.base_xpath, "show_details")
 
     def hide_detail_tabs_output_data(self):
         self.center_toolbar_helper.hide_detail_tabs_output_data()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "hide_output")
+        self.screenshot(self.base_xpath, "hide_output")
 
     def show_detail_tabs_output_data(self):
         self.center_toolbar_helper.show_detail_tabs_output_data()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "show_output")
+        self.screenshot(self.base_xpath, "show_output")
 
     def hide_detail_tabs_listing(self):
         self.center_toolbar_helper.hide_detail_tabs_listing()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "hide_listing")
+        self.screenshot(self.base_xpath, "hide_listing")
 
     def show_detail_tabs_listing(self):
         self.center_toolbar_helper.show_detail_tabs_listing()
         time.sleep(1)
-        self.screenshot_trivial(self.base_xpath, "show_listing")
+        self.screenshot(self.base_xpath, "show_listing")
 
     def refresh(self):
         self.center_toolbar_helper.refresh()

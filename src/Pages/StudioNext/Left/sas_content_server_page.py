@@ -93,6 +93,6 @@ class SASContentServerPage(AccordionPage):
 
         properties = Dialog(self.page, Helper.data_locale.PROPERTIES)
         time.sleep(2)
-        self.screenshot_critical('//div[@data-testid="contentProperties-Dialog-dialog"]', "properties", True)
+        self.screenshot('//div[@data-testid="contentProperties-Dialog-dialog"]', "properties", True)
         properties.click_button_in_footer(Helper.data_locale.CLOSE)
 

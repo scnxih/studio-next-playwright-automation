@@ -26,30 +26,30 @@ def test_clear_log(page, init):
     editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
 
     editor.run(True)
-    # editor.screenshot_critical(editor.editor, 'ProgramEditor')
+    # editor.screenshot(editor.editor, 'ProgramEditor')
 
     editor.tab_group.click_tab_by_text(Helper.data_locale.LOG)
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "before_clear_log", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "before_clear_log", user_assigned_xpath=True)
     editor.clear_log()
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "after_clear_log", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "after_clear_log", user_assigned_xpath=True)
 
     editor.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "before_clear_results", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "before_clear_results", user_assigned_xpath=True)
     editor.clear_results()
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "after_clear_results", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "after_clear_results", user_assigned_xpath=True)
 
     editor.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA)
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "before_clear_output", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "before_clear_output", user_assigned_xpath=True)
     editor.clear_output_data()
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "after_clear_output", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "after_clear_output", user_assigned_xpath=True)
 
     editor.clear_code()
     time.sleep(3)
-    editor.screenshot_critical(editor.base_xpath, "after_clear_code", user_assigned_xpath=True)
+    editor.screenshot(editor.base_xpath, "after_clear_code", user_assigned_xpath=True)
 
