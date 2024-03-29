@@ -269,3 +269,305 @@ def test_07_mask(page, init):
 #     BasePage(page).screenshot_full_page("init_full")
 #     p.screenshot(path="C:\studio-next-playwright-automation\src\Output\screenshot_01_08\init_full_AAA.png",
 #                  full_page=True)
+
+def test_08_accordion_sas_server(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.sas_server)
+    sas_server = SASServerPage(page)
+    folder_path: list = ["SAS Server", "Home", "segatest", "I18N", "自动化测试_SASCompute"]
+    element = sas_server.navigate_to_folder_or_file(folder_path)
+
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("folder_context_menu")
+    base.click_menu_item(Helper.data_locale.NEW_FOLDER)
+    time.sleep(2)
+    dialog.screenshot_self("new_folder")
+    dialog.close_dialog()
+
+    sas_server.navigate_and_click_context_menu_on_folder_or_file(folder_path, Helper.data_locale.PROPERTIES)
+    time.sleep(2)
+    dialog.screenshot_self("folder_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("创建dataset代码.log")
+
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("log_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("log_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("AB.xlsx")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("xlsx_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("xlsx_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("class.sas7bdat")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("sasdata_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("sasdata_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("CHClass.csv")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("csv_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("csv_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("AB.txt")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("txt_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("txt_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("CLASS.tsv")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("tsv_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("tsv_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("CLASS_EN.dlm")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("dlm_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("dlm_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("CLASS_GB2312.tab")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("tab_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("tab_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("class_中文.jmp")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("jmp_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("jmp_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("等待5分钟.sas")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("sas_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("sas_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("测试流.flw")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("flow_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("flow_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("查询.cqy")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("query_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("query_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("Python.py")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("python_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("python_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("饼图.ctk")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("ctk_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("ctk_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("中文测试数据.xls")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("xls_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("xls_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("导入.ctl")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("ctl_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("ctl_properties")
+    dialog.close_dialog()
+
+    file_path = folder_path.copy()
+    file_path.append("创建dataset代码.html")
+    element = sas_server.navigate_to_folder_or_file(file_path)
+    base.right_click(element)
+    time.sleep(2)
+    whole.screenshot_self("html_context_menu")
+    base.click_menu_item(Helper.data_locale.PROPERTIES)
+    # time.sleep(2)
+    whole.screenshot_self("html_properties")
+    dialog.close_dialog()
+
+    sas_server.click_more_options()
+    time.sleep(2)
+    whole.screenshot_self("more_options")
+    sas_server.click_more_options()
+    time.sleep(2)
+    sas_server.show_column_settings()
+
+
+def test_09_accordion_steps(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+    time.sleep(1)
+    whole.screenshot_self("steps_pane")
+    steps = StepsPage(page)
+    # steps.new(new_steps_type.quick_start)
+    # steps.new(new_steps_type.sample_controls)
+    # steps.new(new_steps_type.basic_rank)
+    # steps.new(new_steps_type.advanced_rank)
+    # steps.new(new_steps_type.advanced_define_column_structure)
+    # steps.show_menu_starter_templates()
+    # time.sleep(1)
+
+    step_path:list = [Helper.data_locale.STEP_CATEGORY_DATA,Helper.data_locale.STEP_TABLE]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Data")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Data_Quality")
+
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Develop")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Econometrics")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_PHONE_NUMBERS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Enrichment")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_LIST_TABLE_ATTRIBUTES]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Examine_Data")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Merge_Table")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Machine_Learning")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS,
+                       Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Register_Python")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                       Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Core")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
+                       Helper.data_locale.STEP_STANDARDIZE_DATA]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Standardize_Data")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                       Helper.data_locale.STEP_PARETO_ANALYSIS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Pareto")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
+                       Helper.data_locale.STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Multidimensional")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
+                       Helper.data_locale.STEP_TRANSPOSE_DATA]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Transpose")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                       Helper.data_locale.STEP_TEXT_MAP]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Text_Map")

@@ -49,7 +49,8 @@ class TopMenuPage(BasePage):
                 alert = Alert(self.toolbar.page, Helper.data_locale.STUDIO_NEXT)
                 if alert.is_open():
                     time.sleep(3)
-                    alert.close_alert_dialog(Helper.data_locale.CLOSE)
+                    # alert.close_alert_dialog(Helper.data_locale.CLOSE)
+                    alert.close_dialog()
 
             # Options/Change perspective/Interactive
             case TopMenuItem.options_change_perspective_interactive:
@@ -57,7 +58,8 @@ class TopMenuPage(BasePage):
                 alert = Alert(self.toolbar.page, Helper.data_locale.STUDIO_NEXT)
                 if alert.is_open():
                     time.sleep(3)
-                    alert.close_alert_dialog(Helper.data_locale.CLOSE)
+                    # alert.close_alert_dialog(Helper.data_locale.CLOSE)
+                    alert.close_dialog()
 
             # END Added by Jacky(ID: jawang) on Oct.30th, 2023 >>>
 

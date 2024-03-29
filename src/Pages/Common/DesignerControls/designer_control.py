@@ -14,8 +14,7 @@ class DesignerControl(BasePage):
         BasePage.__init__(self, page)
         self.base_xpath += "//div[starts-with(@data-testid,'{0}-{1}')]".format(self._data_testid_prefix,control_number)
 
-    def click_self(self):
-        self.click(self.base_locator)
+
 
     def move_up(self):
         self.click_context_menu_by_right_click(self.base_locator,Helper.data_locale.MOVE_UP)

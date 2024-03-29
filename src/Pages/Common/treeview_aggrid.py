@@ -9,7 +9,7 @@ from src.Pages.Common.common_component import CommonComponent
 class TreeViewAGGrid(CommonComponent):
 
     def set_base_xpath(self):
-        self.base_xpath += "//div[@class='ag-body-clipper ag-layout-normal']"
+        self.base_xpath += "//div[@class='ag-body ag-layout-normal']"
 
     def __init__(self,container_base_xpath, page, data_test_id="", supplement_base_xpath=""):
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page,data_test_id=data_test_id,

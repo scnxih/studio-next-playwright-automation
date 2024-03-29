@@ -13,7 +13,7 @@ class SASContentServerPage(AccordionPage):
         """Add first argument by Alice on 09/22/2023"""
         self.tree = TreeViewAGGrid(self.base_xpath, page)
 
-    def navigate_to_folder(self, folder_path: list):
+    def navigate_to_folder_or_file(self, folder_path: list):
         self.collapse_all()
         time.sleep(1)
         return self.tree.navigate_to_element(folder_path)
@@ -40,7 +40,7 @@ class SASContentServerPage(AccordionPage):
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 
     def new_folder(self, entrance: str, folder_path: list, folder_name):
-        folder = self.navigate_to_folder(folder_path)
+        folder = self.navigate_to_folder_or_file(folder_path)
         if folder is None:
             return False
 
@@ -53,7 +53,7 @@ class SASContentServerPage(AccordionPage):
         new_folder.new_folder(folder_name)
 
     def delete_single_item(self, entrance: str, folder_path: list):
-        folder = self.navigate_to_folder(folder_path)
+        folder = self.navigate_to_folder_or_file(folder_path)
         if folder is None:
             return False
 
@@ -68,7 +68,7 @@ class SASContentServerPage(AccordionPage):
     def delete_multiple_items(self, entrance: str, folder_path: list):
         count = len(folder_path)
         for i in range(count):
-            exist = self.navigate_to_folder(folder_path[i])
+            exist = self.navigate_to_folder_or_file(folder_path[i])
             self.key_down("Control")
             if not exist:
                 return False
@@ -83,7 +83,7 @@ class SASContentServerPage(AccordionPage):
         delete_folder.click_button_in_footer(Helper.data_locale.DELETE)
 
     def show_properties(self, entrance: str, folder_path: list):
-        folder = self.navigate_to_folder(folder_path)
+        folder = self.navigate_to_folder_or_file(folder_path)
         if folder is None:
             return False
         if entrance == "Toolbar":
@@ -95,4 +95,10 @@ class SASContentServerPage(AccordionPage):
         time.sleep(2)
         self.screenshot('//div[@data-testid="contentProperties-Dialog-dialog"]', "properties", True)
         properties.click_button_in_footer(Helper.data_locale.CLOSE)
+
+    def show_column_settings(self):
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.COLUMN_SETTINGS)
+        time.sleep(2)
+        Dialog(self.page).screenshot_self("column_settings")
+        Dialog(self.page).close_dialog()
 

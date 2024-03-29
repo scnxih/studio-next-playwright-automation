@@ -28,7 +28,8 @@ class Dialog(BasePage):
     def _footer_button(self, button_text):
         str = ""
         if Helper.if_contain_quotation(button_text):
-            str = "//div[contains(@class,'footer')]//*[contains(text()," + Helper.escape_quotation_for_xpath(button_text) + ")]"
+            str = "//div[contains(@class,'footer')]//*[contains(text()," + Helper.escape_quotation_for_xpath(
+                button_text) + ")]"
         else:
             str = "//div[contains(@class,'footer')]//*[contains(text(),'" + button_text + "')]"
         return self.locate_xpath(str)
@@ -69,5 +70,13 @@ class Alert(Dialog):
             self.title = title
             self.base_xpath += f"[.//span[text()='" + title + "']]"
 
-    def close_alert_dialog(self, button_text):
-        self.click(self.btn_in_dialog_footer(button_text))
+    @property
+    def only_btn(self):
+        return self.locate_xpath("//button")
+
+    # def close_alert_dialog(self, button_text):
+    #     self.click(self.btn_in_dialog_footer(button_text))
+
+    def close_dialog(self):
+        self.click(self.only_btn)
+        time.sleep(1)

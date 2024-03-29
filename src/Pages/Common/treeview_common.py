@@ -4,7 +4,7 @@ from src.Helper.helper import *
 from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
 
-"""This treeview will be used in Query left table pane and expression build left pane."""
+"""This treeview will be used in Query left table pane, expression build left pane and steps pane in accordion."""
 
 
 class TreeViewCommon(CommonComponent):

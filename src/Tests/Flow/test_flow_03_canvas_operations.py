@@ -4,6 +4,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.sort_pane import SortPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
+from src.Pages.StudioNext.Left.library_page import LibraryPage
 from src.Utilities.enums import FlowNodeType
 from src.Helper.helper import *
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import *
@@ -146,7 +147,7 @@ def test_05_sasprogram_table_sort(page,init):
     # flow.add_node(FlowNodeType.sort)
     flow.apply_detail_layout_vertical()
 
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
     # time.sleep(1)
     sasprogram_pane = SASProgramPane(page)
     str = """
@@ -197,15 +198,18 @@ run;
 
     flow.run(True)
     flow.select_node_in_flow_canvas("CLASS")
-    table_pane.click_Tab("预览数据")
+    # table_pane.click_Tab("预览数据")
+    table_pane.click_Tab("Preview Data")
     time.sleep(3)
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
     flow.arrange_nodes()
-    flow.link_two_nodes_in_flow("CLASS","排序")
+    # flow.link_two_nodes_in_flow("CLASS","排序")
+    flow.link_two_nodes_in_flow("CLASS", "Sort")
     # time.sleep(1)
     flow.arrange_nodes()
-    flow.select_node_in_flow_canvas("排序")
+    # flow.select_node_in_flow_canvas("排序")
+    flow.select_node_in_flow_canvas("Sort")
 
     sort_pane = SortPane(page)
 
@@ -214,12 +218,15 @@ run;
     # time.sleep(1)
 
     flow.add_node(FlowNodeType.table)
-    flow.select_node_in_flow_canvas("表")
+    # flow.select_node_in_flow_canvas("表")
+    flow.select_node_in_flow_canvas("Table")
 
     table_pane.set_node_name("SORTED")
     table_pane.set_library("WORK")
     table_pane.set_table("SORTED")
-    flow.link_two_nodes_in_flow("排序","SORTED")
+    table_pane.refresh_table()
+    # flow.link_two_nodes_in_flow("排序","SORTED")
+    flow.link_two_nodes_in_flow("Sort", "SORTED")
     # time.sleep(1)
     flow.arrange_nodes()
     # time.sleep(1)
@@ -227,9 +234,14 @@ run;
     time.sleep(3)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(2)
-    table_pane.click_Tab("预览数据")
+    # table_pane.click_Tab("预览数据")
+    table_pane.click_Tab("Preview Data")
     time.sleep(2)
+    PageHelper.show_accordion(page,AccordionType.libraries)
 
+    lib = LibraryPage(page)
+    lib.open_table("WORK","SORTED")
+    time.sleep(2)
 
 
 
