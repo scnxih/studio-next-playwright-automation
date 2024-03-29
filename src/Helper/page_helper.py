@@ -1,4 +1,5 @@
 from src.Pages.Common.login_page import LoginPage
+from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.tab_group import *
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.top_tab_group import TopTabGroup
@@ -165,6 +166,19 @@ class PageHelper:
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Oct.30th, 2023
+    @staticmethod
+    def switch_to_standard_perspective_temp(page):
+        """
+        Created to learn the usage of menu screenshot
+        """
+        top_menu_page: TopMenuPage = TopMenuPage(page)
+
+        top_menu_page.click_menu_item_options()
+
+        time.sleep(1)
+
+        MenuPage(page).screenshot_self("options")
+
     @staticmethod
     def switch_to_standard_perspective(page):
         top_menu = TopMenuPage(page)
