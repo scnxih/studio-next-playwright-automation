@@ -140,7 +140,7 @@ def test_04_details_pane_table(page,init):
     table.preview_data()
     time.sleep(1)
 
-def test_05_sasprogram_table_sort(page,init):
+def test_05_sasprogram_table_sort_en_US(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
 
@@ -237,12 +237,115 @@ run;
     # table_pane.click_Tab("预览数据")
     table_pane.click_Tab("Preview Data")
     time.sleep(2)
-    PageHelper.show_accordion(page,AccordionType.libraries)
 
-    lib = LibraryPage(page)
-    lib.open_table("WORK","SORTED")
+    # PageHelper.show_accordion(page,AccordionType.libraries)
+    # lib = LibraryPage(page)
+    # lib.open_table("WORK","SORTED")
+    # time.sleep(2)
+
+
+def test_06_sasprogram_table_sort_zh_CN(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+
+    # flow.add_node(FlowNodeType.sort)
+    flow.apply_detail_layout_vertical()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
+    # time.sleep(1)
+    sasprogram_pane = SASProgramPane(page)
+    str = """
+/***************************************************
+This is demo for flow.
+First, create data set class in work library in sas program step.
+Then user will sort this table work.class by age descending.
+Next sorted table will be generated.
+***************************************************/
+
+data cars;
+set sashelp.cars;
+run;
+"""
+    sasprogram_pane.type_into_text_area(str)
+    # time.sleep(1)
+    sasprogram_pane.fold_all_regions()
+    time.sleep(1)
+    sasprogram_pane.unfold_all_regions()
+    time.sleep(1)
+    sasprogram_pane.pop_find_widget()
+    sasprogram_pane.find("cars", False, False)
+    time.sleep(1)
+    sasprogram_pane.replace_all("cars", "class", False, False, False)
+    time.sleep(2)
+    sasprogram_pane.set_node_name("Create class")
+    # time.sleep(1)
+    sasprogram_pane.set_notes("This is SAS program notes for expo.")
+    # time.sleep(1)
+
+    flow.add_node(FlowNodeType.table)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    # time.sleep(1)
+    table_pane = TablePane(page)
+    table_pane.set_library("WORK")
+    # time.sleep(1)
+    table_pane.set_table("CLASS")
+    # time.sleep(1)
+    table_pane.set_node_name("CLASS")
+    # time.sleep(1)
+    table_pane.set_node_description("This is class table created by SAS program.")
+    # time.sleep(1)
+    flow.link_two_nodes_in_flow("Create class", "CLASS")
+    # time.sleep(1)
+    flow.arrange_nodes()
+
+    flow.run(True)
+    flow.select_node_in_flow_canvas("CLASS")
+    # table_pane.click_Tab("预览数据")
+    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+    time.sleep(3)
+    flow.add_node(FlowNodeType.sort)
+    # time.sleep(1)
+    flow.arrange_nodes()
+    # flow.link_two_nodes_in_flow("CLASS","排序")
+    flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
+    # time.sleep(1)
+    flow.arrange_nodes()
+    # flow.select_node_in_flow_canvas("排序")
+    flow.select_node_in_flow_canvas(Helper.data_locale.SORT)
+
+    sort_pane = SortPane(page)
+
+    list1 = ["Class", "Name"]
+    sort_pane.add_sort(list1, SortWay.descending)
+    # time.sleep(1)
+
+    flow.add_node(FlowNodeType.table)
+    # flow.select_node_in_flow_canvas("表")
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table_pane.set_node_name("SORTED")
+    table_pane.set_library("WORK")
+    table_pane.set_table("SORTED")
+    table_pane.refresh_table()
+    # flow.link_two_nodes_in_flow("排序","SORTED")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SORT, "SORTED")
+    # time.sleep(1)
+    flow.arrange_nodes()
+    # time.sleep(1)
+    flow.run(False)
+    time.sleep(3)
+    flow.select_node_in_flow_canvas("SORTED")
+    time.sleep(2)
+    # table_pane.click_Tab("预览数据")
+    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
 
+    # PageHelper.show_accordion(page,AccordionType.libraries)
+    # lib = LibraryPage(page)
+    # lib.open_table("WORK","SORTED")
+    # time.sleep(2)
 
 
 

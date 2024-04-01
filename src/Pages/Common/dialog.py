@@ -74,9 +74,12 @@ class Alert(Dialog):
     def only_btn(self):
         return self.locate_xpath("//button")
 
-    # def close_alert_dialog(self, button_text):
-    #     self.click(self.btn_in_dialog_footer(button_text))
+    def close_dialog_by_text(self, button_text):
+        """Call this method to close the Alert dialog when there is more than more buttons in this Alert dialog"""
+        self.click(self.btn_in_dialog_footer(button_text))
+        time.sleep(1)
 
     def close_dialog(self):
+        """Call this method to close the Alert dialog when there is only button in this Alert dialog."""
         self.click(self.only_btn)
         time.sleep(1)
