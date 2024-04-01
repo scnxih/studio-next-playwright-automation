@@ -215,3 +215,12 @@ class SortWay(Enum):
 class FindOrReplace(Enum):
     find = 0
     replace = 1
+
+
+class new_steps_type(Enum):
+    quick_start = 0
+    sample_controls = 1
+    starter_templates = 2
+    basic_rank = 3
+    advanced_rank = 4
+    advanced_define_column_structure = 5

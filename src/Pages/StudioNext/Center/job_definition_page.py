@@ -36,7 +36,8 @@ class JobDefinitionPage(CenterPage):
     def __close_alert_if_needed(self):
         alert = Alert(self.page, Helper.data_locale.STUDIO_NEXT)
         if alert.is_open():
-            alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            # alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            alert.close_dialog()
     def open_in_browser_tab_code(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.OPEN_IN_BROWSER_TAB)
         if not self.toolbar.is_menu_item_enabled(Helper.data_locale.CODE):

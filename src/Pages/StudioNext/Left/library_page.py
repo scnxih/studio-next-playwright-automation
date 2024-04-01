@@ -12,7 +12,7 @@ from src.Pages.Common.dialog import *
 from src.Utilities.enums import AccordionType
 
 
-class libraryPage(AccordionPage):
+class LibraryPage(AccordionPage):
     def __init__(self, page, title=''):
         AccordionPage.__init__(self, page, title)
         self.tree = TreeViewAGGrid(self.base_xpath, page)
@@ -24,17 +24,14 @@ class libraryPage(AccordionPage):
         self.tree.icon_expand_element(self, label)
 
     def open_table(self, library_name, table_name):
-        self.collapse_all()
-        time.sleep(1)
-        table_path = ["已连接", library_name, table_name]
-        table = self.tree.navigate_to_element(table_path)
-        self.dblclick(table)
-        self.screenshot("//div[@data-testid='tab-group-content-area-_root_']", "critical_user_table")
+        table_path = [Helper.data_locale.CONNECTED_LIBRARIES, library_name, table_name]
+        self.tree.navigate_to_element_and_dblclick(table_path)
+
 
     def delete_table_btn(self, library_name, table_name):
         self.collapse_all()
         time.sleep(1)
-        table_path = ["已连接", library_name, table_name]
+        table_path = [Helper.data_locale.CONNECTED_LIBRARIES, library_name, table_name]
         table = self.tree.navigate_to_element(table_path)
         self.click(table)
         self.toolbar.click_btn_by_title(Helper.data_locale.DELETE)
@@ -44,7 +41,7 @@ class libraryPage(AccordionPage):
     def delete_table_menu(self, library_name, table_name):
         self.collapse_all()
         time.sleep(1)
-        table_path = ["已连接", library_name, table_name]
+        table_path = [Helper.data_locale.CONNECTED_LIBRARIES, library_name, table_name]
         table = self.tree.navigate_to_element(table_path)
         self.click(table)
         self.invoke_context_menu()

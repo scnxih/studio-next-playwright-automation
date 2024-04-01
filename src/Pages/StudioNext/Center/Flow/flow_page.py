@@ -86,7 +86,7 @@ class FlowPage(MainCenterPage):
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.CALCULATE_COLUMNS)
             case FlowNodeType.sas_program:
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
-                                                       Helper.data_locale.SAS_PROGRAM)
+                                                       Helper.data_locale.SAS_PROGRAM_Upper_case)
             case FlowNodeType.execute_decisions:
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
                                                        Helper.data_locale.EXECUTE_DECISIONS)

@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 class CommonComponent(BasePage, ABC):
 
     def __init__(self, container_base_xpath, page, data_test_id="", label="", aria_label="", class_attribute="",
-                 aria_labelledby="", supplement_base_xpath=""):
+                 aria_labelledby="", title ="", supplement_base_xpath=""):
         BasePage.__init__(self, page)
         self.base_xpath = container_base_xpath
         self.set_base_xpath()
@@ -22,6 +22,8 @@ class CommonComponent(BasePage, ABC):
             self.base_xpath += f"[@class='{class_attribute}']"
         if aria_labelledby != '':
             self.base_xpath += f"[@aria-labelledby='{aria_labelledby}']"
+        if title != '':
+            self.base_xpath += f"[@title='{title}']"
         if supplement_base_xpath != "":
             self.base_xpath += supplement_base_xpath
         class_name = type(self).__name__

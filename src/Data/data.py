@@ -37,6 +37,7 @@ class Data:
     REPLACE = "Replace"
     SAS_SERVER = "SAS Server"
     SAS_PROGRAM = "SAS program"
+    SAS_PROGRAM_Upper_case= "SAS Program"
     PYTHON_PROGRAM = "Python program"
     FLOW = "Flow"
     QUERY = "Query"
@@ -318,7 +319,7 @@ class Data:
     """Added by Alice on 01/25/2024 end"""
 
     NODE = "Node"
-    TABLE_PROPERTIES = "Table Prooperties"
+    TABLE_PROPERTIES = "Table Properties"
     TABLE_NAME_INPUT = "Table name:, Table name input"
     PREVIEW_DATA= "Preview Data"
     NODE_NAME= "Node name"
@@ -338,7 +339,7 @@ class Data:
 
     """Added by Alice on 2024/03/21 start"""
     TOGGLE_REPLACE = "Toggle Replace"
-    PRESERVE_CASE = "Preserve Case(Alt + P)"
+    PRESERVE_CASE = "Preserve Case (Alt+P)"
     REPLACE_ENTER = "Replace (Enter)"
     REPLACE_ALL_ENTER= "Replace All (Ctrl+Alt+Enter)"
 
@@ -374,8 +375,148 @@ class Data:
     HELP= "Help"
     """Added by Alice on 2024/03/22 end"""
 
+    """Added by Alice on 2024/03/28 start"""
+    REGION_AND_LANGUAGE = "Region and Language"
+    CONNECTED_LIBRARIES = "Connected libraries"
+    """Added by Alice on 2024/03/28 end"""
+
+    """Added by Alice on 2024/03/29 start"""
+    CUSTOM_STEP_QUICK_START = "Custom step quick start"
+    SAMPLE_CONTROLS = "Sample controls"
+    STARTER_TEMPLATES = "Starter templates"
+    BASIC_RANK ="Basic - Rank"
+    ADVANCED_RANK = "Advanced - Rank"
+    ADVANCED_DEFINE_COLUMN_STRUCTURE = "Advanced - Define Column Structure"
+    """Added by Alice on 2024/03/29 end"""
+
+    """Steps start, Added by Alice on 2024/03/29"""
+    STEP_CATEGORY_CLOUD_ANALYTIC_SERVICES = "Cloud Analytic Services"
+
+    STEP_CATEGORY_DATA = "Data (Input and Output)"
+    STEP_EXPORT = "Export"
+    STEP_FILE = "File"
+    STEP_IMPORT_FILES = "Import Files"
+    STEP_TABLE = "Table"
+
+    STEP_CATEGORY_DATA_QUALITY = "Data Quality"
+    STEP_MATCH_CODES = "Match Codes"
+    STEP_CLEAN_DATA = "Clean Data"
+    STEP_PARSE_DATA = "Parse Data"
+
+
+    STEP_CATEGORY_DEVELOP = "Develop"
+    STEP_SAS_PROGRAM = "SAS Program"
+    STEP_PYTHON_PROGRAM = "Python Program"
+
+    STEP_CATEGORY_ECONOMETRICS= "Econometrics"
+    STEP_CAUSAL_MODELS = "Causal Models"
+
+    STEP_CATEGORY_ENRICHMENT = "Enrichment"
+    STEP_GEOCODE_DATA = "Geocode Data"
+    STEP_VERIFY_GEOCODE_ADDRESSES = "Verify & Geocode Addresses - Loqate"
+    STEP_VERIFY_EMAIL_ADDRESSES = "Verify Email Addresses - Loqate"
+    STEP_VERIFY_PHONE_NUMBERS = "Verify Phone Numbers - Loqate"
+
+    STEP_CATEGORY_EXAMINE_DATA = "Examine Data"
+    STEP_CHARACTERIZE_DATA = "Characterize Data"
+    STEP_DESCRIBE_MISSING_DATA = "Describe Missing Data"
+    STEP_LIST_DATA = "List Data"
+    STEP_LIST_TABLE_ATTRIBUTES = "List Table Attributes"
+
+    STEP_CATEGORY_INTEGRATE = "Integrate"
+    STEP_EXECUTE_DECISIONS = "Execute Decisions"
+    STEP_IMPLEMENT_SCD = "Implement SCD"
+    STEP_LOAD_TABLE = "Load Table"
+    STEP_MERGE_TABLE = "Merge Table"
+
+    STEP_CATEGORY_MACHINE_LEARNING = "Machine Learning"
+    STEP_FAST_K_NEAREST_NEIGHBORS = "Fast k-Nearest Neighbors"
+    STEP_MOVING_WINDOW_PRINCIPAL_COMPONENT_ANALYSIS = "Moving Window Principal Component Analysis"
+    STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS = "Robust Principal Component Analysis"
+
+
+    STEP_CATEGORY_MANAGE_MODELS = "Manage Models"
+    STEP_REGISTER_SAS_MODEL = "Register SAS Model"
+    STEP_REGISTER_PYTHON_MODEL = "Register Python Model"
+
+    STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS = "Optimization and Network Analysis"
+    STEP_CORE_DECOMPOSITION = "Core Decomposition"
+
+    STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA = "Prepare and Explore Data"
+    STEP_Binning = "Binning"
+    STEP_STANDARDIZE_DATA = "Standardize Data"
+
+
+
+    STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL = "Statistical Process Control"
+    STEP_ANALYSIS_OF_MEANS = "Analysis of Means"
+    STEP_CAPABILITY_ANALYSIS = "Capability Analysis"
+    STEP_CONTROL_CHARTS = "Control Charts"
+    STEP_PARETO_ANALYSIS = "Pareto Analysis"
+
+
+    STEP_CATEGORY_STATISTICS = "Statistics"
+    STEP_CLUSTER_VARIABLES = "Cluster Variables"
+    STEP_COMPUTE_SIMILARITIES_AND_DISTANCES = "Compute Similarities and Distances"
+    STEP_COIN_TOSS_SIMULATION = "Coin Toss Simulation"
+    STEP_COMBINATIONS = "Combinations"
+    STEP_DICE_ROLL_SIMULATION = "Dice Roll Simulation"
+    STEP_PERMUTATIONS = "Permutations"
+    STEP_POKER_HAND_PROBABILITY = "Poker Hand Probability"
+    STEP_SAME_BIRTHDAY_PROBABILITY = "Same Birthday Probability"
+    STEP_CORRELATION_ANALYSIS = "Correlation Analysis"
+    STEP_DISTRIBUTION_ANALYSIS = "Distribution Analysis"
+    STEP_ONE_WAY_FREQUENCIES = "One-Way Frequencies"
+    STEP_SUMMARY_STATISTICS = "Summary Statistics"
+    STEP_TABLE_ANALYSIS = "Table Analysis"
+    STEP_T_TESTS = "t Tests"
+    STEP_CANONICAL_CORRELATION = "Canonical Correlation"
+    STEP_CORRESPONDENCE_ANALYSIS = "Correspondence Analysis"
+    STEP_FACTOR_ANALYSIS = "Factor Analysis"
+    STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS = "Multidimensional Preference Analysis"
+
+    STEP_CATEGORY_TEXT_ANALYTICS = "Text Analytics"
+
+    STEP_CATEGORY_TRANSFORM_DATA = "Transform Data"
+    STEP_BRANCH_ROWS = "Branch Rows"
+    STEP_CALCULATE_COLUMNS = "Calculate Columns"
+    STEP_FILTER_ROWS = "Filter Rows"
+    STEP_INSERT_ROWS = "Insert Rows"
+    STEP_LOOKUP = "Lookup"
+    STEP_MANAGE_COLUMNS = "Manage Columns"
+    STEP_QUERY = "Query"
+    STEP_SORT = "Sort"
+    STEP_UNION_ROWS = "Union Rows"
+    STEP_MASK_DATA = "Mask Data"
+    STEP_REMOVE_DUPLICATES = "Remove Duplicates"
+    STEP_RANK_DATA = "Rank Data"
+    STEP_SELECT_RANDOM_SAMPLE = "Select Random Sample"
+    STEP_SPLIT_COLUMNS = "Split Columns"
+    STEP_STACK_COLUMNS = "Stack Columns"
+    STEP_TRANSPOSE_DATA = "Transpose Data"
+
+
+
+    STEP_CATEGORY_VISUALIZE_DATA = "Visualize Data"
+    STEP_PIE_CHART= "Pie Chart"
+    STEP_BAR_CHART = "Bar Chart"
+    STEP_BAR_LINE_CHART = "Bar-Line Chart"
+    STEP_BOX_PLOT = "Box Plot"
+    STEP_BUBBLE_MAP = "Bubble Map"
+    STEP_BUBBLE_PLOT = "Bubble Plot"
+    STEP_Choropleth_MAP = "Choropleth Map"
+    STEP_HEAT_MAP = "Heat Map"
+    STEP_HISTOGRAM = "Histogram"
+    STEP_LINE_CHART = "Line Chart"
+    STEP_SCATTER_MAP = "Scatter Map"
+    STEP_SCATTER_PLOT = "Scatter Plot"
+    STEP_SERIES_MAP = "Series Map"
+    STEP_SERIES_PLOT = "Series Plot"
+    STEP_TEXT_MAP = "Text Map"
+
+    """Steps end"""
     # ADD
     # <<< Modified by Jacky(ID: jawang) on Mar.28th, 2024
-    REGION_AND_LANGUAGE = "Region and Language"
+    # REGION_AND_LANGUAGE = "Region and Language"
     RESET_TO_DEFAULT_VALUES = 'Reset to Default Values'
     # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>

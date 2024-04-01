@@ -22,4 +22,4 @@ class SortPane(DetailsPane):
         column_name = element_path[len(element_path) - 1]
         self.tree.navigate_to_element_and_dblclick(element_path)
         if sort_way == SortWay.descending:
-            self.treegrid.select_item_combo_in_a_row(combo_item_text="降序", name_text=column_name)
+            self.treegrid.select_item_combo_in_a_row(combo_item_text=Helper.data_locale.DESCENDING, name_text=column_name)

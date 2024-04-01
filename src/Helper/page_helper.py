@@ -10,7 +10,7 @@ from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
-from src.Pages.StudioNext.Left.library_page import libraryPage
+from src.Pages.StudioNext.Left.library_page import LibraryPage
 from src.Pages.StudioNext.Left.openitems_page import OpenItemsPage
 from src.Pages.StudioNext.Left.sas_content_server_page import SASContentServerPage
 from src.Pages.StudioNext.Left.sascontent_page import SASContentPage
@@ -456,7 +456,7 @@ class PageHelper:
     # ----------Modified by Liu Jia, 9/25/2023 begin---- #
     @staticmethod
     def open_table(page, library_name, table_name):
-        open_table = libraryPage(page)
+        open_table = LibraryPage(page)
         open_table.open_table(library_name, table_name)
 
     # ----------Added by Liu Jia, 9/25/2023 end----- #:
@@ -742,7 +742,8 @@ class PageHelper:
     def close_alert_if_needed(page):
         alert = Alert(page, Helper.data_locale.STUDIO_NEXT)
         if alert.is_open():
-            alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            # alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            alert.close_dialog()
 
     """added by Alice on 10/26/2023 end"""
 

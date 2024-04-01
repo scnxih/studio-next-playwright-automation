@@ -23,7 +23,7 @@ from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Left.clinical_repository_page import ClinicalRepositoryPage
 from src.Pages.StudioNext.Left.file_references_page import FileReferencesPage
 from src.Pages.StudioNext.Left.git_repositories_page import GitRepositoriesPage
-from src.Pages.StudioNext.Left.library_page import libraryPage
+from src.Pages.StudioNext.Left.library_page import LibraryPage
 from src.Pages.StudioNext.Left.openitems_page import OpenItemsPage
 from src.Pages.StudioNext.Left.snippets_page import SnippetsPage
 from src.Pages.StudioNext.Left.steps_page import StepsPage
@@ -100,7 +100,7 @@ def get_accordion_page(page: Page, accordion_type: AccordionType) -> AccordionPa
         AccordionType.sas_content: SASContentPage,
         AccordionType.steps: StepsPage,
         AccordionType.snippets: SnippetsPage,
-        AccordionType.libraries: libraryPage,
+        AccordionType.libraries: LibraryPage,
         AccordionType.git: GitRepositoriesPage,
         AccordionType.file_references: FileReferencesPage,
         AccordionType.clinical_repository: ClinicalRepositoryPage

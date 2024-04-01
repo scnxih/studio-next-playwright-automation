@@ -94,7 +94,8 @@ class CentralToolbarHelper:
     def close_alert_if_needed(self):
         alert = Alert(self.toolbar.page, Helper.data_locale.STUDIO_NEXT)
         if alert.is_open():
-            alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            # alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            alert.close_dialog()
     def schedule_as_job(self):
         enabled = self.toolbar.click_menu_in_more_options(Helper.data_locale.SCHEDULE_AS_JOB)
         time.sleep(1)

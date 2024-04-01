@@ -36,7 +36,8 @@ class ManageGitConnectionDialog(Dialog):
     def close_alert_dup_profile(self):
         dup_profile_alert = Alert(self.page, "SAS® Studio Next")
         if dup_profile_alert.is_open():
-            dup_profile_alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            # dup_profile_alert.close_alert_dialog(Helper.data_locale.CLOSE)
+            dup_profile_alert.close_dialog()
             Helper.logger.debug("Duplicated profile name.")
 
     def delete_profile(self, profile_name):
@@ -45,7 +46,8 @@ class ManageGitConnectionDialog(Dialog):
             self.click(self.profile_item(profile_name))
             self.toolbar.click_btn_by_test_id("gitDialog-mgtConnection-profilePane-deleteProfileButton")
             if del_profile_alert.is_open():
-                del_profile_alert.close_alert_dialog(Helper.data_locale.DELETE)
+                # del_profile_alert.close_alert_dialog(Helper.data_locale.DELETE)
+                del_profile_alert.close_dialog()
                 expect(self.profile_item(profile_name)).not_to_be_visible()
                 Helper.logger.debug("Profile is deleted.")
         else:

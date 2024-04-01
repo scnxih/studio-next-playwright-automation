@@ -8,7 +8,7 @@ Description: This is Table in flow Details pane.
 from src.Pages.StudioNext.Center.Flow.DetailsPane.details_pane import DetailsPane
 from src.Pages.Common.text import *
 from src.Pages.Common.textarea import *
-
+from src.Pages.Common.button import *
 
 class TablePane(DetailsPane):
     def __init__(self, page):
@@ -24,5 +24,11 @@ class TablePane(DetailsPane):
 
     def preview_data(self):
         self.click_Tab(Helper.data_locale.PREVIEW_DATA)
+
+    def refresh_table(self):
+        self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
+        Button(self.base_xpath, self.page,aria_label=Helper.data_locale.REFRESH).click_self()
+
+
 
 

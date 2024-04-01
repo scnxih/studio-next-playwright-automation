@@ -147,6 +147,7 @@ class AccordionPage(BasePage):
         if self.is_visible(pane):
             return
         self.click(tab)
+        time.sleep(1)
 
     def collapse_all(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.COLLAPSE_ALL)
@@ -168,3 +169,8 @@ class AccordionPage(BasePage):
         self.locate_xpath(f"//button[@aria-label='显示选项卡标签']").click()
 
     # Added by Jacky(ID: jawang) on Oct.12nd, 2023 >>>
+
+    def click_more_options(self):
+        self.toolbar.click_more_options()
+
+

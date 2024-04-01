@@ -324,9 +324,8 @@ class SettingsDialog(Dialog):
             # TO-DO
             elif setting_tab_page == SettingsTabPages.region_and_language:
                 Helper.logger.debug("Switch to: Global/Region and Language")
-
+                tab_page_text = Helper.data_locale.REGION_AND_LANGUAGE
                 # tab_page_text = "区域和语言"
-
                 tab_page_text = Helper.data_locale.REGION_AND_LANGUAGE
 
             else:

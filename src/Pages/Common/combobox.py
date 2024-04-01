@@ -39,8 +39,6 @@ class Combobox(CommonComponent):
             self.key_press("ArrowUp")
         return self._select_item_by_press_key(item_value)
 
-    def click_self(self):
-        self.click(self.base_locator)
 
     def choose_item(self, combo_item_text: str):
         """

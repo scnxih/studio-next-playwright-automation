@@ -634,3 +634,6 @@ class BasePage:
     #     self.page.screenshot(path=final_full_path,mask=mask,full_page=True)
 
     """Updated by Alice on 2024/03/26 end"""
+
+    def click_self(self):
+        self.click(self.base_locator)
