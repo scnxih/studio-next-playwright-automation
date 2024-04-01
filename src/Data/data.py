@@ -373,3 +373,9 @@ class Data:
     """Added by Alice on 2024/03/22 start"""
     HELP= "Help"
     """Added by Alice on 2024/03/22 end"""
+
+    # ADD
+    # <<< Modified by Jacky(ID: jawang) on Mar.28th, 2024
+    REGION_AND_LANGUAGE = "Region and Language"
+    RESET_TO_DEFAULT_VALUES = 'Reset to Default Values'
+    # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>

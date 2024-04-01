@@ -324,7 +324,10 @@ class SettingsDialog(Dialog):
             # TO-DO
             elif setting_tab_page == SettingsTabPages.region_and_language:
                 Helper.logger.debug("Switch to: Global/Region and Language")
-                tab_page_text = "区域和语言"
+
+                # tab_page_text = "区域和语言"
+
+                tab_page_text = Helper.data_locale.REGION_AND_LANGUAGE
 
             else:
                 Helper.logger.exception("Tab page DOES NOT EXIST!")
@@ -426,7 +429,8 @@ class SettingsDialog(Dialog):
 
             # TO-DO
             # Change to locale-dependent value
-            alert = Alert(self.page, "重置为默认值")
+            # alert = Alert(self.page, "重置为默认值")
+            alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
             time.sleep(1)
             if alert.is_open():
                 # alert.click_button_in_footer("重置")

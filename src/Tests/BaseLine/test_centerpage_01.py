@@ -532,8 +532,8 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status)
+    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs).screenshot_self('deployed_and_scheduled')
+    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status).screenshot_self('submission_status')
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_start_page)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_submission_status)
@@ -577,7 +577,10 @@ def test_45_startup_initialization_log(page, init):
     startup_page.saveas(folder_path, "startup_initialization_log.log", True, True)
     startup_page.add_to_snippets()
     startup_page.add_to_my_favorites()
-    startup_page.open_in_browser_tab()
+
+    # Used the one with screenshot function
+    startup_page.open_in_browser_tab2(page)
+
     startup_page.email()
     startup_page.refresh()
 

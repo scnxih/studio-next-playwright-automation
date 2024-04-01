@@ -200,6 +200,12 @@ class CentralToolbarHelper:
     def email(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.EMAIL)
         time.sleep(1)
+
+        # ADDED
+        # <<< Modified by Jacky(ID: jawang) on Mar.28th, 2024
+        Dialog(self.toolbar.page, Helper.data_locale.EMAIL).screenshot_self('email')
+        # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
+
         Dialog(self.toolbar.page,Helper.data_locale.EMAIL).click_button_in_footer(Helper.data_locale.CANCEL)
 
     def apply_detail_layout_standard(self):

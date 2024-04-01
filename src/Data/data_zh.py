@@ -367,3 +367,9 @@ class DataZH(Data):
     """Added by Alice on 2024/03/22 start"""
     HELP= "帮助"
     """Added by Alice on 2024/03/22 end"""
+
+    # ADD
+    # <<< Modified by Jacky(ID: jawang) on Mar.28th, 2024
+    REGION_AND_LANGUAGE = "区域和语言"
+    RESET_TO_DEFAULT_VALUES = '重置为默认值'
+    # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
