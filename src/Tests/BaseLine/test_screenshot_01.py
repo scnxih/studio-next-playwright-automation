@@ -574,6 +574,10 @@ def test_09_accordion_steps(page, init):
     AccordionPage(page).screenshot_self("Text_Map")
 
 def test_10_details_pane_table_screenshot(page, init):
+    """
+    Test flow detail pane screenshots.
+    This is the same as src.Tests.Flow.test_flow_03_canvas_operations.test_04_details_pane_table
+    """
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
     flow.apply_detail_layout_vertical()
