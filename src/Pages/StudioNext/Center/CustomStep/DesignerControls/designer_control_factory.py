@@ -3,24 +3,24 @@ Author: Alice
 Date: Feb 01, 2024
 Description: This is factory of designer control.
 """
-from src.Pages.Common.DesignerControls.designer_checkbox import DesignerCheckbox
-from src.Pages.Common.DesignerControls.designer_control import DesignerControl
-from src.Pages.Common.DesignerControls.designer_color_picker import DesignerColorPicker
-from src.Pages.Common.DesignerControls.designer_column_selector import DesignerColumnSelector
-from src.Pages.Common.DesignerControls.designer_date_and_time_picker import DesignerDateAndTimePicker
-from src.Pages.Common.DesignerControls.designer_dropdown_list import DesignerDropDownList
-from src.Pages.Common.DesignerControls.designer_file_or_folder_selector import DesignerFileOrFolderSelector
-from src.Pages.Common.DesignerControls.designer_input_table import DesignerInputTable
-from src.Pages.Common.DesignerControls.designer_link import DesignerLink
-from src.Pages.Common.DesignerControls.designer_list import DesignerList
-from src.Pages.Common.DesignerControls.designer_new_column import DesignerNewColumn
-from src.Pages.Common.DesignerControls.designer_numeric_stepper import DesignerNumericStepper
-from src.Pages.Common.DesignerControls.designer_output_table import DesignerOutputTable
-from src.Pages.Common.DesignerControls.designer_radio_group import DesignerRadioGroup
-from src.Pages.Common.DesignerControls.designer_section import DesignerSection
-from src.Pages.Common.DesignerControls.designer_text import DesignerText
-from src.Pages.Common.DesignerControls.designer_text_or_numeric_field import DesignerTextOrNumericField
-from src.Pages.Common.DesignerControls.designer_textarea import DesignerTextArea
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_checkbox import DesignerCheckbox
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_color_picker import DesignerColorPicker
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_column_selector import DesignerColumnSelector
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_date_and_time_picker import DesignerDateAndTimePicker
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_dropdown_list import DesignerDropDownList
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_file_or_folder_selector import DesignerFileOrFolderSelector
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_input_table import DesignerInputTable
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_link import DesignerLink
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_list import DesignerList
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_new_column import DesignerNewColumn
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_numeric_stepper import DesignerNumericStepper
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_output_table import DesignerOutputTable
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_radio_group import DesignerRadioGroup
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_section import DesignerSection
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text import DesignerText
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text_or_numeric_field import DesignerTextOrNumericField
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_textarea import DesignerTextArea
 from src.Utilities.enums import DesignerControlType
 from playwright.sync_api import Page
 

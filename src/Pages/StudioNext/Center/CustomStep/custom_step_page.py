@@ -1,12 +1,13 @@
 """
 Author: Alice
 Date: November 07, 2023
-Description: CustomStepPage will inherit from CenterPage  serclass。
+Description: CustomStepPage will inherit from CenterPage class。
 """
 
-from src.Pages.Common.DesignerControls.designer_control_factory import *
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.Common.text import Text
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control_factory import get_designer_control
 from src.Pages.StudioNext.Center.center_page import *
 from src.Helper.helper import *
 from src.Pages.Common.listbox import Listbox
@@ -224,3 +225,5 @@ class CustomStepPage(CenterPage):
         designer_control = get_designer_control(self.page, control_type,control_number)
         designer_control.click_self()
         return designer_control
+
+    
