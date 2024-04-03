@@ -8,6 +8,7 @@ import time
 
 from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.whole_page import WholePage
+from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
@@ -571,3 +572,29 @@ def test_09_accordion_steps(page, init):
                        Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Text_Map")
+
+def test_10_details_pane_table_screenshot(page, init):
+    """
+    Test flow detail pane screenshots.
+    This is the same as src.Tests.Flow.test_flow_03_canvas_operations.test_04_details_pane_table
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    time.sleep(1)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name("class表")
+    time.sleep(1)
+    table.set_node_description("这是sashelp.class表。")
+    time.sleep(1)
+    table.set_notes("这是sashelp.class表的注释信息。")
+    time.sleep(1)
+    table.preview_data()
+    time.sleep(1)
+    table.refresh_table()

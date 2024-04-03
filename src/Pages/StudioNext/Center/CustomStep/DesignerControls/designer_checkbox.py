@@ -3,7 +3,7 @@ Author: Alice
 Date: Jan 29, 2024
 Description: This is checkbox in custom step designer.
 """
-from src.Pages.Common.DesignerControls.designer_control import DesignerControl
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
 
 
 class DesignerCheckbox(DesignerControl):
