@@ -45,7 +45,9 @@ class TablePane(DetailsPane):
 
         # print('+++ preview data ' + str(inspect.currentframe()) + '***')
         # Method-2: Get function name by using inspect
-        self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
+
+        self.screenshot(self.base_xpath,"preview")
+        # self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
 
     def refresh_table(self):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)

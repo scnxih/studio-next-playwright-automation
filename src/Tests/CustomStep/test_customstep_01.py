@@ -3,6 +3,10 @@ Author: Alice
 Date: November 14, 2023
 Description: This is test cases file for custom step.
 """
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_checkbox import DesignerCheckbox
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_list import DesignerList
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_numeric_stepper import DesignerNumericStepper
+from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text import DesignerText
 from src.conftest import *
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import *
 
