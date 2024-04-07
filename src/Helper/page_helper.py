@@ -178,6 +178,7 @@ class PageHelper:
         time.sleep(1)
 
         MenuPage(page).screenshot_self("options")
+        BasePage(page).click_dialog_title_or_studionext_header()
 
     @staticmethod
     def switch_to_standard_perspective(page):
