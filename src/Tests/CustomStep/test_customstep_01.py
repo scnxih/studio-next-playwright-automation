@@ -262,3 +262,5 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
     designer_list1.move_to_page(Helper.data_locale.NEW_PAGE)
 
 
+def test_12_set_properties_for_checkbox(page,init):
+    pass

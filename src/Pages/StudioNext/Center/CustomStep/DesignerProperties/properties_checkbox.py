@@ -7,12 +7,12 @@ from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.checkbox import Checkbox
 from src.Pages.Common.numeric_stepper import NumericStepper
 from src.Pages.Common.text import Text
-from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties_designer import PropertiesDesigner
+from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties import Properties
 
 
-class PropertiesCheckbox(PropertiesDesigner):
+class PropertiesCheckbox(Properties):
     def __init__(self, page):
-        PropertiesDesigner(self.page)
+        Properties(self.page)
         self.check_box= Checkbox(self.base_xpath,self.page,data_test_id="checkbox1_checkedByDefault-checkbox")
         self.numeric_stepper = NumericStepper(self.base_xpath,self.page,supplement_base_xpath="[ancestor::div[@data-testid='datePickerAttributesIndent']]")
 
