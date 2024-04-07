@@ -3,6 +3,7 @@ import time
 from src.Helper.helper import Helper
 from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
+from src.Pages.Common.checkbox import *
 
 
 class Toolbar(CommonComponent):
@@ -187,3 +188,12 @@ class Toolbar(CommonComponent):
         is_pressed = self.is_button_pressed(self.btn_by_test_id(data_test_id))
         if is_pressed:
             self.click(self.btn_by_test_id(data_test_id))
+
+    def checkbox_by_test_id(self, data_test_id):
+        return Checkbox(self, self.page, data_test_id=data_test_id)
+
+    def check_checkbox_by_test_id(self, data_test_id):
+        self.checkbox_by_test_id(data_test_id).set_check()
+
+    def uncheck_checkbox_by_test_id(self, data_test_id):
+        self.checkbox_by_test_id(data_test_id).set_uncheck()

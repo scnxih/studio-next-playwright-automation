@@ -543,28 +543,14 @@ class BasePage:
 
     """Updated by Alice on 2024/03/26 start, below are __screenshot related methods"""
 
-    def generate_screenshot(self, locator_or_xpath, pic_name, screenshot_level=3):
-        Helper.logger.info("Enter __screenshot control function")
-        if screenshot_level >= global_screenshot_level:
-            if screenshot_level == 1:
-                Helper.logger.debug("Lowest __screenshot level")
-            elif screenshot_level == 2:
-                Helper.logger.debug("Low __screenshot level")
-            elif screenshot_level == 3:
-                Helper.logger.debug("Middle __screenshot level")
-            elif screenshot_level == 4:
-                Helper.logger.debug("High __screenshot level")
-            elif screenshot_level == 5:
-                Helper.logger.debug("Highest __screenshot level")
 
-            self.__screenshot(locator_or_xpath, pic_name)
 
     def get_screenshot_full_path(self, pic_name):
         output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
         testfile_abbreviation = Helper.get_testfile_abbreviation()
         testmethod_number = Helper.get_testmethod_number()
         class_name = type(self).__name__
-        function_name = inspect.currentframe().f_back.f_back.f_code.co_name
+        function_name = inspect.currentframe().f_back.f_back.f_back.f_code.co_name
         index = 1
         file_name = (testfile_abbreviation + "_" + testmethod_number + "_" +
                      class_name + "_" +

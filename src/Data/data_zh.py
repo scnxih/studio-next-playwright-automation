@@ -149,6 +149,8 @@ class DataZH(Data):
     SHOW_LABELS = "显示标签"
     SHOW_SINGLE_PAGE_AS_TAB = "将单个页面显示为选项卡"
     INSERT_CONTROL = "插入控件"
+    PASTE_BEFORE = "粘贴在前"
+    PASTE_AFTER = "粘贴在后"
     MOVE_UP = "上移"
     MOVE_DOWN = "下移"
     MOVE_TO_TOP = "移至顶部"
@@ -319,7 +321,7 @@ class DataZH(Data):
     NODE_NAME= "节点名称"
 
     """ ----- Added by Frank 2024/03/19 Begin ----- """
-    SELECT_A_TABLE = "Select a Table"
+    SELECT_A_TABLE = "选择一个表"
     """ ----- Added by Frank 2024/03/19 End ----- """
 
     """Added by Alice on 2024/03/20 start"""
