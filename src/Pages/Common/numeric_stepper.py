@@ -7,8 +7,8 @@ class NumericStepper(CommonComponent):
         self.base_xpath += "//div[@class='sas_components-NumericStepper-NumericStepper_container']"
 
     # If the page contains more than one radio group, data_test_id is required.
-    def __init__(self, container_base_xpath, page, data_test_id=""):
-        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id)
+    def __init__(self, container_base_xpath, page, data_test_id="",supplement_base_xpath=""):
+        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,supplement_base_xpath=supplement_base_xpath)
 
     @property
     def btn_decrement_value(self):
