@@ -443,7 +443,7 @@ class BasePage:
 
     def is_enabled(self, locator_or_xpath):
         r_locator = self.transform_to_locator(locator_or_xpath)
-        self.wait_for(r_locator)
+        # self.wait_for(r_locator)
         time.sleep(0.3)
         self.scroll_if_needed(r_locator)
         if r_locator.get_attribute("aria-disabled") is not None:

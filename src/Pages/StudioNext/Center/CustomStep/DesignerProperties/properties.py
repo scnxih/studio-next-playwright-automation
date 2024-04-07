@@ -7,7 +7,7 @@ from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.text import Text
 
 
-class PropertiesDesigner(BasePage):
+class Properties(BasePage):
     def __init__(self, page):
         BasePage(page)
         self.base_xpath = ".//div[@class='sas_components-Layouts-Flow-Flow_flow_vertical sas_designer-components-Properties-Properties_properties-flow']"

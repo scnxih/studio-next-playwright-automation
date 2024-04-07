@@ -12,6 +12,9 @@ from src.Pages.StudioNext.Center.center_page import *
 from src.Helper.helper import *
 from src.Pages.Common.listbox import Listbox
 from src.Utilities.enums import *
+from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties_checkbox import *
+from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties_factory import *
+from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties import *
 
 
 def convert_control_type_to_testid_prefix(control_type: DesignerControlType) -> str:
@@ -222,8 +225,9 @@ class CustomStepPage(CenterPage):
         self.listbox_controls.click_context_menu_on_list_item(text, Helper.data_locale.INSERT_CONTROL)
 
     def select_control(self, control_type: DesignerControlType, control_number: int) -> DesignerControl:
-        designer_control = get_designer_control(self.page, control_type,control_number)
+        designer_control = get_designer_control(self.page, control_type, control_number)
         designer_control.click_self()
         return designer_control
 
-    
+    def get_properties(self, control_type: DesignerControlType) -> Properties:
+        return get_properties(self.page, control_type)
