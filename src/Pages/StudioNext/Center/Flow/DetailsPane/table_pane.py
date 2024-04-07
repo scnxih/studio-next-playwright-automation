@@ -22,10 +22,13 @@ class TablePane(DetailsPane):
         time.sleep(1)
 
         # Method-1: Explicitly pic name
-        # self.screenshot(self.base_xpath, "set_library")
+        self.screenshot(self.base_xpath, "set_library")
 
         # Method-2: Get function name by using inspect
-        self.screenshot(self.base_xpath, str(list((inspect.currentframe().f_locals.keys()))[-1]))
+        # self.screenshot(self.base_xpath, str(list((inspect.currentframe().f_locals.keys()))[-1]))
+
+        # Debug
+        # self.screenshot(self.base_xpath, '')
 
     def set_table(self, table_name):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
@@ -34,8 +37,14 @@ class TablePane(DetailsPane):
         # Wait 1 sec
         time.sleep(1)
 
+        # Method-1: Explicitly pic name
+        self.screenshot(self.base_xpath, "set_table")
+
         # Method-2: Get function name by using inspect
-        self.screenshot(self.base_xpath, str(list((inspect.currentframe().f_locals.keys()))[-1]))
+        # self.screenshot(self.base_xpath, str(list((inspect.currentframe().f_locals.keys()))[-1]))
+
+        # Debug
+        # self.screenshot(self.base_xpath, '')
 
     def preview_data(self):
         self.click_Tab(Helper.data_locale.PREVIEW_DATA)
@@ -43,9 +52,15 @@ class TablePane(DetailsPane):
         # Wait 3 sec to counteract delay owing to performance issue
         time.sleep(3)
 
+        # Method-1: Explicitly pic name
+        self.screenshot(self.base_xpath, "preview_data")
+
         # print('+++ preview data ' + str(inspect.currentframe()) + '***')
         # Method-2: Get function name by using inspect
-        self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
+        # self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
+
+        # Debug
+        # self.screenshot(self.base_xpath, '')
 
     def refresh_table(self):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
@@ -54,6 +69,12 @@ class TablePane(DetailsPane):
         # Wait 3 sec to counteract delay owing to performance issue
         time.sleep(3)
 
+        # Method-1: Explicitly pic name
+        self.screenshot(self.base_xpath, "refresh_table")
+
         # print('refresh table: ' + str(inspect.currentframe()) + '***')
         # Method-2: Get function name by using inspect
-        self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
+        # self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
+
+        # Debug
+        # self.screenshot(self.base_xpath, '')

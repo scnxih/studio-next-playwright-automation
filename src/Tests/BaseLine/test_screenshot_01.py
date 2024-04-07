@@ -573,7 +573,7 @@ def test_09_accordion_steps(page, init):
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Text_Map")
 
-def test_10_details_pane_table_screenshot(page, init):
+def test_10_flow_details_pane(page, init):
     """
     Test flow detail pane screenshots.
     This is the same as src.Tests.Flow.test_flow_03_canvas_operations.test_04_details_pane_table
