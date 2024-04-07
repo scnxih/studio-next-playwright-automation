@@ -8,7 +8,8 @@ import time
 
 class ManageShortcutsDialog(Dialog):
     def __init__(self, page):
-        Dialog.__init__(self, page, Helper.data_locale.MANAGE_KEYBOARD_SHORTCUTS)
+        # Dialog.__init__(self, page, Helper.data_locale.MANAGE_KEYBOARD_SHORTCUTS)
+        Dialog.__init__(self, page, "Manage Keyboard Shortcuts")
         """modified by Alice on 09/15/2023 since common component constructor has been changed"""
         self.toolbar = Toolbar(self.base_xpath,page)
 
