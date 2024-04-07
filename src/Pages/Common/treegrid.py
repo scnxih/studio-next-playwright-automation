@@ -37,8 +37,11 @@ class TreeGrid(CommonComponent):
         :return:
         """
         Helper.logger.debug("Sort column")
-        while self.get_attribute(self.col_header(col_id), "aria-sort").lower() != sort_order.lower():
-            self.click(self.col_header(col_id))
+        if self.is_visible(self.col_header(col_id)):
+            while self.get_attribute(self.col_header(col_id), "aria-sort").lower() != sort_order.lower():
+                self.click(self.col_header(col_id))
+        else:
+            Helper.logger.debug("The column maybe hidden or unavailable, please provide a correct column information.")
 
     def btn_col_header_menu(self, col_id: str):
         """
@@ -54,7 +57,10 @@ class TreeGrid(CommonComponent):
         If there is only one button in a row, don't specify test_id.
         :param col_id: col-id of a column
         """
-        self.click(self.btn_col_header_menu(col_id))
+        if self.is_visible(self.col_header(col_id)):
+            self.click(self.btn_col_header_menu(col_id))
+        else:
+            Helper.logger.debug("The column maybe hidden or unavailable, please provide a correct column information.")
 
     def row_in_treegrid(self, row_index=None, name_text=None):
         """
@@ -74,8 +80,11 @@ class TreeGrid(CommonComponent):
         :param row_index: start from 0
         :param name_text: the name text of a row
         """
-        self.scroll_if_needed(self.row_in_treegrid(row_index=row_index, name_text=name_text))
-        self.click(self.row_in_treegrid(row_index=row_index, name_text=name_text))
+        if self.is_visible(self.row_in_treegrid(row_index=row_index, name_text=name_text)):
+            self.scroll_if_needed(self.row_in_treegrid(row_index=row_index, name_text=name_text))
+            self.click(self.row_in_treegrid(row_index=row_index, name_text=name_text))
+        else:
+            Helper.logger.debug("The row is not available, please provide a correct row information.")
 
     def column_in_a_row(self, col_id: str, row_index=None, name_text=None):
         """
@@ -100,7 +109,13 @@ class TreeGrid(CommonComponent):
         :param name_text: the name text of a row
         """
         Helper.logger.debug("Click a column in a row")
-        self.click(self.column_in_a_row(col_id, row_index=row_index, name_text=name_text))
+        if self.is_visible(self.row_in_treegrid(row_index=row_index, name_text=name_text)):
+            if self.is_visible(self.col_header(col_id)):
+                self.click(self.column_in_a_row(col_id, row_index=row_index, name_text=name_text))
+            else:
+                Helper.logger.debug("The column maybe hidden or unavailable, please provide a correct column information.")
+        else:
+            Helper.logger.debug("The row is not available, please provide a correct row information.")
 
     def dbclick_column_in_a_row(self, col_id: str, row_index=None, name_text=None):
         """
@@ -109,7 +124,15 @@ class TreeGrid(CommonComponent):
         :param col_id: col-id of a column
         :param name_text: the name text of a row
         """
-        self.dblclick(self.column_in_a_row(col_id, row_index=row_index, name_text=name_text))
+        Helper.logger.debug("Click a column in a row")
+        if self.is_visible(self.row_in_treegrid(row_index=row_index, name_text=name_text)):
+            if self.is_visible(self.col_header(col_id)):
+                self.dblclick(self.column_in_a_row(col_id, row_index=row_index, name_text=name_text))
+            else:
+                Helper.logger.debug(
+                    "The column maybe hidden or unavailable, please provide a correct column information.")
+        else:
+            Helper.logger.debug("The row is not available, please provide a correct row information.")
 
     def input_in_a_row(self, test_id: str, row_index=None, name_text=None):
         """
@@ -132,7 +155,10 @@ class TreeGrid(CommonComponent):
         :param row_index: start from 0
         :param name_text: the name text of a row
         """
-        self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).fill_text(fill_text)
+        if self.is_visible(self.input_in_a_row(test_id, row_index=row_index, name_text=name_text)):
+            self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).fill_text(fill_text)
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
 
     def clear_input_in_a_row(self, test_id: str, row_index=None, name_text=None):
         """
@@ -141,7 +167,10 @@ class TreeGrid(CommonComponent):
         :param row_index: start from 0
         :param name_text: the name text of a row
         """
-        self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).clear_text()
+        if self.is_visible(self.input_in_a_row(test_id, row_index=row_index, name_text=name_text)):
+            self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).clear_text()
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
 
     def get_value_input_in_a_row(self, test_id: str, row_index=None, name_text=None):
         """
@@ -150,7 +179,10 @@ class TreeGrid(CommonComponent):
         :param row_index: start from 0
         :param name_text: the name text of a row
         """
-        self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).get_value()
+        if self.is_visible(self.input_in_a_row(test_id, row_index=row_index, name_text=name_text)):
+            self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).get_value()
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
 
     def btn_in_a_row(self, row_index=None, name_text=None, test_id=None):
         """
@@ -181,8 +213,11 @@ class TreeGrid(CommonComponent):
         :param name_text: the name text of a row
         :param test_id: data-testid of a button
         """
-        self.scroll_if_needed(self.btn_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id))
-        self.click(self.btn_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id))
+        if self.is_visible(self.btn_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id)):
+            self.scroll_if_needed(self.btn_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id))
+            self.click(self.btn_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id))
+        else:
+            Helper.logger.debug("The button is not available, please provide the correct button information.")
 
     def combo_in_a_row(self, row_index=None, name_text=None, test_id=None):
         """
@@ -208,7 +243,10 @@ class TreeGrid(CommonComponent):
         :param test_id: data-testid of combobox
         """
         # self.scroll_if_needed(self.base_xpath)
-        self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).click_self()
+        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id)):
+            self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).click_self()
+        else:
+            Helper.logger.debug("The combobox is not available, please provide the correct combobox information.")
 
     def select_item_combo_in_a_row(self, combo_item_text: str, row_index=None, name_text=None, test_id=None):
         """
@@ -219,7 +257,10 @@ class TreeGrid(CommonComponent):
         :param test_id: data-testid of combobox
         """
         # self.scroll_if_needed(self.base_xpath)
-        self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).choose_item(combo_item_text)
+        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id)):
+            self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).choose_item(combo_item_text)
+        else:
+            Helper.logger.debug("The combobox is not available, please provide the correct combobox information.")
 
     def select_context_menu_item(self, *context_menu_text, row_index=None, name_text=None):
         """
@@ -228,5 +269,8 @@ class TreeGrid(CommonComponent):
         :param row_index: specify a row, start from 0.
         :param name_text: the name text of a row
         """
-        self.click_context_menu_by_right_click(self.row_in_treegrid(row_index=row_index, name_text=name_text),
-                                               *context_menu_text)
+        if self.is_visible(self.row_in_treegrid(row_index=row_index, name_text=name_text)):
+            self.click_context_menu_by_right_click(self.row_in_treegrid(row_index=row_index, name_text=name_text),
+                                                   *context_menu_text)
+        else:
+            Helper.logger.debug("The row is not available, please provide a correct row information.")
