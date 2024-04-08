@@ -595,6 +595,7 @@ class BasePage:
             r_locator.screenshot(path=final_full_path)
             return
         locators_mask = self.transform_to_locators_list(mask)
+        self.wait_for(r_locator)
         r_locator.screenshot(path=final_full_path, mask=locators_mask)
 
     def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
