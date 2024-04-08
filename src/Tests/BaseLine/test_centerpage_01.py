@@ -191,7 +191,7 @@ def test_32_close_all_tabs(page, init):
 def test_33_email_refresh(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
-    editor.refresh()
+    editor.reload()
     editor.email()
 
 
@@ -235,7 +235,7 @@ def test_34_sas_program(page, init):
     sas_program.show_detail_tabs_listing()
     sas_program.show_detail_tabs_output_data()
 
-    sas_program.refresh()
+    sas_program.reload()
 
     sas_program.background_submit()
 
@@ -291,7 +291,7 @@ def test_35_python(page, init):
     python_program.show_detail_tabs_listing()
     python_program.show_detail_tabs_output_data()
 
-    python_program.refresh()
+    python_program.reload()
 
     python_program.background_submit()
 
@@ -370,7 +370,7 @@ def test_35_python(page, init):
 #     flow.apply_main_layout_vertical()
 #     flow.apply_main_layout_standard()
 #     flow.apply_main_layout_horizontal()
-#     flow.refresh()
+#     flow.reload()
 
 
 # def test_37_query(page, init):
@@ -485,7 +485,7 @@ def test_39_JsonPage(page, init):
     json.add_to_my_favorites()
     json.open_in_browser_tab()
     json.email()
-    json.refresh()
+    json.reload()
 
 
 def test_40_TextPage(page, init):
@@ -499,7 +499,7 @@ def test_40_TextPage(page, init):
     text.add_to_my_favorites()
     text.open_in_browser_tab()
     text.email()
-    text.refresh()
+    text.reload()
 
 
 def test_41_XMLPage(page, init):
@@ -513,7 +513,7 @@ def test_41_XMLPage(page, init):
     xml.add_to_my_favorites()
     xml.open_in_browser_tab()
     xml.email()
-    xml.refresh()
+    xml.reload()
 
 
 def test_42_WorkSapcePage(page, init):
@@ -528,7 +528,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.add_to_my_favorites()
     work_space.open_in_browser_tab()
     work_space.email()
-    work_space.refresh()
+    work_space.reload()
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
@@ -582,7 +582,7 @@ def test_45_startup_initialization_log(page, init):
     startup_page.open_in_browser_tab2(page)
 
     startup_page.email()
-    startup_page.refresh()
+    startup_page.reload()
 
 
 def test_46_job_definition(page, init):
@@ -599,7 +599,7 @@ def test_46_job_definition(page, init):
     job_page.apply_main_layout_standard()
     job_page.apply_main_layout_horizontal()
     job_page.apply_main_layout_vertical()
-    job_page.refresh()
+    job_page.reload()
 def test_47_run_big_program(page,init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)

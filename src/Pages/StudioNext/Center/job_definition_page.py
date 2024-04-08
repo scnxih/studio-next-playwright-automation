@@ -63,5 +63,5 @@ class JobDefinitionPage(CenterPage):
     def apply_main_layout_vertical(self):
         self.center_toolbar_helper.apply_main_layout_vertical()
 
-    def refresh(self):
-        self.center_toolbar_helper.refresh()
+    def reload(self):
+        self.center_toolbar_helper.reload()

@@ -152,8 +152,8 @@ class MainCenterPage(CenterPage):
         time.sleep(1)
         self.screenshot(self.base_xpath, "show_listing")
 
-    def refresh(self):
-        self.center_toolbar_helper.refresh()
+    def reload(self):
+        self.center_toolbar_helper.reload()
 
     def background_submit(self, if_wait_toast_disappear=True):
         self.center_toolbar_helper.background_submit(if_wait_toast_disappear)

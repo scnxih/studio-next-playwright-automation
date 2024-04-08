@@ -248,9 +248,10 @@ class CentralToolbarHelper:
         self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
                                                 Helper.data_locale.LISTING)
 
-    def refresh(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.REFRESH)
-        self.close_alert_if_needed()
+    def reload(self):
+        # self.toolbar.click_menu_in_more_options(Helper.data_locale.REFRESH)
+        # self.close_alert_if_needed()
+        pass
 
     def apply_main_layout_standard(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT,Helper.data_locale.STANDARD)

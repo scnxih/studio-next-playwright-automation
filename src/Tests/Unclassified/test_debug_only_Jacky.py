@@ -790,7 +790,7 @@ def test_25_flow_canvas_multiple_nodes_context_menu(page, init):
     flow.apply_main_layout_horizontal()
     time.sleep(1)
 
-    flow.refresh()
+    flow.reload()
     time.sleep(1)
 
 

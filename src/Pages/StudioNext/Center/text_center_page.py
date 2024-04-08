@@ -35,8 +35,8 @@ class TextCenterPage(CenterPage):
     def email(self):
         self.center_toolbar_helper.email()
 
-    def refresh(self):
-        # self.center_toolbar_helper.refresh()
+    def reload(self):
+        # self.center_toolbar_helper.reload()
         pass
     def undo(self):
         self.center_toolbar_helper.undo()

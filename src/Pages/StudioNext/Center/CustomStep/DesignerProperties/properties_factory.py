@@ -13,7 +13,7 @@ def get_properties(page: Page,control_type: DesignerControlType) -> Properties:
     properties:Properties = None
     match control_type:
         case DesignerControlType.checkbox:
-            properties_designer = PropertiesCheckbox(page)
+            properties = PropertiesCheckbox(page)
         # case DesignerControlType.color_picker:
         # case DesignerControlType.column_selector:
         # case DesignerControlType.date_and_time_picker:

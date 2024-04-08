@@ -263,4 +263,12 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
 
 
 def test_12_set_properties_for_checkbox(page,init):
-    pass
+    custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step.insert_control(DesignerControlType.checkbox)
+    custom_step.select_control(DesignerControlType.checkbox,1)
+    properties_checkbox:PropertiesCheckbox = custom_step.get_properties(DesignerControlType.checkbox)
+
+    properties_checkbox.set_label("这是复选框001")
+    properties_checkbox.set_check_by_default()
+    properties_checkbox.set_indent("3")
+    time.sleep(3)

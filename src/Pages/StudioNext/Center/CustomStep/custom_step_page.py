@@ -133,10 +133,10 @@ class CustomStepPage(CenterPage):
         # self.center_toolbar_helper.redo()
         pass
 
-    """The refresh functions is not implemented in StudioNext, so pass now"""
+    """The reload functions is not implemented in StudioNext, so pass now"""
 
-    def refresh(self):
-        # self.center_toolbar_helper.refresh()
+    def reload(self):
+        # self.center_toolbar_helper.reload()
         pass
 
     def apply_main_layout_standard(self):

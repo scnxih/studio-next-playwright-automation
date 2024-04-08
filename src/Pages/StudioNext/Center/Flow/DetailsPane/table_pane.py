@@ -72,7 +72,7 @@ class TablePane(DetailsPane):
         # Method-1: Explicitly pic name
         self.screenshot(self.base_xpath, "refresh_table")
 
-        # print('refresh table: ' + str(inspect.currentframe()) + '***')
+        # print('reload table: ' + str(inspect.currentframe()) + '***')
         # Method-2: Get function name by using inspect
         # self.screenshot(self.base_xpath, str(inspect.getframeinfo(inspect.currentframe().f_back).code_context[-1].split('.')[-1]).split('()')[0])
 
