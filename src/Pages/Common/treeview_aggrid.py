@@ -42,13 +42,17 @@ class TreeViewAGGrid(CommonComponent):
                     Helper.logger.debug("not last element even after scroll:" + label)
                     return None
             icon_expand = self.icon_expand_element(label)
+            time.sleep(1)
             if self.is_visible(icon_expand):
                 continue
             icon_collapse = self.icon_collapse_element(label)
             self.scroll_vertical_if_needed(icon_collapse)
+            time.sleep(1)
             if self.is_visible(icon_collapse):
                 self.click(icon_collapse)
+                time.sleep(1)
                 self.wait_for(icon_expand)
+                time.sleep(1)
                 continue
         Helper.logger.debug("failed to navigate to element:{0}".format("/".join(map(str, element_path))))
         return None

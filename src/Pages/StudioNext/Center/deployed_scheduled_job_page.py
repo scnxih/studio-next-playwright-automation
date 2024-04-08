@@ -17,6 +17,7 @@ class DeployedScheduledJobPage(CenterPage):
 
     def run_now(self):
         self.toolbar.click_btn_by_test_id("scheduledJobsPane-runNowButton")
+        time.sleep(3)
         self.screenshot(self.base_xpath, "run_schedule")
 
     def edit_schedule(self):
