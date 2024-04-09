@@ -1,6 +1,7 @@
 from src.Pages.Common.login_page import LoginPage
 from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.tab_group import *
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.top_tab_group import TopTabGroup
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
@@ -93,6 +94,9 @@ class PageHelper:
         top_menu.new_item(TopMenuItem.new_file_types_xml)
         top_menu.new_item(TopMenuItem.new_file_types_workspace)
 
+        whole: WholePage = WholePage(page)
+        whole.screenshot_self("new_all_tabs")
+
     """Updated by Alice on 11/07/2023 start"""
     """Added by Alice on 11/06/2023 start"""
 
@@ -117,6 +121,10 @@ class PageHelper:
     def close_all_tabs(page):
         top_tab_group = TopTabGroup(page)
         top_tab_group.close_all_tabs()
+
+
+        whole: WholePage = WholePage(page)
+        whole.screenshot_self("close_all_tabs")
 
     @staticmethod
     def show_accordion(page, accordion_type: AccordionType):

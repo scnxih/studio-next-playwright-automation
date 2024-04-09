@@ -3,7 +3,9 @@ from playwright.sync_api import Playwright, Page
 
 from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.dialog import *
+from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.toolbar import Toolbar
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Dialog.saveas_dialog import SaveAsDialog
 from src.Helper.helper import *
 from src.Pages.Common.windows_control import *
@@ -147,9 +149,22 @@ class CentralToolbarHelper:
     def open_in_browser_tab_listing(self):
         return self.__open_in_browser_tab_menu(Helper.data_locale.LISTING)
 
-
     def __download_file(self, menu_text: str):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.DOWNLOAD)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr. 8th, 2024
+
+        # Wait for 0.5 sec, otherwise items might have not been loaded.
+        time.sleep(1)
+        print('+++ self.toolbar.page' + str(self.toolbar.page) +'+++')
+
+        base = BasePage(self.toolbar.page)
+        base.screenshot("//div[@data-testid='programViewPane-toolbar-download-menu-content']", "download",
+                        user_assigned_xpath=True)
+
+        # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
+
         if not self.toolbar.is_menu_item_enabled(menu_text):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
