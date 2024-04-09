@@ -412,12 +412,14 @@ class Data:
 
     STEP_CATEGORY_ECONOMETRICS= "Econometrics"
     STEP_CAUSAL_MODELS = "Causal Models"
+    STEP_CAUSAL_Hidden_MARKOV_MODELS = "Hidden Markov Models"
 
     STEP_CATEGORY_ENRICHMENT = "Enrichment"
     STEP_GEOCODE_DATA = "Geocode Data"
     STEP_VERIFY_GEOCODE_ADDRESSES = "Verify & Geocode Addresses - Loqate"
     STEP_VERIFY_EMAIL_ADDRESSES = "Verify Email Addresses - Loqate"
     STEP_VERIFY_PHONE_NUMBERS = "Verify Phone Numbers - Loqate"
+    STEP_VERIFY_WITH_LOQATE = "Verify with Loqate"
 
     STEP_CATEGORY_EXAMINE_DATA = "Examine Data"
     STEP_CHARACTERIZE_DATA = "Characterize Data"
@@ -432,9 +434,11 @@ class Data:
     STEP_MERGE_TABLE = "Merge Table"
 
     STEP_CATEGORY_MACHINE_LEARNING = "Machine Learning"
+    STEP_SEMI_SUPERVISED_LEARNING = "Semi-supervised Learning"
     STEP_FAST_K_NEAREST_NEIGHBORS = "Fast k-Nearest Neighbors"
     STEP_MOVING_WINDOW_PRINCIPAL_COMPONENT_ANALYSIS = "Moving Window Principal Component Analysis"
     STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS = "Robust Principal Component Analysis"
+    STEP_SUPPORT_VECTOR_DATA_DESCRIPTION ="Support Vector Data Description"
 
 
     STEP_CATEGORY_MANAGE_MODELS = "Manage Models"
@@ -443,6 +447,7 @@ class Data:
 
     STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS = "Optimization and Network Analysis"
     STEP_CORE_DECOMPOSITION = "Core Decomposition"
+    STEP_NETWORK_SUMMARY = "Network Summary"
 
     STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA = "Prepare and Explore Data"
     STEP_Binning = "Binning"
@@ -468,6 +473,7 @@ class Data:
     STEP_SAME_BIRTHDAY_PROBABILITY = "Same Birthday Probability"
     STEP_CORRELATION_ANALYSIS = "Correlation Analysis"
     STEP_DISTRIBUTION_ANALYSIS = "Distribution Analysis"
+    STEP_ONE_WAY_ANOVA = "One-Way ANOVA"
     STEP_ONE_WAY_FREQUENCIES = "One-Way Frequencies"
     STEP_SUMMARY_STATISTICS = "Summary Statistics"
     STEP_TABLE_ANALYSIS = "Table Analysis"
@@ -478,13 +484,13 @@ class Data:
     STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS = "Multidimensional Preference Analysis"
 
     STEP_CATEGORY_TEXT_ANALYTICS = "Text Analytics"
+    STEP_TEXT_SUMMARY ="Text Summarization"
 
     STEP_CATEGORY_TRANSFORM_DATA = "Transform Data"
     STEP_BRANCH_ROWS = "Branch Rows"
     STEP_CALCULATE_COLUMNS = "Calculate Columns"
     STEP_FILTER_ROWS = "Filter Rows"
     STEP_INSERT_ROWS = "Insert Rows"
-    STEP_LOOKUP = "Lookup"
     STEP_MANAGE_COLUMNS = "Manage Columns"
     STEP_QUERY = "Query"
     STEP_SORT = "Sort"
@@ -500,7 +506,7 @@ class Data:
 
 
     STEP_CATEGORY_VISUALIZE_DATA = "Visualize Data"
-    STEP_PIE_CHART= "Pie Chart"
+
     STEP_BAR_CHART = "Bar Chart"
     STEP_BAR_LINE_CHART = "Bar-Line Chart"
     STEP_BOX_PLOT = "Box Plot"
@@ -510,6 +516,7 @@ class Data:
     STEP_HEAT_MAP = "Heat Map"
     STEP_HISTOGRAM = "Histogram"
     STEP_LINE_CHART = "Line Chart"
+    STEP_PIE_CHART= "Pie Chart"
     STEP_SCATTER_MAP = "Scatter Map"
     STEP_SCATTER_PLOT = "Scatter Plot"
     STEP_SERIES_MAP = "Series Map"
