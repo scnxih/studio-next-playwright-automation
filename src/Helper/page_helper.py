@@ -766,7 +766,9 @@ class PageHelper:
         top_menu = TopMenuPage(page)
         top_menu.check_view_item(topMenuItem)
         if topMenuItem == TopMenuItem.view_submission_status or topMenuItem == TopMenuItem.view_deployed_and_scheduled_jobs or topMenuItem == TopMenuItem.view_startup_initialization_log:
-            return get_center_page(page, transform_from_TopMenuItem_to_CenterPageType(topMenuItem))
+            center_page = get_center_page(page, transform_from_TopMenuItem_to_CenterPageType(topMenuItem))
+            time.sleep(1)
+            return center_page
         else:
             return None
 
