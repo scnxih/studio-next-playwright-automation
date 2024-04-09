@@ -211,6 +211,7 @@ class PageHelper:
         # Step-2: Reset before operations
         setting_dialog.reset_global_general()
         setting_dialog.reset_sas_studio_general()
+        time.sleep(2)
         setting_dialog.reset_region_and_language()
 
         # Step-3: Close the Settingds dialog
