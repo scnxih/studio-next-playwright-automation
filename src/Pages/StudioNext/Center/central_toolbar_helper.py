@@ -160,8 +160,16 @@ class CentralToolbarHelper:
         print('+++ self.toolbar.page' + str(self.toolbar.page) +'+++')
 
         base = BasePage(self.toolbar.page)
-        base.screenshot("//div[@data-testid='programViewPane-toolbar-download-menu-content']", "download",
-                        user_assigned_xpath=True)
+
+        time.sleep(1)
+
+        # works only for programs NOT WORK for Quick Import
+        # base.screenshot("//div[@data-testid='programViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
+
+        # works for Quick Import NOT for programs
+        # base.screenshot("//div[@data-testid='importViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
+
+        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", "download", user_assigned_xpath=True)
 
         # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
 
