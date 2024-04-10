@@ -3,6 +3,8 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: September 9th, 2023
 """
+import time
+
 from src.Helper.helper import Helper
 from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
@@ -45,6 +47,8 @@ class EditorTextArea(CommonComponent):
         :return:
         """
         self.fill(self.get_text_area(), user_input)
+        time.sleep(2)
         self.screenshot(self.base_xpath, "text_area")
+        time.sleep(1)
 
 

@@ -1,3 +1,5 @@
+import time
+
 from pip._internal.cli.cmdoptions import python
 
 from src.Pages.Common.whole_page import WholePage
@@ -532,8 +534,13 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs).screenshot_self('deployed_and_scheduled')
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status).screenshot_self('submission_status')
+    center_page:CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    time.sleep(3)
+    center_page.screenshot_self('deployed_and_scheduled')
+    time.sleep(1)
+    center_page = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status)
+    time.sleep(2)
+    center_page.screenshot_self('submission_status')
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_start_page)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_submission_status)
@@ -563,8 +570,9 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
 def test_44_deployed_and_scheduled_job(page, init):
     deployed_page:DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,TopMenuItem.view_deployed_and_scheduled_jobs)
-
+    time.sleep(3)
     deployed_page.run_now()
+    time.sleep(1)
     deployed_page.edit_schedule()
     deployed_page.remove_schedule()
     deployed_page.refresh_list()
