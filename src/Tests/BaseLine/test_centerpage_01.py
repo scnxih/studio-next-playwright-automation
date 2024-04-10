@@ -534,6 +534,7 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
+    time.sleep(2)
     center_page:CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     center_page.screenshot_self('deployed_and_scheduled')
@@ -569,6 +570,7 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     PageHelper.show_accordion(page,AccordionType.open_item)
 
 def test_44_deployed_and_scheduled_job(page, init):
+    time.sleep(2)
     deployed_page:DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     deployed_page.run_now()
@@ -613,5 +615,6 @@ def test_47_run_big_program(page,init):
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
+    time.sleep(2)
 
 
