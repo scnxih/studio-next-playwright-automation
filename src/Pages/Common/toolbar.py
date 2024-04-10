@@ -4,6 +4,7 @@ from src.Helper.helper import Helper
 from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
 from src.Pages.Common.checkbox import *
+from src.Pages.Common.menu_page import MenuPage
 
 
 class Toolbar(CommonComponent):
@@ -157,6 +158,18 @@ class Toolbar(CommonComponent):
 
     def click_menu_in_more_options(self, *menu_item_text):
         enabled = self.click_btn_by_title(Helper.data_locale.MORE_OPTIONS)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr. 8th, 2024
+
+        # Wait for 0.5 sec, otherwise items might have not been loaded.
+        time.sleep(0.5)
+
+        # Generate screenshots for the overflow menu
+        MenuPage(self.page).screenshot_self("more_options")
+
+        # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
+
         if not enabled:
             return False
         time.sleep(0.3)
