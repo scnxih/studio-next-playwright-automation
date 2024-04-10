@@ -108,6 +108,8 @@ class TopMenuPage(BasePage):
         # Try
         # Define base page
         base = BasePage(self.page)
+        self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
+        time.sleep(1)
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
@@ -171,6 +173,8 @@ class TopMenuPage(BasePage):
         time.sleep(0.3)
     def uncheck_view_item(self,top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-view-button"
+        self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
+        time.sleep(1)
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
