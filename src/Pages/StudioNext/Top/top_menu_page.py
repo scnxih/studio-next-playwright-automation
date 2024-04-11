@@ -109,7 +109,7 @@ class TopMenuPage(BasePage):
         # Define base page
         base = BasePage(self.page)
         self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
-        time.sleep(1)
+        time.sleep(0.5)
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
