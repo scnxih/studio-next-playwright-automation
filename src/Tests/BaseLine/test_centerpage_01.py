@@ -481,6 +481,7 @@ def test_39_JsonPage(page, init):
     json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     json.saveas(folder_path, "test_json.json", True, True)
+    time.sleep(1)
     json.undo()
     json.redo()
     json.add_to_snippets()
@@ -495,6 +496,7 @@ def test_40_TextPage(page, init):
     text.editor.type_into_text_area('This is text file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     text.saveas(folder_path, "test_text.txt", True, True)
+    time.sleep(1)
     text.undo()
     text.redo()
     text.add_to_snippets()
@@ -509,6 +511,7 @@ def test_41_XMLPage(page, init):
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     xml.saveas(folder_path, "test_xml.xml", True, True)
+    time.sleep(1)
     xml.undo()
     xml.redo()
     xml.add_to_snippets()
@@ -601,6 +604,7 @@ def test_46_job_definition(page, init):
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # job_page.saveas(folder_path, "JobDefinition", True, True)
     job_page.editor.type_into_text_area("This is job definition.")
+    time.sleep(1)
     job_page.undo()
     job_page.redo()
     job_page.add_to_snippets()
