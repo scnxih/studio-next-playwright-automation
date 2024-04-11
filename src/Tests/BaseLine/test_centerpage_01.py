@@ -524,6 +524,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.editor.type_into_text_area('This is work space file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
+    time.sleep(1)
     work_space.undo()
     work_space.redo()
     work_space.add_to_snippets()

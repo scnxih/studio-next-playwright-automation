@@ -5,16 +5,14 @@ Description: CustomStepPage will inherit from CenterPage class。
 """
 
 from src.Pages.Common.tab_group import TabGroup
-from src.Pages.Common.text import Text
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control_factory import get_designer_control
 from src.Pages.StudioNext.Center.center_page import *
-from src.Helper.helper import *
 from src.Pages.Common.listbox import Listbox
 from src.Utilities.enums import *
-from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties_checkbox import *
-from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties_factory import *
-from src.Pages.StudioNext.Center.CustomStep.DesignerProperties.properties import *
+from src.Pages.Common.text import Text
+
+from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 
 
 def convert_control_type_to_testid_prefix(control_type: DesignerControlType) -> str:
@@ -229,5 +227,4 @@ class CustomStepPage(CenterPage):
         designer_control.click_self()
         return designer_control
 
-    def get_properties(self, control_type: DesignerControlType) -> Properties:
-        return get_properties(self.page, control_type)
+
