@@ -105,16 +105,9 @@ class TopMenuPage(BasePage):
 
     def check_view_item(self,top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-view-button"
-        # Try
-        # Define base page
-        base = BasePage(self.page)
-        self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
-        time.sleep(0.5)
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
-                # Try
-                # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
             case TopMenuItem.view_submission_status:
                 # Try
