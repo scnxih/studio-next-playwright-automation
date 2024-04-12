@@ -65,9 +65,13 @@ class CustomStepPropertiesPage(BasePage):
 
     # def set_id(self,text:str):
     #     self.text_id.fill_text(text)
+    def get_text_by_contains_text(self,contains_text:str):
+        return Text(self.base_xpath,self.page,supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(contains_text))
 
+    def get_text_by_test_id(self,data_test_id:str):
+        return Text(self.base_xpath,self.page,data_test_id=data_test_id)
     def set_label(self, label: str):
-        self.text_label.fill_text(label)
+        self.get_text_by_test_id("labelInput-input").fill_text(label)
 
     def set_check_by_default(self):
         self.check_box_by_default.set_check()
@@ -108,12 +112,13 @@ class CustomStepPropertiesPage(BasePage):
         self.color_picker.click_ok()
         time.sleep(0.5)
     def set_default_library(self,library:str):
-        self.text_default_library.fill_text(library)
+        self.get_text_by_contains_text(Helper.data_locale.DEFAULT_LIBRARY).fill_text(library)
+
     def set_default_table(self,table:str):
-        self.text_default_table.fill_text(table)
+        self.get_text_by_contains_text(Helper.data_locale.DEFAULT_TABLE).fill_text(table)
 
     def set_placeholder_text(self,placeholder:str):
-        self.text_placeholder.fill_text(placeholder)
+        self.get_text_by_contains_text(Helper.data_locale.PLACEHOlDER_TEXT).fill_text(placeholder)
 
     def set_check_required(self):
         self.check_box_required.set_check()
