@@ -277,6 +277,52 @@ class BasePage:
             else:
                 if self.is_enabled(self.menu_item_locator(item)):
                     self.menu_item_locator(item).click()
+                    '''Test Start
+                    '''
+                    time.sleep(0.5)
+                    #
+                    # Method-1:
+                    # DOES NOT WORK
+                    # self.screenshot_self('check_menu_item')
+
+                    # Method-2:
+
+                    print('~~~ item: ' + str(item) + ' ~~~')
+
+                    match item:
+                        case Helper.data_locale.NAVIGATION_PANES:
+
+                            print('~~~ case: ' + Helper.data_locale.NAVIGATION_PANES + ' ~~~')
+
+                            '''
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='appHeaderToolbar-navigationPanes-menu-content']",
+                                "Check_" + Helper.data_locale.NAVIGATION_PANES, user_assigned_xpath=True)
+                            '''
+
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='appHeaderToolbar-navigationPanes-menu-content']",
+                                "check_navigation_panes", user_assigned_xpath=True)
+
+                        case Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS:
+
+                            print('~~~ case: ' + Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS + ' ~~~')
+
+                            '''
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='programViewPane-toolbar-showDetailsTabs-menu-content']",
+                                "Check_" + Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, user_assigned_xpath=True)
+                            '''
+
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='programViewPane-toolbar-showDetailsTabs-menu-content']",
+                                "check_hide_or_show_detail_tabs", user_assigned_xpath=True)
+
+
+                    # self.screenshot()
+
+                    '''Test End
+                    '''
                     i = i + 1
                 else:
                     self.click_dialog_title_or_studionext_header()
@@ -299,6 +345,51 @@ class BasePage:
             else:
                 if self.is_enabled(self.menu_item_locator(item)):
                     self.menu_item_locator(item).click()
+                    '''Test Start
+                    '''
+                    time.sleep(0.5)
+                    #
+                    # Method-1:
+                    # DOES NOT WORK
+                    # self.screenshot_self('check_menu_item')
+
+                    # Method-2:
+
+                    print('~~~ uncheck item: ' + str(item) + ' ~~~')
+
+                    match item:
+                        case Helper.data_locale.NAVIGATION_PANES:
+
+                            print('~~~ uncheck case: ' + Helper.data_locale.NAVIGATION_PANES + ' ~~~')
+
+                            '''
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='appHeaderToolbar-navigationPanes-menu-content']",
+                                "Uncheck_" + Helper.data_locale.NAVIGATION_PANES, user_assigned_xpath=True)
+                            '''
+
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='appHeaderToolbar-navigationPanes-menu-content']",
+                                "uncheck_navigation_panes", user_assigned_xpath=True)
+
+                        case Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS:
+
+                            print('~~~ uncheck case: ' + Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS + ' ~~~')
+
+                            '''
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='programViewPane-toolbar-showDetailsTabs-menu-content']",
+                                "Uncheck_" + Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, user_assigned_xpath=True)
+                            '''
+
+                            self.screenshot(
+                                "//div[@role='region']//div[@data-testid='programViewPane-toolbar-showDetailsTabs-menu-content']",
+                                "uncheck_hide_or_show_detail_tabs", user_assigned_xpath=True)
+
+                    # self.screenshot()
+
+                    '''Test End
+                    '''
                     i = i + 1
                 else:
                     self.click_dialog_title_or_studionext_header()

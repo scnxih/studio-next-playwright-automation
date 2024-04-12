@@ -122,7 +122,6 @@ class PageHelper:
         top_tab_group = TopTabGroup(page)
         top_tab_group.close_all_tabs()
 
-
         whole: WholePage = WholePage(page)
         whole.screenshot_self("close_all_tabs")
 
@@ -156,7 +155,6 @@ class PageHelper:
     def set_autoexec(page, text):
         auto = AutoexecDialog(page)
         auto.type_code_run_save(text)
-
 
     # ADDED
     # <<< Added by Jacky(ID: jawang) on Oct.27th, 2023
@@ -351,7 +349,6 @@ class PageHelper:
         Cus = CustomCodeDialog(page)
         Cus.set_option()
 
-
     # Ended by liujia 20230823
 
     # ---------- modified by Frank on 09/22/2023 begin----------#
@@ -526,6 +523,7 @@ class PageHelper:
     # ----------Added by Allison, 9/20/2023 end---- #
 
     ''' ----- Added by Frank, 9/22/2023 begin ----- '''
+
     @staticmethod
     def submission_status_fill_input_search_toolbar(page, fill_text: str):
         """
@@ -536,9 +534,11 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.fill_input_search_toolbar(fill_text)
+
     ''' ----- Added by Frank, 9/22/2023 end ----- '''
 
     ''' ----- Updated by Frank, 3/18/2024 begin ----- '''
+
     @staticmethod
     def submission_status_clear_input_search_toolbar(page):
         """
@@ -657,9 +657,11 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.select_context_menu_item(*context_menu_text, row_index=row_index, name_text=name_text)
+
     ''' ----- Updated by Frank, 3/18/2024 end ----- '''
 
     ''' ----- Added by Frank, 3/18/2024 begin ----- '''
+
     @staticmethod
     def submission_status_open_overflow_menu(page):
         PageHelper.show_submission_status(page)
@@ -735,6 +737,7 @@ class PageHelper:
         PageHelper.show_submission_status(page)
         ss = SubmissionStatusPage(page)
         ss.move_a_column_to_rightmost(col_label)
+
     ''' ----- Added by Frank, 3/18/2024 end ----- '''
 
     # ADDED
@@ -766,6 +769,7 @@ class PageHelper:
     def check_menu_item_in_view(page, topMenuItem: TopMenuItem) -> CenterPage | None:
         top_menu = TopMenuPage(page)
         top_menu.check_view_item(topMenuItem)
+
         if topMenuItem == TopMenuItem.view_submission_status or topMenuItem == TopMenuItem.view_deployed_and_scheduled_jobs or topMenuItem == TopMenuItem.view_startup_initialization_log:
             center_page = get_center_page(page, transform_from_TopMenuItem_to_CenterPageType(topMenuItem))
             time.sleep(1)
@@ -794,19 +798,20 @@ class PageHelper:
     """Added by Alice on 11/06/2023 end"""
 
     """Added by Alice on 11/27/2023 start"""
+
     @staticmethod
     def clear_customcode(page: Page):
         Helper.logger.debug("Clear custom code dialog.")
 
         PageHelper.click_options(page, TopMenuItem.options_custom_code)
         PageHelper.clear_customcode_thru_keyboard(page)
+
     @staticmethod
     def clear_autoexec(page: Page):
         Helper.logger.debug("Clear autoexec dialog.")
 
         PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
         PageHelper.clear_autoexec_thru_keyboard(page)
-
 
     @staticmethod
     def init_environments(page: Page):
