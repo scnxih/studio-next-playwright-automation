@@ -539,4 +539,7 @@ class DataZH(Data):
     DEFAULT_TABLE = "默认表"
     PLACEHOlDER_TEXT = "占位符文本"
     ALLOW_ORDER_COLUMN = "允许对列排序"
+    ADD_MULTIPLE_ITEMS_TO_LIST = "将多项添加至列表。"
+    ADD_ITEMS = "添加项"
+    EXCLUDE_COLUMNS = "排除列"
     """Added by Alice on Apr 10,2024 end"""

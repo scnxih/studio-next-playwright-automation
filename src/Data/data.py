@@ -549,4 +549,7 @@ class Data:
     DEFAULT_TABLE = "Default table"
     PLACEHOlDER_TEXT = "Placeholder text"
     ALLOW_ORDER_COLUMN = "Allow ordering of columns"
+    ADD_MULTIPLE_ITEMS_TO_LIST = "Add multiple items to the list."
+    ADD_ITEMS = "Add Items"
+    EXCLUDE_COLUMNS = "Exclude Columns"
     """Added by Alice on Apr 10,2024 end"""
