@@ -481,6 +481,7 @@ def test_39_JsonPage(page, init):
     json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     json.saveas(folder_path, "test_json.json", True, True)
+    time.sleep(1)
     json.undo()
     json.redo()
     json.add_to_snippets()
@@ -495,6 +496,7 @@ def test_40_TextPage(page, init):
     text.editor.type_into_text_area('This is text file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     text.saveas(folder_path, "test_text.txt", True, True)
+    time.sleep(1)
     text.undo()
     text.redo()
     text.add_to_snippets()
@@ -509,6 +511,7 @@ def test_41_XMLPage(page, init):
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     xml.saveas(folder_path, "test_xml.xml", True, True)
+    time.sleep(1)
     xml.undo()
     xml.redo()
     xml.add_to_snippets()
@@ -524,6 +527,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.editor.type_into_text_area('This is work space file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
+    time.sleep(1)
     work_space.undo()
     work_space.redo()
     work_space.add_to_snippets()
@@ -534,6 +538,7 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
+    time.sleep(2)
     center_page:CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     center_page.screenshot_self('deployed_and_scheduled')
@@ -569,6 +574,7 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     PageHelper.show_accordion(page,AccordionType.open_item)
 
 def test_44_deployed_and_scheduled_job(page, init):
+    time.sleep(2)
     deployed_page:DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     deployed_page.run_now()
@@ -598,6 +604,7 @@ def test_46_job_definition(page, init):
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # job_page.saveas(folder_path, "JobDefinition", True, True)
     job_page.editor.type_into_text_area("This is job definition.")
+    time.sleep(1)
     job_page.undo()
     job_page.redo()
     job_page.add_to_snippets()
@@ -613,5 +620,6 @@ def test_47_run_big_program(page,init):
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
+    time.sleep(2)
 
 

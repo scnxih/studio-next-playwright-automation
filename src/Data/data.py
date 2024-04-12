@@ -81,7 +81,7 @@ class Data:
     NEW_FOLDER = "New folder"
     RENAME = "Rename"
     DELETE = "Delete"
-    PROPERTIES = "Properties"
+    PROPERTIES = "PropertiesPage"
     EDIT = "Edit"
     DISCONNECT = "Disconnect"
     UPLOAD = "Upload"
@@ -321,7 +321,7 @@ class Data:
     """Added by Alice on 01/25/2024 end"""
 
     NODE = "Node"
-    TABLE_PROPERTIES = "Table Properties"
+    TABLE_PROPERTIES = "Table PropertiesPage"
     TABLE_NAME_INPUT = "Table name:, Table name input"
     PREVIEW_DATA= "Preview Data"
     NODE_NAME= "Node name"
@@ -529,3 +529,18 @@ class Data:
     # REGION_AND_LANGUAGE = "Region and Language"
     RESET_TO_DEFAULT_VALUES = 'Reset to Default Values'
     # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
+
+    """Added by Alice on Apr 09,2024 start"""
+    DEPENDENCIES = "Dependencies"
+    """Added by Alice on Apr 09,2024 end"""
+
+    """Added by Alice on Apr 10,2024 start"""
+    VISIBILITY = "Visibility"
+    ENABLEMENT = "Enablement"
+    CHOOSE_COLOR="Select a color"
+    BASIC = "Basic"
+    CUSTOM = "Custom"
+    RED = "Red"
+    GREEN = "Green"
+    BLUE = "Blue"
+    """Added by Alice on Apr 10,2024 end"""

@@ -7,9 +7,9 @@ class Textarea(CommonComponent):
         self.base_xpath += "//textarea[contains(@class, 'sas_components-TextArea')]"
 
     # If the page contains more than one textarea, data_test_id or aria-label is required.
-    def __init__(self, container_base_xpath, page, data_test_id="", aria_label=""):
+    def __init__(self, container_base_xpath, page, data_test_id="", aria_label="",supplement_base_xpath=""):
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,
-                                 aria_label=aria_label)
+                                 aria_label=aria_label,supplement_base_xpath=supplement_base_xpath)
 
     def fill_text(self, text):
         self.scroll_if_needed(self.base_locator)

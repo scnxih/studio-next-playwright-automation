@@ -519,3 +519,18 @@ class DataZH(Data):
     # REGION_AND_LANGUAGE = "区域和语言"
     RESET_TO_DEFAULT_VALUES = '重置为默认值'
     # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
+
+
+    """Added by Alice on Apr 09,2024 start"""
+    DEPENDENCIES = "依赖关系"
+    """Added by Alice on Apr 09,2024 end"""
+    """Added by Alice on Apr 10,2024 start"""
+    VISIBILITY = "可见性"
+    ENABLEMENT = "可启用性"
+    CHOOSE_COLOR = "选择一个颜色"
+    BASIC = "基本"
+    CUSTOM = "自定义"
+    RED = "红色"
+    GREEN = "绿色"
+    BLUE = "蓝色"
+    """Added by Alice on Apr 10,2024 end"""
