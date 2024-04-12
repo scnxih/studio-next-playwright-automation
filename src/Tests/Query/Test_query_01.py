@@ -1,5 +1,5 @@
 from src.Pages.StudioNext.Center.Query.query_page import *
-from src.Pages.StudioNext.Dialog.query_select_table_dialog import *
+from src.Pages.StudioNext.Dialog.select_a_table_dialog import *
 
 
 def test_01_query(page, init):

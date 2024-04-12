@@ -44,7 +44,7 @@ from src.Pages.StudioNext.Center.quick_import_page import QuickImportPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
 from src.Pages.StudioNext.Center.submission_status_page import SubmissionStatusPage
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
-from src.Pages.StudioNext.Dialog.query_select_table_dialog import SelectTableDialog
+from src.Pages.StudioNext.Dialog.select_a_table_dialog import SelectTableDialog
 from src.Pages.StudioNext.Left.sascontent_page import SASContentPage
 from src.Pages.StudioNext.Left.sasserver_page import SASServerPage
 from src.Pages.Common.dialog import *

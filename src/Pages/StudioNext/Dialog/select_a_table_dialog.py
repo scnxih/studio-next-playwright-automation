@@ -1,7 +1,7 @@
 """
 @author: Frank (Feng) Jiang
 @date: 2024/03/20
-@description: define Query Select Table dialog, include dialog elements and functionalities (temp)
+@description: define Select a Table dialog, include dialog elements and functionalities (temp)
 """
 from src.Data.elements_ids import *
 from src.Pages.Common.dialog import *
@@ -14,8 +14,8 @@ class SelectTableDialog(Dialog):
         Dialog.__init__(self, page, Helper.data_locale.SELECT_A_TABLE)
         # Since this dialog loaded slow.
         time.sleep(1)
-        self.libs_treegrid = TreeGrid(self.base_xpath + "//section//section[1]", self.page)
-        self.tables_treegrid = TreeGrid(self.base_xpath + "//section//section[2]", self.page)
+        self.libs_treegrid = TreeGrid(self, self.base_xpath + "//section//section[1]", page)
+        self.tables_treegrid = TreeGrid(self, self.base_xpath + "//section//section[2]", page)
 
     def select_a_table(self, lib_name: str, table_name: str):
         self.wait_for(self.libs_treegrid)
