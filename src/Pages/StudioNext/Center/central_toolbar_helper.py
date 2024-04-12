@@ -3,9 +3,7 @@ from playwright.sync_api import Playwright, Page
 
 from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.dialog import *
-from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.toolbar import Toolbar
-from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Dialog.saveas_dialog import SaveAsDialog
 from src.Helper.helper import *
 from src.Pages.Common.windows_control import *
@@ -149,30 +147,9 @@ class CentralToolbarHelper:
     def open_in_browser_tab_listing(self):
         return self.__open_in_browser_tab_menu(Helper.data_locale.LISTING)
 
+
     def __download_file(self, menu_text: str):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.DOWNLOAD)
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr. 8th, 2024
-
-        # Wait for 0.5 sec, otherwise items might have not been loaded.
-        time.sleep(1)
-        print('+++ self.toolbar.page' + str(self.toolbar.page) +'+++')
-
-        base = BasePage(self.toolbar.page)
-
-        time.sleep(1)
-
-        # works only for programs NOT WORK for Quick Import
-        # base.screenshot("//div[@data-testid='programViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
-
-        # works for Quick Import NOT for programs
-        # base.screenshot("//div[@data-testid='importViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
-
-        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", "download", user_assigned_xpath=True)
-
-        # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
-
         if not self.toolbar.is_menu_item_enabled(menu_text):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
@@ -271,10 +248,9 @@ class CentralToolbarHelper:
         self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
                                                 Helper.data_locale.LISTING)
 
-    def reload(self):
-        # self.toolbar.click_menu_in_more_options(Helper.data_locale.REFRESH)
-        # self.close_alert_if_needed()
-        pass
+    def refresh(self):
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.REFRESH)
+        self.close_alert_if_needed()
 
     def apply_main_layout_standard(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT,Helper.data_locale.STANDARD)

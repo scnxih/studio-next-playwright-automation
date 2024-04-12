@@ -41,7 +41,7 @@ class TreeGrid(CommonComponent):
             while self.get_attribute(self.col_header(col_id), "aria-sort").lower() != sort_order.lower():
                 self.click(self.col_header(col_id))
         else:
-            Helper.logger.debug("The column maybe hidden or unavailable, please provide a correct column information.")
+            Helper.logger.debug("The column maybe hidden or not exist, please provide a correct column information.")
 
     def btn_col_header_menu(self, col_id: str):
         """
@@ -60,7 +60,7 @@ class TreeGrid(CommonComponent):
         if self.is_visible(self.col_header(col_id)):
             self.click(self.btn_col_header_menu(col_id))
         else:
-            Helper.logger.debug("The column maybe hidden or unavailable, please provide a correct column information.")
+            Helper.logger.debug("The column maybe hidden or not exist, please provide a correct column information.")
 
     def row_in_treegrid(self, row_index=None, name_text=None):
         """
@@ -72,7 +72,8 @@ class TreeGrid(CommonComponent):
         if name_text is None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
         if row_index is None:
-            return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}'] | .//div[text()='{name_text}']]")
+            return self.locate_xpath(f"//div[@role='row'][contains(@class, 'ag-row')][.//span[text()='{name_text}'] | "
+                                     f".//div[text()='{name_text}']]")
 
     def select_a_row(self, row_index=None, name_text=None):
         """
@@ -88,7 +89,7 @@ class TreeGrid(CommonComponent):
 
     def column_in_a_row(self, col_id: str, row_index=None, name_text=None):
         """
-        Description: get a cell in a row by col-id and the name of the row or row-index, just need to give one param.
+        Description: get a cell in a row by col-id and the name of the row or row-index.
         :param row_index: start from 0
         :param col_id: col-id of a column
         :param name_text: the name text of a row
@@ -243,7 +244,7 @@ class TreeGrid(CommonComponent):
         :param test_id: data-testid of combobox
         """
         # self.scroll_if_needed(self.base_xpath)
-        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id)):
+        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).base_xpath):
             self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).click_self()
         else:
             Helper.logger.debug("The combobox is not available, please provide the correct combobox information.")
@@ -257,7 +258,7 @@ class TreeGrid(CommonComponent):
         :param test_id: data-testid of combobox
         """
         # self.scroll_if_needed(self.base_xpath)
-        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id)):
+        if self.is_visible(self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).base_xpath):
             self.combo_in_a_row(row_index=row_index, name_text=name_text, test_id=test_id).choose_item(combo_item_text)
         else:
             Helper.logger.debug("The combobox is not available, please provide the correct combobox information.")

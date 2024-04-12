@@ -28,6 +28,7 @@ class TestID:
     QUERY_SORT_TOOLBAR = "querySort-toolbar"
     QUERY_SELECT_COLUMNS_TOOLBAR_BTN_REMOVE = "selectTabColumns-removeButton"
     QUERY_SELECT_GROUPS_TOOLBAR_BTN_REMOVE = "selectTabGroups-removeButton"
+    QUERY_SELECT_GROUPS_TOOLBAR_CHECKBOX = "groupData-checkbox"
     QUERY_FILTER_TOOLBAR_BTN_REMOVE = "queryFilter-removeButton"
     QUERY_OUTPUT_OPTIONS_RADIO = "queryBuilder-tab-outputOptions-procFedSql"
     QUERY_OUTPUT_OPTIONS_COMBO = "queryBuilder-tabOutputOptions-dropdown-outputtype"
@@ -45,6 +46,9 @@ class TestID:
     QUERY_COLUMNS_PANE_TOOLBAR_DELETE = "query-columnsPane-toolbar-delete"
     QUERY_COLUMNS_PANE_TOOLBAR_EDIT = "query-columnsPane-toolbar-edit"
     QUERY_COLUMNS_PANE_SEARCH_INPUT = "query-columnsPane-searchField-searchInput-input"
+    SELECT_A_COLUMN_DIALOG_FILTER_COMBO = "selectColumnDialog-filterMenuButton"
+    SELECT_A_COLUMN_DIALOG_SEARCH_INPUT = "selectColumnDialog-searchField-searchInput-input"
+    SELECT_A_COLUMN_DIALOG_SEARCH_BTN = "selectColumnDialog-searchField-searchButton"
 
 
 class ColID:
