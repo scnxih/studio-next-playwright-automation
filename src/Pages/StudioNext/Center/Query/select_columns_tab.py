@@ -5,7 +5,6 @@
 """
 
 from src.Pages.StudioNext.Center.Query.query_page import *
-from src.Data.elements_ids import *
 from src.Pages.StudioNext.Dialog.manage_columns_dialog import *
 from src.Pages.StudioNext.Dialog.treegrid_header_menu_dialog import *
 
@@ -68,6 +67,27 @@ class SelectColumns(BasePage):
     def move_a_row_down_by_context_menu(self, row_index=None, name_text=None):
         self.treegrid.select_context_menu_item(Helper.data_locale.MOVE_DOWN, row_index=row_index, name_text=name_text)
 
+    """incomplete
+    def move_a_row_before_a_row(self, selected_row_index=None, selected_row_name=None, moved_row_index=None, moved_row_name=None):
+        
+        Description: move the moved_row to the place before the selected_row
+        :param selected_row_index:
+        :param selected_row_name:
+        :param moved_row_index:
+        :param moved_row_name:
+        :return:
+        
+    def move_a_row_after_a_row(self, selected_row_index=None, selected_row_name=None, moved_row_index=None, moved_row_name=None):
+        
+        Description: move the moved_row to the place before the selected_row
+        :param selected_row_index:
+        :param selected_row_name:
+        :param moved_row_index:
+        :param moved_row_name:
+        :return:
+        
+    incomplete"""
+
     def fill_name_field_for_a_row(self, fill_text: str, row_index=None, name_text=None):
         self.treegrid.fill_input_in_a_row(TestID.QUERY_SELECT_COLUMNS_INPUT_NAME, fill_text, row_index=row_index, name_text=name_text)
 
@@ -120,7 +140,7 @@ class SelectColumns(BasePage):
         self.open_header_menu_mouse_right_click(col_id)
         self.header_menu.right_pin_a_column()
 
-    def not_pin_a_column(self, col_id: str):
+    def unpin_a_column(self, col_id: str):
         self.open_header_menu_mouse_right_click(col_id)
         self.header_menu.no_pin_a_column()
 

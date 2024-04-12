@@ -8,7 +8,7 @@ class Button(CommonComponent):
 
     # When the page contains more than one combobox, data_test_id is required.
     # If items count > 20, items_count is required.
-    def __init__(self, container_base_xpath, page, data_test_id="", aria_label="", title="",supplement_base_xpath=""):
+    def __init__(self, container_base_xpath, page, data_test_id="", aria_label="", title=""):
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,
-                                 aria_label=aria_label, title=title,supplement_base_xpath=supplement_base_xpath)
+                                 aria_label=aria_label, title=title)
 

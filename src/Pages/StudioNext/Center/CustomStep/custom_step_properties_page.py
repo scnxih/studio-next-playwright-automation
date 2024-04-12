@@ -8,6 +8,7 @@ import time
 from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.radio_group import RadioGroup
 from src.Pages.Common.text import Text
+from src.Pages.Common.toolbar import Toolbar
 from src.Pages.Common.window_shade import WindowShade
 from src.Pages.Common.checkbox import Checkbox
 from src.Pages.Common.numeric_stepper import NumericStepper
@@ -16,6 +17,7 @@ from src.Pages.Common.textarea import Textarea
 from src.Pages.Common.button import Button
 from src.Pages.Common.color_picker import ColorPicker
 from src.Pages.Common.combobox import Combobox
+from src.Pages.StudioNext.Dialog.add_items_dialog import AddItemsDialog
 
 
 class CustomStepPropertiesPage(BasePage):
@@ -57,6 +59,9 @@ class CustomStepPropertiesPage(BasePage):
         self.check_box_allow_order_column = Checkbox(self.base_xpath,self.page,label=Helper.data_locale.ALLOW_ORDER_COLUMN)
         self.numeric_stepper_min_columns = NumericStepper(self.base_xpath,self.page,data_test_id="columnselector-1_minimumNumericStepper")
         self.numeric_stepper_max_columns = NumericStepper(self.base_xpath,self.page,data_test_id="columnselector-1_maximumNumericStepper")
+        self.toolbar = Toolbar(self.base_xpath,self.page)
+        self.btn_exclude_columns = Button(self.base_xpath,self.page,data_test_id="columnExclusionsEditButton")
+
 
     # def set_id(self,text:str):
     #     self.text_id.fill_text(text)
@@ -146,3 +151,12 @@ class CustomStepPropertiesPage(BasePage):
 
     def set_max_columns(self,max_columns:str):
         self.numeric_stepper_max_columns.set_value(max_columns)
+
+    def add_many_items(self,text:str):
+        self.toolbar.click_btn_by_title(Helper.data_locale.ADD_MULTIPLE_ITEMS_TO_LIST)
+        time.sleep(1)
+        dlg = AddItemsDialog(self.page)
+        dlg.fill_items(text)
+        time.sleep(1)
+        dlg.click_button_in_footer(Helper.data_locale.OK)
+

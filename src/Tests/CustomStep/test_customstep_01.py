@@ -311,3 +311,6 @@ def test_12_set_properties_for_checkbox(page,init):
     properties.set_min_columns("1")
     properties.set_max_columns("5")
     time.sleep(3)
+
+    properties.add_many_items("Name \n Sex \n Height")
+    time.sleep(2)
