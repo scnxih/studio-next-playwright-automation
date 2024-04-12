@@ -6,6 +6,7 @@ Description: This is properties of checkbox in custom step designer.
 import time
 
 from src.Pages.Common.base_page import BasePage
+from src.Pages.Common.radio_group import RadioGroup
 from src.Pages.Common.text import Text
 from src.Pages.Common.window_shade import WindowShade
 from src.Pages.Common.checkbox import Checkbox
@@ -14,18 +15,33 @@ from src.Helper.helper import *
 from src.Pages.Common.textarea import Textarea
 from src.Pages.Common.button import Button
 from src.Pages.Common.color_picker import ColorPicker
+from src.Pages.Common.combobox import Combobox
 
 
 class CustomStepPropertiesPage(BasePage):
     def __init__(self, page):
         BasePage.__init__(self, page)
-        self.base_xpath = ".//div[@class='sas_components-Layouts-Flow-Flow_flow_vertical sas_designer-components-Properties-Properties_properties-flow']"
+        self.base_xpath = "//div[@class='sas_components-Layouts-Flow-Flow_flow_vertical sas_designer-components-Properties-Properties_properties-flow']"
         self.text_id = Text(self.base_xpath, self.page, data_test_id="idInput-input")
         self.text_label = Text(self.base_xpath, self.page, data_test_id="labelInput-input")
         self.check_box_by_default = Checkbox(self.base_xpath, self.page,
                                              data_test_id="checkbox1_checkedByDefault-checkbox")
-        self.numeric_stepper = NumericStepper(self.base_xpath, self.page,
-                                              supplement_base_xpath="[ancestor::div[@data-testid='datePickerAttributesIndent']]")
+        self.check_box_required = Checkbox(self.base_xpath,self.page,data_test_id="requiredCheckbox-checkbox")
+        self.check_box_make_control_read_only = Checkbox(self.base_xpath, self.page, label=Helper.data_locale.MAKE_CONTROL_READ_ONLY)
+        self.check_box_hide_control_at_runtime = Checkbox(self.base_xpath,self.page,label=Helper.data_locale.HIDE_CONTROL_AT_RUNTIME)
+        self.text_default_library = Text(self.base_xpath,self.page,supplement_base_xpath= "[../../../descendant::label[contains(text(),'{0}')]]".format(Helper.data_locale.DEFAULT_LIBRARY))
+        self.text_default_table = Text(self.base_xpath, self.page,
+                                         supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
+                                             Helper.data_locale.DEFAULT_TABLE))
+
+        self.text_placeholder = Text(self.base_xpath, self.page,
+                                       supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
+                                           Helper.data_locale.PLACEHOlDER_TEXT))
+
+
+
+        self.numeric_stepper_indent = NumericStepper(self.base_xpath, self.page,
+                                                     supplement_base_xpath="[ancestor::div[@data-testid='datePickerAttributesIndent']]")
         self.window_shade_dependencies = WindowShade(self.base_xpath, self.page,
                                                      supplement_base_xpath="[descendant::span[text()='{0}']]".format(
                                                          Helper.data_locale.DEPENDENCIES))
@@ -35,7 +51,12 @@ class CustomStepPropertiesPage(BasePage):
                                              supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
                                                  Helper.data_locale.ENABLEMENT))
         self.btn_color = Button(self.base_xpath,self.page,supplement_base_xpath="[contains(@aria-label,'{0}')]".format(Helper.data_locale.CHOOSE_COLOR))
-        self.color_picker = ColorPicker(self.base_xpath,self.page)
+        self.color_picker = ColorPicker("",self.page)
+        self.combobox_link_input_table = Combobox(self.base_xpath,self.page,data_test_id="columnselector-1_inputTableSelect")
+        self.combobox_column_type = Combobox(self.base_xpath,self.page,data_test_id="columnselector-1_columnTypeSelect")
+        self.check_box_allow_order_column = Checkbox(self.base_xpath,self.page,label=Helper.data_locale.ALLOW_ORDER_COLUMN)
+        self.numeric_stepper_min_columns = NumericStepper(self.base_xpath,self.page,data_test_id="columnselector-1_minimumNumericStepper")
+        self.numeric_stepper_max_columns = NumericStepper(self.base_xpath,self.page,data_test_id="columnselector-1_maximumNumericStepper")
 
     # def set_id(self,text:str):
     #     self.text_id.fill_text(text)
@@ -50,7 +71,7 @@ class CustomStepPropertiesPage(BasePage):
         self.check_box_by_default.set_uncheck()
 
     def set_indent(self, indent: str):
-        self.numeric_stepper.set_value(indent)
+        self.numeric_stepper_indent.set_value(indent)
 
     def expand_dependencies(self):
         self.window_shade_dependencies.expand()
@@ -72,7 +93,7 @@ class CustomStepPropertiesPage(BasePage):
     def set_RGB(self,red_value:int,green_value:int, blue_value:int):
         time.sleep(0.5)
         self.color_picker.click_custom()
-        time.sleep(1)
+        time.sleep(0.5)
         self.color_picker.set_red_value(red_value)
         time.sleep(0.5)
         self.color_picker.set_green_value(green_value)
@@ -81,3 +102,47 @@ class CustomStepPropertiesPage(BasePage):
         time.sleep(0.5)
         self.color_picker.click_ok()
         time.sleep(0.5)
+    def set_default_library(self,library:str):
+        self.text_default_library.fill_text(library)
+    def set_default_table(self,table:str):
+        self.text_default_table.fill_text(table)
+
+    def set_placeholder_text(self,placeholder:str):
+        self.text_placeholder.fill_text(placeholder)
+
+    def set_check_required(self):
+        self.check_box_required.set_check()
+
+    def set_uncheck_required(self):
+        self.check_box_required.set_uncheck()
+
+    def set_check_control_read_only(self):
+        self.check_box_make_control_read_only.set_check()
+
+    def set_uncheck_control_read_only(self):
+        self.check_box_make_control_read_only.set_uncheck()
+        
+    def set_check_hide_at_runtime(self):
+        self.check_box_hide_control_at_runtime.set_check()
+        
+
+    def set_uncheck_hide_at_runtime(self):
+        self.check_box_hide_control_at_runtime.set_uncheck()
+
+    def select_item_in_link_input_table(self,item_value:str):
+        self.combobox_link_input_table.select_item(item_value)
+
+    def select_item_in_column_type(self,item_value:str):
+        self.combobox_column_type.select_item(item_value)
+        
+    def set_check_allow_order_column(self):
+        self.check_box_allow_order_column.set_check()
+    
+    def set_uncheck_allow_order_column(self):
+        self.check_box_allow_order_column.set_uncheck()
+
+    def set_min_columns(self,min_columns:str):
+        self.numeric_stepper_min_columns.set_value(min_columns)
+
+    def set_max_columns(self,max_columns:str):
+        self.numeric_stepper_max_columns.set_value(max_columns)

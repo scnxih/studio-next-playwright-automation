@@ -55,7 +55,7 @@ class ColorPicker(CommonComponent):
         self.input_blue.fill_text(str(value))
 
     def click_ok(self):
-        self.click(self.btn_ok)
+        self.btn_ok.click_self()
 
     def click_cancel(self):
-        self.click(self.btn_cancel)
+        self.btn_cancel.click_self()

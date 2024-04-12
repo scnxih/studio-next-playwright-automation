@@ -77,7 +77,7 @@ class NumericStepper(CommonComponent):
         self.scroll_if_needed(self.base_locator)
         return self.get_attribute(self.input,"value")
 
-    def set_value(self, input_text):
+    def set_value(self, input_text:str):
         self.scroll_if_needed(self.base_locator)
         if self.is_read_only(self.input):
             Helper.logger.debug("input text is read only, so cannot input text")

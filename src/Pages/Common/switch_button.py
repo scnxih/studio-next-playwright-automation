@@ -12,6 +12,8 @@ class SwitchButton(CommonComponent):
     def is_on(self):
         self.scroll_if_needed(self.base_locator)
         is_checked = self.base_locator.get_attribute("aria-checked")
+        if is_checked == None:
+            return False
         if is_checked.lower() == "false":
             return False
         return True
