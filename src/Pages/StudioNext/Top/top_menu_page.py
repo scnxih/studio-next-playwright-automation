@@ -108,10 +108,17 @@ class TopMenuPage(BasePage):
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
+
             case TopMenuItem.view_submission_status:
+                # Try
+                # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
+
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.SUBMISSION_STATUS)
             case TopMenuItem.view_deployed_and_scheduled_jobs:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
+                # Try
+                # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
+
             case TopMenuItem.view_start_page:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.START_PAGE)
             case TopMenuItem.view_startup_initialization_log:
@@ -143,9 +150,24 @@ class TopMenuPage(BasePage):
             case TopMenuItem.view_navigation_panes_clinical_repositories:
                 self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.CLINICAL_REPOSITORY)
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr. 9th, 2024
+
+        # WRONG: Only toolbar was cathed
+        # self.toolbar.screenshot_self('check_view_item')
+
+        # Open menu to take screenshot
+        # self.toolbar.click_btn_by_test_id(test_id)
+        # base = BasePage(self.toolbar.page)
+        # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", "check_view_item", user_assigned_xpath=True)
+
+        # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
+
         time.sleep(0.3)
     def uncheck_view_item(self,top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-view-button"
+        self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
+        time.sleep(1)
         match top_menu:
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)

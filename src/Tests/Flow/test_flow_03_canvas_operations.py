@@ -115,7 +115,7 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page,init):
     time.sleep(1)
     flow.apply_main_layout_horizontal()
     time.sleep(1)
-    flow.refresh()
+    flow.reload()
     time.sleep(1)
 
 

@@ -3,10 +3,13 @@ Author: Alice
 Date: November 14, 2023
 Description: This is test cases file for custom step.
 """
+import time
+
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_checkbox import DesignerCheckbox
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_list import DesignerList
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_numeric_stepper import DesignerNumericStepper
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text import DesignerText
+from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.conftest import *
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import *
 
@@ -262,3 +265,49 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
     designer_list1.move_to_page(Helper.data_locale.NEW_PAGE)
 
 
+def test_12_set_properties_for_checkbox(page,init):
+    custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step.insert_control(DesignerControlType.checkbox)
+    custom_step.insert_control(DesignerControlType.color_picker)
+    custom_step.insert_control(DesignerControlType.input_table)
+    custom_step.insert_control(DesignerControlType.column_selector)
+    
+    custom_step.select_control(DesignerControlType.checkbox,1)
+    properties:CustomStepPropertiesPage = CustomStepPropertiesPage(page)
+    properties.set_label("这是复选框001")
+    properties.set_check_by_default()
+    properties.set_indent("3")
+    properties.set_visibility("true")
+    properties.set_enablement("true")
+    time.sleep(2)
+    properties.collapse_dependencies()
+
+    custom_step.select_control(DesignerControlType.color_picker,1)
+    properties.click_select_color()
+    properties.set_RGB(160,95,238)
+    time.sleep(2)
+
+
+    custom_step.select_control(DesignerControlType.input_table,1)
+    time.sleep(1)
+    properties.set_label("选择输入一个表：")
+    properties.set_check_required()
+    properties.set_check_control_read_only()
+    properties.set_check_hide_at_runtime()
+    properties.set_uncheck_hide_at_runtime()
+    properties.set_uncheck_control_read_only()
+    properties.set_default_library("SASHELP")
+    properties.set_default_table("CLASS")
+    properties.set_placeholder_text("选择输入一个表：")
+    time.sleep(3)
+
+    custom_step.select_control(DesignerControlType.column_selector,1)
+    time.sleep(1)
+    properties.select_item_in_link_input_table("输入表标签 1  (inputtable1)")
+    time.sleep(1)
+    properties.select_item_in_column_type("字符")
+    time.sleep(1)
+    properties.set_check_allow_order_column()
+    properties.set_min_columns("1")
+    properties.set_max_columns("5")
+    time.sleep(3)

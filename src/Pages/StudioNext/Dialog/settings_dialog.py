@@ -333,8 +333,9 @@ class SettingsDialog(Dialog):
 
             self.click(self.__assemble_tab_page_xpath(tab_page_text))
 
-            time.sleep(1)
+            time.sleep(2)
             self.screenshot(self.base_xpath, str(setting_tab_page).split('.')[-1])
+            time.sleep(1)
 
     def reset_global_general(self):
         """

@@ -1,3 +1,5 @@
+import time
+
 from pip._internal.cli.cmdoptions import python
 
 from src.Pages.Common.whole_page import WholePage
@@ -191,7 +193,7 @@ def test_32_close_all_tabs(page, init):
 def test_33_email_refresh(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
-    editor.refresh()
+    editor.reload()
     editor.email()
 
 
@@ -235,7 +237,7 @@ def test_34_sas_program(page, init):
     sas_program.show_detail_tabs_listing()
     sas_program.show_detail_tabs_output_data()
 
-    sas_program.refresh()
+    sas_program.reload()
 
     sas_program.background_submit()
 
@@ -291,7 +293,7 @@ def test_35_python(page, init):
     python_program.show_detail_tabs_listing()
     python_program.show_detail_tabs_output_data()
 
-    python_program.refresh()
+    python_program.reload()
 
     python_program.background_submit()
 
@@ -370,7 +372,7 @@ def test_35_python(page, init):
 #     flow.apply_main_layout_vertical()
 #     flow.apply_main_layout_standard()
 #     flow.apply_main_layout_horizontal()
-#     flow.refresh()
+#     flow.reload()
 
 
 # def test_37_query(page, init):
@@ -479,13 +481,14 @@ def test_39_JsonPage(page, init):
     json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     json.saveas(folder_path, "test_json.json", True, True)
+    time.sleep(1)
     json.undo()
     json.redo()
     json.add_to_snippets()
     json.add_to_my_favorites()
     json.open_in_browser_tab()
     json.email()
-    json.refresh()
+    json.reload()
 
 
 def test_40_TextPage(page, init):
@@ -493,13 +496,14 @@ def test_40_TextPage(page, init):
     text.editor.type_into_text_area('This is text file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     text.saveas(folder_path, "test_text.txt", True, True)
+    time.sleep(1)
     text.undo()
     text.redo()
     text.add_to_snippets()
     text.add_to_my_favorites()
     text.open_in_browser_tab()
     text.email()
-    text.refresh()
+    text.reload()
 
 
 def test_41_XMLPage(page, init):
@@ -507,13 +511,14 @@ def test_41_XMLPage(page, init):
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     xml.saveas(folder_path, "test_xml.xml", True, True)
+    time.sleep(1)
     xml.undo()
     xml.redo()
     xml.add_to_snippets()
     xml.add_to_my_favorites()
     xml.open_in_browser_tab()
     xml.email()
-    xml.refresh()
+    xml.reload()
 
 
 def test_42_WorkSapcePage(page, init):
@@ -522,18 +527,25 @@ def test_42_WorkSapcePage(page, init):
     work_space.editor.type_into_text_area('This is work space file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
+    time.sleep(1)
     work_space.undo()
     work_space.redo()
     work_space.add_to_snippets()
     work_space.add_to_my_favorites()
     work_space.open_in_browser_tab()
     work_space.email()
-    work_space.refresh()
+    work_space.reload()
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs).screenshot_self('deployed_and_scheduled')
-    PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status).screenshot_self('submission_status')
+    time.sleep(2)
+    center_page:CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    time.sleep(3)
+    center_page.screenshot_self('deployed_and_scheduled')
+    time.sleep(1)
+    center_page = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status)
+    time.sleep(2)
+    center_page.screenshot_self('submission_status')
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_start_page)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_submission_status)
@@ -562,9 +574,11 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     PageHelper.show_accordion(page,AccordionType.open_item)
 
 def test_44_deployed_and_scheduled_job(page, init):
+    time.sleep(2)
     deployed_page:DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,TopMenuItem.view_deployed_and_scheduled_jobs)
-
+    time.sleep(3)
     deployed_page.run_now()
+    time.sleep(1)
     deployed_page.edit_schedule()
     deployed_page.remove_schedule()
     deployed_page.refresh_list()
@@ -582,7 +596,7 @@ def test_45_startup_initialization_log(page, init):
     startup_page.open_in_browser_tab2(page)
 
     startup_page.email()
-    startup_page.refresh()
+    startup_page.reload()
 
 
 def test_46_job_definition(page, init):
@@ -590,6 +604,7 @@ def test_46_job_definition(page, init):
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # job_page.saveas(folder_path, "JobDefinition", True, True)
     job_page.editor.type_into_text_area("This is job definition.")
+    time.sleep(1)
     job_page.undo()
     job_page.redo()
     job_page.add_to_snippets()
@@ -599,11 +614,12 @@ def test_46_job_definition(page, init):
     job_page.apply_main_layout_standard()
     job_page.apply_main_layout_horizontal()
     job_page.apply_main_layout_vertical()
-    job_page.refresh()
+    job_page.reload()
 def test_47_run_big_program(page,init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
+    time.sleep(2)
 
 

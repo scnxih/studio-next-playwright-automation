@@ -13,7 +13,9 @@ def test_01_toolbar(page, init):
     time.sleep(1)
     PageHelper.show_keyboard_shortcuts_dialog(page)
     time.sleep(1)
-    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+
+    # Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+    Dialog(page).click_button_in_footer("Close")
     time.sleep(1)
     PageHelper.show_document_recovery_dialog(page)
     time.sleep(1)
@@ -63,7 +65,9 @@ def test_03_combobox_checkbox_text_in_settings(page, init):
             alert.click_button_in_footer("继续")
         time.sleep(1)
         # setting.set_check("若日志大于指定长度或大小则显示警告")
-        setting.set_check("Display warning if log is larger than specified size")
+        # setting.set_check("Display warning if log is larger than specified size")
+        setting.set_check("若日志大于指定大小则显示警告")
+
         # setting.set_max_log_lines("30000")
         time.sleep(1)
         setting.set_max_size("2")
