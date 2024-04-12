@@ -1,3 +1,5 @@
+# Created by pytest automatically.
+
 
 *.pyc
 /src/Logs
@@ -11,13 +13,4 @@
 *.html
 *.yml
 /.idea/*.ml
-
-*.pyc
-/src/Logs
-/Logs/*.log
-/src/Output
-/Output/*.*
-/.idea
-/.pytest_cache
-/_pycache_
 *.png
