@@ -24,21 +24,22 @@ class CustomStepPropertiesPage(BasePage):
     def __init__(self, page):
         BasePage.__init__(self, page)
         self.base_xpath = "//div[@class='sas_components-Layouts-Flow-Flow_flow_vertical sas_designer-components-Properties-Properties_properties-flow']"
-        self.text_id = Text(self.base_xpath, self.page, data_test_id="idInput-input")
-        self.text_label = Text(self.base_xpath, self.page, data_test_id="labelInput-input")
+
         self.check_box_by_default = Checkbox(self.base_xpath, self.page,
                                              data_test_id="checkbox1_checkedByDefault-checkbox")
         self.check_box_required = Checkbox(self.base_xpath,self.page,data_test_id="requiredCheckbox-checkbox")
         self.check_box_make_control_read_only = Checkbox(self.base_xpath, self.page, label=Helper.data_locale.MAKE_CONTROL_READ_ONLY)
         self.check_box_hide_control_at_runtime = Checkbox(self.base_xpath,self.page,label=Helper.data_locale.HIDE_CONTROL_AT_RUNTIME)
-        self.text_default_library = Text(self.base_xpath,self.page,supplement_base_xpath= "[../../../descendant::label[contains(text(),'{0}')]]".format(Helper.data_locale.DEFAULT_LIBRARY))
-        self.text_default_table = Text(self.base_xpath, self.page,
-                                         supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
-                                             Helper.data_locale.DEFAULT_TABLE))
-
-        self.text_placeholder = Text(self.base_xpath, self.page,
-                                       supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
-                                           Helper.data_locale.PLACEHOlDER_TEXT))
+        # self.text_id = Text(self.base_xpath, self.page, data_test_id="idInput-input")
+        # self.text_label = Text(self.base_xpath, self.page, data_test_id="labelInput-input")
+        # self.text_default_library = Text(self.base_xpath,self.page,supplement_base_xpath= "[../../../descendant::label[contains(text(),'{0}')]]".format(Helper.data_locale.DEFAULT_LIBRARY))
+        # self.text_default_table = Text(self.base_xpath, self.page,
+        #                                  supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
+        #                                      Helper.data_locale.DEFAULT_TABLE))
+        #
+        # self.text_placeholder = Text(self.base_xpath, self.page,
+        #                                supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
+        #                                    Helper.data_locale.PLACEHOlDER_TEXT))
 
 
 
@@ -63,13 +64,14 @@ class CustomStepPropertiesPage(BasePage):
         self.btn_exclude_columns = Button(self.base_xpath,self.page,data_test_id="columnExclusionsEditButton")
 
 
-    # def set_id(self,text:str):
-    #     self.text_id.fill_text(text)
+
     def get_text_by_contains_text(self,contains_text:str):
         return Text(self.base_xpath,self.page,supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(contains_text))
 
     def get_text_by_test_id(self,data_test_id:str):
         return Text(self.base_xpath,self.page,data_test_id=data_test_id)
+    def set_id(self,text:str):
+        self.get_text_by_test_id("idInput-input").fill_text(text)
     def set_label(self, label: str):
         self.get_text_by_test_id("labelInput-input").fill_text(label)
 

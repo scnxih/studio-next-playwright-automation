@@ -549,7 +549,7 @@ class Data:
     RED = "Red"
     GREEN = "Green"
     BLUE = "Blue"
-    MAKE_CONTROL_READ_ONLY = "MAke control read-only"
+    MAKE_CONTROL_READ_ONLY = "Make control read-only"
     HIDE_CONTROL_AT_RUNTIME = "Hide control at runtime"
     DEFAULT_LIBRARY = "Default library"
     DEFAULT_TABLE = "Default table"

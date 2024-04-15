@@ -5,13 +5,14 @@ Description: CustomStepPage will inherit from CenterPage class。
 """
 
 from src.Pages.Common.tab_group import TabGroup
-from src.Pages.Common.text import Text
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control_factory import get_designer_control
 from src.Pages.StudioNext.Center.center_page import *
-from src.Helper.helper import *
 from src.Pages.Common.listbox import Listbox
 from src.Utilities.enums import *
+from src.Pages.Common.text import Text
+
+from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 
 
 def convert_control_type_to_testid_prefix(control_type: DesignerControlType) -> str:
@@ -130,10 +131,10 @@ class CustomStepPage(CenterPage):
         # self.center_toolbar_helper.redo()
         pass
 
-    """The refresh functions is not implemented in StudioNext, so pass now"""
+    """The reload functions is not implemented in StudioNext, so pass now"""
 
-    def refresh(self):
-        # self.center_toolbar_helper.refresh()
+    def reload(self):
+        # self.center_toolbar_helper.reload()
         pass
 
     def apply_main_layout_standard(self):
@@ -222,8 +223,8 @@ class CustomStepPage(CenterPage):
         self.listbox_controls.click_context_menu_on_list_item(text, Helper.data_locale.INSERT_CONTROL)
 
     def select_control(self, control_type: DesignerControlType, control_number: int) -> DesignerControl:
-        designer_control = get_designer_control(self.page, control_type,control_number)
+        designer_control = get_designer_control(self.page, control_type, control_number)
         designer_control.click_self()
         return designer_control
 
-    
+
