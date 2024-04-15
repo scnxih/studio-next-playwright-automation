@@ -14,8 +14,8 @@ class ColorPicker(CommonComponent):
     def set_base_xpath(self):
         self.base_xpath += "//div[contains(@class,'color-picker-container')]"
 
-    # If the page contains more than one checkbox, data_test_id or label is required.
-    def __init__(self, container_base_xpath, page, data_test_id="", label=""):
+
+    def __init__(self, container_base_xpath, page):
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page)
         self.input_red = Text(self.base_xpath, self.page,
                               supplement_base_xpath="[../../../descendant::label[contains(text(),'{0}')]]".format(
