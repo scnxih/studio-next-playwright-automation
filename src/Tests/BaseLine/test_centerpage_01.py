@@ -603,11 +603,21 @@ def test_46_job_definition(page, init):
     job_page:JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # job_page.saveas(folder_path, "JobDefinition", True, True)
+
+    #
+
+    '''
+    # April 22nd 2024: 
+    # Since 'Job Definition' is changed to what is like in Custom Step and the editor textarea is removed,
+    # the following operations are commented out.
+    
     job_page.editor.type_into_text_area("This is job definition.")
     time.sleep(1)
     job_page.undo()
     job_page.redo()
     job_page.add_to_snippets()
+    '''
+
     job_page.schedule_as_job()
     job_page.open_in_browser_tab_code()
     job_page.open_in_browser_tab_job_form()
