@@ -144,8 +144,8 @@ class SettingsDialog(Dialog):
     def __assemble_tab_page_aria_xpath_dict(self, setting_tab_page: SettingsTabPages):
         aria_dict = {
             "SettingsTabPages.global_general": ('2', '1', '3'),
-            # "SettingsTabPages.sas_studio_general": ('2', '2', '10'),
-            "SettingsTabPages.sas_studio_general": ('2', '2', '9'),
+            "SettingsTabPages.sas_studio_general": ('2', '2', '10'),
+            # "SettingsTabPages.sas_studio_general": ('2', '2', '9'),
             "SettingsTabPages.code_and_log": ('3', '1', '2')
         }
 
@@ -188,8 +188,8 @@ class SettingsDialog(Dialog):
 
         elif setting_tab_page == SettingsTabPages.sas_studio_general:
             Helper.logger.debug("Switch to: SAS Studio/General via aira-composing")
-            tab_page_aria_combination = ('2', '2', '9')
-            # tab_page_aria_combination = ('2', '2', '10')
+            # tab_page_aria_combination = ('2', '2', '9')
+            tab_page_aria_combination = ('2', '2', '10')
 
         else:
 
@@ -237,8 +237,8 @@ class SettingsDialog(Dialog):
         :return:
         """
         Helper.logger.debug("Switch to Global/General via aira-xpath")
-        self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="9"]')
-        # self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="10"]')
+        # self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="9"]')
+        self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="10"]')
 
     # END Added by Jacky(ID: jawang) on Nov.9th, 2023 >>>
 
