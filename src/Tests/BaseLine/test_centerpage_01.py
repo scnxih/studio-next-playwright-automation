@@ -7,6 +7,8 @@ from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
+
+
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     WholePage(page).screenshot_self("login")
     PageHelper.new_sas_program(page)
@@ -24,6 +26,36 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     time.sleep(0.5)
     editor.save()
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
+
+    p: Page = page
+
+    # Test Mask Color --- Works Fine
+    # NOTE: Upgrade playwright to v1.41+ so that mask_color can function normally
+    # References:
+    #   [1] https://github.com/microsoft/playwright-python/issues/2204
+    #   [2] https://github.com/microsoft/playwright-python/pull/2205
+
+    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask_Black.png',
+                 mask=[p.get_by_test_id('tab-group-content-area-left')],
+                 mask_color='#000000')
+
+    # Test Clip --- Works Fine: Clip the Accordion on LHS
+    '''
+    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Clip.png',
+                 clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+    '''
+
+    # Test Omit Background --- Can not tell difference
+    '''
+    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Omit.png',
+                 clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050},
+                 omit_background=True)
+    '''
+
+
+    # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
 
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
@@ -522,8 +554,7 @@ def test_41_XMLPage(page, init):
 
 
 def test_42_WorkSapcePage(page, init):
-
-    work_space :WorkspacePage = PageHelper.new_item(page,TopMenuItem.new_file_types_workspace)
+    work_space: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     work_space.editor.type_into_text_area('This is work space file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
@@ -539,7 +570,7 @@ def test_42_WorkSapcePage(page, init):
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
     time.sleep(2)
-    center_page:CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    center_page: CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     center_page.screenshot_self('deployed_and_scheduled')
     time.sleep(1)
@@ -571,11 +602,13 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_file_references)
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_clinical_repositories)
 
-    PageHelper.show_accordion(page,AccordionType.open_item)
+    PageHelper.show_accordion(page, AccordionType.open_item)
+
 
 def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(2)
-    deployed_page:DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+                                                                                 TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
     deployed_page.run_now()
     time.sleep(1)
@@ -600,7 +633,7 @@ def test_45_startup_initialization_log(page, init):
 
 
 def test_46_job_definition(page, init):
-    job_page:JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
+    job_page: JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # job_page.saveas(folder_path, "JobDefinition", True, True)
 
@@ -625,11 +658,11 @@ def test_46_job_definition(page, init):
     job_page.apply_main_layout_horizontal()
     job_page.apply_main_layout_vertical()
     job_page.reload()
-def test_47_run_big_program(page,init):
+
+
+def test_47_run_big_program(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
     time.sleep(2)
-
-
