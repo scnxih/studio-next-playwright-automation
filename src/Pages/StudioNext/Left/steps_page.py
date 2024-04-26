@@ -18,7 +18,7 @@ class StepsPage(AccordionPage):
         AccordionPage.__init__(self, page, title)
         self.tree = TreeViewCommon(self.base_xpath, self.page)
 
-    def new(self, new_steps_type: new_steps_type):
+    def new(self, new_steps_type: NewStepsType):
         test_id_new = "stepsNavPane-toolBarNewButton-button"
         alert = Alert(self.page)
         match new_steps_type:

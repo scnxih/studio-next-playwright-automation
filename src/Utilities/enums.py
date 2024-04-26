@@ -182,6 +182,8 @@ class DialogType(Enum):
     save_as_dialog = 12
     search_dialog = 13
     settings_dialog = 14
+    date_time_dialog = 15
+    year_month_dialog =16
 
 
 """Added by Alice on 11/09/2023 end"""
@@ -217,10 +219,41 @@ class FindOrReplace(Enum):
     replace = 1
 
 
-class new_steps_type(Enum):
+class NewStepsType(Enum):
     quick_start = 0
     sample_controls = 1
     starter_templates = 2
     basic_rank = 3
     advanced_rank = 4
     advanced_define_column_structure = 5
+
+
+class DateTimeType(Enum):
+    date = 0
+    month = 1
+    date_and_time = 2
+    time = 3
+
+
+class Month(Enum):
+    january = 0
+    february = 1
+    march = 2
+    april = 3
+    may = 4
+    june = 5
+    july = 6
+    august = 7
+    september = 8
+    october = 9
+    november = 10
+    december = 11
+class FileOrFolder(Enum):
+    file = 0
+    folder = 1
+
+class TextNumericValidation(Enum):
+    text = 0
+    numeric = 1
+    validation = 2
+
