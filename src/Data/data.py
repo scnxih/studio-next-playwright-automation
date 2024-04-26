@@ -353,7 +353,7 @@ class Data:
 
     """Added by Alice on 2024/03/21 end"""
 
-    """ ----- Added by Frank 2024/03/20 Begin ----- """
+    """ ----- Updated by Frank 2024/04/26 Begin ----- """
     REMOVE_TABLE = "Remove Table"
     PIN_COLUMN = "Pin column"
     AUTOSIZE_THIS_COLUMN = "Auto-size width of this column"
@@ -364,7 +364,15 @@ class Data:
     NO_PIN = "Not pinned"
     PIN_LEFT = "Pinned to the left"
     PIN_RIGHT = "Pinned to the right"
-    """ ----- Added by Frank 2024/03/20 End ----- """
+    SELECT_CELLS = "Select cells"
+    DESELECT_CELLS = "Deselect cells"
+    REMOVE_SORTING = "Remove sorting"
+    MOVE_COLUMN = "Move column"
+    LEFT = "Left"
+    RIGHT = "Right"
+    TO_START = "To start"
+    TO_END = "To end"
+    """ ----- Updated by Frank 2024/04/26 End ----- """
 
     """ ----- Added by Frank 2024/03/21 Begin ----- """
     QUERY_GRID_COLUMN_HEADER_TABLE = "Table"
