@@ -249,7 +249,7 @@ def test_06_sasprogram_table_sort_zh_CN(page, init):
     flow.add_node(FlowNodeType.sas_program)
 
     # flow.add_node(FlowNodeType.sort)
-    flow.apply_detail_layout_vertical()
+    # flow.apply_detail_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
     # time.sleep(1)

@@ -49,6 +49,8 @@ from src.Pages.StudioNext.Left.sascontent_page import SASContentPage
 from src.Pages.StudioNext.Left.sasserver_page import SASServerPage
 from src.Pages.Common.dialog import *
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+from src.Pages.StudioNext.Dialog.date_time_dialog import DateTimeDialog
+from src.Pages.StudioNext.Dialog.year_month_dialog import YearMonthDialog
 
 
 def get_center_page(page: Page, center_page_type: CenterPageType = CenterPageType.sas_program_page) -> CenterPage:
@@ -88,7 +90,10 @@ def get_dialog_page(page: Page, dialog_type: DialogType) -> Dialog:
         DialogType.query_select_table_dialog: SelectTableDialog,
         DialogType.save_as_dialog: SaveAsDialog,
         DialogType.search_dialog: SearchDialog,
-        DialogType.settings_dialog: SettingsDialog
+        DialogType.settings_dialog: SettingsDialog,
+        DialogType.date_time_dialog: DateTimeDialog,
+        DialogType.year_month_dialog: YearMonthDialog
+
     }
     return created_dialog[dialog_type](page)
 

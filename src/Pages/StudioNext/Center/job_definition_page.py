@@ -57,11 +57,29 @@ class JobDefinitionPage(CenterPage):
     def apply_main_layout_standard(self):
         self.center_toolbar_helper.apply_main_layout_standard()
 
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
+        time.sleep(1)
+        self.screenshot(self.base_xpath, "std_layout")
+        # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
+
     def apply_main_layout_horizontal(self):
         self.center_toolbar_helper.apply_main_layout_horizontal()
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
+        time.sleep(1)
+        self.screenshot(self.base_xpath, "horiz_layout")
+        # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
+
 
     def apply_main_layout_vertical(self):
         self.center_toolbar_helper.apply_main_layout_vertical()
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
+        time.sleep(1)
+        self.screenshot(self.base_xpath, "vert_layout")
+        # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
+
 
     def reload(self):
         self.center_toolbar_helper.reload()

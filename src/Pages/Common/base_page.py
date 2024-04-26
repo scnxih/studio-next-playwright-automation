@@ -43,6 +43,8 @@ class BasePage:
 
     def __resolve_xpath(self, xpath):
 
+        if hasattr(self, 'base_xpath') and xpath.startswith(self.base_xpath):
+            return xpath
         if hasattr(self, 'base_xpath') and xpath != self.base_xpath:
             return self.base_xpath + xpath
         return xpath
@@ -220,6 +222,17 @@ class BasePage:
     def __invoke_context_menu(self):
         self.key_press('Shift+F10')
 
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.12th, 2024
+
+        # Wait for 0.5 sec
+        time.sleep(0.5)
+
+        # Whole page xpath: //div[@id='app']
+        self.screenshot("//div[@id='app']", 'context_menu', user_assigned_xpath=True)
+
+        # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
+
     # Modified by Jacky(ID: jawang) on Sept.22nd, 2023 >>>
 
     # -----Added by Frank 2023/09/18, begin----- #
@@ -242,6 +255,18 @@ class BasePage:
         r_locator = self.transform_to_locator(locator_or_xpath)
         # r_locator.click()
         r_locator.click(button="right")
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.12th, 2024
+
+        # Wait for 0.5 sec
+        time.sleep(0.5)
+
+        # Whole page xpath: //div[@id='app']
+        self.screenshot("//div[@id='app']", 'context_menu', user_assigned_xpath=True)
+
+        # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
+
 
     # Added by Jacky(ID: jawang) on Sept.19th, 2023 >>>
     """Added by Alice on 10/20/2023 start"""
@@ -366,6 +391,18 @@ class BasePage:
         r_locator.click()
         self.__invoke_context_menu()
         time.sleep(0.3)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.12th, 2024
+
+        # NOTE: This implementation assumes that there is ONLY ONE menu in the main page.
+        # self.screenshot("//div[@role='menu']", "context_menu", user_assigned_xpath=True)
+
+        # NOTE: To save time and pinpoint any possible problem, use whole page screenshot at the moment.
+        # Implemented in: self.__invoke_context_menu()
+
+        # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
+
         return self.click_menu_item(*context_menu_text)
 
     # ADDED
@@ -381,6 +418,18 @@ class BasePage:
         r_locator.click()
         self.__invoke_context_menu_by_right_click(locator_or_xpath)
         time.sleep(0.3)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.12th, 2024
+
+        # NOTE: This implementation assumes that there is ONLY ONE menu in the main page.
+        # self.screenshot("//div[@role='menu']", "right_click_context_menu_", user_assigned_xpath=True)
+
+        # NOTE: To save time and pinpoint any possible problem, use whole page screenshot at the moment.
+        # Implemented in: self.__invoke_context_menu_by_right_click()
+
+        # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
+
         return self.click_menu_item(*context_menu_text)
 
     # Added by Jacky(ID: jawang) on Sept.22nd, 2023 >>>
