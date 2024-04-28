@@ -843,7 +843,7 @@ sasserver:/path/to/fileorfolder""")
     properties.set_indent("1")
     properties.set_label("文本字段:")
     properties.set_placeholder_text("选中复选框时显示")
-    properties.set_visibility("$checkbox12")
+    properties.set_visibility("$checkbox2")
     time.sleep(1)
     
     insert_section(page,section_number,"下拉列表示例")
