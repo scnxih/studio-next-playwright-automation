@@ -11,10 +11,28 @@ from src.Helper.helper import *
 from src.Pages.Common.windows_control import *
 
 
-
 class CentralToolbarHelper:
     def __init__(self, toolbar: Toolbar):
         self.toolbar = toolbar
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.24nd, 2024
+    @property
+    def time_stamp(self):
+        """
+
+        """
+
+        '''
+        return self.toolbar.transform_to_locator(
+            # self.toolbar.locate_xpath(f"//label[contains(@id,'timestampLabel')]"))
+            self.toolbar.locate_xpath(f"//label[contains(@id,'timestampLabel')]"))
+        '''
+
+        # return self.toolbar.locate_xpath(f"//label[contains(@id,'timestampLabel')]")
+        return "//label[contains(@id,'timestampLabel')]"
+
+    # END Added by Jacky(ID: jawang) on Apr.24nd, 2024 >>>
 
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
         self.toolbar.click_btn_by_title(Helper.data_locale.RUN)
@@ -22,6 +40,16 @@ class CentralToolbarHelper:
             self.toolbar.wait_toast_disappear()
         if if_wait_run_enabled:
             self.toolbar.wait_until_enabled(self.toolbar.btn_by_title(Helper.data_locale.RUN))
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.24nd, 2024
+        time.sleep(1)
+
+        print('&&& ' + str(self.time_stamp))
+        # self.toolbar.screenshot_self('run_wo_time_stamp', self.time_stamp, mask_color='#000000')
+        # self.toolbar.screenshot_self('run_wo_time_stamp', self.toolbar, mask_color='#000000')
+        # self.screenshot_self('run_wo_time_stamp', self.center_toolbar_helper.time_stamp, mask_color='#000000')
+        # END Added by Jacky(ID: jawang) on Apr.24nd, 2024 >>>
 
     def cancel(self, if_wait_toast_disappear):
         self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)
@@ -76,10 +104,6 @@ class CentralToolbarHelper:
     def clear_listing(self):
         self.toolbar.click_btn_menu_by_title(Helper.data_locale.CLEAR, Helper.data_locale.LISTING)
 
-
-
-
-
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def code_to_flow(self):
@@ -93,27 +117,28 @@ class CentralToolbarHelper:
         self.close_alert_if_needed()
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
+
     def close_alert_if_needed(self):
         alert = Alert(self.toolbar.page, Helper.data_locale.STUDIO_NEXT)
         if alert.is_open():
             # alert.close_alert_dialog(Helper.data_locale.CLOSE)
             alert.close_dialog()
+
     def schedule_as_job(self):
         enabled = self.toolbar.click_menu_in_more_options(Helper.data_locale.SCHEDULE_AS_JOB)
         time.sleep(1)
         if enabled:
-            Dialog(self.toolbar.page,"新建预定").click_button_in_footer(Helper.data_locale.CANCEL)
-
-
-
+            Dialog(self.toolbar.page, "新建预定").click_button_in_footer(Helper.data_locale.CANCEL)
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def analyze_and_create_flow(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.ANALYZE_AND_CREATE_FLOW)
         time.sleep(0.5)
-        Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(Helper.data_locale.CANCEL)
+        Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(
+            Helper.data_locale.CANCEL)
         time.sleep(0.3)
+
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def add_to_my_favorites(self):
@@ -157,7 +182,7 @@ class CentralToolbarHelper:
 
         # Wait for 0.5 sec, otherwise items might have not been loaded.
         time.sleep(1)
-        print('+++ self.toolbar.page' + str(self.toolbar.page) +'+++')
+        print('+++ self.toolbar.page' + str(self.toolbar.page) + '+++')
 
         base = BasePage(self.toolbar.page)
 
@@ -169,7 +194,8 @@ class CentralToolbarHelper:
         # works for Quick Import NOT for programs
         # base.screenshot("//div[@data-testid='importViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
 
-        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", "download", user_assigned_xpath=True)
+        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", "download",
+                        user_assigned_xpath=True)
 
         # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
 
@@ -230,38 +256,43 @@ class CentralToolbarHelper:
         Dialog(self.toolbar.page, Helper.data_locale.EMAIL).screenshot_self('email')
         # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
 
-        Dialog(self.toolbar.page,Helper.data_locale.EMAIL).click_button_in_footer(Helper.data_locale.CANCEL)
+        Dialog(self.toolbar.page, Helper.data_locale.EMAIL).click_button_in_footer(Helper.data_locale.CANCEL)
 
     def apply_detail_layout_standard(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT,Helper.data_locale.STANDARD)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.STANDARD)
+
     def apply_detail_layout_horizontal(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT,Helper.data_locale.HORIZONTAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.HORIZONTAL)
+
     def apply_detail_layout_vertical(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT,Helper.data_locale.VERTICAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.VERTICAL)
 
     def hide_detail_tabs_code(self):
-        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.CODE)
+        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.CODE)
 
     def show_detail_tabs_code(self):
-        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.CODE)
+        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.CODE)
 
     def hide_detail_tabs_log(self):
-        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.LOG)
+        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.LOG)
 
     def show_detail_tabs_log(self):
-        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.LOG)
+        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.LOG)
 
     def hide_detail_tabs_result(self):
-        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.RESULTS)
+        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
+                                                  Helper.data_locale.RESULTS)
 
     def show_detail_tabs_result(self):
-        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.RESULTS)
+        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.RESULTS)
 
     def hide_detail_tabs_output_data(self):
-        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.OUTPUT_DATA)
+        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
+                                                  Helper.data_locale.OUTPUT_DATA)
 
     def show_detail_tabs_output_data(self):
-        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,Helper.data_locale.OUTPUT_DATA)
+        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
+                                                Helper.data_locale.OUTPUT_DATA)
 
     def hide_detail_tabs_listing(self):
         self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS,
@@ -277,10 +308,10 @@ class CentralToolbarHelper:
         pass
 
     def apply_main_layout_standard(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT,Helper.data_locale.STANDARD)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
 
     def apply_main_layout_horizontal(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT,Helper.data_locale.HORIZONTAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.HORIZONTAL)
 
     def apply_main_layout_vertical(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT,Helper.data_locale.VERTICAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.VERTICAL)

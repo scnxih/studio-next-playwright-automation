@@ -265,7 +265,6 @@ class BasePage:
 
         # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
 
-
     # Added by Jacky(ID: jawang) on Sept.19th, 2023 >>>
     """Added by Alice on 10/20/2023 start"""
 
@@ -590,8 +589,6 @@ class BasePage:
 
     """Updated by Alice on 2024/03/26 start, below are __screenshot related methods"""
 
-
-
     def get_screenshot_full_path(self, pic_name):
         output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
         testfile_abbreviation = Helper.get_testfile_abbreviation()
@@ -620,7 +617,7 @@ class BasePage:
         Helper.logger.debug("Screenshot final full path: " + final_full_path)
         return final_full_path
 
-    def __screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
+    def __screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, clip=None, mask=None, mask_color=None):
         """
         :param locator_or_xpath: Element xpath used to take screenshots, which will be combined into final total xpath.
         :param pic_name: Picture name that will be appended to image file name.
@@ -638,19 +635,41 @@ class BasePage:
             Helper.logger.debug("User assigned xpath")
             r_locator = self.transform_to_locator(locator_or_xpath)
         final_full_path = self.get_screenshot_full_path(pic_name)
-        if mask is None:
-            r_locator.screenshot(path=final_full_path)
-            return
+
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
+        # if mask is None:
+        #     r_locator.screenshot(path=final_full_path)
+        #     return
+        # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
         locators_mask = self.transform_to_locators_list(mask)
-        r_locator.screenshot(path=final_full_path, mask=locators_mask)
 
-    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, mask=None):
-        self.__screenshot(locator_or_xpath, pic_name, user_assigned_xpath, mask=mask)
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+        if clip is None:
+            r_locator.screenshot(path=final_full_path, mask=locators_mask, mask_color= mask_color)
+            return
+        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
+        # Original
+        # r_locator.screenshot(path=final_full_path, mask=locators_mask, mask_color=mask_color)
 
+        print('###: __screenshot clip: ' + str(clip))
+        print('###: __screenshot mask: ' + str(mask))
+        print('###: __screenshot path: ' + str(final_full_path))
 
-    def screenshot_self(self, pic_name, mask=None):
-        self.screenshot(self.base_xpath, pic_name, mask=mask)
+        # Revised
+        # self.page.screenshot(clip=clip, mask=locators_mask, mask_color=mask_color)
+        self.page.screenshot(path=final_full_path, clip=clip, mask=locators_mask, mask_color=mask_color)
+
+    def screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, clip=None, mask=None, mask_color=None):
+        print('@@@: screenshot clip: ' + str(clip))
+        print('@@@: screenshot mask: ' + str(mask))
+        self.__screenshot(locator_or_xpath, pic_name, user_assigned_xpath, clip, mask, mask_color)
+
+    def screenshot_self(self, pic_name, clip=None, mask=None, mask_color=None):
+        self.screenshot(self.base_xpath, pic_name, clip=clip, mask=mask, mask_color=mask_color)
 
     # Since it does NOT work (and I don't know why), comment it temporarily. Will investigate it later.
     # def screenshot_full_page(self,pic_name,mask=None):
