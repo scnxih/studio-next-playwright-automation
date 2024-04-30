@@ -43,6 +43,8 @@ class BasePage:
 
     def __resolve_xpath(self, xpath):
 
+        if hasattr(self, 'base_xpath') and xpath.startswith(self.base_xpath):
+            return xpath
         if hasattr(self, 'base_xpath') and xpath != self.base_xpath:
             return self.base_xpath + xpath
         return xpath

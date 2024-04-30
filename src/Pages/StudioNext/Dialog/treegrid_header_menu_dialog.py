@@ -24,6 +24,10 @@ class HeaderMenuDialog(Dialog):
     def tab_columns(self):
         return self.locate_xpath("//span[@role='tab'][@aria-label='columns']")
 
+    @property
+    def tab_filter(self):
+        return self.locate_xpath("//span[@role='tab'][@aria-label='filter']")
+
     def go_to_general_tab(self):
         is_selected = self.tab_general().get_attribute("class")
         if "selected" not in is_selected:
@@ -33,6 +37,11 @@ class HeaderMenuDialog(Dialog):
         is_selected = self.tab_columns().get_attribute("class")
         if "selected" not in is_selected:
             self.click(self.tab_columns())
+
+    def go_to_filter_tab(self):
+        is_selected = self.tab_filter().get_attribute("class")
+        if "selected" not in is_selected:
+            self.click(self.tab_filter())
 
     def no_pin_a_column(self):
         self.go_to_general_tab()

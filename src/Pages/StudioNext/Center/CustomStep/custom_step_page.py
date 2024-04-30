@@ -108,7 +108,10 @@ class CustomStepPage(CenterPage):
         self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
 
     """The save functions is not implemented in StudioNext, so pass now"""
-
+    def __designer_canvas(self):
+        return self.locate_xpath("//div[@data-testid='designCanvasTestID']")
+    def defocus_designer_control(self):
+        self.__designer_canvas().click(position={"x":1,"y":1})
     def save(self, folder_path=None, file_name="", if_replace=True, if_wait_toast_disappear=True):
         # self.center_toolbar_helper.save(folder_path, file_name, if_replace, if_wait_toast_disappear)
         pass
@@ -224,7 +227,9 @@ class CustomStepPage(CenterPage):
 
     def select_control(self, control_type: DesignerControlType, control_number: int) -> DesignerControl:
         designer_control = get_designer_control(self.page, control_type, control_number)
-        designer_control.click_self()
+        designer_control.base_locator.click(position={"x":2,"y":2})
+        time.sleep(0.3)
         return designer_control
+
 
 

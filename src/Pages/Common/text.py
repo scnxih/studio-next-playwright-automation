@@ -4,7 +4,7 @@ from src.Pages.Common.common_component import CommonComponent
 
 class Text(CommonComponent):
     def set_base_xpath(self):
-        self.base_xpath += "//input[@type='text']"
+        self.base_xpath += "//input[@type='text' or @type='tel']"
 
     # If the page contains more than one text, data_test_id or aria-label is required.
     def __init__(self, container_base_xpath, page, data_test_id="", aria_label="",supplement_base_xpath=""):
