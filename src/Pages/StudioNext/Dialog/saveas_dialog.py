@@ -42,7 +42,66 @@ class SaveAsDialog(Dialog):
             return False
         self.fill(self.input_file_name, file_name)
         time.sleep(0.3)
-        self.screenshot(self.base_xpath, "save_file")
+
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
+        # Stop to use
+        # self.screenshot(self.base_xpath, "save_file")
+        # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+        self.screenshot(self.base_xpath,
+                        "save_file",
+                        mask=[self.temp_content_selector],
+                        mask_color="#654321")
+        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+        # Test screenshot with mask and mask_color
+        self.screenshot(self.base_xpath,
+                        "save_file",
+                        mask=[self.temp_content_selector],
+                        mask_color="#000000")
+
+        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+        # Hide content view in save as dialog
+
+        # Does not work
+        # self.screenshot(self.base_xpath, "w_mask", mask=[self.temp_content_selector], mask_color="#000000")
+
+        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 451, 'y': 161, 'width': 660, 'height': 328})
+        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
+        # self.screenshot("save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
+
+        # Part of the Content Selector
+        # self.screenshot(self.temp_content_selector,
+        #                 "save_file_w_clip",
+        #                 clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
+
+        # Works
+        # self.screenshot(self.page.get_by_role("dialog"),
+        #                 "save_file_w_clip",
+        #                 user_assigned_xpath=True,
+        #                 clip={'x': 960, 'y': 540, 'width': 10, 'height': 25},
+        #                 mask=[self.temp_content_selector],
+        #                 mask_color="#000000")
+
+        # NOTE: This is the whole page
+        # x: [384: 840] y:[220: 711]
+        self.screenshot(self.base_xpath,
+                        "save_file_w_clip",
+                        user_assigned_xpath=True,
+                        clip={'x': 384, 'y': 220, 'width': 460, 'height': 491},
+                        mask=[self.temp_content_selector],
+                        mask_color="#000000")
+
+        self.screenshot(self.base_xpath, "save_file_w_mask", mask=[self.temp_content_selector], mask_color="#000000")
+        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024

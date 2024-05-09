@@ -12,9 +12,23 @@ from src.Helper.page_factory import *
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     WholePage(page).screenshot_self("login")
     PageHelper.new_sas_program(page)
-    WholePage(page).screenshot_self("newprogram")
+
+    # MODIFIED
+    # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
+    # Comment out since it has no mask
+    # WholePage(page).screenshot_self("newprogram")
+    # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
     editor = CodeEditorPage(page)
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+    # Mask the cursor
+    WholePage(page).screenshot_self("newprogram",
+                                    mask=[editor.editor.base_xpath],
+                                    mask_color="#012345")
+    # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
     editor.run(True)
     # editor.type_code_in_codeeditor("data null;call sleep(60,1);run;")
@@ -28,24 +42,22 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
-
     p: Page = page
 
-    # Test Mask Color --- Works Fine
     # NOTE: Upgrade playwright to v1.41+ so that mask_color can function normally
     # References:
     #   [1] https://github.com/microsoft/playwright-python/issues/2204
     #   [2] https://github.com/microsoft/playwright-python/pull/2205
 
-    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask_Black.png',
-                 mask=[p.get_by_test_id('tab-group-content-area-left')],
-                 mask_color='#000000')
+    # Test Mask Color --- Works Fine
+    # p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask_Black.png',
+    #              mask=[p.get_by_test_id('tab-group-content-area-left')],
+    #              mask_color='#000000')
 
     # Test Clip --- Works Fine: Clip the Accordion on LHS
-    '''
-    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Clip.png',
-                 clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
-    '''
+
+    # p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Clip.png',
+    #              clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
 
     # Test Omit Background --- Can not tell difference
     '''
@@ -53,7 +65,6 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
                  clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050},
                  omit_background=True)
     '''
-
 
     # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
@@ -65,6 +76,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1: Page = page
     time.sleep(0.5)
     page1.keyboard.press("Enter")
+    WholePage(page).screenshot_self("00",
+                                    mask=[page1.get_by_test_id('tab-group-content-area-left')],
+                                    mask_color='#000000')
     WholePage(page).screenshot_self("01")
     time.sleep(0.5)
     page1.keyboard.press("/")
@@ -572,11 +586,36 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     time.sleep(2)
     center_page: CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     time.sleep(3)
-    center_page.screenshot_self('deployed_and_scheduled')
+
+    # MODIFIED
+    # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
+    # Comment out Original Version
+    # center_page.screenshot_self('deployed_and_scheduled')
+    # Modified by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024
+    center_page.screenshot_self('deployed_and_scheduled',
+                                mask=[center_page.get_by_test_id("scheduledJobsPane-lastRefreshLabel")],
+                                mask_color="#000000")
+    # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
     time.sleep(1)
     center_page = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status)
     time.sleep(2)
-    center_page.screenshot_self('submission_status')
+
+    # MODIFIED
+    # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
+    # Comment out Original Version
+    # center_page.screenshot_self('submission_status')
+    # Modified by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024
+    center_page.screenshot_self('submission_status',
+                                clip={'x': 0, 'y': 0, 'width': 743, 'height': 926})
+    # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_start_page)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
     PageHelper.uncheck_menu_item_in_view(page, TopMenuItem.view_submission_status)
