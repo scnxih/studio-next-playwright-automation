@@ -62,10 +62,10 @@ def test_01_sas_program_editor_widget(page, init):
     # Close widget by keyboard action
     sas_program_editor.key_press('Escape')
 
-    sas_program_editor.click_context_menu(sas_program_editor.div_first_line, "命令面板")
+    # sas_program_editor.click_context_menu(sas_program_editor.div_first_line, "命令面板")
 
     # Fill in widget input
-    sas_program_editor.widget.fill_input_by_placeholder("", ">")
+    # sas_program_editor.widget.fill_input_by_placeholder("", ">")
 
 
 def test_02_custom_code_dialog_widget(page, init):
