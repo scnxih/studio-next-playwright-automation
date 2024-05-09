@@ -15,6 +15,8 @@ global_password = "The power to know!"
 
 
 global_server="daily.pgc.unx.sas.com"
+# global_server="analyst.dev.pgc.unx.sas.com"
+# global_server="studio.ingress-nginx.b-m1.sasstudio.sashq-d.openstack.sas.com"
 # global_server="tth.pgc.unx.sas.com"
 # global_server = "mwf.pgc.unx.sas.com"
 # global_server="racerd1640484.race.sas.com"
