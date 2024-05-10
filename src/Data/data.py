@@ -323,7 +323,7 @@ class Data:
     """Added by Alice on 01/25/2024 end"""
 
     NODE = "Node"
-    TABLE_PROPERTIES = "Table PropertiesPage"
+    TABLE_PROPERTIES = "Table Properties"
     TABLE_NAME_INPUT = "Table name:, Table name input"
     PREVIEW_DATA= "Preview Data"
     NODE_NAME= "Node name"
@@ -590,7 +590,7 @@ class Data:
     TIME = "Time"
     PREVIOUS_MONTH = "Previous month"
     NEXT_MONTH = "Next month"
-    
+    YEAR = "Year"
     JANUARY = "January"
     FEBRUARY = "February"
     MARCH = "March"

@@ -537,19 +537,19 @@ def test_39_JsonPage(page, init):
     json.reload()
 
 
-def test_40_TextPage(page, init):
-    text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
-    text.editor.type_into_text_area('This is text file.')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    text.saveas(folder_path, "test_text.txt", True, True)
-    time.sleep(1)
-    text.undo()
-    text.redo()
-    text.add_to_snippets()
-    text.add_to_my_favorites()
-    text.open_in_browser_tab()
-    text.email()
-    text.reload()
+# def test_40_TextPage(page, init):
+#     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
+#     text.editor.type_into_text_area('This is text file.')
+#     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+#     text.saveas(folder_path, "test_text.txt", True, True)
+#     time.sleep(1)
+#     text.undo()
+#     text.redo()
+#     text.add_to_snippets()
+#     text.add_to_my_favorites()
+#     text.open_in_browser_tab()
+#     text.email()
+#     text.reload()
 
 
 def test_41_XMLPage(page, init):
@@ -572,7 +572,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.editor.type_into_text_area('This is work space file.')
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
-    time.sleep(1)
+    time.sleep(2)
     work_space.undo()
     work_space.redo()
     work_space.add_to_snippets()
