@@ -66,6 +66,20 @@ class SubmissionStatusPage(CenterPage):
         """
         self.treegrid.sort_column(col_header_col_id, sort_order)
 
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024
+        time.sleep(1)
+        self.screenshot_self('sort_col_whole')
+        self.screenshot_self('whole_clip', clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        # self.screenshot(self.base_xpath, 'sort_col', clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        # self.screenshot(self.page, 'sort_col', clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        # self.screenshot(self.treegrid, 'sort_col', clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        # self.screenshot(self.treegrid.base_xpath, 'sort_col', user_assigned_xpath=True, clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        # self.screenshot(self.treegrid, 'sort_col', user_assigned_xpath=True, clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        self.screenshot(self.filter_pane.page, 'sort_col', user_assigned_xpath=True, clip={'x': 0, 'y': 0, 'width': 300, 'height': 400})
+        self.screenshot(self.filter_pane.page, 'sort_col_clp', user_assigned_xpath=True, clip={'x': 435, 'y': 83, 'width': 700, 'height': 800})
+        # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
     def select_a_row(self, row_index=None, name_text=None):
         """
         Description: select a row of submissions indicated by row-index.

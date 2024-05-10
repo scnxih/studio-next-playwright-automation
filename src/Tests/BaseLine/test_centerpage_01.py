@@ -607,13 +607,25 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # MODIFIED
     # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
     # Comment out Original Version
-    # center_page.screenshot_self('submission_status')
+    center_page.screenshot_self('submission_status')
     # Modified by Jacky(ID: jawang) on Apr.29th, 2024 >>>
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024
-    center_page.screenshot_self('submission_status',
-                                clip={'x': 0, 'y': 0, 'width': 743, 'height': 926})
+    # center_page.screenshot_self('subm_stat_clip',
+    #                             clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+    #
+
+    # center_page.screenshot(center_page.base_xpath,
+    #                        'subm_stat_clip',
+    #                        clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+
+    # center_page.screenshot(center_page.page,
+    #                        'subm_stat_clip',
+    #                        clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+
+    center_page.screenshot_self('subm_stat_clip', clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+
     # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
 
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_start_page)

@@ -1,8 +1,11 @@
 import time
 from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
+from src.Pages.StudioNext.Center.center_page import CenterPage
+from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
@@ -794,4 +797,45 @@ def test_25_flow_canvas_multiple_nodes_context_menu(page, init):
     time.sleep(1)
 
 
+def test_26_mask_time_in_log(page, init):
+    """
+    Run a *.sas program, then open summary/code/log/results/listing in a new tab.
+    """
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+    editor.format_program()
+    editor.run(True)
+
+    time.sleep(1)
+
+    # Click log tab page
+    editor.tab_group.click_tab_by_text(Helper.data_locale.LOG)
+
+    '''
+    WholePage(page).screenshot_self("sas_whole")
+
+    CenterPage(page).screenshot_self("center")
+
+    CenterPage(page).screenshot_self("center_with_mask",
+                                     mask=[CenterPage(page).toolbar.btn_by_title(Helper.data_locale.RUN)],
+                                     mask_color="#000000")
+
+    CenterPage(page).screenshot_self("center_with_mask2",
+                                     mask=['//span[@class="mtk25"][contains(text(),"cpu")]/../../'],
+                                     mask_color="#000000")
+
+    CenterPage(page).screenshot_self("real_time",
+                                     mask=[CenterPage(page).page.get_by_text("实际时间")],
+                                     mask_color="#000000")
+
+    CenterPage(page).screenshot_self("cpu_time",
+                                     mask=[CenterPage(page).page.get_by_text("CPU 时间")],
+                                     mask_color="#000000")
+    '''
+
+    CenterPage(page).screenshot_self("times",
+                                     mask=[CenterPage(page).page.get_by_text("实际时间"),
+                                           CenterPage(page).page.get_by_text("CPU 时间")],
+                                     mask_color="#000000")
 
