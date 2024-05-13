@@ -19,3 +19,4 @@ def test_temp(page, init):
     folder_path3 = ["SAS Content", "Public", "ßüöéçàê中文", "测试"]
     folder_path = [folder_path1, folder_path2, folder_path3]
     PageHelper.delete_multiple_items(page, 'ContextMenu', folder_path)
+#     test
