@@ -177,14 +177,28 @@ def test_05_screenshot_top_menu_view(page, init):
     WholePage(page).screenshot_self("submission_status")
 
     top.check_view_item(TopMenuItem.view_deployed_and_scheduled_jobs)
-    WholePage(page).screenshot_self("deployed_and_scheduled_jobs")
+
+    # Original
+    # WholePage(page).screenshot_self("deployed_and_scheduled_jobs")
+
+    # Added Mask and Mask Color
+    WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
+                                    mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'],
+                                    mask_color="#000000")
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
     top.check_view_item(TopMenuItem.view_start_page)
     WholePage(page).screenshot_self("start")
 
     top.check_view_item(TopMenuItem.view_startup_initialization_log)
-    WholePage(page).screenshot_self("init")
+
+    # Original
+    # WholePage(page).screenshot_self("init")
+
+    WholePage(page).screenshot_self("init",
+                                     mask=[CenterPage(page).page.get_by_text("实际时间"),
+                                           CenterPage(page).page.get_by_text("CPU 时间")],
+                                     mask_color="#000000")
 
     top.show_document_recovery()
     doc = DocumentRecoveryDialog(page)
