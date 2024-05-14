@@ -246,7 +246,7 @@ class BasePage:
 
     # ADDED
     # <<< Added by Jacky(ID: jawang) on Sept.19th, 2023
-    def __invoke_context_menu_by_right_click(self, locator_or_xpath):
+    def __invoke_context_menu_by_right_click(self, locator_or_xpath, take_screenshot):
         """
         Invoke context menu by right-click for sometimes Shift+F10 does not work
         :param locator_or_xpath: element ro right-click on
@@ -262,8 +262,9 @@ class BasePage:
         # Wait for 0.5 sec
         time.sleep(0.5)
 
-        # Whole page xpath: //div[@id='app']
-        self.screenshot("//div[@id='app']", 'context_menu', user_assigned_xpath=True)
+        if take_screenshot is True:
+             # Whole page xpath: //div[@id='app']
+            self.screenshot("//div[@id='app']", 'true_context_menu', user_assigned_xpath=True)
 
         # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
 
@@ -406,16 +407,13 @@ class BasePage:
 
     # ADDED
     # <<< Added by Jacky(ID: jawang) on Sept.22nd, 2023
-    def click_context_menu_by_right_click(self, locator_or_xpath, *context_menu_text):
+    def click_context_menu_by_right_click(self, locator_or_xpath, *context_menu_text, take_screenshot=False):
         """
 
-        :param locator_or_xpath:
-        :param context_menu_text:
-        :return:
         """
         r_locator = self.transform_to_locator(locator_or_xpath)
         r_locator.click()
-        self.__invoke_context_menu_by_right_click(locator_or_xpath)
+        self.__invoke_context_menu_by_right_click(locator_or_xpath, take_screenshot)
         time.sleep(0.3)
 
         # ADDED
@@ -619,7 +617,8 @@ class BasePage:
         Helper.logger.debug("Screenshot final full path: " + final_full_path)
         return final_full_path
 
-    def __screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, clip=None, mask=None, mask_color=None):
+    def __screenshot(self, locator_or_xpath, pic_name, user_assigned_xpath=False, clip=None, mask=None,
+                     mask_color=None):
         """
         :param locator_or_xpath: Element xpath used to take screenshots, which will be combined into final total xpath.
         :param pic_name: Picture name that will be appended to image file name.
@@ -650,7 +649,7 @@ class BasePage:
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
         if clip is None:
-            r_locator.screenshot(path=final_full_path, mask=locators_mask, mask_color= mask_color)
+            r_locator.screenshot(path=final_full_path, mask=locators_mask, mask_color=mask_color)
             return
         # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
