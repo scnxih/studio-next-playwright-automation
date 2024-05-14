@@ -195,15 +195,36 @@ def test_05_screenshot_top_menu_view(page, init):
     # Original
     # WholePage(page).screenshot_self("init")
 
-    WholePage(page).screenshot_self("init",
-                                     mask=[CenterPage(page).page.get_by_text("实际时间"),
-                                           CenterPage(page).page.get_by_text("CPU 时间")],
+    # Added mask for time displayed in log
+    # Note: class value in xpath
+    CenterPage(page).screenshot_self("times",
+                                     mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
+                                           '//span[@class="mtk1"][contains(text(),"实际")]/..'],
                                      mask_color="#000000")
 
     top.show_document_recovery()
     doc = DocumentRecoveryDialog(page)
     time.sleep(1)
-    doc.screenshot_self("document")
+
+    # Original
+    # doc.screenshot_self("document")
+
+    '''
+    # ONLY mask the first row
+    doc.screenshot_self("document",
+                        mask=['//div[@role="gridcell"][@col-id="dateModified"][contains(text(),"年")]'],
+                        mask_color="#000000")
+    '''
+
+    # Hide the files listed in the dialog, since these seem to be used for demonstration ONLY
+    doc.screenshot_self("document",
+                        mask=[
+                            '//div[@role="row"][@row-index="3"][@aria-rowindex="5"][contains(@row-id, "Public")]',
+                            '//div[@role="row"][@row-index="2"][@aria-rowindex="4"][contains(@row-id, "Public")]',
+                            '//div[@role="row"][@row-index="1"][@aria-rowindex="3"][contains(@row-id, "Public")]',
+                            '//div[@role="row"][@row-index="0"][@aria-rowindex="2"][contains(@row-id, "Public")]'],
+                        mask_color="#000000")
+
     doc.close_dialog()
 
     top.click_menu_item_view_navigation()
@@ -520,14 +541,13 @@ def test_09_accordion_steps(page, init):
     # steps.show_menu_starter_templates()
     # time.sleep(1)
 
-    step_path:list = [Helper.data_locale.STEP_CATEGORY_DATA,Helper.data_locale.STEP_TABLE]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Data")
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Data_Quality")
-
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
     steps.navigate_to_step(step_path)
@@ -549,7 +569,8 @@ def test_09_accordion_steps(page, init):
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Merge_Table")
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Machine_Learning")
 
@@ -587,6 +608,7 @@ def test_09_accordion_steps(page, init):
                        Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Text_Map")
+
 
 def test_10_flow_details_pane(page, init):
     """
