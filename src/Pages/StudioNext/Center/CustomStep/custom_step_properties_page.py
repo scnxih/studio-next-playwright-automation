@@ -32,7 +32,7 @@ class CustomStepPropertiesPage(BasePage):
 
     def set_indent(self, indent: str):
         get_numeric_stepper(self.base_xpath, self.page,
-                            supplement_base_xpath="[ancestor::div[@data-testid='datePickerAttributesIndent']]").set_value(
+                            supplement_base_xpath="[ancestor::div[contains(@data-testid,'indentLevel')]]").set_value(
             indent)
 
     def expand_dependencies(self):
