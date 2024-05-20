@@ -26,6 +26,7 @@ class PlaywrightHelper:
     @staticmethod
     def get_context(browser, str_locale):
         context = browser.new_context(locale=str_locale, viewport ={"width":1920,"height":1080})
+        # context = browser.new_context(locale=str_locale, viewport={"width": 3840, "height": 2160})
         # context = browser.new_context(locale=str_locale, viewport ={"width":1280,"height":1084})
         # context = browser.new_context(locale=str_locale)
         return context

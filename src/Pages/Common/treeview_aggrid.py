@@ -5,7 +5,7 @@ from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
 
 
-# This class is ag-grid tree view. The folder tree in SAS Server/SAS Content/Library pane can use it.
+# This class is ag-grid tree view. The folder tree in SAS Server/SAS Content/Library/Steps pane can use it.
 class TreeViewAGGrid(CommonComponent):
 
     def set_base_xpath(self):
