@@ -14,6 +14,13 @@ class MainCenterPage(CenterPage):
     def __init__(self, page):
         CenterPage.__init__(self, page)
         self.tab_group = TabGroup("", page)
+        self.time_info_array = ['//span[@class="mtk25"][contains(text(),"CPU")]/..',
+                                '//span[@class="mtk25"][contains(text(),"实际")]/..']
+
+    @property
+    def time_info_in_log(self):
+        return ['//span[@class="mtk25"][contains(text(),"CPU")]/..',
+                                '//span[@class="mtk25"][contains(text(),"实际")]/..']
 
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
         self.center_toolbar_helper.run(if_wait_toast_disappear, if_wait_run_enabled)
@@ -90,27 +97,37 @@ class MainCenterPage(CenterPage):
     def apply_detail_layout_standard(self):
         self.center_toolbar_helper.apply_detail_layout_standard()
         time.sleep(3)
-        self.screenshot(self.base_xpath, "std")
+        self.screenshot(self.base_xpath, "std",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def apply_detail_layout_horizontal(self):
         self.center_toolbar_helper.apply_detail_layout_horizontal()
         time.sleep(3)
-        self.screenshot(self.base_xpath, "horz")
+        self.screenshot(self.base_xpath, "horz",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def apply_detail_layout_vertical(self):
         self.center_toolbar_helper.apply_detail_layout_vertical()
         time.sleep(3)
-        self.screenshot(self.base_xpath, "vert")
+        self.screenshot(self.base_xpath, "vert",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "hide_code")
+        self.screenshot(self.base_xpath, "hide_code",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def show_detail_tabs_code(self):
         self.center_toolbar_helper.show_detail_tabs_code()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "show_code")
+        self.screenshot(self.base_xpath, "show_code",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def hide_detail_tabs_log(self):
         self.center_toolbar_helper.hide_detail_tabs_log()
@@ -120,17 +137,23 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_log(self):
         self.center_toolbar_helper.show_detail_tabs_log()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "show_log")
+        self.screenshot(self.base_xpath, "show_log",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def hide_detail_tabs_result(self):
         self.center_toolbar_helper.hide_detail_tabs_result()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "hide_result")
+        self.screenshot(self.base_xpath, "hide_result",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def show_detail_tabs_result(self):
         self.center_toolbar_helper.show_detail_tabs_result()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "show_details")
+        self.screenshot(self.base_xpath, "show_details",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def hide_detail_tabs_output_data(self):
         self.center_toolbar_helper.hide_detail_tabs_output_data()
@@ -140,18 +163,23 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_output_data(self):
         self.center_toolbar_helper.show_detail_tabs_output_data()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "show_output")
+        self.screenshot(self.base_xpath, "show_output",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
 
     def hide_detail_tabs_listing(self):
         self.center_toolbar_helper.hide_detail_tabs_listing()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "hide_listing")
+        self.screenshot(self.base_xpath, "hide_listing",
+                        mask=self.time_info_array,
+                        mask_color="#000000")
 
     def show_detail_tabs_listing(self):
         self.center_toolbar_helper.show_detail_tabs_listing()
         time.sleep(1)
-        self.screenshot(self.base_xpath, "show_listing")
-
+        self.screenshot(self.base_xpath, "show_listing",
+                        mask=self.time_info_in_log,
+                        mask_color="#000000")
     def reload(self):
         self.center_toolbar_helper.reload()
 

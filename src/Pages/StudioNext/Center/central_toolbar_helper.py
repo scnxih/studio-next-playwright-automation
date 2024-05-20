@@ -194,8 +194,14 @@ class CentralToolbarHelper:
         # works for Quick Import NOT for programs
         # base.screenshot("//div[@data-testid='importViewPane-toolbar-download-menu-content']", "download", user_assigned_xpath=True)
 
-        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", "download",
+        '''
+        # WORKS FINE
+        # Comment out temporarily to limit the amount of screenshots 
+        base.screenshot("//div[contains(@data-testid, 'toolbar-download-menu-content')]", 
+                        "download", 
                         user_assigned_xpath=True)
+
+        '''
 
         # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
 

@@ -16,6 +16,8 @@ from src.Pages.Common.dialog import Dialog
 # ADDED
 # <<< Added by Jacky(ID: jawang) on Sept.12th, 2023 """
 from src.Pages.Common.tab_group import TabGroup
+
+
 # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
 
 
@@ -33,6 +35,24 @@ class AutoexecDialog(Dialog):
         # <<< Added by Jacky(ID: jawang) on Sept.12th, 2023 """
         self.tab_group = TabGroup("", page)
         # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
+
+    @property
+    def time_info_in_log_tab(self):
+        """
+        Property used to mask CPU Time and Real Time in log
+        NOTE: This might be UNSTABLE owing to the future change of data-testid
+        """
+        return ['//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"CPU")]',
+               '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]']
+
+    @property
+    def time_info_in_log_tab2(self):
+        """
+        Property used to mask CPU Time and Real Time in log
+        Composed by base_xpath + time_info_xpath
+        """
+        return [self.base_xpath + '//span[@class="mtk25"][contains(text(),"实际")]',
+                self.base_xpath + '//span[@class="mtk25"][contains(text(),"CPU")]']
 
     @property
     def btn_bgSubmission_switch(self):
@@ -149,8 +169,6 @@ class AutoexecDialog(Dialog):
         # Step-3: Click the save button
         self.save()
 
-
-
     # Added by Jacky(ID: jawang) on Oct.27th, 2023 >>>
 
     def clear_autoexec(self):
@@ -161,11 +179,13 @@ class AutoexecDialog(Dialog):
         self.save()
 
     """Added by Alice on 09/19/2023 start"""
+
     def turn_on_switch_button(self):
         self.switch_button.turn_on()
 
     def turn_off_switch_button(self):
         self.switch_button.turn_off()
+
     """Added by Alice on 09/19/2023 end"""
 
     def wait_for_open(self):

@@ -166,7 +166,8 @@ class Toolbar(CommonComponent):
         time.sleep(0.5)
 
         # Generate screenshots for the overflow menu
-        MenuPage(self.page).screenshot_self("more_options")
+        # Comment out temporarily to reduce screenshot amount
+        # MenuPage(self.page).screenshot_self("more_options")
 
         # END Added by Jacky(ID: jawang) on Apr. 8th, 2024 >>>
 

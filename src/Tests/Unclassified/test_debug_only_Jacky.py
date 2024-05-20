@@ -6,6 +6,10 @@ from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPa
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
+from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
+from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
+from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
+from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
@@ -839,3 +843,65 @@ def test_26_mask_time_in_log(page, init):
                                            CenterPage(page).page.get_by_text("CPU 时间")],
                                      mask_color="#000000")
 
+def test_27_mask_time_infor_in_dialogs(page, init):
+    top_menu_page: TopMenuPage = TopMenuPage(page)
+    top_menu_page.click_options(TopMenuItem.options_autoexec_file)
+    time.sleep(1)
+    auto = AutoexecDialog(page)
+    auto.screenshot_self("auto_code")
+
+    # put in code
+    auto.type_codes("proc print data = sashelp.class;\n run;")
+
+    # run
+    auto.run()
+
+    # wait 0.5 sec
+    time.sleep(0.5)
+    auto.click_tab_log()
+
+    # Mask the time info and take screenshots
+    time.sleep(0.5)
+    auto.screenshot_self("auto_log",
+                         mask=['//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"CPU")]',
+                               '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]'],
+                         mask_color="#000000")
+
+    auto.screenshot_self("auto_log2",
+                         mask=auto.time_info_in_log_tab2,
+                         mask_color="#123456")
+
+    auto.close_dialog()
+
+    top_menu_page.click_options(TopMenuItem.options_custom_code)
+    time.sleep(1)
+    cus = CustomCodeDialog(page)
+
+    cus.tab_preamble.click()
+    cus.type_codes_in_preamble("proc print data = sashelp.class;\n run;")
+    cus.run()
+
+    cus.screenshot_self("custom_pre")
+
+    cus.click_tab_postamble()
+
+    time.sleep(0.5)
+    cus.screenshot_self("custom_post")
+    cus.click_tab_option()
+
+    time.sleep(0.5)
+    cus.screenshot_self("custom_options")
+    cus.close_dialog()
+
+    top_menu_page.click_options(TopMenuItem.options_manage_git_connections)
+    git = ManageGitConnectionDialog(page)
+    time.sleep(0.5)
+    git.screenshot_self("git_profile")
+    git.click_tab_repository()
+    git.screenshot_self("git_repository")
+    git.close_dialog()
+
+    top_menu_page.click_options(TopMenuItem.options_manage_keyboard_shortcuts)
+    short = ManageShortcutsDialog(page)
+    short.screenshot_self("shortcut")
+    short.close_dialog()
