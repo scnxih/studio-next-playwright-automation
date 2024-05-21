@@ -165,7 +165,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
                                     mask_color='#000000')
 
-    time.sleep(0.5)
+    time.sleep(1.0)
     editor.clear_code()
 
     # WholePage(page).screenshot_self("09")
@@ -174,21 +174,21 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask_color='#000000')
 
     editor.clear_log()
-
+    time.sleep(1.0)
     # WholePage(page).screenshot_self("10")
     WholePage(page).screenshot_self("10",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
                                     mask_color='#000000')
 
     editor.clear_output_data()
-
+    time.sleep(1.0)
     # WholePage(page).screenshot_self("11")
     WholePage(page).screenshot_self("11",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
                                     mask_color='#000000')
 
     editor.clear_results()
-    time.sleep(0.5)
+    time.sleep(1.0)
 
     # WholePage(page).screenshot_self("12")
     WholePage(page).screenshot_self("12",
@@ -196,7 +196,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask_color='#000000')
 
     editor.clear_listing()
-    time.sleep(0.5)
+    time.sleep(1.0)
 
     # WholePage(page).screenshot_self("13")
     WholePage(page).screenshot_self("13",
@@ -204,7 +204,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask_color='#000000')
 
     editor.clear_all()
-    time.sleep(0.5)
+    time.sleep(1.0)
 
     # WholePage(page).screenshot_self("14")
     WholePage(page).screenshot_self("14",

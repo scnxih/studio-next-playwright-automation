@@ -6,6 +6,7 @@ Description: StepsPage is child class of AccordionPage.
 import time
 
 from src.Pages.Common.dialog import Alert
+from src.Pages.Common.treeview_aggrid import TreeViewAGGrid
 from src.Pages.Common.treeview_common import TreeViewCommon
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
@@ -16,7 +17,8 @@ from src.Helper.helper import *
 class StepsPage(AccordionPage):
     def __init__(self, page, title=''):
         AccordionPage.__init__(self, page, title)
-        self.tree = TreeViewCommon(self.base_xpath, self.page)
+        # self.tree = TreeViewCommon(self.base_xpath, self.page)
+        self.tree = TreeViewAGGrid(self.base_xpath, self.page)
 
     def new(self, new_steps_type: NewStepsType):
         test_id_new = "stepsNavPane-toolBarNewButton-button"
@@ -61,3 +63,4 @@ class StepsPage(AccordionPage):
 
     def navigate_to_step(self, step_path: list):
         self.tree.navigate_to_element(step_path)
+        time.sleep(1)

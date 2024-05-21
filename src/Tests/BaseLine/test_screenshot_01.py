@@ -543,10 +543,12 @@ def test_09_accordion_steps(page, init):
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
     steps.navigate_to_step(step_path)
+
     AccordionPage(page).screenshot_self("Data")
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
     steps.navigate_to_step(step_path)
+
     AccordionPage(page).screenshot_self("Data_Quality")
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]

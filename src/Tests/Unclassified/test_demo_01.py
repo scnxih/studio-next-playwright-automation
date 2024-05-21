@@ -595,7 +595,9 @@ run;"""
     # table_pane.click_Tab("预览数据")
     table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
+    WholePage(page).screenshot_self("test")
 
+    # Dialog(page).screenshot_self()
     # PageHelper.show_accordion(page,AccordionType.libraries)
     # lib = LibraryPage(page)
     # lib.open_table("WORK","SORTED")
