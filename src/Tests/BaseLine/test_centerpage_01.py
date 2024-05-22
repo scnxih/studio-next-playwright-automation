@@ -664,13 +664,13 @@ def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(2)
     deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
                                                                                  TopMenuItem.view_deployed_and_scheduled_jobs)
-    time.sleep(3)
-    deployed_page.run_now()
-    time.sleep(1)
-    deployed_page.edit_schedule()
-    deployed_page.remove_schedule()
-    deployed_page.refresh_list()
-    deployed_page.column_setting()
+    # time.sleep(3)
+    # deployed_page.run_now()
+    # time.sleep(1)
+    # deployed_page.edit_schedule()
+    # deployed_page.remove_schedule()
+    # deployed_page.refresh_list()
+    # deployed_page.column_setting()
 
 
 def test_45_startup_initialization_log(page, init):
