@@ -30,6 +30,19 @@ class SaveAsDialog(Dialog):
         return self.get_by_test_id("contentSelector-save-contentSelector-navigator-table-gridWrapper")
     # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
+    @property
+    def content_selector_navigator_tree(self):
+        """
+        Content Selector Navigator Tree in the middle of 'Save As' Dialog
+        Note: This is a temporary solution, would be replaced after related common components are fully implemented.
+        //div[@data-testid="contentSelector-save-contentSelector-navigator-tree"]
+        """
+        return self.get_by_test_id("contentSelector-save-contentSelector-navigator-tree")
+
+    # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
+
     def wait_for_open(self):
         # self.wait_for(self.input_file_name)
         time.sleep(2)
@@ -51,21 +64,39 @@ class SaveAsDialog(Dialog):
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+
+        """
         self.screenshot(self.base_xpath,
                         "save_file",
                         mask=[self.temp_content_selector],
                         mask_color="#654321")
+        """
+
         # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
         # Test screenshot with mask and mask_color
+
+        """
         self.screenshot(self.base_xpath,
                         "save_file",
                         mask=[self.temp_content_selector],
                         mask_color="#000000")
+        """
 
         # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
+        # Mask both the content selector on the right hand side and the navigator tree in the middle
+
+        self.screenshot(self.base_xpath,
+                        "save_file",
+                        mask=[self.temp_content_selector, self.content_selector_navigator_tree],
+                        mask_color="#000000")
+
+        # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024

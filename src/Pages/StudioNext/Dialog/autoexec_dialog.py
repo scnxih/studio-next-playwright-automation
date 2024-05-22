@@ -78,6 +78,13 @@ class AutoexecDialog(Dialog):
     def div_first_line(self):
         return self.locate_xpath('//div[@class="view-line"]')
 
+    @property
+    def scroll_bar(self):
+        """
+        scroll bar in the dialog
+        """
+        return ['//div[@role="presentation"][@class="visible scrollbar vertical"]']
+
     def type_codes(self, text):
         self.click(self.tab_Code)
         self.editor_text_area.type_into_text_area(text)

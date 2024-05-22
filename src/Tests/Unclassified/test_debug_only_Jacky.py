@@ -665,13 +665,13 @@ def test_22_learn_flow_canvas_operations(page, init):
     select_node_in_flow_canvas(page, Helper.data_locale.TABLE)
     time.sleep(1)
 
-
     select_node_in_flow_canvas(page, Helper.data_locale.FILE)
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.CALCULATE_COLUMNS)
     time.sleep(1)
+
 
 def test_23_column_resolution_load_table(page, init):
     """
@@ -697,6 +697,7 @@ def test_23_column_resolution_load_table(page, init):
 
     flow.arrange_nodes()
 
+
 def test_24_flow_canvas_node_context_menu(page, init):
     """
     Learn to use context menu of node in flow canvas
@@ -717,6 +718,7 @@ def test_24_flow_canvas_node_context_menu(page, init):
 
     # NOTE: Exact has to be added otherwise would NOT work
     page.get_by_text(Helper.data_locale.DELETE, exact=True).click()
+
 
 def test_25_flow_canvas_multiple_nodes_context_menu(page, init):
     """
@@ -843,7 +845,8 @@ def test_26_mask_time_in_log(page, init):
                                            CenterPage(page).page.get_by_text("CPU 时间")],
                                      mask_color="#000000")
 
-def test_27_mask_time_infor_in_dialogs(page, init):
+
+def test_27_mask_time_info_in_dialogs(page, init):
     top_menu_page: TopMenuPage = TopMenuPage(page)
     top_menu_page.click_options(TopMenuItem.options_autoexec_file)
     time.sleep(1)
@@ -863,8 +866,9 @@ def test_27_mask_time_infor_in_dialogs(page, init):
     # Mask the time info and take screenshots
     time.sleep(0.5)
     auto.screenshot_self("auto_log",
-                         mask=['//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"CPU")]',
-                               '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]'],
+                         mask=[
+                             '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"CPU")]',
+                             '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]'],
                          mask_color="#000000")
 
     auto.screenshot_self("auto_log2",
@@ -905,3 +909,89 @@ def test_27_mask_time_infor_in_dialogs(page, init):
     short = ManageShortcutsDialog(page)
     short.screenshot_self("shortcut")
     short.close_dialog()
+
+
+def test_28_autoexec_dialog_scroll_bars(page, init):
+    """
+    Test editor Autoexec editor
+    :param page:
+    :param init:
+    :return:
+    """
+    text = """
+    
+        proc means data=sashelp.class maxdec=2 fw=10 printalltypes;
+           class Sex;
+           var Height;
+           title 'Descriptive Statistics Using PROC MEANS';
+        run;
+        title;
+        
+        ods graphics on /width=600 ;
+        ods select histogram probplot;
+        
+        * Using SAS to Picture Your Data;
+        
+        proc univariate data=sashelp.class;
+           var Height;
+           id Name;
+           histogram Height / normal(mu=est sigma=est)  NMIDPOINTS=8;
+           inset skewness kurtosis / position=ne;
+           probplot Height / normal(mu=est sigma=est);
+           inset skewness kurtosis;
+           title 'Descriptive Statistics Using PROC UNIVARIATE';
+        run;
+        title;
+        
+        proc means data=sashelp.class maxdec=2 fw=10 printalltypes n mean median std 
+                var max min q1 q3;
+            var Height;
+            title 'Selected Descriptive Statistics for Height';
+        run;
+        
+        title;
+
+    """
+
+    PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    autoexec_editor = PageHelper.create_plain_editor_factory().create_editor("autoexec", page)
+    autoexec_editor.fill_text_area_with(text)
+
+    autoexec_dialog = AutoexecDialog(page)
+
+    autoexec_dialog.click_tab_log()
+
+    autoexec_dialog.run()
+
+    time.sleep(10)
+
+
+    if autoexec_dialog.btn_run.is_enabled():
+        # autoexec_dialog.screenshot_self('AutoDlg')
+        autoexec_dialog.screenshot_self('AutoDlg',
+                                        mask=autoexec_dialog.scroll_bar,
+                                        mask_color="#01651F")
+
+    autoexec_dialog.save()
+
+
+def test_29_custom_dialog_scroll_bars(page, init):
+    """
+    Test code editor in Custom Code dialog
+    :param page:
+    :param init:
+    :return:
+    """
+
+    text = '''
+    proc print data=sashelp.class;
+    run;
+    '''
+
+    PageHelper.click_options(page, TopMenuItem.options_custom_code)
+    custom_code_editor = PageHelper.create_plain_editor_factory().create_editor("custom", page)
+    custom_code_editor.fill_text_area_with(text)
+    #
+    custom_code_dialog = CustomCodeDialog(page)
+    custom_code_dialog.run()
+    custom_code_dialog.save()

@@ -77,9 +77,18 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     time.sleep(0.5)
     page1.keyboard.press("Enter")
     WholePage(page).screenshot_self("00",
-                                    mask=[page1.get_by_test_id('tab-group-content-area-left')],
+                                    mask=[page1.get_by_test_id('tab-group-content-area-left'),
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
                                     mask_color='#000000')
-    WholePage(page).screenshot_self("01")
+
+    # WholePage(page).screenshot_self("01")
+
+    #
+    WholePage(page).screenshot_self("01",
+                                    mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     time.sleep(0.5)
     page1.keyboard.press("/")
     page1.keyboard.press("*")
@@ -99,49 +108,108 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("Space")
     page1.keyboard.press("*")
     page1.keyboard.press("/")
-    WholePage(page).screenshot_self("02")
+    # WholePage(page).screenshot_self("02")
+    WholePage(page).screenshot_self("02",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
     for i in range(3):
         editor.undo()
         time.sleep(0.5)
-    WholePage(page).screenshot_self("03")
+    # WholePage(page).screenshot_self("03")
+    WholePage(page).screenshot_self("03",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
     for i in range(3):
         editor.redo()
         time.sleep(0.5)
-    WholePage(page).screenshot_self("04")
+    # WholePage(page).screenshot_self("04")
+    WholePage(page).screenshot_self("04",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
     editor.run(True)
     time.sleep(0.5)
 
     editor.format_program()
-    WholePage(page).screenshot_self("05")
+    # Original
+    # WholePage(page).screenshot_self("05")
+
+    # Hide vertical scroll bar
+    WholePage(page).screenshot_self("05",
+                                    mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     time.sleep(0.5)
     editor.debug()
-    WholePage(page).screenshot_self("06")
+
+    # WholePage(page).screenshot_self("06")
+    WholePage(page).screenshot_self("06",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
     time.sleep(0.5)
     editor.code_to_flow()
-    WholePage(page).screenshot_self("07")
+
+    # WholePage(page).screenshot_self("07")
+    WholePage(page).screenshot_self("07",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
     time.sleep(0.5)
     editor.add_to_snippets()
-    WholePage(page).screenshot_self("08")
-    time.sleep(0.5)
+
+    # Original
+    # WholePage(page).screenshot_self("08")
+
+    # Added mask for scroll bar
+    WholePage(page).screenshot_self("08",
+                                    mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
+    time.sleep(1.0)
     editor.clear_code()
-    time.sleep(1)
-    WholePage(page).screenshot_self("09")
+
+    # WholePage(page).screenshot_self("09")
+    WholePage(page).screenshot_self("09",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
 
     editor.clear_log()
-    time.sleep(1)
-    WholePage(page).screenshot_self("10")
+    time.sleep(1.0)
+    # WholePage(page).screenshot_self("10")
+    WholePage(page).screenshot_self("10",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     editor.clear_output_data()
-    time.sleep(1)
-    WholePage(page).screenshot_self("11")
+    time.sleep(1.0)
+    # WholePage(page).screenshot_self("11")
+    WholePage(page).screenshot_self("11",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     editor.clear_results()
-    time.sleep(1)
-    WholePage(page).screenshot_self("12")
+    time.sleep(1.0)
+
+    # WholePage(page).screenshot_self("12")
+    WholePage(page).screenshot_self("12",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     editor.clear_listing()
-    time.sleep(1)
-    WholePage(page).screenshot_self("13")
+    time.sleep(1.0)
+
+    # WholePage(page).screenshot_self("13")
+    WholePage(page).screenshot_self("13",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
+
     editor.clear_all()
-    time.sleep(1)
-    WholePage(page).screenshot_self("14")
+    time.sleep(1.0)
+
+    # WholePage(page).screenshot_self("14")
+    WholePage(page).screenshot_self("14",
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask_color='#000000')
 
 
 def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
