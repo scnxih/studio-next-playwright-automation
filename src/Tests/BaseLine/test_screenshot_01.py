@@ -544,12 +544,16 @@ def test_09_accordion_steps(page, init):
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
     steps.navigate_to_step(step_path)
 
+    # Original
     AccordionPage(page).screenshot_self("Data")
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
     steps.navigate_to_step(step_path)
 
-    AccordionPage(page).screenshot_self("Data_Quality")
+    # AccordionPage(page).screenshot_self("Data_Quality")
+    AccordionPage(page).screenshot_self("Data_Quality",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
     steps.navigate_to_step(step_path)
@@ -565,51 +569,84 @@ def test_09_accordion_steps(page, init):
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_LIST_TABLE_ATTRIBUTES]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Examine_Data")
+    # AccordionPage(page).screenshot_self("Examine_Data")
+    AccordionPage(page).screenshot_self("Examine_Data",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Merge_Table")
+    # AccordionPage(page).screenshot_self("Merge_Table")
+    AccordionPage(page).screenshot_self("Merge_Table",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                        Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Machine_Learning")
+    # AccordionPage(page).screenshot_self("Machine_Learning")
+    AccordionPage(page).screenshot_self("Machine_Learning",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS,
                        Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Register_Python")
+
+    # AccordionPage(page).screenshot_self("Register_Python")
+    AccordionPage(page).screenshot_self("Register_Python",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                        Helper.data_locale.STEP_CORE_DECOMPOSITION]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Core")
+
+    # AccordionPage(page).screenshot_self("Core")
+    AccordionPage(page).screenshot_self("Core",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
                        Helper.data_locale.STEP_STANDARDIZE_DATA]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Standardize_Data")
+
+    # AccordionPage(page).screenshot_self("Standardize_Data")
+    AccordionPage(page).screenshot_self("Standardize_Data",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
                        Helper.data_locale.STEP_PARETO_ANALYSIS]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Pareto")
+    # AccordionPage(page).screenshot_self("Pareto")
+    AccordionPage(page).screenshot_self("Pareto",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
                        Helper.data_locale.STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Multidimensional")
+    # AccordionPage(page).screenshot_self("Multidimensional")
+    AccordionPage(page).screenshot_self("Multidimensional",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
                        Helper.data_locale.STEP_TRANSPOSE_DATA]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Transpose")
+    # AccordionPage(page).screenshot_self("Transpose")
+    AccordionPage(page).screenshot_self("Transpose",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
                        Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step(step_path)
-    AccordionPage(page).screenshot_self("Text_Map")
+    # AccordionPage(page).screenshot_self("Text_Map")
+    AccordionPage(page).screenshot_self("Text_Map",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
 
 
 def test_10_flow_details_pane(page, init):
