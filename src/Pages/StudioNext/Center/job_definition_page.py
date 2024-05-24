@@ -44,7 +44,7 @@ class JobDefinitionPage(CenterPage):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
         self.toolbar.click_menu_item(Helper.data_locale.CODE)
-        self.__close_alert_if_needed()
+        self.toolbar.page.bring_to_front()
 
     def open_in_browser_tab_job_form(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.OPEN_IN_BROWSER_TAB)
@@ -52,7 +52,8 @@ class JobDefinitionPage(CenterPage):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
         self.toolbar.click_menu_item(Helper.data_locale.JOB_FORM)
-        self.__close_alert_if_needed()
+        self.toolbar.page.bring_to_front()
+
 
     def apply_main_layout_standard(self):
         self.center_toolbar_helper.apply_main_layout_standard()
