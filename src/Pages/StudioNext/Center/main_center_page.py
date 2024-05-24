@@ -149,7 +149,7 @@ class MainCenterPage(CenterPage):
         self.center_toolbar_helper.show_detail_tabs_log()
         time.sleep(1)
         self.screenshot(self.base_xpath, "show_log",
-                        mask=[self.get_by_test_id("programView-log-viewer-content-detail")],
+                        mask=self.time_info_in_log + [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 
     def hide_detail_tabs_result(self):
@@ -191,7 +191,7 @@ class MainCenterPage(CenterPage):
         self.center_toolbar_helper.show_detail_tabs_listing()
         time.sleep(1)
         self.screenshot(self.base_xpath, "show_listing",
-                        mask=[self.get_by_test_id("programView-log-viewer-content-detail")],
+                        mask=self.time_info_in_log + [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
     def reload(self):
         self.center_toolbar_helper.reload()
