@@ -35,7 +35,6 @@ class TextCenterPage(CenterPage):
 
         # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
 
-
         self.page.bring_to_front()
 
     # ADDED
@@ -47,7 +46,7 @@ class TextCenterPage(CenterPage):
         if not self.toolbar.click_menu_in_more_options(Helper.data_locale.OPEN_IN_BROWSER_TAB):
             return
         with self.toolbar.page.expect_popup() as browser_tab_page_info:
-                self.toolbar.click_dialog_title_or_studionext_header()
+            self.toolbar.click_dialog_title_or_studionext_header()
         page2 = browser_tab_page_info.value
         time.sleep(1)
         self.page.bring_to_front()
@@ -72,8 +71,13 @@ class TextCenterPage(CenterPage):
         # Wait for half second to avoid trouble caused by performance
         time.sleep(0.5)
 
-        self.screenshot_self('undo')
+        # self.screenshot_self('undo')
         # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
+
+        # data-testid="textViewPane-editorPane-editor"
+        self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
+                        'undo',
+                        user_assigned_xpath=True)
 
     def redo(self):
         self.center_toolbar_helper.redo()
@@ -83,8 +87,13 @@ class TextCenterPage(CenterPage):
         # Wait for half second to avoid trouble caused by performance
         time.sleep(0.5)
 
-        self.screenshot_self('redo')
+        # self.screenshot_self('redo')
         # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
+
+        # data-testid="textViewPane-editorPane-editor"
+        self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
+                        'redo',
+                        user_assigned_xpath=True)
 
     def add_to_snippets(self):
         self.center_toolbar_helper.add_to_snippets()

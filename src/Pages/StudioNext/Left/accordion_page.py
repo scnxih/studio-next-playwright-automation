@@ -16,6 +16,16 @@ class AccordionPage(BasePage):
             self.base_xpath += f"[.//span[text()='" + title + "']]"
         self.toolbar = Toolbar(self.base_xpath, page)
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
+    @property
+    def ag_body_vertical_scroll_bar(self):
+        """
+        Vertical scroll bar xpath: //div[@class="ag-body-vertical-scroll"]
+        """
+        return self.locate_xpath("//div[@class='ag-body-vertical-scroll']")
+    # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
+
     @property
     def tab_open_item(self):
         return self.locate_xpath("//div[@data-testid='studioPropertiesLayout-openItems-tabItem']")

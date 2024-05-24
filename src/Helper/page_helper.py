@@ -94,6 +94,13 @@ class PageHelper:
         top_menu.new_item(TopMenuItem.new_file_types_xml)
         top_menu.new_item(TopMenuItem.new_file_types_workspace)
 
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
+        # Wait until the menu disappear
+        # Otherwise, menu will be shown in screenshot
+        time.sleep(0.5)
+        # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
+
         whole: WholePage = WholePage(page)
         whole.screenshot_self("new_all_tabs")
 

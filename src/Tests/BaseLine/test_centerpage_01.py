@@ -136,7 +136,10 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Hide vertical scroll bar
     WholePage(page).screenshot_self("05",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
-                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'
+                                          ],
                                     mask_color='#000000')
 
     time.sleep(0.5)
@@ -144,14 +147,18 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # WholePage(page).screenshot_self("06")
     WholePage(page).screenshot_self("06",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
     time.sleep(0.5)
     editor.code_to_flow()
 
     # WholePage(page).screenshot_self("07")
     WholePage(page).screenshot_self("07",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
     time.sleep(0.5)
     editor.add_to_snippets()
@@ -162,7 +169,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Added mask for scroll bar
     WholePage(page).screenshot_self("08",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
-                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     time.sleep(1.0)
@@ -170,21 +179,27 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # WholePage(page).screenshot_self("09")
     WholePage(page).screenshot_self("09",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     editor.clear_log()
     time.sleep(1.0)
     # WholePage(page).screenshot_self("10")
     WholePage(page).screenshot_self("10",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     editor.clear_output_data()
     time.sleep(1.0)
     # WholePage(page).screenshot_self("11")
     WholePage(page).screenshot_self("11",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     editor.clear_results()
@@ -192,7 +207,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # WholePage(page).screenshot_self("12")
     WholePage(page).screenshot_self("12",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     editor.clear_listing()
@@ -200,15 +217,20 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # WholePage(page).screenshot_self("13")
     WholePage(page).screenshot_self("13",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
     editor.clear_all()
     time.sleep(1.0)
 
     # WholePage(page).screenshot_self("14")
+    # '//div[@data-testid="programViewPane-toolbar"]'],
     WholePage(page).screenshot_self("14",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]'],
+                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]'],
                                     mask_color='#000000')
 
 
@@ -732,13 +754,18 @@ def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(2)
     deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
                                                                                  TopMenuItem.view_deployed_and_scheduled_jobs)
-    # time.sleep(3)
-    # deployed_page.run_now()
-    # time.sleep(1)
-    # deployed_page.edit_schedule()
-    # deployed_page.remove_schedule()
-    # deployed_page.refresh_list()
-    # deployed_page.column_setting()
+
+    """
+    # Comment out temporarily because of the UI change
+    
+    time.sleep(3)
+    deployed_page.run_now()
+    time.sleep(1)
+    deployed_page.edit_schedule()
+    deployed_page.remove_schedule()
+    deployed_page.refresh_list()
+    deployed_page.column_setting()
+    """
 
 
 def test_45_startup_initialization_log(page, init):
