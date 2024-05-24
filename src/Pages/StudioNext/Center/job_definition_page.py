@@ -4,6 +4,8 @@ Date: November 06, 2023
 Description: DeployedScheduledJobPage will inherit from CenterPage class。
 
 """
+import time
+
 from src.Pages.Common.editor_text_area import EditorTextArea
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.center_page import *
@@ -44,6 +46,7 @@ class JobDefinitionPage(CenterPage):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
         self.toolbar.click_menu_item(Helper.data_locale.CODE)
+        time.sleep(1)
         self.toolbar.page.bring_to_front()
 
     def open_in_browser_tab_job_form(self):
@@ -52,6 +55,7 @@ class JobDefinitionPage(CenterPage):
             self.toolbar.click_dialog_title_or_studionext_header()
             return
         self.toolbar.click_menu_item(Helper.data_locale.JOB_FORM)
+        time.sleep(1)
         self.toolbar.page.bring_to_front()
 
 
