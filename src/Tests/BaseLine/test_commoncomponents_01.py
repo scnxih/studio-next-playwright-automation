@@ -14,8 +14,8 @@ def test_01_toolbar(page, init):
     PageHelper.show_keyboard_shortcuts_dialog(page)
     time.sleep(1)
 
-    # Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
-    Dialog(page).click_button_in_footer("Close")
+    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+    # Dialog(page).click_button_in_footer("Close")
     time.sleep(1)
     PageHelper.show_document_recovery_dialog(page)
     time.sleep(1)
