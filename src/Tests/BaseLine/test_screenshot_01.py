@@ -259,7 +259,11 @@ def test_06_screenshot_top_right_items(page, init):
 
     top.click_about()
     time.sleep(2)
-    Dialog(page).screenshot_self("about")
+    # Dialog(page).screenshot_self("about")
+    Dialog(page).screenshot_self("about",
+                                 mask=['//span[@id="release_sas_RC-about-field-0"]',
+                                       '//span[@id="site-number_sas_RC-about-field-0"]'],
+                                 mask_color="#000000")
     Dialog(page).close_dialog()
 
     top.click_manage_features()

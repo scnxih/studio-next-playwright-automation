@@ -178,60 +178,101 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.clear_code()
 
     # WholePage(page).screenshot_self("09")
-    WholePage(page).screenshot_self("09",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
-                                    mask_color='#000000')
+
+    if WholePage(page).wait_toast_pop():
+        WholePage(page).screenshot_self("09",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]')
+                                              ],
+                                        mask_color='#000000')
 
     editor.clear_log()
-    time.sleep(1.0)
+    # Original
+    # time.sleep(1.0)
     # WholePage(page).screenshot_self("10")
-    WholePage(page).screenshot_self("10",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
-                                    mask_color='#000000')
+
+    if WholePage(page).wait_toast_pop():
+        # Take the screenshot when toast message popped up
+        # Otherwise do not take the screenshots
+        WholePage(page).screenshot_self("10",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              ],
+                                        mask_color='#000000')
 
     editor.clear_output_data()
-    time.sleep(1.0)
+
+    # Original
+    # time.sleep(1.0)
     # WholePage(page).screenshot_self("11")
-    WholePage(page).screenshot_self("11",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
-                                    mask_color='#000000')
+
+    if WholePage(page).wait_toast_pop():
+        # Take the screenshot when toast message popped up
+        # Otherwise do not take the screenshots
+        WholePage(page).screenshot_self("11",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              ],
+                                        mask_color='#000000')
 
     editor.clear_results()
-    time.sleep(1.0)
 
+    # time.sleep(1.0)
     # WholePage(page).screenshot_self("12")
-    WholePage(page).screenshot_self("12",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
-                                    mask_color='#000000')
+
+    if WholePage(page).wait_toast_pop():
+        WholePage(page).screenshot_self("12",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              ],
+                                        mask_color='#000000')
 
     editor.clear_listing()
-    time.sleep(1.0)
 
+    # Original
+    # time.sleep(1.0)
     # WholePage(page).screenshot_self("13")
-    WholePage(page).screenshot_self("13",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
+
+    if WholePage(page).wait_toast_pop():
+        WholePage(page).screenshot_self("13",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              ],
+                                        mask_color='#000000')
+    """
+    WholePage(page).screenshot_self("13b",
+                                    mask=[WholePage(page).locator("//div[@data-testid='appMessageToast']")],
                                     mask_color='#000000')
 
+    WholePage(page).screenshot_self("13c",
+                                    mask=[WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]')],
+                                    mask_color='#000000')
+    """
     editor.clear_all()
-    time.sleep(1.0)
 
+    # Original
+    # time.sleep(1.0)
     # WholePage(page).screenshot_self("14")
+
     # '//div[@data-testid="programViewPane-toolbar"]'],
-    WholePage(page).screenshot_self("14",
-                                    mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
-                                    mask_color='#000000')
+    if WholePage(page).wait_toast_pop():
+        WholePage(page).screenshot_self("14",
+                                        mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              '//div[@class="visible scrollbar horizontal"]',
+                                              '//div[@class="visible scrollbar vertical"]',
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              ],
+                                        mask_color='#000000')
 
 
 def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
@@ -689,10 +730,22 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024
+    """
+    # Comment out for lack of masks
     center_page.screenshot_self('deployed_and_scheduled',
-                                mask=[center_page.get_by_test_id("scheduledJobsPane-lastRefreshLabel")],
+                                mask=[center_page.get_by_test_id("scheduledJobsPane-lastRefreshLabel"),],
                                 mask_color="#000000")
+    """
     # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
+    # data-testid="scheduledJobsPane-monitoringTab-agGrid"
+    center_page.screenshot_self('deployed_and_scheduled',
+                                mask=['//div[@class="ag-center-cols-viewport"]',
+                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                mask_color="#000000")
+    # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     time.sleep(1)
     center_page = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_submission_status)
@@ -701,8 +754,16 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # MODIFIED
     # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
     # Comment out Original Version
-    center_page.screenshot_self('submission_status')
+    # center_page.screenshot_self('submission_status')
     # Modified by Jacky(ID: jawang) on Apr.29th, 2024 >>>
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
+    center_page.screenshot_self('submission_status',
+                                mask=['//div[@class="ag-center-cols-viewport"]',
+                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                mask_color="#000000")
+    # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.29th, 2024

@@ -564,6 +564,31 @@ class BasePage:
                     self.click_dialog_title_or_studionext_header()
                 # Helper.logger.debug("10. toast disappear")
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on May.29th, 2024
+    def wait_toast_pop(self):
+        """
+        Wait until the toast message popped up
+        """
+        if self.__div_toast is not None:
+            Helper.logger.debug("0. toast is shown")
+            time.sleep(0.5)
+
+            # self.__div_toast.wait_for(timeout=1500, state="visible")
+            # self.__div_toast.wait_for(timeout=1500, state="attached")
+            return True
+        else:
+            Helper.logger.debug("1. toast is invisible")
+            try:
+                self.__div_toast.wait_for(timeout=1000, state="visible")
+            except Exception as e:
+                Helper.logger.debug("2. toast visible exception:" + type(e).__name__)
+                print(e)
+
+
+
+    # END Added by Jacky(ID: jawang) on May.29th, 2024 >>>
+
     def is_read_only(self, locator_or_xpath):
         read_only = self.get_attribute(locator_or_xpath, "aria-readonly")
         if read_only.lower() == "true":

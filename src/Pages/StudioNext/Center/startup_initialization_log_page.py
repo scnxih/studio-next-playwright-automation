@@ -17,7 +17,7 @@ class StartupInitializationLogPage(CenterPage):
         CenterPage.__init__(self, page)
 
     def saveas(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
-        self.center_toolbar_helper.saveas(folder_path,file_name,if_replace,if_wait_toast_disappear)
+        self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)
 
     def add_to_snippets(self):
         self.center_toolbar_helper.add_to_snippets()
@@ -42,8 +42,21 @@ class StartupInitializationLogPage(CenterPage):
         if not self.toolbar.click_menu_in_more_options(Helper.data_locale.OPEN_IN_BROWSER_TAB):
             return
         time.sleep(2)
+
+        # does NOT work
+        # WholePage(self.page).screenshot_self("browser_tab_page")
+
         self.page.bring_to_front()
-        WholePage(page).screenshot_self("open_in_browser_tab_page")
+
+        # Original
+        # WholePage(page).screenshot_self("open_in_browser_tab_page")
+
+        # Mask CPU Time & Real Time
+        WholePage(page).screenshot_self("open_in_browser_tab_page",
+                                        mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
+                                              '//span[@class="mtk1"][contains(text(),"实际")]/..'],
+                                        mask_color="#000000")
+
         time.sleep(1)
 
     # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
@@ -53,6 +66,3 @@ class StartupInitializationLogPage(CenterPage):
 
     def reload(self):
         self.center_toolbar_helper.reload()
-
-
-
