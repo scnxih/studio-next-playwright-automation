@@ -380,7 +380,7 @@ def test_33_email_refresh(page, init):
 
 def test_34_sas_program(page, init):
     sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
-    sas_program.editor.type_into_text_area("proc print data = sashelp.class;\n run;")
+    sas_program.editor.type_into_text_area("proc print data = sashelp.class;run;")
     sas_program.run(True)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     sas_program.saveas(folder_path, "test_sas_program.sas", True, True)
