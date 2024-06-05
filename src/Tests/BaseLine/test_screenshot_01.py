@@ -551,6 +551,10 @@ def test_09_accordion_steps(page, init):
     # Original
     AccordionPage(page).screenshot_self("Data")
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Data_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
     steps.navigate_to_step(step_path)
 
@@ -562,6 +566,9 @@ def test_09_accordion_steps(page, init):
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
     steps.navigate_to_step(step_path)
     AccordionPage(page).screenshot_self("Develop")
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Develop_Narrow",
+    #                                user_assigned_xpath=True)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
     steps.navigate_to_step(step_path)
@@ -593,6 +600,10 @@ def test_09_accordion_steps(page, init):
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Machine_Learning_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS,
                        Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
     steps.navigate_to_step(step_path)
@@ -601,6 +612,10 @@ def test_09_accordion_steps(page, init):
     AccordionPage(page).screenshot_self("Register_Python",
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
+
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Register_Python_Narrow",
+    #                                user_assigned_xpath=True)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                        Helper.data_locale.STEP_CORE_DECOMPOSITION]
@@ -611,6 +626,10 @@ def test_09_accordion_steps(page, init):
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Core_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
                        Helper.data_locale.STEP_STANDARDIZE_DATA]
     steps.navigate_to_step(step_path)
@@ -620,6 +639,10 @@ def test_09_accordion_steps(page, init):
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Standardize_Data_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
                        Helper.data_locale.STEP_PARETO_ANALYSIS]
     steps.navigate_to_step(step_path)
@@ -627,6 +650,10 @@ def test_09_accordion_steps(page, init):
     AccordionPage(page).screenshot_self("Pareto",
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
+
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Pareto_Narrow",
+    #                                user_assigned_xpath=True)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
                        Helper.data_locale.STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS]
@@ -636,6 +663,10 @@ def test_09_accordion_steps(page, init):
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Multidimensional_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
                        Helper.data_locale.STEP_TRANSPOSE_DATA]
     steps.navigate_to_step(step_path)
@@ -644,6 +675,10 @@ def test_09_accordion_steps(page, init):
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
 
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Transpose_Narrow",
+    #                                user_assigned_xpath=True)
+
     step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
                        Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step(step_path)
@@ -651,6 +686,10 @@ def test_09_accordion_steps(page, init):
     AccordionPage(page).screenshot_self("Text_Map",
                                         mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
                                         mask_color='#000000')
+
+    # AccordionPage(page).screenshot(AccordionPage(page).get_by_test_id("sasstepsNavPane-agGrid"),
+    #                                "Text_Map_Narrow",
+    #                                user_assigned_xpath=True)
 
 
 def test_10_flow_details_pane(page, init):

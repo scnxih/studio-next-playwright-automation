@@ -64,3 +64,13 @@ class StepsPage(AccordionPage):
     def navigate_to_step(self, step_path: list):
         self.tree.navigate_to_element(step_path)
         time.sleep(1)
+
+        """
+        self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
+                        step_path[-1],
+                        user_assigned_xpath=True)
+        """
+
+        self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
+                        'navigation_pane',
+                        user_assigned_xpath=True)

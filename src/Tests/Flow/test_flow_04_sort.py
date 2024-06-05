@@ -70,18 +70,35 @@ run;
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
     # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab("Preview Data")
+
+    # Original
+    # table_pane.click_Tab("Preview Data")
+
+    # Revised
+    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+
     time.sleep(3)
     WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
     flow.arrange_nodes()
+
     # flow.link_two_nodes_in_flow("CLASS","排序")
-    flow.link_two_nodes_in_flow("CLASS", "Sort")
+
+    # Original
+    # flow.link_two_nodes_in_flow("CLASS", "Sort")
+
+    flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
+
     # time.sleep(1)
     flow.arrange_nodes()
+
     # flow.select_node_in_flow_canvas("排序")
-    flow.select_node_in_flow_canvas("Sort")
+
+    # Original
+    # flow.select_node_in_flow_canvas("Sort")
+
+    flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
 
     sort_pane = SortPane(page)
 
@@ -91,14 +108,19 @@ run;
     WholePage(page).screenshot_self(pic_name="08_add_sort")
     flow.add_node(FlowNodeType.table)
     # flow.select_node_in_flow_canvas("表")
-    flow.select_node_in_flow_canvas("Table")
+
+    # Original
+    # flow.select_node_in_flow_canvas("Table")
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
 
     table_pane.set_node_name("SORTED")
     table_pane.set_library("WORK")
     table_pane.set_table("SORTED")
     table_pane.refresh_table()
     # flow.link_two_nodes_in_flow("排序","SORTED")
-    flow.link_two_nodes_in_flow("Sort", "SORTED")
+    # flow.link_two_nodes_in_flow("Sort", "SORTED")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SORT, "SORTED")
     # time.sleep(1)
     flow.arrange_nodes()
     # time.sleep(1)
@@ -107,7 +129,8 @@ run;
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(0.5)
     # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab("Preview Data")
+    # table_pane.click_Tab("Preview Data")
+    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
     WholePage(page).screenshot_self(pic_name="09_preview_sorted_table")
 
