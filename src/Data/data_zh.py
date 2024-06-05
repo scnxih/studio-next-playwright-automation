@@ -110,7 +110,7 @@ class DataZH(Data):
     EDITOR_SETTINGS = "编辑器设置"
     TABLE = "表"
     FILE = "文件"
-    IMPORT = "导入"
+    IMPORT_FILES = "导入文件"
     BRANCH_ROWS = "分支行"
     CALCULATE_COLUMNS = "计算列"
     FILTER_ROWS = "过滤行"

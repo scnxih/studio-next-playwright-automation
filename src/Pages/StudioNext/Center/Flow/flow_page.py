@@ -101,7 +101,7 @@ class FlowPage(MainCenterPage):
                                                        Helper.data_locale.IMPLEMENT_SCD)
             case FlowNodeType.import_data:
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
-                                                       Helper.data_locale.IMPORT)
+                                                       Helper.data_locale.IMPORT_FILES)
             case FlowNodeType.insert_rows:
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
                                                        Helper.data_locale.INSERT_ROWS)
