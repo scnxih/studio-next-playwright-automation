@@ -12,55 +12,56 @@ from src.Utilities.enums import *
 import time
 
 
-def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,init):
-    flow:FlowPage = PageHelper.new_flow(page)
+def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
     flow.add_node(FlowNodeType.file)
     flow.add_node(FlowNodeType.branch_rows)
     flow.add_node(FlowNodeType.calculate_columns)
-    # flow.add_node(FlowNodeType.sas_program)
-    # flow.add_node(FlowNodeType.execute_decisions)
-    # flow.add_node(FlowNodeType.export)
-    # flow.add_node(FlowNodeType.filter_rows)
-    # flow.add_node(FlowNodeType.implement_scd)
-    # flow.add_node(FlowNodeType.import_data)
-    # flow.add_node(FlowNodeType.insert_rows)
-    # flow.add_node(FlowNodeType.load_table)
-    # flow.add_node(FlowNodeType.manage_columns)
-    # flow.add_node(FlowNodeType.merge_table)
-    # flow.add_node(FlowNodeType.python_program)
-    # flow.add_node(FlowNodeType.query)
-    # flow.add_node(FlowNodeType.sort)
-    # flow.add_node(FlowNodeType.union_rows)
-    # flow.add_node(FlowNodeType.notes)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.add_node(FlowNodeType.execute_decisions)
+    flow.add_node(FlowNodeType.export)
+    flow.add_node(FlowNodeType.filter_rows)
+    flow.add_node(FlowNodeType.implement_scd)
+    flow.add_node(FlowNodeType.import_data)
+    flow.add_node(FlowNodeType.insert_rows)
+    flow.add_node(FlowNodeType.load_table)
+    flow.add_node(FlowNodeType.manage_columns)
+    flow.add_node(FlowNodeType.merge_table)
+    flow.add_node(FlowNodeType.python_program)
+    flow.add_node(FlowNodeType.query)
+    flow.add_node(FlowNodeType.sort)
+    flow.add_node(FlowNodeType.union_rows)
+    flow.add_node(FlowNodeType.notes)
 
-    select_node_in_flow_canvas(page,Helper.data_locale.TABLE)
+    select_node_in_flow_canvas(page, Helper.data_locale.TABLE)
     time.sleep(1)
-    select_node_in_flow_canvas(page,Helper.data_locale.FILE)
+    select_node_in_flow_canvas(page, Helper.data_locale.FILE)
     time.sleep(1)
-    select_node_in_flow_canvas(page,Helper.data_locale.BRANCH_ROWS)
+    select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.CALCULATE_COLUMNS)
     time.sleep(1)
 
-def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_rows(page,init):
+
+def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_rows(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.add_node(FlowNodeType.execute_decisions)
     flow.add_node(FlowNodeType.export)
     flow.add_node(FlowNodeType.filter_rows)
 
-
-    select_node_in_flow_canvas(page,Helper.data_locale.SAS_PROGRAM)
+    select_node_in_flow_canvas(page, Helper.data_locale.SAS_PROGRAM)
     time.sleep(1)
-    select_node_in_flow_canvas(page,Helper.data_locale.EXECUTE_DECISIONS)
+    select_node_in_flow_canvas(page, Helper.data_locale.EXECUTE_DECISIONS)
     time.sleep(1)
-    select_node_in_flow_canvas(page,Helper.data_locale.EXPORT)
+    select_node_in_flow_canvas(page, Helper.data_locale.EXPORT)
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.FILTER_ROWS)
     time.sleep(1)
 
-def test_03_flow_canvas_link_nodes_toolbar_operations(page,init):
+
+def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
     flow.add_node(FlowNodeType.query)
@@ -119,7 +120,7 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page,init):
     time.sleep(1)
 
 
-def test_04_details_pane_table(page,init):
+def test_04_details_pane_table(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
     flow.apply_detail_layout_vertical()
@@ -141,7 +142,6 @@ def test_04_details_pane_table(page,init):
     time.sleep(1)
 
 
-
 def test_06_sasprogram_table_sort_zh_CN(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
@@ -149,7 +149,11 @@ def test_06_sasprogram_table_sort_zh_CN(page, init):
     # flow.add_node(FlowNodeType.sort)
     # flow.apply_detail_layout_vertical()
 
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
+    # flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
+
+    time.sleep(3)
+    select_node_in_flow_canvas(page, Helper.data_locale.SAS_PROGRAM)
+
     # time.sleep(1)
     sasprogram_pane = SASProgramPane(page)
     str = """
@@ -252,8 +256,9 @@ def test_07_sasprogram_table_sort_en_US(page, init):
 
     # flow.add_node(FlowNodeType.sort)
     # flow.apply_detail_layout_vertical()
-
+    time.sleep(3)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
+
     # time.sleep(1)
     sasprogram_pane = SASProgramPane(page)
     str = """
@@ -304,18 +309,18 @@ run;
 
     flow.run(True)
     flow.select_node_in_flow_canvas("CLASS")
-    # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab("Preview Data")
+    table_pane.click_Tab("预览数据")
+    # table_pane.click_Tab("Preview Data")
     time.sleep(3)
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
     flow.arrange_nodes()
-    # flow.link_two_nodes_in_flow("CLASS","排序")
-    flow.link_two_nodes_in_flow("CLASS", "Sort")
+    flow.link_two_nodes_in_flow("CLASS", "排序")
+    # flow.link_two_nodes_in_flow("CLASS", "Sort")
     # time.sleep(1)
     flow.arrange_nodes()
-    # flow.select_node_in_flow_canvas("排序")
-    flow.select_node_in_flow_canvas("Sort")
+    flow.select_node_in_flow_canvas("排序")
+    # flow.select_node_in_flow_canvas("Sort")
 
     sort_pane = SortPane(page)
 
@@ -324,15 +329,15 @@ run;
     # time.sleep(1)
 
     flow.add_node(FlowNodeType.table)
-    # flow.select_node_in_flow_canvas("表")
-    flow.select_node_in_flow_canvas("Table")
+    flow.select_node_in_flow_canvas("表")
+    # flow.select_node_in_flow_canvas("Table")
 
     table_pane.set_node_name("SORTED")
     table_pane.set_library("WORK")
     table_pane.set_table("SORTED")
     table_pane.refresh_table()
-    # flow.link_two_nodes_in_flow("排序","SORTED")
-    flow.link_two_nodes_in_flow("Sort", "SORTED")
+    flow.link_two_nodes_in_flow("排序", "SORTED")
+    # flow.link_two_nodes_in_flow("Sort", "SORTED")
     # time.sleep(1)
     flow.arrange_nodes()
     # time.sleep(1)
@@ -340,24 +345,11 @@ run;
     time.sleep(3)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(2)
-    # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab("Preview Data")
+    table_pane.click_Tab("预览数据")
+    # table_pane.click_Tab("Preview Data")
     time.sleep(2)
 
     # PageHelper.show_accordion(page,AccordionType.libraries)
     # lib = LibraryPage(page)
     # lib.open_table("WORK","SORTED")
     # time.sleep(2)
-
-
-
-
-
-
-
-
-
-
-
-
-
