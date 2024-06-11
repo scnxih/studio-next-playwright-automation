@@ -31,6 +31,7 @@ class CodeEditorPage(MainCenterPage):
     """Updated by Alice on 09/22/2023 end"""
 
     def save_file_test_tile_view(self, folder_path, file_name, if_replace, if_wait_toast_disappear):
+        return False
         self.toolbar.click_btn_by_title(Helper.data_locale.SAVE_AS)
         Helper.logger.debug("after click save as button")
         save_as_dialog = SaveAsDialog(self.page)
