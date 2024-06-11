@@ -62,6 +62,7 @@ class CentralToolbarHelper:
             self.toolbar.wait_toast_disappear()
 
     def save(self, folder_path=None, file_name="", if_replace=True, if_wait_toast_disappear=True):
+        return False
         self.toolbar.click_btn_by_title(Helper.data_locale.SAVE)
         if folder_path is None or file_name == "":
             if if_wait_toast_disappear:

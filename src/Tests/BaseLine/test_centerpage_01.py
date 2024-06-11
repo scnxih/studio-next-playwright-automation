@@ -34,7 +34,8 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # editor.type_code_in_codeeditor("data null;call sleep(60,1);run;")
     # editor.run(False)
     # editor.cancel(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     editor.saveas(folder_path, "test.sas", True, True)
     editor.type_code_in_codeeditor("proc print data=sashelp.class;run;")
     time.sleep(0.5)

@@ -12,6 +12,6 @@ class MenuPage(BasePage):
 
     def __init__(self, page, data_test_id=''):
         BasePage.__init__(self, page)
-        self.base_xpath += "//div[@role='region']"
+        self.base_xpath += "//div[contains(@class,'sas_components-Popover-Popover_popover-inner')]"
         if data_test_id != '':
             self.base_xpath += "[child::div[@data-testid='{0}']]".format(data_test_id)
