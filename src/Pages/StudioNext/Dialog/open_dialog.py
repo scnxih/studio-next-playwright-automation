@@ -9,11 +9,11 @@ from src.Pages.Common.combobox import Combobox
 
 class OpenDialog(Dialog):
     def __init__(self, page):
-        # Dialog.__init__(self, page, Helper.data_locale.OPEN)
-        Dialog.__init__(self, page, "Open")
-        # self.folder_tree = TreeViewNova(self.base_xpath, page)
-        self.folder_tree = TreeViewAGGrid(self.base_xpath, page,
-                                          supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
+        Dialog.__init__(self, page, Helper.data_locale.OPEN)
+        # Dialog.__init__(self, page, "Open")
+        self.folder_tree = TreeViewNova(self.base_xpath, page)
+        # self.folder_tree = TreeViewAGGrid(self.base_xpath, page,
+        #                                   supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
 
         """modified by Alice on 09/15/2023 since common component constructor has been changed"""
         self.toolbar = Toolbar(self.base_xpath, page)
