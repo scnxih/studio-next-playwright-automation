@@ -18,7 +18,11 @@ class TablePane(DetailsPane):
 
     def set_library(self, library_name):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
-        Text(self.base_xpath, self.page, data_test_id="tableProperties-library-input-input").fill_text(library_name)
+
+        # Text(self.base_xpath, self.page, data_test_id="tableProperties-library-input-input").fill_text(library_name)
+
+        # undefinedlibrary-input-input
+        Text(self.base_xpath, self.page, data_test_id="undefinedlibrary-input-input").fill_text(library_name)
         time.sleep(1)
 
         # Method-1: Explicitly pic name

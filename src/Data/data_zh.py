@@ -258,7 +258,8 @@ class DataZH(Data):
 
     """Added by Alice on 09/25/2023 Start"""
     CODE_TO_FLOW = "代码添加至流"
-    CODE_FILE = "代码文件"
+    # CODE_FILE = "代码文件"
+    CODE_FILE = "提交的代码文件"
     LOG_FILE_HTML = "日志文件 (html)"
     LOG_FILE_TEXT = "日志文件（文本）"
     RESULTS_FILE = "结果文件"
