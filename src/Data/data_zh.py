@@ -109,6 +109,7 @@ class DataZH(Data):
     UNFOLD_ALL_REGIONS = "展开所有区域"
     COMMAND_PALETTE = "命令面板"
     EDITOR_SETTINGS = "编辑器设置"
+    LIBRARY = "逻辑库"
     TABLE = "表"
     FILE = "文件"
     IMPORT_FILES = "导入文件"
