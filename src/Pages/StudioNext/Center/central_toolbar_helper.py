@@ -274,11 +274,11 @@ class CentralToolbarHelper:
     def apply_detail_layout_vertical(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.VERTICAL)
 
-    def hide_detail_tabs_code(self):
-        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.CODE)
+    def hide_detail_tabs_submitted_code(self):
+        self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.SUBMITTED_CODE)
 
-    def show_detail_tabs_code(self):
-        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.CODE)
+    def show_detail_tabs_submitted_code(self):
+        self.toolbar.check_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.SUBMITTED_CODE)
 
     def hide_detail_tabs_log(self):
         self.toolbar.uncheck_menu_in_more_options(Helper.data_locale.HIDE_OR_SHOW_DETAIL_TABS, Helper.data_locale.LOG)
