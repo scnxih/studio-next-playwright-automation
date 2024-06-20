@@ -124,6 +124,20 @@ class MainCenterPage(CenterPage):
                         mask=self.time_info_in_log + [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 
+    def hide_detail_tabs_code(self):
+        self.center_toolbar_helper.hide_detail_tabs_code()
+        time.sleep(1)
+        self.screenshot(self.base_xpath, "hide_code",
+                        mask=self.time_info_in_log + [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
+                        mask_color="#000000")
+
+    def show_detail_tabs_code(self):
+        self.center_toolbar_helper.show_detail_tabs_code()
+        time.sleep(1)
+        self.screenshot(self.base_xpath, "show_code",
+                        mask=self.time_info_in_log+ [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
+                        mask_color="#000000")
+
     def hide_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.hide_detail_tabs_submitted_code()
         time.sleep(1)

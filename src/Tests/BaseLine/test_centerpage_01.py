@@ -408,7 +408,7 @@ def test_34_sas_program(page, init):
     sas_program.apply_detail_layout_vertical()
     sas_program.apply_detail_layout_horizontal()
     sas_program.hide_detail_tabs_listing()
-    sas_program.hide_detail_tabs_code()
+    sas_program.hide_detail_tabs_submitted_code()
     sas_program.hide_detail_tabs_result()
     sas_program.hide_detail_tabs_log()
     sas_program.hide_detail_tabs_output_data()
