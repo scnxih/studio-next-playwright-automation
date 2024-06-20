@@ -44,8 +44,8 @@ class MainCenterPage(CenterPage):
     def open_in_browser_tab_summary(self):
         self.center_toolbar_helper.open_in_browser_tab_summary()
 
-    def open_in_browser_tab_code(self):
-        self.center_toolbar_helper.open_in_browser_tab_code()
+    def open_in_browser_tab_submitted_code(self):
+        self.center_toolbar_helper.open_in_browser_tab_submitted_code()
 
     def open_in_browser_tab_log(self):
         self.center_toolbar_helper.open_in_browser_tab_log()
@@ -56,8 +56,8 @@ class MainCenterPage(CenterPage):
     def open_in_browser_tab_listing(self):
         self.center_toolbar_helper.open_in_browser_tab_listing()
 
-    def download_code_file(self):
-        self.center_toolbar_helper.download_code_file()
+    def download_submitted_code_file(self):
+        self.center_toolbar_helper.download_submitted_code_file()
 
     def download_log_file_html(self):
         self.center_toolbar_helper.download_log_file_html()

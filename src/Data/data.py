@@ -96,6 +96,8 @@ class Data:
     EXPORT = "Export"
     REFRESH = "Refresh"
     CODE = "Code"
+    SUBMITTED_CODE = "Submitted code"
+    SUBMITTED_CODE_FILE = "Submitted code file"
     ALL = "All"
     LOG = "Log"
     LISTING = "Listing"

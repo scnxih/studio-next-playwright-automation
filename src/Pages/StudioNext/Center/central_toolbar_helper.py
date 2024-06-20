@@ -163,8 +163,8 @@ class CentralToolbarHelper:
     def open_in_browser_tab_summary(self):
         return self.__open_in_browser_tab_menu(Helper.data_locale.SUMMARY)
 
-    def open_in_browser_tab_code(self):
-        return self.__open_in_browser_tab_menu(Helper.data_locale.CODE)
+    def open_in_browser_tab_submitted_code(self):
+        return self.__open_in_browser_tab_menu(Helper.data_locale.SUBMITTED_CODE)
 
     def open_in_browser_tab_log(self):
         return self.__open_in_browser_tab_menu(Helper.data_locale.LOG)
@@ -215,8 +215,8 @@ class CentralToolbarHelper:
         time.sleep(1)
         return download
 
-    def download_code_file(self):
-        return self.__download_file(Helper.data_locale.CODE_FILE)
+    def download_submitted_code_file(self):
+        return self.__download_file(Helper.data_locale.SUBMITTED_CODE_FILE)
 
     def download_log_file_html(self):
         return self.__download_file(Helper.data_locale.LOG_FILE_HTML)
