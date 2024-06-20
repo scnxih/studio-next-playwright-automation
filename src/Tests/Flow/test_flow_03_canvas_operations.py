@@ -1,9 +1,11 @@
 from src.Helper.page_helper import PageHelper
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.sort_pane import SortPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
+from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Left.library_page import LibraryPage
 from src.Utilities.enums import FlowNodeType
 from src.Helper.helper import *
@@ -34,13 +36,26 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
     flow.add_node(FlowNodeType.union_rows)
     flow.add_node(FlowNodeType.notes)
 
+    # Take a screenshot after all nodes have been added into canvas
+    time.sleep(1)
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+
     select_node_in_flow_canvas(page, Helper.data_locale.TABLE)
+    CenterPage(page).screenshot_self("selected_table")
+
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.FILE)
+    CenterPage(page).screenshot_self("selected_file")
+
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
+    CenterPage(page).screenshot_self("selected_branch_rows")
+
     time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.CALCULATE_COLUMNS)
+    CenterPage(page).screenshot_self("selected_calculate_columns")
+
     time.sleep(1)
 
 
@@ -51,14 +66,27 @@ def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_ro
     flow.add_node(FlowNodeType.export)
     flow.add_node(FlowNodeType.filter_rows)
 
+    # Take a screenshot after all nodes have been added into canvas
+    time.sleep(1)
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+
+    # Screenshot: Flow canvas + Details pane below
     select_node_in_flow_canvas(page, Helper.data_locale.SAS_PROGRAM)
     time.sleep(1)
+    CenterPage(page).screenshot_self("selected_sas_program")
+
     select_node_in_flow_canvas(page, Helper.data_locale.EXECUTE_DECISIONS)
     time.sleep(1)
+    CenterPage(page).screenshot_self("selected_execute_decisions")
+
     select_node_in_flow_canvas(page, Helper.data_locale.EXPORT)
     time.sleep(1)
+    CenterPage(page).screenshot_self("selected_export")
+
     select_node_in_flow_canvas(page, Helper.data_locale.FILTER_ROWS)
     time.sleep(1)
+    CenterPage(page).screenshot_self("selected_filter_rows")
 
 
 def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
@@ -70,38 +98,91 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.add_node(FlowNodeType.sort)
     flow.add_node(FlowNodeType.export)
     time.sleep(1)
+
+    # Take a screenshot after all nodes have been added into canvas
+    time.sleep(1)
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+
     flow.link_two_nodes_in_flow(Helper.data_locale.TABLE, Helper.data_locale.QUERY)
+    # Screenshot: Flow canvas + Details pane below
+    time.sleep(1)
+    CenterPage(page).screenshot_self("linked_table_and_query")
+
     flow.link_two_nodes_in_flow(Helper.data_locale.QUERY, Helper.data_locale.FILTER_ROWS)
+    # Screenshot: Flow canvas + Details pane below
+    time.sleep(1)
+    CenterPage(page).screenshot_self("linked_query_and_filter_rows")
+
     flow.link_two_nodes_in_flow(Helper.data_locale.FILTER_ROWS, Helper.data_locale.MANAGE_COLUMNS)
+    # Screenshot: Flow canvas + Details pane below
+    time.sleep(1)
+    CenterPage(page).screenshot_self("linked_filter_rows_and_manage_columns")
+
     flow.link_two_nodes_in_flow(Helper.data_locale.MANAGE_COLUMNS, Helper.data_locale.SORT)
+    # Screenshot: Flow canvas + Details pane below
+    time.sleep(1)
+    CenterPage(page).screenshot_self("linked_manage_columns_and_sort")
+
     flow.link_two_nodes_in_flow(Helper.data_locale.SORT, Helper.data_locale.EXPORT)
+    # Screenshot: Flow canvas + Details pane below
+    time.sleep(1)
+    CenterPage(page).screenshot_self("linked_sort_and_export")
 
     flow.arrange_nodes()
     time.sleep(2)
+    CenterPage(page).screenshot_self("arrange_nodes")
+
     flow.open_context_menu_for_the_node_in_flow(Helper.data_locale.TABLE)
     time.sleep(1)
+    CenterPage(page).screenshot_self("table_node_context_menu")
+
     page.get_by_text(Helper.data_locale.COPY).click()
     time.sleep(1)
+
     flow.open_context_menu_for_canvas_in_flow()
     time.sleep(1)
+
     page.get_by_text(Helper.data_locale.PASTE).click()
     time.sleep(1)
+    CenterPage(page).screenshot_self("paste_node_in_flow_canvas")
 
     flow.view_expand_all_ports()
     time.sleep(2)
+    CenterPage(page).screenshot_self("expanded_all_ports")
+
     flow.view_collapse_all_ports()
     time.sleep(2)
+    CenterPage(page).screenshot_self("collapsed_all_ports")
+
     flow.show_over_view_map()
     time.sleep(2)
+    CenterPage(page).screenshot_self("show_over_view_map")
+
     flow.hide_over_view_map()
     time.sleep(2)
+    CenterPage(page).screenshot_self("hide_over_view_map")
+
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     flow.saveas(folder_path, "test_flow.sas", True, True)
+
     flow.copy_step()
+
     flow.paste_step()
+    time.sleep(2)
+    CenterPage(page).screenshot_self("flow_paste_step")
+
     flow.cut_step()
+    time.sleep(2)
+    CenterPage(page).screenshot_self("flow_cut_step")
+
     flow.undo()
+    time.sleep(2)
+    CenterPage(page).screenshot_self("hide_over_view_map")
+
     flow.redo()
+    time.sleep(2)
+    CenterPage(page).screenshot_self("hide_over_view_map")
 
     flow.schedule_as_job()
     flow.add_to_my_favorites()
@@ -123,10 +204,18 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 def test_04_details_pane_table(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
-    flow.apply_detail_layout_vertical()
-    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
 
+    # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+
+    flow.apply_detail_layout_vertical()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    time.sleep(1)
+    CenterPage(page).screenshot_self("selected_table")
+
     table = TablePane(page)
     table.set_library("sashelp")
     time.sleep(1)
@@ -151,7 +240,8 @@ def test_06_sasprogram_table_sort_zh_CN(page, init):
 
     # flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
 
-    time.sleep(3)
+    # time.sleep(3)
+    # time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.SAS_PROGRAM)
 
     # time.sleep(1)

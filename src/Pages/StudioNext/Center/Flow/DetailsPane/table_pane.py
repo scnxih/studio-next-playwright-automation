@@ -18,7 +18,21 @@ class TablePane(DetailsPane):
 
     def set_library(self, library_name):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
-        Text(self.base_xpath, self.page, data_test_id="tableProperties-library-input-input").fill_text(library_name)
+
+        # Changed on June 19th 2024
+        # Text(self.base_xpath, self.page, data_test_id="tableProperties-library-input-input").fill_text(library_name)
+
+        # Works fine but the data-testid might change in the future
+        # data-testid = undefinedlibrary-input-input
+        # Text(self.base_xpath, self.page, data_test_id="undefinedlibrary-input-input").fill_text(library_name)
+
+        # Works fine but hard-coded
+        # Text(self.base_xpath, self.page, aria_label="逻辑库:, 逻辑库输入").fill_text(library_name)
+
+        # Works fine
+        Text(self.base_xpath, self.page, supplement_base_xpath="[contains(@aria-label, '"
+                                                               + Helper.data_locale.LIBRARY + "')]").fill_text(library_name)
+
         time.sleep(1)
 
         # Method-1: Explicitly pic name
@@ -33,6 +47,9 @@ class TablePane(DetailsPane):
     def set_table(self, table_name):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
         Text(self.base_xpath, self.page, aria_label=Helper.data_locale.TABLE_NAME_INPUT).fill_text(table_name)
+
+        # Backup method
+        # Text(self.base_xpath, self.page, supplement_base_xpath="[contains(@aria-label, '" + Helper.data_locale.TABLE + "')]").fill_text(table_name)
 
         # Wait 1 sec
         time.sleep(1)

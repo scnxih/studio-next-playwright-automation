@@ -111,6 +111,7 @@ class Data:
     UNFOLD_ALL_REGIONS = "Unfold all regions"
     COMMAND_PALETTE = "Command palette"
     EDITOR_SETTINGS = "Editor settings"
+    LIBRARY = 'Library'
     TABLE = "Table"
     FILE = "File"
     IMPORT_FILES = "Import Files"
