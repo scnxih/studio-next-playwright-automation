@@ -48,6 +48,13 @@ class EditorTextArea(CommonComponent):
         """
         self.fill(self.get_text_area(), user_input)
         time.sleep(2)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on June 24th, 2024
+        self.click_dialog_title_or_studionext_header()
+        time.sleep(1)
+        # END Added by Jacky(ID: jawang) on June 24th, 2024 >>>
+
         self.screenshot(self.base_xpath, "text_area")
         time.sleep(1)
 
