@@ -91,6 +91,10 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask_color='#000000')
 
     time.sleep(0.5)
+
+    editor.editor.force_click(editor.editor.get_text_area())
+    page1.keyboard.press("End")
+
     page1.keyboard.press("/")
     page1.keyboard.press("*")
     page1.keyboard.press("T")
