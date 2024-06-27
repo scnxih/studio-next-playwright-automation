@@ -46,6 +46,8 @@ class EditorTextArea(CommonComponent):
         :param user_input: content will be put into text area
         :return:
         """
+        self.force_click(self.get_text_area())
+
         self.fill(self.get_text_area(), user_input)
         time.sleep(2)
 
