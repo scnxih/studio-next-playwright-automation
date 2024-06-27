@@ -516,7 +516,7 @@ def test_36_flow(page, init):
     # flow.run_single_node()
     flow.run_nodes_downstream()
     flow.run_nodes_upstream()
-    flow.background_submit()
+    # flow.background_submit()
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     flow.saveas(folder_path, "test_flow.sas", True, True)
     flow.copy_step()
