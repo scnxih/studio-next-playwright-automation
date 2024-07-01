@@ -143,7 +143,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                           ],
                                     mask_color='#000000')
 
@@ -154,16 +155,21 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     WholePage(page).screenshot_self("06",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                                          ],
                                     mask_color='#000000')
     time.sleep(0.5)
     editor.code_to_flow()
+    time.sleep(1)
 
     # WholePage(page).screenshot_self("07")
     WholePage(page).screenshot_self("07",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                                          ],
                                     mask_color='#000000')
     time.sleep(0.5)
     editor.add_to_snippets()
@@ -176,7 +182,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
-                                          '//div[@class="visible scrollbar vertical"]'],
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                                          ],
                                     mask_color='#000000')
 
     time.sleep(1.0)
@@ -189,7 +197,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]')
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                                              '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
 
@@ -205,7 +214,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
 
@@ -222,7 +232,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
 

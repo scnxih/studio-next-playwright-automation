@@ -87,7 +87,9 @@ class TablePane(DetailsPane):
         time.sleep(3)
 
         # Method-1: Explicitly pic name
-        self.screenshot(self.base_xpath, "refresh_table")
+        self.screenshot(self.base_xpath, "refresh_table",
+                        mask=[self.page.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]')],
+                        mask_color='#000000')
 
         # print('reload table: ' + str(inspect.currentframe()) + '***')
         # Method-2: Get function name by using inspect
