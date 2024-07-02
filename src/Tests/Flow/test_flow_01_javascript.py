@@ -17,7 +17,7 @@ def run(pw: Playwright) -> None:
     page.get_by_placeholder(data_locale.USER_ID).click()
     page.get_by_placeholder(data_locale.USER_ID).fill(global_username)
     page.get_by_placeholder(data_locale.PASSWORD).click()
-    page.get_by_placeholder(data_locale.PASSWORD).fill(global_password)
+    page.get_by_placeholder(data_locale.PASSWORD).fill(Helper.get_password())
     page.wait_for_timeout(1000)
     page.get_by_role("button", name=data_locale.SIGN_IN).click()
     time.sleep(5)

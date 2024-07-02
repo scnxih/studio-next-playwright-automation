@@ -8,9 +8,8 @@ global_browser = "chrome"
 # global_head_mode = "headless"
 global_head_mode = "headed"
 global_username = "nlsbic"
-global_password = "The power to know!"
-# global_username = "etladm"
-# global_password = "Datamt123"
+global_password = ""
+
 
 
 

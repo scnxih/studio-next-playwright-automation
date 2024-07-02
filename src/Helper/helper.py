@@ -1,5 +1,9 @@
 import shutil
 from pathlib import Path
+
+from Crypto.PublicKey import RSA
+
+from src.Utilities.cryptorsautil import CryptoRsaUtil
 from src.Utilities.enums import CenterPageType
 
 ''' Added by Jacky(ID: jawang) on Sept.5th, 2023'''
@@ -123,3 +127,13 @@ class Helper:
 
     """Added by Alice on 10/08/2023 end"""
 
+    @staticmethod
+    def get_password():
+        x = RSA.generate(2048)
+        private_key = str(x.export_key(), encoding="utf-8")  # 私钥
+        public_key = str(x.publickey().export_key(), encoding="utf-8")  # 公钥
+        rsa = CryptoRsaUtil(rsa_publicKey=public_key, rsa_privateKey=private_key)
+        data = "The power to know!"
+        data_encrypt = rsa.encrypt(data)
+        data_decrypt = rsa.decrypt(data_encrypt)
+        return data_decrypt

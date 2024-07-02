@@ -30,7 +30,8 @@ class LoginPage(BasePage):
         try:
             Helper.logger.info("enter _login.try")
             self.fill(self.user_name, global_username)
-            self.fill(self.user_password, global_password)
+            pwd =  Helper.get_password()
+            self.fill(self.user_password, pwd)
             self.click(self.btn_submit)
         except Exception as e:
             Helper.logger.warning("login:", e)
