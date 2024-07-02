@@ -3,7 +3,7 @@ from src.Helper.helper import Helper
 import time
 from playwright.sync_api import Playwright, sync_playwright, Page
 
-from src.Utilities.vars import global_username, global_password
+from src.Utilities.vars import *
 
 
 def run(pw: Playwright) -> None:
@@ -15,7 +15,7 @@ def run(pw: Playwright) -> None:
     page.goto("https://daily.pgc.unx.sas.com/SASStudioNext/")
     page.wait_for_timeout(1000)
     page.get_by_placeholder(data_locale.USER_ID).click()
-    page.get_by_placeholder(data_locale.USER_ID).fill(global_username)
+    page.get_by_placeholder(data_locale.USER_ID).fill("nlsbic")
     page.get_by_placeholder(data_locale.PASSWORD).click()
     page.get_by_placeholder(data_locale.PASSWORD).fill(Helper.get_password())
     page.wait_for_timeout(1000)

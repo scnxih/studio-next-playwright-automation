@@ -7,18 +7,7 @@ global_browser = "chrome"
 # global_browser = "webkit"
 # global_head_mode = "headless"
 global_head_mode = "headed"
-global_username = "nlsbic"
-global_password = ""
 
-
-
-
-global_server="daily.pgc.unx.sas.com"
-# global_server="analyst.dev.pgc.unx.sas.com"
-# global_server="studio.ingress-nginx.b-m1.sasstudio.sashq-d.openstack.sas.com"
-# global_server="tth.pgc.unx.sas.com"
-# global_server = "mwf.pgc.unx.sas.com"
-# global_server="racerd1640484.race.sas.com"
 global_timeout = 120
 
 ''' Added by Jacky(ID: jawang) on Aug 31st, 2023 '''
