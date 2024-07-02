@@ -51,6 +51,9 @@ class StartupInitializationLogPage(CenterPage):
         # Original
         # WholePage(page).screenshot_self("open_in_browser_tab_page")
 
+        # Added
+        self.toolbar.click_dialog_title_or_studionext_header()
+
         # Mask CPU Time & Real Time
         WholePage(page).screenshot_self("open_in_browser_tab_page",
                                         mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
