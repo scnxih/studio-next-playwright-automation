@@ -238,7 +238,13 @@ def test_06_screenshot_top_right_items(page, init):
     top = TopRightToolbar(page)
     top.click_search()
     time.sleep(1)
-    Dialog(page).screenshot_self("search")
+
+    # Dialog(page).screenshot_self("search")
+
+    # //div[@data-testid='qa-testId-quick-access']
+    Dialog(page).screenshot_self("search",
+                                 mask=["//div[@data-testid='qa-testId-quick-access']"],
+                                 mask_color="#000000")
 
     Dialog(page).close_dialog()
 
