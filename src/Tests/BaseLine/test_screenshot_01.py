@@ -188,7 +188,15 @@ def test_05_screenshot_top_menu_view(page, init):
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
     top.check_view_item(TopMenuItem.view_start_page)
-    WholePage(page).screenshot_self("start")
+
+    # Oritinal
+    # WholePage(page).screenshot_self("start")
+
+    # Mask recent files listed on the RHS
+    # xpath for mask: //div[@class='sas_components-views-StartViewPane-RightView_welcome-container']
+    WholePage(page).screenshot_self("start",
+                                    mask=["//div[@class='sas_components-views-StartViewPane-RightView_welcome-container']"],
+                                    mask_color="#000000")
 
     top.check_view_item(TopMenuItem.view_startup_initialization_log)
 
