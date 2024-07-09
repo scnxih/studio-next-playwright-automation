@@ -154,6 +154,8 @@ class SaveAsDialog(Dialog):
         # self.screenshot(self.base_xpath,"save_file_w_mask", mask=[self.temp_content_selector])
 
         # Trial: Cover the content selector
+        """
+        
         self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask.png',
                              mask=[self.temp_content_selector],
                              mask_color="aliceblue")
@@ -165,8 +167,9 @@ class SaveAsDialog(Dialog):
         self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25''/MaskColorLightDark.png',
                              mask=[self.temp_content_selector],
                              mask_color= "light-dark(rgb(255 255 255), rgb(0 0 0))")
+        
                              # mask_color="light-dark(white, black)")
-
+        """
         # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
         time.sleep(0.5)

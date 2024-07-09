@@ -3,6 +3,8 @@ from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
+from src.Pages.StudioNext.Center.Flow.DetailsPane.manage_columns_pane import ManageColumnsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
@@ -965,7 +967,6 @@ def test_28_autoexec_dialog_scroll_bars(page, init):
 
     time.sleep(10)
 
-
     if autoexec_dialog.btn_run.is_enabled():
         # autoexec_dialog.screenshot_self('AutoDlg')
         autoexec_dialog.screenshot_self('AutoDlg',
@@ -995,3 +996,49 @@ def test_29_custom_dialog_scroll_bars(page, init):
     custom_code_dialog = CustomCodeDialog(page)
     custom_code_dialog.run()
     custom_code_dialog.save()
+
+
+def test_30_flow_manage_columns(page, init):
+    """
+    Test Manage Columns in flow
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.manage_columns)
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.MANAGE_COLUMNS)
+
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.MANAGE_COLUMNS)
+
+    manage_columns = ManageColumnsPane(page)
+    manage_columns.add_all_columns()
+    time.sleep(3)
+    manage_columns.remove_all_columns()
+
+    list1 = ["Sex", "Name"]
+    manage_columns.add_columns_by_double_click(list1)
+
+    manage_columns.remove_all_columns()
+
+    list2 = ["Age", "Height"]
+    manage_columns.add_columns_by_toolbar_button(list2)
+
+    manage_columns.remove_all_columns()
+
+    list3 = ["Weight"]
+    # manage_columns.add_columns_by_context_menu(list3, "添加列")
+    manage_columns.add_columns_by_context_menu(list3)
