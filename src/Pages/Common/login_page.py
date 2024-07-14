@@ -25,7 +25,11 @@ class LoginPage(BasePage):
             '//button[@aria-disabled="false"][@data-testid="appHeaderToolbar-studioActiveServerButton"]')
 
     def _login(self):
-        url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
+        # Original
+        # url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
+
+        # Backup server
+        url = "https://mwf.pgc.unx.sas.com/SASStudioNext/"
         self.goto(url)
         try:
             Helper.logger.info("enter _login.try")
