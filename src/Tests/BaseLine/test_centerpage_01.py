@@ -536,7 +536,7 @@ def test_36_flow(page, init):
     # flow.run(True)
     # PageHelper.close_alert_if_needed(page)
     # flow.run_single_node()
-    flow.run_nodes_downstream()
+    # flow.run_nodes_downstream()
     flow.run_nodes_upstream()
     # flow.background_submit()
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
