@@ -10,6 +10,7 @@ from src.Pages.Common.treegrid import TreeGrid
 from src.Pages.Common.treeview_flow import TreeViewFlow
 
 from src.Pages.StudioNext.Center.Flow.DetailsPane.details_pane import DetailsPane
+from src.Pages.Common.dialog import Dialog
 
 
 class ManageColumnsPane(DetailsPane):
@@ -45,6 +46,27 @@ class ManageColumnsPane(DetailsPane):
         Button 'Add all' underneath tab pages
         """
         return "//button[@data-testid='manageColumns-removeAllButton']"
+
+    @property
+    def button_new_column(self):
+        """
+        Button 'New column' underneath tab pages
+        """
+        return "//button[@data-testid='manageColumns-addColumnButton']"
+
+    @property
+    def expression_builder_dialog(self):
+        """
+        Expression Dialog
+        """
+        return "//div[contains(@class, 'ExpressionBuilder')][@role='dialog']"
+
+    @property
+    def button_move_column(self):
+        """
+        data-testid="manageColumns-moveColumnsButton-button"
+        """
+        return "//button[@data-testid='manageColumns-moveColumnsButton-button']"
 
     def add_all_columns(self):
         """
@@ -129,5 +151,60 @@ class ManageColumnsPane(DetailsPane):
         # Take screenshot
         self.screenshot(self.base_xpath, "add_columns_by_toolbar_button")
 
+    def new_column_expression_builder(self):
+        """
+        Click 'New column' button, then close the Expression Builder dialog.
+        """
+        self.click(self.button_new_column)
 
+        # time.sleep(3)
+        self.wait_until_enabled(self.locator("//button[@type='button'][.//span[text()='保存']]"))
 
+        # //button[@type="button"][.//span[text()='保存']]
+        self.click(self.locator("//button[@type='button'][.//span[text()='保存']]"))
+
+    def move_column_to_the_top(self, col_name):
+        """
+        Move the column with col_name to the top.
+        First right-click the column, then select
+        """
+        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        # Single click
+        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        # //span[@data-testid='columnMetadata-text'][text()='Sex']
+        self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        # //div[@class='ag-menu-option'][.//span[text()='移至顶部']]
+        # self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
+        self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+        # self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
+        self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+    def move_column_to_end(self, col_name):
+        """
+        //li[@role='menuitem'][.//span[text()='移至顶部']]
+        """
+        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        # Single click
+        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        self.click(self.button_move_column)
+
+        self.is_visible(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+        self.click(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+    def remove_selected_column(self, col_name):
+        """
+
+        """
+        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        # Single click
+        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        self.click(self.button_remove_selected_columns)
