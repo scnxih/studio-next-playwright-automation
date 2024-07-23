@@ -1079,3 +1079,43 @@ def test_31_flow_manage_columns(page, init):
     manage_columns.move_column_to_end("Age")
 
     manage_columns.remove_selected_column("Height")
+
+    manage_columns.move_up_column_by_context_menu("Age")
+
+
+def test_32_flow_manage_columns(page, init):
+    """
+    Test Manage Columns in flow
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.manage_columns)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.MANAGE_COLUMNS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.MANAGE_COLUMNS)
+
+    manage_columns = ManageColumnsPane(page)
+    manage_columns.add_all_columns()
+
+    print("The total number of column rows is: " + str(manage_columns.count_total_number_of_column_rows()))
+
+    manage_columns.page.click(manage_columns.last_column)
+    manage_columns.page.press(manage_columns.last_column, key='Delete')
+
+    manage_columns.remove_all_columns()
+    manage_columns.add_all_columns()
+

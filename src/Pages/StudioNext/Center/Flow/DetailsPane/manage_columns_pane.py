@@ -19,6 +19,30 @@ class ManageColumnsPane(DetailsPane):
         self.tree = TreeViewFlow(self.base_xpath, page)
         self.treegrid = TreeGrid(self.base_xpath, page)
 
+    def current_column(self, col_name):
+        """
+        The column being operated.
+        """
+        return self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']")
+
+    @property
+    def first_column(self):
+        """
+        Locate the first row by row-index and row-id
+        """
+        # //div[@role='row'][@row-index='0'][@row-id='0']
+        return "//div[@role='row'][@row-index='0'][@row-id='0']"
+
+    @property
+    def last_column(self):
+        """
+        Locate the last row by row-index and row-id
+        """
+        # //div[@role='row'][@row-index='count-1'][@row-id='count-1']
+        # return "//div[@role='row'][@row-index='0'][@row-id='0']"
+        return ("//div[@role='row']"
+                "[@row-index='" + str(self.count_total_number_of_column_rows() - 1) + "'][@row-id='" + str(self.count_total_number_of_column_rows() - 1) + "']")
+
     @property
     def button_add_all_columns(self):
         """
@@ -67,6 +91,77 @@ class ManageColumnsPane(DetailsPane):
         data-testid="manageColumns-moveColumnsButton-button"
         """
         return "//button[@data-testid='manageColumns-moveColumnsButton-button']"
+
+    @property
+    def enabled_context_menu_item_move_up(self):
+        """
+        Enabled context menu item 'Move up' on right-clicking a row
+        "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")
+        """
+        return "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_UP + "']]"
+
+    @property
+    def disabled_context_menu_item_move_up(self):
+        """
+        NOTE: 'Move up' should be disabled for the very first column row.
+        """
+        # "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_UP + "']]"
+        return "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_UP + "']]"
+
+    @property
+    def enabled_context_menu_item_move_down(self):
+        """
+        Enabled context menu item 'Move down' on right-clicking a row
+        "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_DOWN + "']]")
+        """
+        return "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_DOWN + "']]"
+
+    @property
+    def disabled_context_menu_item_move_down(self):
+        """
+        NOTE: 'Move up' should be disabled for the very first column row.
+        """
+        # "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_DOWN + "']]"
+        return "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_DOWN + "']]"
+
+    @property
+    def enabled_context_menu_item_move_to_top(self):
+        """
+        Enabled context menu item 'Move up' on right-clicking a row
+        "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")
+        """
+        return "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"
+
+    @property
+    def disabled_context_menu_item_move_to_top(self):
+        """
+        NOTE: 'Move to Top' should be disabled for the very first column row.
+        """
+        # "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"
+        return "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"
+
+    @property
+    def enabled_context_menu_item_move_to_end(self):
+        """
+        Enabled context menu item 'Move up' on right-clicking a row
+        "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]")
+        """
+        return "//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"
+
+    @property
+    def disabled_context_menu_item_move_to_end(self):
+        """
+        NOTE: 'Move to Top' should be disabled for the very first column row.
+        """
+        # "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"
+        return "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"
+
+    def count_total_number_of_column_rows(self):
+        """
+        Get the total number of column rows
+        """
+        # //div[@role='row'][contains(@class, 'ag-row')]
+        return self.locator_count("//div[@role='row'][contains(@class, 'ag-row')]")
 
     def add_all_columns(self):
         """
@@ -179,34 +274,41 @@ class ManageColumnsPane(DetailsPane):
         Move the column with col_name to the top.
         First right-click the column, then select
         """
-        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.is_visible(self.current_column(col_name))
 
         # Single click
-        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
 
         # Right-click the column to arouse context menu
         # //span[@data-testid='columnMetadata-text'][text()='Sex']
-        self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.right_click(self.current_column(col_name))
 
         # Wait until 'Move to Top' is visible from context menu
         # //div[@class='ag-menu-option'][.//span[text()='移至顶部']]
         # self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
-        self.is_visible(
-            self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        # self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+        self.is_visible(self.locator(self.enabled_context_menu_item_move_to_top))
 
         # Select 'Move to Top' from context menu
         # self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
-        self.click(
-            self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        # self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        self.click(self.locator(self.enabled_context_menu_item_move_to_top))
 
-        self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.right_click(self.current_column(col_name))
 
-        expect(self.locator(
-            "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")).to_be_disabled()
+        # expect(self.locator("//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")).to_be_disabled()
+        expect(self.locator(self.disabled_context_menu_item_move_to_top)).to_be_disabled()
+        expect(self.locator(self.disabled_context_menu_item_move_up)).to_be_disabled()
 
         self.key_press('Escape')
 
-        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
 
         self.screenshot(self.base_xpath, "move_column_to_the_top")
 
@@ -214,17 +316,18 @@ class ManageColumnsPane(DetailsPane):
         """
         //li[@role='menuitem'][.//span[text()='移至尾部']]
         """
-        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.is_visible(self.current_column(col_name))
 
         # Single click the column to move
-        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
 
         # Click the button in toolbar
         self.click(self.button_move_column)
 
         # Wait until the menu item is visible
-        self.is_visible(
-            self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"))
+        self.is_visible(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"))
 
         # Click 'Move to End'
         self.click(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"))
@@ -232,26 +335,57 @@ class ManageColumnsPane(DetailsPane):
         # Click the button in toolbar again
         self.click(self.button_move_column)
 
-        expect(self.locator(
-            "//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]")).to_be_disabled()
+        expect(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]")).to_be_disabled()
 
         self.key_press('Escape')
 
         # Single click the column to move
-        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
+
+        # self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.right_click(self.current_column(col_name))
+
+        # expect(self.locator("//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")).to_be_disabled()
+        expect(self.locator(self.disabled_context_menu_item_move_to_end)).to_be_disabled()
+        expect(self.locator(self.disabled_context_menu_item_move_down)).to_be_disabled()
 
         self.screenshot(self.base_xpath, "move_column_to_end")
 
+    def move_up_column_by_context_menu(self, col_name):
+        """
+        First click the column to move, then right-click on the column, select move up.
+        """
+        # self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.is_visible(self.current_column(col_name))
+
+        # Single click the column to move
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
+
+        # self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.right_click(self.current_column(col_name))
+
+        # Wait until 'Move Up' is visible from context menu
+        self.is_visible(self.locator(self.enabled_context_menu_item_move_up))
+
+        # Select 'Move Up' from context menu
+        self.click(self.locator(self.enabled_context_menu_item_move_up))
+
+        self.screenshot(self.base_xpath, "move_up_column_by_context_menu")
+
     def remove_selected_column(self, col_name):
         """
-
+        First click a column row, then delete from context menu, and check its invisibility.
         """
-        self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.is_visible(self.current_column(col_name))
 
         # Single click
-        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        # self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+        self.click(self.current_column(col_name))
 
         self.click(self.button_remove_selected_columns)
 
-        expect(self.locator(
-            "//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']")).not_to_be_in_viewport()
+        # expect(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']")).not_to_be_in_viewport()
+        expect(self.current_column(col_name)).not_to_be_in_viewport()
