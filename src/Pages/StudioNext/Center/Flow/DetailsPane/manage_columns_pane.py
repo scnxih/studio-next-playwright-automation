@@ -123,6 +123,13 @@ class ManageColumnsPane(DetailsPane):
         """
         self.tree.navigate_to_element_and_dblclick(element_path)
 
+        # Wait until the column has been added
+        # Button 'Remove all' will be available at this moment
+        self.wait_until_enabled(self.button_remove_all_columns)
+
+        # Take screenshot
+        self.screenshot(self.base_xpath, "add_columns_by_double_click")
+
     # def add_columns_by_context_menu(self, element_path: list, *context_menu_text):
     def add_columns_by_context_menu(self, element_path: list):
         """
@@ -160,6 +167,10 @@ class ManageColumnsPane(DetailsPane):
         # time.sleep(3)
         self.wait_until_enabled(self.locator("//button[@type='button'][.//span[text()='保存']]"))
 
+        expect(self.locator(self.expression_builder_dialog)).to_be_visible()
+
+        self.screenshot(self.expression_builder_dialog, 'expression_builder_dialog', user_assigned_xpath=True)
+
         # //button[@type="button"][.//span[text()='保存']]
         self.click(self.locator("//button[@type='button'][.//span[text()='保存']]"))
 
@@ -173,30 +184,63 @@ class ManageColumnsPane(DetailsPane):
         # Single click
         self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
 
+        # Right-click the column to arouse context menu
         # //span[@data-testid='columnMetadata-text'][text()='Sex']
         self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
 
+        # Wait until 'Move to Top' is visible from context menu
         # //div[@class='ag-menu-option'][.//span[text()='移至顶部']]
         # self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
-        self.is_visible(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        self.is_visible(
+            self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
 
+        # Select 'Move to Top' from context menu
         # self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='移至顶部']]"))
-        self.click(self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        self.click(
+            self.locator("//div[@class='ag-menu-option'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+
+        self.right_click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        expect(self.locator(
+            "//div[@class='ag-menu-option ag-menu-option-disabled'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]")).to_be_disabled()
+
+        self.key_press('Escape')
+
+        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        self.screenshot(self.base_xpath, "move_column_to_the_top")
 
     def move_column_to_end(self, col_name):
         """
-        //li[@role='menuitem'][.//span[text()='移至顶部']]
+        //li[@role='menuitem'][.//span[text()='移至尾部']]
         """
         self.is_visible(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
 
-        # Single click
+        # Single click the column to move
         self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
 
+        # Click the button in toolbar
         self.click(self.button_move_column)
 
-        self.is_visible(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        # Wait until the menu item is visible
+        self.is_visible(
+            self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"))
 
-        self.click(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_TOP + "']]"))
+        # Click 'Move to End'
+        self.click(self.locator("//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]"))
+
+        # Click the button in toolbar again
+        self.click(self.button_move_column)
+
+        expect(self.locator(
+            "//li[@role='menuitem'][.//span[text()='" + Helper.data_locale.MOVE_TO_END + "']]")).to_be_disabled()
+
+        self.key_press('Escape')
+
+        # Single click the column to move
+        self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
+
+        self.screenshot(self.base_xpath, "move_column_to_end")
 
     def remove_selected_column(self, col_name):
         """
@@ -208,3 +252,6 @@ class ManageColumnsPane(DetailsPane):
         self.click(self.locator("//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']"))
 
         self.click(self.button_remove_selected_columns)
+
+        expect(self.locator(
+            "//span[@data-testid='columnMetadata-text'][text()='" + col_name + "']")).not_to_be_in_viewport()
