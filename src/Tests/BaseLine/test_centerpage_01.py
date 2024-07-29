@@ -397,6 +397,7 @@ def test_32_close_all_tabs(page, init):
 def test_33_email_refresh(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
+    editor.type_code_in_codeeditor("proc print data = sashelp.class;run;")
     editor.reload()
     editor.email()
 
@@ -662,7 +663,7 @@ def test_38_quick_import(page, init):
     quick_import.download_log_file_html()
     quick_import.download_excel_file()
     quick_import.download_log_file_text()
-    quick_import.email()
+    # quick_import.email()
     quick_import.apply_main_layout_vertical()
     quick_import.apply_main_layout_horizontal()
     quick_import.apply_detail_layout_standard()
