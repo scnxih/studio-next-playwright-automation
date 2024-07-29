@@ -124,7 +124,7 @@ run;
     # time.sleep(1)
     flow.arrange_nodes()
     # time.sleep(1)
-    flow.run(False)
+    # flow.run(False)
     time.sleep(2)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(0.5)
