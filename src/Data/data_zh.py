@@ -627,3 +627,8 @@ class DataZH(Data):
     EXCLUDE_MAXIMUM_IN_RANCE = "排除范围中的最大值"
 
     """Added by Alice on Apr 10,2024 end"""
+
+    """Added by Alice on July 29, 2024 start"""
+    DATA = "Data"
+    OUTPUT ="Output"
+    """Added by Alice on July 29, 2024 end"""

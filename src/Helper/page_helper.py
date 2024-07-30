@@ -835,3 +835,10 @@ class PageHelper:
         setting_dialog.close_dialog()
 
     """Added by Alice on 11/27/2023 end"""
+
+    @staticmethod
+    def add_step_to_flow(page: Page,step_path: list):
+        PageHelper.show_accordion(page,AccordionType.steps)
+        step_page = StepsPage(page)
+        step_page.add_to_flow(step_path)
+

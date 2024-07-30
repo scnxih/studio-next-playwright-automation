@@ -11,7 +11,9 @@ from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
 from src.Pages.StudioNext.Dialog.saveas_dialog import SaveAsDialog
-from src.Utilities.enums import FlowNodeType
+from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+from src.Pages.StudioNext.Left.steps_page import StepsPage
+from src.Utilities.enums import FlowNodeType, AccordionType
 from src.Helper.helper import *
 
 
@@ -235,3 +237,9 @@ class FlowPage(MainCenterPage):
 
     def validate_output_port_color_for_node_in_flow(self, port_number, node_name, expected_port_color):
         validate_output_port_color_for_node_in_flow(self.page,port_number,node_name,expected_port_color)
+
+    def add_step_from_stepspane_to_flow(self,step_path:list):
+        acc: AccordionPage = AccordionPage(self.page)
+        acc.show_accordion(AccordionType.steps)
+        step_page = StepsPage(self.page)
+        step_page.add_to_flow(step_path)

@@ -62,7 +62,7 @@ class StepsPage(AccordionPage):
         self.click_dialog_title_or_studionext_header()
 
     def navigate_to_step(self, step_path: list):
-        self.tree.navigate_to_element(step_path)
+        locator = self.tree.navigate_to_element(step_path)
         time.sleep(1)
 
         """
@@ -74,3 +74,9 @@ class StepsPage(AccordionPage):
         self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
                         'navigation_pane',
                         user_assigned_xpath=True)
+        return locator
+    def add_to_flow(self,step_path: list):
+        locator = self.navigate_to_step(step_path)
+        self.click_context_menu(locator,"添加至流")
+
+

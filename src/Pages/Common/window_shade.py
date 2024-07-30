@@ -13,7 +13,9 @@ class WindowShade(CommonComponent):
         self.base_xpath += "//div[@class='sas_components-WindowShade-WindowShade_header'][@role='button']"
 
     # If the page contains more than one checkbox, data_test_id or label is required.
-    def __init__(self,container_base_xpath, page, supplement_base_xpath=""):
+    def __init__(self,container_base_xpath, page, supplement_base_xpath="",parent_label=""):
+        if parent_label != "":
+            supplement_base_xpath = "[descendant::span[text()='{0}']]".format(parent_label)
         CommonComponent.__init__(self,container_base_xpath=container_base_xpath,page=page,supplement_base_xpath=supplement_base_xpath)
 
     def is_expanded(self):
