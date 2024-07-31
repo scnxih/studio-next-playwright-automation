@@ -7,7 +7,9 @@ class Text(CommonComponent):
         self.base_xpath += "//input[@type='text' or @type='tel']"
 
     # If the page contains more than one text, data_test_id or aria-label is required.
-    def __init__(self, container_base_xpath, page, data_test_id="", aria_label="",supplement_base_xpath=""):
+    def __init__(self, container_base_xpath, page, data_test_id="", aria_label="",supplement_base_xpath="",parent_label=""):
+        if parent_label != "":
+            supplement_base_xpath = "[.. /../../ descendant::label[contains(text(), '{0}')]]".format(parent_label)
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id, aria_label=aria_label,supplement_base_xpath=supplement_base_xpath)
 
     def fill_text(self, text):

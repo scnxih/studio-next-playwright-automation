@@ -636,6 +636,11 @@ class Data:
     EXCLUDE_MAXIMUM_IN_RANCE = "Exclude maximum in range"
     """Added by Alice on Apr 10,2024 end"""
 
+    """Added by Alice on July 29, 2024 start"""
+    DATA = "Data"
+    OUTPUT = "Output"
+    """Added by Alice on July 29, 2024 end"""
+
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on July 29th, 2024
     TARGET_TABLE = "Target Table"

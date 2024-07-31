@@ -27,25 +27,26 @@ from src.Pages.Common.widget import Widget
 from src.Pages.Common.grid import Grid
 
 
-def get_numeric_stepper(container_base_xpath: str, page: Page, data_test_id="", supplement_base_xpath=""):
+def get_numeric_stepper(container_base_xpath: str, page: Page, data_test_id="", supplement_base_xpath="",parent_label=""):
     return NumericStepper(container_base_xpath, page, data_test_id=data_test_id,
-                          supplement_base_xpath=supplement_base_xpath)
+                          supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
 def get_textarea(container_base_xpath: str, page: Page, data_test_id="", aria_label="", supplement_base_xpath="",
-                 textarea_label=""):
+                 parent_label=""):
     return Textarea(container_base_xpath, page, data_test_id=data_test_id, aria_label=aria_label,
                     supplement_base_xpath=supplement_base_xpath,
-                    textarea_label=textarea_label)
+                    parent_label=parent_label)
 
 
-def get_text(container_base_xpath: str, page: Page, data_test_id="", aria_label="", supplement_base_xpath=""):
+def get_text(container_base_xpath: str, page: Page, data_test_id="", aria_label="", supplement_base_xpath="",parent_label=""):
     return Text(container_base_xpath, page, aria_label=aria_label, data_test_id=data_test_id,
-                supplement_base_xpath=supplement_base_xpath)
+                supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
-def get_combobox(container_base_xpath: str, page: Page, data_test_id="", items_count=20,supplement_base_xpath="",aria_label=""):
-    return Combobox(container_base_xpath, page, data_test_id=data_test_id, items_count=items_count,supplement_base_xpath=supplement_base_xpath,aria_label=aria_label)
+
+def get_combobox(container_base_xpath: str, page: Page, data_test_id="", items_count=20,supplement_base_xpath="",aria_label="",parent_label=""):
+    return Combobox(container_base_xpath, page, data_test_id=data_test_id, items_count=items_count,supplement_base_xpath=supplement_base_xpath,aria_label=aria_label,parent_label=parent_label)
 
 
 def get_checkbox(container_base_xpath: str, page: Page, data_test_id="", label=""):
@@ -58,8 +59,9 @@ def get_button(container_base_xpath: str, page: Page, data_test_id="", aria_labe
                   supplement_base_xpath=supplement_base_xpath)
 
 
-def get_windowshade(container_base_xpath: str, page: Page, supplement_base_xpath=""):
-    return WindowShade(container_base_xpath, page, supplement_base_xpath=supplement_base_xpath)
+def get_windowshade(container_base_xpath: str, page: Page, supplement_base_xpath="",parent_label=""):
+
+    return WindowShade(container_base_xpath, page, supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
 def get_color_picker(container_base_xpath: str, page: Page):
@@ -76,8 +78,9 @@ def get_listbox(container_base_xpath, page, data_test_id="", aria_label="", aria
                    aria_labelledby=aria_labelledby)
 
 
-def get_radio_group(container_base_xpath, page, data_test_id="",supplement_base_xpath=""):
-    return RadioGroup(container_base_xpath, page, data_test_id=data_test_id,supplement_base_xpath=supplement_base_xpath)
+def get_radio_group(container_base_xpath, page, data_test_id="",supplement_base_xpath="",parent_label=""):
+
+    return RadioGroup(container_base_xpath, page, data_test_id=data_test_id,supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
 def get_switch_button(container_base_xpath, page, data_test_id=""):

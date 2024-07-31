@@ -8,7 +8,9 @@ class Combobox(CommonComponent):
 
     # When the page contains more than one combobox, data_test_id is required.
     # If items count > 20, items_count is required.
-    def __init__(self, container_base_xpath, page, data_test_id="", items_count=20, supplement_base_xpath="",aria_label=""):
+    def __init__(self, container_base_xpath, page, data_test_id="", items_count=20, supplement_base_xpath="",aria_label="",parent_label=""):
+        if parent_label != "":
+            supplement_base_xpath = "[../../../descendant::label[contains(text(),'{0}')]]".format(parent_label)
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id, supplement_base_xpath=supplement_base_xpath,aria_label=aria_label)
         self.items_count = items_count
 

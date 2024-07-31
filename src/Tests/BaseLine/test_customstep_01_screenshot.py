@@ -194,19 +194,17 @@ def test_06_insert_all_controls(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-    whole.screenshot_self("01")
+
 
     custom_step.insert_control(DesignerControlType.color_picker)
     time.sleep(1)
-    whole.screenshot_self("02")
+
 
     custom_step.insert_control(DesignerControlType.date_and_time_picker)
     time.sleep(1)
-    whole.screenshot_self("03")
 
     custom_step.insert_control(DesignerControlType.drop_down_list)
     time.sleep(1)
-    whole.screenshot_self("04")
 
     custom_step.insert_control(DesignerControlType.file_or_folder_selector)
 
@@ -232,7 +230,7 @@ def test_06_insert_all_controls(page, init):
 
     custom_step.insert_control(DesignerControlType.output_table)
     time.sleep(1)
-    whole.screenshot_self("05")
+    whole.screenshot_self("01")
 
 
 def test_07_insert_checkbox_and_select_checkbox_move(page, init):
@@ -240,7 +238,6 @@ def test_07_insert_checkbox_and_select_checkbox_move(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-    whole.screenshot_self("01")
 
     custom_step.insert_control(DesignerControlType.checkbox)
 
@@ -257,11 +254,10 @@ def test_07_insert_checkbox_and_select_checkbox_move(page, init):
 
     designer_checkbox.move_to_section(Helper.data_locale.NEW_SECTION)
     time.sleep(1)
-    whole.screenshot_self("02")
 
     designer_checkbox.move_to_page(Helper.data_locale.NEW_PAGE)
     time.sleep(1)
-    whole.screenshot_self("03")
+    whole.screenshot_self("01")
 
 
 def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_delete(page, init):
@@ -269,15 +265,15 @@ def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_de
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-    whole.screenshot_self("01")
+
 
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-    whole.screenshot_self("02")
+
 
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-    whole.screenshot_self("03")
+
 
     designer_checkbox1: DesignerCheckbox = custom_step.select_control(DesignerControlType.checkbox, 1)
     designer_checkbox1.duplicate()
@@ -288,12 +284,12 @@ def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_de
 
     designer_checkbox1.cut()
     time.sleep(1)
-    whole.screenshot_self("04")
+
 
     designer_checkbox2: DesignerCheckbox = custom_step.select_control(DesignerControlType.checkbox, 2)
     designer_checkbox2.delete()
     time.sleep(1)
-    whole.screenshot_self("05")
+    whole.screenshot_self("01")
 
 
 def test_09_insert_all_controls_twice(page, init):
@@ -387,15 +383,12 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.insert_control(DesignerControlType.list)
     time.sleep(1)
-    whole.screenshot_self("01")
 
     custom_step.insert_control(DesignerControlType.numeric_stepper)
     time.sleep(1)
-    whole.screenshot_self("02")
 
     custom_step.insert_control(DesignerControlType.list)
     time.sleep(1)
-    whole.screenshot_self("03")
 
     custom_step.insert_control(DesignerControlType.numeric_stepper)
 
@@ -432,12 +425,10 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
 
     designer_list1.move_down()
     time.sleep(1)
-    whole.screenshot_self("04")
 
     designer_numeric_stepper2.move_to_section(Helper.data_locale.NEW_SECTION)
     time.sleep(1)
-    whole.screenshot_self("05")
 
     designer_list1.move_to_page(Helper.data_locale.NEW_PAGE)
     time.sleep(1)
-    whole.screenshot_self("06")
+    whole.screenshot_self("01")
