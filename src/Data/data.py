@@ -635,3 +635,9 @@ class Data:
     EXCLUDE_MINIMUM_IN_RANCE = "Exclude minimum in range"
     EXCLUDE_MAXIMUM_IN_RANCE = "Exclude maximum in range"
     """Added by Alice on Apr 10,2024 end"""
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on July 29th, 2024
+    TARGET_TABLE = "Target Table"
+
+    # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>

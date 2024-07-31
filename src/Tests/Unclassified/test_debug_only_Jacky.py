@@ -3,6 +3,8 @@ from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
+from src.Pages.StudioNext.Center.Flow.DetailsPane.branch_rows_pane import BranchRowsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.manage_columns_pane import ManageColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
@@ -12,6 +14,7 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
 from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
+from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
@@ -21,6 +24,9 @@ from src.Utilities.enums import SettingsTabPages
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
+from src.Pages.Common.dialog import Dialog
+from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
+from src.Pages.StudioNext.Center.Flow.DetailsPane.load_table_pane import LoadTablePane
 
 
 def test_00_click_show_tab_lables(page, init):
@@ -1119,3 +1125,175 @@ def test_32_flow_manage_columns(page, init):
     manage_columns.remove_all_columns()
     manage_columns.add_all_columns()
 
+
+def test_33_branch_rows(page, init):
+    """
+    Branch rows.
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.branch_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.BRANCH_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.BRANCH_ROWS)
+
+    branch_rows = BranchRowsPane(page)
+    branch_rows.select_a_column()
+
+    select_column_dialog = SelectColumnDialog(page)
+    select_column_dialog.select_a_column_and_OK("Sex")
+
+
+def test_33_filter_rows(page, init):
+    """
+    Filter rows.
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.filter_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.FILTER_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.FILTER_ROWS)
+
+    filter_rows = FilterRowsPane(page)
+    filter_rows.add_a_row()
+    filter_rows.select_a_column("Sex")
+
+    # Dialog(page, title=Helper.data_locale.SELECT_A_COLUMN).screenshot_self('select_a_col')
+    # Dialog(page, title=Helper.data_locale.SELECT_A_COLUMN).close_dialog()
+
+    filter_rows.set_filter_value()
+    filter_rows.cancel_and_close_add_filter_dialog()
+
+
+def test_34_filter_rows(page, init):
+    """
+    Test Flow/Filter Rows/Add Filter dialog
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.filter_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.FILTER_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.FILTER_ROWS)
+
+    filter_rows = FilterRowsPane(page)
+    filter_rows.select_a_column("Sex")
+
+    filter_rows.set_condition_to("等于", "M")
+
+    flow.run(True)
+
+
+def test_35_load_table(page, init):
+    """
+    Test Flow/Load Table
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    # load_table.tab_group.click_tab_by_text("目标表")
+    # load_table.tab_group.click_tab_by_text("列结构")
+    load_table.set_load_technique()
+    load_table.set_target_library('work')
+
+
+def test_36_load_table_source_target(page, init):
+    """
+    Test Flow/Load Table
+    """
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area("data work.out_class;set SASHELP.'CLASS'n;run;")
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    # load_table.tab_group.click_tab_by_text("目标表")
+    # load_table.tab_group.click_tab_by_text("列结构")
+    load_table.set_load_technique()
+    load_table.set_target_library('work')
+    load_table.set_target_table('out_class')
+    flow.run(True)

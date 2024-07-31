@@ -324,7 +324,7 @@ class DataZH(Data):
     TABLE_PROPERTIES = "表属性"
     TABLE_NAME_INPUT = "表名:, 表名输入"
     PREVIEW_DATA = "预览数据"
-    NODE_NAME= "节点名称"
+    NODE_NAME = "节点名称"
 
     """ ----- Added by Frank 2024/04/08 Begin ----- """
     SELECT_A_TABLE = "选择一个表"
@@ -335,7 +335,7 @@ class DataZH(Data):
     """ ----- Added by Frank 2024/04/08 End ----- """
 
     """Added by Alice on 2024/03/20 start"""
-    NEXT_MATCH="下一个匹配项 (Enter)"
+    NEXT_MATCH = "下一个匹配项 (Enter)"
     PREVIOUS_MATCH = "上一个匹配项 (Shift+Enter)"
     CLOSE_ESCAPE = "关闭 (Escape)"
 
@@ -383,10 +383,8 @@ class DataZH(Data):
     QUERY_GRID_COLUMN_HEADER_SORT = "排序"
     """ ----- Added by Frank 2024/03/21 End ----- """
 
-
-
     """Added by Alice on 2024/03/22 start"""
-    HELP= "帮助"
+    HELP = "帮助"
     """Added by Alice on 2024/03/22 end"""
 
     """Added by Alice on 2024/03/28 start"""
@@ -394,13 +392,12 @@ class DataZH(Data):
     CONNECTED_LIBRARIES = "连接的逻辑库"
     """Added by Alice on 2024/03/28 end"""
 
-
     """Added by Alice on 2024/03/29 start"""
     CUSTOM_STEP_QUICK_START = "自定义步骤快速启动"
     SAMPLE_CONTROLS = "示例控件"
     STARTER_TEMPLATES = "入门模板"
     BASIC_RANK = "基本 - 排名"
-    ADVANCED_RANK= "高级 - 排名"
+    ADVANCED_RANK = "高级 - 排名"
     ADVANCED_DEFINE_COLUMN_STRUCTURE = "高级 - 定义列结构"
     """Added by Alice on 2024/03/29 end"""
 
@@ -452,7 +449,6 @@ class DataZH(Data):
     STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS = "稳健主成分分析"
     STEP_SUPPORT_VECTOR_DATA_DESCRIPTION = "支持向量数据说明"
 
-
     STEP_CATEGORY_MANAGE_MODELS = "管理模型"
     STEP_REGISTER_SAS_MODEL = "注册 SAS 模型"
     STEP_REGISTER_PYTHON_MODEL = "注册 Python 模型"
@@ -493,7 +489,7 @@ class DataZH(Data):
     STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS = "多维偏好分析"
 
     STEP_CATEGORY_TEXT_ANALYTICS = "文本分析"
-    STEP_TEXT_SUMMARY ="文本汇总"
+    STEP_TEXT_SUMMARY = "文本汇总"
 
     STEP_CATEGORY_TRANSFORM_DATA = "转换数据"
     STEP_BRANCH_ROWS = "分支行"
@@ -537,7 +533,6 @@ class DataZH(Data):
     # REGION_AND_LANGUAGE = "区域和语言"
     RESET_TO_DEFAULT_VALUES = '重置为默认值'
     # Modified by Jacky(ID: jawang) on Mar.28th, 2024 >>>
-
 
     """Added by Alice on Apr 09,2024 start"""
     DEPENDENCIES = "依赖关系"
@@ -619,7 +614,7 @@ class DataZH(Data):
     STEP_SIZE = "步长"
     DEFAULT_RADIO_BUTTON = "默认单选按钮"
     OPEN_BY_DEFAULt = "默认打开"
-    NUMERIC2= "数值"
+    NUMERIC2 = "数值"
     VALIDATION = "验证"
     TYPE = "类型"
     ENTER_REGULAR_EXPRESSION = "输入正则表达式"
@@ -627,3 +622,9 @@ class DataZH(Data):
     EXCLUDE_MAXIMUM_IN_RANCE = "排除范围中的最大值"
 
     """Added by Alice on Apr 10,2024 end"""
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on July 29th, 2024
+    TARGET_TABLE = "目标表"
+
+    # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>
