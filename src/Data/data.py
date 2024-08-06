@@ -644,5 +644,15 @@ class Data:
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on July 29th, 2024
     TARGET_TABLE = "Target Table"
-
+    COLUMN_RESOLUTION = "Column Resolution"
+    COLUMN_STRUCTURE = "Column Structure"
+    UPDATE_ROWS = "Update rows"
+    UPSERT_ROWS = "Upsert rows"
+    FILTER_COLUMN_MAPPING_SUCCESSFUL = "Successful"
+    FILTER_COLUMN_MAPPING_IGNORED = "Ignored"
+    FILTER_COLUMN_MAPPING_INFORMATIONAL = "Informational"
+    NO_ACTION = "No action"
+    TRUNCATE_TABLE = "Truncate table"
+    DELETE_ALL_ROWS = "Delete all rows"
+    REPLACE_THE_TARGET_TABLE_IF_IT_EXISTS = "Replace the target table if it exists"
     # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>

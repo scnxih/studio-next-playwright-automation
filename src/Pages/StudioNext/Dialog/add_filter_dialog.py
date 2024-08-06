@@ -7,6 +7,7 @@ from src.Pages.Common.dialog import Dialog
 from src.Pages.Common.combobox import Combobox
 from src.Pages.Common.text import Text
 
+
 class AddFilterDialog(Dialog):
     """
     Add Filter dialog used in Flow and Query
@@ -16,6 +17,7 @@ class AddFilterDialog(Dialog):
         Dialog.__init__(self, page)
         self.condition_combo_box = Combobox("", page, data_test_id="quickFilterDialog-filterOperatorSelect")
         self.condition_value_input = Text("", page, data_test_id="quickFilterDialog-valueInput0-input-input")
+
     @property
     def button_cancel(self):
         """

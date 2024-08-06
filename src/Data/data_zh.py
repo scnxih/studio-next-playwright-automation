@@ -631,5 +631,16 @@ class DataZH(Data):
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on July 29th, 2024
     TARGET_TABLE = "目标表"
+    COLUMN_RESOLUTION = "列解析"
+    COLUMN_STRUCTURE = "列结构"
+    UPDATE_ROWS = "更新行"
+    UPSERT_ROWS = "更新插入行"
+    FILTER_COLUMN_MAPPING_SUCCESSFUL = "成功"
+    FILTER_COLUMN_MAPPING_IGNORED = "忽略"
+    FILTER_COLUMN_MAPPING_INFORMATIONAL = "信息"
+    NO_ACTION = "无操作"
+    TRUNCATE_TABLE = "截断表"
+    DELETE_ALL_ROWS = "删除全部行"
+    REPLACE_THE_TARGET_TABLE_IF_IT_EXISTS = "替换目标表（若存在）"
 
     # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>
