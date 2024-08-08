@@ -10,7 +10,7 @@ from src.Pages.Common.common_component import *
 
 class WindowShade(CommonComponent):
     def set_base_xpath(self):
-        self.base_xpath += "//div[@class='sas_components-WindowShade-WindowShade_header'][@role='button']"
+        self.base_xpath += "//div[contains(@class,'sas_components-WindowShade-WindowShade_header')][@role='button']"
 
     # If the page contains more than one checkbox, data_test_id or label is required.
     def __init__(self,container_base_xpath, page, supplement_base_xpath="",parent_label=""):

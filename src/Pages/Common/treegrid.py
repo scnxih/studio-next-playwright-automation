@@ -73,7 +73,7 @@ class TreeGrid(CommonComponent):
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
         if row_index is None:
             return self.locate_xpath(f"//div[@role='row'][contains(@class, 'ag-row')][.//span[text()='{name_text}'] | "
-                                     f".//div[text()='{name_text}']]")
+                                     f".//div[text()='{name_text}']] | .//div[@row-id='{name_text}']")
 
     def select_a_row(self, row_index=None, name_text=None):
         """
@@ -275,3 +275,66 @@ class TreeGrid(CommonComponent):
                                                    *context_menu_text)
         else:
             Helper.logger.debug("The row is not available, please provide a correct row information.")
+
+    """Added by Alice on July 31, 2024 start"""
+    def checkbox_container_in_a_row(self, row_index=None, name_text=None):
+        """
+        Description: get checkbox container by ro_index or name_text
+        :param row_index: specify a row, start from 0.
+        :param name_text: the name text of a row
+        :return: Locator
+        """
+        if name_text is not None:
+            return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']")
+        if row_index is not None:
+            return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
+
+    def checkbox_in_a_row(self,row_index=None,name_text=None):
+        """
+        Description: get checkbox by ro_index or name_text
+        :param row_index: specify a row, start from 0.
+        :param name_text: the name text of a row
+        :return: Locator
+        """
+        if name_text is not None:
+            return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']//input[@type='checkbox']")
+        if row_index is not None:
+            return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']//input[@type='checkbox']")
+
+
+    def is_checked_in_a_row(self, row_index=None, name_text=None):
+        """
+        Description: check if a row is checked or not
+        :param row_index: specify a row, start from 0.
+        :param name_text: the name text of a row
+        :return: Boolean
+        """
+        locator = self.checkbox_container_in_a_row(row_index=row_index,name_text=name_text)
+        if self.get_attribute(locator,"aria-selected").lower() == "true":
+            return True
+        else:
+            return False
+    def set_check_in_a_row(self, row_index=None, name_text=None):
+        """
+        Description: Set check for a row
+        :param row_index: specify a row, start from 0.
+        :param name_text: the name text of a row
+        :return: None
+        """
+        if self.is_checked_in_a_row(row_index=row_index,name_text=name_text):
+            return
+        else:
+            self.click(self.checkbox_in_a_row(row_index=row_index,name_text=name_text))
+
+    def set_uncheck_in_a_row(self, row_index=None, name_text=None):
+        """
+        Description: Set uncheck for a row
+        :param row_index: specify a row, start from 0.
+        :param name_text: the name text of a row
+        :return: None
+        """
+        if self.is_checked_in_a_row(row_index=row_index,name_text=name_text):
+            self.click(self.checkbox_in_a_row(row_index=row_index, name_text=name_text))
+        else:
+            return
+    """Added by Alice on July 31, 2024 end"""

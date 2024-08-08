@@ -13,7 +13,7 @@ class DesignerControl(BasePage):
     def __init__(self, page, control_number: int = 1):
         BasePage.__init__(self, page)
         # self.base_xpath += "//div[starts-with(@data-testid,'{0}-{1}')]".format(self._data_testid_prefix,control_number)
-        self.base_xpath += "//div[@data-testid='{0}-{1}']".format(self._data_testid_prefix, control_number)
+        self.base_xpath += "//div[contains(@data-testid,'itemContent{0}-{1}')]".format(self._data_testid_prefix, control_number)
 
     def move_up(self):
         # Original

@@ -37,5 +37,17 @@ class DetailsPane(BasePage):
         self.click_Tab(Helper.data_locale.NOTES)
         Textarea(self.base_xpath,self.page).fill_text(notes)
 
+    def click_data_tab(self):
+        self.click_Tab(Helper.data_locale.DATA)
 
+    def click_options_tab(self):
+        self.click_Tab(Helper.data_locale.OPTIONS)
 
+    def click_output_tab(self):
+        self.click_Tab(Helper.data_locale.OUTPUT)
+
+    def click_node_tab(self):
+        self.click_Tab(Helper.data_locale.NODE)
+
+    def click_notes_tab(self):
+        self.click_Tab(Helper.data_locale.NOTES)

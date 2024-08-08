@@ -2,8 +2,10 @@ import time
 
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.centrality_metrics_pane import CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
+
 from src.conftest import *
 from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
@@ -12,14 +14,14 @@ from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 #     query = QueryPage(page)
 #     query.click_add_table()
 
-def test_47_custom_step(page, init):
+def test_01_custom_step(page, init):
     custom_step_page:CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step_page.apply_main_layout_standard()
     custom_step_page.apply_main_layout_horizontal()
     custom_step_page.apply_main_layout_vertical()
 
 
-def test_48_create_dialog_and_accordion(page,init):
+def test_02_create_dialog_and_accordion(page,init):
     dialog = get_dialog_page(page,DialogType.open_dialog)
     dialog = get_dialog_page(page,DialogType.save_as_dialog)
     dialog = get_dialog_page(page, DialogType.search_dialog)
@@ -47,7 +49,7 @@ def test_48_create_dialog_and_accordion(page,init):
     pane = get_accordion_page(page, AccordionType.file_references)
 
 
-def test_mouse_down_move_up(page,init):
+def test_03_mouse_down_move_up(page,init):
     editor:SASProgramPage = PageHelper.new_sas_program(page)
     p: Page = page
 
@@ -91,133 +93,153 @@ run;
     editor.run(True)
     time.sleep(1)
 
-def test_call_SDSTest():
+def test_04_call_SDSTest():
     Helper.call_SDSTest()
 
 
 
 
-def test_01_add_step_to_flow(page,init):
+# def test_01_add_centrality_metrics_step_to_flow(page,init):
+#     flow:FlowPage = PageHelper.new_flow(page)
+#     flow.add_node(FlowNodeType.sas_program)
+#     time.sleep(0.8)
+#     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
+#     # time.sleep(1)
+#     sasprogram_pane = SASProgramPane(page)
+#     program = """
+# cas;
+# libname mycas cas;
+# data mycas.LinkSetIn;
+#    input from $ to $ community weight wt;
+#    datalines;
+# A B 1 3 3
+# A C 1 2 2
+# A D 1 1 1
+# B C 1 5 5
+# C D 1 7 7
+# C E 1 2 2
+# D F . 3 3
+# F G 2 9 9
+# F H 2 3 3
+# F I 2 5 5
+# G H 2 7 7
+# G I 2 3 3
+# I J . 3 3
+# J K 3 1 2
+# J L 3 6 6
+# K L 3 3 3
+# ;
+# data mycas.NodeSetIn;
+#    input node $ @@;
+#    datalines;
+# A    M   N
+# ;
+# """
+#     time.sleep(0.5)
+#     sasprogram_pane.type_into_text_area(program)
+#
+#     sasprogram_pane.set_node_name("Create table")
+#
+#     flow.add_node(FlowNodeType.table)
+#
+#
+#     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+#
+#     table_pane = TablePane(page)
+#     table_pane.set_library("mycas")
+#     table_pane.set_table("LinkSetIn")
+#
+#
+#     flow.link_two_nodes_in_flow("Create table", "LinkSetIn")
+#
+#     flow.arrange_nodes()
+#     step_path = ["优化和网络分析", "中心性量度"]
+#     flow.add_step_from_stepspane_to_flow(step_path)
+#     time.sleep(1)
+#     flow.link_two_nodes_in_flow("LinkSetIn","中心性量度")
+#     flow.arrange_nodes()
+#     flow.select_node_in_flow_canvas("中心性量度")
+#     centrality_metrics_pane = CentralityMetricsPane(page)
+#     centrality_metrics_pane.set_filter_input_data("sstest")
+#     centrality_metrics_pane.set_link_direction_directed()
+#     time.sleep(1)
+#     time.sleep(1)
+#     centrality_metrics_pane.click_add_column_button(parent_label="From node:")
+#     time.sleep(1)
+
+def test_05_centrality_metrics_in_flow(page,init):
     flow:FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
-    time.sleep(0.8)
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
-    # time.sleep(1)
-    sasprogram_pane = SASProgramPane(page)
-    program = """
-cas; 
-libname mycas cas;
-data mycas.LinkSetIn;
-   input from $ to $ community weight wt;
-   datalines;
-A B 1 3 3 
-A C 1 2 2
-A D 1 1 1
-B C 1 5 5
-C D 1 7 7
-C E 1 2 2
-D F . 3 3
-F G 2 9 9
-F H 2 3 3
-F I 2 5 5
-G H 2 7 7
-G I 2 3 3
-I J . 3 3
-J K 3 1 2
-J L 3 6 6
-K L 3 3 3
-;
-data mycas.NodeSetIn;
-   input node $ @@;
-   datalines;
-A    M   N
-;
-"""
-    time.sleep(0.5)
-    sasprogram_pane.type_into_text_area(program)
-
-    sasprogram_pane.set_node_name("Create table")
-
     flow.add_node(FlowNodeType.table)
-
-
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
-
     table_pane = TablePane(page)
-    table_pane.set_library("mycas")
-    table_pane.set_table("LinkSetIn")
+    table_pane.set_library("SASHELP")
+    table_pane.set_table("CLASS")
 
-
-    flow.link_two_nodes_in_flow("Create table", "LinkSetIn")
-
-    flow.arrange_nodes()
-    step_path = ["优化和网络分析", "中心性量度"]
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,Helper.data_locale.STEP_CENTRALITY_METRICS]
     flow.add_step_from_stepspane_to_flow(step_path)
-    time.sleep(1)
-    flow.link_two_nodes_in_flow("LinkSetIn","中心性量度")
-    flow.arrange_nodes()
-    flow.select_node_in_flow_canvas("中心性量度")
-    basic_step_pane = BasicStepPane(page)
-    basic_step_pane.set_filter_input_date("sssss")
-    time.sleep(2)
 
-    # flow.select_node_in_flow_canvas("CLASS")
-    # # table_pane.click_Tab("预览数据")
-    #
-    # # Original
-    # # table_pane.click_Tab("Preview Data")
-    #
-    # # Revised
-    # table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
-    #
-    # time.sleep(3)
-    # WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
-    # flow.add_node(FlowNodeType.sort)
-    # # time.sleep(1)
-    # flow.arrange_nodes()
-    #
-    # # flow.link_two_nodes_in_flow("CLASS","排序")
-    #
-    # # Original
-    # # flow.link_two_nodes_in_flow("CLASS", "Sort")
-    #
-    # flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
-    #
-    # # time.sleep(1)
-    # flow.arrange_nodes()
-    #
-    # # flow.select_node_in_flow_canvas("排序")
-    #
-    # # Original
-    # # flow.select_node_in_flow_canvas("Sort")
-    #
-    # flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
-    #
-    # sort_pane = SortPane(page)
-    #
-    # list1 = ["Class", "Name"]
-    # sort_pane.add_sort(list1, SortWay.descending)
-    # # time.sleep(1)
-    # WholePage(page).screenshot_self(pic_name="08_add_sort")
-    # flow.add_node(FlowNodeType.table)
-    # # flow.select_node_in_flow_canvas("表")
-    #
-    # # Original
-    # # flow.select_node_in_flow_canvas("Table")
-    #
-    # flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
-    #
-    # table_pane.set_node_name("SORTED")
-    # table_pane.set_library("WORK")
-    # table_pane.set_table("SORTED")
-    # table_pane.refresh_table()
-    # # flow.link_two_nodes_in_flow("排序","SORTED")
-    # # flow.link_two_nodes_in_flow("Sort", "SORTED")
-    # flow.link_two_nodes_in_flow(Helper.data_locale.SORT, "SORTED")
-    # # time.sleep(1)
-    # flow.arrange_nodes()
-    #
-    #
-    #
-    #
-    #
+    flow.link_two_nodes_in_flow("CLASS",Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
+    centrality_metrics_pane = CentralityMetricsPane(page)
+    # centrality_metrics_pane.set_filter_input_data("test")
+    centrality_metrics_pane.set_link_direction_directed()
+    centrality_metrics_pane.set_link_direction_undirected()
+    centrality_metrics_pane.set_column_for_from_node("Name")
+    centrality_metrics_pane.set_column_for_to_node("Sex")
+    centrality_metrics_pane.set_column_for_weight("Height")
+    centrality_metrics_pane.set_column_for_auxiliary_weight("Age")
+    centrality_metrics_pane.expand_windowshade_additional_roles()
+    centrality_metrics_pane.set_columns_for_group_analysis_by(check_column_name_list=["Name","Sex","Height","Weight"],uncheck_column_name_list=["Sex","Age"])
+    centrality_metrics_pane.delete_column_for_from_node()
+    centrality_metrics_pane.delete_column_for_to_node()
+    centrality_metrics_pane.collapse_windowshade_links()
+    centrality_metrics_pane.expand_windowshade_links()
+
+    centrality_metrics_pane.click_options_tab()
+    centrality_metrics_pane.set_check_degree()
+
+    centrality_metrics_pane.set_uncheck_degree()
+    centrality_metrics_pane.set_check_influence()
+    centrality_metrics_pane.set_metric_type_for_influence(item_index=1)
+
+    centrality_metrics_pane.set_metric_type_for_influence(item_value=Helper.data_locale.BOTH_WEIGHTED_AND_UNWEIGHTED)
+    centrality_metrics_pane.set_check_clustering_coefficient()
+    centrality_metrics_pane.set_check_closeness()
+    centrality_metrics_pane.set_metric_type_for_closeness(item_index=2)
+    centrality_metrics_pane.set_shortest_path_distance_between_disconnected_nodes(item_index=0)
+
+    centrality_metrics_pane.set_shortest_path_distance_between_disconnected_nodes(item_value=Helper.data_locale.USE_ZERO)
+
+    centrality_metrics_pane.set_check_betweenness()
+    centrality_metrics_pane.set_metric_type_for_betweenness(item_index=1)
+    centrality_metrics_pane.set_check_normalize_betweenness_centrality()
+    centrality_metrics_pane.set_uncheck_normalize_betweenness_centrality()
+    centrality_metrics_pane.set_uncheck_betweenness()
+    centrality_metrics_pane.set_check_eigenvector()
+    centrality_metrics_pane.set_metric_type_for_eigenvector(item_value=Helper.data_locale.BOTH_WEIGHTED_AND_UNWEIGHTED)
+    centrality_metrics_pane.set_metric_type_for_eigenvector(item_index=1)
+    centrality_metrics_pane.set_check_hub_score()
+    centrality_metrics_pane.set_uncheck_hub_score()
+    centrality_metrics_pane.set_check_authority_score()
+    centrality_metrics_pane.set_uncheck_authority_score()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

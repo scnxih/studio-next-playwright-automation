@@ -7,6 +7,8 @@ Description: FlowPage will inherit from MainCenterPage class, thus the methods i
             download_code_file/download_listing_file/email/apply_detail_layout_standard are override as pass because flow does not support these methods.
 
 """
+import time
+
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
@@ -243,3 +245,4 @@ class FlowPage(MainCenterPage):
         acc.show_accordion(AccordionType.steps)
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
+        time.sleep(0.5)

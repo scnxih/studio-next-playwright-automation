@@ -312,7 +312,7 @@ class Data:
     DATE_AND_TIME_PICKER = "Date and Time Picker"
     DROP_DOWN_LIST = "Drop-down List"
     FILE_OR_FOLDER_SELECTOR = "File or Folder Selector"
-    LINK = "Link"
+
     LIST = "List"
     NUMERIC_STEPPER = "Numeric Stepper"
     RADIO_BUTTON_GROUP = "Radio Button Group"
@@ -456,7 +456,8 @@ class Data:
     STEP_MOVING_WINDOW_PRINCIPAL_COMPONENT_ANALYSIS = "Moving Window Principal Component Analysis"
     STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS = "Robust Principal Component Analysis"
     STEP_SUPPORT_VECTOR_DATA_DESCRIPTION ="Support Vector Data Description"
-
+    STEP_AUTOMATED_FEATURE_ENGINEERING = "Automated Feature Engineering"
+    STEP_SUPPORT_VECTOR_MACHINE = "Support Vector Machine"
 
     STEP_CATEGORY_MANAGE_MODELS = "Manage Models"
     STEP_REGISTER_SAS_MODEL = "Register SAS Model"
@@ -465,10 +466,33 @@ class Data:
     STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS = "Optimization and Network Analysis"
     STEP_CORE_DECOMPOSITION = "Core Decomposition"
     STEP_NETWORK_SUMMARY = "Network Summary"
+    STEP_BICONNECTED_COMPONENTS = "Biconnected Components"
+    STEP_CENTRALITY_METRICS = "Centrality Metrics"
+    STEP_CONNECTED_COMPONENTS = "Connected Components"
+    STEP_CYCLE_DETECTION = "Cycle Detection"
+    STEP_LINEAR_ASSIGNMENT = "Linear Assignment"
+    STEP_MAXIMAL_CLIQUES = "Maximal Cliques"
+    STEP_MINIMUM_COST_NETWORK_FLOW = "Minimum Cost Network Flow"
+    STEP_MINIMUM_CUT = "Minimum Cut"
+    STEP_MINIMUM_SPANNING_TREE ="Minimum Spanning Tree"
+    STEP_REACH_NETWORK = "Reach Network"
+    STEP_TRANSITIVE_CLOSURE = "Transitive Closure"
+    STEP_TRAVELING_SALESMAN_PROBLEM = "Traveling Salesman Problem"
+    STEP_SUMMARY_TABLES = "Summary Tables"
+    STEP_SUMMARY_AND_LEVEL_STATISTICS = "Summary and Level Statistics"
+    STEP_ESTIMATE_WITHIN_CLUSTER_COVARIANCES = "Estimate Within-Cluster Covariances"
+    STEP_DECISION_TREE = "Decision Tree"
+    STEP_ANALYSIS_OF_COVARIANCE = "Analysis of Covariance"
+    STEP_CONPARAMETRIC_ONE_WAY_ANOVA = "Nonparametric One-Way ANOVA"
+    STEP_LINEAR_REGRESSION = "Linear Regression"
+
+
+
 
     STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA = "Prepare and Explore Data"
     STEP_Binning = "Binning"
     STEP_STANDARDIZE_DATA = "Standardize Data"
+    STEP_IMPUTATION = "Imputation"
 
 
 
@@ -502,6 +526,10 @@ class Data:
 
     STEP_CATEGORY_TEXT_ANALYTICS = "Text Analytics"
     STEP_TEXT_SUMMARY ="Text Summarization"
+    STEP_BOOLEAN_RULES = "Boolean Rules"
+    STEP_SEGMENTATION = "Segmentation"
+    STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY = "Text Parsing and Topic Discovery"
+    STEP_TEXT_SCORING = "Text Scoring"
 
     STEP_CATEGORY_TRANSFORM_DATA = "Transform Data"
     STEP_BRANCH_ROWS = "Branch Rows"
@@ -539,6 +567,7 @@ class Data:
     STEP_SERIES_MAP = "Series Map"
     STEP_SERIES_PLOT = "Series Plot"
     STEP_TEXT_MAP = "Text Map"
+    STEP_MOSAIC_PLOT = "Mosaic Plot"
 
     """Steps end"""
     # ADD
@@ -639,4 +668,63 @@ class Data:
     """Added by Alice on July 29, 2024 start"""
     DATA = "Data"
     OUTPUT = "Output"
+    FILTER_INPUT_DATA = "Filter input data"
+    LINK_DIRECTION = "Link direction"
+    UNDIRECTED = "Undirected"
+    DIRECTED = "Directed"
+    ADDITIONAL_ROLES = "Additional Roles"
+    FROM_NODE = "From node"
+    TO_NODE = "To node"
+    WEIGHT = "Weight"
+    WEIGHT_WITH_COLON = "Weight:"
+    AUXILIARY_WEIGHT = "Auxiliary weight"
+    INCLUDE_NODES_DATA = "Include nodes data"
+    FILTER_NODES_DATA = "Filter nodes data"
+    GROUP_ANALYSIS_BY = "Group analysis by"
+    DELETE_COLUMNS = "删除列"
+    LINKS = "Links"
+    DEGREE = "Degree"
+    INFLUENCE = "Influence"
+    METRIC_TYPE = "Metric type"
+    WEIGHTED_DEFAULT = "Weighted (default)"
+    UNWEIGHTED = "Unweighted"
+    BOTH_WEIGHTED_AND_UNWEIGHTED = "Both weighted and unweighted"
+    CLUSTERING_COEFFICIENT = "Clustering coefficient"
+    CLOSENESS = "Closeness"
+    SHORTEST_PATH_DISTANCE_BETWEEN_DISCONNECTED_NODES = "Shortest path distance between disconnected nodes"
+    BETWEENNESS = "Betweenness"
+    NORMALIZE_BETWEENNESS_CENTRALITY = "Normalize betweenness centrality"
+    EIGENVECTOR = "Eigenvector"
+    HUB_SCORE = "Hub score"
+    AUTHORITY_SCORE = "Authority score"
+    METHODS = "Methods"
+    EIGENVECTOR_CALCULATION_METHOD ="Eigenvector calculation method"
+    AUTOMATIC = "Automatic"
+    JACOBI_DAVIDSON_ALGORITHM = "Jacobi-Davidson algorithm"
+    POWER_METHOD = "Power method"
+    MAXIMUM_NUMBER_OF_ITERATIONS_FOR_EIGENVECTOR_CALCULATIONS = "Maximum number of iterations for eigenvector calculations"
+    USE_10000 = "Use 10000"
+    USE_CUSTOM_VALUE = "Use custom value"
+    NUMBER_OF_ITERATIONS = "Number of iterations"
+    LOG_DETAILS = "Log details"
+    CODE_GENERATION = "Code generation"
+    USE_NETWORK_PROCEDURE = "Use NETWORK procedure"
+    USE_CAS_PROCEDURE = "Use CAS procedure"
+
+    USE_GRAPH_DIAMETER_PLUS_ONE_DEFAULT = "Use graph diameter plus one (default)"
+    USE_THE_HARMONIC_FORMULA = "Use the harmonic formula"
+    USE_NUMBER_OF_NODES = "Use number of nodes"
+    USE_ZERO = "Use zero"
+
+
+
+
+
+
+
+
+
+
+
+
     """Added by Alice on July 29, 2024 end"""

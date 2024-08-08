@@ -45,8 +45,8 @@ def get_text(container_base_xpath: str, page: Page, data_test_id="", aria_label=
 
 
 
-def get_combobox(container_base_xpath: str, page: Page, data_test_id="", items_count=20,supplement_base_xpath="",aria_label="",parent_label=""):
-    return Combobox(container_base_xpath, page, data_test_id=data_test_id, items_count=items_count,supplement_base_xpath=supplement_base_xpath,aria_label=aria_label,parent_label=parent_label)
+def get_combobox(container_base_xpath: str, page: Page, data_test_id="", items_count=20,supplement_base_xpath="",aria_label="",parent_label="",parent_label_level =3):
+    return Combobox(container_base_xpath, page, data_test_id=data_test_id, items_count=items_count,supplement_base_xpath=supplement_base_xpath,aria_label=aria_label,parent_label=parent_label,parent_label_level= parent_label_level)
 
 
 def get_checkbox(container_base_xpath: str, page: Page, data_test_id="", label=""):

@@ -59,7 +59,11 @@ class Dialog(BasePage):
     def wait_for_open(self):
         pass
 
+    def click_ok_button(self):
+        self.click_button_in_footer(Helper.data_locale.OK)
 
+    def click_cancel_button(self):
+        self.click_button_in_footer(Helper.data_locale.CANCEL)
 class Alert(Dialog):
 
     def __init__(self, page, title=''):
