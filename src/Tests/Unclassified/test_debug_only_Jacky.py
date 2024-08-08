@@ -3,6 +3,8 @@ from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
+from src.Pages.StudioNext.Center.Flow.DetailsPane.branch_rows_pane import BranchRowsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.manage_columns_pane import ManageColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
@@ -12,8 +14,10 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
 from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
+from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
+from src.Pages.StudioNext.Left.accordion_page import AccordionPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import TopMenuItem, AccordionType
@@ -21,6 +25,9 @@ from src.Utilities.enums import SettingsTabPages
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
+from src.Pages.Common.dialog import Dialog, Alert
+from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
+from src.Pages.StudioNext.Center.Flow.DetailsPane.load_table_pane import LoadTablePane
 
 
 def test_00_click_show_tab_lables(page, init):
@@ -1119,3 +1126,490 @@ def test_32_flow_manage_columns(page, init):
     manage_columns.remove_all_columns()
     manage_columns.add_all_columns()
 
+
+def test_33_branch_rows(page, init):
+    """
+    Branch rows.
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.branch_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.BRANCH_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.BRANCH_ROWS)
+
+    branch_rows = BranchRowsPane(page)
+    branch_rows.select_a_column()
+
+    select_column_dialog = SelectColumnDialog(page)
+    select_column_dialog.select_a_column_and_OK("Sex")
+
+
+def test_33_filter_rows(page, init):
+    """
+    Filter rows.
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.filter_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.FILTER_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.FILTER_ROWS)
+
+    filter_rows = FilterRowsPane(page)
+    filter_rows.add_a_row()
+    filter_rows.select_a_column("Sex")
+
+    # Dialog(page, title=Helper.data_locale.SELECT_A_COLUMN).screenshot_self('select_a_col')
+    # Dialog(page, title=Helper.data_locale.SELECT_A_COLUMN).close_dialog()
+
+    filter_rows.set_filter_value()
+    filter_rows.cancel_and_close_add_filter_dialog()
+
+
+def test_34_filter_rows(page, init):
+    """
+    Test Flow/Filter Rows/Add Filter dialog
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.filter_rows)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.FILTER_ROWS)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.FILTER_ROWS)
+
+    filter_rows = FilterRowsPane(page)
+    filter_rows.select_a_column("Sex")
+
+    filter_rows.set_condition_to("等于", "M")
+
+    flow.run(True)
+
+
+def test_35_load_table(page, init):
+    """
+    Test Flow/Load Table
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    # load_table.tab_group.click_tab_by_text("目标表")
+    # load_table.tab_group.click_tab_by_text("列结构")
+    load_table.set_load_technique()
+    load_table.set_target_library('work')
+
+
+def test_36_load_table_source_target(page, init):
+    """
+    Test Flow/Load Table
+    """
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area("data work.out_class;set SASHELP.'CLASS'n;run;")
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("class")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    # load_table.tab_group.click_tab_by_text("目标表")
+    # load_table.tab_group.click_tab_by_text("列结构")
+    load_table.set_load_technique()
+    load_table.set_target_library('work')
+    load_table.set_target_table('out_class')
+    flow.run(True)
+
+
+def test_37_load_table_column_resolution(page, init):
+    """
+    Test Flow/Load Table/Column Resolution
+    """
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    # sas_program.editor.type_into_text_area("data work.out_class;set SASHELP.'CLASS'n;run;")
+
+    # SAS Program
+    code = """
+data work.my_baseball(drop=Name);
+    set sashelp.BASEBALL;
+    new_column=CrAtBat;
+run;
+"""
+
+    sas_program.editor.type_into_text_area(code)
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table.set_library("sashelp")
+    time.sleep(1)
+    table.set_table("baseball")
+    time.sleep(1)
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+
+    # load_table.set_load_technique()
+    load_table.set_target_library('work')
+    load_table.set_target_table('my_baseball')
+
+    # load_table.check_column_resolution()
+    load_table.filter_successful_mapping()
+    load_table.filter_ignored_mapping()
+    load_table.filter_informational_mapping()
+
+    flow.run(True)
+
+
+def test_38_load_table_if_nonexist_create_one(page, init):
+    """
+    Test Flow/Load Table/Options/If non-exist create one table
+    """
+
+    # Set I18N library
+    set_autolib_code = """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+    """
+
+    PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    PageHelper.set_autoexec(page, set_autolib_code)
+
+    acc: AccordionPage = AccordionPage(page)
+    acc.show_accordion(AccordionType.libraries)
+
+    # Create a sas program and run
+    sas_program_code = """
+Data Work.'中文测试'n;
+	set AUTOLIB.'BASEBALL''中文测试'n;
+run;
+        """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table.set_library("AUTOLIB")
+    time.sleep(1)
+    table.set_table("BASEBALL'中文测试")
+    time.sleep(1)
+    table.refresh_table()
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    load_table.set_node_name(Helper.data_locale.LOAD_TABLE)
+    load_table.set_target_library('work')
+    load_table.set_target_table('中文测试1')
+    load_table.refresh_target_table()
+
+    # Load Table step is incomplete now. Warning message is shown.
+    flow.screenshot_self('incomplete_status')
+    flow.select_node_status_dialog_of_the_node_in_flow(Helper.data_locale.LOAD_TABLE)
+    flow.screenshot_self('incomplete_status_dialog')
+
+    # The column structure is empty
+    load_table.check_column_structure()
+    load_table.screenshot_self('column_structure_empty')
+
+    # Update  Target Table.
+    # Load table step is complete now.
+    load_table.set_target_library('work')
+    load_table.set_target_table('中文测试')
+    load_table.refresh_target_table()
+
+    # Load Table step is incomplete now. Warning message is shown.
+    flow.screenshot_self('complete_status')
+    flow.select_node_status_dialog_of_the_node_in_flow(Helper.data_locale.LOAD_TABLE)
+    flow.screenshot_self('complete_status_dialog')
+
+    # Click Column Structure tab.
+    # The column structure is shown correctly
+    load_table.check_column_structure()
+    load_table.screenshot_self('column_structure_correct')
+
+    # Work-around: Delete table cannot be done at the moment
+    load_table.set_target_library('work')
+    load_table.set_target_table('中文测试Target')
+    load_table.refresh_target_table()
+
+    load_table.check_options()
+
+    # flow run with error
+    # flow.run(False)
+
+    flow.select_node_status_dialog_of_the_node_in_flow(Helper.data_locale.LOAD_TABLE)
+    flow.screenshot_self('error_status_dialog')
+
+    if not load_table.checkbox_if_not_exist_create_one.is_checked():
+        load_table.checkbox_if_not_exist_create_one.set_check()
+
+    load_table.set_target_library('work')
+    load_table.set_target_table('中文测试')
+    load_table.refresh_target_table()
+
+    # flow run successfully
+    flow.run(False)
+
+
+def test_39_load_table_update(page, init):
+    """
+    Test Flow/Load Table/Options/If non-exist create one table
+    """
+
+    # Set I18N library
+    set_autolib_code = """
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+        """
+
+    PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    PageHelper.set_autoexec(page, set_autolib_code)
+
+    # Create a sas program and run
+    sas_program_code = """
+cas;
+caslib _all_ assign;
+
+
+data CASUSER.'BASEBALL''中文测试'n work.'BASEBALL''中文测试'n;
+	set AUTOLIB.'BASEBALL''中文测试'n;
+run;
+            """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.add_node(FlowNodeType.load_table)
+
+    time.sleep(1)
+
+    table = TablePane(page)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table.set_library("AUTOLIB")
+    time.sleep(1)
+    table.set_table("BASEBALL'中文测试")
+    time.sleep(1)
+    table.refresh_table()
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    load_table.set_node_name(Helper.data_locale.LOAD_TABLE)
+    load_table.set_target_library('work')
+    load_table.set_target_table("BASEBALL'中文测试")
+    load_table.refresh_target_table()
+
+    load_table.set_update_rows_for_load_technique()
+
+    # Click 'Add columns' button in 'Options' tab page
+    # load_table.button_add_columns()
+
+    # load_table.select_key_column_dialog.select_key_column_grid.click_grid_cell(cell_label='姓名1')
+    # load_table.select_key_column_dialog.select_key_column_grid.click_grid_cell('姓名1')
+    # load_table.select_key_column_dialog.select_key_column_grid.click_grid_cell(row_index="2", col_index="2")
+    # time.sleep(3)
+    # load_table.select_key_column_dialog.close_dialog()
+
+    load_table.select_key_column('姓名1')
+
+    # Error
+    # load_table.select_key_column("Team'中文")
+
+    # Flow could run successfully
+    flow.run(True)
+
+    # Change target table
+    load_table.set_target_library('CASUSER')
+    load_table.set_target_table("BASEBALL'中文测试")
+
+    load_table.check_options()
+
+
+def test_40_load_table_truncate_technique(page, init):
+    """
+    """
+    # Set I18N library
+    set_autolib_code = """
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+        """
+
+    PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    PageHelper.set_autoexec(page, set_autolib_code)
+
+    # Create a sas program and run
+    sas_program_code = """
+/* Teradata */
+libname teralib teradata server=vat user=nlssort password=nlssort
+database=nlssort PRESERVE_COL_NAMES=YES PRESERVE_TAB_NAMES=YES;
+
+/* Oracle */
+
+libname oralib oracle user=AMLCORE password=amlcore schema=AMLCORE path=EXADAT
+PRESERVE_COL_NAMES=YES PRESERVE_TAB_NAMES=YES;
+    
+    """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.load_table)
+
+    load_table = LoadTablePane(page)
+    load_table.set_node_name(Helper.data_locale.LOAD_TABLE)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table.set_target_library("Teralib")
+    load_table.set_target_table("Dommy输出")
+
+    load_table.check_options()
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+
+    # Go to Libraries pane, Drag  AUTOLIB.BASEBALL'中文测试to the flow and connect to Load Table step
+    table.set_library("AUTOLIB")
+    time.sleep(1)
+    table.set_table("BASEBALL'中文测试")
+    time.sleep(1)
+    table.refresh_table()
+    table.set_node_name(Helper.data_locale.TABLE)
+    time.sleep(1)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.TABLE,
+                                Helper.data_locale.LOAD_TABLE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.LOAD_TABLE)
+
+    load_table = LoadTablePane(page)
+    load_table.set_node_name(Helper.data_locale.LOAD_TABLE)
+
+    # Click on Load Table step, update the Target table to oralib.Dommy_中文'BASEBALL
+    load_table.set_target_library('oralib')
+    load_table.set_target_table("Dommy_中文'BASEBALL")
+    load_table.refresh_target_table()
+
+    load_table.check_options()
+
+    time.sleep(30)
+
+    if load_table.is_visible(load_table.page.get_by_test_id("loadTableInsertPreprocessTruncate")):
+        # Check Truncate Table option
+        load_table.set_truncate_table_option_for_preprocessing_actions()
