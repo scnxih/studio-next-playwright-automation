@@ -16,7 +16,8 @@ class Dialog(BasePage):
         if title != '':
             self.title = title
             self.base_xpath += f"[.//span[text()='{title}']]"
-
+        else:
+            self.title = ""
     @property
     def span_header(self):
         return self.locate_xpath("//span[text()='" + self.title + "']")
@@ -39,9 +40,11 @@ class Dialog(BasePage):
 
     def is_open(self):
         self.wait_for_open()
-        if self.is_visible(self.span_header):
-            return True
-        return False
+        if self.title != "":
+            if self.is_visible(self.span_header):
+                return True
+            return False
+        return True
 
     def close_dialog(self):
         self.click(self.btn_close)

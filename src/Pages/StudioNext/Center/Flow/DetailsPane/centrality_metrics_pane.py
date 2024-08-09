@@ -166,9 +166,11 @@ class CentralityMetricsPane(BasicStepPane):
         """
         combobox = get_combobox(self.base_xpath,self.page,supplement_base_xpath="[../../../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{0}')]]]".format(Helper.data_locale.EIGENVECTOR))
         if item_index!= None:
-            return combobox.select_item_by_index(item_index)
+            combobox.select_item_by_index(item_index)
+            return
         if item_value!= None:
-            return combobox.select_item(item_value)
+            combobox.select_item(item_value)
+            return
 
     def set_check_hub_score(self):
         get_checkbox(self.base_xpath,self.page,label=Helper.data_locale.HUB_SCORE).set_check()
@@ -181,3 +183,21 @@ class CentralityMetricsPane(BasicStepPane):
 
     def set_uncheck_authority_score(self):
         get_checkbox(self.base_xpath,self.page,label=Helper.data_locale.AUTHORITY_SCORE).set_uncheck()
+
+    def expand_windowshade_centrality_metrics(self):
+        get_windowshade(self.base_xpath,self.page,parent_label=Helper.data_locale.STEP_CENTRALITY_METRICS).expand()
+
+    def collapse_windowshade_centrality_metrics(self):
+        get_windowshade(self.base_xpath,self.page,parent_label=Helper.data_locale.STEP_CENTRALITY_METRICS).collapse()
+
+    def expand_windowshade_methods(self):
+        get_windowshade(self.base_xpath,self.page,parent_label=Helper.data_locale.METHODS).expand()
+
+    def collapse_windowshade_methods(self):
+        get_windowshade(self.base_xpath,self.page,parent_label=Helper.data_locale.METHODS).collapse()
+
+    def set_eigenvector_calculation_method(self,item_index : int = None, item_value : str = None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.EIGENVECTOR_CALCULATION_METHOD,item_index=item_index,item_value=item_value)
+    def set_maximum_number_of_iterations_for_eigenvector_calculations(self,item_index : int = None, item_value : str = None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.MAXIMUM_NUMBER_OF_ITERATIONS_FOR_EIGENVECTOR_CALCULATIONS,
+                                        item_index=item_index, item_value=item_value)

@@ -9,8 +9,9 @@ from src.Pages.Common.combobox import Combobox
 
 class SaveAsDialog(Dialog):
     def __init__(self, page):
-        Dialog.__init__(self, page, Helper.data_locale.SAVE_AS_A_Upper_Case)
-        # Dialog.__init__(self, page, "Studio-gui-icu.app.save.label")
+        # Dialog.__init__(self, page, Helper.data_locale.SAVE_AS_A_Upper_Case)
+        Dialog.__init__(self, page,"")
+
         self.folder_tree = TreeViewNova(self.base_xpath, page)
         # self.folder_tree = TreeViewAGGrid(self.base_xpath,page,supplement_base_xpath = "[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
         self.toolbar = Toolbar(self.base_xpath, page)
