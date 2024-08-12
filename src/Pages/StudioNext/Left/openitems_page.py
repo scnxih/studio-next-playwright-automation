@@ -24,7 +24,13 @@ class OpenItemsPage(AccordionPage):
         self.click(self.btn_saveall())
 
         Helper.logger.debug("after click save all button")
-        count = len(folder_path)
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Aug.11th, 2024
+        # count = len(folder_path) # Original
+        # Function changed for save all
+        count = 1
+        # Modified by Jacky(ID: jawang) on Aug.11th, 2024 >>>
+
         for i in range(count):
             save_as_dialog = SaveAsDialog(self.page)
             if save_as_dialog.is_open():
