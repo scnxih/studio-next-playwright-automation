@@ -183,9 +183,9 @@ def test_05_centrality_metrics_in_flow(page,init):
     flow.apply_detail_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
-    # centrality_metrics_pane.set_filter_input_data("test")
-    centrality_metrics_pane.set_link_direction_directed()
-    centrality_metrics_pane.set_link_direction_undirected()
+    centrality_metrics_pane.set_filter_input_data("Age>=11")
+    centrality_metrics_pane.set_link_direction(item_index=1)
+    centrality_metrics_pane.set_link_direction(item_index=0)
     centrality_metrics_pane.set_column_for_from_node("Name")
     centrality_metrics_pane.set_column_for_to_node("Sex")
     centrality_metrics_pane.set_column_for_weight("Height")
@@ -224,6 +224,32 @@ def test_05_centrality_metrics_in_flow(page,init):
     centrality_metrics_pane.set_uncheck_hub_score()
     centrality_metrics_pane.set_check_authority_score()
     centrality_metrics_pane.set_uncheck_authority_score()
+
+    centrality_metrics_pane.set_eigenvector_calculation_method(item_index = 2)
+    centrality_metrics_pane.set_eigenvector_calculation_method(item_index = 1)
+
+    centrality_metrics_pane.set_maximum_number_of_iterations_for_eigenvector_calculations(item_index=1)
+    centrality_metrics_pane.set_number_of_iterations("500")
+
+    centrality_metrics_pane.set_log_details(item_index=2)
+    centrality_metrics_pane.set_log_details(item_index=3)
+    centrality_metrics_pane.set_code_generation(item_index=1)
+
+    centrality_metrics_pane.click_output_tab()
+    centrality_metrics_pane.set_check_create_output_nodes_data()
+    centrality_metrics_pane.set_check_replace_existing_output_table_for_nodes()
+
+
+    centrality_metrics_pane.set_uncheck_replace_existing_output_table_for_nodes()
+    centrality_metrics_pane.set_uncheck_create_output_nodes_data()
+
+    centrality_metrics_pane.set_node_description("This is test for description.")
+    centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
+
+
+
+
+
 
 
 

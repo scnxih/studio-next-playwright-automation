@@ -726,3 +726,8 @@ class DataZH(Data):
     REPLACE_THE_TARGET_TABLE_IF_IT_EXISTS = "替换目标表（若存在）"
 
     # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>
+    """Added by Alice on Aug 12,2024 start"""
+    CREATE_OUTPUT_NODES_DATA = "创建输出节点数据"
+    REPLACE_EXISTING_OUTPUT_TABLE = "替换现有输出表"
+    CREATE_OUTPUT_LINKS_DATA = "创建输出链接数据"
+    """Added by Alice on Aug 12,2024 end"""

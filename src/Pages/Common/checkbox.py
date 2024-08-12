@@ -9,8 +9,8 @@ class Checkbox(CommonComponent):
         self.base_xpath += "//div[@role='checkbox']"
 
     # If the page contains more than one checkbox, data_test_id or label is required.
-    def __init__(self,container_base_xpath, page, data_test_id="", label=""):
-        CommonComponent.__init__(self,container_base_xpath=container_base_xpath,page=page,data_test_id=data_test_id,label=label)
+    def __init__(self,container_base_xpath, page, data_test_id="", label="", supplement_base_xpath=""):
+        CommonComponent.__init__(self,container_base_xpath=container_base_xpath,page=page,data_test_id=data_test_id,label=label,supplement_base_xpath=supplement_base_xpath)
 
     def is_checked(self):
         self.scroll_if_needed(self.base_locator)

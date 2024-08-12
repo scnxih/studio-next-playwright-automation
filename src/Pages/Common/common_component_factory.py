@@ -49,8 +49,8 @@ def get_combobox(container_base_xpath: str, page: Page, data_test_id="", items_c
     return Combobox(container_base_xpath, page, data_test_id=data_test_id, items_count=items_count,supplement_base_xpath=supplement_base_xpath,aria_label=aria_label,parent_label=parent_label,parent_label_level= parent_label_level)
 
 
-def get_checkbox(container_base_xpath: str, page: Page, data_test_id="", label=""):
-    return Checkbox(container_base_xpath, page, data_test_id=data_test_id, label=label)
+def get_checkbox(container_base_xpath: str, page: Page, data_test_id="", label="",supplement_base_xpath= ""):
+    return Checkbox(container_base_xpath, page, data_test_id=data_test_id, label=label,supplement_base_xpath = supplement_base_xpath)
 
 
 def get_button(container_base_xpath: str, page: Page, data_test_id="", aria_label="", title="",
