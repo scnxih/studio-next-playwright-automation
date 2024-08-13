@@ -716,17 +716,6 @@ class Data:
     USE_NUMBER_OF_NODES = "Use number of nodes"
     USE_ZERO = "Use zero"
 
-
-
-
-
-
-
-
-
-
-
-
     """Added by Alice on July 29, 2024 end"""
 
     # ADDED
@@ -748,4 +737,6 @@ class Data:
     CREATE_OUTPUT_NODES_DATA = "Create output nodes data"
     REPLACE_EXISTING_OUTPUT_TABLE = "Replace existing output table"
     CREATE_OUTPUT_LINKS_DATA = "Create output links data"
+    MOVE_COLUMN_UP = "Move column up"
+    MOVE_COLUMN_DOWN = "Move column down"
     """Added by Alice on Aug 12,2024 end"""

@@ -73,9 +73,9 @@ def get_toolbar(container_base_xpath, page, class_attribute="", data_test_id="",
                    supplement_base_xpath=supplement_base_xpath)
 
 
-def get_listbox(container_base_xpath, page, data_test_id="", aria_label="", aria_labelledby=""):
+def get_listbox(container_base_xpath, page, data_test_id="", aria_label="", aria_labelledby="",supplement_base_xpath="",parent_label =""):
     return Listbox(container_base_xpath, page, data_test_id=data_test_id, aria_label=aria_label,
-                   aria_labelledby=aria_labelledby)
+                   aria_labelledby=aria_labelledby,supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
 def get_radio_group(container_base_xpath, page, data_test_id="",supplement_base_xpath="",parent_label=""):
