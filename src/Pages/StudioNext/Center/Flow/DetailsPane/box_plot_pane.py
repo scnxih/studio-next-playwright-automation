@@ -16,4 +16,4 @@ class BoxPlotPane(BasicStepPane):
         """
         Analysis variable
         """
-        self.set_column(parent_label="分析变量", column_name=column_name)
+        self.add_column(parent_label="分析变量", column_name=column_name)
