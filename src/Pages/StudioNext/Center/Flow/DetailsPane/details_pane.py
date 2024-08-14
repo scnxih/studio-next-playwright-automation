@@ -81,41 +81,55 @@ class DetailsPane(BasePage):
         """
         self.click_Tab(Helper.data_locale.NOTES)
 
-    def _get_add_column_button(self, parent_label: str):
+    def _add_column_button(self, parent_label: str):
         return get_button(self.base_xpath, self.page,
                           supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[contains(text(),'{1}')]]".format(
                               Helper.data_locale.ADD_COLUMN, parent_label))
 
-    def _get_add_exact_column_button(self, parent_label: str):
+    def _add_exact_column_button(self, parent_label: str):
         return get_button(self.base_xpath, self.page,
                           supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[text()='{1}']]".format(
                               Helper.data_locale.ADD_COLUMN, parent_label))
 
-    def _get_delete_column_button(self, parent_label: str):
+    def _delete_column_button(self, parent_label: str):
         return get_button(self.base_xpath, self.page,
                           supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[contains(text(),'{1}')]]".format(
                               Helper.data_locale.DELETE_COLUMNS, parent_label))
 
-    def _get_delete_exact_column_button(self, parent_label: str):
+    def _delete_exact_column_button(self, parent_label: str):
         return get_button(self.base_xpath, self.page,
                           supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[text()='{1}']]".format(
                               Helper.data_locale.DELETE_COLUMNS, parent_label))
 
-    def click_add_column_button(self, parent_label: str):
+    def _move_up_column_button(self, parent_label: str):
+        return get_button(self.base_xpath, self.page,
+                          supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[contains(text(),'{1}')]]".format(
+                              Helper.data_locale.MOVE_COLUMN_UP, parent_label))
+
+    def _move_down_column_button(self, parent_label: str):
+        return get_button(self.base_xpath, self.page,
+                          supplement_base_xpath="[@aria-label='{0}'][../../../descendant::label[contains(text(),'{1}')]]".format(
+                              Helper.data_locale.MOVE_COLUMN_DOWN, parent_label))
+    def _click_move_up_column_button(self,parent_label:str):
+        self._move_up_column_button(parent_label).click_self()
+
+    def _click_move_down_column_button(self, parent_label: str):
+        self._move_down_column_button(parent_label).click_self()
+    def _click_add_column_button(self, parent_label: str):
         """
         Description: click add column button.
         @parent_label: the label of the add column button. The colon is not required.
         """
-        self._get_add_column_button(parent_label=parent_label).click_self()
+        self._add_column_button(parent_label=parent_label).click_self()
 
     def delete_column(self, parent_label: str):
         """
         Description: click delete column button.
         @parent_label: the label of the delete column button. The colon is not required.
         """
-        self._get_delete_column_button(parent_label=parent_label).click_self()
+        self._delete_column_button(parent_label=parent_label).click_self()
 
-    def click_add_exact_column_button(self, parent_label: str):
+    def _click_add_exact_column_button(self, parent_label: str):
         """
         Description: click add column button which label is exact the label(including colon:).
         The method is only used for the buttons which have duplicated parts in label,
@@ -123,9 +137,9 @@ class DetailsPane(BasePage):
         Please note if use this method, the colon(:) should also be passed in the parent_label parameter since this is exact the label.
         @parent_label: the exact label of the add column button.
         """
-        self._get_add_exact_column_button(parent_label=parent_label).click_self()
+        self._add_exact_column_button(parent_label=parent_label).click_self()
 
-    def click_delete_exact_column_button(self, parent_label: str):
+    def delete_column_exact_label(self, parent_label: str):
         """
         Description: click delete column button which label is exact the label(including colon:).
         The method is only used for the buttons which have duplicated parts in label,
@@ -133,20 +147,20 @@ class DetailsPane(BasePage):
         Please note if use this method, the colon(:) should also be passed in the parent_label parameter since this is exact the label.
         @parent_label: the exact label of the delete column button.
         """
-        self._get_delete_exact_column_button(parent_label=parent_label).click_self()
+        self._delete_exact_column_button(parent_label=parent_label).click_self()
 
-    def set_column(self, parent_label: str, column_name: str):
+    def add_column(self, parent_label: str, column_name: str):
         """
         Description: add a column, pop up select a column dialog and choose a column and click OK to dismiss the dialog.
         @parent_label: the label of the add columns button, the label could be the part of the parent label, that is,
         the colon(:) can be omitted.
         @column_name: the column name of the added column.
         """
-        self.click_add_column_button(parent_label=parent_label)
+        self._click_add_column_button(parent_label=parent_label)
         select_column_dialog = SelectColumnDialog(self.page)
         select_column_dialog.select_a_column_and_OK(column_name)
 
-    def set_column_exact_label(self, parent_label: str, column_name: str):
+    def add_column_exact_label(self, parent_label: str, column_name: str):
         """
         Description: add a column, pop up select a column dialog and choose a column and click OK to dismiss the dialog.
         @parent_label: the label of the add columns button, the label should be exact the label, that is, the colon(:)
@@ -154,11 +168,11 @@ class DetailsPane(BasePage):
         if there is weight and auxiliary weight, this method should be used for weight.
         @column_name: the column name of the added column.
         """
-        self.click_add_exact_column_button(parent_label=parent_label)
+        self._click_add_exact_column_button(parent_label=parent_label)
         select_column_dialog = SelectColumnDialog(self.page)
         select_column_dialog.select_a_column_and_OK(column_name)
 
-    def set_columns(self, parent_label: str, check_column_name_list: list, uncheck_column_name_list: list):
+    def add_columns(self, parent_label: str, check_column_name_list: list=None, uncheck_column_name_list: list=None):
         """
         Description: set columns, pop up select columns dialog and check columns defined in check_column_name_list,
         uncheck columns defined in uncheck_column_name_list and click OK to dismiss the dialog.
@@ -167,19 +181,21 @@ class DetailsPane(BasePage):
         @check_column_name_list: the list of columns which you want to check.
         @uncheck_column_name_list: the list of columns which you want to uncheck.
         """
-        self.click_add_column_button(parent_label=parent_label)
+        self._click_add_column_button(parent_label=parent_label)
         select_column_dialog = SelectColumnDialog(self.page)
-        for check_column_name in check_column_name_list:
-            select_column_dialog.set_check_in_a_row(check_column_name)
+        if check_column_name_list != None:
+            for check_column_name in check_column_name_list:
+               select_column_dialog.set_check_in_a_row(check_column_name)
 
-        for uncheck_column_name in uncheck_column_name_list:
-            select_column_dialog.set_uncheck_in_a_row(uncheck_column_name)
+        if uncheck_column_name_list!=None:
+            for uncheck_column_name in uncheck_column_name_list:
+                select_column_dialog.set_uncheck_in_a_row(uncheck_column_name)
 
         time.sleep(0.5)
         select_column_dialog.click_ok_button()
         time.sleep(0.5)
 
-    def set_columns_exact_label(self, parent_label: str, check_column_name_list: list, uncheck_column_name_list: list):
+    def add_columns_exact_label(self, parent_label: str, check_column_name_list: list=None, uncheck_column_name_list: list=None):
         """
         Description: set columns, pop up select columns dialog and check columns defined in check_column_name_list,
         uncheck columns defined in uncheck_column_name_list and click OK to dismiss the dialog.
@@ -188,13 +204,14 @@ class DetailsPane(BasePage):
         @check_column_name_list: the list of columns which you want to check.
         @uncheck_column_name_list: the list of columns which you want to uncheck.
         """
-        self.click_add_exact_column_button(parent_label=parent_label)
+        self._click_add_exact_column_button(parent_label=parent_label)
         select_column_dialog = SelectColumnDialog(self.page)
-        for check_column_name in check_column_name_list:
-            select_column_dialog.set_check_in_a_row(check_column_name)
-
-        for uncheck_column_name in uncheck_column_name_list:
-            select_column_dialog.set_uncheck_in_a_row(uncheck_column_name)
+        if check_column_name_list!= None:
+            for check_column_name in check_column_name_list:
+                select_column_dialog.set_check_in_a_row(check_column_name)
+        if uncheck_column_name_list!= None:
+            for uncheck_column_name in uncheck_column_name_list:
+                select_column_dialog.set_uncheck_in_a_row(uncheck_column_name)
 
         time.sleep(0.5)
         select_column_dialog.click_ok_button()
@@ -238,7 +255,6 @@ class DetailsPane(BasePage):
 
         get_checkbox(self.base_xpath, self.page, label=label).set_check()
 
-
     def set_uncheck_for_checkbox(self, label: str):
         """
         Description: set unchecked for check box.
@@ -246,7 +262,6 @@ class DetailsPane(BasePage):
 
         """
         get_checkbox(self.base_xpath, self.page, label=label).set_uncheck()
-
 
     def set_option_for_combobox(self, parent_label: str, section_label: str = None, item_index: int = None,
                                 item_value: str = None):
@@ -261,13 +276,13 @@ class DetailsPane(BasePage):
         if section_label == None:
 
             combobox = get_combobox(self.base_xpath, self.page,
-                                supplement_base_xpath="[../../../../../../../../descendant::label[contains(text(),'{0}')]]".format(
-                                    parent_label))
+                                    supplement_base_xpath="[../../../../../../../../descendant::label[contains(text(),'{0}')]]".format(
+                                        parent_label))
 
         else:
             combobox = get_combobox(self.base_xpath, self.page,
                                     supplement_base_xpath="[../../../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
-                                        parent_label,section_label))
+                                        parent_label, section_label))
 
         if item_index != None:
             combobox.select_item_by_index(item_index)
@@ -276,10 +291,49 @@ class DetailsPane(BasePage):
             combobox.select_item(item_value)
             return
 
-    def set_text_for_text_control(self, parent_label: str,input_text:str):
+    def set_text_for_text_control(self, parent_label: str, input_text: str):
         """
         Description: set text for text control.
         @parent_label: the label of the text control.
         @text: the text you want to input.
         """
-        get_text(self.base_xpath,self.page,parent_label=parent_label).fill_text(input_text)
+        get_text(self.base_xpath, self.page, parent_label=parent_label).fill_text(input_text)
+
+    def set_check_for_listbox_item(self, parent_label: str, item_text: str):
+        """
+        Description: set check for listbox item.
+        @parent_label: the label of the listbox control.
+        @item_text: the text of list item.
+        """
+        get_listbox(self.base_xpath, self.page, parent_label=parent_label).set_check_li_item(item_text)
+
+    def set_uncheck_for_listbox_item(self, parent_label: str, item_text: str):
+        """
+        Description: set check for listbox item.
+        @parent_label: the label of the listbox control.
+        @item_text: the text of list item.
+        """
+        get_listbox(self.base_xpath, self.page, parent_label=parent_label).set_uncheck_li_item(item_text)
+
+    def set_check_and_uncheck_for_listbox(self, parent_label:str,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        if check_column_name_list!=None:
+            for check_column_name in check_column_name_list:
+                self.set_check_for_listbox_item(parent_label=parent_label,item_text=check_column_name)
+        if uncheck_column_name_list!= None:
+            for uncheck_column_name in uncheck_column_name_list:
+                self.set_uncheck_for_listbox_item(parent_label=parent_label,item_text=uncheck_column_name)
+
+    def delete_columns_for_listbox(self,parent_label:str,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.set_check_and_uncheck_for_listbox(parent_label=parent_label,check_column_name_list=check_column_name_list,
+                                               uncheck_column_name_list=uncheck_column_name_list)
+        self.delete_column(parent_label)
+
+    def move_up_columns_for_listbox(self,parent_label:str,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.set_check_and_uncheck_for_listbox(parent_label=parent_label, check_column_name_list=check_column_name_list,
+                                               uncheck_column_name_list=uncheck_column_name_list)
+        self._click_move_up_column_button(parent_label)
+
+    def move_down_columns_for_listbox(self,parent_label:str,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.set_check_and_uncheck_for_listbox(parent_label=parent_label, check_column_name_list=check_column_name_list,
+                                               uncheck_column_name_list=uncheck_column_name_list)
+        self._click_move_down_column_button(parent_label)

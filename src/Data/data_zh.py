@@ -730,6 +730,8 @@ class DataZH(Data):
     CREATE_OUTPUT_NODES_DATA = "创建输出节点数据"
     REPLACE_EXISTING_OUTPUT_TABLE = "替换现有输出表"
     CREATE_OUTPUT_LINKS_DATA = "创建输出链接数据"
+    MOVE_COLUMN_UP = "上移列"
+    MOVE_COLUMN_DOWN = "下移列"
     """Added by Alice on Aug 12,2024 end"""
 
     # ADDED

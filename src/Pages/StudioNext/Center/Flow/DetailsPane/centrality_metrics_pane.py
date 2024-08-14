@@ -20,20 +20,20 @@ class CentralityMetricsPane(BasicStepPane):
     def collapse_windowshade_additional_roles(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.ADDITIONAL_ROLES)
 
-    def set_column_for_from_node(self, column_name: str):
-        self.set_column(parent_label=Helper.data_locale.FROM_NODE,column_name=column_name)
+    def add_column_for_from_node(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.FROM_NODE, column_name=column_name)
 
-    def set_column_for_to_node(self, column_name: str):
-        self.set_column(parent_label=Helper.data_locale.TO_NODE,column_name=column_name)
+    def add_column_for_to_node(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.TO_NODE, column_name=column_name)
 
-    def set_column_for_weight(self, column_name: str):
-        self.set_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON,column_name=column_name)
+    def add_column_for_weight(self, column_name: str):
+        self.add_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON, column_name=column_name)
 
 
-    def set_column_for_auxiliary_weight(self, column_name: str):
-        self.set_column(parent_label=Helper.data_locale.AUXILIARY_WEIGHT,column_name=column_name)
-    def set_columns_for_group_analysis_by(self, check_column_name_list: list, uncheck_column_name_list: list):
-        self.set_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
+    def add_column_for_auxiliary_weight(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.AUXILIARY_WEIGHT, column_name=column_name)
+    def add_columns_for_group_analysis_by(self, check_column_name_list: list=None, uncheck_column_name_list: list=None):
+        self.add_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, check_column_name_list=check_column_name_list, uncheck_column_name_list=uncheck_column_name_list)
 
     def delete_column_for_from_node(self):
         self.delete_column(parent_label=Helper.data_locale.FROM_NODE)
@@ -42,11 +42,20 @@ class CentralityMetricsPane(BasicStepPane):
         self.delete_column(parent_label=Helper.data_locale.TO_NODE)
 
     def delete_column_for_weight(self):
-        self.delete_column(parent_label=Helper.data_locale.WEIGHT)
+        self.delete_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON)
 
     def delete_column_for_auxiliary_weight(self):
         self.delete_column(parent_label=Helper.data_locale.AUXILIARY_WEIGHT)
 
+    def delete_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.delete_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
+                                        uncheck_column_name_list=uncheck_column_name_list)
+    def move_up_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.move_up_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
+                                         uncheck_column_name_list=uncheck_column_name_list)
+    def move_down_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
+        self.move_down_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
+                                         uncheck_column_name_list=uncheck_column_name_list)
     def expand_windowshade_links(self):
         self.expand_windowshade(parent_label=Helper.data_locale.LINKS)
 
