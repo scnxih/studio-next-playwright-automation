@@ -542,7 +542,7 @@ class DataZH(Data):
 
     STEP_BAR_CHART = "条形图"
     STEP_BAR_LINE_CHART = "条线图"
-    STEP_BOX_PLOT = "Box Plot"
+    STEP_BOX_PLOT = "盒形图"
     STEP_BUBBLE_MAP = "气泡地图"
     STEP_BUBBLE_PLOT = "气泡图"
     STEP_Choropleth_MAP = "地区分布图"
@@ -731,3 +731,9 @@ class DataZH(Data):
     REPLACE_EXISTING_OUTPUT_TABLE = "替换现有输出表"
     CREATE_OUTPUT_LINKS_DATA = "创建输出链接数据"
     """Added by Alice on Aug 12,2024 end"""
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on August 13th, 2024
+    NUMBER_OF_PEOPLE_IN_A_ROOM = "房间中的人数"
+
+    # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>

@@ -7,7 +7,7 @@ Date: July 23rd, 2024
 from playwright.sync_api import expect
 from src.Pages.StudioNext.Center.Flow.DetailsPane.details_pane import DetailsPane
 from src.Pages.Common.button import *
-from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
+# from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 
 
 class BranchRowsPane(DetailsPane):
