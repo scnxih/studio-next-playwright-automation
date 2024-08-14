@@ -14,7 +14,7 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
 from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
-from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
+# from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
@@ -26,9 +26,10 @@ from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
 from src.Pages.Common.dialog import Dialog, Alert
-from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
+# from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Center.Flow.DetailsPane.load_table_pane import LoadTablePane
-
+from src.Pages.StudioNext.Center.Flow.DetailsPane.same_birthday_pane import SameBirthdayProbabilityPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.box_plot_pane import BoxPlotPane
 
 def test_00_click_show_tab_lables(page, init):
     """
@@ -1155,8 +1156,8 @@ def test_33_branch_rows(page, init):
     branch_rows = BranchRowsPane(page)
     branch_rows.select_a_column()
 
-    select_column_dialog = SelectColumnDialog(page)
-    select_column_dialog.select_a_column_and_OK("Sex")
+    # select_column_dialog = SelectColumnDialog(page)
+    # select_column_dialog.select_a_column_and_OK("Sex")
 
 
 def test_33_filter_rows(page, init):
@@ -1613,3 +1614,66 @@ PRESERVE_COL_NAMES=YES PRESERVE_TAB_NAMES=YES;
     if load_table.is_visible(load_table.page.get_by_test_id("loadTableInsertPreprocessTruncate")):
         # Check Truncate Table option
         load_table.set_truncate_table_option_for_preprocessing_actions()
+
+
+def test_41_same_birthday_in_flow(page, init):
+    """
+    """
+
+    # Create a flow
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    # Add a table node
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    # Set output table
+    table_pane = TablePane(page)
+    table_pane.set_library("work")
+    table_pane.set_table("prob_same_birthday")
+
+    # Add STEP_SAME_BIRTHDAY_PROBABILITY
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Connect output port with same birthday node
+    flow.select_output_port_node_in_flow(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY)
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY, "prob_same_birthday")
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY)
+
+    same_birthday_probability_pane = SameBirthdayProbabilityPane(page)
+    same_birthday_probability_pane.set_number_of_people_in_a_room("2")
+
+    flow.run(True)
+
+
+def test_42_box_plot_in_flow(page, init):
+    """
+    """
+
+    # Create a flow
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    # Add a table node
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+
+    # Set input table
+    table_pane = TablePane(page)
+    table_pane.set_library("sashelp")
+    table_pane.set_table("class")
+
+    # Add STEP_CATEGORY_VISUALIZE_DATA/STEP_BOX_PLOT
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_BOX_PLOT]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
+    flow.link_two_nodes_in_flow( "class", Helper.data_locale.STEP_BOX_PLOT)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
+
+    box_plot_pane = BoxPlotPane(page)
+    box_plot_pane.set_analysis_variable("Weight")
