@@ -180,7 +180,25 @@ def test_05_centrality_metrics_in_flow(page,init):
 
     flow.link_two_nodes_in_flow("CLASS",Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.open_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.click_menu_item("添加输入端口", "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+
+    flow.add_node(FlowNodeType.table)
+    time.sleep(1)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("SASHELP")
+    table_pane.set_table("CARS")
+
+    flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_CENTRALITY_METRICS)
+    time.sleep(5)
+
+    flow.arrange_nodes()
     flow.apply_detail_layout_vertical()
+
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
     centrality_metrics_pane.set_filter_input_data("Age>=11")
@@ -258,6 +276,11 @@ def test_05_centrality_metrics_in_flow(page,init):
 
     centrality_metrics_pane.set_node_description("This is test for description.")
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
+
+
+
+
+
 
 
 
