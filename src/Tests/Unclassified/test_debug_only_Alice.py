@@ -252,7 +252,9 @@ N 1
     centrality_metrics_pane.set_metric_type_for_eigenvector(item_index=1)
     centrality_metrics_pane.set_check_hub_score()
     centrality_metrics_pane.set_check_authority_score()
-
+    time.sleep(0.5)
+    centrality_metrics_pane.collapse_windowshade_centrality_metrics()
+    time.sleep(0.5)
 
     centrality_metrics_pane.set_eigenvector_calculation_method(item_index = 2)
 
