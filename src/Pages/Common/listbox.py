@@ -25,8 +25,14 @@ class Listbox(CommonComponent):
         @param text: text of list item.
         return: Locator
         """
-        return self.locate_xpath(
-            f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+        if Helper.if_contain_quotation(text):
+            escaped_text = Helper.escape_quotation_for_xpath(text)
+            return self.locate_xpath(
+            f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={escaped_text}]")
+        else:
+            return self.locate_xpath(
+                f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+
 
     def li_item(self, text: str):
         """
@@ -34,9 +40,16 @@ class Listbox(CommonComponent):
         @param text: text of list item.
         return: Locator
         """
-        return self.locate_xpath(
-            "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{0}']]".format(
-                text))
+        if Helper.if_contain_quotation(text):
+            escaped_text = Helper.escape_quotation_for_xpath(text)
+            return self.locate_xpath(
+            "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={0}]]".format(
+                escaped_text))
+        else:
+            return self.locate_xpath(
+                "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{0}']]".format(
+                    text))
+
 
     def is_checked_li_item(self, text: str):
         if self.get_attribute(self.li_item(text), "aria-selected").lower() == "true":

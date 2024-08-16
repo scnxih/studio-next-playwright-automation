@@ -136,7 +136,7 @@ class FlowPage(MainCenterPage):
             case FlowNodeType.notes:
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
                                                        Helper.data_locale.NOTES)
-
+        time.sleep(0.5)
     def view_collapse_all_ports(self):
         self.toolbar.click_btn_menu_by_test_id("flowtoolbar-viewMenuButton-button",
                                                Helper.data_locale.COLLAPSE_ALL_PORTS)
@@ -192,6 +192,10 @@ class FlowPage(MainCenterPage):
     def open_context_menu_for_the_node_in_flow(self, node_name):
         open_context_menu_for_the_node_in_flow(self.page, node_name)
 
+    def click_context_menu_for_the_node_in_flow(self,node_name,  *menu_item_text):
+        self.open_context_menu_for_the_node_in_flow(node_name)
+        self.click_menu_item(*menu_item_text)
+
     def open_context_menu_for_canvas_in_flow(self):
         open_context_menu_for_canvas_in_flow(self.page)
 
@@ -245,4 +249,4 @@ class FlowPage(MainCenterPage):
         acc.show_accordion(AccordionType.steps)
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
-        time.sleep(0.5)
+        
