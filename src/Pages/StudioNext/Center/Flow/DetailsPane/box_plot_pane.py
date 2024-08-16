@@ -21,10 +21,9 @@ class BoxPlotPane(BasicStepPane):
         combobox = None
         if section_label is None:
 
-            combobox = get_combobox(self.base_xpath,
-                                    self.page,
-                                    supplement_base_xpath="[../../../../../../../descendant::label[contains(text(),'{0}')]]".format(
-                                        parent_label))
+            combobox = get_combobox(self.base_xpath, self.page, supplement_base_xpath="[../../../../../../../descendant::label[contains(text(),'{0}')]]".format(parent_label))
+            # combobox = get_combobox(self.base_xpath, self.page, supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]]".format(parent_label))
+
             Helper.logger.debug("*** Overwriting ***")
 
         else:
@@ -66,12 +65,16 @@ class BoxPlotPane(BasicStepPane):
                                         item_index=item_index,
                                         item_value=item_value)
 
+        self.screenshot_self("set_plot_orientation")
+
     def set_analysis_variable(self, column_name: str):
         """
         Data/Analysis variable
         """
         self.click_Tab(Helper.data_locale.DATA)
         self.add_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE, column_name=column_name)
+
+        self.screenshot_self("set_analysis_variable")
 
     def set_subcategory(self, column_name: str):
         """
@@ -80,6 +83,8 @@ class BoxPlotPane(BasicStepPane):
         self.click_Tab(Helper.data_locale.DATA)
         self.add_column(parent_label=Helper.data_locale.SUBCATEGORY, column_name=column_name)
 
+        self.screenshot_self("set_subcategory")
+
     def set_group_analysis_by(self, column_name: str):
         """
         Data/Group analysis by
@@ -87,6 +92,8 @@ class BoxPlotPane(BasicStepPane):
         self.click_Tab(Helper.data_locale.DATA)
         self.expand_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
         self.add_column(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, column_name=column_name)
+
+        self.screenshot_self("set_group_analysis_by")
 
         # Collapse Additional Roles window shade
         self.collapse_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
@@ -107,6 +114,8 @@ class BoxPlotPane(BasicStepPane):
         self.expand_windowshade(Helper.data_locale.BOX)
         self.set_check_for_checkbox(label=Helper.data_locale.NOTCHES)
 
+        self.screenshot_self("set_check_notches")
+
         # Collapse Box window shade
         self.collapse_windowshade(Helper.data_locale.BOX)
 
@@ -118,6 +127,9 @@ class BoxPlotPane(BasicStepPane):
         self.expand_windowshade(Helper.data_locale.BOX)
         self.set_option_for_combobox(parent_label=Helper.data_locale.COLOR_TRANSPARENCY,
                                      item_index=item_index, item_value=item_value)
+
+        self.screenshot_self("set_color_transparency_percentage")
+
         # Collapse Box window shade
         self.collapse_windowshade(Helper.data_locale.BOX)
 
@@ -136,6 +148,8 @@ class BoxPlotPane(BasicStepPane):
                                      item_index=item_index,
                                      item_value=item_value)
 
+        self.screenshot_self("set_effect")
+
         # Collapse Box window shade
         self.collapse_windowshade(Helper.data_locale.BOX)
 
@@ -148,6 +162,8 @@ class BoxPlotPane(BasicStepPane):
         self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE,
                                        input_text=input_text)
 
+        self.screenshot_self("set_title_as")
+
         # Collapse window shade: Title and FootNote
         self.collapse_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
 
@@ -159,6 +175,8 @@ class BoxPlotPane(BasicStepPane):
         self.expand_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
         self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE,
                                        input_text=input_text)
+
+        self.screenshot_self("set_footnote_as")
 
         # Collapse window shade: Title and FootNote
         self.collapse_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
