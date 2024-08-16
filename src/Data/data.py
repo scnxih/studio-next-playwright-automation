@@ -326,6 +326,7 @@ class Data:
     """Added by Alice on 01/25/2024 end"""
 
     NODE = "Node"
+    NODE_WITH_COLON = "Node:"
     TABLE_PROPERTIES = "Table Properties"
     TABLE_NAME_INPUT = "Table name:, Table name input"
     PREVIEW_DATA= "Preview Data"
@@ -739,4 +740,7 @@ class Data:
     CREATE_OUTPUT_LINKS_DATA = "Create output links data"
     MOVE_COLUMN_UP = "Move column up"
     MOVE_COLUMN_DOWN = "Move column down"
+    NODES = "Nodes"
+
+    
     """Added by Alice on Aug 12,2024 end"""

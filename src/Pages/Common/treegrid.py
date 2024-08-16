@@ -72,8 +72,15 @@ class TreeGrid(CommonComponent):
         if name_text is None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
         if row_index is None:
-            return self.locate_xpath(f"//div[@role='row'][contains(@class, 'ag-row')][.//span[text()='{name_text}'] | "
-                                     f".//div[text()='{name_text}']] | .//div[@row-id='{name_text}']")
+
+            if Helper.if_contain_quotation(name_text):
+                escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                return self.locate_xpath(f"//div[@role='row'][contains(@class, 'ag-row')][.//span[text()={escaped_text}]|.//div[text()={escaped_text}]|.//div[@row-id={escaped_text}]]")
+            else:
+                return self.locate_xpath(
+                    f"//div[@role='row'][contains(@class, 'ag-row')][.//span[text()='{name_text}'] | "
+                    f".//div[text()='{name_text}'] | .//div[@row-id='{name_text}']]")
+
 
     def select_a_row(self, row_index=None, name_text=None):
         """
@@ -98,8 +105,11 @@ class TreeGrid(CommonComponent):
         if name_text is None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']//div[@col-id='{col_id}']")
         if row_index is None:
-            return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]//div[@col-id='{col_id}']")
-
+            if Helper.if_contain_quotation(name_text):
+                escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                return self.locate_xpath(f"//div[@role='row'][.//span[text()={escaped_text}]]//div[@col-id='{col_id}']")
+            else:
+                return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]//div[@col-id='{col_id}']")
     def click_column_in_a_row(self, col_id: str, row_index=None, name_text=None):
         """
         Description: if just select a row, give a none clickable column's col-id to param col_id.
@@ -145,8 +155,13 @@ class TreeGrid(CommonComponent):
         if name_text is None:
             return Text(self.base_xpath + f"//div[@row-index='{row_index}']", self.page, data_test_id=test_id)
         if row_index is None:
-            return Text(self.base_xpath + f"//div[@role='row'][.//span[text()='{name_text}']]", self.page,
+            if Helper.if_contain_quotation(name_text):
+                escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                return Text(self.base_xpath + f"//div[@role='row'][.//span[text()={escaped_text}]]", self.page,
                         data_test_id=test_id)
+            else:
+                return Text(self.base_xpath + f"//div[@role='row'][.//span[text()='{name_text}']]", self.page,
+                            data_test_id=test_id)
 
     def fill_input_in_a_row(self, test_id: str, fill_text: str, row_index=None, name_text=None):
         """
@@ -201,10 +216,20 @@ class TreeGrid(CommonComponent):
                 return self.locate_xpath(f"//div[@row-index='{row_index}']//button[@type='button']")
         if row_index is None:
             if test_id is not None:
-                return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]"
+                if Helper.if_contain_quotation(name_text):
+                    escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                    return self.locate_xpath(f"//div[@role='row'][.//span[text()={escaped_text}]]"
                                          f"//button[@data-testid='{test_id}']")
+                else:
+                    return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]"
+                                             f"//button[@data-testid='{test_id}']")
             else:
-                return self.locate_xpath(f"//div[@role='row'][.//span[text()='{name_text}']]//button[@type='button']")
+                if Helper.if_contain_quotation(name_text):
+                    escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                    return self.locate_xpath(f"//div[@role='row'][.//span[text()={escaped_text}]]//button[@type='button']")
+                else:
+                    return self.locate_xpath(
+                        f"//div[@role='row'][.//span[text()='{name_text}']]//button[@type='button']")
 
     def click_btn_in_a_row(self, row_index=None, name_text=None, test_id=None):
         """
@@ -234,7 +259,11 @@ class TreeGrid(CommonComponent):
             else:
                 return Combobox(self.base_xpath + f"//div[@row-index='{row_index}']", self.page)
         if row_index is None:
-            return Combobox(self.base_xpath + f"//div[@role='row'][.//span[text()='{name_text}']]", self.page)
+            if Helper.if_contain_quotation(name_text):
+                escaped_text = Helper.escape_quotation_for_xpath(name_text)
+                return Combobox(self.base_xpath + f"//div[@role='row'][.//span[text()={escaped_text}]]", self.page)
+            else:
+                return Combobox(self.base_xpath + f"//div[@role='row'][.//span[text()='{name_text}']]", self.page)
 
     def click_combo_in_a_row(self, row_index=None, name_text=None, test_id=None):
         """
@@ -285,7 +314,11 @@ class TreeGrid(CommonComponent):
         :return: Locator
         """
         if name_text is not None:
-            return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']")
+            if Helper.if_contain_quotation(name_text):
+                row_id = str.replace(name_text,"'","&#39;")
+                return self.locate_xpath(f"//div[@role='row'][@row-id='{row_id}']")
+            else:
+                return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']")
         if row_index is not None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']")
 
@@ -297,10 +330,13 @@ class TreeGrid(CommonComponent):
         :return: Locator
         """
         if name_text is not None:
-            return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']//input[@type='checkbox']")
+            if Helper.if_contain_quotation(name_text):
+                row_id = str.replace(name_text,"'","&#39;")
+                return self.locate_xpath(f"//div[@role='row'][@row-id='{row_id}']//input[@type='checkbox']")
+            else:
+                return self.locate_xpath(f"//div[@role='row'][@row-id='{name_text}']//input[@type='checkbox']")
         if row_index is not None:
             return self.locate_xpath(f"//div[@role='row'][@row-index='{row_index}']//input[@type='checkbox']")
-
 
     def is_checked_in_a_row(self, row_index=None, name_text=None):
         """
@@ -309,7 +345,7 @@ class TreeGrid(CommonComponent):
         :param name_text: the name text of a row
         :return: Boolean
         """
-        locator = self.checkbox_container_in_a_row(row_index=row_index,name_text=name_text)
+        locator = self.checkbox_container_in_a_row(row_index = row_index,name_text=name_text)
         if self.get_attribute(locator,"aria-selected").lower() == "true":
             return True
         else:

@@ -28,6 +28,7 @@ class LoginPage(BasePage):
         # Original
         url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
 
+
         # Backup server
         # url = "https://mwf.pgc.unx.sas.com/SASStudioNext/"
         self.goto(url)

@@ -63,10 +63,11 @@ class StepsPage(AccordionPage):
 
     def navigate_to_step(self, step_path: list):
         locator = self.tree.navigate_to_element(step_path)
-        time.sleep(1)
+        time.sleep(0.5)
         return locator
     def add_to_flow(self,step_path: list):
         locator = self.navigate_to_step(step_path)
         self.click_context_menu(locator,Helper.data_locale.ADD_TO_FLOW)
+        time.sleep(1)
 
 

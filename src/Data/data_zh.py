@@ -321,6 +321,7 @@ class DataZH(Data):
     """Added by Alice on 01/25/2024 end"""
 
     NODE = "节点"
+    NODE_WITH_COLON = "节点:"
     TABLE_PROPERTIES = "表属性"
     TABLE_NAME_INPUT = "表名:, 表名输入"
     PREVIEW_DATA = "预览数据"
@@ -732,6 +733,7 @@ class DataZH(Data):
     CREATE_OUTPUT_LINKS_DATA = "创建输出链接数据"
     MOVE_COLUMN_UP = "上移列"
     MOVE_COLUMN_DOWN = "下移列"
+    NODES = "节点"
     """Added by Alice on Aug 12,2024 end"""
 
     # ADDED

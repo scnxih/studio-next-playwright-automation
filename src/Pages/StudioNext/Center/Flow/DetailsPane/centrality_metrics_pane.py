@@ -26,14 +26,17 @@ class CentralityMetricsPane(BasicStepPane):
     def add_column_for_to_node(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.TO_NODE, column_name=column_name)
 
-    def add_column_for_weight(self, column_name: str):
-        self.add_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON, column_name=column_name)
-
+    def add_column_for_weight_in_links(self, column_name: str):
+        self.add_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON,section_label=Helper.data_locale.LINKS, column_name=column_name)
 
     def add_column_for_auxiliary_weight(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.AUXILIARY_WEIGHT, column_name=column_name)
-    def add_columns_for_group_analysis_by(self, check_column_name_list: list=None, uncheck_column_name_list: list=None):
-        self.add_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, check_column_name_list=check_column_name_list, uncheck_column_name_list=uncheck_column_name_list)
+
+    def add_columns_for_group_analysis_by(self, check_column_name_list: list = None,
+                                          uncheck_column_name_list: list = None):
+        self.add_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,
+                         check_column_name_list=check_column_name_list,
+                         uncheck_column_name_list=uncheck_column_name_list)
 
     def delete_column_for_from_node(self):
         self.delete_column(parent_label=Helper.data_locale.FROM_NODE)
@@ -41,35 +44,62 @@ class CentralityMetricsPane(BasicStepPane):
     def delete_column_for_to_node(self):
         self.delete_column(parent_label=Helper.data_locale.TO_NODE)
 
-    def delete_column_for_weight(self):
-        self.delete_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON)
+    def delete_column_for_weight_in_links(self):
+        self.delete_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON,section_label=Helper.data_locale.LINKS)
 
     def delete_column_for_auxiliary_weight(self):
         self.delete_column(parent_label=Helper.data_locale.AUXILIARY_WEIGHT)
 
-    def delete_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
-        self.delete_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
+    def delete_columns_for_group_analysis_by(self, check_column_name_list: list = None,
+                                             uncheck_column_name_list: list = None):
+        self.delete_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,
+                                        check_column_name_list=check_column_name_list,
                                         uncheck_column_name_list=uncheck_column_name_list)
-    def move_up_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
-        self.move_up_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
+
+    def move_up_columns_for_group_analysis_by(self, check_column_name_list: list = None,
+                                              uncheck_column_name_list: list = None):
+        self.move_up_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,
+                                         check_column_name_list=check_column_name_list,
                                          uncheck_column_name_list=uncheck_column_name_list)
-    def move_down_columns_for_group_analysis_by(self,check_column_name_list:list=None,uncheck_column_name_list:list=None):
-        self.move_down_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,check_column_name_list=check_column_name_list,
-                                         uncheck_column_name_list=uncheck_column_name_list)
+
+    def move_down_columns_for_group_analysis_by(self, check_column_name_list: list = None,
+                                                uncheck_column_name_list: list = None):
+        self.move_down_columns_for_listbox(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY,
+                                           check_column_name_list=check_column_name_list,
+                                           uncheck_column_name_list=uncheck_column_name_list)
+
     def expand_windowshade_links(self):
         self.expand_windowshade(parent_label=Helper.data_locale.LINKS)
 
     def collapse_windowshade_links(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.LINKS)
 
+    def expand_windowshade_nodes(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.NODES)
+
+    def collapse_windowshade_nodes(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.NODES)
+
+    def set_check_include_nodes_data(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.INCLUDE_NODES_DATA)
+
+    def set_uncheck_include_nodes_data(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.INCLUDE_NODES_DATA)
+
+    def add_column_for_node(self, column_name: str):
+        self.add_column_exact_label(parent_label=Helper.data_locale.NODE_WITH_COLON, column_name=column_name)
+
+    def delete_column_for_node(self):
+        self.delete_column_exact_label(parent_label=Helper.data_locale.NODE_WITH_COLON)
+
+    def add_column_for_weight_in_nodes(self,column_name:str):
+        self.add_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON,section_label=Helper.data_locale.NODES,column_name = column_name)
+
+    def delete_column_for_weight_in_nodes(self):
+        self.delete_column_exact_label(parent_label=Helper.data_locale.WEIGHT_WITH_COLON, section_label=Helper.data_locale.NODES)
+
+
     """Below methods are in Options tab"""
-
-    def expand_centrality_metrics(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.STEP_CENTRALITY_METRICS)
-
-    def collapse_centrality_metrics(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.STEP_CENTRALITY_METRICS)
-
     def set_check_degree(self):
         self.set_check_for_checkbox(label=Helper.data_locale.DEGREE)
 
@@ -83,7 +113,8 @@ class CentralityMetricsPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.INFLUENCE)
 
     def set_metric_type_for_influence(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE, section_label=Helper.data_locale.INFLUENCE,
+        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
+                                     section_label=Helper.data_locale.INFLUENCE,
                                      item_index=item_index, item_value=item_value)
 
     def set_check_clustering_coefficient(self):
@@ -99,7 +130,8 @@ class CentralityMetricsPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.CLOSENESS)
 
     def set_metric_type_for_closeness(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE, section_label=Helper.data_locale.CLOSENESS,
+        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
+                                     section_label=Helper.data_locale.CLOSENESS,
                                      item_index=item_index, item_value=item_value)
 
     def set_shortest_path_distance_between_disconnected_nodes(self, item_index: int = None, item_value: str = None):
@@ -113,7 +145,8 @@ class CentralityMetricsPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.BETWEENNESS)
 
     def set_metric_type_for_betweenness(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE, section_label= Helper.data_locale.BETWEENNESS,item_index=item_index,
+        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
+                                     section_label=Helper.data_locale.BETWEENNESS, item_index=item_index,
                                      item_value=item_value)
 
     def set_check_normalize_betweenness_centrality(self):
@@ -129,7 +162,9 @@ class CentralityMetricsPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.EIGENVECTOR)
 
     def set_metric_type_for_eigenvector(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE, section_label= Helper.data_locale.EIGENVECTOR, item_index = item_index,item_value = item_value)
+        self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
+                                     section_label=Helper.data_locale.EIGENVECTOR, item_index=item_index,
+                                     item_value=item_value)
 
     def set_check_hub_score(self):
         self.set_check_for_checkbox(label=Helper.data_locale.HUB_SCORE)
@@ -165,11 +200,17 @@ class CentralityMetricsPane(BasicStepPane):
             parent_label=Helper.data_locale.MAXIMUM_NUMBER_OF_ITERATIONS_FOR_EIGENVECTOR_CALCULATIONS,
             item_index=item_index, item_value=item_value)
 
-    def set_log_details(self,item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.LOG_DETAILS, item_index=item_index, item_value=item_value)
+    def set_log_details(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.LOG_DETAILS, item_index=item_index,
+                                     item_value=item_value)
 
     def set_code_generation(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_radio_group(parent_label=Helper.data_locale.CODE_GENERATION, item_index=item_index, item_value=item_value)
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.CODE_GENERATION, item_index=item_index,
+                                        item_value=item_value)
 
-    def set_number_of_iterations(self,input_text:str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_ITERATIONS,input_text = input_text)
+    def set_number_of_iterations(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_ITERATIONS, input_text=input_text)
+
+
+
+
