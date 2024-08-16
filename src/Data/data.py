@@ -740,3 +740,22 @@ class Data:
     MOVE_COLUMN_UP = "Move column up"
     MOVE_COLUMN_DOWN = "Move column down"
     """Added by Alice on Aug 12,2024 end"""
+
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on August 13th, 2024
+    NUMBER_OF_PEOPLE_IN_A_ROOM = "Number of people in a room"
+    PLOT_ORIENTATION = "Plot orientation"
+    ANALYSIS_VARIABLE = "Analysis variable"
+    CATEGORY = "Category"
+    SUBCATEGORY = "Subcategory"
+    BOX = "Box"
+    WIDTH = "Width"
+    NOTCHES = "Notches"
+    COLOR_TRANSPARENCY = "Color transparency"
+    EFFECT = "Effect"
+    TITLE_AND_FOOTNOTE = "Title and Footnote"
+    FOOTNOTE = "Footnote"
+    TITLE = "Title"
+    GRAPH_SIZE = "Graph Size"
+    UNIT = "Unit"
+    # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>

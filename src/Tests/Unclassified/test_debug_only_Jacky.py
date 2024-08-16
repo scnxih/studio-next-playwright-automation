@@ -1258,7 +1258,7 @@ def test_35_load_table(page, init):
     load_table = LoadTablePane(page)
     # load_table.tab_group.click_tab_by_text("目标表")
     # load_table.tab_group.click_tab_by_text("列结构")
-    load_table.set_load_technique()
+    # load_table.set_load_technique()
     load_table.set_target_library('work')
 
 
@@ -1676,4 +1676,27 @@ def test_42_box_plot_in_flow(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
 
     box_plot_pane = BoxPlotPane(page)
+    box_plot_pane.set_filter_input_data("Weight IS NOT MISSING")
     box_plot_pane.set_analysis_variable("Weight")
+    box_plot_pane.set_subcategory("Sex")
+    box_plot_pane.set_group_analysis_by("Age")
+
+    box_plot_pane.set_plot_orientation(item_index=1)
+    time.sleep(0.5)
+    box_plot_pane.set_plot_orientation(item_index=0)
+    time.sleep(0.5)
+    box_plot_pane.set_check_notches()
+
+    box_plot_pane.set_color_transparency_percentage(item_index=2)
+    box_plot_pane.set_color_transparency_percentage(item_index=1)
+    box_plot_pane.set_color_transparency_percentage(item_index=0)
+
+    box_plot_pane.set_effect(item_index=2)
+    box_plot_pane.set_effect(item_index=1)
+    box_plot_pane.set_effect(item_index=0)
+
+    box_plot_pane.set_graph_size_unit(item_index=1)
+    box_plot_pane.set_graph_size_width_to("7")
+
+    box_plot_pane.set_title_as("MyTitle")
+    box_plot_pane.set_footnote_as("MyFootNote")

@@ -737,5 +737,18 @@ class DataZH(Data):
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on August 13th, 2024
     NUMBER_OF_PEOPLE_IN_A_ROOM = "房间中的人数"
-
+    PLOT_ORIENTATION = "图方向"
+    ANALYSIS_VARIABLE = "分析变量"
+    CATEGORY = "类别"
+    SUBCATEGORY = "子类别"
+    BOX = "盒"
+    WIDTH = "宽度"
+    NOTCHES = "缺口"
+    COLOR_TRANSPARENCY = "颜色透明度"
+    EFFECT = "效果"
+    TITLE_AND_FOOTNOTE = "标题和脚注"
+    FOOTNOTE = "脚注"
+    TITLE = "标题"
+    GRAPH_SIZE = "图形大小"
+    UNIT = "单位"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
