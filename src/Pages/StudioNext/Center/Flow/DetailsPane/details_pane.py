@@ -305,12 +305,12 @@ class DetailsPane(BasePage):
         if section_label == None:
 
             combobox = get_combobox(self.base_xpath, self.page,
-                                    supplement_base_xpath="[../../../../../../../../descendant::label[contains(text(),'{0}')]]".format(
+                                    supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]]".format(
                                         parent_label))
 
         else:
             combobox = get_combobox(self.base_xpath, self.page,
-                                    supplement_base_xpath="[../../../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
+                                    supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
                                         parent_label, section_label))
 
         if item_index != None:
