@@ -31,7 +31,7 @@ from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Integrate.load_table_pane import LoadTablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.box_plot_pane import BoxPlotPane
-
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and_topic_analysis_pane import TextParsingAndTopicAnalysisPane
 def test_00_click_show_tab_lables(page, init):
     """
     Test commitment after switching git account.
@@ -1743,10 +1743,27 @@ run;
     sas_program.editor.type_into_text_area(sas_program_code)
     sas_program.run(True)
 
-    # Create a flow
+    # Create a flow and add table node
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
-    table_pane.set_library("MYCAS")
+    table_pane.set_library("mycas")
     table_pane.set_table("getstart")
+
+    # Add Text Parsing and Topic Discovery node
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY)
+    flow.link_two_nodes_in_flow("getstart", Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY)
+
+    # TextParsingAndTopicAnalysisPane
+    tp_ta_pane = TextParsingAndTopicAnalysisPane(page)
+
