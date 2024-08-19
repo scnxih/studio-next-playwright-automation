@@ -754,3 +754,10 @@ class DataZH(Data):
     GRAPH_SIZE = "图形大小"
     UNIT = "单位"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
+
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "图数据"
+    LATITUDE = "纬度"
+    LONGITUDE = "经度"
+    GROUP = "组"
+    """----- Added by Frank 2024/8/20 End -----"""
