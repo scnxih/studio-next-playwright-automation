@@ -757,7 +757,8 @@ class DataZH(Data):
 
     """Added by Alice start"""
     CD=""
-    EF=""
+
+
     GH=""
     TEST99=""
     AB = "ab"
@@ -766,6 +767,8 @@ class DataZH(Data):
 
 
     WER=""
+    QW=""
+    GFD=""
     """Added by Alice end"""
 
     """Added by Jacky start"""
