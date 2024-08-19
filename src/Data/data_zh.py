@@ -769,8 +769,10 @@ class DataZH(Data):
     """Added by Alice end"""
 
     """Added by Jacky start"""
-    Test3 = "Updated"
-    Test4 = "Revised"
+    # Deleted Test3
+    Test4 = "Revised2"
     Test5 = "Added"
     Test6 = "Added"
+
+    Test7= "Add"
     """Added by Jacky end"""
