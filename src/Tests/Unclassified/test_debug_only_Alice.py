@@ -280,11 +280,9 @@ N 1
     time.sleep(0.5)
     flow.run(True)
 
-
-def test_06_sasprogram_table(page,init):
+def test_06_link_with_incorrect_ports(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
-
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
@@ -327,24 +325,67 @@ N 7
     table_pane.set_library("MYCAS")
     table_pane.set_table("LINKSETIN")
 
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETIN")
-    flow.arrange_nodes()
-
     flow.add_node(FlowNodeType.table)
-
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("MYCAS")
     table_pane.set_table("NODESETIN")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM,"添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM,"LINKSETIN")
     flow.arrange_nodes()
-    flow.run(True)
+    time.sleep(2)
+
+def test_07_link_with_incorrect_direction(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+cas; 
+libname mycas cas;
+data aa;
+input "from'从"n $ "to'到 "n$ community "weight'权重"n "wt'_另一个权重"n;
+datalines;
+A B 1 3 3 
+A C 1 2 2
+A D 1 1 1
+B C 1 5 5
+C D 1 7 7
+C E 1 2 2
+D F . 3 3
+F G 2 9 9
+F H 2 3 3
+F I 2 5 5
+G H 2 7 7
+G I 2 3 3
+I J . 3 3
+J K 3 1 2
+J L 3 6 6
+K L 3 3 3
+;
+
+data bb;
+input "node'"n $ "weight'"n;
+datalines;
+A 4
+M 5
+N 7    
+;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("LINKSETIN")
 
 
-
+    flow.link_two_nodes_in_flow("LINKSETIN",Helper.data_locale.SAS_PROGRAM)
+    flow.arrange_nodes()
+    time.sleep(2)
 
 
 
