@@ -383,6 +383,52 @@ N 7
     flow.arrange_nodes()
     time.sleep(2)
 
+def test_08_click_context_menu_on_port(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+cas; 
+libname mycas cas;
+data aa;
+input "from'从"n $ "to'到 "n$ community "weight'权重"n "wt'_另一个权重"n;
+datalines;
+A B 1 3 3 
+A C 1 2 2
+A D 1 1 1
+B C 1 5 5
+C D 1 7 7
+C E 1 2 2
+D F . 3 3
+F G 2 9 9
+F H 2 3 3
+F I 2 5 5
+G H 2 7 7
+G I 2 3 3
+I J . 3 3
+J K 3 1 2
+J L 3 6 6
+K L 3 3 3
+;
+
+data bb;
+input "node'"n $ "weight'"n;
+datalines;
+A 4
+M 5
+N 7    
+;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM,"添加输出端口")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+
 
 
 
