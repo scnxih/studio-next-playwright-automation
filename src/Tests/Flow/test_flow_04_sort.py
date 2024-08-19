@@ -1,8 +1,6 @@
-import time
-
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sort_pane import SortPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import *
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.sort_pane import SortPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Helper.page_helper import *
 
 

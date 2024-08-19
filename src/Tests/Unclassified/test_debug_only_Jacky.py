@@ -3,11 +3,11 @@ from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
-from src.Pages.StudioNext.Center.Flow.DetailsPane.branch_rows_pane import BranchRowsPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.filter_rows_pane import FilterRowsPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.manage_columns_pane import ManageColumnsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.branch_rows_pane import BranchRowsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.filter_rows_pane import FilterRowsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.manage_columns_pane import ManageColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
@@ -26,11 +26,10 @@ from src.Utilities.enums import SettingsTabPages
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
-from src.Pages.Common.dialog import Dialog, Alert
 # from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
-from src.Pages.StudioNext.Center.Flow.DetailsPane.load_table_pane import LoadTablePane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.same_birthday_pane import SameBirthdayProbabilityPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.box_plot_pane import BoxPlotPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Integrate.load_table_pane import LoadTablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.box_plot_pane import BoxPlotPane
 
 def test_00_click_show_tab_lables(page, init):
     """

@@ -1,16 +1,6 @@
-from src.Helper.page_helper import PageHelper
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sort_pane import SortPane
-from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
-from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import *
-from src.Utilities.enums import *
-import time
-from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_checkbox import DesignerCheckbox
-from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_list import DesignerList
-from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_numeric_stepper import DesignerNumericStepper
-from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text import DesignerText
-from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
-from src.conftest import *
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.sort_pane import SortPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import *
 from src.Helper.page_helper import *
 

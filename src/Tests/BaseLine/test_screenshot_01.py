@@ -4,11 +4,9 @@ Date: Mar 22, 2024
 Description: This is the test case file for screenshots.
 """
 
-import time
-
 from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.whole_page import WholePage
-from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
