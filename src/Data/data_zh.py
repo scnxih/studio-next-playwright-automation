@@ -756,38 +756,25 @@ class DataZH(Data):
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
     """Added by Alice start"""
-    CD=""
-
-
-    GH=""
-    TEST99=""
-    AB = "ab"
-    TEST5=""
-    NMN=""
-
-
-    WER=""
-
-    QW=""
-    GFD=""
-    GSA=""
-    LK=""
-
-
-    IP =""
-    DF=""
-
-
-
-
-
+    TEST1 = ""
     """Added by Alice end"""
 
-    """Added by Jacky start"""
-    # Deleted Test3
-    Test4 = "Revised2"
-    Test5 = "Added"
-    Test6 = "Added"
+    """Added by Allison start"""
+    TEST2 = ""
+    """Added by Allison end"""
 
-    Test7= "Add"
+    """Added by Dommy start"""
+    TEST3 = ""
+    """Added by Dommy end"""
+
+    """Added by Frank start"""
+    TEST4 = ""
+    """Added by Frank end"""
+
+    """Added by Jacky start"""
+    TEST5 = ""
     """Added by Jacky end"""
+
+    """Added by Percy start"""
+    TEST6 = ""
+    """Added by Percy end"""
