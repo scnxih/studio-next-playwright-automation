@@ -754,3 +754,13 @@ class DataZH(Data):
     GRAPH_SIZE = "图形大小"
     UNIT = "单位"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
+
+    """Added by Alice start"""
+    TEST1 = ""
+    TEST2 = ""
+    """Added by Alice end"""
+
+    """Added by Jacky start"""
+    Test3 = ""
+    Test4 = ""
+    """Added by Jacky end"""
