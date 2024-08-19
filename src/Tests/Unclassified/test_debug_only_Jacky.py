@@ -6,6 +6,7 @@ from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPa
 from src.Pages.StudioNext.Center.Flow.DetailsPane.branch_rows_pane import BranchRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.manage_columns_pane import ManageColumnsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
@@ -1700,3 +1701,52 @@ def test_42_box_plot_in_flow(page, init):
 
     box_plot_pane.set_title_as("MyTitle")
     box_plot_pane.set_footnote_as("MyFootNote")
+
+def test_43_text_parsing_and_topic_discovery(page, init):
+    """
+
+    """
+    # Create a sas program and run
+    sas_program_code = """
+libname mycas cas caslib="CASUSER";
+ 
+data mycas.getstart;
+    infile datalines delimiter='|' missover;
+    length text $150;
+    input text$ apple_fruit did$;
+    datalines;
+Delicious and crunchy apple is one of the popular fruits | 1 |d01
+Apple was the king of all fruits. | 1 |d02
+Custard apple or Sitaphal is a sweet pulpy fruit | 1 |d03
+apples are a common tree throughout the tropics | 1 |d04
+apple is round in shape, and tasts sweet | 1 |d05
+Tropical apple trees produce sweet apple| 1| d06
+Fans of sweet apple adore Fuji because it is the sweetest of| 1 |d07
+this apple tree is small | 1 |d08
+Apple Store shop iPhone x and iPhone x Plus.| 0 |d09
+See a list of Apple phone numbers around the world.| 0 |d10
+Find links to user guides and contact Apple Support, | 0 |d11
+Apple counters Samsung Galaxy launch with iPhone gallery | 0 |d12
+Apple Smartphones - Verizon Wireless.| 0 |d13
+Apple mercurial chief executive, was furious.| 0 |d14
+Apple has upgraded the phone.| 0 |d15
+the great features of the new Apple iPhone x.| 0 |d16
+Apple sweet apple iphone.| 0 |d17
+Apple apple will make cars | 0 |d18
+Apple apple also makes watches| 0 |d19
+Apple apple makes computers too| 0 |d20
+;
+run;
+        """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    # Create a flow
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("getstart")
