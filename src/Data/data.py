@@ -763,3 +763,35 @@ class Data:
     GRAPH_SIZE = "Graph Size"
     UNIT = "Unit"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
+
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "Plot Data"
+    LATITUDE = "Latitude"
+    LONGITUDE = "Longitude"
+    GROUP = "Group"
+    """----- Added by Frank 2024/8/20 End -----"""
+
+
+    """Added by Alice start"""
+    TEST1 = ""
+    """Added by Alice end"""
+
+    """Added by Allison start"""
+    TEST2 = ""
+    """Added by Allison end"""
+
+    """Added by Dommy start"""
+    TEST3 = ""
+    """Added by Dommy end"""
+
+    """Added by Frank start"""
+    TEST4 = ""
+    """Added by Frank end"""
+
+    """Added by Jacky start"""
+    TEST5 = ""
+    """Added by Jacky end"""
+
+    """Added by Percy start"""
+    TEST6 = ""
+    """Added by Percy end"""
