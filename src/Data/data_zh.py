@@ -767,8 +767,20 @@ class DataZH(Data):
 
 
     WER=""
+
     QW=""
     GFD=""
+    GSA=""
+    LK=""
+
+
+    IP =""
+    DF=""
+
+
+
+
+
     """Added by Alice end"""
 
     """Added by Jacky start"""
