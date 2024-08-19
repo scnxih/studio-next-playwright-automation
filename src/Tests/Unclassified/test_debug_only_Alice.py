@@ -1,10 +1,6 @@
-import time
-
-from src.Pages.Common.whole_page import WholePage
-from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.centrality_metrics_pane import CentralityMetricsPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import CentralityMetricsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -386,8 +382,6 @@ N 7
     flow.link_two_nodes_in_flow("LINKSETIN",Helper.data_locale.SAS_PROGRAM)
     flow.arrange_nodes()
     time.sleep(2)
-
-
 
 
 
