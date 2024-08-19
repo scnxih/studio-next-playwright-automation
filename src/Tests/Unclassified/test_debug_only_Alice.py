@@ -383,7 +383,7 @@ N 7
     flow.arrange_nodes()
     time.sleep(2)
 
-def test_08_click_context_menu_on_port(page,init):
+def test_08_add_numeric_stepper(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -420,15 +420,6 @@ M 5
 N 7    
 ;
 """
-    sas_program_pane.type_into_text_area(code)
-
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM,"添加输出端口")
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-
 
 
 
