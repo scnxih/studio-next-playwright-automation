@@ -6,7 +6,7 @@ from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPa
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.branch_rows_pane import BranchRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.manage_columns_pane import ManageColumnsPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.sasprogram_pane import SASProgramPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
@@ -15,6 +15,7 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
 from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
+from src.Pages.StudioNext.Dialog.select_column_dialog import SelectColumnDialog
 # from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
@@ -1156,7 +1157,7 @@ def test_33_branch_rows(page, init):
     branch_rows = BranchRowsPane(page)
     branch_rows.select_a_column()
 
-    # select_column_dialog = SelectColumnDialog(page)
+    select_column_dialog = SelectColumnDialog(page)
     # select_column_dialog.select_a_column_and_OK("Sex")
 
 
