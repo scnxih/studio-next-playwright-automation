@@ -1,15 +1,21 @@
+import time
+from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.branch_rows_pane import BranchRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.manage_columns_pane import ManageColumnsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.manage_git_connection_dialog import ManageGitConnectionDialog
 from src.Pages.StudioNext.Dialog.manage_shortcuts_dialog import ManageShortcutsDialog
+from src.Pages.StudioNext.Dialog.select_column_dialog import SelectColumnDialog
 # from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
@@ -1151,7 +1157,7 @@ def test_33_branch_rows(page, init):
     branch_rows = BranchRowsPane(page)
     branch_rows.select_a_column()
 
-    # select_column_dialog = SelectColumnDialog(page)
+    select_column_dialog = SelectColumnDialog(page)
     # select_column_dialog.select_a_column_and_OK("Sex")
 
 
@@ -1695,3 +1701,52 @@ def test_42_box_plot_in_flow(page, init):
 
     box_plot_pane.set_title_as("MyTitle")
     box_plot_pane.set_footnote_as("MyFootNote")
+
+def test_43_text_parsing_and_topic_discovery(page, init):
+    """
+
+    """
+    # Create a sas program and run
+    sas_program_code = """
+libname mycas cas caslib="CASUSER";
+ 
+data mycas.getstart;
+    infile datalines delimiter='|' missover;
+    length text $150;
+    input text$ apple_fruit did$;
+    datalines;
+Delicious and crunchy apple is one of the popular fruits | 1 |d01
+Apple was the king of all fruits. | 1 |d02
+Custard apple or Sitaphal is a sweet pulpy fruit | 1 |d03
+apples are a common tree throughout the tropics | 1 |d04
+apple is round in shape, and tasts sweet | 1 |d05
+Tropical apple trees produce sweet apple| 1| d06
+Fans of sweet apple adore Fuji because it is the sweetest of| 1 |d07
+this apple tree is small | 1 |d08
+Apple Store shop iPhone x and iPhone x Plus.| 0 |d09
+See a list of Apple phone numbers around the world.| 0 |d10
+Find links to user guides and contact Apple Support, | 0 |d11
+Apple counters Samsung Galaxy launch with iPhone gallery | 0 |d12
+Apple Smartphones - Verizon Wireless.| 0 |d13
+Apple mercurial chief executive, was furious.| 0 |d14
+Apple has upgraded the phone.| 0 |d15
+the great features of the new Apple iPhone x.| 0 |d16
+Apple sweet apple iphone.| 0 |d17
+Apple apple will make cars | 0 |d18
+Apple apple also makes watches| 0 |d19
+Apple apple makes computers too| 0 |d20
+;
+run;
+        """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    # Create a flow
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("getstart")
