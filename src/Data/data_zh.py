@@ -756,8 +756,16 @@ class DataZH(Data):
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
     """Added by Alice start"""
-    TEST1 = ""
-    TEST2 = ""
+    CD=""
+    EF=""
+    GH=""
+    TEST99=""
+    AB = "ab"
+    TEST5=""
+    NMN=""
+
+
+    WER=""
     """Added by Alice end"""
 
     """Added by Jacky start"""
