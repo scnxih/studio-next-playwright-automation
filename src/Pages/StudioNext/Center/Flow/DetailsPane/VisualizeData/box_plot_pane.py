@@ -3,8 +3,6 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: August 13th, 2024
 """
-import time
-
 # -*- coding: UTF-8 -*-
 from src.Helper.helper import Helper
 from src.Pages.Common.common_component_factory import get_combobox, get_text
@@ -15,7 +13,7 @@ class BoxPlotPane(BasicStepPane):
     def __init__(self, page):
         BasicStepPane.__init__(self, page)
 
-    def set_option_for_combobox2(self, parent_label: str, section_label: str = None, item_index: int = None,
+    def set_option_for_combobox(self, parent_label: str, section_label: str = None, item_index: int = None,
                                 item_value: str = None):
         """
         Overwrite
@@ -130,7 +128,6 @@ class BoxPlotPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.COLOR_TRANSPARENCY,
                                      item_index=item_index, item_value=item_value)
 
-        time.sleep(0.5)
         self.screenshot_self("set_color_transparency_percentage")
 
         # Collapse Box window shade

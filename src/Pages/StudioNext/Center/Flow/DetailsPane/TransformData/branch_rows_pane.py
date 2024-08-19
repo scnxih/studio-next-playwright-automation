@@ -9,7 +9,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.details_pane import DetailsPan
 from src.Pages.Common.button import *
 
 
-from src.Pages.StudioNext.Dialog.select_column_dialog import SelectColumnDialog
+# from src.Pages.StudioNext.Dialog.select_a_column_dialog import SelectColumnDialog
 
 
 class BranchRowsPane(DetailsPane):
@@ -26,5 +26,5 @@ class BranchRowsPane(DetailsPane):
     def select_a_column(self):
         Button(self.base_xpath, self.page,
                data_test_id="branchConditionCard0-filterViewContent-filterColumn0-columnCompositeInputCompositeInput-button").click_self()
-        select_column_dialog = SelectColumnDialog(self.page)
-        select_column_dialog.select_a_column_and_OK('Sex')
+        # select_column_dialog = SelectColumnDialog(self.page)
+        # select_column_dialog.select_a_column_and_OK('Sex')

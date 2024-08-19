@@ -764,6 +764,13 @@ class Data:
     UNIT = "Unit"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "Plot Data"
+    LATITUDE = "Latitude"
+    LONGITUDE = "Longitude"
+    GROUP = "Group"
+    """----- Added by Frank 2024/8/20 End -----"""
+
 
     """Added by Alice start"""
     TEST1 = ""
