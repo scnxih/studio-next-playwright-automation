@@ -21,7 +21,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         """
         self.click_Tab(Helper.data_locale.DATA)
 
-        self.set_option_for_radio_group(parent_label="",
+        self.set_option_for_radio_group(parent_label="输入表包含",
                                         item_index=item_index,
                                         item_value=item_value)
 

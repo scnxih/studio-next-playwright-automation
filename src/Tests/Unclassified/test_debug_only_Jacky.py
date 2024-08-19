@@ -1766,4 +1766,5 @@ run;
 
     # TextParsingAndTopicAnalysisPane
     tp_ta_pane = TextParsingAndTopicAnalysisPane(page)
+    tp_ta_pane.set_input_table_contains(1)
 
