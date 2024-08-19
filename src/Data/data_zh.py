@@ -759,17 +759,13 @@ class DataZH(Data):
     CD=""
     EF=""
     GH=""
-
-
-
-
-
-
-
-
-    TEST2 = ""
+    TEST99=""
     AB = "ab"
     TEST5=""
+    NMN=""
+
+
+    WER=""
     """Added by Alice end"""
 
     """Added by Jacky start"""
