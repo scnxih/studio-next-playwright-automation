@@ -778,7 +778,20 @@ class Data:
 
     """Added by Allison start"""
     ANALYSIS_VARIABLES = 'Analysis variables'
-    Frequency_Count = 'Frequency count'
+    FREQUENCY_COUNT = 'Frequency count'
+    FREQUENCY_TABLE = 'Frequency table'
+    INCLUDE_PERCENTAGES = 'Include percentages'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = 'Include cumulative frequencies and percentages'
+    ROW_VALUE_ORDER = 'Row value order'
+    ASYMPTOTIC_TEST = 'Asymptotic test'
+    EXACT_TEST = 'Exact test'
+    NULL_HYPOTHESIS_PROPORTION = 'Null hypothesis proportion'
+    CONFIDENCE_LEVEL = 'Confidence level'
+    CUSTOM_CONFIDENCE_LEVEL = 'Custom confidence level'
+    USE_MONTE_CARLO_ESTIMATION = 'Use Monte Carlo estimation'
+    SUPPRESS_PLOTS = 'Suppress plots'
+    INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = 'Include in percentages and statistics'
     """Added by Allison end"""
 
     """Added by Dommy start"""
