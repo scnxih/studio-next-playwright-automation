@@ -5,6 +5,7 @@
 @Description: 
 
 """
+from src.Pages.Common.common_component_factory import get_checkbox
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
 
@@ -109,3 +110,51 @@ class OneWayFrequencies(BasicStepPane):
 
     def set_uncheck_include_in_percentages_and_statistics(self):
         self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
+
+    """Added by Alice on Aug 21, 2024 start"""
+    def set_check_for_asymptotic_test_1(self):
+
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                         "渐近检验", "二项式比例")).set_check()
+
+    def set_uncheck_for_asymptotic_test_1(self):
+
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                         "渐近检验", "二项式比例")).set_uncheck()
+
+    def set_check_for_asymptotic_test_2(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                         "渐近检验", "卡方拟合优度")).set_check()
+
+    def set_uncheck_for_asymptotic_test_2(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                         "渐近检验", "卡方拟合优度")).set_uncheck()
+
+    def set_check_for_exact_test_1(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
+                         "精确检验", "卡方拟合优度")).set_check()
+
+    def set_uncheck_for_exact_test_1(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
+                         "精确检验", "卡方拟合优度")).set_uncheck()
+
+    def set_check_for_exact_test_2(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
+                         "精确检验", "渐近检验")).set_check()
+
+    def set_uncheck_for_exact_test_2(self):
+        get_checkbox(self.base_xpath, self.page,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
+                         "精确检验", "渐近检验")).set_uncheck()
+
+    def expand_windowshade_statistics(self):
+        self.expand_windowshade(parent_label="统计量")
+
+    """Added by Alice on Aug 21, 2024 end"""
