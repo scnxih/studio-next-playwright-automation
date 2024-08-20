@@ -59,6 +59,12 @@ class OneWayFrequencies(BasicStepPane):
     def set_row_value_order(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.ROW_VALUE_ORDER, item_index=item_index, item_value=item_value)
 
+    def expand_windowshade_statistics(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.STATISTICS)
+
+    def collapse_windowshade_statistics(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.STATISTICS)
+
     def set_null_hypothesis_proportion(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.NULL_HYPOTHESIS_PROPORTION, input_text=input_text)
 
@@ -79,6 +85,12 @@ class OneWayFrequencies(BasicStepPane):
 
     def set_uncheck_use_monte_carlo_estimation(self):
         self.set_uncheck_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
+
+    def expand_windowshade_plots_and_missing_values(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.PLOTS_AND_MISSING_VALUES)
+
+    def collapse_windowshade_plots_and_missing_values(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.PLOTS_AND_MISSING_VALUES)
 
     def set_check_suppress_plots(self):
         self.set_check_for_checkbox(Helper.data_locale.SUPPRESS_PLOTS)

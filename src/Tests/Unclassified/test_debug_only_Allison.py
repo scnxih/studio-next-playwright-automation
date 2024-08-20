@@ -87,8 +87,9 @@ def test_03_one_way_frequencies_in_flow_level1(page, init):
     one_way_frequencies.click_options_tab()
     one_way_frequencies.set_uncheck_include_cumulative_frequencies_and_percentages()
     one_way_frequencies.set_row_value_order(item_index=2)
+    one_way_frequencies.expand_windowshade_statistics()
     one_way_frequencies.set_check_asymptotic_test_for_binomial_proportion()
     one_way_frequencies.set_null_hypothesis_proportion("0.6")
-
+    one_way_frequencies.expand_windowshade_plots_and_missing_values()
     one_way_frequencies.set_check_include_in_frequency_table()
     flow.run(True)
