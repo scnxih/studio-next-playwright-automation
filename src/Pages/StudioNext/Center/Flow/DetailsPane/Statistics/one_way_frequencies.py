@@ -5,6 +5,7 @@
 @Description: 
 
 """
+from src.Pages.Common.common_component_factory import get_checkbox
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
 
@@ -70,6 +71,34 @@ class OneWayFrequencies(BasicStepPane):
 
     def set_check_asymptotic_test_for_binomial_proportion(self):
         self.set_check_for_checkbox(Helper.data_locale.ASYMPTOTIC_TEST)
+
+    def set_uncheck_asymptotic_test_for_binomial_proportion(self):
+        self.set_check_for_checkbox(Helper.data_locale.ASYMPTOTIC_TEST)
+
+    def set_check_use_monte_carlo_estimation(self):
+        self.set_check_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
+
+    def set_uncheck_use_monte_carlo_estimation(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
+
+    def set_check_suppress_plots(self):
+        self.set_check_for_checkbox(Helper.data_locale.SUPPRESS_PLOTS)
+
+    def set_uncheck_suppress_plots(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.SUPPRESS_PLOTS)
+
+    def set_check_include_in_frequency_table(self):
+        self.set_check_for_checkbox(Helper.data_locale.INCLUDE_IN_FREQUENCY_TABLE)
+
+    def set_uncheck_include_in_frequency_table(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_FREQUENCY_TABLE)
+
+    def set_check_include_in_percentages_and_statistics(self):
+        self.set_check_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
+
+    def set_uncheck_include_in_percentages_and_statistics(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
+
     """Added by Alice on Aug 21, 2024 start"""
     def set_check_for_asymptotic_test_1(self):
 
@@ -98,32 +127,6 @@ class OneWayFrequencies(BasicStepPane):
                      supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
                          "精确检验", "卡方拟合优度")).set_check()
 
-    def set_uncheck_asymptotic_test_for_binomial_proportion(self):
-        self.set_check_for_checkbox(Helper.data_locale.ASYMPTOTIC_TEST)
-
-    def set_check_use_monte_carlo_estimation(self):
-        self.set_check_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
-
-    def set_uncheck_use_monte_carlo_estimation(self):
-        self.set_uncheck_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
-
-    def set_check_suppress_plots(self):
-        self.set_check_for_checkbox(Helper.data_locale.SUPPRESS_PLOTS)
-
-    def set_uncheck_suppress_plots(self):
-        self.set_uncheck_for_checkbox(Helper.data_locale.SUPPRESS_PLOTS)
-
-    def set_check_include_in_frequency_table(self):
-        self.set_check_for_checkbox(Helper.data_locale.INCLUDE_IN_FREQUENCY_TABLE)
-
-    def set_uncheck_include_in_frequency_table(self):
-        self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_FREQUENCY_TABLE)
-
-    def set_check_include_in_percentages_and_statistics(self):
-        self.set_check_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
-
-    def set_uncheck_include_in_percentages_and_statistics(self):
-        self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
     def set_uncheck_for_exact_test_1(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
