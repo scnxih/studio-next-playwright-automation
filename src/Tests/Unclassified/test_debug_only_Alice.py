@@ -383,7 +383,7 @@ N 7
     flow.arrange_nodes()
     time.sleep(2)
 
-def test_08_click_context_menu_on_port(page,init):
+def test_08_link_nodes_with_multiple_ports(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -423,11 +423,58 @@ N 7
     sas_program_pane.type_into_text_area(code)
 
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM,"添加输出端口")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("aa")
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("bb")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("c")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("d")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("e")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("f")
+
+    flow.arrange_nodes()
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM,"aa")
+
+    flow.arrange_nodes()
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "bb")
+    flow.arrange_nodes()
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "c")
+    flow.arrange_nodes()
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "d")
+    flow.arrange_nodes()
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "e")
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "f")
+    flow.arrange_nodes()
+    flow.view_expand_all_ports()
+
+    time.sleep(3)
 
 
 
