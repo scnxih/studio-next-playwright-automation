@@ -768,7 +768,20 @@ class DataZH(Data):
 
     """Added by Allison start"""
     ANALYSIS_VARIABLES = '分析变量'
-    Frequency_Count = '频数计数'
+    FREQUENCY_COUNT = '频数计数'
+    FREQUENCY_TABLE = '频数表'
+    INCLUDE_PERCENTAGES = '包括百分比'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = '包括累积频数和百分比'
+    ROW_VALUE_ORDER = '行值顺序'
+    ASYMPTOTIC_TEST = '渐近检验'
+    EXACT_TEST = '精确检验'
+    NULL_HYPOTHESIS_PROPORTION = '原假设比例'
+    CONFIDENCE_LEVEL = '置信水平'
+    CUSTOM_CONFIDENCE_LEVEL = '自定义置信水平'
+    USE_MONTE_CARLO_ESTIMATION = '使用 Monte Carlo 估计'
+    SUPPRESS_PLOTS = '隐藏图'
+    INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = '包括在百分比和统计量中'
     """Added by Allison end"""
 
     """Added by Dommy start"""
