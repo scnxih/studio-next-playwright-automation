@@ -777,7 +777,8 @@ class Data:
     """Added by Alice end"""
 
     """Added by Allison start"""
-    TEST2 = ""
+    ANALYSIS_VARIABLES = 'Analysis variables'
+    Frequency_Count = 'Frequency count'
     """Added by Allison end"""
 
     """Added by Dommy start"""

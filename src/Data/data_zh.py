@@ -767,7 +767,8 @@ class DataZH(Data):
     """Added by Alice end"""
 
     """Added by Allison start"""
-    TEST2 = ""
+    ANALYSIS_VARIABLES = '分析变量'
+    Frequency_Count = '频数计数'
     """Added by Allison end"""
 
     """Added by Dommy start"""
