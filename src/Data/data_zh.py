@@ -813,5 +813,10 @@ class DataZH(Data):
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+    BUBBLE_SIZE = "气泡大小"
+    Choropleth_MAP_LAYER = "包含地区分布图图层"
+    FILTER_MAP_DATA = "过滤地图数据"
+    ID_VARIABLE = "ID 变量"
+    MAP_DATA = "地图数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
     """Added by Percy end"""

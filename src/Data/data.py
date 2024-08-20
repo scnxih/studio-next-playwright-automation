@@ -811,5 +811,10 @@ class Data:
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+    BUBBLE_SIZE = "Bubble size"
+    Choropleth_MAP_LAYER = "Include choropleth map layer"
+    FILTER_MAP_DATA = "Filter map data"
+    ID_VARIABLE = "ID variable"
+    MAP_DATA = "Map Data"
+    MAP_RESPONSE_DATA = "Map Response Data"
     """Added by Percy end"""
