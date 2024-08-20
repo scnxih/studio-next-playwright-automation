@@ -112,49 +112,48 @@ class OneWayFrequencies(BasicStepPane):
         self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
 
     """Added by Alice on Aug 21, 2024 start"""
-    def set_check_for_asymptotic_test_1(self):
+    def set_check_for_asymptotic_test_binomial_proportion(self):
 
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
-                         "渐近检验", "二项式比例")).set_check()
+                         Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.BINOMIAL_PROPORTION)).set_check()
 
-    def set_uncheck_for_asymptotic_test_1(self):
+    def set_uncheck_for_asymptotic_test_binomial_proportion(self):
 
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
-                         "渐近检验", "二项式比例")).set_uncheck()
+                         Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.BINOMIAL_PROPORTION)).set_uncheck()
 
-    def set_check_for_asymptotic_test_2(self):
+    def set_check_for_asymptotic_test_chi_square_goodness_of_fit(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
-                         "渐近检验", "卡方拟合优度")).set_check()
+                         Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_check()
 
-    def set_uncheck_for_asymptotic_test_2(self):
+    def set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
-                         "渐近检验", "卡方拟合优度")).set_uncheck()
+                         Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_uncheck()
 
-    def set_check_for_exact_test_1(self):
+    def set_check_for_exact_test_binomial_proportion(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
-                         "精确检验", "卡方拟合优度")).set_check()
+                         Helper.data_locale.EXACT_TEST, Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_check()
 
-    def set_uncheck_for_exact_test_1(self):
+    def set_uncheck_for_exact_test_binomial_proportion(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../following-sibling::div[1][.//span[contains(text(),'{1}')]]]".format(
-                         "精确检验", "卡方拟合优度")).set_uncheck()
+                         Helper.data_locale.EXACT_TEST, Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_uncheck()
 
-    def set_check_for_exact_test_2(self):
+    def set_check_for_exact_test_chi_square_goodness_of_fit(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
-                         "精确检验", "渐近检验")).set_check()
+                         Helper.data_locale.EXACT_TEST, Helper.data_locale.ASYMPTOTIC_TEST)).set_check()
 
-    def set_uncheck_for_exact_test_2(self):
+    def set_uncheck_for_exact_test_chi_square_goodness_of_fit(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
-                         "精确检验", "渐近检验")).set_uncheck()
+                         Helper.data_locale.EXACT_TEST, Helper.data_locale.ASYMPTOTIC_TEST)).set_uncheck()
 
-    def expand_windowshade_statistics(self):
-        self.expand_windowshade(parent_label="统计量")
+
 
     """Added by Alice on Aug 21, 2024 end"""

@@ -491,21 +491,20 @@ def test_09_duplicate_checkbox(page,init):
     pane.click_options_tab()
     pane.expand_windowshade_statistics()
     time.sleep(1)
-    pane.set_check_for_asymptotic_test_1()
-    pane.set_check_for_asymptotic_test_2()
-    pane.set_check_for_exact_test_1()
-    pane.set_check_for_exact_test_2()
+    pane.set_check_for_asymptotic_test_binomial_proportion()
+    pane.set_check_for_asymptotic_test_chi_square_goodness_of_fit()
+    pane.set_check_for_exact_test_binomial_proportion()
+    pane.set_check_for_exact_test_chi_square_goodness_of_fit()
 
     time.sleep(3)
 
-
-    pane.set_uncheck_for_exact_test_1()
-    pane.set_uncheck_for_exact_test_2()
-    pane.set_uncheck_for_asymptotic_test_1()
-    pane.set_uncheck_for_asymptotic_test_2()
+    pane.set_uncheck_for_exact_test_binomial_proportion()
+    pane.set_uncheck_for_exact_test_chi_square_goodness_of_fit()
+    pane.set_uncheck_for_asymptotic_test_binomial_proportion()
+    pane.set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit()
     time.sleep(3)
 
-    
+
 
 
 
