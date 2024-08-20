@@ -754,3 +754,46 @@ class DataZH(Data):
     GRAPH_SIZE = "图形大小"
     UNIT = "单位"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
+
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "图数据"
+    LATITUDE = "纬度"
+    LONGITUDE = "经度"
+    GROUP = "组"
+    """----- Added by Frank 2024/8/20 End -----"""
+
+    """Added by Alice start"""
+    TEST1 = ""
+    """Added by Alice end"""
+
+    """Added by Allison start"""
+    TEST2 = ""
+    """Added by Allison end"""
+
+    """Added by Dommy start"""
+    LIST_VARIABLES = "列表变量"
+    TOTAL_OF = "合计"
+    IDENTIFYING_LABEL = "标识标签"
+    DISPLAY_ROW_NUMBERS = "显示行号"
+    COLUMN_LABEL = "列标签"
+    USE_COLUMN_LABELS_AS_COLUMN_HEADINGS = "使用列标签作为列标题"
+    DISPLAY_NUMBER_OF_ROWS = "显示行数"
+    ROUND_VALUES_BEFORE_SUMMING_THE_VARIABLE = "变量求和之前将值四舍五入"
+    HEADING_DIRECTION = "标题方向"
+    COLUMN_WIDTH = "列宽"
+    SPLIT_LABELS = "拆分标签"
+    SPLIT_CHARACTER = "拆分字符"
+    ROWS_TO_LIST = "列出的行"
+    """Added by Dommy end"""
+
+    """Added by Frank start"""
+    TEST4 = ""
+    """Added by Frank end"""
+
+    """Added by Jacky start"""
+    TEST5 = ""
+    """Added by Jacky end"""
+
+    """Added by Percy start"""
+    TEST6 = ""
+    """Added by Percy end"""
