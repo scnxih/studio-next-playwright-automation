@@ -837,7 +837,7 @@ class Data:
     SHOW_GRID_LINES = "Show grid lines"
     USE_LOGARITHMIC_SCALE = "Use logarithmic scale"
     BASE_VALUE = "Base value"
-
+    CATEGORY_WITH_COLON = "Category:"
     """Added by Dommy end"""
 
     """Added by Frank start"""

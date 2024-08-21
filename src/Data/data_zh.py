@@ -827,6 +827,7 @@ class DataZH(Data):
     SHOW_GRID_LINES = "显示网格线"
     USE_LOGARITHMIC_SCALE = "使用对数尺度"
     BASE_VALUE = "基值"
+    CATEGORY_WITH_COLON = "类别:"
     """Added by Dommy end"""
 
     """Added by Frank start"""
