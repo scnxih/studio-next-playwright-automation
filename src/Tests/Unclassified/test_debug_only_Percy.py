@@ -288,7 +288,15 @@ Carson City, 510, 54521
     flow.run(True)
 
 def test_Split_Columns_level0(page, init):
-        flow: FlowPage = PageHelper.new_flow(page)
-        flow.add_node(FlowNodeType.sas_program)
-        flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-        sas_program_pane = SASProgramPane(page)
+    Pagehelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+
