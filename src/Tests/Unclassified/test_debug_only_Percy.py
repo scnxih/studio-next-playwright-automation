@@ -265,6 +265,24 @@ Carson City, 510, 54521
     bubble_map_pane.set_Base_map(item_index=1)
 
     """Options tab"""
+    bubble_map_pane.expand_windowshade_Data_labels()
+    bubble_map_pane.add_column_for_bubble_label()
 
+    bubble_map_pane.expand_windowshade_label_options()
+    bubble_map_pane.set_font_color()
+    bubble_map_pane.set_font_family(item_index=1)
+    bubble_map_pane.set_font_style(item_index=1)
+    bubble_map_pane.set_font_weight(item_index=1)
+    bubble_map_pane.set_label_position(item_index=1)
+
+    bubble_map_pane.set_bubbles_color()
+    bubble_map_pane.set_number_of_transparency("20")
+
+    bubble_map_pane.expand_windowshade_title_and_footnote()
+    bubble_map_pane.set_title("This is title'\"")
+    bubble_map_pane.set_footnote("This is footnote'\"")
+
+    bubble_map_pane.expand_windowshade_graph_size()
+    bubble_map_pane.set_units(item_index=1)
 
     flow.run(True)

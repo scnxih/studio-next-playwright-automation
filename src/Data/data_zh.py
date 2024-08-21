@@ -836,6 +836,7 @@ class DataZH(Data):
     """Added by Jacky end"""
 
     """Added by Percy start"""
+
     BUBBLE_SIZE = "气泡大小"
     INCLUDE_CHOROPLETH_MAP_LAYER = "包含地区分布图图层"
     FILTER_MAP_DATA = "过滤地图数据"
@@ -856,5 +857,6 @@ class DataZH(Data):
     LABEL_POSITION="标签位置"
     SET_BUBBLES_COLOR="设置颜色"
     TRANSPARENCY_PERCENT = "透明度"
+    UNITS = "单位"
 
     """Added by Percy end"""
