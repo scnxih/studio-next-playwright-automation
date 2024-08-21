@@ -782,6 +782,9 @@ class DataZH(Data):
     CONFIDENCE_LEVEL = '置信水平'
     CUSTOM_CONFIDENCE_LEVEL = '自定义置信水平'
     USE_MONTE_CARLO_ESTIMATION = '使用 Monte Carlo 估计'
+    EXACT_COMPUTATION_METHODS = '精确计算方法'
+    LIMIT_COMPUTATION_METHODS = '限制计算时间'
+    MAXIMUM_TIME = '最长时间'
     PLOTS_AND_MISSING_VALUES = '图和缺失值'
     SUPPRESS_PLOTS = '隐藏图'
     INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
@@ -809,7 +812,27 @@ class DataZH(Data):
     """Added by Frank end"""
 
     """Added by Jacky start"""
-    TEST5 = ""
+    # Deleted Test3
+    Test4 = "Revised2"
+    Test5 = "Added"
+    Test6 = "Added"
+
+    Test7= "Add"
+
+    THE_INPUT_TABLE_CONTAINS = "输入表包含"
+    LANGUAGE = "语言"
+    TEXT_VARIABLE = "文本变量"
+
+    TOPIC_MODEL = "主题模型"
+    PARSE_TEXT = "解析文本"
+
+    DISCOVER_TOPICS = "发现主题"
+    NUMBER_OF_TOPICS = "主题数"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "奇异值的陡坡图"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
+    SAVE_TERM_INFORMATION = "保存词条信息"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

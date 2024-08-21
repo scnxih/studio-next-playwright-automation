@@ -792,6 +792,9 @@ class Data:
     CONFIDENCE_LEVEL = 'Confidence level'
     CUSTOM_CONFIDENCE_LEVEL = 'Custom confidence level'
     USE_MONTE_CARLO_ESTIMATION = 'Use Monte Carlo estimation'
+    EXACT_COMPUTATION_METHODS = 'Exact Computation Methods'
+    LIMIT_COMPUTATION_METHODS = 'Limit computation time'
+    MAXIMUM_TIME = 'Maximum time'
     PLOTS_AND_MISSING_VALUES = 'Plots and Missing Values'
     SUPPRESS_PLOTS = 'Suppress plots'
     INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
@@ -799,7 +802,19 @@ class Data:
     """Added by Allison end"""
 
     """Added by Dommy start"""
-    TEST3 = ""
+    LIST_VARIABLES = "List variables"
+    TOTAL_OF = "Total of"
+    IDENTIFYING_LABEL = "Identifying label"
+    DISPLAY_ROW_NUMBERS = "Display row numbers"
+    COLUMN_LABEL = "Column label"
+    USE_COLUMN_LABELS_AS_COLUMN_HEADINGS = "Use column labels as column headings"
+    DISPLAY_NUMBER_OF_ROWS = "Display number of rows"
+    ROUND_VALUES_BEFORE_SUMMING_THE_VARIABLE = "Round values before summing the variable"
+    HEADING_DIRECTION = "Heading direction"
+    COLUMN_WIDTH = "Column width"
+    SPLIT_LABELS = "Split labels"
+    SPLIT_CHARACTER = "Split character"
+    ROWS_TO_LIST = "Rows to list"
     """Added by Dommy end"""
 
     """Added by Frank start"""
