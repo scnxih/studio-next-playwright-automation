@@ -3,6 +3,7 @@ import time
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.PrepareAndExploreData.standardize_data import StandardizeData
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.permutations import Permutations
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import AccordionType, TopMenuItem, DesignerControlType, FlowNodeType
@@ -128,4 +129,31 @@ def test_04_permutations_level0(page, init):
     flow.run(True)
 
     permutations.set_check_replace_existing_output_table()
+    flow.run(True)
+
+def test_05_standardize_data_in_flow_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA, Helper.data_locale.STEP_STANDARDIZE_DATA]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_STANDARDIZE_DATA)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STANDARDIZE_DATA)
+    standardize_data = StandardizeData(page)
+    standardize_data.add_columns_for_variables_to_standardize(check_column_name_list=["nAtBat'中", "nHits'中"])
+    standardize_data.expand_windowshade_additional_roles()
+    standardize_data.add_column_for_frequency_count(column_name="nHome'中")
+    standardize_data.add_column_for_weight(column_name="nRBI'中")
+    standardize_data.add_columns_for_group_analysis_by(check_column_name_list=["Team'中文"])
     flow.run(True)
