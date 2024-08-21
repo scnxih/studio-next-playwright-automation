@@ -1,6 +1,9 @@
+import time
+
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies import OneWayFrequencies
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -474,6 +477,31 @@ N 7
     flow.arrange_nodes()
     flow.view_expand_all_ports()
 
+    time.sleep(3)
+
+def test_09_duplicate_checkbox(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
+                 Helper.data_locale.STEP_ONE_WAY_FREQUENCIES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
+    flow.apply_detail_layout_vertical()
+    pane = OneWayFrequencies(page)
+    pane.click_options_tab()
+    pane.expand_windowshade_statistics()
+    time.sleep(1)
+    pane.set_check_for_asymptotic_test_binomial_proportion()
+    pane.set_check_for_asymptotic_test_chi_square_goodness_of_fit()
+    pane.set_check_for_exact_test_binomial_proportion()
+    pane.set_check_for_exact_test_chi_square_goodness_of_fit()
+
+    time.sleep(3)
+
+    pane.set_uncheck_for_exact_test_binomial_proportion()
+    pane.set_uncheck_for_exact_test_chi_square_goodness_of_fit()
+    pane.set_uncheck_for_asymptotic_test_binomial_proportion()
+    pane.set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit()
     time.sleep(3)
 
 

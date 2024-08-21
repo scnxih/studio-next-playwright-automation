@@ -768,7 +768,27 @@ class DataZH(Data):
 
     """Added by Allison start"""
     ANALYSIS_VARIABLES = '分析变量'
-    Frequency_Count = '频数计数'
+    FREQUENCY_COUNT = '频数计数'
+    FREQUENCY_TABLE = '频数表'
+    INCLUDE_PERCENTAGES = '包括百分比'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = '包括累积频数和百分比'
+    ROW_VALUE_ORDER = '行值顺序'
+    STATISTICS = '统计量'
+    BINOMIAL_PROPORTION = '二项式比例'
+    ASYMPTOTIC_TEST = '渐近检验'
+    EXACT_TEST = '精确检验'
+    CHI_SQUARE_GOODNESS_OF_FIT = '卡方拟合优度'
+    NULL_HYPOTHESIS_PROPORTION = '原假设比例'
+    CONFIDENCE_LEVEL = '置信水平'
+    CUSTOM_CONFIDENCE_LEVEL = '自定义置信水平'
+    USE_MONTE_CARLO_ESTIMATION = '使用 Monte Carlo 估计'
+    EXACT_COMPUTATION_METHODS = '精确计算方法'
+    LIMIT_COMPUTATION_METHODS = '限制计算时间'
+    MAXIMUM_TIME = '最长时间'
+    PLOTS_AND_MISSING_VALUES = '图和缺失值'
+    SUPPRESS_PLOTS = '隐藏图'
+    INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = '包括在百分比和统计量中'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -792,9 +812,34 @@ class DataZH(Data):
     """Added by Frank end"""
 
     """Added by Jacky start"""
-    TEST5 = ""
+    # Deleted Test3
+    Test4 = "Revised2"
+    Test5 = "Added"
+    Test6 = "Added"
+
+    Test7= "Add"
+
+    THE_INPUT_TABLE_CONTAINS = "输入表包含"
+    LANGUAGE = "语言"
+    TEXT_VARIABLE = "文本变量"
+
+    TOPIC_MODEL = "主题模型"
+    PARSE_TEXT = "解析文本"
+
+    DISCOVER_TOPICS = "发现主题"
+    NUMBER_OF_TOPICS = "主题数"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "奇异值的陡坡图"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
+    SAVE_TERM_INFORMATION = "保存词条信息"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+    BUBBLE_SIZE = "气泡大小"
+    Choropleth_MAP_LAYER = "包含地区分布图图层"
+    FILTER_MAP_DATA = "过滤地图数据"
+    ID_VARIABLE = "ID 变量"
+    MAP_DATA = "地图数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
     """Added by Percy end"""

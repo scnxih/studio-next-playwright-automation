@@ -778,7 +778,27 @@ class Data:
 
     """Added by Allison start"""
     ANALYSIS_VARIABLES = 'Analysis variables'
-    Frequency_Count = 'Frequency count'
+    FREQUENCY_COUNT = 'Frequency count'
+    FREQUENCY_TABLE = 'Frequency table'
+    INCLUDE_PERCENTAGES = 'Include percentages'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = 'Include cumulative frequencies and percentages'
+    ROW_VALUE_ORDER = 'Row value order'
+    STATISTICS = 'Statistics'
+    BINOMIAL_PROPORTION = 'Binomial Proportion'
+    ASYMPTOTIC_TEST = 'Asymptotic test'
+    EXACT_TEST = 'Exact test'
+    CHI_SQUARE_GOODNESS_OF_FIT = 'Chi-square Goodness-of-Fit'
+    NULL_HYPOTHESIS_PROPORTION = 'Null hypothesis proportion'
+    CONFIDENCE_LEVEL = 'Confidence level'
+    CUSTOM_CONFIDENCE_LEVEL = 'Custom confidence level'
+    USE_MONTE_CARLO_ESTIMATION = 'Use Monte Carlo estimation'
+    EXACT_COMPUTATION_METHODS = 'Exact Computation Methods'
+    LIMIT_COMPUTATION_METHODS = 'Limit computation time'
+    MAXIMUM_TIME = 'Maximum time'
+    PLOTS_AND_MISSING_VALUES = 'Plots and Missing Values'
+    SUPPRESS_PLOTS = 'Suppress plots'
+    INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = 'Include in percentages and statistics'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -806,5 +826,10 @@ class Data:
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+    BUBBLE_SIZE = "Bubble size"
+    Choropleth_MAP_LAYER = "Include choropleth map layer"
+    FILTER_MAP_DATA = "Filter map data"
+    ID_VARIABLE = "ID variable"
+    MAP_DATA = "Map Data"
+    MAP_RESPONSE_DATA = "Map Response Data"
     """Added by Percy end"""
