@@ -790,4 +790,19 @@ class DataZH(Data):
     Test6 = "Added"
 
     Test7= "Add"
+
+    THE_INPUT_TABLE_CONTAINS = "输入表包含"
+    LANGUAGE = "语言"
+    TEXT_VARIABLE = "文本变量"
+
+    TOPIC_MODEL = "主题模型"
+    PARSE_TEXT = "解析文本"
+
+    DISCOVER_TOPICS = "发现主题"
+    NUMBER_OF_TOPICS = "主题数"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "奇异值的陡坡图"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
+    SAVE_TERM_INFORMATION = "保存词条信息"
+
     """Added by Jacky end"""
