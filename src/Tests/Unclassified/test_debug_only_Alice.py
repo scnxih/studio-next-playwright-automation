@@ -1,6 +1,9 @@
+import time
+
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies import OneWayFrequencies
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -383,7 +386,7 @@ N 7
     flow.arrange_nodes()
     time.sleep(2)
 
-def test_08_add_numeric_stepper(page,init):
+def test_08_link_nodes_with_multiple_ports(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -420,6 +423,87 @@ M 5
 N 7    
 ;
 """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("aa")
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("bb")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("c")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("d")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("e")
+
+    flow.add_node(FlowNodeType.table)
+    table = TablePane(page)
+    table.set_library("work")
+    table.set_table("f")
+
+    flow.arrange_nodes()
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM,"aa")
+
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "bb")
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "c")
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "d")
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "e")
+    flow.arrange_nodes()
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "f")
+    flow.arrange_nodes()
+    flow.view_expand_all_ports()
+
+    time.sleep(3)
+
+def test_09_duplicate_checkbox(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
+                 Helper.data_locale.STEP_ONE_WAY_FREQUENCIES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
+    flow.apply_detail_layout_vertical()
+    pane = OneWayFrequencies(page)
+    pane.click_options_tab()
+    pane.expand_windowshade_statistics()
+    time.sleep(1)
+    pane.set_check_for_asymptotic_test_binomial_proportion()
+    pane.set_check_for_asymptotic_test_chi_square_goodness_of_fit()
+    pane.set_check_for_exact_test_binomial_proportion()
+    pane.set_check_for_exact_test_chi_square_goodness_of_fit()
+
+    time.sleep(3)
+
+    pane.set_uncheck_for_exact_test_binomial_proportion()
+    pane.set_uncheck_for_exact_test_chi_square_goodness_of_fit()
+    pane.set_uncheck_for_asymptotic_test_binomial_proportion()
+    pane.set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit()
+    time.sleep(3)
+
 
 
 

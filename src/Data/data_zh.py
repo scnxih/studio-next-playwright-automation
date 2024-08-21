@@ -755,33 +755,58 @@ class DataZH(Data):
     UNIT = "单位"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "图数据"
+    LATITUDE = "纬度"
+    LONGITUDE = "经度"
+    GROUP = "组"
+    """----- Added by Frank 2024/8/20 End -----"""
+
     """Added by Alice start"""
-    CD=""
-
-
-    GH=""
-    TEST99=""
-    AB = "ab"
-    TEST5=""
-    NMN=""
-
-
-    WER=""
-
-    QW=""
-    GFD=""
-    GSA=""
-    LK=""
-
-
-    IP =""
-    DF=""
-
-
-
-
-
+    TEST1 = ""
     """Added by Alice end"""
+
+    """Added by Allison start"""
+    ANALYSIS_VARIABLES = '分析变量'
+    FREQUENCY_COUNT = '频数计数'
+    FREQUENCY_TABLE = '频数表'
+    INCLUDE_PERCENTAGES = '包括百分比'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = '包括累积频数和百分比'
+    ROW_VALUE_ORDER = '行值顺序'
+    STATISTICS = '统计量'
+    BINOMIAL_PROPORTION = '二项式比例'
+    ASYMPTOTIC_TEST = '渐近检验'
+    EXACT_TEST = '精确检验'
+    CHI_SQUARE_GOODNESS_OF_FIT = '卡方拟合优度'
+    NULL_HYPOTHESIS_PROPORTION = '原假设比例'
+    CONFIDENCE_LEVEL = '置信水平'
+    CUSTOM_CONFIDENCE_LEVEL = '自定义置信水平'
+    USE_MONTE_CARLO_ESTIMATION = '使用 Monte Carlo 估计'
+    PLOTS_AND_MISSING_VALUES = '图和缺失值'
+    SUPPRESS_PLOTS = '隐藏图'
+    INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = '包括在百分比和统计量中'
+    """Added by Allison end"""
+
+    """Added by Dommy start"""
+    LIST_VARIABLES = "列表变量"
+    TOTAL_OF = "合计"
+    IDENTIFYING_LABEL = "标识标签"
+    DISPLAY_ROW_NUMBERS = "显示行号"
+    COLUMN_LABEL = "列标签"
+    USE_COLUMN_LABELS_AS_COLUMN_HEADINGS = "使用列标签作为列标题"
+    DISPLAY_NUMBER_OF_ROWS = "显示行数"
+    ROUND_VALUES_BEFORE_SUMMING_THE_VARIABLE = "变量求和之前将值四舍五入"
+    HEADING_DIRECTION = "标题方向"
+    COLUMN_WIDTH = "列宽"
+    SPLIT_LABELS = "拆分标签"
+    SPLIT_CHARACTER = "拆分字符"
+    ROWS_TO_LIST = "列出的行"
+    """Added by Dommy end"""
+
+    """Added by Frank start"""
+    TEST4 = ""
+    """Added by Frank end"""
 
     """Added by Jacky start"""
     # Deleted Test3
@@ -806,3 +831,12 @@ class DataZH(Data):
     SAVE_TERM_INFORMATION = "保存词条信息"
 
     """Added by Jacky end"""
+
+    """Added by Percy start"""
+    BUBBLE_SIZE = "气泡大小"
+    Choropleth_MAP_LAYER = "包含地区分布图图层"
+    FILTER_MAP_DATA = "过滤地图数据"
+    ID_VARIABLE = "ID 变量"
+    MAP_DATA = "地图数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
+    """Added by Percy end"""

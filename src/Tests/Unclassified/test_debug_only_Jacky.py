@@ -31,10 +31,7 @@ from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Integrate.load_table_pane import LoadTablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.box_plot_pane import BoxPlotPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and_topic_analysis_pane import \
-    TextParsingAndTopicAnalysisPane
-
-
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and_topic_analysis_pane import TextParsingAndTopicAnalysisPane
 def test_00_click_show_tab_lables(page, init):
     """
     Test commitment after switching git account.
@@ -1674,7 +1671,7 @@ def test_42_box_plot_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
-    flow.link_two_nodes_in_flow("class", Helper.data_locale.STEP_BOX_PLOT)
+    flow.link_two_nodes_in_flow( "class", Helper.data_locale.STEP_BOX_PLOT)
     flow.arrange_nodes()
     flow.apply_detail_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)

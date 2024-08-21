@@ -190,6 +190,7 @@ class FlowPage(MainCenterPage):
         link_two_nodes_in_flow(self.page, node1_name, node2_name)
 
     def open_context_menu_for_the_node_in_flow(self, node_name):
+        select_node_in_flow_canvas(self.page,node_name)
         open_context_menu_for_the_node_in_flow(self.page, node_name)
 
     def click_context_menu_for_the_node_in_flow(self,node_name,  *menu_item_text):

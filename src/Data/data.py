@@ -763,3 +763,58 @@ class Data:
     GRAPH_SIZE = "Graph Size"
     UNIT = "Unit"
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
+
+    """----- Added by Frank 2024/8/20 Begin -----"""
+    PLOT_DATA = "Plot Data"
+    LATITUDE = "Latitude"
+    LONGITUDE = "Longitude"
+    GROUP = "Group"
+    """----- Added by Frank 2024/8/20 End -----"""
+
+
+    """Added by Alice start"""
+    TEST1 = ""
+    """Added by Alice end"""
+
+    """Added by Allison start"""
+    ANALYSIS_VARIABLES = 'Analysis variables'
+    FREQUENCY_COUNT = 'Frequency count'
+    FREQUENCY_TABLE = 'Frequency table'
+    INCLUDE_PERCENTAGES = 'Include percentages'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = 'Include cumulative frequencies and percentages'
+    ROW_VALUE_ORDER = 'Row value order'
+    STATISTICS = 'Statistics'
+    BINOMIAL_PROPORTION = 'Binomial Proportion'
+    ASYMPTOTIC_TEST = 'Asymptotic test'
+    EXACT_TEST = 'Exact test'
+    CHI_SQUARE_GOODNESS_OF_FIT = 'Chi-square Goodness-of-Fit'
+    NULL_HYPOTHESIS_PROPORTION = 'Null hypothesis proportion'
+    CONFIDENCE_LEVEL = 'Confidence level'
+    CUSTOM_CONFIDENCE_LEVEL = 'Custom confidence level'
+    USE_MONTE_CARLO_ESTIMATION = 'Use Monte Carlo estimation'
+    PLOTS_AND_MISSING_VALUES = 'Plots and Missing Values'
+    SUPPRESS_PLOTS = 'Suppress plots'
+    INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = 'Include in percentages and statistics'
+    """Added by Allison end"""
+
+    """Added by Dommy start"""
+    TEST3 = ""
+    """Added by Dommy end"""
+
+    """Added by Frank start"""
+    TEST4 = ""
+    """Added by Frank end"""
+
+    """Added by Jacky start"""
+    TEST5 = ""
+    """Added by Jacky end"""
+
+    """Added by Percy start"""
+    BUBBLE_SIZE = "Bubble size"
+    Choropleth_MAP_LAYER = "Include choropleth map layer"
+    FILTER_MAP_DATA = "Filter map data"
+    ID_VARIABLE = "ID variable"
+    MAP_DATA = "Map Data"
+    MAP_RESPONSE_DATA = "Map Response Data"
+    """Added by Percy end"""
