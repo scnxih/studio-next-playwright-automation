@@ -812,9 +812,34 @@ class DataZH(Data):
     """Added by Frank end"""
 
     """Added by Jacky start"""
-    TEST5 = ""
+    # Deleted Test3
+    Test4 = "Revised2"
+    Test5 = "Added"
+    Test6 = "Added"
+
+    Test7= "Add"
+
+    THE_INPUT_TABLE_CONTAINS = "输入表包含"
+    LANGUAGE = "语言"
+    TEXT_VARIABLE = "文本变量"
+
+    TOPIC_MODEL = "主题模型"
+    PARSE_TEXT = "解析文本"
+
+    DISCOVER_TOPICS = "发现主题"
+    NUMBER_OF_TOPICS = "主题数"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "奇异值的陡坡图"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
+    SAVE_TERM_INFORMATION = "保存词条信息"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+    BUBBLE_SIZE = "气泡大小"
+    Choropleth_MAP_LAYER = "包含地区分布图图层"
+    FILTER_MAP_DATA = "过滤地图数据"
+    ID_VARIABLE = "ID 变量"
+    MAP_DATA = "地图数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
     """Added by Percy end"""
