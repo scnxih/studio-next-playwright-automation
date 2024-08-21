@@ -286,3 +286,9 @@ Carson City, 510, 54521
     bubble_map_pane.set_units(item_index=1)
 
     flow.run(True)
+
+def test_Split_Columns_level0(page, init):
+        flow: FlowPage = PageHelper.new_flow(page)
+        flow.add_node(FlowNodeType.sas_program)
+        flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+        sas_program_pane = SASProgramPane(page)
