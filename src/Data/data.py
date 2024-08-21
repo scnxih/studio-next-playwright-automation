@@ -839,4 +839,13 @@ class Data:
 
     DATA_LABELS="Data Labels"
     BUBBLE_LABEL="Bubble label"
+    LABEL_OPTIONS="Label Options"
+    SET_FONT_COLOR = "Set font color"
+    FONT_FAMILY="Font family"
+    FONT_STYLE="Font style"
+    FONT_WEIGHT="Font weight"
+    LABEL_POSITION="Label position"
+    SET_BUBBLES_COLOR="Set color"
+    TRANSPARENCY_PERCENT="Transparency"
+
     """Added by Percy end"""

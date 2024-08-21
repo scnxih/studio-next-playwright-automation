@@ -848,4 +848,13 @@ class DataZH(Data):
     BASE_MAP = "基本地图"
     DATA_LABELS = "数据标签"
     BUBBLE_LABEL="气泡标签"
+    LABEL_OPTIONS="标签选项"
+    SET_FONT_COLOR="设置字体颜色"
+    FONT_FAMILY="字体系列"
+    FONT_STYLE="字形"
+    FONT_WEIGHT="字体粗细"
+    LABEL_POSITION="标签位置"
+    SET_BUBBLES_COLOR="设置颜色"
+    TRANSPARENCY_PERCENT = "透明度"
+
     """Added by Percy end"""
