@@ -789,6 +789,15 @@ class DataZH(Data):
     SUPPRESS_PLOTS = '隐藏图'
     INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
     INCLUDE_IN_PERCENTAGES_AND_STATISTICS = '包括在百分比和统计量中'
+    VARIABLES_TO_STANDARDIZE = '要标准化的变量'
+    CENTER_DATA_ONLY = '仅居中数据'
+    CENTERING_METHOD = '居中方法'
+    STANDARDIZATION_METHOD = '标准化方法'
+    MISSING_VALUES_METHODS = '缺失值方法'
+    TUNING_CONSTANT = '调节常数'
+    LAMBDA = 'Lambda'
+    PROPORTION_OF_PAIRS = '观测对比例'
+    PROPORTION_OF_DATA = '数据比例'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -823,7 +832,10 @@ class DataZH(Data):
     REFERENCE_VALUE = "参考值"
     LINE_OFFSET = "线偏移"
     SPECIFY_MINIMUM_VALUE = "指定最小值"
-
+    SPECIFY_MAXIMUM_VALUE = "指定最大值"
+    SHOW_GRID_LINES = "显示网格线"
+    USE_LOGARITHMIC_SCALE = "使用对数尺度"
+    BASE_VALUE = "基值"
     """Added by Dommy end"""
 
     """Added by Frank start"""

@@ -101,13 +101,13 @@ class LineChartPane(BasicStepPane):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS,
                                         item_index=item_index, item_value=item_value)
 
-    def set_check_create_reference_line(self):
+    def set_check_create_reference_line_x(self):
         self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
 
-    def set_uncheck_create_reference_lines(self):
+    def set_uncheck_create_reference_lines_x(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
 
-    def set_reference_values(self, item_index: int = None, item_value: str = None):
+    def set_reference_values_x(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_STYLE, item_index=item_index,
                                      item_value=item_value)
 
@@ -115,11 +115,11 @@ class LineChartPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_OFFSET, item_index=item_index,
                                      item_value=item_value)
 
-    def set_reference_label(self, item_index=None, item_value=None):
+    def set_reference_label_x(self, item_index=None, item_value=None):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.CREATE_REFERENCE_LINE,
                                         item_index=item_index, item_value=item_value)
 
-    def set_label_for_reference(self, input_text: str):
+    def set_label_for_reference_x(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
 
     def expand_windowshade_y_axis(self):
@@ -133,3 +133,73 @@ class LineChartPane(BasicStepPane):
 
     def set_uncheck_specify_minimum_value(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SPECIFY_MINIMUM_VALUE)
+
+    def set_minimum_value(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.MINIMUM_VALUE, input_text=input_text)
+
+    def set_check_specify_maximum_value(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SPECIFY_MAXIMUM_VALUE)
+
+    def set_uncheck_specify_maximum_value(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SPECIFY_MAXIMUM_VALUE)
+
+    def set_maximum_value(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.MAXIMUM_VALUE, input_text=input_text)
+
+    def set_check_show_grid_lines(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SHOW_GRID_LINES)
+
+    def set_uncheck_show_grid_lines(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_GRID_LINES)
+
+    def set_display_label_for_y_axis(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_check_use_logarithmic_scale(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.USE_LOGARITHMIC_SCALE)
+
+    def set_uncheck_use_logarithmic_scale(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.USE_LOGARITHMIC_SCALE)
+
+    def set_base_value(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.BASE_VALUE, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_check_create_reference_line_y(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
+
+    def set_uncheck_create_reference_lines_y(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
+
+    def set_reference_values_y(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.REFERENCE_VALUE, input_text=input_text)
+
+    def set_reference_label_y(self, item_index=None, item_value=None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.CREATE_REFERENCE_LINE,
+                                        item_index=item_index, item_value=item_value)
+
+    def set_label_for_reference_y(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
+
+    def expand_windowshade_title_footnote(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+
+    def collapse_windowshade_title_footnote(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+
+    def set_title(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text=input_text)
+
+    def set_footnote(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text=input_text)
+
+    def expand_windowshade_graph_size(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+
+    def collapse_windowshade_graph_size(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+
+    def set_units(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.UNIT, item_index=item_index,
+                                     item_value=item_value)

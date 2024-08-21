@@ -799,6 +799,15 @@ class Data:
     SUPPRESS_PLOTS = 'Suppress plots'
     INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
     INCLUDE_IN_PERCENTAGES_AND_STATISTICS = 'Include in percentages and statistics'
+    VARIABLES_TO_STANDARDIZE = 'Variables to standardize'
+    CENTER_DATA_ONLY = 'Center data only'
+    CENTERING_METHOD = 'Centering method'
+    STANDARDIZATION_METHOD = 'Standardization method'
+    MISSING_VALUES_METHODS = 'Missing values method'
+    TUNING_CONSTANT = 'Tuning constant'
+    LAMBDA = 'Lambda'
+    PROPORTION_OF_PAIRS = 'Proportion of pairs'
+    PROPORTION_OF_DATA = 'Proportion of data'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -833,6 +842,11 @@ class Data:
     REFERENCE_VALUE = "Reference value"
     LINE_OFFSET = "Line offset"
     SPECIFY_MINIMUM_VALUE = "Specify minimum value"
+    SPECIFY_MAXIMUM_VALUE = "Specify minimum value"
+    SHOW_GRID_LINES = "Show grid lines"
+    USE_LOGARITHMIC_SCALE = "Use logarithmic scale"
+    BASE_VALUE = "Base value"
+
     """Added by Dommy end"""
 
     """Added by Frank start"""
