@@ -812,9 +812,16 @@ class Data:
 
     """Added by Percy start"""
     BUBBLE_SIZE = "Bubble size"
-    Choropleth_MAP_LAYER = "Include choropleth map layer"
+    INCLUDE_CHOROPLETH_MAP_LAYER = "Include choropleth map layer"
     FILTER_MAP_DATA = "Filter map data"
     ID_VARIABLE = "ID variable"
     MAP_DATA = "Map Data"
+    INCLUDE_RESPONSE_DATA = "Include response data"
     MAP_RESPONSE_DATA = "Map Response Data"
+    FILTER_MAP_RESPONSE_DATA = "Filter map response data"
+    RESPONSE_VARIABLE="Response variable"
+    BASE_MAP="Base map"
+
+    DATA_LABELS="Data Labels"
+    BUBBLE_LABEL="Bubble label"
     """Added by Percy end"""
