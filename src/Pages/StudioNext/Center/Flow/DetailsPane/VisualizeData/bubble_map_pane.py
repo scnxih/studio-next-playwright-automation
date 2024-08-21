@@ -57,12 +57,21 @@ class BubbleMapPane(BasicStepPane):
                                      section_label=Helper.data_locale.LABEL_OPTIONS,
                                      item_index=item_index, item_value=item_value)
     def set_label_position(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.LABEL_POSITION,
-                                     section_label=Helper.data_locale.LABEL_OPTIONS,
-                                     item_index=item_index, item_value=item_value)
+        self.set_option_for_combobox(parent_label=Helper.data_locale.LABEL_POSITION,section_label=Helper.data_locale.LABEL_OPTIONS,item_index=item_index, item_value=item_value)
     def set_bubbles_color(self):
         self.set_check_for_checkbox(label=Helper.data_locale.SET_BUBBLES_COLOR)
     def set_number_of_transparency(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.TRANSPARENCY_PERCENT, input_text=input_text)
-    def expand_windowshade_(self):
+    def expand_windowshade_title_and_footnote(self):
         self.expand_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+    def set_title(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text=input_text)
+    def set_footnote(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text=input_text)
+    def expand_windowshade_graph_size(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+
+    def set_units(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS,
+                                     section_label=Helper.data_locale.GRAPH_SIZE, item_index=item_index,
+                                     item_value=item_value)

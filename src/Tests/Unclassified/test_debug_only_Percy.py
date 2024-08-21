@@ -265,6 +265,30 @@ Carson City, 510, 54521
     bubble_map_pane.set_Base_map(item_index=1)
 
     """Options tab"""
+    bubble_map_pane.expand_windowshade_Data_labels()
+    bubble_map_pane.add_column_for_bubble_label()
 
+    bubble_map_pane.expand_windowshade_label_options()
+    bubble_map_pane.set_font_color()
+    bubble_map_pane.set_font_family(item_index=1)
+    bubble_map_pane.set_font_style(item_index=1)
+    bubble_map_pane.set_font_weight(item_index=1)
+    bubble_map_pane.set_label_position(item_index=1)
+
+    bubble_map_pane.set_bubbles_color()
+    bubble_map_pane.set_number_of_transparency("20")
+
+    bubble_map_pane.expand_windowshade_title_and_footnote()
+    bubble_map_pane.set_title("This is title'\"")
+    bubble_map_pane.set_footnote("This is footnote'\"")
+
+    bubble_map_pane.expand_windowshade_graph_size()
+    bubble_map_pane.set_units(item_index=1)
 
     flow.run(True)
+
+def test_Split_Columns_level0(page, init):
+        flow: FlowPage = PageHelper.new_flow(page)
+        flow.add_node(FlowNodeType.sas_program)
+        flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+        sas_program_pane = SASProgramPane(page)

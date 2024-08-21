@@ -849,6 +849,7 @@ class Data:
     """Added by Jacky end"""
 
     """Added by Percy start"""
+
     BUBBLE_SIZE = "Bubble size"
     INCLUDE_CHOROPLETH_MAP_LAYER = "Include choropleth map layer"
     FILTER_MAP_DATA = "Filter map data"
@@ -870,5 +871,6 @@ class Data:
     LABEL_POSITION="Label position"
     SET_BUBBLES_COLOR="Set color"
     TRANSPARENCY_PERCENT="Transparency"
+    UNITS="Units"
 
     """Added by Percy end"""
