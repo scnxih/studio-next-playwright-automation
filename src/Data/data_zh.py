@@ -823,7 +823,10 @@ class DataZH(Data):
     REFERENCE_VALUE = "参考值"
     LINE_OFFSET = "线偏移"
     SPECIFY_MINIMUM_VALUE = "指定最小值"
-
+    SPECIFY_MAXIMUM_VALUE = "指定最大值"
+    SHOW_GRID_LINES = "显示网格线"
+    USE_LOGARITHMIC_SCALE = "使用对数尺度"
+    BASE_VALUE = "基值"
     """Added by Dommy end"""
 
     """Added by Frank start"""

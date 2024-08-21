@@ -833,6 +833,11 @@ class Data:
     REFERENCE_VALUE = "Reference value"
     LINE_OFFSET = "Line offset"
     SPECIFY_MINIMUM_VALUE = "Specify minimum value"
+    SPECIFY_MAXIMUM_VALUE = "Specify minimum value"
+    SHOW_GRID_LINES = "Show grid lines"
+    USE_LOGARITHMIC_SCALE = "Use logarithmic scale"
+    BASE_VALUE = "Base value"
+
     """Added by Dommy end"""
 
     """Added by Frank start"""
