@@ -38,6 +38,40 @@ class BubbleMapPane(BasicStepPane):
 
     def expand_windowshade_Data_labels(self):
         self.expand_windowshade(parent_label=Helper.data_locale.DATA_LABELS)
-
     def add_column_for_bubble_label(self):
         self.add_column(parent_label=Helper.data_locale.BUBBLE_LABEL,column_name=column_name,section_label=Helper.data_locale.DATA_LABELS)
+    def expand_windowshade_label_options(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.LABEL_OPTIONS)
+    def set_font_color(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_FONT_COLOR)
+    def set_font_family(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.FONT_FAMILY,
+                                     section_label=Helper.data_locale.LABEL_OPTIONS,
+                                     item_index=item_index, item_value=item_value)
+    def set_font_style(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.FONT_STYLE,
+                                     section_label=Helper.data_locale.LABEL_OPTIONS,
+                                     item_index=item_index, item_value=item_value)
+    def set_font_weight(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.FONT_WEIGHT,
+                                     section_label=Helper.data_locale.LABEL_OPTIONS,
+                                     item_index=item_index, item_value=item_value)
+    def set_label_position(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.LABEL_POSITION,section_label=Helper.data_locale.LABEL_OPTIONS,item_index=item_index, item_value=item_value)
+    def set_bubbles_color(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_BUBBLES_COLOR)
+    def set_number_of_transparency(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TRANSPARENCY_PERCENT, input_text=input_text)
+    def expand_windowshade_title_and_footnote(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+    def set_title(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text=input_text)
+    def set_footnote(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text=input_text)
+    def expand_windowshade_graph_size(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+
+    def set_units(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS,
+                                     section_label=Helper.data_locale.GRAPH_SIZE, item_index=item_index,
+                                     item_value=item_value)
