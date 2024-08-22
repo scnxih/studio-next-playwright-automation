@@ -196,3 +196,94 @@ def test_05_line_chart_in_flow_l0(page, init):
     line_chart_pane = LineChartPane(page)
     line_chart_pane.add_column_for_category("Team'中文")
     flow.run(True)
+
+
+def test_06_line_chart_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;    
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LINE_CHART)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
+    line_chart_pane = LineChartPane(page)
+    line_chart_pane.set_filter_input_data("UPPER('Division''中'n) = '东部'")
+    line_chart_pane.add_column_for_category("Team'中文")
+    line_chart_pane.add_column_for_subcategory("姓名1")
+    line_chart_pane.set_display_subcategory_legend(item_index=1)
+    line_chart_pane.set_measure(item_index=2)
+    line_chart_pane.add_column_for_column("nHits'中")
+    line_chart_pane.set_statistics(item_index=1)
+    line_chart_pane.set_error_bars(item_index=2)
+    line_chart_pane.set_type(item_index=1)
+    line_chart_pane.set_check_specify_statistic_multiplier()
+    line_chart_pane.set_multiplier("2")
+    line_chart_pane.expand_windowshade_additional_roles()
+    line_chart_pane.add_column_for_group_analysis_by("League'中")
+    line_chart_pane.add_column_for_weight("nHome'中")
+    flow.run(True)
+
+
+def test_07_line_chart_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;    
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LINE_CHART)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
+    line_chart_pane = LineChartPane(page)
+    line_chart_pane.add_column_for_category("Team'中文")
+    line_chart_pane.set_measure(item_index=2)
+    line_chart_pane.add_column_for_column("nHits'中")
+    line_chart_pane.expand_windowshade_additional_roles()
+    line_chart_pane.add_column_for_group_analysis_by("League'中")
+
+    line_chart_pane.click_options_tab()
+    line_chart_pane.expand_windowshade_lines()
+    line_chart_pane.set_check_show_data_labels()
+    line_chart_pane.set_check_show_line_label()
+    line_chart_pane.set_label("中文'测试")
+    line_chart_pane.set_check_set_color()
+    line_chart_pane.set_color_transparency(item_index=2)
+    line_chart_pane.set_line_style(item_index=5)
+    line_chart_pane.add_column_for_url_variable("Div'中")
+    flow.run(True)
