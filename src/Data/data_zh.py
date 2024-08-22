@@ -710,6 +710,14 @@ class DataZH(Data):
     LAMBDA = 'Lambda'
     PROPORTION_OF_PAIRS = '观测对比例'
     PROPORTION_OF_DATA = '数据比例'
+    REPLACE_MISSING_VALUES_WITH = '将缺失值替换为'
+    CUSTOM_VALUE = '自定义值'
+    DISPLAY_LOCATION_AND_SCALE_MEASURES = '显示位置和尺度测度'
+    VARIABLES_TO_INCLUDE = '要包括的变量'
+    INCLUDE_ORIGINAL_AND_STANDARDIZED_VARIABLES = '包括原始和标准化变量'
+    PREFIX_FOR_STANDARDIZED_VARIABLES = '标准化变量的前缀'
+    PREFIX_FOR_ORIGINAL_VARIABLES = '原始变量的前缀'
+    SPECIFY_DATA_TO_SHOW = '指定要显示的数据'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -729,13 +737,13 @@ class DataZH(Data):
     MEASURE = "测度"
     LINES = "线条"
     SHOW_DATA_LABELS = "显示数据标签"
-    SHOW_LINE_LABEL = "显示线条标签"
+    SHOW_LINE_LABEL = "显示线条标签（若分配了子类别，则不适用）"
     LABEL = "标签"
-    SET_COLOR = "设置颜色"
+    SET_COLOR = "设置颜色（若分配了子类别，则不适用）"
     LINE_STYLE = "线条样式"
     URL_VARIABLE = "URL 变量"
-    X_AXIS = "X轴"
-    Y_AXIS = "Y轴"
+    X_AXIS = "X 轴"
+    Y_AXIS = "Y 轴"
     REVERSE_TICK_VALUES = "反转刻度值"
     SHOW_TICK_VALUES_IN_DATA_ORDER = "按数据顺序显示刻度值"
     DISPLAY_LABEL = "显示标签"
@@ -749,6 +757,20 @@ class DataZH(Data):
     USE_LOGARITHMIC_SCALE = "使用对数尺度"
     BASE_VALUE = "基值"
     CATEGORY_WITH_COLON = "类别:"
+    SUBCATEGORY_WITH_COLON = "子类别:"
+    DISPLAY_SUBCATEGORY_LEGEND = "显示子类别图例"
+    LEGEND_LOCATION = "图例位置"
+    COLUMN = "列"
+    ERROR_BARS = "误差条"
+    SPECIFY_A_STATISTIC_MULTIPLIER = "指定统计量乘数"
+    MULTIPLIER = "乘数"
+    NUMBER_OF_COINS = "硬币数"
+    NUMBER_OF_TOSSES = "投掷次数"
+    SHOW_GRAPH_TABLE = "显示图形表"
+    GRAPH_OPTIONS = "图形选项"
+    GRID_LINES= "网格线"
+    GRADIENT_FILL = "梯度填充"
+    DATA_SKIN = "数据皮肤"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -899,6 +921,13 @@ class DataZH(Data):
     SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
     SAVE_TERM_INFORMATION = "保存词条信息"
 
+    PROCESS_VARIABLE = "过程变量"
+    SPECIFICATION_LIMITS = "规格限"
+    TARGET_VALUE = "目标值"
+    LOWER_LIMIT = "下限"
+    UPPER_LIMIT = "上限"
+    SUBMITTED_CODE_AND_RESULTS = "提交的代码和结果"
+    CLASSIFICATION_VARIABLE = "分类变量"
     """Added by Jacky end"""
 
     """Added by Percy start"""

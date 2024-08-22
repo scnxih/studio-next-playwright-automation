@@ -31,7 +31,12 @@ from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Integrate.load_table_pane import LoadTablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.box_plot_pane import BoxPlotPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and_topic_analysis_pane import TextParsingAndTopicAnalysisPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and_topic_analysis_pane import \
+    TextParsingAndTopicAnalysisPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.StatisticalProcessControl.capability_analysis_pane import \
+    CapabilityAnalysisPane
+
+
 def test_00_click_show_tab_lables(page, init):
     """
     Test commitment after switching git account.
@@ -1671,7 +1676,7 @@ def test_42_box_plot_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
-    flow.link_two_nodes_in_flow( "class", Helper.data_locale.STEP_BOX_PLOT)
+    flow.link_two_nodes_in_flow("class", Helper.data_locale.STEP_BOX_PLOT)
     flow.arrange_nodes()
     flow.apply_detail_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
@@ -1784,7 +1789,9 @@ run;
     tp_ta_pane.set_save_term_by_document_matrix()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+                                                 "添加输出端口",
+                                                 "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
     # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
@@ -1800,7 +1807,9 @@ run;
     tp_ta_pane.set_save_term_information()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "{sasstudio-steps-gui-icu.genericText.outputport.termInformationTable.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+                                                 "添加输出端口",
+                                                 "{sasstudio-steps-gui-icu.genericText.outputport.termInformationTable.title}")
 
     # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "词条信息表")
 
@@ -1891,7 +1900,9 @@ run;
 
     tp_ta_pane.set_number_of_topics_to("3")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+                                                 "添加输出端口",
+                                                 "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
     # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
@@ -1901,3 +1912,131 @@ run;
     table_pane.set_table("topicsWords")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "topicsWords")
     flow.arrange_nodes()
+
+
+def test_45_lev0_capability_analysis(page, init):
+    """
+    Level-0 testcase for Capability Analysis
+    """
+    # Create a sas program and run
+    sas_program_code = """
+data trans;
+	input thick @@;
+	label thick='Plating Thickness (mils)';
+	datalines;
+3.468 3.428 3.509 3.516 3.461 3.492 3.478 3.556 3.482 3.512
+3.490 3.467 3.498 3.519 3.504 3.469 3.497 3.495 3.518 3.523
+3.458 3.478 3.443 3.500 3.449 3.525 3.461 3.489 3.514 3.470
+3.561 3.506 3.444 3.479 3.524 3.531 3.501 3.495 3.443 3.458
+3.481 3.497 3.461 3.513 3.528 3.496 3.533 3.450 3.516 3.476
+3.512 3.550 3.441 3.541 3.569 3.531 3.468 3.564 3.522 3.520
+3.505 3.523 3.475 3.470 3.457 3.536 3.528 3.477 3.536 3.491
+3.510 3.461 3.431 3.502 3.491 3.506 3.439 3.513 3.496 3.539
+3.469 3.481 3.515 3.535 3.460 3.575 3.488 3.515 3.484 3.482
+3.517 3.483 3.467 3.467 3.502 3.471 3.516 3.474 3.500 3.466
+run;
+    """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    # Create a flow and add table node
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("work")
+    table_pane.set_table("trans")
+    table_pane.refresh_table()
+
+    # Add Capability Analysis node
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                 Helper.data_locale.STEP_CAPABILITY_ANALYSIS]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+    flow.link_two_nodes_in_flow("trans", Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+
+    # Set process variable
+    capability_analysis = CapabilityAnalysisPane(page)
+    capability_analysis.set_process_variable("thick")
+
+    # Set upper and lower limits
+    capability_analysis.set_lower_limit_to("3.45")
+    capability_analysis.set_upper_limit_to("3.55")
+
+    # Run the flow
+    flow.run(True)
+
+    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
+
+    time.sleep(3)
+    flow.screenshot_self("results")
+
+
+def test_46_lev1_capability_analysis(page, init):
+    """
+    Level-1 testcase for Capability Analysis
+    """
+
+    # Create a sas program and run
+
+    # Set I18N library
+    set_autolib_code = """
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+        """
+
+    PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    PageHelper.set_autoexec(page, set_autolib_code)
+
+    # Create a flow and add table node
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("Autolib")
+    table_pane.set_table("BASEBALL'中文测试")
+    table_pane.refresh_table()
+
+
+    # Add Capability Analysis node
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                 Helper.data_locale.STEP_CAPABILITY_ANALYSIS]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAPABILITY_ANALYSIS)
+
+    # Set process variable
+    capability_analysis = CapabilityAnalysisPane(page)
+    capability_analysis.set_process_variable("logSalary'中")
+
+    # Set upper and lower limits
+    capability_analysis.set_target_value_to("3.50")
+    capability_analysis.set_lower_limit_to("3.45")
+    capability_analysis.set_upper_limit_to("3.55")
+
+    capability_analysis.set_classification_variable("Team'中文")
+    capability_analysis.set_classification_variable("League'中")
+
+    # Run the flow
+    flow.run(True)
+    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
+
+    time.sleep(10)
+    flow.screenshot_self("results")
+
+

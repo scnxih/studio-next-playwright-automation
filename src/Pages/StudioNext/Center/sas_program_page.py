@@ -5,7 +5,10 @@ Description: SASProgramPage will inherit from MainCenterPage class, thus the met
             You can also override these parent class methods in this SASProgramPage class if needed.
 
 """
+import time
+
 from src.Helper.helper import Helper
+from src.Pages.Common.dialog import Alert
 from src.Pages.Common.editor_text_area import EditorTextArea
 from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
 
@@ -32,6 +35,16 @@ class SASProgramPage(MainCenterPage):
 
     def clear_code(self):
         self.center_toolbar_helper.clear_code()
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on August 22nd, 2024
+        clear_code_alert = Alert(self.page, "Clear Code")
+
+        # self.wait_for(clear_code_alert)
+        # time.sleep(3)
+        if clear_code_alert.is_open():
+            clear_code_alert.click_button_in_footer("Clear")
+        # END Added by Jacky(ID: jawang) on August 22nd, 2024 >>>
 
     def clear_all(self):
         self.center_toolbar_helper.clear_all()
