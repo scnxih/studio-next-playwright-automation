@@ -807,7 +807,27 @@ class Data:
     """Added by Frank end"""
 
     """Added by Jacky start"""
-    TEST5 = ""
+    THE_INPUT_TABLE_CONTAINS = "The input table contains"
+    LANGUAGE = "Language"
+    TEXT_VARIABLE = "Text variable"
+
+    TOPIC_MODEL = "Topic model"
+    PARSE_TEXT = "Parse text"
+
+    DISCOVER_TOPICS = "Discover Topics"
+    NUMBER_OF_TOPICS = "Number of topics"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "Scree plot of singular values"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "Save term-by-document matrix"
+    SAVE_TERM_INFORMATION = "Save term information"
+
+    PROCESS_VARIABLE = "Process variable"
+    SPECIFICATION_LIMITS = "Specification Limits"
+    TARGET_VALUE = "Target value"
+    LOWER_LIMIT = "Lower limit"
+    UPPER_LIMIT = "Upper limit"
+    SUBMITTED_CODE_AND_RESULTS = "Submitted Code and Results"
+    CLASSIFICATION_VARIABLE = "Classification variable"
     """Added by Jacky end"""
 
     """Added by Percy start"""

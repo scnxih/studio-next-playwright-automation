@@ -830,6 +830,13 @@ class DataZH(Data):
     SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
     SAVE_TERM_INFORMATION = "保存词条信息"
 
+    PROCESS_VARIABLE = "过程变量"
+    SPECIFICATION_LIMITS = "规格限"
+    TARGET_VALUE = "目标值"
+    LOWER_LIMIT = "下限"
+    UPPER_LIMIT = "上限"
+    SUBMITTED_CODE_AND_RESULTS = "提交的代码和结果"
+    CLASSIFICATION_VARIABLE = "分类变量"
     """Added by Jacky end"""
 
     """Added by Percy start"""
