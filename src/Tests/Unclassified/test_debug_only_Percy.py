@@ -157,7 +157,7 @@ data &_output2;
                           drop=x y
                           rename=(long=x lat=y));
 run;
-data county_pop (label='Nevada Counties');
+data &_output3 (label='Nevada Counties');
   length county_name $55;
   infile datalines dlm=',';
   state=32;
@@ -207,7 +207,6 @@ Carson City, 510, 54521
     flow.arrange_nodes()
 
     flow.add_node(FlowNodeType.table)
-
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("MYCAS")
@@ -217,6 +216,17 @@ Carson City, 510, 54521
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "nevada")
     flow.arrange_nodes()
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("county_pop")
+
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "county_pop")
+    flow.arrange_nodes()
     flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,Helper.data_locale.STEP_BUBBLE_MAP]
@@ -225,8 +235,14 @@ Carson City, 510, 54521
     flow.link_two_nodes_in_flow("city_pop_loc",Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.bubblemap.inputports.cmMapDataset.displayname.title}")
     flow.link_two_nodes_in_flow("nevada", Helper.data_locale.STEP_BUBBLE_MAP)
+    flow.arrange_nodes()
+
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
+    time.sleep(0.5)
+    flow.link_two_nodes_in_flow("county_pop", Helper.data_locale.STEP_BUBBLE_MAP)
+    time.sleep(0.5)
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BUBBLE_MAP)
@@ -240,5 +256,47 @@ Carson City, 510, 54521
     bubble_map_pane.set_choropleth_map_layer()
     bubble_map_pane.set_filter_map_data("density>2")
     bubble_map_pane.add_column_for_ID_variable_Map_data(column_name='ID')
-    bubble_map_pane.set_Base_map_(item_index=1)
+
+    bubble_map_pane.set_response_data()
+    bubble_map_pane.set_filter_map_resopnse_data("county>2")
+    bubble_map_pane.add_column_for_response_variable(column_name='county_name')
+    bubble_map_pane.add_column_for_ID_variable_Map_response_data(column_name='county')
+
+    bubble_map_pane.set_Base_map(item_index=1)
+
+    """Options tab"""
+    bubble_map_pane.expand_windowshade_Data_labels()
+    bubble_map_pane.add_column_for_bubble_label()
+
+    bubble_map_pane.expand_windowshade_label_options()
+    bubble_map_pane.set_font_color()
+    bubble_map_pane.set_font_family(item_index=1)
+    bubble_map_pane.set_font_style(item_index=1)
+    bubble_map_pane.set_font_weight(item_index=1)
+    bubble_map_pane.set_label_position(item_index=1)
+
+    bubble_map_pane.set_bubbles_color()
+    bubble_map_pane.set_number_of_transparency("20")
+
+    bubble_map_pane.expand_windowshade_title_and_footnote()
+    bubble_map_pane.set_title("This is title'\"")
+    bubble_map_pane.set_footnote("This is footnote'\"")
+
+    bubble_map_pane.expand_windowshade_graph_size()
+    bubble_map_pane.set_units(item_index=1)
+
     flow.run(True)
+
+def test_Split_Columns_level0(page, init):
+    Pagehelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+

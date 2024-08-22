@@ -58,7 +58,8 @@ class OneWayFrequencies(BasicStepPane):
         self.set_check_for_checkbox(Helper.data_locale.INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES)
 
     def set_row_value_order(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.ROW_VALUE_ORDER, item_index=item_index, item_value=item_value)
+        self.set_option_for_combobox(parent_label=Helper.data_locale.ROW_VALUE_ORDER, item_index=item_index,
+                                     item_value=item_value)
 
     def expand_windowshade_statistics(self):
         self.expand_windowshade(parent_label=Helper.data_locale.STATISTICS)
@@ -67,10 +68,12 @@ class OneWayFrequencies(BasicStepPane):
         self.collapse_windowshade(parent_label=Helper.data_locale.STATISTICS)
 
     def set_null_hypothesis_proportion(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.NULL_HYPOTHESIS_PROPORTION, input_text=input_text)
+        self.set_text_for_text_control(parent_label=Helper.data_locale.NULL_HYPOTHESIS_PROPORTION,
+                                       input_text=input_text)
 
     def set_confidence_level(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.CONFIDENCE_LEVEL, item_index=item_index, item_value=item_value)
+        self.set_option_for_combobox(parent_label=Helper.data_locale.CONFIDENCE_LEVEL, item_index=item_index,
+                                     item_value=item_value)
 
     def set_custom_confidence_level(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.CUSTOM_CONFIDENCE_LEVEL, input_text=input_text)
@@ -86,6 +89,21 @@ class OneWayFrequencies(BasicStepPane):
 
     def set_uncheck_use_monte_carlo_estimation(self):
         self.set_uncheck_for_checkbox(Helper.data_locale.USE_MONTE_CARLO_ESTIMATION)
+
+    def expand_windowshade_exact_computation_methods(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.EXACT_COMPUTATION_METHODS)
+
+    def collapse_windowshade_exact_computation_methods(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.EXACT_COMPUTATION_METHODS)
+
+    def set_check_limit_computation_time(self):
+        self.set_check_for_checkbox(Helper.data_locale.LIMIT_COMPUTATION_METHODS)
+
+    def set_uncheck_limit_computation_time(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.LIMIT_COMPUTATION_METHODS)
+
+    def set_maximum_time(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.MAXIMUM_TIME, input_text=input_text)
 
     def expand_windowshade_plots_and_missing_values(self):
         self.expand_windowshade(parent_label=Helper.data_locale.PLOTS_AND_MISSING_VALUES)
@@ -112,14 +130,13 @@ class OneWayFrequencies(BasicStepPane):
         self.set_uncheck_for_checkbox(Helper.data_locale.INCLUDE_IN_PERCENTAGES_AND_STATISTICS)
 
     """Added by Alice on Aug 21, 2024 start"""
-    def set_check_for_asymptotic_test_binomial_proportion(self):
 
+    def set_check_for_asymptotic_test_binomial_proportion(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
                          Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.BINOMIAL_PROPORTION)).set_check()
 
     def set_uncheck_for_asymptotic_test_binomial_proportion(self):
-
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
                          Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.BINOMIAL_PROPORTION)).set_uncheck()
@@ -132,7 +149,8 @@ class OneWayFrequencies(BasicStepPane):
     def set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit(self):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
-                         Helper.data_locale.ASYMPTOTIC_TEST, Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_uncheck()
+                         Helper.data_locale.ASYMPTOTIC_TEST,
+                         Helper.data_locale.CHI_SQUARE_GOODNESS_OF_FIT)).set_uncheck()
 
     def set_check_for_exact_test_binomial_proportion(self):
         get_checkbox(self.base_xpath, self.page,
@@ -153,7 +171,5 @@ class OneWayFrequencies(BasicStepPane):
         get_checkbox(self.base_xpath, self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
                          Helper.data_locale.EXACT_TEST, Helper.data_locale.ASYMPTOTIC_TEST)).set_uncheck()
-
-
 
     """Added by Alice on Aug 21, 2024 end"""
