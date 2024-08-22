@@ -956,7 +956,6 @@ class Data:
     LABEL_POSITION="Label position"
     BUBBLES="Bubbles"
     SET_BUBBLES_COLOR="Set color"
-
     #TRANSPARENCY_PERCENT="Transparency"
     #UNITS="Units"
     COLUMN_TO_SPLIT="Column to split"
@@ -964,6 +963,5 @@ class Data:
     LABELS_FOR_NEW_COLUMNS="Labels for new columns"
     USE_COLUMN_NAME_PREFIX="Use column name prefix"
     PREFIX="Prefix"
-    SPECIFY_DATA_TO_SHOW="Specify data to show"
 
     """Added by Percy end"""
