@@ -912,8 +912,16 @@ class Data:
     FONT_STYLE="Font style"
     FONT_WEIGHT="Font weight"
     LABEL_POSITION="Label position"
+    BUBBLES="Bubbles"
     SET_BUBBLES_COLOR="Set color"
+
     #TRANSPARENCY_PERCENT="Transparency"
-    UNITS="Units"
+    #UNITS="Units"
+    COLUMN_TO_SPLIT="Column to split"
+    FORMATTED_IDENTIFIER_VALUES = "Formatted identifier values"
+    LABELS_FOR_NEW_COLUMNS="Labels for new columns"
+    USE_COLUMN_NAME_PREFIX="Use column name prefix"
+    PREFIX="Prefix"
+    SPECIFY_DATA_TO_SHOW="Specify data to show"
 
     """Added by Percy end"""
