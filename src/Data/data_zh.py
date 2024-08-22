@@ -434,7 +434,7 @@ class DataZH(Data):
     STEP_LINEAR_REGRESSION = "线性回归"
 
     STEP_CATEGORY_TEXT_ANALYTICS = "文本分析"
-    STEP_TEXT_SUMMARY ="文本汇总"
+    #STEP_TEXT_SUMMARY ="文本汇总"
     STEP_BOOLEAN_RULES = "布尔规则"
     STEP_SEGMENTATION = "分段"
     STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY = "文本解析和主题发现"
@@ -523,7 +523,7 @@ class DataZH(Data):
     MINIMUM_VALUE = "最小值"
     MAXIMUM_VALUE = "最大值"
     DATE = "日期"
-    MONTH = "月"
+    #MONTH = "月"
     DATE_AND_TIME = "日期和时间"
     TIME = "时间"
     PREVIOUS_MONTH = "上个月"
@@ -679,7 +679,37 @@ class DataZH(Data):
     """Added by Alice end"""
 
     """Added by Allison start"""
-    TEST2 = ""
+    ANALYSIS_VARIABLES = '分析变量'
+    FREQUENCY_COUNT = '频数计数'
+    FREQUENCY_TABLE = '频数表'
+    INCLUDE_PERCENTAGES = '包括百分比'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = '包括累积频数和百分比'
+    ROW_VALUE_ORDER = '行值顺序'
+    STATISTICS = '统计量'
+    BINOMIAL_PROPORTION = '二项式比例'
+    ASYMPTOTIC_TEST = '渐近检验'
+    EXACT_TEST = '精确检验'
+    CHI_SQUARE_GOODNESS_OF_FIT = '卡方拟合优度'
+    NULL_HYPOTHESIS_PROPORTION = '原假设比例'
+    CONFIDENCE_LEVEL = '置信水平'
+    CUSTOM_CONFIDENCE_LEVEL = '自定义置信水平'
+    USE_MONTE_CARLO_ESTIMATION = '使用 Monte Carlo 估计'
+    EXACT_COMPUTATION_METHODS = '精确计算方法'
+    LIMIT_COMPUTATION_METHODS = '限制计算时间'
+    MAXIMUM_TIME = '最长时间'
+    PLOTS_AND_MISSING_VALUES = '图和缺失值'
+    SUPPRESS_PLOTS = '隐藏图'
+    INCLUDE_IN_FREQUENCY_TABLE = '包括在频数表中'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = '包括在百分比和统计量中'
+    VARIABLES_TO_STANDARDIZE = '要标准化的变量'
+    CENTER_DATA_ONLY = '仅居中数据'
+    CENTERING_METHOD = '居中方法'
+    STANDARDIZATION_METHOD = '标准化方法'
+    MISSING_VALUES_METHODS = '缺失值方法'
+    TUNING_CONSTANT = '调节常数'
+    LAMBDA = 'Lambda'
+    PROPORTION_OF_PAIRS = '观测对比例'
+    PROPORTION_OF_DATA = '数据比例'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -696,6 +726,29 @@ class DataZH(Data):
     SPLIT_LABELS = "拆分标签"
     SPLIT_CHARACTER = "拆分字符"
     ROWS_TO_LIST = "列出的行"
+    MEASURE = "测度"
+    LINES = "线条"
+    SHOW_DATA_LABELS = "显示数据标签"
+    SHOW_LINE_LABEL = "显示线条标签"
+    LABEL = "标签"
+    SET_COLOR = "设置颜色"
+    LINE_STYLE = "线条样式"
+    URL_VARIABLE = "URL 变量"
+    X_AXIS = "X轴"
+    Y_AXIS = "Y轴"
+    REVERSE_TICK_VALUES = "反转刻度值"
+    SHOW_TICK_VALUES_IN_DATA_ORDER = "按数据顺序显示刻度值"
+    DISPLAY_LABEL = "显示标签"
+    ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS = "在刻度冲突时旋转值"
+    CREATE_REFERENCE_LINE = "创建参考线"
+    REFERENCE_VALUE = "参考值"
+    LINE_OFFSET = "线偏移"
+    SPECIFY_MINIMUM_VALUE = "指定最小值"
+    SPECIFY_MAXIMUM_VALUE = "指定最大值"
+    SHOW_GRID_LINES = "显示网格线"
+    USE_LOGARITHMIC_SCALE = "使用对数尺度"
+    BASE_VALUE = "基值"
+    CATEGORY_WITH_COLON = "类别:"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -765,26 +818,26 @@ class DataZH(Data):
     LATITUDE = "纬度"
     LONGITUDE = "经度"
     GROUP = "组"
-    INCLUDE_CHOROPLETH_MAP_LAYER = "包含地区分布图图层"
+    #INCLUDE_CHOROPLETH_MAP_LAYER = "包含地区分布图图层"
     CHOROPLETH_MAP = "地区分布图"
-    MAP_DATA = "地图数据"
-    FILTER_MAP_DATA = "过滤地图数据"
-    ID_VARIABLE = "ID 变量"
-    INCLUDE_RESPONSE_DATA = "包括响应数据"
-    MAP_RESPONSE_DATA = "地图响应数据"
-    FILTER_MAP_RESPONSE_DATA = "过滤地图响应数据"
-    RESPONSE_VARIABLE = "响应变量"
-    BASE_MAP = "基本地图"
+    #MAP_DATA = "地图数据"
+    #FILTER_MAP_DATA = "过滤地图数据"
+    #ID_VARIABLE = "ID 变量"
+    #INCLUDE_RESPONSE_DATA = "包括响应数据"
+    #MAP_RESPONSE_DATA = "地图响应数据"
+    #FILTER_MAP_RESPONSE_DATA = "过滤地图响应数据"
+    #RESPONSE_VARIABLE = "响应变量"
+    #BASE_MAP = "基本地图"
     OPEN_STREET_MAP = "OpenStreetMap"
     ESRI_MAP = "Esri 地图"
     SPECIFY_ESRI_BASE_MAP_URL = "指定 Esri 基本地图 URL"
-    DATA_LABELS = "数据标签"
+    #DATA_LABELS = "数据标签"
     LABEL_VARIABLE = "标签变量"
     LEGEND = "图例"
     GENERATE_CHOROMAP_LEGEND = "生成地区分布图图例"
-    LABEL = "标签"
+    #LABEL = "标签"
     MARKERS = "标记"
-    SET_COLOR = "设置颜色"
+    #SET_COLOR = "设置颜色"
     COLOR = "颜色"
     SYMBOL = "符号"
     AUTO = "自动"
@@ -802,7 +855,7 @@ class DataZH(Data):
     CHOROMAP = "地区分布图"
     LINE_ATTRIBUTES = "线条特性"
     LINE_THICKNESS = "线条粗细"
-    LINE_STYLE = "线条样式"
+    #LINE_STYLE = "线条样式"
     SOLID_DEFAULT = "实线（默认）"
     SHORT_DASH = "短划线"
     MEDIUM_DASH = "中划线"
@@ -825,9 +878,51 @@ class DataZH(Data):
     """Added by Frank end"""
 
     """Added by Jacky start"""
-    TEST5 = ""
+    # Deleted Test3
+    Test4 = "Revised2"
+    Test5 = "Added"
+    Test6 = "Added"
+
+    Test7= "Add"
+
+    THE_INPUT_TABLE_CONTAINS = "输入表包含"
+    LANGUAGE = "语言"
+    TEXT_VARIABLE = "文本变量"
+
+    TOPIC_MODEL = "主题模型"
+    PARSE_TEXT = "解析文本"
+
+    DISCOVER_TOPICS = "发现主题"
+    NUMBER_OF_TOPICS = "主题数"
+    SCREE_PLOT_OF_SINGULAR_VALUES = "奇异值的陡坡图"
+
+    SAVE_TERM_BY_DOCUMENT_MATRIX = "保存文档-词条矩阵（无子词条）"
+    SAVE_TERM_INFORMATION = "保存词条信息"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+
+    BUBBLE_SIZE = "气泡大小"
+    INCLUDE_CHOROPLETH_MAP_LAYER = "包含地区分布图图层"
+    FILTER_MAP_DATA = "过滤地图数据"
+    ID_VARIABLE = "ID 变量"
+    MAP_DATA = "地图数据"
+    INCLUDE_RESPONSE_DATA = "包括响应数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
+    FILTER_MAP_RESPONSE_DATA="过滤地图响应数据"
+    RESPONSE_VARIABLE = "响应变量"
+    BASE_MAP = "基本地图"
+    DATA_LABELS = "数据标签"
+    BUBBLE_LABEL="气泡标签"
+    LABEL_OPTIONS="标签选项"
+    SET_FONT_COLOR="设置字体颜色"
+    FONT_FAMILY="字体系列"
+    FONT_STYLE="字形"
+    FONT_WEIGHT="字体粗细"
+    LABEL_POSITION="标签位置"
+    SET_BUBBLES_COLOR="设置颜色"
+    #TRANSPARENCY_PERCENT = "透明度"
+    #UNITS = "单位"
+
     """Added by Percy end"""

@@ -688,11 +688,76 @@ class Data:
     """Added by Alice end"""
 
     """Added by Allison start"""
-    TEST2 = ""
+    ANALYSIS_VARIABLES = 'Analysis variables'
+    FREQUENCY_COUNT = 'Frequency count'
+    FREQUENCY_TABLE = 'Frequency table'
+    INCLUDE_PERCENTAGES = 'Include percentages'
+    INCLUDE_CUMULATIVE_FREQUENCIES_AND_PERCENTAGES = 'Include cumulative frequencies and percentages'
+    ROW_VALUE_ORDER = 'Row value order'
+    STATISTICS = 'Statistics'
+    BINOMIAL_PROPORTION = 'Binomial Proportion'
+    ASYMPTOTIC_TEST = 'Asymptotic test'
+    EXACT_TEST = 'Exact test'
+    CHI_SQUARE_GOODNESS_OF_FIT = 'Chi-square Goodness-of-Fit'
+    NULL_HYPOTHESIS_PROPORTION = 'Null hypothesis proportion'
+    CONFIDENCE_LEVEL = 'Confidence level'
+    CUSTOM_CONFIDENCE_LEVEL = 'Custom confidence level'
+    USE_MONTE_CARLO_ESTIMATION = 'Use Monte Carlo estimation'
+    EXACT_COMPUTATION_METHODS = 'Exact Computation Methods'
+    LIMIT_COMPUTATION_METHODS = 'Limit computation time'
+    MAXIMUM_TIME = 'Maximum time'
+    PLOTS_AND_MISSING_VALUES = 'Plots and Missing Values'
+    SUPPRESS_PLOTS = 'Suppress plots'
+    INCLUDE_IN_FREQUENCY_TABLE = 'Include in frequency table'
+    INCLUDE_IN_PERCENTAGES_AND_STATISTICS = 'Include in percentages and statistics'
+    VARIABLES_TO_STANDARDIZE = 'Variables to standardize'
+    CENTER_DATA_ONLY = 'Center data only'
+    CENTERING_METHOD = 'Centering method'
+    STANDARDIZATION_METHOD = 'Standardization method'
+    MISSING_VALUES_METHODS = 'Missing values method'
+    TUNING_CONSTANT = 'Tuning constant'
+    LAMBDA = 'Lambda'
+    PROPORTION_OF_PAIRS = 'Proportion of pairs'
+    PROPORTION_OF_DATA = 'Proportion of data'
     """Added by Allison end"""
 
     """Added by Dommy start"""
-    TEST3 = ""
+    LIST_VARIABLES = "List variables"
+    TOTAL_OF = "Total of"
+    IDENTIFYING_LABEL = "Identifying label"
+    DISPLAY_ROW_NUMBERS = "Display row numbers"
+    COLUMN_LABEL = "Column label"
+    USE_COLUMN_LABELS_AS_COLUMN_HEADINGS = "Use column labels as column headings"
+    DISPLAY_NUMBER_OF_ROWS = "Display number of rows"
+    ROUND_VALUES_BEFORE_SUMMING_THE_VARIABLE = "Round values before summing the variable"
+    HEADING_DIRECTION = "Heading direction"
+    COLUMN_WIDTH = "Column width"
+    SPLIT_LABELS = "Split labels"
+    SPLIT_CHARACTER = "Split character"
+    ROWS_TO_LIST = "Rows to list"
+    MEASURE = "Measure"
+    LINES = "Lines"
+    SHOW_DATA_LABELS = "Show data labels"
+    SHOW_LINE_LABEL = "Show line label"
+    LABEL = "Label"
+    SET_COLOR = "Set color"
+    LINE_STYLE = "Line style"
+    URL_VARIABLE = "URL variable"
+    X_AXIS = "X Axis"
+    Y_AXIS = "Y Axis"
+    REVERSE_TICK_VALUES = "Reverse tick values"
+    SHOW_TICK_VALUES_IN_DATA_ORDER = "Show tick values in data order"
+    DISPLAY_LABEL = "Display label"
+    ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS = "Rotate values in case of tick collisions"
+    CREATE_REFERENCE_LINE = "Create a reference line"
+    REFERENCE_VALUE = "Reference value"
+    LINE_OFFSET = "Line offset"
+    SPECIFY_MINIMUM_VALUE = "Specify minimum value"
+    SPECIFY_MAXIMUM_VALUE = "Specify minimum value"
+    SHOW_GRID_LINES = "Show grid lines"
+    USE_LOGARITHMIC_SCALE = "Use logarithmic scale"
+    BASE_VALUE = "Base value"
+    CATEGORY_WITH_COLON = "Category:"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -763,26 +828,26 @@ class Data:
     LATITUDE = "Latitude"
     LONGITUDE = "Longitude"
     GROUP = "Group"
-    INCLUDE_CHOROPLETH_MAP_LAYER = "Include choropleth map layer"
+    #INCLUDE_CHOROPLETH_MAP_LAYER = "Include choropleth map layer"
     CHOROPLETH_MAP = "Choropleth Map"
-    MAP_DATA = "Map Data"
-    FILTER_MAP_DATA = "Filter map data"
-    ID_VARIABLE = "ID variable"
-    INCLUDE_RESPONSE_DATA = "Include response data"
-    MAP_RESPONSE_DATA = "Map Response Data"
-    FILTER_MAP_RESPONSE_DATA = "Filter map response data"
-    RESPONSE_VARIABLE = "Response variable"
-    BASE_MAP = "Base map"
+    #MAP_DATA = "Map Data"
+    #FILTER_MAP_DATA = "Filter map data"
+    #ID_VARIABLE = "ID variable"
+    #INCLUDE_RESPONSE_DATA = "Include response data"
+    #MAP_RESPONSE_DATA = "Map Response Data"
+    #FILTER_MAP_RESPONSE_DATA = "Filter map response data"
+    #RESPONSE_VARIABLE = "Response variable"
+    #BASE_MAP = "Base map"
     OPEN_STREET_MAP = "OpenStreetMap"
     ESRI_MAP = "Esri map"
     SPECIFY_ESRI_BASE_MAP_URL = "Specify Esri base map URL"
-    DATA_LABELS = "Data labels"
+    #DATA_LABELS = "Data labels"
     LABEL_VARIABLE = "Label variable"
     LEGEND = "Legend"
     GENERATE_CHOROMAP_LEGEND = "Generate choromap legend"
-    LABEL = "Label"
+    #LABEL = "Label"
     MARKERS = "Markers"
-    SET_COLOR = "Set color"
+    #SET_COLOR = "Set color"
     COLOR = "Color"
     SYMBOL = "Symbol"
     AUTO = "Auto"
@@ -800,7 +865,7 @@ class Data:
     CHOROMAP = "Choromap"
     LINE_ATTRIBUTES = "Line attributes"
     LINE_THICKNESS = "Line thickness"
-    LINE_STYLE = "Line style"
+    #LINE_STYLE = "Line style"
     SOLID_DEFAULT = "Solid (default)"
     SHORT_DASH = "Short-dash"
     MEDIUM_DASH = "Medium-dash"
@@ -815,7 +880,7 @@ class Data:
     MEDIUM_DASH_DOT_DOT = "Medium-dash dot dot"
     FONT_SIZE_DEFAULT_14_PT = "Font size (default: 14 pt)"
     FONT_SIZE_DEFAULT_12_PT = "Font size (default: 12 pt)"
-    UNITS = "Units"
+    #UNITS = "Units"
     INCHES_DEFAULT = "Inches (default)"
     CENTIMETERS = "Centimeters"
     PIXELS = "Pixels"
@@ -827,5 +892,28 @@ class Data:
     """Added by Jacky end"""
 
     """Added by Percy start"""
-    TEST6 = ""
+
+    BUBBLE_SIZE = "Bubble size"
+    INCLUDE_CHOROPLETH_MAP_LAYER = "Include choropleth map layer"
+    FILTER_MAP_DATA = "Filter map data"
+    ID_VARIABLE = "ID variable"
+    MAP_DATA = "Map Data"
+    INCLUDE_RESPONSE_DATA = "Include response data"
+    MAP_RESPONSE_DATA = "Map Response Data"
+    FILTER_MAP_RESPONSE_DATA = "Filter map response data"
+    RESPONSE_VARIABLE="Response variable"
+    BASE_MAP="Base map"
+
+    DATA_LABELS="Data Labels"
+    BUBBLE_LABEL="Bubble label"
+    LABEL_OPTIONS="Label Options"
+    SET_FONT_COLOR = "Set font color"
+    FONT_FAMILY="Font family"
+    FONT_STYLE="Font style"
+    FONT_WEIGHT="Font weight"
+    LABEL_POSITION="Label position"
+    SET_BUBBLES_COLOR="Set color"
+    #TRANSPARENCY_PERCENT="Transparency"
+    UNITS="Units"
+
     """Added by Percy end"""
