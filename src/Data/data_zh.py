@@ -710,6 +710,14 @@ class DataZH(Data):
     LAMBDA = 'Lambda'
     PROPORTION_OF_PAIRS = '观测对比例'
     PROPORTION_OF_DATA = '数据比例'
+    REPLACE_MISSING_VALUES_WITH = '将缺失值替换为'
+    CUSTOM_VALUE = '自定义值'
+    DISPLAY_LOCATION_AND_SCALE_MEASURES = '显示位置和尺度测度'
+    VARIABLES_TO_INCLUDE = '要包括的变量'
+    INCLUDE_ORIGINAL_AND_STANDARDIZED_VARIABLES = '包括原始和标准化变量'
+    PREFIX_FOR_STANDARDIZED_VARIABLES = '标准化变量的前缀'
+    PREFIX_FOR_ORIGINAL_VARIABLES = '原始变量的前缀'
+    SPECIFY_DATA_TO_SHOW = '指定要显示的数据'
     """Added by Allison end"""
 
     """Added by Dommy start"""
