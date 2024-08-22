@@ -808,6 +808,14 @@ class Data:
     LAMBDA = 'Lambda'
     PROPORTION_OF_PAIRS = 'Proportion of pairs'
     PROPORTION_OF_DATA = 'Proportion of data'
+    REPLACE_MISSING_VALUES_WITH = 'Replace missing values with'
+    CUSTOM_VALUE = 'Custom value'
+    DISPLAY_LOCATION_AND_SCALE_MEASURES = 'Display location and scale measures'
+    VARIABLES_TO_INCLUDE = 'Variables to include'
+    INCLUDE_ORIGINAL_AND_STANDARDIZED_VARIABLES = 'Include original and standardized variables'
+    PREFIX_FOR_STANDARDIZED_VARIABLES = 'Prefix for standardized variables'
+    PREFIX_FOR_ORIGINAL_VARIABLES = 'Prefix for original variables'
+    SPECIFY_DATA_TO_SHOW = 'Specify data to show'
     """Added by Allison end"""
 
     """Added by Dommy start"""
