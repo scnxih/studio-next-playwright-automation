@@ -764,6 +764,13 @@ class DataZH(Data):
     ERROR_BARS = "误差条"
     SPECIFY_A_STATISTIC_MULTIPLIER = "指定统计量乘数"
     MULTIPLIER = "乘数"
+    NUMBER_OF_COINS = "硬币数"
+    NUMBER_OF_TOSSES = "投掷次数"
+    SHOW_GRAPH_TABLE = "显示图形表"
+    GRAPH_OPTIONS = "图形选项"
+    GRID_LINES= "网格线"
+    GRADIENT_FILL = "梯度填充"
+    DATA_SKIN = "数据皮肤"
     """Added by Dommy end"""
 
     """Added by Frank start"""

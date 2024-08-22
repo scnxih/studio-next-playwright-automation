@@ -773,6 +773,13 @@ class Data:
     ERROR_BARS = "Error bars"
     SPECIFY_A_STATISTIC_MULTIPLIER = "Specify a statistic multiplier"
     MULTIPLIER = "Multiplier"
+    NUMBER_OF_COINS = "Number of coins"
+    NUMBER_OF_TOSSES = "Number of tosses"
+    SHOW_GRAPH_TABLE = "Show graph table"
+    GRAPH_OPTIONS = "Graph Options"
+    GRID_LINES = "Grid lines"
+    GRADIENT_FILL = "Gradient fill"
+    DATA_SKIN = "Data skin"
     """Added by Dommy end"""
 
     """Added by Frank start"""

@@ -2,6 +2,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.coin_toss_simulation import CoinTossSimulationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
 
 from src.conftest import *
@@ -286,4 +287,35 @@ def test_07_line_chart_in_flow_l1(page, init):
     line_chart_pane.set_color_transparency(item_index=2)
     line_chart_pane.set_line_style(item_index=5)
     line_chart_pane.add_column_for_url_variable("Div'中")
+    flow.run(True)
+
+
+def test_08_coin_toss_simulation_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_COIN_TOSS_SIMULATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.run(True)
+
+
+def test_09_coin_toss_simulation_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_COIN_TOSS_SIMULATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_COIN_TOSS_SIMULATION)
+    coin_toss_simulation_pane = CoinTossSimulationPane(page)
+    coin_toss_simulation_pane.set_check_show_graph_table()
+    coin_toss_simulation_pane.set_check_grid_lines()
+    coin_toss_simulation_pane.set_check_gradient_fill()
+    coin_toss_simulation_pane.set_check_data_skin()
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("WORK")
+    table_pane.set_table("输出'cointest")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_COIN_TOSS_SIMULATION, "输出'cointest")
+    flow.arrange_nodes()
     flow.run(True)
