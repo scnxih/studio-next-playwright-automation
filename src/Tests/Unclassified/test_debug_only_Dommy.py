@@ -2,6 +2,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -162,4 +163,36 @@ def test_04_list_data_in_flow_l1(page, init):
     list_data_pane.set_uncheck_round_values()
     list_data_pane.set_heading_direction(item_index=1)
     list_data_pane.set_uncheck_split_labels()
+    flow.run(True)
+
+
+def test_05_line_chart_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;    
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LINE_CHART)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
+    line_chart_pane = LineChartPane(page)
+    line_chart_pane.add_column_for_category("Team'中文")
     flow.run(True)

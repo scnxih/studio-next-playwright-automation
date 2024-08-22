@@ -14,7 +14,7 @@ class LineChartPane(BasicStepPane):
     """Methods in Data tab"""
 
     def add_column_for_category(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.CATEGORY, column_name=column_name)
+        self.add_column_exact_label(parent_label=Helper.data_locale.CATEGORY_WITH_COLON, column_name=column_name)
 
     def add_column_for_subcategory(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.SUBCATEGORY, column_name=column_name)
@@ -201,5 +201,5 @@ class LineChartPane(BasicStepPane):
         self.collapse_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
 
     def set_units(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.UNIT, item_index=item_index,
+        self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_index=item_index,
                                      item_value=item_value)
