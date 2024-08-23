@@ -4,6 +4,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies import OneWayFrequencies
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.stack_columns_pane import StackColumnsPane
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -504,6 +505,15 @@ def test_09_duplicate_checkbox(page,init):
     pane.set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit()
     time.sleep(3)
 
+def test_10_numeric_stepper(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
+                 Helper.data_locale.STEP_STACK_COLUMNS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STACK_COLUMNS)
+    pane =  StackColumnsPane(page)
+    time.sleep(1)
+    pane.set_number_of_stacked_cariables_to_create(4)
 
 
 

@@ -30,7 +30,7 @@ class CustomStepPropertiesPage(BasePage):
     def set_uncheck_by_default(self):
         get_checkbox(self.base_xpath, self.page, data_test_id="checkbox1_checkedByDefault-checkbox").set_uncheck()
 
-    def set_indent(self, indent: str):
+    def set_indent(self, indent: int):
         get_numeric_stepper(self.base_xpath, self.page,
                             supplement_base_xpath="[ancestor::div[contains(@data-testid,'indentLevel')]]").set_value(
             indent)
@@ -184,13 +184,13 @@ class CustomStepPropertiesPage(BasePage):
     def set_uncheck_allow_order_column(self):
         get_checkbox(self.base_xpath, self.page, label=Helper.data_locale.ALLOW_ORDER_COLUMN).set_uncheck()
 
-    def set_min_columns(self, min_columns: str):
+    def set_min_columns(self, min_columns: int):
         # get_numeric_stepper(self.base_xpath, self.page,supplement_base_xpath="[.. /.. / descendant::label[contains("
         #                                                                      "text(), '{0}')]]".
         #                     format(Helper.data_locale.MINIMUM_COLUMNS)).set_value(min_columns)
         get_numeric_stepper(self.base_xpath, self.page, parent_label= Helper.data_locale.MINIMUM_COLUMNS).set_value(min_columns)
 
-    def set_max_columns(self, max_columns: str):
+    def set_max_columns(self, max_columns: int):
         # get_numeric_stepper(self.base_xpath, self.page,
         #                     supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MAXIMUM_COLUMNS)).set_value(max_columns)
@@ -316,13 +316,13 @@ class CustomStepPropertiesPage(BasePage):
         # get_textarea(self.base_xpath,self.page,textarea_label=Helper.data_locale.PLACEHOlDER_TEXT).fill_text(text)
         get_textarea(self.base_xpath, self.page, parent_label=Helper.data_locale.PLACEHOlDER_TEXT).fill_text(text)
 
-    def set_minimum_number_of_values(self,min_number:str):
+    def set_minimum_number_of_values(self,min_number:int):
         # get_numeric_stepper(self.base_xpath,self.page,supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MININUM_NUMBER_OF_VALUES)).set_value(min_number)
         get_numeric_stepper(self.base_xpath, self.page,
                             parent_label=Helper.data_locale.MININUM_NUMBER_OF_VALUES).set_value(min_number)
 
-    def set_maximum_number_of_values(self,max_number:str):
+    def set_maximum_number_of_values(self,max_number:int):
         # get_numeric_stepper(self.base_xpath,self.page,supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MAXINUM_NUMBER_OF_VALUES)).set_value(max_number)
         get_numeric_stepper(self.base_xpath, self.page,

@@ -366,3 +366,12 @@ class DetailsPane(BasePage):
         self.set_check_and_uncheck_for_listbox(parent_label=parent_label, check_column_name_list=check_column_name_list,
                                                uncheck_column_name_list=uncheck_column_name_list)
         self._click_move_down_column_button(parent_label)
+
+    def set_value_for_numeric_stepper(self, parent_label:str, value:int):
+        get_numeric_stepper(self.base_xpath,self.page,parent_label=parent_label).set_value(value)
+
+    def click_increment_value_for_numeric_stepper(self, parent_label:str, times:int):
+        get_numeric_stepper(self.base_xpath, self.page, parent_label=parent_label).click_increment_value(times)
+
+    def click_decrement_value_for_numeric_stepper(self, parent_label:str, times:int):
+        get_numeric_stepper(self.base_xpath, self.page, parent_label=parent_label).click_decrement_value(times)
