@@ -2005,7 +2005,6 @@ def test_46_lev1_capability_analysis(page, init):
     table_pane.set_table("BASEBALL'中文测试")
     table_pane.refresh_table()
 
-
     # Add Capability Analysis node
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
                  Helper.data_locale.STEP_CAPABILITY_ANALYSIS]
@@ -2029,14 +2028,61 @@ def test_46_lev1_capability_analysis(page, init):
     capability_analysis.set_upper_limit_to("3.55")
 
     capability_analysis.set_classification_variable("Team'中文")
-    capability_analysis.set_classification_variable("League'中")
+    capability_analysis.set_group_analysis_by("League'中")
+
+    capability_analysis.set_histogram()
+    capability_analysis.set_check_option_for_histogram_distribution("Beta")
+    capability_analysis.set_check_option_for_histogram_distribution("Gamma")
+    capability_analysis.set_check_option_for_histogram_distribution("指数")
+    capability_analysis.set_include_inset_table()
 
     # Run the flow
     flow.run(True)
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
-    time.sleep(10)
+    # time.sleep(10)
     flow.screenshot_self("results")
 
 
+def test_47_lev0_transitive_closure(page, init):
+    """
+    Level 0 Scenarios (for Transitive Closure)
+    """
+
+    # Create a sas program and run
+    sas_program_code = """
+data LinkSetInTC;
+    input from $ to $ @@;
+    datalines;
+B C  B D  C B  D A  D C
+;
+    """
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.run(True)
+
+    # Create a flow and add table node
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("WORK")
+    table_pane.set_table("LINKSETINTC")
+    table_pane.refresh_table()
+
+    # Add Transitive Closure node
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_TRANSITIVE_CLOSURE]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
+    flow.link_two_nodes_in_flow("LINKSETINTC", Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
+
+    # Set process variable

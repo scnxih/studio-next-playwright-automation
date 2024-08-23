@@ -906,6 +906,11 @@ class DataZH(Data):
     UPPER_LIMIT = "上限"
     SUBMITTED_CODE_AND_RESULTS = "提交的代码和结果"
     CLASSIFICATION_VARIABLE = "分类变量"
+    PLOTS = "图"
+    HISTOGRAM = "直方图"
+    HISTOGRAM_DISTRIBUTIONS = "直方图分布"
+    INCLUDE_INSET_TABLE = "包括内插表"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
