@@ -1,9 +1,7 @@
-import time
-
-from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import CentralityMetricsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
+    CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies import OneWayFrequencies
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.stack_columns_pane import StackColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies_pane import OneWayFrequencies
 
@@ -11,20 +9,17 @@ from src.conftest import *
 from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
-# def test_24_window_shade(page, init):
-#     query = QueryPage(page)
-#     query.click_add_table()
 
 def test_01_custom_step(page, init):
-    custom_step_page:CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step_page: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step_page.apply_main_layout_standard()
     custom_step_page.apply_main_layout_horizontal()
     custom_step_page.apply_main_layout_vertical()
 
 
-def test_02_create_dialog_and_accordion(page,init):
-    dialog = get_dialog_page(page,DialogType.open_dialog)
-    dialog = get_dialog_page(page,DialogType.save_as_dialog)
+def test_02_create_dialog_and_accordion(page, init):
+    dialog = get_dialog_page(page, DialogType.open_dialog)
+    dialog = get_dialog_page(page, DialogType.save_as_dialog)
     dialog = get_dialog_page(page, DialogType.search_dialog)
     dialog = get_dialog_page(page, DialogType.about_dialog)
     dialog = get_dialog_page(page, DialogType.settings_dialog)
@@ -39,7 +34,7 @@ def test_02_create_dialog_and_accordion(page,init):
     dialog = get_dialog_page(page, DialogType.add_profile_dialog)
     dialog = get_dialog_page(page, DialogType.custom_code_dialog)
 
-    pane = get_accordion_page(page,AccordionType.open_item)
+    pane = get_accordion_page(page, AccordionType.open_item)
     pane = get_accordion_page(page, AccordionType.sas_server)
     pane = get_accordion_page(page, AccordionType.sas_content)
     pane = get_accordion_page(page, AccordionType.steps)
@@ -50,11 +45,11 @@ def test_02_create_dialog_and_accordion(page,init):
     pane = get_accordion_page(page, AccordionType.file_references)
 
 
-def test_03_mouse_down_move_up(page,init):
-    editor:SASProgramPage = PageHelper.new_sas_program(page)
+def test_03_mouse_down_move_up(page, init):
+    editor: SASProgramPage = PageHelper.new_sas_program(page)
     p: Page = page
 
-    str ="""data cars;
+    str = """data cars;
 set sashelp.cars;
 run;   
 /*choose region start*/
@@ -76,29 +71,32 @@ run;
     editor.editor.type_into_text_area(str)
 
     # editor.run(True)
-    start = p.locator("//textarea[@aria-label='编辑器内容, 按 Alt+F1 查看辅助功能选项。']/../descendant::div[@class='view-lines monaco-mouse-cursor-text']/descendant::span[contains(text(),'start')]").bounding_box()
+    start = p.locator(
+        "//textarea[@aria-label='编辑器内容, 按 Alt+F1 查看辅助功能选项。']/../descendant::div[@class='view-lines monaco-mouse-cursor-text']/descendant::span[contains(text(),'start')]").bounding_box()
     start_pos_x = start["x"]
     start_pos_y = start["y"]
-    end = p.locator("//textarea[@aria-label='编辑器内容, 按 Alt+F1 查看辅助功能选项。']/../descendant::div[@class='view-lines monaco-mouse-cursor-text']/descendant::span[contains(text(),'end')]").bounding_box()
-    end_pos_x = end["x"]+end["width"]
-    end_pos_y = end["y"]+end["height"]
+    end = p.locator(
+        "//textarea[@aria-label='编辑器内容, 按 Alt+F1 查看辅助功能选项。']/../descendant::div[@class='view-lines monaco-mouse-cursor-text']/descendant::span[contains(text(),'end')]").bounding_box()
+    end_pos_x = end["x"] + end["width"]
+    end_pos_y = end["y"] + end["height"]
 
-    p.mouse.move(start_pos_x,start_pos_y)
+    p.mouse.move(start_pos_x, start_pos_y)
     time.sleep(1)
     p.mouse.down()
     time.sleep(1)
-    p.mouse.move(end_pos_x,end_pos_y)
+    p.mouse.move(end_pos_x, end_pos_y)
     time.sleep(1)
     p.mouse.up()
     time.sleep(1)
     editor.run(True)
     time.sleep(1)
 
+
 def test_04_call_SDSTest():
     Helper.call_SDSTest()
 
 
-def test_05_centrality_metrics_in_flow(page,init):
+def test_05_centrality_metrics_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
 
     flow.add_node(FlowNodeType.sas_program)
@@ -172,30 +170,34 @@ N 1
     flow.arrange_nodes()
     flow.run(True)
 
-    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,Helper.data_locale.STEP_CENTRALITY_METRICS]
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_CENTRALITY_METRICS]
     flow.add_step_from_stepspane_to_flow(step_path)
 
-    flow.link_two_nodes_in_flow("LINKSETIN",Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS,"添加输入端口", "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
+                                                 "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS,"添加输出端口","{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputNodesDSName.displayname.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+                                                 "{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputNodesDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
     table_pane.set_table("OUTPUT_NODES")
-    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS,"OUTPUT_NODES")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_NODES")
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS,"添加输出端口","{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputLinksDSName.displayname.title}")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+                                                 "{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputLinksDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
     table_pane.set_table("OUTPUT_LINKS")
-    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS,"OUTPUT_LINKS")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_LINKS")
     flow.arrange_nodes()
     flow.apply_detail_layout_vertical()
 
@@ -215,7 +217,8 @@ N 1
     centrality_metrics_pane.expand_windowshade_additional_roles()
     time.sleep(0.5)
     centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到", "community"])
-    centrality_metrics_pane.delete_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到","community"])
+    centrality_metrics_pane.delete_columns_for_group_analysis_by(
+        check_column_name_list=["from'从", "to'到", "community"])
     time.sleep(0.5)
     centrality_metrics_pane.collapse_windowshade_links()
     time.sleep(0.5)
@@ -227,8 +230,6 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.add_column_for_weight_in_nodes(column_name="weight'")
     time.sleep(1)
-
-
 
     centrality_metrics_pane.click_options_tab()
     centrality_metrics_pane.set_check_degree()
@@ -243,7 +244,8 @@ N 1
     centrality_metrics_pane.set_metric_type_for_closeness(item_index=2)
     centrality_metrics_pane.set_shortest_path_distance_between_disconnected_nodes(item_index=0)
 
-    centrality_metrics_pane.set_shortest_path_distance_between_disconnected_nodes(item_value=Helper.data_locale.USE_ZERO)
+    centrality_metrics_pane.set_shortest_path_distance_between_disconnected_nodes(
+        item_value=Helper.data_locale.USE_ZERO)
 
     centrality_metrics_pane.set_check_betweenness()
     centrality_metrics_pane.set_metric_type_for_betweenness(item_index=1)
@@ -257,8 +259,7 @@ N 1
     centrality_metrics_pane.collapse_windowshade_centrality_metrics()
     time.sleep(0.5)
 
-    centrality_metrics_pane.set_eigenvector_calculation_method(item_index = 2)
-
+    centrality_metrics_pane.set_eigenvector_calculation_method(item_index=2)
 
     centrality_metrics_pane.set_maximum_number_of_iterations_for_eigenvector_calculations(item_index=1)
     centrality_metrics_pane.set_number_of_iterations("50000")
@@ -281,7 +282,8 @@ N 1
     time.sleep(0.5)
     flow.run(True)
 
-def test_06_link_with_incorrect_ports(page,init):
+
+def test_06_link_with_incorrect_ports(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -333,12 +335,13 @@ N 7
     table_pane.set_table("NODESETIN")
 
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM,"添加输出端口")
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM,"LINKSETIN")
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETIN")
     flow.arrange_nodes()
     time.sleep(2)
 
-def test_07_link_with_incorrect_direction(page,init):
+
+def test_07_link_with_incorrect_direction(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -383,12 +386,12 @@ N 7
     table_pane.set_library("MYCAS")
     table_pane.set_table("LINKSETIN")
 
-
-    flow.link_two_nodes_in_flow("LINKSETIN",Helper.data_locale.SAS_PROGRAM)
+    flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.SAS_PROGRAM)
     flow.arrange_nodes()
     time.sleep(2)
 
-def test_08_link_nodes_with_multiple_ports(page,init):
+
+def test_08_link_nodes_with_multiple_ports(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
@@ -459,7 +462,7 @@ N 7
     table.set_table("f")
 
     flow.arrange_nodes()
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM,"aa")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "aa")
 
     flow.arrange_nodes()
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
@@ -481,7 +484,8 @@ N 7
 
     time.sleep(3)
 
-def test_09_duplicate_checkbox(page,init):
+
+def test_09_duplicate_checkbox(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
                  Helper.data_locale.STEP_ONE_WAY_FREQUENCIES]
@@ -506,30 +510,13 @@ def test_09_duplicate_checkbox(page,init):
     pane.set_uncheck_for_asymptotic_test_chi_square_goodness_of_fit()
     time.sleep(3)
 
-def test_10_numeric_stepper(page,init):
+
+def test_10_numeric_stepper(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
                  Helper.data_locale.STEP_STACK_COLUMNS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STACK_COLUMNS)
-    pane =  StackColumnsPane(page)
+    pane = StackColumnsPane(page)
     time.sleep(1)
     pane.set_number_of_stacked_cariables_to_create(4)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
