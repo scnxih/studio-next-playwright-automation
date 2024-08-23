@@ -37,7 +37,7 @@ def test_01_custom_step(page, init):
     custom_step.insert_control(DesignerControlType.input_table)
     properties.set_label("输入中文表")
     properties.set_uncheck_required()
-    properties.set_indent("1")
+    properties.set_indent(1)
 
 
 def test_02_one_way_frequencies_in_flow_level0(page, init):

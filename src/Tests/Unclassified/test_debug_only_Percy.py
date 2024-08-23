@@ -16,7 +16,7 @@ def test_01_custom_step_columnselector(page, init):
 
     custom_step.insert_control(DesignerControlType.input_table)
     custom_step.select_control(DesignerControlType.input_table, 1)
-    properties.set_indent("1")
+    properties.set_indent(1)
     properties.set_label("Select the source table:")
     properties.set_default_library("SASHELP")
     properties.set_default_table("CLASS")
