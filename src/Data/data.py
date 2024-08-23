@@ -719,6 +719,17 @@ class Data:
     LAMBDA = 'Lambda'
     PROPORTION_OF_PAIRS = 'Proportion of pairs'
     PROPORTION_OF_DATA = 'Proportion of data'
+    REPLACE_MISSING_VALUES_WITH = 'Replace missing values with'
+    CUSTOM_VALUE = 'Custom value'
+    DISPLAY_LOCATION_AND_SCALE_MEASURES = 'Display location and scale measures'
+    VARIABLES_TO_INCLUDE = 'Variables to include'
+    INCLUDE_ORIGINAL_AND_STANDARDIZED_VARIABLES = 'Include original and standardized variables'
+    PREFIX_FOR_STANDARDIZED_VARIABLES = 'Prefix for standardized variables'
+    PREFIX_FOR_ORIGINAL_VARIABLES = 'Prefix for original variables'
+    SPECIFY_DATA_TO_SHOW = 'Specify data to show'
+    INTERVAL_INPUTS = 'Interval inputs'
+    NORMINAL_INPUTS = 'Nominal inputs'
+    WEIGHT_VARIABLE = 'Weight variable'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -738,9 +749,9 @@ class Data:
     MEASURE = "Measure"
     LINES = "Lines"
     SHOW_DATA_LABELS = "Show data labels"
-    SHOW_LINE_LABEL = "Show line label"
+    SHOW_LINE_LABEL = "Show line label (does not apply if a subcategory is assigned)"
     LABEL = "Label"
-    SET_COLOR = "Set color"
+    SET_COLOR = "Set color (does not apply if a subcategory is assigned)"
     LINE_STYLE = "Line style"
     URL_VARIABLE = "URL variable"
     X_AXIS = "X Axis"
@@ -753,11 +764,25 @@ class Data:
     REFERENCE_VALUE = "Reference value"
     LINE_OFFSET = "Line offset"
     SPECIFY_MINIMUM_VALUE = "Specify minimum value"
-    SPECIFY_MAXIMUM_VALUE = "Specify minimum value"
+    SPECIFY_MAXIMUM_VALUE = "Specify maximum value"
     SHOW_GRID_LINES = "Show grid lines"
     USE_LOGARITHMIC_SCALE = "Use logarithmic scale"
     BASE_VALUE = "Base value"
     CATEGORY_WITH_COLON = "Category:"
+    SUBCATEGORY_WITH_COLON = "Subcategory:"
+    DISPLAY_SUBCATEGORY_LEGEND = "Display subcategory legend"
+    LEGEND_LOCATION = "Legend location"
+    COLUMN = "Column"
+    ERROR_BARS = "Error bars"
+    SPECIFY_A_STATISTIC_MULTIPLIER = "Specify a statistic multiplier"
+    MULTIPLIER = "Multiplier"
+    NUMBER_OF_COINS = "Number of coins"
+    NUMBER_OF_TOSSES = "Number of tosses"
+    SHOW_GRAPH_TABLE = "Show graph table"
+    GRAPH_OPTIONS = "Graph Options"
+    GRID_LINES = "Grid lines"
+    GRADIENT_FILL = "Gradient fill"
+    DATA_SKIN = "Data skin"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -932,8 +957,14 @@ class Data:
     FONT_STYLE="Font style"
     FONT_WEIGHT="Font weight"
     LABEL_POSITION="Label position"
+    BUBBLES="Bubbles"
     SET_BUBBLES_COLOR="Set color"
     #TRANSPARENCY_PERCENT="Transparency"
-    UNITS="Units"
+    #UNITS="Units"
+    COLUMN_TO_SPLIT="Column to split"
+    FORMATTED_IDENTIFIER_VALUES = "Formatted identifier values"
+    LABELS_FOR_NEW_COLUMNS="Labels for new columns"
+    USE_COLUMN_NAME_PREFIX="Use column name prefix"
+    PREFIX="Prefix"
 
     """Added by Percy end"""

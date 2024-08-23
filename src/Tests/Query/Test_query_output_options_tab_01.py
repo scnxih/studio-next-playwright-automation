@@ -61,7 +61,7 @@ def test_04_output_options(page, init):
     output_options = OutputOptions(page)
     output_options.check_checkbox_outobs()
     time.sleep(1)
-    output_options.input_numstepper_outobs("3")
+    output_options.input_numstepper_outobs(3)
     time.sleep(1)
     output_options.decrease_numstepper_outobs(times=4)
     time.sleep(2)
