@@ -17,11 +17,47 @@ class LineChartPane(BasicStepPane):
         self.add_column_exact_label(parent_label=Helper.data_locale.CATEGORY_WITH_COLON, column_name=column_name)
 
     def add_column_for_subcategory(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.SUBCATEGORY, column_name=column_name)
+        self.add_column_exact_label(parent_label=Helper.data_locale.SUBCATEGORY_WITH_COLON, column_name=column_name)
+
+    def set_display_subcategory_legend(self, item_index=None, item_value=None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.DISPLAY_SUBCATEGORY_LEGEND,
+                                        item_index=item_index, item_value=item_value)
+
+    def set_legend_location(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.LEGEND_LOCATION, item_index=item_index,
+                                     item_value=item_value)
 
     def set_measure(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.MEASURE, item_index=item_index,
                                      item_value=item_value)
+
+    def add_column_for_column(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.COLUMN, column_name=column_name)
+
+    def set_statistics(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.STATISTICS, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_error_bars(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.ERROR_BARS, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_type(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.TYPE, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_confidence_level(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.CONFIDENCE_LEVEL, item_index=item_index,
+                                     item_value=item_value)
+
+    def set_check_specify_statistic_multiplier(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SPECIFY_A_STATISTIC_MULTIPLIER)
+
+    def set_uncheck_specify_statistic_multiplier(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SPECIFY_A_STATISTIC_MULTIPLIER)
+
+    def set_multiplier(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.MULTIPLIER, input_text=input_text)
 
     def expand_windowshade_additional_roles(self):
         self.expand_windowshade(parent_label=Helper.data_locale.ADDITIONAL_ROLES)
@@ -50,13 +86,19 @@ class LineChartPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_DATA_LABELS)
 
     def set_check_show_line_label(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.SHOW_LINE_LABEL_DOES_NOT_APPLY)
+        self.set_check_for_checkbox(label=Helper.data_locale.SHOW_LINE_LABEL)
 
     def set_uncheck_show_line_label(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_LINE_LABEL_DOES_NOT_APPLY)
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_LINE_LABEL)
 
     def set_label(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
+
+    def set_check_set_color(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_COLOR)
+
+    def set_uncheck_set_color(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SET_COLOR)
 
     def set_color_transparency(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.COLOR_TRANSPARENCY, item_index=item_index,
@@ -67,7 +109,7 @@ class LineChartPane(BasicStepPane):
                                      item_value=item_value)
 
     def add_column_for_url_variable(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.URL, column_name=column_name)
+        self.add_column(parent_label=Helper.data_locale.URL_VARIABLE, column_name=column_name)
 
     def expand_windowshade_x_axis(self):
         self.expand_windowshade(parent_label=Helper.data_locale.X_AXIS)
@@ -87,9 +129,13 @@ class LineChartPane(BasicStepPane):
     def set_uncheck_show_tick_values_in_data_order(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_TICK_VALUES_IN_DATA_ORDER)
 
-    def set_display_label(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_STYLE, item_index=item_index,
+    def set_display_label_x(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
+                                     section_label=Helper.data_locale.X_AXIS, item_index=item_index,
                                      item_value=item_value)
+
+    def set_label_x(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
 
     def set_check_rotate_values_in_case_of_tick_collisions(self):
         self.set_check_for_checkbox(label=Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS)
