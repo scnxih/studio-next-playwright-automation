@@ -99,3 +99,54 @@ class CapabilityAnalysisPane(BasicStepPane):
         self.screenshot_self("set_group_analysis_by")
 
         self.collapse_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
+
+    def set_histogram(self):
+        """
+        Check Plots checkbox in Options tab page
+        """
+        self.click_Tab(Helper.data_locale.OPTIONS)
+
+        self.expand_windowshade(Helper.data_locale.PLOTS)
+
+        self.set_check_for_checkbox(label=Helper.data_locale.HISTOGRAM)
+
+        self.screenshot_self("set_histogram")
+
+        self.collapse_windowshade(Helper.data_locale.PLOTS)
+
+    def set_check_option_for_histogram_distribution(self, option: str,):
+        """
+        Check Plots checkbox in Options tab page
+        Check Beta for Histogram
+        """
+        self.click_Tab(Helper.data_locale.OPTIONS)
+
+        self.expand_windowshade(Helper.data_locale.PLOTS)
+
+        self.set_check_for_checkbox(label=Helper.data_locale.HISTOGRAM)
+
+        # self.set_check_for_checkbox(label="Beta")
+        self.set_check_and_uncheck_for_listbox(parent_label=Helper.data_locale.HISTOGRAM_DISTRIBUTIONS)
+        
+        # self.locate_xpath("//div[@role='gridcell'][.//span[text()='" + option +"']]")
+        self.click(self.locate_xpath("//div[@role='gridcell'][.//span[text()='" + option +"']]"))
+
+        self.screenshot_self("set_beta_for_histogram")
+
+        self.collapse_windowshade(Helper.data_locale.PLOTS)
+
+    def set_include_inset_table(self):
+
+        """
+        Check Plots checkbox in Options tab page
+        Check Beta for Histogram
+        """
+        self.click_Tab(Helper.data_locale.OPTIONS)
+
+        self.expand_windowshade(Helper.data_locale.PLOTS)
+
+        self.set_check_for_checkbox(label=Helper.data_locale.INCLUDE_INSET_TABLE)
+
+        self.screenshot_self("set_include_inset_table")
+
+        self.collapse_windowshade(Helper.data_locale.PLOTS)
