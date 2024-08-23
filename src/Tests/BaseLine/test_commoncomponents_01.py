@@ -130,7 +130,7 @@ def test_05_numeric_stepper(page, init):
             ns1.click_increment_value()
             time.sleep(0.2)
         value = ns1.get_value()
-        Helper.logger.debug("current value=" + value)
+        Helper.logger.debug("current value=" + str(value))
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
         alert = Alert(page, "退出设置")
         time.sleep(1)

@@ -25,7 +25,7 @@ class NumericStepper(CommonComponent):
         return self.locate_xpath(
             "//input[contains(@class, 'sas_components-Input-Input_input')]")
 
-    def click_decrement_value(self, times=None):
+    def click_decrement_value(self, times:int=None):
         """
         Description: click decrement button to increase value of number stepper.
         :param times: int value, great than 0, optional. If not set this param, click decrement button once.
@@ -50,7 +50,7 @@ class NumericStepper(CommonComponent):
                     Helper.logger.debug("the decrement_value button is disabled, so failed to click it")
                     return False
 
-    def click_increment_value(self, times=None):
+    def click_increment_value(self, times:int =None):
         """
         Description: click increment button to increase value of number stepper.
         :param times: int value, great than 0, optional. If not set this param, click increment button once.
@@ -75,16 +75,17 @@ class NumericStepper(CommonComponent):
                     Helper.logger.debug("the decrement_value button is disabled, so failed to click it")
                     return False
 
-    def get_value(self):
+    def get_value(self)->int:
         self.scroll_if_needed(self.base_locator)
-        return self.get_attribute(self.input,"value")
+        value = self.get_attribute(self.input, "value")
+        return int(value)
 
-    def set_value(self, input_text:str):
+    def set_value(self, value:int):
         self.scroll_if_needed(self.base_locator)
         if self.is_read_only(self.input):
             Helper.logger.debug("input text is read only, so cannot input text")
             return
-        self.fill(self.input, input_text)
+        self.fill(self.input, str(value))
 
     def clear_value(self):
         self.scroll_if_needed(self.base_locator)
