@@ -727,6 +727,9 @@ class Data:
     PREFIX_FOR_STANDARDIZED_VARIABLES = 'Prefix for standardized variables'
     PREFIX_FOR_ORIGINAL_VARIABLES = 'Prefix for original variables'
     SPECIFY_DATA_TO_SHOW = 'Specify data to show'
+    INTERVAL_INPUTS = 'Interval inputs'
+    NORMINAL_INPUTS = 'Nominal inputs'
+    WEIGHT_VARIABLE = 'Weight variable'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -954,8 +957,14 @@ class Data:
     FONT_STYLE="Font style"
     FONT_WEIGHT="Font weight"
     LABEL_POSITION="Label position"
+    BUBBLES="Bubbles"
     SET_BUBBLES_COLOR="Set color"
     #TRANSPARENCY_PERCENT="Transparency"
-    UNITS="Units"
+    #UNITS="Units"
+    COLUMN_TO_SPLIT="Column to split"
+    FORMATTED_IDENTIFIER_VALUES = "Formatted identifier values"
+    LABELS_FOR_NEW_COLUMNS="Labels for new columns"
+    USE_COLUMN_NAME_PREFIX="Use column name prefix"
+    PREFIX="Prefix"
 
     """Added by Percy end"""

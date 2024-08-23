@@ -718,6 +718,9 @@ class DataZH(Data):
     PREFIX_FOR_STANDARDIZED_VARIABLES = '标准化变量的前缀'
     PREFIX_FOR_ORIGINAL_VARIABLES = '原始变量的前缀'
     SPECIFY_DATA_TO_SHOW = '指定要显示的数据'
+    INTERVAL_INPUTS = '区间型输入'
+    NORMINAL_INPUTS = '名义型输入'
+    WEIGHT_VARIABLE = '权重变量'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -950,8 +953,13 @@ class DataZH(Data):
     FONT_STYLE="字形"
     FONT_WEIGHT="字体粗细"
     LABEL_POSITION="标签位置"
+    BUBBLES="气泡图"
     SET_BUBBLES_COLOR="设置颜色"
     #TRANSPARENCY_PERCENT = "透明度"
-    #UNITS = "单位"
+    COLUMN_TO_SPLIT = "要拆分的列"
+    FORMATTED_IDENTIFIER_VALUES="格式化标识符值"
+    LABELS_FOR_NEW_COLUMNS="新列的标签"
+    USE_COLUMN_NAME_PREFIX = "使用列名前缀"
+    PREFIX="前缀"
 
     """Added by Percy end"""

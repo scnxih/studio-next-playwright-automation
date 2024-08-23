@@ -1,7 +1,8 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.bubble_map_pane import BubbleMapPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.split_columns_pane import SplitColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
+from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
-
 from src.conftest import *
 from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
@@ -239,11 +240,9 @@ Carson City, 510, 54521
     flow.link_two_nodes_in_flow("nevada", Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
-    time.sleep(0.5)
-    flow.link_two_nodes_in_flow("county_pop", Helper.data_locale.STEP_BUBBLE_MAP)
-    time.sleep(0.5)
-    flow.arrange_nodes()
+    #flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
+    #flow.link_two_nodes_in_flow("county_pop", Helper.data_locale.STEP_BUBBLE_MAP)
+    #flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BUBBLE_MAP)
     bubble_map_pane=BubbleMapPane(page)
@@ -257,30 +256,33 @@ Carson City, 510, 54521
     bubble_map_pane.set_filter_map_data("density>2")
     bubble_map_pane.add_column_for_ID_variable_Map_data(column_name='ID')
 
-    bubble_map_pane.set_response_data()
-    bubble_map_pane.set_filter_map_resopnse_data("county>2")
-    bubble_map_pane.add_column_for_response_variable(column_name='county_name')
-    bubble_map_pane.add_column_for_ID_variable_Map_response_data(column_name='county')
+    #bubble_map_pane.set_response_data()
+    #bubble_map_pane.set_filter_map_resopnse_data("county>2")
+    #bubble_map_pane.add_column_for_response_variable(column_name='county_name')
+    #bubble_map_pane.add_column_for_ID_variable_Map_response_data(column_name='county')
 
     bubble_map_pane.set_Base_map(item_index=1)
 
     """Options tab"""
+    bubble_map_pane.click_options_tab()
     bubble_map_pane.expand_windowshade_Data_labels()
-    bubble_map_pane.add_column_for_bubble_label()
+    bubble_map_pane.add_column_for_bubble_label(column_name="city")
 
     bubble_map_pane.expand_windowshade_label_options()
     bubble_map_pane.set_font_color()
     bubble_map_pane.set_font_family(item_index=1)
     bubble_map_pane.set_font_style(item_index=1)
     bubble_map_pane.set_font_weight(item_index=1)
-    bubble_map_pane.set_label_position(item_index=1)
+    bubble_map_pane.set_label_position(item_index=2)
 
-    bubble_map_pane.set_bubbles_color()
+    bubble_map_pane.expand_windowshade_bubbles()
+    #bubble_map_pane.set_bubbles_color()
+    bubble_map_pane.expand_windowshade_plot()
     bubble_map_pane.set_number_of_transparency("20")
 
     bubble_map_pane.expand_windowshade_title_and_footnote()
-    bubble_map_pane.set_title("This is title'\"")
-    bubble_map_pane.set_footnote("This is footnote'\"")
+    bubble_map_pane.set_title("This is title")
+    bubble_map_pane.set_footnote("This is footnote")
 
     bubble_map_pane.expand_windowshade_graph_size()
     bubble_map_pane.set_units(item_index=1)
@@ -288,7 +290,7 @@ Carson City, 510, 54521
     flow.run(True)
 
 def test_Split_Columns_level0(page, init):
-    Pagehelper.new_sas_program(page)
+    PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
     editor.run(True)
@@ -299,4 +301,26 @@ def test_Split_Columns_level0(page, init):
     table_pane = TablePane(page)
     table_pane.set_library("AUTOLIB")
     table_pane.set_table("BASEBALL'中文测试")
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_SPLIT_COLUMNS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SPLIT_COLUMNS)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SPLIT_COLUMNS)
+    Split_Columns_pane = SplitColumnsPane(page)
+    Split_Columns_pane.set_filter_input_data("'nAtBat''中'n> 100")
+    Split_Columns_pane.add_column_for_Column_to_split(column_name="Team'中文")
+    Split_Columns_pane.add_column_for_Formatted_identifier_values(column_name="nRuns'中")
+    Split_Columns_pane.add_column_for_Labels_for_new_columns(column_name="nRBI'中")
+    Split_Columns_pane.expand_windowshade_additional_roles()
+    Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "nAtBat'中"])
+
+    Split_Columns_pane.click_output_tab()
+    Split_Columns_pane.set_check_for_replace_existing_output_table()
+    Split_Columns_pane.set_check_for_use_column_name_prefix()
+    Split_Columns_pane.set_text_for_prefix("行'列")
+    Split_Columns_pane.set_specify_data_to_show(item_index=1)
+
+    flow.run(True)
+
 
