@@ -2,7 +2,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.coin_toss_simulation import CoinTossSimulationPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.coin_toss_simulation_pane import CoinTossSimulationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
 
 from src.conftest import *
