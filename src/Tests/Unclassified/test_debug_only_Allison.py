@@ -3,11 +3,11 @@ import time
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.PrepareAndExploreData.standardize_data import StandardizeData
-from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.permutations import Permutations
+from src.Pages.StudioNext.Center.Flow.DetailsPane.PrepareAndExploreData.standardize_data_pane import StandardizeData
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.permutations_pane import Permutations
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import AccordionType, TopMenuItem, DesignerControlType, FlowNodeType
-from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies import OneWayFrequencies
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies_pane import OneWayFrequencies
 from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage

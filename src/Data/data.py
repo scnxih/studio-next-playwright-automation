@@ -727,6 +727,9 @@ class Data:
     PREFIX_FOR_STANDARDIZED_VARIABLES = 'Prefix for standardized variables'
     PREFIX_FOR_ORIGINAL_VARIABLES = 'Prefix for original variables'
     SPECIFY_DATA_TO_SHOW = 'Specify data to show'
+    INTERVAL_INPUTS = 'Interval inputs'
+    NORMINAL_INPUTS = 'Nominal inputs'
+    WEIGHT_VARIABLE = 'Weight variable'
     """Added by Allison end"""
 
     """Added by Dommy start"""

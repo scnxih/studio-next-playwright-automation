@@ -718,6 +718,9 @@ class DataZH(Data):
     PREFIX_FOR_STANDARDIZED_VARIABLES = '标准化变量的前缀'
     PREFIX_FOR_ORIGINAL_VARIABLES = '原始变量的前缀'
     SPECIFY_DATA_TO_SHOW = '指定要显示的数据'
+    INTERVAL_INPUTS = '区间型输入'
+    NORMINAL_INPUTS = '名义型输入'
+    WEIGHT_VARIABLE = '权重变量'
     """Added by Allison end"""
 
     """Added by Dommy start"""
