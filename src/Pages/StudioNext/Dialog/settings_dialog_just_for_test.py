@@ -27,7 +27,8 @@ class SettingsDialogTest(Dialog):
         return Text(container_base_xpath=self.base_xpath, page=self.page, data_test_id=data_test_id)
 
     def combobox(self, data_test_id="", items_count=20):
-        return Combobox(container_base_xpath=self.base_xpath, page=self.page, data_test_id=data_test_id, items_count=items_count)
+        return Combobox(container_base_xpath=self.base_xpath, page=self.page, data_test_id=data_test_id,
+                        items_count=items_count)
 
     def checkbox(self, label):
         return Checkbox(self.base_xpath, self.page, label=label)
@@ -71,7 +72,11 @@ class SettingsDialogTest(Dialog):
         self.text(text_test_id).clear_text()
 
     def set_recent_items_count(self, count: str):
-        self.fill_text("recentItems-input-input", count)
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Aug.22nd, 2024
+        Helper.logger.debug("set_recent_items_count in settings dialog was disabled.")
+        # self.fill_text("recentItems-input-input", count)
+        # Modified by Jacky(ID: jawang) on Aug.22nd, 2024 >>>
 
     def set_size_value(self, count: str):
         self.fill_text("sizeValue-input-input", count)
