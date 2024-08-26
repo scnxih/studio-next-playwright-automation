@@ -2,6 +2,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.cluster_variables_pane import ClusterVariablesPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.coin_toss_simulation_pane import CoinTossSimulationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.poker_hand_probability_pane import PokerHandProbabilityPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
@@ -324,7 +325,8 @@ def test_09_coin_toss_simulation_in_flow_l1(page, init):
 
 def test_10_poker_hand_probablity_in_flow_l0(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
@@ -355,4 +357,36 @@ def test_10_poker_hand_probablity_in_flow_l0(page, init):
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_POKER_HAND_PROBABILITY, "一手牌输出'data")
     flow.arrange_nodes()
+    flow.run(True)
+
+
+def test_11_cluster_variables_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;    
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    cluster_variables_pane = ClusterVariablesPane(page)
+    cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
     flow.run(True)
