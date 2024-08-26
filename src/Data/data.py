@@ -921,6 +921,12 @@ class Data:
     UPPER_LIMIT = "Upper limit"
     SUBMITTED_CODE_AND_RESULTS = "Submitted Code and Results"
     CLASSIFICATION_VARIABLE = "Classification variable"
+    PLOTS = "Plots"
+    HISTOGRAM = "Histogram"
+    HISTOGRAM_DISTRIBUTIONS = "Histogram distributions"
+    INCLUDE_INSET_TABLE = "Include inset table"
+
+    SELECT_A_SERVER_FOR_THIS_STEP = "Select a server for this step"
     """Added by Jacky end"""
 
     """Added by Percy start"""
