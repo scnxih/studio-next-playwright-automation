@@ -34,5 +34,5 @@ class SplitColumnsPane(BasicStepPane):
         self.set_text_for_text_control(parent_label=Helper.data_locale.PREFIX, input_text=input_text)
     def set_specify_data_to_show(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.SPECIFY_DATA_TO_SHOW,
-                                     section_label=None, item_index=item_index,
+                                     preceding_label=None, item_index=item_index,
                                      item_value=item_value)
