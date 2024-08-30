@@ -131,7 +131,7 @@ class LineChartPane(BasicStepPane):
 
     def set_display_label_x(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
-                                     section_label=Helper.data_locale.X_AXIS, item_index=item_index,
+                                     preceding_label=Helper.data_locale.X_AXIS, item_index=item_index,
                                      item_value=item_value)
 
     def set_label_x(self, input_text: str):

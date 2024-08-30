@@ -292,17 +292,17 @@ class DetailsPane(BasePage):
         """
         get_checkbox(self.base_xpath, self.page, label=label).set_uncheck()
 
-    def set_option_for_combobox(self, parent_label: str, section_label: str = None, item_index: int = None,
+    def set_option_for_combobox(self, parent_label: str, preceding_label: str = None, item_index: int = None,
                                 item_value: str = None):
         """
         Description: set option for combobox (dropdown list).
         @parent_label: the label of the combobox.
-        @section_label: the parameter is used only when there are more than one combobox which have same parent label.
+        @preceding_label: the parameter is used only when there are more than one combobox which have same parent label.
         @item_index: the index of the selected option of the combobox, starting from 0.
         @item_value: the value of the selected option of the combobox.
         """
         combobox = None
-        if section_label == None:
+        if preceding_label == None:
 
             combobox = get_combobox(self.base_xpath, self.page,
                                     supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]]".format(
@@ -311,7 +311,7 @@ class DetailsPane(BasePage):
         else:
             combobox = get_combobox(self.base_xpath, self.page,
                                     supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
-                                        parent_label, section_label))
+                                        parent_label, preceding_label))
 
         if item_index != None:
             combobox.select_item_by_index(item_index)

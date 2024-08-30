@@ -940,6 +940,8 @@ class DataZH(Data):
     HISTOGRAM_DISTRIBUTIONS = "直方图分布"
     INCLUDE_INSET_TABLE = "包括内插表"
 
+    SELECT_A_SERVER_FOR_THIS_STEP = "为该步骤选择服务器"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

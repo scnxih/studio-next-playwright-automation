@@ -17,6 +17,7 @@ from src.Pages.StudioNext.Left.accordion_page import AccordionPage
 from src.Pages.StudioNext.Left.steps_page import StepsPage
 from src.Utilities.enums import FlowNodeType, AccordionType
 from src.Helper.helper import *
+from src.Data.data import Data
 
 
 class FlowPage(MainCenterPage):
@@ -85,6 +86,67 @@ class FlowPage(MainCenterPage):
             case FlowNodeType.file:
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.FILE)
             case FlowNodeType.branch_rows:
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Data.BRANCH_ROWS)
+            case FlowNodeType.calculate_columns:
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Data.CALCULATE_COLUMNS)
+            case FlowNodeType.sas_program:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.SAS_PROGRAM_Upper_case)
+            case FlowNodeType.execute_decisions:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.EXECUTE_DECISIONS)
+            case FlowNodeType.export:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.EXPORT)
+            case FlowNodeType.filter_rows:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.FILTER_ROWS)
+            case FlowNodeType.implement_scd:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.IMPLEMENT_SCD)
+            case FlowNodeType.import_data:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       "Import File")
+            case FlowNodeType.insert_rows:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.INSERT_ROWS)
+            case FlowNodeType.load_table:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.LOAD_TABLE)
+            case FlowNodeType.manage_columns:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.MANAGE_COLUMNS)
+            case FlowNodeType.merge_table:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.MERGE_TABLE)
+
+            case FlowNodeType.python_program:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       "Python Program")
+            case FlowNodeType.query:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.QUERY)
+            case FlowNodeType.sort:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.SORT)
+
+            case FlowNodeType.union_rows:
+                self.toolbar.click_btn_menu_by_test_id(data_testid,
+                                                       Data.UNION_ROWS)
+
+            case FlowNodeType.notes:
+                Helper.logger.debug("Flow node Note was removed.")
+                # self.toolbar.click_btn_menu_by_test_id(data_testid, Data.NOTES)
+        time.sleep(0.5)
+
+    def add_node_org(self, node_type: FlowNodeType):
+        data_testid = "flowtoolbar-addStepMenuButton-button"
+        match node_type:
+            case FlowNodeType.table:
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.TABLE)
+            case FlowNodeType.file:
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.FILE)
+            case FlowNodeType.branch_rows:
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.BRANCH_ROWS)
             case FlowNodeType.calculate_columns:
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.CALCULATE_COLUMNS)
@@ -137,6 +199,7 @@ class FlowPage(MainCenterPage):
                 self.toolbar.click_btn_menu_by_test_id(data_testid,
                                                        Helper.data_locale.NOTES)
         time.sleep(0.5)
+
     def view_collapse_all_ports(self):
         self.toolbar.click_btn_menu_by_test_id("flowtoolbar-viewMenuButton-button",
                                                Helper.data_locale.COLLAPSE_ALL_PORTS)
@@ -190,10 +253,10 @@ class FlowPage(MainCenterPage):
         link_two_nodes_in_flow(self.page, node1_name, node2_name)
 
     def open_context_menu_for_the_node_in_flow(self, node_name):
-        select_node_in_flow_canvas(self.page,node_name)
+        select_node_in_flow_canvas(self.page, node_name)
         open_context_menu_for_the_node_in_flow(self.page, node_name)
 
-    def click_context_menu_for_the_node_in_flow(self,node_name,  *menu_item_text):
+    def click_context_menu_for_the_node_in_flow(self, node_name, *menu_item_text):
         self.open_context_menu_for_the_node_in_flow(node_name)
         self.click_menu_item(*menu_item_text)
 
@@ -225,29 +288,28 @@ class FlowPage(MainCenterPage):
         validate_count_of_nodes_in_flow(self.page, expected_node_count)
 
     def validate_input_port_count_for_node_in_flow(self, node_name, expected_input_port_count):
-        validate_input_port_count_for_node_in_flow(self.page,node_name,expected_input_port_count)
+        validate_input_port_count_for_node_in_flow(self.page, node_name, expected_input_port_count)
 
     def validate_output_port_count_for_node_in_flow(self, node_name, expected_output_port_count):
-        validate_output_port_count_for_node_in_flow(self.page,node_name,expected_output_port_count)
+        validate_output_port_count_for_node_in_flow(self.page, node_name, expected_output_port_count)
 
     def validate_input_port_is_in_expanded_state_for_node_in_flow(self, node_name):
-        validate_input_port_is_in_expanded_state_for_node_in_flow(self.page,node_name)
+        validate_input_port_is_in_expanded_state_for_node_in_flow(self.page, node_name)
 
     def validate_output_port_is_in_expanded_state_for_node_in_flow(self, node_name):
-        validate_output_port_is_in_expanded_state_for_node_in_flow(self.page,node_name)
+        validate_output_port_is_in_expanded_state_for_node_in_flow(self.page, node_name)
 
     def validate_input_port_is_in_collapsed_state_for_node_in_flow(self, node_name):
-        validate_input_port_is_in_collapsed_state_for_node_in_flow(self.page,node_name)
+        validate_input_port_is_in_collapsed_state_for_node_in_flow(self.page, node_name)
 
     def validate_output_port_is_in_collapsed_state_for_node_in_flow(self, node_name):
-        validate_output_port_is_in_collapsed_state_for_node_in_flow(self.page,node_name)
+        validate_output_port_is_in_collapsed_state_for_node_in_flow(self.page, node_name)
 
     def validate_output_port_color_for_node_in_flow(self, port_number, node_name, expected_port_color):
-        validate_output_port_color_for_node_in_flow(self.page,port_number,node_name,expected_port_color)
+        validate_output_port_color_for_node_in_flow(self.page, port_number, node_name, expected_port_color)
 
-    def add_step_from_stepspane_to_flow(self,step_path:list):
+    def add_step_from_stepspane_to_flow(self, step_path: list):
         acc: AccordionPage = AccordionPage(self.page)
         acc.show_accordion(AccordionType.steps)
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
-        

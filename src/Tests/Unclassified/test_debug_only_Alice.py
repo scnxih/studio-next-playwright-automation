@@ -520,3 +520,4 @@ def test_10_numeric_stepper(page, init):
     pane = StackColumnsPane(page)
     time.sleep(1)
     pane.set_number_of_stacked_cariables_to_create(4)
+
