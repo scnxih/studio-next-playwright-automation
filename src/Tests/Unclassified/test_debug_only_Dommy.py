@@ -390,3 +390,91 @@ def test_11_cluster_variables_in_flow_l0(page, init):
     cluster_variables_pane = ClusterVariablesPane(page)
     cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
     flow.run(True)
+
+
+def test_12_cluster_variables_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;    
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    cluster_variables_pane = ClusterVariablesPane(page)
+    cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
+    cluster_variables_pane.expand_windowshade_additional_roles()
+    cluster_variables_pane.add_columns_for_variables_to_partial_out(check_column_name_list=["nHome'中", "nRuns'中"])
+    cluster_variables_pane.add_column_for_frequency_count("nRBI'中")
+    cluster_variables_pane.add_column_for_weight("YrMajor'中")
+    cluster_variables_pane.add_columns_for_group_analysis_by(check_column_name_list=["Team'中文"])
+
+    cluster_variables_pane.click_options_tab()
+    cluster_variables_pane.set_maximum_number_of_clusters(item_index=1)
+    cluster_variables_pane.set_check_maximum_second_eigenvalue()
+    cluster_variables_pane.set_eigenvalue("2")
+    flow.run(True)
+
+
+def test_13_cluster_variables_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;    
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    cluster_variables_pane = ClusterVariablesPane(page)
+    cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
+    cluster_variables_pane.expand_windowshade_additional_roles()
+    cluster_variables_pane.add_columns_for_variables_to_partial_out(check_column_name_list=["nHome'中", "nRuns'中"])
+    cluster_variables_pane.add_column_for_frequency_count("nRBI'中")
+    cluster_variables_pane.add_column_for_weight("YrMajor'中")
+    cluster_variables_pane.add_columns_for_group_analysis_by(check_column_name_list=["Team'中文"])
+
+    cluster_variables_pane.click_options_tab()
+    cluster_variables_pane.set_method(item_index=1)
+    cluster_variables_pane.set_check_minimum_proportion_of_variation()
+    cluster_variables_pane.set_proportion("0.2")
+    cluster_variables_pane.expand_windowshade_deatails()
+    cluster_variables_pane.set_analyze(item_index=1)
+    cluster_variables_pane.set_check_maximum_number_of_iterations()
+    cluster_variables_pane.set_iterations("5")
+    flow.run(True)
