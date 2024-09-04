@@ -173,3 +173,18 @@ def test_Split_Columns_level0(page, init):
     flow.run(True)
 
 def test_Maximal_Cliques_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("LinkSetIn'中文")
+    step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_MAXIMAL_CLIQUES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("LinkSetIn'中文", Helper.data_locale.STEP_MAXIMAL_CLIQUES)
+
