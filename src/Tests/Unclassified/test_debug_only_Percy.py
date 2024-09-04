@@ -154,7 +154,7 @@ def test_Split_Columns_level0(page, init):
     Split_Columns_pane.add_column_for_Formatted_identifier_values(column_name="nRuns'中")
     Split_Columns_pane.add_column_for_Labels_for_new_columns(column_name="nRBI'中")
     Split_Columns_pane.expand_windowshade_additional_roles()
-    Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "nAtBat'中"])
+    Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "CrHits'中"])
 
     Split_Columns_pane.click_output_tab()
     Split_Columns_pane.set_check_for_replace_existing_output_table()
@@ -162,6 +162,14 @@ def test_Split_Columns_level0(page, init):
     Split_Columns_pane.set_text_for_prefix("行'列")
     Split_Columns_pane.set_specify_data_to_show(item_index=1)
 
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("WORK")
+    table_pane.set_table("OUTPUT'中文测试")
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SPLIT_COLUMNS,"OUTPUT'中文测试")
+
     flow.run(True)
 
-
+def test_Maximal_Cliques_level0(page, init):
