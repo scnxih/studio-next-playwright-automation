@@ -972,5 +972,5 @@ class DataZH(Data):
     LABELS_FOR_NEW_COLUMNS="新列的标签"
     USE_COLUMN_NAME_PREFIX = "使用列名前缀"
     PREFIX="前缀"
-
+    FILTER_LINKS_DATA="过滤链接数据"
     """Added by Percy end"""

@@ -977,5 +977,6 @@ class Data:
     LABELS_FOR_NEW_COLUMNS="Labels for new columns"
     USE_COLUMN_NAME_PREFIX="Use column name prefix"
     PREFIX="Prefix"
+    FILTER_LINKS_DATA = "Filter links data"
 
     """Added by Percy end"""

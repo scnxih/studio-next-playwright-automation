@@ -23,238 +23,79 @@ def test_01_custom_step_columnselector(page, init):
 
 
 def test_Bubble_Map_in_flow_level0(page,init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    sas_program_pane = SASProgramPane(page)
-    code = """ 
-cas; 
-libname mycas cas;
-data city_loc (label='Nevada Cities'
-               keep=county city city2 lat long county_name);
-  set mapsgfk.uscity_all(where=(state=32));
-run;
-proc sort data=city_loc;
-  by city2;
-run;
-data city_pop (label='Nevada County Seat Populations');
-  length city $65 city2 $55;
-  infile datalines dlm=',';
-  input city population_city county;
-  label city            = 'County Seat'
-        city2           = 'Normalized city name'
-        population_city = 'City Population'
-        county          = 'County FIPS Code';
-  city2 = upcase(compress(city));
-cards;
-Fallon, 8458, 1
-Las Vegas, 623747, 3
-Minden, 3180, 5
-Elko, 20279, 7
-Goldfield, 443, 9
-Eureka, 487, 11
-Winnemucca, 7887, 13
-Battle Mountain, 3276, 15
-Pioche, 911, 17
-Yerington, 3064, 19
-Hawthorne, 3095, 21
-Tonopah, 2360 , 23
-Lovelock, 1878, 27
-Virginia City, 717, 29
-Reno, 241445, 31
-Ely, 4134, 33
-Carson City, 54521, 510
-;
-proc sort data=city_pop;
-  by city2;
-run;
-data &_output1;
-  merge city_pop (in=a) city_loc;
-  by city2;
-  if a;
-run;
-"""
-
-    sas_program_pane.type_into_text_area(code)
-
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
-    table_pane.set_library("MYCAS")
-    table_pane.set_table("city_pop_loc")
-    time.sleep(0.8)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("CITY_POP_LOC'中文")
 
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "city_pop_loc")
-    flow.arrange_nodes()
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,Helper.data_locale.STEP_BUBBLE_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
-    flow.link_two_nodes_in_flow("city_pop_loc",Helper.data_locale.STEP_BUBBLE_MAP)
+
+    flow.link_two_nodes_in_flow("CITY_POP_LOC'中文",Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BUBBLE_MAP)
     bubble_map_pane=BubbleMapPane(page)
-    bubble_map_pane.set_filter_input_data("population_city > 1000")
-    bubble_map_pane.add_column(Helper.data_locale.LATITUDE,'LAT',None)
-    bubble_map_pane.add_column(Helper.data_locale.LONGITUDE,'LONG',None)
-    bubble_map_pane.add_column(Helper.data_locale.BUBBLE_SIZE,'population_city',None)
-    bubble_map_pane.add_column(Helper.data_locale.GROUP, 'COUNTY_NAME', None)
+    bubble_map_pane.set_filter_input_data("population_city''中文'n > 1000")
+    bubble_map_pane.add_column(Helper.data_locale.LATITUDE,"LAT'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.LONGITUDE,"LONG'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.BUBBLE_SIZE,"population_city'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.GROUP, "COUNTY_NAME'中文", None)
 
     flow.run(True)
 def test_Bubble_Map_in_flow_level1_01(page,init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
-    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    sas_program_pane = SASProgramPane(page)
-    code = """ 
-cas; 
-libname mycas cas;
-data city_loc (label='Nevada Cities'
-               keep=county city city2 lat long county_name);
-  set mapsgfk.uscity_all(where=(state=32));
-run;
-proc sort data=city_loc;
-  by city2;
-run;
-data city_pop (label='Nevada County Seat Populations');
-  length city $65 city2 $55;
-  infile datalines dlm=',';
-  input city population_city county;
-  label city            = 'County Seat'
-        city2           = 'Normalized city name'
-        population_city = 'City Population'
-        county          = 'County FIPS Code';
-  city2 = upcase(compress(city));
-cards;
-Fallon, 8458, 1
-Las Vegas, 623747, 3
-Minden, 3180, 5
-Elko, 20279, 7
-Goldfield, 443, 9
-Eureka, 487, 11
-Winnemucca, 7887, 13
-Battle Mountain, 3276, 15
-Pioche, 911, 17
-Yerington, 3064, 19
-Hawthorne, 3095, 21
-Tonopah, 2360 , 23
-Lovelock, 1878, 27
-Virginia City, 717, 29
-Reno, 241445, 31
-Ely, 4134, 33
-Carson City, 54521, 510
-;
-proc sort data=city_pop;
-  by city2;
-run;
-data &_output1;
-  merge city_pop (in=a) city_loc;
-  by city2;
-  if a;
-run;
-
-data &_output2;
-  set mapsgfk.us_counties(where=(state=32)
-                          drop=x y
-                          rename=(long=x lat=y));
-run;
-data &_output3 (label='Nevada Counties');
-  length county_name $55;
-  infile datalines dlm=',';
-  state=32;
-  input county_name county population_county;
-  label state             = 'State FIPS Code'
-        county_name       = 'County Name'
-        county            = 'County FIPS Code'
-        population_county = '2010 Census County Population'
-        group             = 'Population range';
-  /* Add five population ranges as groups to map response data. */
-  if      population_county > 100000 then group='Greater than 100,000';
-  else if population_county > 10000  then group='10,000 - 100,000';
-  else if population_county > 5000   then group='5,000 - 10,000';
-  else if population_county > 1000   then group='1,000 - 5,000';
-  else                                    group='Less than 1,000';
-cards;
-Churchill, 1, 24877
-Clark, 3, 2069681
-Douglas, 5, 47710
-Elko, 7, 52766
-Esmeralda, 9, 783
-Eureka, 11, 1987
-Humboldt, 13, 17019
-Lander, 15, 5775
-Lincoln, 17, 5036
-Lyon, 19, 52585
-Mineral, 21, 4772
-Nye, 23, 43946
-Pershing, 27, 6753
-Storey, 29, 3987
-Washoe, 31, 446903
-White Pine, 33, 10030
-Carson City, 510, 54521
-;
-"""
-
-    sas_program_pane.type_into_text_area(code)
-
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
-    table_pane.set_library("MYCAS")
-    table_pane.set_table("city_pop_loc")
-    time.sleep(0.8)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("CITY_POP_LOC'中文")
 
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "city_pop_loc")
-    flow.arrange_nodes()
-
-    flow.add_node(FlowNodeType.table)
-    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
-    table_pane = TablePane(page)
-    table_pane.set_library("MYCAS")
-    table_pane.set_table("nevada")
-
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "nevada")
-    flow.arrange_nodes()
-
-    flow.add_node(FlowNodeType.table)
-    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
-    table_pane = TablePane(page)
-    table_pane.set_library("MYCAS")
-    table_pane.set_table("county_pop")
-
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
-
-    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "county_pop")
-    flow.arrange_nodes()
-    flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,Helper.data_locale.STEP_BUBBLE_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
 
-    flow.link_two_nodes_in_flow("city_pop_loc",Helper.data_locale.STEP_BUBBLE_MAP)
+    flow.link_two_nodes_in_flow("CITY_POP_LOC'中文",Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("NEVADA'中文")
+
     flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.bubblemap.inputports.cmMapDataset.displayname.title}")
-    flow.link_two_nodes_in_flow("nevada", Helper.data_locale.STEP_BUBBLE_MAP)
+    flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
     #flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
-    #flow.link_two_nodes_in_flow("county_pop", Helper.data_locale.STEP_BUBBLE_MAP)
+    #flow.link_two_nodes_in_flow("COUNTY_POP'中文", Helper.data_locale.STEP_BUBBLE_MAP)
     #flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BUBBLE_MAP)
     bubble_map_pane=BubbleMapPane(page)
-    bubble_map_pane.set_filter_input_data("population_city > 1000")
-    bubble_map_pane.add_column(Helper.data_locale.LATITUDE,'LAT',None)
-    bubble_map_pane.add_column(Helper.data_locale.LONGITUDE,'LONG',None)
-    bubble_map_pane.add_column(Helper.data_locale.BUBBLE_SIZE,'population_city',None)
-    bubble_map_pane.add_column(Helper.data_locale.GROUP, 'COUNTY_NAME', None)
+    bubble_map_pane.set_filter_input_data("population_city''中文'n > 1000")
+    bubble_map_pane.add_column(Helper.data_locale.LATITUDE,"LAT'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.LONGITUDE,"LONG'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.BUBBLE_SIZE,"population_city'中文",None)
+    bubble_map_pane.add_column(Helper.data_locale.GROUP, "COUNTY_NAME'中文", None)
 
     bubble_map_pane.set_choropleth_map_layer()
-    bubble_map_pane.set_filter_map_data("density>2")
-    bubble_map_pane.add_column_for_ID_variable_Map_data(column_name='ID')
+    bubble_map_pane.set_filter_map_data("'STATE''中文'n>30")
+    bubble_map_pane.add_column_for_ID_variable_Map_data(column_name="ID'中文")
 
     #bubble_map_pane.set_response_data()
     #bubble_map_pane.set_filter_map_resopnse_data("county>2")
@@ -266,7 +107,7 @@ Carson City, 510, 54521
     """Options tab"""
     bubble_map_pane.click_options_tab()
     bubble_map_pane.expand_windowshade_Data_labels()
-    bubble_map_pane.add_column_for_bubble_label(column_name="city")
+    bubble_map_pane.add_column_for_bubble_label(column_name="city'中文")
 
     bubble_map_pane.expand_windowshade_label_options()
     bubble_map_pane.set_font_color()
@@ -313,7 +154,7 @@ def test_Split_Columns_level0(page, init):
     Split_Columns_pane.add_column_for_Formatted_identifier_values(column_name="nRuns'中")
     Split_Columns_pane.add_column_for_Labels_for_new_columns(column_name="nRBI'中")
     Split_Columns_pane.expand_windowshade_additional_roles()
-    Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "nAtBat'中"])
+    Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "CrHits'中"])
 
     Split_Columns_pane.click_output_tab()
     Split_Columns_pane.set_check_for_replace_existing_output_table()
@@ -321,6 +162,14 @@ def test_Split_Columns_level0(page, init):
     Split_Columns_pane.set_text_for_prefix("行'列")
     Split_Columns_pane.set_specify_data_to_show(item_index=1)
 
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("WORK")
+    table_pane.set_table("OUTPUT'中文测试")
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SPLIT_COLUMNS,"OUTPUT'中文测试")
+
     flow.run(True)
 
-
+def test_Maximal_Cliques_level0(page, init):
