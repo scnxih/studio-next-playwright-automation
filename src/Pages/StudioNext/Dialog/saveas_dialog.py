@@ -57,8 +57,8 @@ class SaveAsDialog(Dialog):
     def save_file(self, folder_path: list, file_name: str, if_replace, if_wait_toast_disappear=True):
 
         # Since Save as does note work due to Nova 43.1, comment this save_file method temporarily.
-        # self.close_dialog()
-        # return False
+        self.close_dialog()
+        return False
         if not self.navigate_to_folder(folder_path):
             return False
         self.fill(self.input_file_name, file_name)
