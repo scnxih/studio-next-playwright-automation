@@ -1,6 +1,6 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.bubble_map_pane import BubbleMapPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.split_columns_pane import SplitColumnsPane
-from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis import MaximalCliquesPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.maximal_cliques_pane import MaximalCliquesPane
 
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
@@ -192,4 +192,21 @@ def test_Maximal_Cliques_level0(page, init):
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MAXIMAL_CLIQUES)
     Maximal_Cliques_Pane = MaximalCliquesPane(page)
-    Maximal_Cliques_Pane.set
+    Maximal_Cliques_Pane.set_select_server_for_step(item_index=0)
+    Maximal_Cliques_Pane.set_filter_link_data("'weight''中文'n <> 15")
+    Maximal_Cliques_Pane.add_column_for_from_node("from'中文")
+    Maximal_Cliques_Pane.add_column_for_to_node("to'中文")
+
+    Maximal_Cliques_Pane.click_options_tab()
+    Maximal_Cliques_Pane.set_check_maximum_number_of_cliques()
+    Maximal_Cliques_Pane.set_maximum_number_of_cliques("5")
+    Maximal_Cliques_Pane.set_select_maximum_time(item_index=1)
+    Maximal_Cliques_Pane.set_maximum_time("600")
+    Maximal_Cliques_Pane.set_log_details(item_index=1)
+    Maximal_Cliques_Pane.set_select_code_generation(item_index=0)
+
+    Maximal_Cliques_Pane.click_output_tab()
+    Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
+
+    flow.run(True)
+
