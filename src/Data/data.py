@@ -978,5 +978,9 @@ class Data:
     USE_COLUMN_NAME_PREFIX="Use column name prefix"
     PREFIX="Prefix"
     FILTER_LINKS_DATA = "Filter links data"
-
+    SPECIFY_MAXIMUM_NUMBER_OF_CLIQUES = "Specify maximum number of cliques"
+    NUMBER_OF_CLIQUES ="Number of cliques"
+    MAXIMUM_TIME_TIME = 'Maximum time'
+    TIME_IN_SECONDS ="Time in seconds"
+    SAVE_MAXIMAL_CLIQUES_DATA = "Save maximal cliques data"
     """Added by Percy end"""

@@ -973,4 +973,9 @@ class DataZH(Data):
     USE_COLUMN_NAME_PREFIX = "使用列名前缀"
     PREFIX="前缀"
     FILTER_LINKS_DATA="过滤链接数据"
+    SPECIFY_MAXIMUM_NUMBER_OF_CLIQUES = "指定最大团数"
+    NUMBER_OF_CLIQUES = "团数"
+    MAXIMUM_TIME_TIME = '最大时间'
+    TIME_IN_SECONDS ="时间（秒）"
+    SAVE_MAXIMAL_CLIQUES_DATA = "保存最大团数据"
     """Added by Percy end"""
