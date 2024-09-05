@@ -14,9 +14,13 @@ class PythonProgramPage(MainCenterPage):
         MainCenterPage.__init__(self, page)
         self.editor = EditorTextArea(self.base_xpath, page)
 
-
     def undo(self):
         self.center_toolbar_helper.undo()
+
+        # //div[@data-testid="programView-editorPane-editor"]
+        self.screenshot('//div[@data-testid="programView-editorPane-editor""]',
+                        'python_undo',
+                        user_assigned_xpath=True)
 
     def redo(self):
         self.center_toolbar_helper.redo()
