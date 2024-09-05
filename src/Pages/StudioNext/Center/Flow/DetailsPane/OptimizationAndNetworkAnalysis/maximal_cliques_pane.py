@@ -1,7 +1,7 @@
 """
 @author: Liu Jia
-@date: 2024/08/22
-@description: Define bubble map pane
+@date: 2024/09/03
+@description: Define maximal cliques pane
 """
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
