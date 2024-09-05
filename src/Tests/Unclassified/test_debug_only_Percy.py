@@ -202,7 +202,7 @@ def test_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.set_maximum_number_of_cliques("5")
     Maximal_Cliques_Pane.set_select_maximum_time(item_index=1)
     Maximal_Cliques_Pane.set_maximum_time("600")
-    Maximal_Cliques_Pane.set_log_details(item_index=1)
+    Maximal_Cliques_Pane.set_log_details(item_index=0)
     Maximal_Cliques_Pane.set_select_code_generation(item_index=0)
 
     Maximal_Cliques_Pane.click_output_tab()

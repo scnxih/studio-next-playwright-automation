@@ -37,4 +37,10 @@ class MaximalCliquesPane(BasicStepPane):
     """Methods in Output tab"""
     def set_check_save_maximal_cliques_data(self):
         self.set_check_for_checkbox(label=Helper.data_locale.SAVE_MAXIMAL_CLIQUES_DATA)
+    def set_check_replace_existing_output_table(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
+    def set_uncheck_replace_existing_output_table(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
+
+
 
