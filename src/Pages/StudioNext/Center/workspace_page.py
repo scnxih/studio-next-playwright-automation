@@ -14,11 +14,17 @@ class WorkspacePage(TextCenterPage):
     def __init__(self, page):
         TextCenterPage.__init__(self, page)
         self.editor = EditorTextArea(self.base_xpath, page)
+
     def undo(self):
         self.center_toolbar_helper.undo()
-
         time.sleep(0.5)
-
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
                         'workspace_undo',
+                        user_assigned_xpath=True)
+
+    def redo(self):
+        self.center_toolbar_helper.undo()
+        time.sleep(0.5)
+        self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
+                        'workspace_redo',
                         user_assigned_xpath=True)

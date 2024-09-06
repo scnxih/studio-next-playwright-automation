@@ -18,9 +18,14 @@ class XMLPage(TextCenterPage):
 
     def undo(self):
         self.center_toolbar_helper.undo()
-
         time.sleep(0.5)
-
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
                         'xml_undo',
+                        user_assigned_xpath=True)
+
+    def redo(self):
+        self.center_toolbar_helper.undo()
+        time.sleep(0.5)
+        self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
+                        'xml_redo',
                         user_assigned_xpath=True)
