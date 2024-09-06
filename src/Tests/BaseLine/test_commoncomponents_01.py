@@ -3,6 +3,8 @@ from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
+
+
 def test_01_toolbar(page, init):
     PageHelper.show_settings_dialog(page)
     Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
@@ -83,6 +85,7 @@ def test_03_combobox_checkbox_text_in_settings(page, init):
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
     PageHelper.reset_all_settings_dialog(page)
 
+
 def test_04_radio_group(page, init):
     top_right = TopRightToolbar(page)
     top_right.click_settings()
@@ -115,6 +118,7 @@ def test_04_radio_group(page, init):
         time.sleep(1)
     PageHelper.reset_all_settings_dialog(page)
 
+
 def test_05_numeric_stepper(page, init):
     top_right = TopRightToolbar(page)
     top_right.click_settings()
@@ -129,7 +133,7 @@ def test_05_numeric_stepper(page, init):
         for i in range(6):
             ns1.click_increment_value()
             time.sleep(0.2)
-        value = ns1.get_value()
+        # value = ns1.get_value()
         # Helper.logger.debug("current value=" + str(value))
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
         alert = Alert(page, "退出设置")
@@ -138,6 +142,7 @@ def test_05_numeric_stepper(page, init):
             alert.click_button_in_footer("继续")
         time.sleep(1)
     PageHelper.reset_all_settings_dialog(page)
+
 
 def test_06_switch_button(page, init):
     PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
