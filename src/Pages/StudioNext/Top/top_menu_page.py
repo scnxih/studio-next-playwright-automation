@@ -110,7 +110,7 @@ class TopMenuPage(BasePage):
         open_file = OpenDialog(self.page)
         open_file.open_file(folder_path, file_name)
 
-    def check_view_item_org(self, top_menu: TopMenuItem):
+    def check_view_item(self, top_menu: TopMenuItem):
         """
         Original one
         On Aug.31st 2024, it was found that zh-CN strings for menu items were missing.
@@ -178,7 +178,7 @@ class TopMenuPage(BasePage):
         # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
         time.sleep(0.3)
 
-    def check_view_item(self, top_menu: TopMenuItem):
+    def check_view_item_zh_CN(self, top_menu: TopMenuItem):
         """
         Aug.31st 2024,
         src.Pages.StudioNext.Top.top_menu_page.TopMenuPage.check_view_item
