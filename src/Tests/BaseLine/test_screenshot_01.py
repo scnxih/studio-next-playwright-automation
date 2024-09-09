@@ -16,7 +16,12 @@ from src.Helper.page_factory import *
 def test_01_screenshot_new_centerpages_more_options(page, init):
     program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
     program.click_more_options()
-    WholePage(page).screenshot_self("program")
+
+    # Always cause noises
+    # //button[@data-testid="programViewPane-toolbar-snippet"]
+    WholePage(page).screenshot_self("program",
+                                    mask=['//button[@data-testid="programViewPane-toolbar-snippet"]'],
+                                    mask_color='#000000')
     MenuPage(page).screenshot_self("program_more_options")
 
     python: PythonProgramPage = PageHelper.new_item(page, TopMenuItem.new_python_program)
@@ -172,7 +177,12 @@ def test_04_screenshot_top_menu_options(page, init):
 def test_05_screenshot_top_menu_view(page, init):
     top = TopMenuPage(page)
     top.check_view_item(TopMenuItem.view_submission_status)
-    WholePage(page).screenshot_self("submission_status")
+
+    # Mask the icon to eliminate noises
+    # //div[@class="sas_components-SearchField-SearchField_search-button-container"]
+    WholePage(page).screenshot_self("submission_status",
+                                    mask=['//div[@class="sas_components-SearchField-SearchField_search-button-container"]'],
+                                    mask_color="#000000")
 
     top.check_view_item(TopMenuItem.view_deployed_and_scheduled_jobs)
 
