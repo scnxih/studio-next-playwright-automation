@@ -165,6 +165,10 @@ def test_04_screenshot_top_menu_options(page, init):
     time.sleep(0.5)
     git.screenshot_self("git_profile")
     git.click_tab_repository()
+    # Try to eliminate diff caused by focus indicator
+    git.click_dialog_title_or_studionext_header()
+    time.sleep(1.0)
+    # //div[@data-testid="gitDialog-mgtConnection-spliter-splitterBar"]
     git.screenshot_self("git_repository")
     git.close_dialog()
 
@@ -181,7 +185,8 @@ def test_05_screenshot_top_menu_view(page, init):
     # Mask the icon to eliminate noises
     # //div[@class="sas_components-SearchField-SearchField_search-button-container"]
     WholePage(page).screenshot_self("submission_status",
-                                    mask=['//div[@class="sas_components-SearchField-SearchField_search-button-container"]'],
+                                    mask=[
+                                        '//div[@class="sas_components-SearchField-SearchField_search-button-container"]'],
                                     mask_color="#000000")
 
     top.check_view_item(TopMenuItem.view_deployed_and_scheduled_jobs)
@@ -203,7 +208,8 @@ def test_05_screenshot_top_menu_view(page, init):
     # Mask recent files listed on the RHS
     # xpath for mask: //div[@class='sas_components-views-StartViewPane-RightView_welcome-container']
     WholePage(page).screenshot_self("start",
-                                    mask=["//div[@class='sas_components-views-StartViewPane-RightView_welcome-container']"],
+                                    mask=[
+                                        "//div[@class='sas_components-views-StartViewPane-RightView_welcome-container']"],
                                     mask_color="#000000")
 
     top.check_view_item(TopMenuItem.view_startup_initialization_log)
