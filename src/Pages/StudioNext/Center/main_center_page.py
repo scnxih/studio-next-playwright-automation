@@ -144,7 +144,7 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_code(self):
         self.center_toolbar_helper.show_detail_tabs_code()
-        time.sleep(1)
+        time.sleep(3)
         self.screenshot(self.base_xpath, "show_code",
                         mask= self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -160,7 +160,7 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.show_detail_tabs_submitted_code()
-        time.sleep(1)
+        time.sleep(3)
         self.screenshot(self.base_xpath, "show_code",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -175,7 +175,7 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_log(self):
         self.center_toolbar_helper.show_detail_tabs_log()
-        time.sleep(1)
+        time.sleep(3)
         self.screenshot(self.base_xpath, "show_log",
                         mask=self.program_toolbar + self.proc_print_page_num_in_log + self.time_info_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -183,7 +183,7 @@ class MainCenterPage(CenterPage):
 
     def hide_detail_tabs_result(self):
         self.center_toolbar_helper.hide_detail_tabs_result()
-        time.sleep(1)
+        time.sleep(3)
         self.screenshot(self.base_xpath, "hide_result",
                         mask=self.time_info_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],

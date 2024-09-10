@@ -25,7 +25,8 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
     # Mask the cursor
     WholePage(page).screenshot_self("newprogram",
-                                    mask=[editor.editor.base_xpath],
+                                    mask=[editor.editor.base_xpath,
+                                          '//button[@data-testid="programViewPane-toolbar-snippet"]'],
                                     mask_color="#012345")
     # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
@@ -143,6 +144,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Original
     # WholePage(page).screenshot_self("05")
 
+    # Added to eliminate noise caused by scrollbar
+    time.sleep(3.0)
+
     # Hide vertical scroll bar
     WholePage(page).screenshot_self("05",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
@@ -155,6 +159,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     time.sleep(0.5)
     editor.debug()
+
+    # Added to eliminate noise caused by scrollbar
+    time.sleep(0.5)
 
     # WholePage(page).screenshot_self("06")
     WholePage(page).screenshot_self("06",
