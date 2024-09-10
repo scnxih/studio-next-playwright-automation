@@ -4,6 +4,8 @@ Store zh-CN input data for build-in steps
 
 
 class INPUTDATAZH:
+    AUTOLIB = "libname AUTOLIB '/segatest/I18N/Autolib';"
+
     SCATTER_MAP = """
 data city_loc (label="内华达'Cities"
                keep="county'县"n "city'城市1"n "city'城市2"n "lat'纬度"n "long'经度"n "countyname'县名"n);
