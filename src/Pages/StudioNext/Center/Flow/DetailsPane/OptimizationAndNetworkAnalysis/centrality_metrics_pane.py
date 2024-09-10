@@ -114,7 +114,7 @@ class CentralityMetricsPane(BasicStepPane):
 
     def set_metric_type_for_influence(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
-                                     section_label=Helper.data_locale.INFLUENCE,
+                                     preceding_label=Helper.data_locale.INFLUENCE,
                                      item_index=item_index, item_value=item_value)
 
     def set_check_clustering_coefficient(self):
@@ -131,7 +131,7 @@ class CentralityMetricsPane(BasicStepPane):
 
     def set_metric_type_for_closeness(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
-                                     section_label=Helper.data_locale.CLOSENESS,
+                                     preceding_label=Helper.data_locale.CLOSENESS,
                                      item_index=item_index, item_value=item_value)
 
     def set_shortest_path_distance_between_disconnected_nodes(self, item_index: int = None, item_value: str = None):
@@ -146,7 +146,7 @@ class CentralityMetricsPane(BasicStepPane):
 
     def set_metric_type_for_betweenness(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
-                                     section_label=Helper.data_locale.BETWEENNESS, item_index=item_index,
+                                     preceding_label=Helper.data_locale.BETWEENNESS, item_index=item_index,
                                      item_value=item_value)
 
     def set_check_normalize_betweenness_centrality(self):
@@ -163,7 +163,7 @@ class CentralityMetricsPane(BasicStepPane):
 
     def set_metric_type_for_eigenvector(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.METRIC_TYPE,
-                                     section_label=Helper.data_locale.EIGENVECTOR, item_index=item_index,
+                                     preceding_label=Helper.data_locale.EIGENVECTOR, item_index=item_index,
                                      item_value=item_value)
 
     def set_check_hub_score(self):

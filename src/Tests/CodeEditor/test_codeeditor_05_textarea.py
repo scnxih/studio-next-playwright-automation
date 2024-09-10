@@ -19,7 +19,8 @@ from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 
 
 def test_01_central_editors(page, init):
-    folder_path = ["SAS 内容", "Public"]
+    # folder_path = ["SAS 内容", "Public"]
+    folder_path = ["SAS Content", "Public"]
 
     sas_program_editor = PageHelper.create_program_editor_factory().create_program_editor("sas_program", page)
     sas_program_editor.fill_text_area_with("proc print data = sashelp.cars; run;")

@@ -20,10 +20,10 @@ class TablePane(DetailsPane):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)
 
         Text(self.base_xpath, self.page, supplement_base_xpath="[contains(@aria-label, '"
-                                                               + Helper.data_locale.LIBRARY + "')]").fill_text(library_name)
+                                                               + Helper.data_locale.LIBRARY + "')]").fill_text(
+            library_name)
 
         time.sleep(1)
-
 
     def set_table(self, table_name):
         self.click_Tab(Helper.data_locale.TABLE_PROPERTIES)

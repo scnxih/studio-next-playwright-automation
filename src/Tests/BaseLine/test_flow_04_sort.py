@@ -4,7 +4,6 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane 
 from src.Helper.page_helper import *
 
 
-
 def test_01_sasprogram_table_sort_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     time.sleep(0.5)
@@ -34,14 +33,38 @@ run;
     # WholePage(page).screenshot_self(pic_name="02_after_fold")
     sasprogram_pane.unfold_all_regions()
     time.sleep(1)
-    WholePage(page).screenshot_self(pic_name="03_after_unfold")
+
+    # Original One
+    # WholePage(page).screenshot_self(pic_name="03_after_unfold")
+
+    # Mask flow toolbar so that noises from the icons can be avoided
+    WholePage(page).screenshot_self(pic_name="03_after_unfold",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
+                                    mask_color='#000000')
+
     sasprogram_pane.pop_find_widget()
     sasprogram_pane.find("cars", False, False)
     time.sleep(1)
-    WholePage(page).screenshot_self(pic_name="04_after_find")
+
+    # Original One
+    # WholePage(page).screenshot_self(pic_name="04_after_find")
+
+    # Mask flow toolbar so that noises from the icons can be avoided
+    WholePage(page).screenshot_self(pic_name="04_after_find",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
+                                    mask_color='#000000')
+
     sasprogram_pane.replace_all("cars", "class", False, False, False)
     time.sleep(2)
-    WholePage(page).screenshot_self(pic_name="05_after_replace")
+
+    # Original One
+    # WholePage(page).screenshot_self(pic_name="05_after_replace")
+
+    # Mask flow toolbar so that noises from the icons can be avoided
+    WholePage(page).screenshot_self(pic_name="05_after_replace",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
+                                    mask_color='#000000')
+
     sasprogram_pane.set_node_name("Create class")
     # time.sleep(1)
     sasprogram_pane.set_notes("This is SAS program notes for expo.")
@@ -64,7 +87,15 @@ run;
     flow.link_two_nodes_in_flow("Create class", "CLASS")
     # time.sleep(1)
     flow.arrange_nodes()
-    WholePage(page).screenshot_self(pic_name="06_after_link_two_nodes")
+
+    # Original One
+    # WholePage(page).screenshot_self(pic_name="06_after_link_two_nodes")
+
+    # Mask flow toolbar so that noises from the icons can be avoided
+    WholePage(page).screenshot_self(pic_name="06_after_link_two_nodes",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
+                                    mask_color='#000000')
+
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
     # table_pane.click_Tab("预览数据")
@@ -76,7 +107,18 @@ run;
     table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
 
     time.sleep(3)
-    WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
+    # WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
+    WholePage(page).screenshot_self("07_preview_before_sorted",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]',
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          WholePage(page).locator(
+                                              '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                                          ],
+                                    mask_color='#000000')
+
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
     flow.arrange_nodes()
@@ -130,6 +172,13 @@ run;
     # table_pane.click_Tab("Preview Data")
     table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
-    WholePage(page).screenshot_self(pic_name="09_preview_sorted_table")
-
-
+    WholePage(page).screenshot_self(pic_name="09_preview_sorted_table",
+                                    mask=['//div[@role="group"][@data-testid="flowtoolbar"]',
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//div[@class="visible scrollbar horizontal"]',
+                                          '//div[@class="visible scrollbar vertical"]',
+                                          WholePage(page).locator(
+                                              '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                                          ],
+                                    mask_color='#000000')

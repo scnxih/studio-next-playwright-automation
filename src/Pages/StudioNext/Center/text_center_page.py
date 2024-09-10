@@ -76,7 +76,7 @@ class TextCenterPage(CenterPage):
 
         # data-testid="textViewPane-editorPane-editor"
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
-                        'undo',
+                        'text_undo',
                         user_assigned_xpath=True)
 
     def redo(self):

@@ -136,9 +136,12 @@ class CentralToolbarHelper:
     def analyze_and_create_flow(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.ANALYZE_AND_CREATE_FLOW)
         time.sleep(0.5)
-        Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(
-            Helper.data_locale.CANCEL)
-        time.sleep(0.3)
+        if Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).is_open():
+            Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(Helper.data_locale.CANCEL)
+            time.sleep(0.3)
+
+        else:
+            Helper.logger.debug(Helper.data_locale.ANALYZE_AND_CREATE_FLOW + " IS N/A")
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 

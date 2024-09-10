@@ -25,6 +25,7 @@ def test_02_save_program(page, init):
     run;'''
     PageHelper.type_code_in_codeeditor(page, text)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = ["SAS Content", "Public"]
     PageHelper.save_program(page, folder_path, "first.sas", True)
 
 

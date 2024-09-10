@@ -149,15 +149,24 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     flow.view_collapse_all_ports()
     time.sleep(2)
-    CenterPage(page).screenshot_self("collapsed_all_ports")
+
+    # Mask 'Preview Code' button to eliminate noises
+    # //button[@data-testid="flowtoolbar-previewCodeButton"]
+    CenterPage(page).screenshot_self("collapsed_all_ports",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask_color="#000000")
 
     flow.show_over_view_map()
     time.sleep(2)
-    CenterPage(page).screenshot_self("show_over_view_map")
+    CenterPage(page).screenshot_self("show_over_view_map",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask_color="#000000")
 
     flow.hide_over_view_map()
     time.sleep(2)
-    CenterPage(page).screenshot_self("hide_over_view_map")
+    CenterPage(page).screenshot_self("hide_over_view_map",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask_color="#000000")
 
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     flow.saveas(folder_path, "test_flow.sas", True, True)
@@ -166,7 +175,9 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     flow.paste_step()
     time.sleep(2)
-    CenterPage(page).screenshot_self("flow_paste_step")
+    CenterPage(page).screenshot_self("flow_paste_step",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask_color="#000000")
 
     flow.cut_step()
     time.sleep(2)
