@@ -11,7 +11,6 @@ class SummaryStatisticsPane(BasicStepPane)
         BasicStepPane.__init__(self, page)
 
     """Methods in Data tab"""
-
     def add_column_for_analysis_variables(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLES, column_name=column_name)
     def add_column_for_classification_variable(self, column_name: str):
@@ -24,6 +23,11 @@ class SummaryStatisticsPane(BasicStepPane)
         self.add_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
     def add_columns_for_copy_variables(self, check_column_name_list: list = None,uncheck_column_name_list: list = None):
         self.add_columns(parent_label=Helper.data_locale.COPY_VARIABLES, check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
-
     def add_column_for_frequency_count(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.FREQUENCY_COUNT, column_name=column_name)
+    def add_column_for_weight_variable(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.WEIGHT_VARIABLE, column_name=column_name)
+
+    """Methods in Option tab"""
+    def expand_windowshade_basic_statistics(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.BASIC_STATISTICS)

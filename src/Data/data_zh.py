@@ -1004,4 +1004,5 @@ class DataZH(Data):
     TIME_IN_SECONDS ="时间（秒）"
     SAVE_MAXIMAL_CLIQUES_DATA = "保存最大团数据"
     COPY_VARIABLES= "复制变量"
+    BASIC_STATISTICS="基本统计量"
     """Added by Percy end"""

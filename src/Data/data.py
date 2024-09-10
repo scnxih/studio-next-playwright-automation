@@ -1008,4 +1008,5 @@ class Data:
     TIME_IN_SECONDS ="Time in seconds"
     SAVE_MAXIMAL_CLIQUES_DATA = "Save maximal cliques data"
     COPY_VARIABLES = "Copy variables"
+    BASIC_STATISTICS="Basic Statistics"
     """Added by Percy end"""
