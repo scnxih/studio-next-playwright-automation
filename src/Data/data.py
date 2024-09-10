@@ -1007,4 +1007,5 @@ class Data:
     MAXIMUM_TIME_TIME = 'Maximum time'
     TIME_IN_SECONDS ="Time in seconds"
     SAVE_MAXIMAL_CLIQUES_DATA = "Save maximal cliques data"
+    COPY_VARIABLES = "Copy variables"
     """Added by Percy end"""
