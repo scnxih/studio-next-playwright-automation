@@ -202,7 +202,6 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
                                      mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
-
     flow.schedule_as_job()
     flow.add_to_my_favorites()
 
