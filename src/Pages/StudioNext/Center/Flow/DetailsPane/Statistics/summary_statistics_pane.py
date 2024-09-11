@@ -31,3 +31,32 @@ class SummaryStatisticsPane(BasicStepPane)
     """Methods in Option tab"""
     def expand_windowshade_basic_statistics(self):
         self.expand_windowshade(parent_label=Helper.data_locale.BASIC_STATISTICS)
+    def collape_windowshade_basic_statistics(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.BASIC_STATISTICS)
+    def set_check_mean(self):
+        self.set_check_for_checkbox(Helper.data_locale.MEAN)
+    def set_uncheck_mean(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.MEAN)
+    def set_check_standard_deviation(self):
+        self.set_check_for_checkbox(Helper.data_locale.STANDARD_DEVIATION)
+    def set_uncheck_standard_deviation(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.STANDARD_DEVIATION)
+    def set_check_minimum_value(self):
+        self.set_check_for_checkbox(Helper.data_locale.MINIMUM_VALUE)
+    def set_uncheck_minimum_value(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.MINIMUM_VALUE)
+    def set_check_maximum_value(self):
+        self.set_check_for_checkbox(Helper.data_locale.MAXIMUM_VALUE)
+    def set_uncheck_maximum_value(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.MAXIMUM_VALUE)
+    def set_check_number_of_observations(self):
+        self.set_check_for_checkbox(Helper.data_locale.NUMBER_OF_OBSERVATIONS)
+    def set_uncheck_number_of_observations(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.NUMBER_OF_OBSERVATIONS)
+    def set_check_number_of_missing_values(self):
+        self.set_check_for_checkbox(Helper.data_locale.NUMBER_OF_MISSING_VALUES)
+    def set_uncheck_number_of_missing_values(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.NUMBER_OF_MISSING_VALUES)
+    def set_maximum_decimal(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.MAXIMUM_DECIMAL, item_index=item_index,
+                                     item_value=item_value)
