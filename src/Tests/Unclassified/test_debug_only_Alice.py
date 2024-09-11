@@ -4,6 +4,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.stack_columns_pane import StackColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies_pane import OneWayFrequencies
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -520,4 +521,35 @@ def test_10_numeric_stepper(page, init):
     pane = StackColumnsPane(page)
     time.sleep(1)
     pane.set_number_of_stacked_cariables_to_create(4)
+
+
+def test_11_section_label_for_checkbox_combobox(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                 Helper.data_locale.STEP_LINE_CHART]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
+    flow.apply_detail_layout_vertical()
+    pane = LineChartPane(page)
+    pane.click_options_tab()
+    pane.collapse_windowshade_lines()
+    pane.expand_windowshade_x_axis()
+    pane.set_check_for_create_reference_line_for_x_axis()
+    time.sleep(1)
+    pane.set_uncheck_for_create_reference_line_for_x_axis()
+    time.sleep(1)
+    pane.set_option_for_dispaly_label_for_x_axis(item_index=2)
+    pane.set_text_for_label_for_x_axis("test x label")
+    pane.expand_windowshade_y_axis()
+    pane.set_check_for_create_reference_line_for_y_axis()
+    time.sleep(1)
+    pane.set_uncheck_for_create_reference_line_for_y_axis()
+    time.sleep(1)
+    pane.set_option_for_dispaly_label_for_y_axis(item_index=2)
+    pane.set_text_for_label_for_y_axis("测试Y轴‘标签")
+    time.sleep(1)
+
+
+
+
 
