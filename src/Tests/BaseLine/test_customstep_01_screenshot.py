@@ -137,7 +137,8 @@ def test_04_page_context_menu(page, init):
     # Mask 'Save As' button to eliminate noise
     # //button[@data-testid="customStepViewPane-toolbar-saveAsButton"]
     whole.screenshot_self("02",
-                          mask=['//button[@data-testid="customStepViewPane-toolbar-saveAsButton"]'],
+                          mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
+                                custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
                           mask_color="#000000")
 
 
