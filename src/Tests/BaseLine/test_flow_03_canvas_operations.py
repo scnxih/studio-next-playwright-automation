@@ -8,6 +8,7 @@ from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Utilities.enums import *
 import time
+from src.Pages.Common.button import Button
 
 
 def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page, init):
@@ -162,13 +163,15 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.show_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("show_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     flow.hide_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("hide_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
@@ -184,15 +187,22 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     flow.cut_step()
     time.sleep(2)
-    CenterPage(page).screenshot_self("flow_cut_step")
+    CenterPage(page).screenshot_self("flow_cut_step",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.undo()
     time.sleep(2)
-    CenterPage(page).screenshot_self("hide_over_view_map")
+    CenterPage(page).screenshot_self("hide_over_view_map",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.redo()
     time.sleep(2)
-    CenterPage(page).screenshot_self("hide_over_view_map")
+    CenterPage(page).screenshot_self("hide_over_view_map",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
+
 
     flow.schedule_as_job()
     flow.add_to_my_favorites()

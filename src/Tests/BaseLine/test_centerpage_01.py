@@ -209,7 +209,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -226,7 +227,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -244,7 +246,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -260,7 +263,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
 
@@ -276,7 +280,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
     """
@@ -300,7 +305,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
 

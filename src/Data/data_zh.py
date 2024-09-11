@@ -939,6 +939,7 @@ class DataZH(Data):
 
     Test7= "Add"
 
+    PREVIEW_CODE = "预览代码"
     THE_INPUT_TABLE_CONTAINS = "输入表包含"
     LANGUAGE = "语言"
     TEXT_VARIABLE = "文本变量"

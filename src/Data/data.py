@@ -941,6 +941,7 @@ class Data:
     """Added by Frank end"""
 
     """Added by Jacky start"""
+    PREVIEW_CODE = "Preview code"
     THE_INPUT_TABLE_CONTAINS = "The input table contains"
     LANGUAGE = "Language"
     TEXT_VARIABLE = "Text variable"
