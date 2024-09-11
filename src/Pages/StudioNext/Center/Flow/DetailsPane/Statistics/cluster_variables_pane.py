@@ -171,28 +171,39 @@ class ClusterVariablesPane(BasicStepPane):
 
     def set_check_replace_existing_output_table_for_statistics(self):
         get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
-                                           "contains(text(),'{1}')]]]".format(
-                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[3][.//label[text()='{1}']]]".format(Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
                          Helper.data_locale.CREATE_STATISTICS_DATA)).set_check()
+                     # supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
+                     #                       "contains(text(),'{1}')]]]".format(
+                     #     Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
+                     #     Helper.data_locale.CREATE_STATISTICS_DATA)).set_check()
 
     def set_uncheck_replace_existing_output_table_for_statistics(self):
         get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
-                                           "contains(text(),'{1}')]]]".format(
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[3][.//label[text()='{1}']]]".format(
                          Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
                          Helper.data_locale.CREATE_STATISTICS_DATA)).set_uncheck()
+                     # supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
+                     #                       "contains(text(),'{1}')]]]".format(
+                     #     Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
+                     #     Helper.data_locale.CREATE_STATISTICS_DATA)).set_uncheck()
 
     def set_check_replace_existing_output_table_for_tree_information(self):
         get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
-                                           "contains(text(),'{1}')]]]".format(
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[3][.//label[text()='{1}']]]".format(
                          Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
                          Helper.data_locale.CREATE_TREE_INFORMATION_DATA)).set_check()
+                     # supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
+                     #                       "contains(text(),'{1}')]]]".format(
+                     #     Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
+                     #     Helper.data_locale.CREATE_TREE_INFORMATION_DATA)).set_check()
 
     def set_uncheck_replace_existing_output_table_for_tree_information(self):
         get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
-                                           "contains(text(),'{1}')]]]".format(
+                     supplement_base_xpath="[.//label[text()='{0}']][../../preceding-sibling::div[3][.//label[text()='{1}']]]".format(
                          Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
                          Helper.data_locale.CREATE_TREE_INFORMATION_DATA)).set_uncheck()
+                     # supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label["
+                     #                       "contains(text(),'{1}')]]]".format(
+                     #     Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,
+                     #     Helper.data_locale.CREATE_TREE_INFORMATION_DATA)).set_uncheck()
