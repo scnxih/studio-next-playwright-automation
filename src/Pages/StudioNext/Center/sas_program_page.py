@@ -30,6 +30,11 @@ class SASProgramPage(MainCenterPage):
     def undo(self):
         self.center_toolbar_helper.undo()
 
+        # //div[@data-testid="programView-editorPane-editor"]
+        self.screenshot('//div[@data-testid="programView-editorPane-editor"]',
+                        'sas_program_undo',
+                        user_assigned_xpath=True)
+
     def redo(self):
         self.center_toolbar_helper.redo()
 

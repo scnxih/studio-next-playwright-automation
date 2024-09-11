@@ -43,10 +43,8 @@ def test_02_delete_page(page, init):
     custom_step.delete_page_by_toolbar("第 2 页")
     time.sleep(1)
 
-
     custom_step.delete_page_by_keyboard("第 3 页")
     time.sleep(1)
-
 
     custom_step.delete_page_by_keyboard("第 4 页")
     time.sleep(1)
@@ -135,7 +133,13 @@ def test_04_page_context_menu(page, init):
 
     custom_step.paste_on_page("第 3 页")
     time.sleep(1)
-    whole.screenshot_self("02")
+
+    # Mask 'Save As' button to eliminate noise
+    # //button[@data-testid="customStepViewPane-toolbar-saveAsButton"]
+    whole.screenshot_self("02",
+                          mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
+                                custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
+                          mask_color="#000000")
 
 
 def test_05_filter(page, init):
@@ -195,10 +199,8 @@ def test_06_insert_all_controls(page, init):
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
 
-
     custom_step.insert_control(DesignerControlType.color_picker)
     time.sleep(1)
-
 
     custom_step.insert_control(DesignerControlType.date_and_time_picker)
     time.sleep(1)
@@ -266,14 +268,11 @@ def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_de
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
 
-
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
 
-
     custom_step.insert_control(DesignerControlType.checkbox)
     time.sleep(1)
-
 
     designer_checkbox1: DesignerCheckbox = custom_step.select_control(DesignerControlType.checkbox, 1)
     designer_checkbox1.duplicate()
@@ -284,7 +283,6 @@ def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_de
 
     designer_checkbox1.cut()
     time.sleep(1)
-
 
     designer_checkbox2: DesignerCheckbox = custom_step.select_control(DesignerControlType.checkbox, 2)
     designer_checkbox2.delete()

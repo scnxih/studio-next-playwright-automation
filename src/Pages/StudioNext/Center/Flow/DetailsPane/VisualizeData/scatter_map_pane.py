@@ -109,10 +109,12 @@ class ScatterMapPane(BasicStepPane):
                            section_label=Helper.data_locale.MAP_RESPONSE_DATA)
 
     def set_check_ID_variable(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.ID_VARIABLE)
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[contains(text(), '{0}')]]"
+                     .format(Helper.data_locale.ID_VARIABLE)).set_check()
 
     def set_uncheck_ID_variable(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.ID_VARIABLE)
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[contains(text(), '{0}')]]"
+                     .format(Helper.data_locale.ID_VARIABLE)).set_uncheck()
 
     def select_radio_base_map(self, item_index=None, item_value=None):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.BASE_MAP, item_index=item_index,
@@ -137,6 +139,28 @@ class ScatterMapPane(BasicStepPane):
 
     def delete_column_for_label_variable(self):
         self.delete_column(parent_label=Helper.data_locale.LABEL_VARIABLE)
+
+    def expand_windowshade_label_options(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.LABEL_OPTIONS)
+
+    def collapse_windowshade_label_options(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.LABEL_OPTIONS)
+
+    def set_check_set_font_color(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_FONT_COLOR)
+
+    def set_uncheck_set_font_color(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SET_FONT_COLOR)
+
+    def select_font_family(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.FONT_FAMILY, item_index=item_index,
+                                     item_value=item_value)
+
+    def input_family(self, family: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FAMILY, input_text=family)
+
+    def empty_family(self):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FAMILY, input_text="")
 
     def expand_windowshade_legend(self):
         self.expand_windowshade(parent_label=Helper.data_locale.LEGEND)

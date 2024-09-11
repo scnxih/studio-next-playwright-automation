@@ -25,7 +25,8 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
     # Mask the cursor
     WholePage(page).screenshot_self("newprogram",
-                                    mask=[editor.editor.base_xpath],
+                                    mask=[editor.editor.base_xpath,
+                                          '//button[@data-testid="programViewPane-toolbar-snippet"]'],
                                     mask_color="#012345")
     # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
@@ -34,8 +35,8 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # editor.type_code_in_codeeditor("data null;call sleep(60,1);run;")
     # editor.run(False)
     # editor.cancel(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    # folder_path = ["SAS Content", "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     editor.saveas(folder_path, "test.sas", True, True)
     editor.type_code_in_codeeditor("proc print data=sashelp.class;run;")
     time.sleep(0.5)
@@ -143,6 +144,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Original
     # WholePage(page).screenshot_self("05")
 
+    # Added to eliminate noise caused by scrollbar
+    time.sleep(3.0)
+
     # Hide vertical scroll bar
     WholePage(page).screenshot_self("05",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
@@ -155,6 +159,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     time.sleep(0.5)
     editor.debug()
+
+    # Added to eliminate noise caused by scrollbar
+    time.sleep(0.5)
 
     # WholePage(page).screenshot_self("06")
     WholePage(page).screenshot_self("06",
@@ -202,7 +209,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -219,7 +227,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -237,7 +246,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                               ],
                                         mask_color='#000000')
@@ -253,7 +263,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
 
@@ -269,7 +280,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
     """
@@ -293,7 +305,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
-                                              WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')
+                                              WholePage(page).locator(
+                                                  '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
                                               ],
                                         mask_color='#000000')
 
@@ -399,6 +412,7 @@ def test_33_email_refresh(page, init):
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("proc print data = sashelp.class;run;")
     editor.reload()
+    editor.run(True, True)
     editor.email()
 
 
@@ -406,7 +420,8 @@ def test_34_sas_program(page, init):
     sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
     sas_program.editor.type_into_text_area("proc print data = sashelp.class;run;")
     sas_program.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     sas_program.saveas(folder_path, "test_sas_program.sas", True, True)
     sas_program.schedule_as_job()
     sas_program.analyze_and_create_flow()
@@ -462,7 +477,8 @@ def test_35_python(page, init):
 
     python_program.editor.type_into_text_area("print('It is python.')")
     python_program.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     python_program.saveas(folder_path, "test_python_program.sas", True, True)
     python_program.schedule_as_job()
 
@@ -540,7 +556,8 @@ def test_36_flow(page, init):
     # flow.run_nodes_downstream()
     flow.run_nodes_upstream()
     # flow.background_submit()
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     flow.saveas(folder_path, "test_flow.sas", True, True)
     flow.copy_step()
     flow.paste_step()
@@ -642,7 +659,8 @@ def test_36_flow(page, init):
 def test_38_quick_import(page, init):
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     quick_import.saveas(folder_path, "test_import.sas", True, True)
     quick_import.add_to_snippets()
     quick_import.schedule_as_job()
@@ -684,7 +702,8 @@ def test_38_quick_import(page, init):
 def test_39_JsonPage(page, init):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
     json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     json.saveas(folder_path, "test_json.json", True, True)
     time.sleep(1)
     json.undo()
@@ -696,25 +715,27 @@ def test_39_JsonPage(page, init):
     json.reload()
 
 
-# def test_40_TextPage(page, init):
-#     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
-#     text.editor.type_into_text_area('This is text file.')
-#     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-#     text.saveas(folder_path, "test_text.txt", True, True)
-#     time.sleep(1)
-#     text.undo()
-#     text.redo()
-#     text.add_to_snippets()
-#     text.add_to_my_favorites()
-#     text.open_in_browser_tab()
-#     text.email()
-#     text.reload()
+def test_40_TextPage(page, init):
+    text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
+    text.editor.type_into_text_area('This is text file.')
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
+    text.saveas(folder_path, "test_text.txt", True, True)
+    time.sleep(1)
+    text.undo()
+    text.redo()
+    text.add_to_snippets()
+    text.add_to_my_favorites()
+    text.open_in_browser_tab()
+    text.email()
+    text.reload()
 
 
 def test_41_XMLPage(page, init):
     xml: XMLPage = PageHelper.new_item(page, TopMenuItem.new_file_types_xml)
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     xml.saveas(folder_path, "test_xml.xml", True, True)
     time.sleep(1)
     xml.undo()
@@ -729,7 +750,8 @@ def test_41_XMLPage(page, init):
 def test_42_WorkSapcePage(page, init):
     work_space: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     work_space.editor.type_into_text_area('This is work space file.')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = ["SAS Content", "Public"]
     work_space.saveas(folder_path, "test_workspace.workspace", True, True)
     time.sleep(2)
     work_space.undo()
@@ -767,6 +789,7 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # data-testid="scheduledJobsPane-monitoringTab-agGrid"
     center_page.screenshot_self('deployed_and_scheduled',
                                 mask=['//div[@class="ag-center-cols-viewport"]',
+                                      '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
                                       center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
                                 mask_color="#000000")
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>

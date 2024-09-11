@@ -9,6 +9,7 @@ from src.Utilities.enums import *
 from src.Pages.Common.toolbar import *
 
 from src.Pages.Common.dialog import Alert
+from src.Data.data import Data
 
 class TopMenuPage(BasePage):
     def __init__(self, page):
@@ -25,7 +26,8 @@ class TopMenuPage(BasePage):
                 if auto.is_open():
                     return
             case TopMenuItem.options_manage_keyboard_shortcuts:
-                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.MANAGE_KEYBOARD_SHORTCUTS)
+                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id,
+                                                                          Helper.data_locale.MANAGE_KEYBOARD_SHORTCUTS)
                 if ManageShortcutsDialog(self.page).is_open():
                     return
             case TopMenuItem.options_custom_code:
@@ -34,7 +36,8 @@ class TopMenuPage(BasePage):
                 if custom_code.is_open():
                     return
             case TopMenuItem.options_manage_git_connections:
-                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.MANAGE_GIT_CONNECTION)
+                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id,
+                                                                          Helper.data_locale.MANAGE_GIT_CONNECTION)
                 if ManageGitConnectionDialog(self.page).is_open():
                     return
             # ADDED
@@ -42,7 +45,9 @@ class TopMenuPage(BasePage):
 
             # Options/Change perspective/Standard
             case TopMenuItem.options_change_perspective_standard:
-                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.CHANGE_PERSPECTIVE, Helper.data_locale.STANDARD)
+                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id,
+                                                                          Helper.data_locale.CHANGE_PERSPECTIVE,
+                                                                          Helper.data_locale.STANDARD)
 
                 # NOTE: Alert Dialog would pop up at the moment
                 # Remove the following code after this function has been fully implemented
@@ -54,7 +59,9 @@ class TopMenuPage(BasePage):
 
             # Options/Change perspective/Interactive
             case TopMenuItem.options_change_perspective_interactive:
-                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id, Helper.data_locale.CHANGE_PERSPECTIVE, Helper.data_locale.INTERACTIVE)
+                self.toolbar.click_btn_menu_by_test_id_wait_until_enabled(test_id,
+                                                                          Helper.data_locale.CHANGE_PERSPECTIVE,
+                                                                          Helper.data_locale.INTERACTIVE)
                 alert = Alert(self.toolbar.page, Helper.data_locale.STUDIO_NEXT)
                 if alert.is_open():
                     time.sleep(3)
@@ -103,7 +110,11 @@ class TopMenuPage(BasePage):
         open_file = OpenDialog(self.page)
         open_file.open_file(folder_path, file_name)
 
-    def check_view_item(self,top_menu: TopMenuItem):
+    def check_view_item(self, top_menu: TopMenuItem):
+        """
+        Original one
+        On Aug.31st 2024, it was found that zh-CN strings for menu items were missing.
+        """
         test_id = "appHeaderToolbar-view-button"
         match top_menu:
             case TopMenuItem.view:
@@ -113,42 +124,45 @@ class TopMenuPage(BasePage):
                 # Try
                 # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.SUBMISSION_STATUS)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
             case TopMenuItem.view_deployed_and_scheduled_jobs:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
                 # Try
                 # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
             case TopMenuItem.view_start_page:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.START_PAGE)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
+                # self.toolbar.check_btn_menu_by_test_id(test_id, "Start page")
             case TopMenuItem.view_startup_initialization_log:
                 self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.OPEN_ITEMS)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       Helper.data_locale.OPEN_ITEMS)
             case TopMenuItem.view_navigation_panes_sas_server:
                 self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
-                                               Helper.data_locale.SAS_SERVER)
+                                                       Helper.data_locale.SAS_SERVER)
             case TopMenuItem.view_navigation_panes_sas_content:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.SAS_CONTENT)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       Helper.data_locale.SAS_CONTENT)
             case TopMenuItem.view_navigation_panes_steps:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.STEPS)
             case TopMenuItem.view_navigation_panes_snippets:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.SNIPPETS)
             case TopMenuItem.view_navigation_panes_library_connections:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.LIBRARY_CONNECTIONS)
 
             case TopMenuItem.view_navigation_panes_git_repositories:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.GIT_REPOSITORIES)
             case TopMenuItem.view_navigation_panes_file_references:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.FILE_REFERENCES)
 
             case TopMenuItem.view_navigation_panes_clinical_repositories:
-                self.toolbar.check_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.CLINICAL_REPOSITORY)
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr. 9th, 2024
@@ -162,9 +176,61 @@ class TopMenuPage(BasePage):
         # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", "check_view_item", user_assigned_xpath=True)
 
         # END Added by Jacky(ID: jawang) on Apr. 9th, 2024 >>>
+        time.sleep(0.3)
+
+    def check_view_item_zh_CN(self, top_menu: TopMenuItem):
+        """
+        Aug.31st 2024,
+        src.Pages.StudioNext.Top.top_menu_page.TopMenuPage.check_view_item
+        It was found that zh-CN strings for View/Navigation menu items were missing.
+        """
+        test_id = "appHeaderToolbar-view-button"
+        match top_menu:
+            case TopMenuItem.view:
+                self.toolbar.click_btn_by_test_id(test_id)
+
+            case TopMenuItem.view_submission_status:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
+            case TopMenuItem.view_deployed_and_scheduled_jobs:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
+            case TopMenuItem.view_start_page:
+                # self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
+                self.toolbar.check_btn_menu_by_test_id(test_id, "Start page")
+            case TopMenuItem.view_startup_initialization_log:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
+            case TopMenuItem.view_navigation_panes_open_items:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "Open items")
+            case TopMenuItem.view_navigation_panes_sas_server:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "SAS server")
+            case TopMenuItem.view_navigation_panes_sas_content:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "SAS content")
+            case TopMenuItem.view_navigation_panes_steps:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       Data.STEPS)
+            case TopMenuItem.view_navigation_panes_snippets:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       Data.SNIPPETS)
+            case TopMenuItem.view_navigation_panes_library_connections:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "Library connections")
+
+            case TopMenuItem.view_navigation_panes_git_repositories:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "Git repositories")
+            case TopMenuItem.view_navigation_panes_file_references:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "File references")
+
+            case TopMenuItem.view_navigation_panes_clinical_repositories:
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                       "Clinical repository")
 
         time.sleep(0.3)
-    def uncheck_view_item(self,top_menu: TopMenuItem):
+
+    def uncheck_view_item(self, top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-view-button"
         self.wait_until_enabled("//button[@data-testid='appHeaderToolbar-view-button']")
         time.sleep(1)
@@ -172,51 +238,57 @@ class TopMenuPage(BasePage):
             case TopMenuItem.view:
                 self.toolbar.click_btn_by_test_id(test_id)
             case TopMenuItem.view_submission_status:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.SUBMISSION_STATUS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
             case TopMenuItem.view_deployed_and_scheduled_jobs:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
             case TopMenuItem.view_start_page:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.START_PAGE)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
+                # self.toolbar.uncheck_btn_menu_by_test_id(test_id, "Start page")
             case TopMenuItem.view_startup_initialization_log:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.STARTUP_INITIALIZATION_LOG)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.OPEN_ITEMS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.OPEN_ITEMS)
             case TopMenuItem.view_navigation_panes_sas_server:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
-                                               Helper.data_locale.SAS_SERVER)
+                                                         Helper.data_locale.SAS_SERVER)
             case TopMenuItem.view_navigation_panes_sas_content:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,Helper.data_locale.SAS_CONTENT)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.SAS_CONTENT)
             case TopMenuItem.view_navigation_panes_steps:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.STEPS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.STEPS)
             case TopMenuItem.view_navigation_panes_snippets:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.SNIPPETS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.SNIPPETS)
             case TopMenuItem.view_navigation_panes_library_connections:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.LIBRARY_CONNECTIONS)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.LIBRARY_CONNECTIONS)
 
             case TopMenuItem.view_navigation_panes_git_repositories:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.GIT_REPOSITORIES)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.GIT_REPOSITORIES)
             case TopMenuItem.view_navigation_panes_file_references:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.FILE_REFERENCES)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.FILE_REFERENCES)
 
             case TopMenuItem.view_navigation_panes_clinical_repositories:
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES,
-                                                       Helper.data_locale.CLINICAL_REPOSITORY)
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
+                                                         Helper.data_locale.CLINICAL_REPOSITORY)
         time.sleep(0.3)
 
     def show_view_startup_initialization_log(self):
         test_id = "appHeaderToolbar-view-button"
-        self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.STARTUP_INITIALIZATION_LOG)
+        self.toolbar.click_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
+
     def show_document_recovery(self):
         test_id = "appHeaderToolbar-view-button"
-        self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.DOCUMENT_RECOVERY)
+        self.toolbar.click_btn_menu_by_test_id(test_id, Helper.data_locale.DOCUMENT_RECOVERY)
+
     def click_menu_item_new(self):
         test_id = "appHeaderToolbar-new-button"
         self.toolbar.click_btn_by_test_id(test_id)
+
     def click_menu_item_options(self):
         test_id = "appHeaderToolbar-options-button"
         self.toolbar.click_btn_by_test_id(test_id)
@@ -235,4 +307,4 @@ class TopMenuPage(BasePage):
 
     def click_menu_item_view_navigation(self):
         test_id = "appHeaderToolbar-view-button"
-        self.toolbar.click_btn_menu_by_test_id(test_id,Helper.data_locale.NAVIGATION_PANES)
+        self.toolbar.click_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES)
