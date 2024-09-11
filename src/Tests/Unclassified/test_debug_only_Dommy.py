@@ -547,7 +547,7 @@ def test_14_cluster_variables_in_flow_l1(page, init):
 
     cluster_variables_pane.click_output_tab()
     cluster_variables_pane.set_check_create_statistics_data()
-    #cluster_variables_pane.set_check_replace_existing_output_table_for_statistics()
+    cluster_variables_pane.set_check_replace_existing_output_table_for_statistics()
     cluster_variables_pane.set_check_create_tree_information_data()
-    #cluster_variables_pane.set_check_replace_existing_output_table_for_tree_information()
+    cluster_variables_pane.set_check_replace_existing_output_table_for_tree_information()
     flow.run(True)

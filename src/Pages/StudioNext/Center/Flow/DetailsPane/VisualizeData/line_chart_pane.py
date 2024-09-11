@@ -249,3 +249,25 @@ class LineChartPane(BasicStepPane):
     def set_units(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_index=item_index,
                                      item_value=item_value)
+    """Added by Alice on Sep 10,2024 start"""
+    def set_check_for_create_reference_line_for_x_axis(self):
+        self.set_check_for_checkbox(label="创建参考线",section_label="X 轴")
+
+    def set_uncheck_for_create_reference_line_for_x_axis(self):
+        self.set_uncheck_for_checkbox(label="创建参考线", section_label="X 轴")
+    def set_check_for_create_reference_line_for_y_axis(self):
+        self.set_check_for_checkbox(label="创建参考线",section_label="Y 轴")
+
+    def set_uncheck_for_create_reference_line_for_y_axis(self):
+        self.set_uncheck_for_checkbox(label="创建参考线", section_label="Y 轴")
+
+    def set_option_for_dispaly_label_for_x_axis(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label="显示标签",section_label="X 轴",item_index=item_index,item_value=item_value)
+    def set_option_for_dispaly_label_for_y_axis(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label="显示标签",section_label="Y 轴",item_index=item_index,item_value=item_value)
+
+    def set_text_for_label_for_x_axis(self, input_text:str):
+        self.set_text_for_text_control(parent_label="标签",section_label="X 轴",input_text=input_text)
+    def set_text_for_label_for_y_axis(self, input_text: str):
+        self.set_text_for_text_control(parent_label="标签", section_label="Y 轴", input_text=input_text)
+    """Added by Alice on Sep 10,2024 end"""
