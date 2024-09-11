@@ -8,7 +8,6 @@ from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Utilities.enums import *
 import time
-from src.Pages.Common.button import Button
 
 
 def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page, init):
