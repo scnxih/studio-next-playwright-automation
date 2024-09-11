@@ -792,6 +792,10 @@ class DataZH(Data):
     SELECT_PLOTS_TO_DISPLAY = "选择要显示的图"
     CREATE_STATISTICS_DATA = "创建统计量数据"
     CREATE_TREE_INFORMATION_DATA = "创建树信息数据"
+    SPECIFY_PREDEFINED_STYLE = "指定预定义样式"
+    STYLE = "样式"
+    SPECIFY_TEXT_OPTIONS = "指定文本选项"
+
     """Added by Dommy end"""
 
     """Added by Frank start"""

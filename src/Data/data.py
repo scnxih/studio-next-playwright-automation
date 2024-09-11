@@ -800,6 +800,9 @@ class Data:
     SELECT_PLOTS_TO_DISPLAY = "Select plots to display"
     CREATE_STATISTICS_DATA = "Create statistics data"
     CREATE_TREE_INFORMATION_DATA = "Create tree information data"
+    SPECIFY_PREDEFINED_STYLE = "Specify predefined style"
+    STYLE = "Style"
+    SPECIFY_TEXT_OPTIONS = "Specify text options"
     """Added by Dommy end"""
 
     """Added by Frank start"""
