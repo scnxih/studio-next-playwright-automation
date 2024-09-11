@@ -60,3 +60,14 @@ class SummaryStatisticsPane(BasicStepPane)
     def set_maximum_decimal(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.MAXIMUM_DECIMAL, item_index=item_index,
                                      item_value=item_value)
+    def set_divisor_for_standard_deviation_variance(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.DIVISOR_FOR_STANDARD_DEVIATION_AND_VARIANCE, item_index=item_index,
+                                     item_value=item_value)
+    def expand_windowshade_additional_statistics(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.ADDITIONAL_STATISTICS)
+    def collape_windowshade_additional_statistics(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.ADDITIONAL_STATISTICS)
+    def set_check_standard_error(self):
+        self.set_check_for_checkbox(Helper.data_locale.STANDARD_ERROR)
+    def set_uncheck_standard_error(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.STANDARD_ERROR)

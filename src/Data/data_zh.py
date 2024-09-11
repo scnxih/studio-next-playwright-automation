@@ -1011,4 +1011,8 @@ class DataZH(Data):
     NUMBER_OF_OBSERVATIONS="观测数"
     NUMBER_OF_MISSING_VALUES="缺失值数"
     MAXIMUM_DECIMAL="最大小数"
+    DIVISOR_FOR_STANDARD_DEVIATION_AND_VARIANCE="标准差和方差的除数"
+    ADDITIONAL_STATISTICS="其他统计量"
+    STANDARD_ERROR="标准误差"
+
     """Added by Percy end"""

@@ -1015,4 +1015,7 @@ class Data:
     NUMBER_OF_OBSERVATIONS="Number of observations"
     NUMBER_OF_MISSING_VALUES="Number of missing values"
     MAXIMUM_DECIMAL="Maximum decimal"
+    DIVISOR_FOR_STANDARD_DEVIATION_AND_VARIANCE="Divisor for standard deviation and variance"
+    ADDITIONAL_STATISTICS="Additional Statistics"
+    STANDARD_ERROR="Standard error"
     """Added by Percy end"""
