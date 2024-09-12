@@ -1,7 +1,7 @@
 """
 @author: Frank (Feng) Jiang
 @date: 2024/09/09
-@description: define panes of Scatter Map step
+@description: define panes of t Tests step
 """
 from src.Pages.Common.common_component_factory import *
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
@@ -29,11 +29,29 @@ class TTestsPane(BasicStepPane):
     def delete_column_for_analysis_var(self):
         self.delete_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE)
 
+    def add_column_for_group1_var(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.GROUP_1_VAR, column_name=column_name)
+
+    def delete_column_for_group1_var(self):
+        self.delete_column(parent_label=Helper.data_locale.GROUP_1_VAR)
+
+    def add_column_for_group2_var(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.GROUP_2_VAR, column_name=column_name)
+
+    def delete_column_for_group2_var(self):
+        self.delete_column(parent_label=Helper.data_locale.GROUP_2_VAR)
+
+    def add_column_for_class_var(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.CLASS_VAR, column_name=column_name)
+
+    def delete_column_for_class_var(self):
+        self.delete_column(parent_label=Helper.data_locale.CLASS_VAR)
+
     """Methods in Options tab"""
-    def expand_windowshade_data_tests(self):
+    def expand_windowshade_tests(self):
         self.expand_windowshade(parent_label=Helper.data_locale.TESTS)
 
-    def collapse_windowshade_data_tests(self):
+    def collapse_windowshade_tests(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.TESTS)
 
     def set_tails_type(self, item_index: int = None, item_value: str = None):
@@ -58,6 +76,18 @@ class TTestsPane(BasicStepPane):
 
     def set_uncheck_sign_test_Wilcoxon_signed_rank_test(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SIGN_TEST_WILCOXON_SIGNED_RANK_TEST)
+
+    def set_check_cox_cochran_probability_approximation_for_unequal_variances(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.COX_COCHRAN_PROB_APPR_FOR_UNEQUAL_VARIANCES)
+
+    def set_uncheck_cox_cochran_probability_approximation_for_unequal_variances(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.COX_COCHRAN_PROB_APPR_FOR_UNEQUAL_VARIANCES)
+
+    def set_check_wilcoxon_rank_sum_test(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.WILCOXON_RANK_SUM_TEST)
+
+    def set_uncheck_wilcoxon_rank_sum_test(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.WILCOXON_RANK_SUM_TEST)
 
     def expand_windowshade_plots(self):
         self.expand_windowshade(parent_label=Helper.data_locale.PLOTS)
@@ -85,3 +115,21 @@ class TTestsPane(BasicStepPane):
 
     def set_uncheck_confidence_interval_plot(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.CONFIDENCE_INTERVAL_PLOT)
+
+    def set_check_agreement_plot(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.AGREEMENT_PLOT)
+
+    def set_uncheck_agreement_plot(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.AGREEMENT_PLOT)
+
+    def set_check_response_profile_plot(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.RESPONSE_PROFILE_PLOT)
+
+    def set_uncheck_response_profile_plot(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.RESPONSE_PROFILE_PLOT)
+
+    def set_check_wilcoxon_box_plot(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.WILCOXON_BOX_PLOT)
+
+    def set_uncheck_wilcoxon_box_plot(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.WILCOXON_BOX_PLOT)

@@ -162,6 +162,21 @@ class ScatterMapPane(BasicStepPane):
     def empty_family(self):
         self.set_text_for_text_control(parent_label=Helper.data_locale.FAMILY, input_text="")
 
+    def set_font_size_for_label(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_7_PT, size)
+
+    def increase_font_size_for_label(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_7_PT, times)
+
+    def decrease_font_size_for_label(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_7_PT, times)
+
+    def set_font_style(self, style: str):
+        self.set_option_for_combobox(Helper.data_locale.FONT_STYLE, style)
+
+    def set_font_weight(self, weight: str):
+        self.set_option_for_combobox(Helper.data_locale.FONT_WEIGHT, weight)
+
     def expand_windowshade_legend(self):
         self.expand_windowshade(parent_label=Helper.data_locale.LEGEND)
 
@@ -174,11 +189,31 @@ class ScatterMapPane(BasicStepPane):
     def set_uncheck_generate_choromap_legend(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.GENERATE_CHOROMAP_LEGEND)
 
-    def input_legend_label(self, legend_lable: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=legend_lable)
+    def input_choromap_legend_label(self, legend_label: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[./../../../../preceding-sibling::div[1]//label[text()='{0}']]"
+                 .format(Helper.data_locale.GENERATE_CHOROMAP_LEGEND)).fill_text(legend_label)
 
-    def empty_legend_label(self):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text="")
+    def empty_choromap_legend_label(self):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[./../../../../preceding-sibling::div[1]//label[text()='{0}']]"
+                 .format(Helper.data_locale.GENERATE_CHOROMAP_LEGEND)).clear_text()
+
+    def set_check_generate_plot_legend(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.GENERATE_PLOT_LEGEND)
+
+    def set_uncheck_generate_plot_legend(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.GENERATE_PLOT_LEGEND)
+
+    def input_plot_legend_label(self, legend_label: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[./../../../../preceding-sibling::div[1]//label[text()='{0}']]"
+                 .format(Helper.data_locale.GENERATE_PLOT_LEGEND)).fill_text(legend_label)
+
+    def empty_plot_legend_label(self):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[./../../../../preceding-sibling::div[1]//label[text()='{0}']]"
+                 .format(Helper.data_locale.GENERATE_PLOT_LEGEND)).clear_text()
 
     def expand_windowshade_markers(self):
         self.expand_windowshade(parent_label=Helper.data_locale.MARKERS)
@@ -200,9 +235,14 @@ class ScatterMapPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.SYMBOL, item_index=item_index,
                                      item_value=item_value)
 
-    def set_markers_size(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def set_markers_size(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.SIZE_DEFAULT_7_PIXEL, size)
+
+    def increase_markers_size(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.SIZE_DEFAULT_7_PIXEL, times)
+
+    def decrease_markers_size(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.SIZE_DEFAULT_7_PIXEL, times)
 
     def expand_windowshade_plot(self):
         self.expand_windowshade(parent_label=Helper.data_locale.PLOT)
@@ -246,9 +286,14 @@ class ScatterMapPane(BasicStepPane):
                      supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
                      .format(Helper.data_locale.SET_COLOR, Helper.data_locale.LINE_ATTRIBUTES)).set_uncheck()
 
-    def set_line_thickness(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def set_line_thickness(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.LINE_THICKNESS, size)
+
+    def increase_line_thickness(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.LINE_THICKNESS, times)
+
+    def decrease_line_thickness(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.LINE_THICKNESS, times)
 
     def set_line_style(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_STYLE, item_index=item_index,
@@ -280,9 +325,14 @@ class ScatterMapPane(BasicStepPane):
     def empty_title(self):
         self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text="")
 
-    def set_font_size_for_title(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def set_font_size_for_title(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_14_PT, size)
+
+    def increase_font_size_for_title(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_14_PT, times)
+
+    def decrease_font_size_for_title(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_14_PT, times)
 
     def input_footnote(self, footnote: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text=footnote)
@@ -290,9 +340,14 @@ class ScatterMapPane(BasicStepPane):
     def empty_footnote(self):
         self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text="")
 
-    def set_font_size_for_footnote(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def set_font_size_for_footnote(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_12_PT, size)
+
+    def increase_font_size_for_footnote(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_12_PT, times)
+
+    def decrease_font_size_for_footnote(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_12_PT, times)
 
     def expand_windowshade_graph_size(self):
         self.expand_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
@@ -304,10 +359,20 @@ class ScatterMapPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_index=item_index,
                                      item_value=item_value)
 
-    def set_plot_width(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def set_plot_width(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.WIDTH, size)
 
-    def set_plot_height(self, size: int):
-        """Numeric stepper control in Studio Next is not usable"""
-        pass
+    def increase_plot_width(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.WIDTH, times)
+
+    def decrease_plot_width(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.WIDTH, times)
+
+    def set_plot_height(self, size: str):
+        self.set_value_for_numeric_stepper(Helper.data_locale.HEIGHT, size)
+
+    def increase_plot_height(self, times: int):
+        self.click_increment_value_for_numeric_stepper(Helper.data_locale.HEIGHT, times)
+
+    def decrease_plot_height(self, times: int):
+        self.click_decrement_value_for_numeric_stepper(Helper.data_locale.HEIGHT, times)
