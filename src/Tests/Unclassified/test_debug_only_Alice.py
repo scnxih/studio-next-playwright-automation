@@ -520,9 +520,16 @@ def test_10_numeric_stepper(page, init):
                  Helper.data_locale.STEP_STACK_COLUMNS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STACK_COLUMNS)
+    flow.apply_detail_layout_vertical()
     pane = StackColumnsPane(page)
     time.sleep(1)
-    pane.set_number_of_stacked_cariables_to_create(4)
+    pane.set_number_of_stacked_cariables_to_create("4")
+    time.sleep(1)
+    pane.click_increment_value_for_number_of_stacked_variables_to_create(8)
+    time.sleep(1)
+    pane.click_decrement_value_for_number_of_stacked_variables_to_create(3)
+    time.sleep(1)
+
 
 
 def test_11_section_label_for_checkbox_combobox(page,init):

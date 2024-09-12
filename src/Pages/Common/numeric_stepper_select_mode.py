@@ -2,7 +2,7 @@ from src.Pages.Common.base_page import *
 from src.Pages.Common.common_component import CommonComponent
 
 
-class NumericStepper(CommonComponent):
+class NumericStepperSelectMode(CommonComponent):
     def set_base_xpath(self):
         self.base_xpath += "//div[@class='sas_components-NumericStepper-NumericStepper_container']"
 
@@ -21,9 +21,9 @@ class NumericStepper(CommonComponent):
         return self.locate_xpath("//button[@aria-label='{0}']".format(Helper.data_locale.INCREMENT_VALUE))
 
     @property
-    def input(self):
+    def div_value(self):
         return self.locate_xpath(
-            "//input[contains(@class, 'sas_components-Input-Input_input')]")
+            "//div[@class='sas_components-NumericStepper-NumericStepper_select-mode']")
 
     def click_decrement_value(self, times:int=None):
         """
@@ -77,19 +77,5 @@ class NumericStepper(CommonComponent):
 
     def get_value(self)->str:
         self.scroll_if_needed(self.base_locator)
-        value = self.get_attribute(self.input, "value")
+        value = self.get_attribute(self.div_value, "aria-valuenow")
         return value
-
-    def set_value(self, value:str):
-        self.scroll_if_needed(self.base_locator)
-        if self.is_read_only(self.input):
-            Helper.logger.debug("input text is read only, so cannot input text")
-            return
-        self.fill(self.input, value)
-
-    def clear_value(self):
-        self.scroll_if_needed(self.base_locator)
-        if self.is_read_only(self.input):
-            Helper.logger.debug("input text is read only, so cannot input text")
-            return
-        self.clear(self.input)

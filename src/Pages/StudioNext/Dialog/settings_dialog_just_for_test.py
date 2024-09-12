@@ -4,6 +4,7 @@ from src.Pages.Common.dialog import Dialog
 from src.Helper.helper import Helper
 from src.Pages.Common.combobox import *
 from src.Pages.Common.checkbox import *
+from src.Pages.Common.numeric_stepper_select_mode import NumericStepperSelectMode
 from src.Pages.Common.text import Text
 from src.Pages.Common.radio_group import *
 from src.Pages.Common.numeric_stepper import *
@@ -37,7 +38,7 @@ class SettingsDialogTest(Dialog):
         return RadioGroup(container_base_xpath=self.base_xpath, page=self.page, data_test_id=data_test_id)
 
     def numeric_stepper(self, data_test_id=""):
-        return NumericStepper(self.base_xpath, self.page, data_test_id=data_test_id)
+        return NumericStepperSelectMode(self.base_xpath, self.page, data_test_id=data_test_id)
 
     def tab_label(self, label):
         return self.locate_xpath(f"//label[text()='{label}']")
