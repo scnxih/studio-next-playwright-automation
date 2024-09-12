@@ -26,9 +26,10 @@ class OpenItemsPage(AccordionPage):
         Helper.logger.debug("after click save all button")
         # MODIFIED
         # <<< Modified by Jacky(ID: jawang) on Aug.11th, 2024
-        # count = len(folder_path) # Original
+        count = len(folder_path)  # Original
+
         # Function changed for save all
-        count = 1
+        # count = 1
         # Modified by Jacky(ID: jawang) on Aug.11th, 2024 >>>
 
         for i in range(count):

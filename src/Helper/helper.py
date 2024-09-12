@@ -28,6 +28,11 @@ class Helper:
 
     data_locale = get_data_locale()
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on September 12th, 2024
+    public_folder_path = [data_locale.SAS_CONTENT, "Public"]
+    # END Added by Jacky(ID: jawang) on September 12th, 2024 >>>
+
     @staticmethod
     def call_SDSTest():
         os.chdir("c:\\studio-next-playwright-automation\\src\\Helper")
@@ -114,8 +119,9 @@ class Helper:
         if query_str.find("\"") == -1 and query_str.find("'") == -1:
             return False
         return True
+
     @staticmethod
-    def escape_quotation_for_xpath(query_str:str):
+    def escape_quotation_for_xpath(query_str: str):
         if query_str.find("\"") == -1 and query_str.find("'") == -1:
             return query_str
         query_str = query_str.replace("\"", "[\"]")
