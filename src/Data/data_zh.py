@@ -792,6 +792,10 @@ class DataZH(Data):
     SELECT_PLOTS_TO_DISPLAY = "选择要显示的图"
     CREATE_STATISTICS_DATA = "创建统计量数据"
     CREATE_TREE_INFORMATION_DATA = "创建树信息数据"
+    SPECIFY_PREDEFINED_STYLE = "指定预定义样式"
+    STYLE = "样式"
+    SPECIFY_TEXT_OPTIONS = "指定文本选项"
+
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -1006,4 +1010,13 @@ class DataZH(Data):
     SAVE_MAXIMAL_CLIQUES_DATA = "保存最大团数据"
     COPY_VARIABLES= "复制变量"
     BASIC_STATISTICS="基本统计量"
+    MEAN="均值"
+    STANDARD_DEVIATION="标准差"
+    NUMBER_OF_OBSERVATIONS="观测数"
+    NUMBER_OF_MISSING_VALUES="缺失值数"
+    MAXIMUM_DECIMAL="最大小数"
+    DIVISOR_FOR_STANDARD_DEVIATION_AND_VARIANCE="标准差和方差的除数"
+    ADDITIONAL_STATISTICS="其他统计量"
+    STANDARD_ERROR="标准误差"
+
     """Added by Percy end"""

@@ -142,10 +142,25 @@ def test_04_screenshot_top_menu_options(page, init):
     top_menu_page.click_options(TopMenuItem.options_autoexec_file)
     time.sleep(1)
     auto = AutoexecDialog(page)
-    auto.screenshot_self("auto_code")
+
+    # Original
+    # auto.screenshot_self("auto_code")
+
+    # Mask the switch button to eliminate diffs
+    auto.screenshot_self("auto_code",
+                         mask=[auto.btn_bgSubmission_switch],
+                         mask_color="#000000")
+
     auto.click_tab_log()
     time.sleep(0.5)
-    auto.screenshot_self("auto_log")
+
+    # Original
+    # auto.screenshot_self("auto_log")
+
+    auto.screenshot_self("auto_log",
+                         mask=[auto.btn_bgSubmission_switch],
+                         mask_color="#000000")
+
     auto.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_custom_code)
@@ -283,6 +298,7 @@ def test_06_screenshot_top_right_items(page, init):
     top.click_new_features()
     time.sleep(2)
     Dialog(page).screenshot_self("new_features")
+
     Dialog(page).close_dialog()
 
     top.click_about()
@@ -297,6 +313,9 @@ def test_06_screenshot_top_right_items(page, init):
     top.click_manage_features()
     time.sleep(2)
     Dialog(page).screenshot_self("manage_features")
+    Dialog(page).screenshot_self("manage_features_clip",
+                                 clip={'x': 196, 'y': 136, 'width': 1113, 'height': 679})
+
     Dialog(page).close_dialog()
 
     top.click_user_option()
