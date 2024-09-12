@@ -131,8 +131,8 @@ class TopMenuPage(BasePage):
                 # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
             case TopMenuItem.view_start_page:
-                # self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
-                self.toolbar.check_btn_menu_by_test_id(test_id, "Start page")
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
+                # self.toolbar.check_btn_menu_by_test_id(test_id, "Start page")
             case TopMenuItem.view_startup_initialization_log:
                 self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:
@@ -242,8 +242,8 @@ class TopMenuPage(BasePage):
             case TopMenuItem.view_deployed_and_scheduled_jobs:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
             case TopMenuItem.view_start_page:
-                # self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
-                self.toolbar.uncheck_btn_menu_by_test_id(test_id, "Start page")
+                self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)
+                # self.toolbar.uncheck_btn_menu_by_test_id(test_id, "Start page")
             case TopMenuItem.view_startup_initialization_log:
                 self.toolbar.uncheck_btn_menu_by_test_id(test_id, Helper.data_locale.STARTUP_INITIALIZATION_LOG)
             case TopMenuItem.view_navigation_panes_open_items:

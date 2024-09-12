@@ -800,6 +800,9 @@ class Data:
     SELECT_PLOTS_TO_DISPLAY = "Select plots to display"
     CREATE_STATISTICS_DATA = "Create statistics data"
     CREATE_TREE_INFORMATION_DATA = "Create tree information data"
+    SPECIFY_PREDEFINED_STYLE = "Specify predefined style"
+    STYLE = "Style"
+    SPECIFY_TEXT_OPTIONS = "Specify text options"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -990,6 +993,7 @@ class Data:
     """Added by Frank end"""
 
     """Added by Jacky start"""
+    PREVIEW_CODE = "Preview code"
     THE_INPUT_TABLE_CONTAINS = "The input table contains"
     LANGUAGE = "Language"
     TEXT_VARIABLE = "Text variable"
@@ -1056,4 +1060,14 @@ class Data:
     MAXIMUM_TIME_TIME = 'Maximum time'
     TIME_IN_SECONDS ="Time in seconds"
     SAVE_MAXIMAL_CLIQUES_DATA = "Save maximal cliques data"
+    COPY_VARIABLES = "Copy variables"
+    BASIC_STATISTICS="Basic Statistics"
+    MEAN="Mean"
+    STANDARD_DEVIATION="Standard deviation"
+    NUMBER_OF_OBSERVATIONS="Number of observations"
+    NUMBER_OF_MISSING_VALUES="Number of missing values"
+    MAXIMUM_DECIMAL="Maximum decimal"
+    DIVISOR_FOR_STANDARD_DEVIATION_AND_VARIANCE="Divisor for standard deviation and variance"
+    ADDITIONAL_STATISTICS="Additional Statistics"
+    STANDARD_ERROR="Standard error"
     """Added by Percy end"""

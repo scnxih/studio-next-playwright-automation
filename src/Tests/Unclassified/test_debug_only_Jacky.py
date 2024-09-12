@@ -1656,6 +1656,14 @@ def test_41_same_birthday_in_flow(page, init):
 
     flow.run(True)
 
+    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+    # flow.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + "(1)")
+    flow.tab_group.click_tab_by_text("输出数据 (1)")
+    time.sleep(3)
+
+    WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")
+
+
 
 def test_42_box_plot_in_flow(page, init):
     """

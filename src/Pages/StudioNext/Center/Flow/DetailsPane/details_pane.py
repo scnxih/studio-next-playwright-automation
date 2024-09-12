@@ -260,58 +260,105 @@ class DetailsPane(BasePage):
         """
         get_windowshade(self.base_xpath, self.page, parent_label=parent_label).collapse()
 
-    def set_option_for_radio_group(self, parent_label: str, item_index: int = None, item_value: str = None):
+    def set_option_for_radio_group(self, parent_label: str =None, section_label :str= None, item_index: int = None, item_value: str = None):
         """
         Description: set option for radio group by item index(index starts from 0) or by item value.
         @parent_label: the label of radio group.
         @item_index: index of selected option, starting from 0.
         @item_value: value of selected option.
         """
-        if item_index != None:
-            get_radio_group(self.base_xpath, self.page,
-                            parent_label=parent_label).set_check_for_index(index=item_index)
-            return
-        if item_value != None:
-            get_radio_group(self.base_xpath, self.page,
-                            parent_label=parent_label).set_check(text=item_value)
-            return
+        if section_label == None:
+            if parent_label != None:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                parent_label=parent_label).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                parent_label=parent_label).set_check(text=item_value)
+                    return
+            else:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page).set_check(text=item_value)
+        else:
+            if parent_label != None:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                supplement_base_xpath="[../../descendant::label[contains(text(),'{0}')]][../../../../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(parent_label,section_label)
+                                    ).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                supplement_base_xpath="[../../descendant::label[contains(text(),'{0}')]][../../../../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                                        parent_label, section_label)
+                                    ).set_check(text=item_value)
+                    return
+            else:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../preceding-sibling::div[1][.//span[text()='{0}']]]".format(
+                                        section_label)
+                                    ).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../preceding-sibling::div[1][.//span[text()='{0}']]]".format(
+                                        section_label)
+                                    ).set_check(text=item_value)
+                    return
 
-    def set_check_for_checkbox(self, label: str):
+    def set_check_for_checkbox(self, label: str, section_label:str=None):
         """
         Description: set checked for check box.
         @label: the label of the checkbox.
+        @section_label: the label of the section of the checkbox, it's only used when there are same name checkboxes under different sections.
         """
+        if section_label == None:
+            get_checkbox(self.base_xpath, self.page, label=label).set_check()
+        else:
+            get_checkbox(self.base_xpath,self.page,supplement_base_xpath=
+            "[.//label[text()='{0}']][../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='{1}']]]".format(label,section_label)
+            ).set_check()
 
-        get_checkbox(self.base_xpath, self.page, label=label).set_check()
 
-    def set_uncheck_for_checkbox(self, label: str):
+    def set_uncheck_for_checkbox(self, label: str, section_label:str= None):
         """
         Description: set unchecked for check box.
         @label: the label of the checkbox.
-
+        @section_label: the label of the section of the checkbox, it's only used when there are same name checkboxes under different sections.
         """
-        get_checkbox(self.base_xpath, self.page, label=label).set_uncheck()
-
-    def set_option_for_combobox(self, parent_label: str, preceding_label: str = None, item_index: int = None,
+        if section_label == None:
+            get_checkbox(self.base_xpath, self.page, label=label).set_uncheck()
+        else:
+            get_checkbox(self.base_xpath,self.page,supplement_base_xpath=
+            "[.//label[text()='{0}']][../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='{1}']]]".format(label,section_label)
+            ).set_uncheck()
+    def set_option_for_combobox(self, parent_label: str, preceding_label: str = None, section_label:str = None, item_index: int = None,
                                 item_value: str = None):
         """
         Description: set option for combobox (dropdown list).
         @parent_label: the label of the combobox.
-        @preceding_label: the parameter is used only when there are more than one combobox which have same parent label.
+        @preceding_label: the preceding label of the combobox, the parameter is used only when there are more than one combobox with the same parent label but different preceding label under the same section.
+        @section_label: the section label of the combobox, the parameter is used only when there are more than one combobox with the same parent label but different section label.
         @item_index: the index of the selected option of the combobox, starting from 0.
         @item_value: the value of the selected option of the combobox.
         """
         combobox = None
-        if preceding_label == None:
-
-            combobox = get_combobox(self.base_xpath, self.page,
+        if section_label == None:
+            if preceding_label == None:
+                combobox = get_combobox(self.base_xpath, self.page,
                                     supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]]".format(
                                         parent_label))
-
-        else:
-            combobox = get_combobox(self.base_xpath, self.page,
+            else:
+                combobox = get_combobox(self.base_xpath, self.page,
                                     supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
                                         parent_label, preceding_label))
+        else:
+            combobox= get_combobox(self.base_xpath,self.page,supplement_base_xpath=
+            "[../../../../../../descendant::label[contains(text(),'{0}')]/../../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='{1}']]]".format(parent_label,section_label))
 
         if item_index != None:
             combobox.select_item_by_index(item_index)
@@ -320,16 +367,21 @@ class DetailsPane(BasePage):
             combobox.select_item(item_value)
             return
 
-    def set_text_for_text_control(self, parent_label: str, input_text: str):
+    def set_text_for_text_control(self, parent_label: str, input_text: str, section_label:str= None):
         """
         Description: set text for text control.
         @parent_label: the label of the text control.
         @text: the text you want to input.
+        @section_label: the label of the section, the parameter is used only when there are more than one texts with the same parent_label but with different section
         """
-        get_text(self.base_xpath, self.page, parent_label=parent_label).fill_text(input_text)
+        if section_label == None:
+            get_text(self.base_xpath, self.page, parent_label=parent_label).fill_text(input_text)
+        else:
+            get_text(self.base_xpath,self.page,supplement_base_xpath=
+                     "[../../../descendant::label[contains(text(),'{0}')]/../../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='{1}']]]".format(parent_label,section_label)).fill_text(input_text)
 
     def set_check_for_listbox_item(self, parent_label: str, item_text: str):
-        """
+        """se
         Description: set check for listbox item.
         @parent_label: the label of the listbox control.
         @item_text: the text of list item.

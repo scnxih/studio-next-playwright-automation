@@ -37,22 +37,25 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
     WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
+    # MODIFIED
+    # Changed waiting and screenshot order to eliminte diffs caused by the undo/redo icon status
+    # <<< Modified by Jacky(ID: jawang) on Sept.10th, 2024
     select_node_in_flow_canvas(page, Helper.data_locale.TABLE)
+    time.sleep(1)
     CenterPage(page).screenshot_self("selected_table")
 
-    time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.FILE)
+    time.sleep(1)
     CenterPage(page).screenshot_self("selected_file")
 
-    time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
+    time.sleep(1)
     CenterPage(page).screenshot_self("selected_branch_rows")
 
-    time.sleep(1)
     select_node_in_flow_canvas(page, Helper.data_locale.CALCULATE_COLUMNS)
-    CenterPage(page).screenshot_self("selected_calculate_columns")
-
     time.sleep(1)
+    CenterPage(page).screenshot_self("selected_calculate_columns")
+    # Modified by Jacky(ID: jawang) on Sept.10th, 2024 >>>
 
 
 def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_rows(page, init):
@@ -159,13 +162,15 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.show_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("show_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     flow.hide_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("hide_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
@@ -181,15 +186,21 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     flow.cut_step()
     time.sleep(2)
-    CenterPage(page).screenshot_self("flow_cut_step")
+    CenterPage(page).screenshot_self("flow_cut_step",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.undo()
     time.sleep(2)
-    CenterPage(page).screenshot_self("hide_over_view_map")
+    CenterPage(page).screenshot_self("hide_over_view_map",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.redo()
     time.sleep(2)
-    CenterPage(page).screenshot_self("hide_over_view_map")
+    CenterPage(page).screenshot_self("hide_over_view_map",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.schedule_as_job()
     flow.add_to_my_favorites()
