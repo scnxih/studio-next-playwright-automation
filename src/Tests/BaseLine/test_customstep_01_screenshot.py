@@ -59,10 +59,24 @@ def test_03_show_single_page_as_tab(page, init):
     time.sleep(1)
     custom_step.add_page_by_toolbar()
     time.sleep(1)
-    whole.screenshot_self("add_page")
+
+    # Original
+    # whole.screenshot_self("add_page")
+    # Masked
+    whole.screenshot_self("add_page",
+                          mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
+                                custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
+                          mask_color="#000000")
+
     custom_step.uncheck_show_single_page_as_tab()
     time.sleep(1)
-    whole.screenshot_self("uncheck_single")
+
+    # Original
+    # whole.screenshot_self("uncheck_single")
+    whole.screenshot_self("uncheck_single",
+                          mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
+                                custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
+                          mask_color="#000000")
 
 
 def test_04_page_context_menu(page, init):

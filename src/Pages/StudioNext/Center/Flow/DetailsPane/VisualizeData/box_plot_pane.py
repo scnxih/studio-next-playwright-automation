@@ -21,7 +21,9 @@ class BoxPlotPane(BasicStepPane):
         combobox = None
         if preceding_label is None:
 
-            combobox = get_combobox(self.base_xpath, self.page, supplement_base_xpath="[../../../../../../../descendant::label[contains(text(),'{0}')]]".format(parent_label))
+            combobox = get_combobox(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../../../descendant::label[contains(text(),'{0}')]]".format(
+                                        parent_label))
             # combobox = get_combobox(self.base_xpath, self.page, supplement_base_xpath="[../../../../../../descendant::label[contains(text(),'{0}')]]".format(parent_label))
 
             Helper.logger.debug("*** Overwriting ***")
@@ -78,12 +80,21 @@ class BoxPlotPane(BasicStepPane):
 
     def set_subcategory(self, column_name: str):
         """
-        Data/Category
+        Data/Subcategory
         """
         self.click_Tab(Helper.data_locale.DATA)
         self.add_column(parent_label=Helper.data_locale.SUBCATEGORY, column_name=column_name)
 
         self.screenshot_self("set_subcategory")
+
+    def set_category(self, column_name: str):
+        """
+        Data/Category
+        """
+        self.click_Tab(Helper.data_locale.DATA)
+        self.add_column_exact_label(parent_label=Helper.data_locale.CATEGORY + ":", column_name=column_name)
+
+        self.screenshot_self("set_category")
 
     def set_group_analysis_by(self, column_name: str):
         """

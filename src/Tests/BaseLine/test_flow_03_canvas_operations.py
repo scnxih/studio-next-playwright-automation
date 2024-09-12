@@ -134,7 +134,13 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     flow.open_context_menu_for_the_node_in_flow(Helper.data_locale.TABLE)
     time.sleep(1)
-    CenterPage(page).screenshot_self("table_node_context_menu")
+
+    # Original
+    # CenterPage(page).screenshot_self("table_node_context_menu")
+    # Mask the 'Preview Code' button
+    CenterPage(page).screenshot_self("table_node_context_menu",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     page.get_by_text(Helper.data_locale.COPY).click()
     time.sleep(1)
