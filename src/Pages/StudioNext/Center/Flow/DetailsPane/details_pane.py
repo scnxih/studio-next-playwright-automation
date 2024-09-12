@@ -260,21 +260,55 @@ class DetailsPane(BasePage):
         """
         get_windowshade(self.base_xpath, self.page, parent_label=parent_label).collapse()
 
-    def set_option_for_radio_group(self, parent_label: str, item_index: int = None, item_value: str = None):
+    def set_option_for_radio_group(self, parent_label: str =None, section_label :str= None, item_index: int = None, item_value: str = None):
         """
         Description: set option for radio group by item index(index starts from 0) or by item value.
         @parent_label: the label of radio group.
         @item_index: index of selected option, starting from 0.
         @item_value: value of selected option.
         """
-        if item_index != None:
-            get_radio_group(self.base_xpath, self.page,
-                            parent_label=parent_label).set_check_for_index(index=item_index)
-            return
-        if item_value != None:
-            get_radio_group(self.base_xpath, self.page,
-                            parent_label=parent_label).set_check(text=item_value)
-            return
+        if section_label == None:
+            if parent_label != None:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                parent_label=parent_label).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                parent_label=parent_label).set_check(text=item_value)
+                    return
+            else:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page).set_check(text=item_value)
+        else:
+            if parent_label != None:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                supplement_base_xpath="[../../descendant::label[contains(text(),'{0}')]][../../../../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(parent_label,section_label)
+                                    ).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                supplement_base_xpath="[../../descendant::label[contains(text(),'{0}')]][../../../../../preceding-sibling::div[1][.//span[text()='{1}']]]".format(
+                                        parent_label, section_label)
+                                    ).set_check(text=item_value)
+                    return
+            else:
+                if item_index != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../preceding-sibling::div[1][.//span[text()='{0}']]]".format(
+                                        section_label)
+                                    ).set_check_for_index(index=item_index)
+                    return
+                if item_value != None:
+                    get_radio_group(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../preceding-sibling::div[1][.//span[text()='{0}']]]".format(
+                                        section_label)
+                                    ).set_check(text=item_value)
+                    return
 
     def set_check_for_checkbox(self, label: str, section_label:str=None):
         """
