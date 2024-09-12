@@ -1,3 +1,5 @@
+import time
+
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
@@ -536,17 +538,31 @@ def test_11_section_label_for_checkbox_combobox(page,init):
     pane.expand_windowshade_x_axis()
     pane.set_check_for_create_reference_line_for_x_axis()
     time.sleep(1)
-    pane.set_uncheck_for_create_reference_line_for_x_axis()
+    pane.set_option_for_radio_group(section_label="X 轴",item_index=0)
+    time.sleep(1)
+    pane.set_option_for_radio_group(section_label="X 轴", item_value="自定义标签")
     time.sleep(1)
     pane.set_option_for_dispaly_label_for_x_axis(item_index=2)
-    pane.set_text_for_label_for_x_axis("test x label")
+    time.sleep(1)
+    pane.set_text_for_first_label_for_x_axis("test first label")
+    time.sleep(1)
+    pane.set_text_for_second_label_for_x_axis("test second label")
+    time.sleep(1)
+    pane.collapse_windowshade_x_axis()
+
     pane.expand_windowshade_y_axis()
     pane.set_check_for_create_reference_line_for_y_axis()
     time.sleep(1)
-    pane.set_uncheck_for_create_reference_line_for_y_axis()
+    pane.set_option_for_radio_group(section_label="Y 轴",item_index=0)
+    time.sleep(1)
+    pane.set_option_for_radio_group(section_label="Y 轴", item_value="自定义标签")
+
     time.sleep(1)
     pane.set_option_for_dispaly_label_for_y_axis(item_index=2)
-    pane.set_text_for_label_for_y_axis("测试Y轴‘标签")
+    time.sleep(1)
+    pane.set_text_for_first_label_for_y_axis("Y 标签1")
+    time.sleep(1)
+    pane.set_text_for_second_label_for_y_axis("Y label 2")
     time.sleep(1)
 
 

@@ -3,6 +3,7 @@
 @date: 2024/08/21
 @description: define panes of Line Chart step
 """
+from src.Pages.Common.common_component_factory import get_text
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
 
@@ -266,8 +267,15 @@ class LineChartPane(BasicStepPane):
     def set_option_for_dispaly_label_for_y_axis(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label="显示标签",section_label="Y 轴",item_index=item_index,item_value=item_value)
 
-    def set_text_for_label_for_x_axis(self, input_text:str):
-        self.set_text_for_text_control(parent_label="标签",section_label="X 轴",input_text=input_text)
-    def set_text_for_label_for_y_axis(self, input_text: str):
-        self.set_text_for_text_control(parent_label="标签", section_label="Y 轴", input_text=input_text)
+    def set_text_for_first_label_for_x_axis(self, input_text:str):
+        get_text(self.base_xpath, self.page, supplement_base_xpath="[../../../descendant::label[contains(text(), '标签')]][../../../../following-sibling::div[1][.//label[text()='在刻度冲突时旋转值']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='X 轴']]]").fill_text(input_text)
+    def set_text_for_second_label_for_x_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(),'标签')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='X 轴']]]").fill_text(input_text)
+    def set_text_for_first_label_for_y_axis(self, input_text:str):
+        get_text(self.base_xpath, self.page, supplement_base_xpath="[../../../descendant::label[contains(text(), '标签')]][../../../../following-sibling::div[1][.//label[text()='使用对数尺度']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='Y 轴']]]").fill_text(input_text)
+
+    def set_text_for_second_label_for_y_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(),'标签')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='Y 轴']]]").fill_text(input_text)
     """Added by Alice on Sep 10,2024 end"""
