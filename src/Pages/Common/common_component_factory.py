@@ -5,6 +5,7 @@ Description: This is factory of all common components.
 """
 from playwright.sync_api import Playwright, Page
 from src.Pages.Common.numeric_stepper import NumericStepper
+from src.Pages.Common.numeric_stepper_select_mode import NumericStepperSelectMode
 from src.Pages.Common.textarea import Textarea
 from src.Pages.Common.text import Text
 from src.Pages.Common.combobox import Combobox
@@ -31,6 +32,9 @@ def get_numeric_stepper(container_base_xpath: str, page: Page, data_test_id="", 
     return NumericStepper(container_base_xpath, page, data_test_id=data_test_id,
                           supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
+def get_numeric_stepper_select_mode(container_base_xpath: str, page: Page, data_test_id="", supplement_base_xpath="",parent_label=""):
+    return NumericStepperSelectMode(container_base_xpath, page, data_test_id=data_test_id,
+                          supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 def get_textarea(container_base_xpath: str, page: Page, data_test_id="", aria_label="", supplement_base_xpath="",
                  parent_label=""):

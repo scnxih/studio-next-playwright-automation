@@ -122,7 +122,7 @@ class OutputOptions(BasePage):
         self.scroll_if_needed(self.checkbox_inobs.base_locator)
         self.checkbox_inobs.set_uncheck()
 
-    def input_numstepper_inobs(self, value: int):
+    def input_numstepper_inobs(self, value: str):
         self.check_checkbox_inobs()
         self.numstepper_inobs.set_value(value)
 
@@ -154,7 +154,7 @@ class OutputOptions(BasePage):
         self.scroll_if_needed(self.checkbox_outobs.base_locator)
         self.checkbox_outobs.set_uncheck()
 
-    def input_numstepper_outobs(self, value: int):
+    def input_numstepper_outobs(self, value: str):
         self.check_checkbox_outobs()
         self.numstepper_outobs.set_value(value)
 

@@ -33,7 +33,7 @@ class CustomStepPropertiesPage(BasePage):
     def set_indent(self, indent: int):
         get_numeric_stepper(self.base_xpath, self.page,
                             supplement_base_xpath="[ancestor::div[contains(@data-testid,'indentLevel')]]").set_value(
-            indent)
+            str(indent))
 
     def expand_dependencies(self):
         # get_windowshade(self.base_xpath, self.page, supplement_base_xpath="[descendant::span[text()='{0}']]".format(
@@ -188,14 +188,14 @@ class CustomStepPropertiesPage(BasePage):
         # get_numeric_stepper(self.base_xpath, self.page,supplement_base_xpath="[.. /.. / descendant::label[contains("
         #                                                                      "text(), '{0}')]]".
         #                     format(Helper.data_locale.MINIMUM_COLUMNS)).set_value(min_columns)
-        get_numeric_stepper(self.base_xpath, self.page, parent_label= Helper.data_locale.MINIMUM_COLUMNS).set_value(min_columns)
+        get_numeric_stepper(self.base_xpath, self.page, parent_label= Helper.data_locale.MINIMUM_COLUMNS).set_value(str(min_columns))
 
     def set_max_columns(self, max_columns: int):
         # get_numeric_stepper(self.base_xpath, self.page,
         #                     supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MAXIMUM_COLUMNS)).set_value(max_columns)
         get_numeric_stepper(self.base_xpath, self.page,
-                            parent_label = Helper.data_locale.MAXIMUM_COLUMNS).set_value(max_columns)
+                            parent_label = Helper.data_locale.MAXIMUM_COLUMNS).set_value(str(max_columns))
 
     def add_many_items(self, text: str):
         self.toolbar.click_btn_by_title(Helper.data_locale.ADD_MULTIPLE_ITEMS_TO_LIST)
@@ -320,13 +320,13 @@ class CustomStepPropertiesPage(BasePage):
         # get_numeric_stepper(self.base_xpath,self.page,supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MININUM_NUMBER_OF_VALUES)).set_value(min_number)
         get_numeric_stepper(self.base_xpath, self.page,
-                            parent_label=Helper.data_locale.MININUM_NUMBER_OF_VALUES).set_value(min_number)
+                            parent_label=Helper.data_locale.MININUM_NUMBER_OF_VALUES).set_value(str(min_number))
 
     def set_maximum_number_of_values(self,max_number:int):
         # get_numeric_stepper(self.base_xpath,self.page,supplement_base_xpath="[.. /.. / descendant::label[contains(text(), '{0}')]]".format(
         #                         Helper.data_locale.MAXINUM_NUMBER_OF_VALUES)).set_value(max_number)
         get_numeric_stepper(self.base_xpath, self.page,
-                            parent_label = Helper.data_locale.MAXINUM_NUMBER_OF_VALUES).set_value(max_number)
+                            parent_label = Helper.data_locale.MAXINUM_NUMBER_OF_VALUES).set_value(str(max_number))
 
     def set_check_allow_integer_values_only(self):
         get_checkbox(self.base_xpath,self.page,label=Helper.data_locale.ALLOW_INTEGER_VALUES_ONLY).set_check()
