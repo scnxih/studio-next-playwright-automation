@@ -107,3 +107,24 @@ White Pine, 33, 10030
 Carson City, 510, 54521
 ;
 """
+
+    CANONICAL_CORRELATION = """
+data "jobs'中"n;
+   input "career'中"n "supervisor'中"n "finance'中"n "variety'中"n "feedback'中"n "autonomy'中"n;
+   datalines;
+72 26 9 10 11 70
+63 76 7 85 22 93
+96 31 7 83 63 73
+96 98 6 82 75 97
+84 94 6 36 77 97
+66 10 5 28 24 75
+31 40 9 64 23 75
+45 14 2 19 15 50
+42 18 6 33 13 70
+79 74 4 23 14 90
+39 12 2 37 13 70
+54 35 3 23 74 53
+60 75 5 45 58 83
+63 45 5 22 67 53
+run;
+"""
