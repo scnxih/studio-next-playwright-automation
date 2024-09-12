@@ -795,7 +795,8 @@ class DataZH(Data):
     SPECIFY_PREDEFINED_STYLE = "指定预定义样式"
     STYLE = "样式"
     SPECIFY_TEXT_OPTIONS = "指定文本选项"
-
+    NOTE_ABOUT_SERVER_SELECTION = "“服务器选择”注意事项"
+    SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA = "保存最小生成树信息数据"
     """Added by Dommy end"""
 
     """Added by Frank start"""

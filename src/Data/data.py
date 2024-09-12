@@ -803,6 +803,8 @@ class Data:
     SPECIFY_PREDEFINED_STYLE = "Specify predefined style"
     STYLE = "Style"
     SPECIFY_TEXT_OPTIONS = "Specify text options"
+    NOTE_ABOUT_SERVER_SELECTION = "Note about Server Selection"
+    SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA = "Save minimum spanning tree information data"
     """Added by Dommy end"""
 
     """Added by Frank start"""
