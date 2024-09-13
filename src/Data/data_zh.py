@@ -1136,7 +1136,6 @@ class DataZH(Data):
     TEXT_FOR_HISTOGRAM= "“直方图”部分的文本"
     TEXT_FOR_BOX_PLOT= "“盒形图”部分的文本"
     TEXT_FOR_FOOTNOTE= "“脚注”部分的文本"
-    CREATE_OUTPUT_DATA= "创建输出数据"
     SHOW_STATISTICS= "显示统计量"
     SHOW_ANALYSIS_LABELS= "显示分析标签"
     """Added by Percy end"""

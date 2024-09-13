@@ -1138,7 +1138,6 @@ class Data:
     TEXT_FOR_HISTOGRAM= "Text for Histogram"
     TEXT_FOR_BOX_PLOT= "Text for Box Plot"
     TEXT_FOR_FOOTNOTE= "Text for Footnote"
-    CREATE_OUTPUT_DATA= "Create output data"
     SHOW_STATISTICS= "Show statistics"
     SHOW_ANALYSIS_LABELS= "Show Analysis labels"
     """Added by Percy end"""
