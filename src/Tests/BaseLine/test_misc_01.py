@@ -2,6 +2,8 @@ from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
+
+
 def new_program_and_type_code(page):
     PageHelper.new_sas_program(page)
     text = '''
@@ -14,7 +16,7 @@ run;'''
 def test_01_type_code(page, init):
     new_program_and_type_code(page)
     PageHelper.close_all_tabs(page)
-    PageHelper.show_accordion(page,AccordionType.open_item)
+    PageHelper.show_accordion(page, AccordionType.open_item)
 
 
 def test_02_save_program(page, init):
@@ -24,9 +26,9 @@ def test_02_save_program(page, init):
         set sashelp.class;
     run;'''
     PageHelper.type_code_in_codeeditor(page, text)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    PageHelper.save_program(page, folder_path, "first.sas", True)
+    PageHelper.save_program(page, Helper.public_folder_path, "first.sas", True)
 
 
 def test_03_screenshot(page, init):
@@ -66,9 +68,6 @@ def test_05_page_base_locator_2(page, init):
     code.base_locator.screenshot(path="code_editor.png")
 
 
-
-
-
 def test_06_type_code(page, init):
     for i in range(3):
         new_program_and_type_code(page)
@@ -83,8 +82,8 @@ def test_07_save_program(page, init):
         set sashelp.class;
     run;'''
     PageHelper.type_code_in_codeeditor(page, text)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    PageHelper.save_program(page, folder_path, "first.sas", True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    PageHelper.save_program(page, Helper.public_folder_path, "first.sas", True)
 
 
 def test_08_screenshot(page, init):
@@ -128,8 +127,9 @@ def test_11_save(page, init):
     PageHelper.new_sas_program(page)
     text = "data test;\n set sashelp.class;\n run;"
     PageHelper.type_code_in_codeeditor(page, text)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    PageHelper.save_program(page, folder_path, "first.sas", True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    PageHelper.save_program(page, Helper.public_folder_path, "first.sas", True)
+
 
 """Comment this test case since open file does not work now """
 # def test_13_sas_content_tree_nova_aggrid(page, init):
@@ -156,6 +156,8 @@ def test_11_save(page, init):
 #     time.sleep(1)
 
 """Comment this test case since open file does not work now """
+
+
 # def test_14_sas_server_tree_aggrid_scroll(page, init):
 #     PageHelper.show_accordion(page, AccordionType.sas_server)
 #     folder_file_path = ["SAS Server", "Home", "segatest", "I18N", "自动化测试_SASCompute", "CLASS_中文_U8.txt"]
@@ -168,10 +170,8 @@ def test_12_sas_server_tree_aggrid_combobox(page, init):
     PageHelper.new_sas_program(page)
     text = "data test;\n set sashelp.class;\n run;"
     PageHelper.type_code_in_codeeditor(page, text)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    PageHelper.save_program_test_tile_view_combobox(page, folder_path, "first.sas", True)
-
-
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    PageHelper.save_program_test_tile_view_combobox(page, Helper.public_folder_path, "first.sas", True)
 
 
 def test_13_other_method(page, init):
@@ -203,12 +203,11 @@ def test_13_other_method(page, init):
 
     # PageHelper.new_flow(page)
     PageHelper.show_accordion(page, AccordionType.open_item)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     folder_path_list = [folder_path, folder_path, folder_path, folder_path, folder_path, folder_path, folder_path]
     file_name_list = ["测试1", "测试2", "测试3", "测试4", "测试5", "测试6", "测试7"]
     PageHelper.save_all_files(page, folder_path_list, file_name_list, True)
-
-
 
 
 def test_14_textarea(page, init):

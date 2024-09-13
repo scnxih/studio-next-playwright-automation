@@ -5,7 +5,8 @@ from src.conftest import *
 
 def test_01_save_all_files(page, init):
     # folder_path = ["SAS 内容", "Public"]
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = Helper.public_folder_path
     # folder_path = ["SAS Content", "Public"]
 
     xml_editor = PageHelper.create_plain_editor_factory().create_editor("xml", page)

@@ -65,9 +65,42 @@ class StepsPage(AccordionPage):
         locator = self.tree.navigate_to_element(step_path)
         time.sleep(0.5)
         return locator
-    def add_to_flow(self,step_path: list):
+
+    def add_to_flow(self, step_path: list):
         locator = self.navigate_to_step(step_path)
-        self.click_context_menu(locator,Helper.data_locale.ADD_TO_FLOW)
+        self.click_context_menu(locator, Helper.data_locale.ADD_TO_FLOW)
         time.sleep(1)
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on September 12th, 2024
+    def collapse_parent(self, step_path: list):
+        """
+        Collapse parent tree node
+        """
+        self.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
 
+    def navigate_to_step_then_collapse_parent(self, step_path: list):
+        locator = self.tree.navigate_to_element(step_path)
+        time.sleep(0.5)
+
+        self.screenshot_self("step_category")
+        self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
+                        "nav_stp_ag",
+                        user_assigned_xpath=True)
+
+        # //div[@class="ag-center-cols-container"][@role="rowgroup"]
+        self.screenshot('//div[@class="ag-center-cols-container"][@role="rowgroup"]',
+                        "rowgroup",
+                        user_assigned_xpath=True)
+
+        #//div[@role="treegrid"]
+
+        self.screenshot('//div[@role="treegrid"]',
+                        "treegrid",
+                        user_assigned_xpath=True)
+
+        self.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
+
+        return locator
+
+    # END Added by Jacky(ID: jawang) on September 12th, 2024 >>>
