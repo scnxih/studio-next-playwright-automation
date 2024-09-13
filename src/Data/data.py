@@ -660,8 +660,11 @@ class Data:
     MOVE_COLUMN_UP = "Move column up"
     MOVE_COLUMN_DOWN = "Move column down"
     NODES = "Nodes"
+    ADD_A_QUERY = "Add a query"
+    RUN_FLOW = "Run flow"
+    ADD_A_NOTE = "Add a note"
 
-    
+
     """Added by Alice on Aug 12,2024 end"""
 
     # ADDED
@@ -684,7 +687,19 @@ class Data:
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
     """Added by Alice start"""
-    TEST1 = ""
+    RUN_NODE = "Run node"
+    RUN_FROM_NODE = "Run from node"
+    RUN_TO_NODE = "Run to node"
+    GO_TO_LAST_SUBMITTED_CODE = "Go to last submitted code"
+    GO_TO_LAST_SUBMITTED_LOG = "Go to last submitted log"
+    EXPAND_PORTS = "Expand ports"
+    COLLAPSE_PORTS = "Collapse ports"
+    ADD_INPUT_PORT = "Add input port"
+    ADD_OUTPUT_PORT = "Add output port"
+    REMOVE_INPUT_PORT = "Remove input port"
+    REMOVE_OUTPUT_PORT = "Remove output port"
+    REMOVE_INPUT_CONNECTION = "Remove input connection"
+    REMOVE_OUTPUT_CONNECTION = "Remove output connection"
     """Added by Alice end"""
 
     """Added by Allison start"""
@@ -805,6 +820,18 @@ class Data:
     SPECIFY_TEXT_OPTIONS = "Specify text options"
     NOTE_ABOUT_SERVER_SELECTION = "Note about Server Selection"
     SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA = "Save minimum spanning tree information data"
+    LABELED = "Labeled"
+    FILTER_LABELED_DATA = "Filter labeled data"
+    TARGET_VARIABLE = "Target variable"
+    INPUT_VARIABLES = "Input variables"
+    UNLABELED = "Unlabeled"
+    FILTER_UNLABELED_DATA = "Filter unlabeled data"
+    KERNEL = "Kernel"
+    NUMBER_OF_NEIGHBORS = "Number of neighbors"
+    RBF_KERNEL_WIDTH = "RBF kernel width"
+    CREATE_OUTPUT_DATA = "Create output data"
+    INCLUDE_VARIABLES_FROM_THE_INPUT_CAS_TABLE = "Include variables from the input CAS table"
+    INCLUDE_THESE_VARIABLES = "Include these variables"
     """Added by Dommy end"""
 
     """Added by Frank start"""

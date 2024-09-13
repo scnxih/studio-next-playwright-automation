@@ -168,7 +168,7 @@ class ManageColumnsPane(DetailsPane):
         Click the 'Add all' button in 'Options' tab page
         """
         # Click 'Options' tab page
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # expect the 'Add columns' button to be disabled
         expect(self.transform_to_locator(self.button_add_columns)).to_be_disabled()
@@ -192,7 +192,7 @@ class ManageColumnsPane(DetailsPane):
         Remove all columns button: data-testid="manageColumns-removeAllButton"
         """
         # Click 'Options' tab page
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # Click 'Remove all columns' button
         # Button(self.base_xpath, self.page, data_test_id='manageColumns-removeAllButton').click_self()

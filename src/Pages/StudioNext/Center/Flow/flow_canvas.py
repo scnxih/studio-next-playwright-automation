@@ -2,6 +2,7 @@
 Date: Feb 21, 2024
 Description: This file referenced Cary related file.
 """
+import math
 import os
 import time
 from pytest_check import equal
@@ -24,8 +25,8 @@ def select_node_in_flow_canvas(page, node_name):
     with open(functions_js_path, "r", encoding="utf-8") as js_file:
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
-        x_coordinate = int(step_location.split()[0])
-        y_coordinate = int(step_location.split()[1])
+        x_coordinate = int(math.floor(float(step_location.split()[0])))
+        y_coordinate = int(math.floor(float(step_location.split()[1])))
 
         execute_mouse_press_script = f"{js_functions}\nexecute_mouse_press({x_coordinate},{y_coordinate});"
         page.evaluate(execute_mouse_press_script)
@@ -84,8 +85,8 @@ def open_context_menu_for_the_node_in_flow(page, node_name):
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
         # logging.info(f"Node location '{step_location}'")
-        x_coordinate = int(step_location.split()[0])
-        y_coordinate = int(step_location.split()[1])
+        x_coordinate = int(math.floor(float(step_location.split()[0])))
+        y_coordinate = int(math.floor(float(step_location.split()[1])))
         execute_right_mouse_press_script = f"{js_functions}\nexecute_right_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_right_mouse_press_script)
 
@@ -125,8 +126,8 @@ def select_input_port_node_in_flow(page, node_name):
     with open(functions_js_path, "r", encoding="utf-8") as js_file:
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
-        x_coordinate = int(step_location.split()[0]) - NODE_WIDTH_WITH_PORTS_CONSTANT
-        y_coordinate = int(step_location.split()[1])
+        x_coordinate = int(math.floor(float(step_location.split()[0]))) - NODE_WIDTH_WITH_PORTS_CONSTANT
+        y_coordinate = int(math.floor(float(step_location.split()[1])))
         execute_mouse_press_script = f"{js_functions}\nexecute_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_mouse_press_script)
 
@@ -146,8 +147,8 @@ def select_output_port_node_in_flow(page, node_name):
     with open(functions_js_path, "r", encoding="utf-8") as js_file:
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
-        x_coordinate = int(step_location.split()[0]) + NODE_WIDTH_WITH_PORTS_CONSTANT
-        y_coordinate = int(step_location.split()[1])
+        x_coordinate = int(math.floor(float(step_location.split()[0]))) + NODE_WIDTH_WITH_PORTS_CONSTANT
+        y_coordinate = int(math.floor(float(step_location.split()[1])))
         execute_mouse_press_script = f"{js_functions}\nexecute_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_mouse_press_script)
 
@@ -169,12 +170,12 @@ def open_context_menu_for_input_port_of_node_in_flow(page, port_number, node_nam
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
         # logging.info(f"Node location '{step_location}'")
-        x_coordinate = int(step_location.split()[0]) - NODE_WIDTH_WITH_PORTS_CONSTANT
+        x_coordinate = int(math.floor(float(step_location.split()[0]))) - NODE_WIDTH_WITH_PORTS_CONSTANT
         if port_number == "1":
             input_port_coordinate = 0
         else:
             input_port_coordinate = PORT_WIDTH_HEIGHT_CONSTANT
-        y_coordinate = int(step_location.split()[1]) + int(input_port_coordinate)
+        y_coordinate = int(math.floor(float(step_location.split()[1]))) + int(input_port_coordinate)
         execute_right_mouse_press_script = f"{js_functions}\nexecute_right_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_right_mouse_press_script)
 
@@ -196,12 +197,12 @@ def open_context_menu_for_output_port_of_node_in_flow(page, port_number, node_na
         js_functions = js_file.read()
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
         # logging.info(f"Node location '{step_location}'")
-        x_coordinate = int(step_location.split()[0]) + NODE_WIDTH_WITH_PORTS_CONSTANT
+        x_coordinate = int(math.floor(float(step_location.split()[0]))) + NODE_WIDTH_WITH_PORTS_CONSTANT
         if port_number == "1":
             output_port_coordinate = 0
         else:
             output_port_coordinate = PORT_WIDTH_HEIGHT_CONSTANT
-        y_coordinate = int(step_location.split()[1]) + int(output_port_coordinate)
+        y_coordinate = int(math.floor(float(step_location.split()[1]))) + int(output_port_coordinate)
         execute_right_mouse_press_script = f"{js_functions}\nexecute_right_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_right_mouse_press_script)
         execute_right_mouse_press_script = f"{js_functions}\nexecute_right_mouse_press({x_coordinate}, {y_coordinate});"
@@ -244,8 +245,8 @@ def select_node_status_dialog_of_the_node_in_flow(page, node_name):
         js_functions = js_file.read()
         flow_node_width_for_linking_nodes_in_canvas = NODE_WIDTH_WITHOUT_PORTS_CONSTANT
         step_location = page.evaluate(js_functions + f'\nget_node_location("{node_name}")')
-        x_coordinate = int(step_location.split()[0])
-        y_coordinate = int(step_location.split()[1]) + flow_node_width_for_linking_nodes_in_canvas
+        x_coordinate = int(math.floor(float(step_location.split()[0])))
+        y_coordinate = int(math.floor(float(step_location.split()[1]))) + flow_node_width_for_linking_nodes_in_canvas
         execute_mouse_press_script = f"{js_functions}\nexecute_mouse_press({x_coordinate},{y_coordinate});"
         page.evaluate(execute_mouse_press_script)
 

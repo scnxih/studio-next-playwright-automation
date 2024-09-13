@@ -47,7 +47,7 @@ class BoxPlotPane(BasicStepPane):
         """
 
         # Switch to Data tab page
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         # Set filter input data
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_INPUT_DATA,
@@ -61,7 +61,7 @@ class BoxPlotPane(BasicStepPane):
         0 = Vertical
         1 = Horizontal
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.set_option_for_radio_group(parent_label=Helper.data_locale.PLOT_ORIENTATION,
                                         item_index=item_index,
@@ -73,7 +73,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Data/Analysis variable
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.add_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE, column_name=column_name)
 
         self.screenshot_self("set_analysis_variable")
@@ -82,7 +82,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Data/Subcategory
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.add_column(parent_label=Helper.data_locale.SUBCATEGORY, column_name=column_name)
 
         self.screenshot_self("set_subcategory")
@@ -91,7 +91,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Data/Category
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.add_column_exact_label(parent_label=Helper.data_locale.CATEGORY + ":", column_name=column_name)
 
         self.screenshot_self("set_category")
@@ -100,7 +100,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Data/Group analysis by
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.expand_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
         self.add_column(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, column_name=column_name)
 
@@ -113,7 +113,7 @@ class BoxPlotPane(BasicStepPane):
         """
 
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # TO-DO
 
@@ -121,7 +121,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Check notches in Options tab page
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.expand_windowshade(Helper.data_locale.BOX)
         self.set_check_for_checkbox(label=Helper.data_locale.NOTCHES)
 
@@ -134,7 +134,7 @@ class BoxPlotPane(BasicStepPane):
         """
 
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.expand_windowshade(Helper.data_locale.BOX)
         self.set_option_for_combobox(parent_label=Helper.data_locale.COLOR_TRANSPARENCY,
                                      item_index=item_index, item_value=item_value)
@@ -149,7 +149,7 @@ class BoxPlotPane(BasicStepPane):
 
         """
         # Switch to Options tab page
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # Expand the Box window shade
         self.expand_windowshade(Helper.data_locale.BOX)
@@ -168,7 +168,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Set the title in 'Options' tab page as
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.expand_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
         self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE,
                                        input_text=input_text)
@@ -182,7 +182,7 @@ class BoxPlotPane(BasicStepPane):
         """
         Set the title in 'Options' tab page as
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.expand_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
         self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE,
                                        input_text=input_text)
@@ -196,7 +196,7 @@ class BoxPlotPane(BasicStepPane):
         """
 
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.expand_windowshade(Helper.data_locale.GRAPH_SIZE)
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNIT,
                                      item_index=item_index,
@@ -209,7 +209,7 @@ class BoxPlotPane(BasicStepPane):
         """
 
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.expand_windowshade(Helper.data_locale.GRAPH_SIZE)
 

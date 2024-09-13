@@ -1801,11 +1801,11 @@ run;
     tp_ta_pane.set_save_term_by_document_matrix()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -1819,11 +1819,11 @@ run;
     tp_ta_pane.set_save_term_information()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.genericText.outputport.termInformationTable.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "词条信息表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "词条信息表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -1912,11 +1912,11 @@ run;
 
     tp_ta_pane.set_number_of_topics_to("3")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)

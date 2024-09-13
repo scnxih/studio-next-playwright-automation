@@ -1,3 +1,5 @@
+from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
+    SemiSupervisedLearning
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
@@ -509,7 +511,7 @@ def test_14_cluster_variables_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.clustervariables.outputports"
                                                  ".statDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
@@ -519,7 +521,7 @@ def test_14_cluster_variables_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "输出'stat")
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.clustervariables.outputports"
                                                  ".treeDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
@@ -617,16 +619,16 @@ def test_16_text_map_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("CITY_POP_LOC'中文", Helper.data_locale.STEP_TEXT_MAP)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
                                                  "{sasstudio-steps-gui-icu.genericText.inputport.mapInputData.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("AUTOLIB")
     table_pane.set_table("NEVADA'中文")
-    flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_TEXT_MAP)
+    flow.link_two_nodes_in_flow("NEVADA'中文",Helper.data_locale.STEP_TEXT_MAP )
     flow.arrange_nodes()
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
     # "{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
     # flow.view_expand_all_ports()
     # flow.add_node(FlowNodeType.table)
@@ -725,7 +727,7 @@ def test_18_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -775,7 +777,7 @@ def test_19_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -831,7 +833,7 @@ def test_20_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -888,7 +890,7 @@ def test_21_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -945,7 +947,7 @@ def test_22_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1002,7 +1004,7 @@ def test_23_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1061,7 +1063,7 @@ def test_24_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1085,4 +1087,268 @@ def test_24_minimum_spanning_tree_in_flow_l1(page, init):
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
+    flow.run(True)
+
+
+def test_25_semi_supervised_learning_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;
+        cas;
+        caslib _all_ assign;
+        data casuser.'labeled''中文'n;
+        set AUTOLIB.'labeled''中文'n;
+        run;
+        data casuser.'unlabeled''中文'n;
+        set AUTOLIB.'unlabeled''中文'n;
+        run;
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("labeled'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("unlabeled'中文")
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    semi_supervised_learning_pane = SemiSupervisedLearning(page)
+    semi_supervised_learning_pane.expand_windowshade_labeled()
+    semi_supervised_learning_pane.add_column_for_target_variable("y'中文")
+    semi_supervised_learning_pane.add_columns_for_input_variables(check_column_name_list=["x1'中文", "x2'中文"])
+
+    flow.run(True)
+
+
+def test_26_semi_supervised_learning_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;
+        cas;
+        caslib _all_ assign;
+        data casuser.'labeled''中文'n;
+        set AUTOLIB.'labeled''中文'n;
+        run;
+        data casuser.'unlabeled''中文'n;
+        set AUTOLIB.'unlabeled''中文'n;
+        run;
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("labeled'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("unlabeled'中文")
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("SSL'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    semi_supervised_learning_pane = SemiSupervisedLearning(page)
+    semi_supervised_learning_pane.expand_windowshade_labeled()
+    semi_supervised_learning_pane.add_column_for_target_variable("y'中文")
+    semi_supervised_learning_pane.add_columns_for_input_variables(check_column_name_list=["x1'中文", "x2'中文"])
+
+    semi_supervised_learning_pane.click_options_tab()
+    semi_supervised_learning_pane.set_kernel(item_index=1)
+    semi_supervised_learning_pane.set_number_of_neighbors("2")
+    semi_supervised_learning_pane.set_number_of_iterations("4")
+    semi_supervised_learning_pane.set_rbf_kernel_width("15")
+
+    semi_supervised_learning_pane.click_output_tab()
+    semi_supervised_learning_pane.set_check_create_output_data()
+    semi_supervised_learning_pane.set_check_replace_existing_output_table()
+    flow.run(True)
+
+
+def test_27_semi_supervised_learning_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;
+        cas;
+        caslib _all_ assign;
+        data casuser.'labeled''中文'n;
+        set AUTOLIB.'labeled''中文'n;
+        run;
+        data casuser.'unlabeled''中文'n;
+        set AUTOLIB.'unlabeled''中文'n;
+        run;
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("labeled'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("unlabeled'中文")
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("SSL'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    semi_supervised_learning_pane = SemiSupervisedLearning(page)
+    semi_supervised_learning_pane.expand_windowshade_labeled()
+    semi_supervised_learning_pane.add_column_for_target_variable("y'中文")
+    semi_supervised_learning_pane.add_columns_for_input_variables(check_column_name_list=["x1'中文", "x2'中文"])
+
+    semi_supervised_learning_pane.click_options_tab()
+    semi_supervised_learning_pane.set_kernel(item_index=0)
+    semi_supervised_learning_pane.set_code_generation(item_index=1)
+
+    semi_supervised_learning_pane.click_output_tab()
+    semi_supervised_learning_pane.set_check_create_output_data()
+    semi_supervised_learning_pane.set_check_replace_existing_output_table()
+    flow.run(True)
+
+def test_28_semi_supervised_learning_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+        libname AUTOLIB '/segatest/I18N/Autolib' ;
+        cas;
+        caslib _all_ assign;
+        data casuser.'labeled''中文'n;
+        set AUTOLIB.'labeled''中文'n;
+        run;
+        data casuser.'unlabeled''中文'n;
+        set AUTOLIB.'unlabeled''中文'n;
+        run;
+        """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("labeled'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("unlabeled'中文")
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.arrange_nodes()
+
+    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("SSL'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    semi_supervised_learning_pane = SemiSupervisedLearning(page)
+    semi_supervised_learning_pane.expand_windowshade_labeled()
+    semi_supervised_learning_pane.add_column_for_target_variable("y'中文")
+    semi_supervised_learning_pane.add_columns_for_input_variables(check_column_name_list=["x1'中文", "x2'中文"])
+
+    semi_supervised_learning_pane.click_options_tab()
+    semi_supervised_learning_pane.set_kernel(item_index=1)
+    semi_supervised_learning_pane.set_number_of_neighbors("2")
+    semi_supervised_learning_pane.set_number_of_iterations("4")
+    semi_supervised_learning_pane.set_rbf_kernel_width("15")
+    semi_supervised_learning_pane.set_code_generation(item_index=1)
+
+    semi_supervised_learning_pane.click_output_tab()
+    semi_supervised_learning_pane.set_check_create_output_data()
+    semi_supervised_learning_pane.set_check_replace_existing_output_table()
+    semi_supervised_learning_pane.set_include_variables_from_input_CAS_table(item_index=2)
+    semi_supervised_learning_pane.add_columns_for_include_these_variables(check_column_name_list=["x1'中文", "y'中文", "id'中文"])
     flow.run(True)
