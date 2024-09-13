@@ -1,7 +1,5 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
     SemiSupervisedLearning
-from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
-    CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.minimun_spanning_tree_pane import \
@@ -1134,7 +1132,6 @@ def test_25_semi_supervised_learning_in_flow_l0(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     semi_supervised_learning_pane = SemiSupervisedLearning(page)
     semi_supervised_learning_pane.expand_windowshade_labeled()
@@ -1281,6 +1278,7 @@ def test_27_semi_supervised_learning_in_flow_l1(page, init):
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
     flow.run(True)
 
+
 def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
@@ -1288,16 +1286,16 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'labeled''中文'n;
-        set AUTOLIB.'labeled''中文'n;
-        run;
-        data casuser.'unlabeled''中文'n;
-        set AUTOLIB.'unlabeled''中文'n;
-        run;
-        """
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'labeled''中文'n;
+    set AUTOLIB.'labeled''中文'n;
+    run;
+    data casuser.'unlabeled''中文'n;
+    set AUTOLIB.'unlabeled''中文'n;
+    run;
+    """
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1350,5 +1348,6 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     semi_supervised_learning_pane.set_check_create_output_data()
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
     semi_supervised_learning_pane.set_include_variables_from_input_CAS_table(item_index=2)
-    semi_supervised_learning_pane.add_columns_for_include_these_variables(check_column_name_list=["x1'中文", "y'中文", "id'中文"])
+    semi_supervised_learning_pane.add_columns_for_include_these_variables(
+        check_column_name_list=["x1'中文", "y'中文", "id'中文"])
     flow.run(True)
