@@ -179,8 +179,8 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
                                            flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    flow.saveas(folder_path, "test_flow.sas", True, True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    flow.saveas(Helper.public_folder_path, "test_flow.sas", True, True)
 
     flow.copy_step()
 

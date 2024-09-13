@@ -30,8 +30,8 @@ def test_02_combobox(page, init):
     PageHelper.new_sas_program(page)
     text = "data test;\n set sashelp.class;\n run;"
     PageHelper.type_code_in_codeeditor(page, text)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    PageHelper.save_program_test_tile_view_combobox(page, folder_path, "first.sas", True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    PageHelper.save_program_test_tile_view_combobox(page, Helper.public_folder_path, "first.sas", True)
 
 
 def test_03_combobox_checkbox_text_in_settings(page, init):

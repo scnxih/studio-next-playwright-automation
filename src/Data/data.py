@@ -1021,6 +1021,7 @@ class Data:
     INCLUDE_INSET_TABLE = "Include inset table"
 
     SELECT_A_SERVER_FOR_THIS_STEP = "Select a server for this step"
+    COLLAPSE = "折叠"
     """Added by Jacky end"""
 
     """Added by Percy start"""
