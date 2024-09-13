@@ -676,7 +676,24 @@ class DataZH(Data):
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
     """Added by Alice start"""
-    TEST1 = ""
+    RUN_NODE = "运行节点"
+    RUN_FROM_NODE = "运行开始节点"
+    RUN_TO_NODE = "运行结束节点"
+    GO_TO_LAST_SUBMITTED_CODE = "转至最后提交的代码"
+    GO_TO_LAST_SUBMITTED_LOG = "转至最后提交的日志"
+    EXPAND_PORTS = "展开端口"
+    COLLAPSE_PORTS = "折叠端口"
+    ADD_INPUT_PORT = "添加输入端口"
+    ADD_OUTPUT_PORT = "添加输出端口"
+    REMOVE_INPUT_PORT = "删除输入端口"
+    REMOVE_OUTPUT_PORT = "删除输出端口"
+    REMOVE_INPUT_CONNECTION = "删除输入连接"
+    REMOVE_OUTPUT_CONNECTION = "删除输出连接"
+    ADD_A_QUERY = "添加查询"
+    RUN_FLOW ="运行流"
+    ADD_A_NOTE ="添加注释"
+
+
     """Added by Alice end"""
 
     """Added by Allison start"""

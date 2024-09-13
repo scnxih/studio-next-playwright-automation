@@ -9,6 +9,7 @@ Description: FlowPage will inherit from MainCenterPage class, thus the methods i
 """
 import time
 
+from src.Pages.Common.common_component_factory import *
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
@@ -252,16 +253,100 @@ class FlowPage(MainCenterPage):
     def link_two_nodes_in_flow(self, node1_name, node2_name):
         link_two_nodes_in_flow(self.page, node1_name, node2_name)
 
-    def open_context_menu_for_the_node_in_flow(self, node_name):
+    def _open_context_menu_on_canvas_in_flow(self):
+        open_context_menu_for_canvas_in_flow(self.page)
+
+    def click_run_now_in_context_menu_on_canvas(self):
+        self._open_context_menu_on_canvas_in_flow()
+        self.click_menu_item(Helper.data_locale.RUN_FLOW)
+
+    def click_add_note_in_context_menu_on_canvas(self):
+        self._open_context_menu_on_canvas_in_flow()
+        self.click_menu_item(Helper.data_locale.ADD_A_NOTE)
+
+    def click_paste_in_context_menu_on_canvas(self):
+        self._open_context_menu_on_canvas_in_flow()
+        self.click_menu_item(Helper.data_locale.PASTE)
+
+    def click_collapse_all_ports_in_context_menu_on_canvas(self):
+        self._open_context_menu_on_canvas_in_flow()
+        self.click_menu_item(Helper.data_locale.COLLAPSE_ALL_PORTS)
+
+    def click_expand_all_ports_in_context_menu_on_canvas(self):
+        self._open_context_menu_on_canvas_in_flow()
+        self.click_menu_item(Helper.data_locale.EXPAND_ALL_PORTS)
+
+    def _open_context_menu_for_the_node_in_flow(self, node_name):
         select_node_in_flow_canvas(self.page, node_name)
         open_context_menu_for_the_node_in_flow(self.page, node_name)
 
-    def click_context_menu_for_the_node_in_flow(self, node_name, *menu_item_text):
-        self.open_context_menu_for_the_node_in_flow(node_name)
+    def click_context_menu_on_node_in_flow(self, node_name, *menu_item_text):
+        self._open_context_menu_for_the_node_in_flow(node_name)
         self.click_menu_item(*menu_item_text)
+    def click_add_a_query_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.ADD_A_QUERY)
+    def click_run_node_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_NODE)
+    def click_run_from_node_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_FROM_NODE)
 
-    def open_context_menu_for_canvas_in_flow(self):
-        open_context_menu_for_canvas_in_flow(self.page)
+    def click_run_to_node_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_TO_NODE)
+
+    def click_go_to_last_submitted_code_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.GO_TO_LAST_SUBMITTED_CODE)
+
+    def click_go_to_last_submitted_log_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.GO_TO_LAST_SUBMITTED_LOG)
+
+    def click_expand_ports_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.EXPAND_PORTS)
+    def click_collapse_ports_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.COLLAPSE_PORTS)
+
+
+    def click_add_input_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+        self._open_context_menu_for_the_node_in_flow(node_name)
+        if menu_item_text == None:
+            self.click_menu_item(Helper.data_locale.ADD_INPUT_PORT)
+        else:
+            self.click_menu_item(Helper.data_locale.ADD_INPUT_PORT,menu_item_text)
+
+    def click_add_output_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+        self._open_context_menu_for_the_node_in_flow(node_name)
+        if menu_item_text == None:
+            self.click_menu_item(Helper.data_locale.ADD_OUTPUT_PORT)
+        else:
+            self.click_menu_item(Helper.data_locale.ADD_OUTPUT_PORT,menu_item_text)
+    def click_remove_input_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+        self._open_context_menu_for_the_node_in_flow(node_name)
+        if menu_item_text == None:
+            self.click_menu_item(Helper.data_locale.REMOVE_INPUT_PORT)
+        else:
+            self.click_menu_item(Helper.data_locale.REMOVE_INPUT_PORT,menu_item_text)
+
+    def click_remove_output_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+        self._open_context_menu_for_the_node_in_flow(node_name)
+        if menu_item_text == None:
+            self.click_menu_item(Helper.data_locale.REMOVE_OUTPUT_PORT)
+        else:
+            self.click_menu_item(Helper.data_locale.REMOVE_OUTPUT_PORT, menu_item_text)
+
+    def click_cut_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.CUT)
+
+    def click_copy_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.COPY)
+
+    def click_delete_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.DELETE)
+
+    def click_remove_input_connection_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.REMOVE_INPUT_CONNECTION)
+
+    def click_remove_output_connection_in_context_menu_on_node(self,node_name):
+        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.REMOVE_OUTPUT_CONNECTION)
+
 
     def select_input_port_node_in_flow(self, node_name):
         select_input_port_node_in_flow(self.page, node_name)
@@ -313,3 +398,26 @@ class FlowPage(MainCenterPage):
         acc.show_accordion(AccordionType.steps)
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
+
+    def click_flow_tab(self):
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.FLOW)
+
+    def click_submitted_code_and_results_tab(self):
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+
+    def click_code_tab(self):
+        self.click_submitted_code_and_results_tab()
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.CODE)
+
+    def click_log_tab(self):
+        self.click_submitted_code_and_results_tab()
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.LOG)
+
+    def click_results_tab(self):
+        self.click_submitted_code_and_results_tab()
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.RESULTS)
+
+    def click_output_data_tab(self):
+        self.click_submitted_code_and_results_tab()
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
+

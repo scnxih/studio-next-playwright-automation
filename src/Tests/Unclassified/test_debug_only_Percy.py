@@ -79,11 +79,11 @@ def test_Bubble_Map_in_flow_level1_01(page,init):
     table_pane.set_library("AUTOLIB")
     table_pane.set_table("NEVADA'中文")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.bubblemap.inputports.cmMapDataset.displayname.title}")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口", "{sasstudio-steps-gui-icu.bubblemap.inputports.cmMapDataset.displayname.title}")
     flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_BUBBLE_MAP)
     flow.arrange_nodes()
 
-    #flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
+    #flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_BUBBLE_MAP, "添加输入端口","{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
     #flow.link_two_nodes_in_flow("COUNTY_POP'中文", Helper.data_locale.STEP_BUBBLE_MAP)
     #flow.arrange_nodes()
 

@@ -14,7 +14,7 @@ class BubbleMapPane(BasicStepPane):
     def set_choropleth_map_layer(self):
         self.set_check_for_checkbox(label=Helper.data_locale.INCLUDE_CHOROPLETH_MAP_LAYER)
     def set_filter_map_data(self,filter_text:str):
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_MAP_DATA, input_text=filter_text)
     def add_column_for_ID_variable_Map_data(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.ID_VARIABLE, column_name=column_name,section_label=Helper.data_locale.MAP_DATA)
@@ -23,7 +23,7 @@ class BubbleMapPane(BasicStepPane):
         self.set_check_for_checkbox(label=Helper.data_locale.INCLUDE_RESPONSE_DATA)
 
     def set_filter_map_resopnse_data(self,filter_text:str):
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_MAP_RESPONSE_DATA, input_text=filter_text)
 
     def add_column_for_response_variable(self, column_name: str):
