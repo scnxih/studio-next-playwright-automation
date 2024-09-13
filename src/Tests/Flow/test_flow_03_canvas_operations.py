@@ -129,17 +129,19 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     time.sleep(2)
     CenterPage(page).screenshot_self("arrange_nodes")
 
-    flow.open_context_menu_for_the_node_in_flow(Helper.data_locale.TABLE)
-    time.sleep(1)
-    CenterPage(page).screenshot_self("table_node_context_menu")
+    flow.click_copy_in_context_menu_on_node(Helper.data_locale.TABLE)
+    # flow._open_context_menu_for_the_node_in_flow(Helper.data_locale.TABLE)
+    # time.sleep(1)
+    # CenterPage(page).screenshot_self("table_node_context_menu")
+    #
+    # page.get_by_text(Helper.data_locale.COPY).click()
+    # time.sleep(1)
 
-    page.get_by_text(Helper.data_locale.COPY).click()
-    time.sleep(1)
-
-    flow.open_context_menu_for_canvas_in_flow()
-    time.sleep(1)
-
-    page.get_by_text(Helper.data_locale.PASTE).click()
+    # flow._open_context_menu_on_canvas_in_flow()
+    # time.sleep(1)
+    # 
+    # page.get_by_text(Helper.data_locale.PASTE).click()
+    flow.click_paste_in_context_menu_on_canvas()
     time.sleep(1)
     CenterPage(page).screenshot_self("paste_node_in_flow_canvas")
 
@@ -290,8 +292,8 @@ run;
 
     flow.run(True)
     flow.select_node_in_flow_canvas("CLASS")
-    # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+    # table_pane.click_tab("预览数据")
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(3)
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
@@ -326,8 +328,8 @@ run;
     time.sleep(3)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(2)
-    # table_pane.click_Tab("预览数据")
-    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+    # table_pane.click_tab("预览数据")
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
 
     # PageHelper.show_accordion(page,AccordionType.libraries)
@@ -395,8 +397,8 @@ run;
 
     flow.run(True)
     flow.select_node_in_flow_canvas("CLASS")
-    table_pane.click_Tab("预览数据")
-    # table_pane.click_Tab("Preview Data")
+    table_pane.click_tab("预览数据")
+    # table_pane.click_tab("Preview Data")
     time.sleep(3)
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
@@ -431,8 +433,8 @@ run;
     time.sleep(3)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(2)
-    table_pane.click_Tab("预览数据")
-    # table_pane.click_Tab("Preview Data")
+    table_pane.click_tab("预览数据")
+    # table_pane.click_tab("Preview Data")
     time.sleep(2)
 
     # PageHelper.show_accordion(page,AccordionType.libraries)

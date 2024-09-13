@@ -8,7 +8,7 @@ class BasicStepPane(DetailsPane):
         DetailsPane.__init__(self, page)
 
     def set_filter_input_data(self,filter_text:str):
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_INPUT_DATA,input_text=filter_text)
     def set_filter_nodes_data(self,filter_text:str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_NODES_DATA,input_text=filter_text)

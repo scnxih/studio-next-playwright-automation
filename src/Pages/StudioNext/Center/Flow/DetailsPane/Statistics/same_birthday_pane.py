@@ -16,5 +16,5 @@ class SameBirthdayProbabilityPane(BasicStepPane):
         """
         set 'Number of people in a room'
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
         self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_PEOPLE_IN_A_ROOM, input_text=filter_text)

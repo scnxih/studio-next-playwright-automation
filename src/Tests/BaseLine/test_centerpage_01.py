@@ -430,9 +430,9 @@ def test_34_sas_program(page, init):
     sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
     sas_program.editor.type_into_text_area("proc print data = sashelp.class;run;")
     sas_program.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    sas_program.saveas(folder_path, "test_sas_program.sas", True, True)
+    sas_program.saveas(Helper.public_folder_path, "test_sas_program.sas", True, True)
     sas_program.schedule_as_job()
     sas_program.analyze_and_create_flow()
     sas_program.add_to_my_favorites()
@@ -487,9 +487,9 @@ def test_35_python(page, init):
 
     python_program.editor.type_into_text_area("print('It is python.')")
     python_program.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    python_program.saveas(folder_path, "test_python_program.sas", True, True)
+    python_program.saveas(Helper.public_folder_path, "test_python_program.sas", True, True)
     python_program.schedule_as_job()
 
     python_program.add_to_my_favorites()
@@ -566,9 +566,9 @@ def test_36_flow(page, init):
     # flow.run_nodes_downstream()
     flow.run_nodes_upstream()
     # flow.background_submit()
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    flow.saveas(folder_path, "test_flow.sas", True, True)
+    flow.saveas(Helper.public_folder_path, "test_flow.sas", True, True)
     flow.copy_step()
     flow.paste_step()
     flow.cut_step()
@@ -669,9 +669,9 @@ def test_36_flow(page, init):
 def test_38_quick_import(page, init):
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.run(True)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    quick_import.saveas(folder_path, "test_import.sas", True, True)
+    quick_import.saveas(Helper.public_folder_path, "test_import.sas", True, True)
     quick_import.add_to_snippets()
     quick_import.schedule_as_job()
     quick_import.add_to_my_favorites()
@@ -712,9 +712,9 @@ def test_38_quick_import(page, init):
 def test_39_JsonPage(page, init):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
     json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    json.saveas(folder_path, "test_json.json", True, True)
+    json.saveas(Helper.public_folder_path, "test_json.json", True, True)
     time.sleep(1)
     json.undo()
     json.redo()
@@ -728,9 +728,9 @@ def test_39_JsonPage(page, init):
 def test_40_TextPage(page, init):
     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
     text.editor.type_into_text_area('This is text file.')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    text.saveas(folder_path, "test_text.txt", True, True)
+    text.saveas(Helper.public_folder_path, "test_text.txt", True, True)
     time.sleep(1)
     text.undo()
     text.redo()
@@ -744,9 +744,9 @@ def test_40_TextPage(page, init):
 def test_41_XMLPage(page, init):
     xml: XMLPage = PageHelper.new_item(page, TopMenuItem.new_file_types_xml)
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    xml.saveas(folder_path, "test_xml.xml", True, True)
+    xml.saveas(Helper.public_folder_path, "test_xml.xml", True, True)
     time.sleep(1)
     xml.undo()
     xml.redo()
@@ -760,9 +760,9 @@ def test_41_XMLPage(page, init):
 def test_42_WorkSapcePage(page, init):
     work_space: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     work_space.editor.type_into_text_area('This is work space file.')
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    work_space.saveas(folder_path, "test_workspace.workspace", True, True)
+    work_space.saveas(Helper.public_folder_path, "test_workspace.workspace", True, True)
     time.sleep(2)
     work_space.undo()
     work_space.redo()
@@ -888,8 +888,10 @@ def test_44_deployed_and_scheduled_job(page, init):
 
 def test_45_startup_initialization_log(page, init):
     startup_page = PageHelper.show_view_startup_initialization_log(page)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    startup_page.saveas(folder_path, "startup_initialization_log.log", True, True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+
+    # NOTE: Saving initialization file does not work at the moment
+    # startup_page.saveas(Helper.public_folder_path, "startup_initialization_log.log", True, True)
     startup_page.add_to_snippets()
     startup_page.add_to_my_favorites()
 
@@ -902,8 +904,8 @@ def test_45_startup_initialization_log(page, init):
 
 def test_46_job_definition(page, init):
     job_page: JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    # job_page.saveas(folder_path, "JobDefinition", True, True)
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    job_page.saveas(Helper.public_folder_path, "JobDefinition", True, True)
 
     #
 

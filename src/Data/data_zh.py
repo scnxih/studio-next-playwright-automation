@@ -676,7 +676,24 @@ class DataZH(Data):
     # END Added by Jacky(ID: jawang) on August 13th, 2024 >>>
 
     """Added by Alice start"""
-    TEST1 = ""
+    RUN_NODE = "运行节点"
+    RUN_FROM_NODE = "运行开始节点"
+    RUN_TO_NODE = "运行结束节点"
+    GO_TO_LAST_SUBMITTED_CODE = "转至最后提交的代码"
+    GO_TO_LAST_SUBMITTED_LOG = "转至最后提交的日志"
+    EXPAND_PORTS = "展开端口"
+    COLLAPSE_PORTS = "折叠端口"
+    ADD_INPUT_PORT = "添加输入端口"
+    ADD_OUTPUT_PORT = "添加输出端口"
+    REMOVE_INPUT_PORT = "删除输入端口"
+    REMOVE_OUTPUT_PORT = "删除输出端口"
+    REMOVE_INPUT_CONNECTION = "删除输入连接"
+    REMOVE_OUTPUT_CONNECTION = "删除输出连接"
+    ADD_A_QUERY = "添加查询"
+    RUN_FLOW ="运行流"
+    ADD_A_NOTE ="添加注释"
+
+
     """Added by Alice end"""
 
     """Added by Allison start"""
@@ -797,6 +814,18 @@ class DataZH(Data):
     SPECIFY_TEXT_OPTIONS = "指定文本选项"
     NOTE_ABOUT_SERVER_SELECTION = "“服务器选择”注意事项"
     SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA = "保存最小生成树信息数据"
+    LABELED = "带标签"
+    FILTER_LABELED_DATA = "过滤带标签数据"
+    TARGET_VARIABLE = "目标变量"
+    INPUT_VARIABLES = "输入变量"
+    UNLABELED = "无标签"
+    FILTER_UNLABELED_DATA = "过滤无标签数据"
+    KERNEL = "核"
+    NUMBER_OF_NEIGHBORS = "近邻数"
+    RBF_KERNEL_WIDTH = "RBF 核宽度"
+    CREATE_OUTPUT_DATA = "创建输出数据"
+    INCLUDE_VARIABLES_FROM_THE_INPUT_CAS_TABLE = "包括输入 CAS 表中的变量"
+    INCLUDE_THESE_VARIABLES = "包括以下变量"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -1021,6 +1050,7 @@ class DataZH(Data):
     INCLUDE_INSET_TABLE = "包括内插表"
 
     SELECT_A_SERVER_FOR_THIS_STEP = "为该步骤选择服务器"
+    COLLAPSE = "折叠"
 
     """Added by Jacky end"""
 

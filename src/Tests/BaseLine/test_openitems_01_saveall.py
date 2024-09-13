@@ -23,7 +23,8 @@ def test_01_saveall(page, init):
 
     # PageHelper.new_flow(page)
     PageHelper.show_accordion(page, AccordionType.open_item)
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = Helper.public_folder_path
     folder_path_list = [folder_path, folder_path]
     file_name_list = ["测试1", "测试2"]
     PageHelper.save_all_files(page, folder_path_list, file_name_list, True)

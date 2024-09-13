@@ -6,7 +6,7 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
 
-class SummaryStatisticsPane(BasicStepPane)
+class SummaryStatisticsPane(BasicStepPane):
     def __init__(self, page):
         BasicStepPane.__init__(self, page)
 

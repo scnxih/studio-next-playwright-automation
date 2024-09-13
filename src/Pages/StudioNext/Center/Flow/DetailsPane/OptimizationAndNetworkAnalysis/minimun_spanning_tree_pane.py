@@ -62,6 +62,9 @@ class MinimunSpanningTree(BasicStepPane):
     def set_check_save_minimum_spanning_tree_information_date(self):
         self.set_check_for_checkbox(label=Helper.data_locale.SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA)
 
+    def set_uncheck_save_minimum_spanning_tree_information_date(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.SAVE_MINIMUM_SPANNING_TREE_INFORMATION_DATA)
+
     def set_check_replace_existing_output_table(self):
         self.set_check_for_checkbox(label=Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
 

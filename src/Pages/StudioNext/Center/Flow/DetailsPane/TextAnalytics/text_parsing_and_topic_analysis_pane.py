@@ -21,7 +21,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         1  Term-by-document matrix
 
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.set_option_for_radio_group(parent_label=Helper.data_locale.THE_INPUT_TABLE_CONTAINS,
                                         item_index=item_index,
@@ -34,7 +34,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
 
         """
         # Switch to Data tab page
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         # Select Language
         self.set_option_for_combobox(parent_label=Helper.data_locale.LANGUAGE,
@@ -47,7 +47,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         """
         Data/Text variable
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.add_column(parent_label=Helper.data_locale.TEXT_VARIABLE,
                         column_name=column_name)
@@ -59,7 +59,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         Check '' in Options tab page
         """
         # Switch to Options tab page
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.set_option_for_radio_group(parent_label=Helper.data_locale.TOPIC_MODEL,
                                         item_index=item_index,
@@ -72,7 +72,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         Set 'Number of Topics' to
         xpath: //div[@class='sas_components-views-dataflow-FlowView_selected-pane']//input[@type='text' or @type='tel'][../../../../descendant::label[contains(text(), '主题数')]]
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_TOPICS, input_text=input_text)
 
@@ -86,7 +86,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         Check '' in Options tab page
         """
         # Switch to Options tab page
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         # Collapse window shade 'Parse text'
         # self.collapse_windowshade(Helper.data_locale.PARSE_TEXT
@@ -103,7 +103,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         Check combobox Save term-by-document matrix
         """
         # Switch to Output tab page
-        self.click_Tab(Helper.data_locale.OUTPUT)
+        self.click_tab(Helper.data_locale.OUTPUT)
 
         # Check combobox Output/Save term-by-document matrix
         self.set_check_for_checkbox(label=Helper.data_locale.SAVE_TERM_BY_DOCUMENT_MATRIX)
@@ -115,7 +115,7 @@ class TextParsingAndTopicAnalysisPane(BasicStepPane):
         Check combobox Output/Save term information
         """
         # Switch to Output tab page
-        self.click_Tab(Helper.data_locale.OUTPUT)
+        self.click_tab(Helper.data_locale.OUTPUT)
 
         # Check combobox Output/Save term information
         self.set_check_for_checkbox(label=Helper.data_locale.SAVE_TERM_INFORMATION)
