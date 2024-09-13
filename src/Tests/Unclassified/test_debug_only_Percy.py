@@ -1,7 +1,7 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.bubble_map_pane import BubbleMapPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.split_columns_pane import SplitColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.maximal_cliques_pane import MaximalCliquesPane
-
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.summary_statistics_pane import SummaryStatisticsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -210,3 +210,21 @@ def test_Maximal_Cliques_level0(page, init):
 
     flow.run(True)
 
+def test_Summary_Statistics_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_SUMMARY_STATISTICS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SUMMARY_STATISTICS)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SUMMARY_STATISTICS)
+    Summary_Statistics_Pane = SummaryStatisticsPane(page)
+    Summary_Statistics_Pane.click_data_tab()

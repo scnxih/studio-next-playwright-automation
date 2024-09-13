@@ -172,3 +172,86 @@ class SummaryStatisticsPane(BasicStepPane)
     def set_quantile_method(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.QUANTILE_METHOD, item_index=item_index,
                                      item_value=item_value)
+    """ Plots """
+    def expand_windowshade_plots(self):
+            self.expand_windowshade(parent_label=Helper.data_locale.PLOTS)
+    def collapse_windowshade_plots(self):
+            self.collapse_windowshade(parent_label=Helper.data_locale.PLOTS)
+    def expand_windowshade_histogram(self):
+            self.expand_windowshade(parent_label=Helper.data_locale.HISTOGRAM)
+    def collapse_windowshade_histogram(self):
+            self.collapse_windowshade(parent_label=Helper.data_locale.HISTOGRAM)
+    def set_check_histogram(self):
+            self.set_check_for_checkbox(Helper.data_locale.HISTOGRAM)
+    def set_uncheck_histogram(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.HISTOGRAM)
+    def set_check_add_normal_density_curve(self):
+            self.set_check_for_checkbox(Helper.data_locale.ADD_NORMAL_DENSITY_CURVE)
+    def set_uncheck_add_normal_density_curve(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.ADD_NORMAL_DENSITY_CURVE)
+    def set_check_add_kernel_density_estimate(self):
+            self.set_check_for_checkbox(Helper.data_locale.ADD_KERNEL_DENSITY_ESTIMATE)
+    def set_uncheck_add_kernel_density_estimate(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.ADD_KERNEL_DENSITY_ESTIMATE)
+    def set_check_add_inset_statistics(self):
+            self.set_check_for_checkbox(Helper.data_locale.ADD_INSET_STATISTICS)
+    def set_uncheck_add_inset_statistics(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.ADD_INSET_STATISTICS)
+    def set_position_at(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.POSITION_AT, item_index=item_index,
+                                     item_value=item_value)
+    def set_start(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.START, input_text=input_text)
+    def set_end(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.END, input_text=input_text)
+    def set_step(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.STEP, input_text=input_text)
+
+    """ Box Plots """
+    def expand_windowshade_box_plot(self):
+            self.expand_windowshade(parent_label=Helper.data_locale.STEP_BOX_PLOT)
+    def collapse_windowshade_box_plot(self):
+            self.collapse_windowshade(parent_label=Helper.data_locale.STEP_BOX_PLOT)
+    def set_check_box_plot(self):
+            self.set_check_for_checkbox(Helper.data_locale.STEP_BOX_PLOT)
+    def set_uncheck_box_plot(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.STEP_BOX_PLOT)
+    def set_check_add_overall_inset_statistics(self):
+            self.set_check_for_checkbox(Helper.data_locale.ADD_OVERALL_INSET_STATISTICS)
+    def set_uncheck_add_overall_inset_statistics(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.ADD_OVERALL_INSET_STATISTICS)
+
+    """Methods in Titles tab"""
+    def expand_windowshade_analysis(self):
+            self.expand_windowshade(parent_label=Helper.data_locale.ANALYZE)
+    def collape_windowshade_analysis(self):
+            self.collapse_windowshade(parent_label=Helper.data_locale.ANALYZE)
+    def set_check_use_default_text(self):
+            self.set_check_for_checkbox(Helper.data_locale.USE_DEFAULT_TEXT)
+    def set_uncheck_use_default_text(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.USE_DEFAULT_TEXT)
+    def set_analysis_text(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TEXT_FOR_ANALYSIS, input_text=input_text)
+    def set_Histogram_text(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TEXT_FOR_HISTOGRAM, input_text=input_text)
+    def set_boxt_plot_text(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TEXT_FOR_BOX_PLOT, input_text=input_text)
+    def set_footnote_text(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.TEXT_FOR_FOOTNOTE, input_text=input_text)
+    """Methods in OUTPUT tab"""
+    def set_check_create_output_data(self):
+            self.set_check_for_checkbox(Helper.data_locale.CREATE_OUTPUT_DATA)
+    def set_uncheck_create_output_data(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_OUTPUT_DATA)
+    def set_check_replace_existing_output_table(self):
+            self.set_check_for_checkbox(Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
+    def set_uncheck_replace_existing_output_table(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
+    def set_check_show_statistics(self):
+        self.set_check_for_checkbox(Helper.data_locale.SHOW_STATISTICS)
+    def set_uncheck_show_statistics(self):
+        self.set_uncheck_for_checkbox(Helper.data_locale.SHOW_STATISTICS)
+    def set_check_show_analysis_labels(self):
+            self.set_check_for_checkbox(Helper.data_locale.SHOW_ANALYSIS_LABELS)
+    def set_uncheck_show_analysis_labelse(self):
+            self.set_uncheck_for_checkbox(Helper.data_locale.SHOW_ANALYSIS_LABELS)
