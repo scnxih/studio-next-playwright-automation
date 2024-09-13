@@ -628,7 +628,7 @@ def test_16_text_map_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("NEVADA'中文",Helper.data_locale.STEP_TEXT_MAP )
     flow.arrange_nodes()
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
     # "{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
     # flow.view_expand_all_ports()
     # flow.add_node(FlowNodeType.table)
@@ -727,7 +727,7 @@ def test_18_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -777,7 +777,7 @@ def test_19_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -833,7 +833,7 @@ def test_20_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -890,7 +890,7 @@ def test_21_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -947,7 +947,7 @@ def test_22_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1004,7 +1004,7 @@ def test_23_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1063,7 +1063,7 @@ def test_24_minimum_spanning_tree_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
