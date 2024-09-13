@@ -22,7 +22,7 @@ class TransitiveClosurePane(BasicStepPane):
         """
         Data/From node
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.add_column(parent_label=Helper.data_locale.FROM_NODE,
                         column_name=column_name)
@@ -33,7 +33,7 @@ class TransitiveClosurePane(BasicStepPane):
         """
         Data/To node
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.add_column(parent_label=Helper.data_locale.TO_NODE,
                         column_name=column_name)
@@ -44,7 +44,7 @@ class TransitiveClosurePane(BasicStepPane):
         """
         Options/Log Details
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.set_option_for_combobox(parent_label=Helper.data_locale.LOG_DETAILS,
                                      item_index=item_index,
@@ -56,7 +56,7 @@ class TransitiveClosurePane(BasicStepPane):
         """
         Options/Code generation
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.set_option_for_radio_group(parent_label=Helper.data_locale.CODE_GENERATION,
                                         item_index=item_index,

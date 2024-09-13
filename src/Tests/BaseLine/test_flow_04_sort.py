@@ -98,13 +98,13 @@ run;
 
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
-    # table_pane.click_Tab("预览数据")
+    # table_pane.click_tab("预览数据")
 
     # Original
-    # table_pane.click_Tab("Preview Data")
+    # table_pane.click_tab("Preview Data")
 
     # Revised
-    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
 
     time.sleep(3)
     # WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
@@ -168,9 +168,9 @@ run;
     time.sleep(2)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(0.5)
-    # table_pane.click_Tab("预览数据")
-    # table_pane.click_Tab("Preview Data")
-    table_pane.click_Tab(Helper.data_locale.PREVIEW_DATA)
+    # table_pane.click_tab("预览数据")
+    # table_pane.click_tab("Preview Data")
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
     time.sleep(2)
     WholePage(page).screenshot_self(pic_name="09_preview_sorted_table",
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]',
