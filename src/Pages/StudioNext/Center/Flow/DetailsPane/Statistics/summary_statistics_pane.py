@@ -21,6 +21,9 @@ class SummaryStatisticsPane(BasicStepPane):
         self.add_columns(parent_label=Helper.data_locale.CLASSIFICATION_VARIABLE,
                          check_column_name_list=check_column_name_list,
                          uncheck_column_name_list=uncheck_column_name_list)
+    def set_combinations_of_classification_variables(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.COMBINAIONS_OF_CLASSIFICATION_VARIABLE, item_index=item_index,
+                                     item_value=item_value)
     def expand_windowshade_additional_roles(self):
         self.expand_windowshade(parent_label=Helper.data_locale.ADDITIONAL_ROLES)
     def collapse_windowshade_additional_roles(self):
