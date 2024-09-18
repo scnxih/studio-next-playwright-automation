@@ -1200,4 +1200,5 @@ class Data:
     TEXT_FOR_FOOTNOTE= "Text for Footnote"
     SHOW_STATISTICS= "Show statistics"
     SHOW_ANALYSIS_LABELS= "Show Analysis labels"
+    COMBINAIONS_OF_CLASSIFICATION_VARIABLE="Combinations of classification variables"
     """Added by Percy end"""

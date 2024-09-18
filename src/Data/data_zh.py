@@ -1195,4 +1195,5 @@ class DataZH(Data):
     TEXT_FOR_FOOTNOTE= "“脚注”部分的文本"
     SHOW_STATISTICS= "显示统计量"
     SHOW_ANALYSIS_LABELS= "显示分析标签"
+    COMBINAIONS_OF_CLASSIFICATION_VARIABLE= "分类变量的组合"
     """Added by Percy end"""
