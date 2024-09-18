@@ -1201,4 +1201,5 @@ class Data:
     SHOW_STATISTICS= "Show statistics"
     SHOW_ANALYSIS_LABELS= "Show Analysis labels"
     COMBINAIONS_OF_CLASSIFICATION_VARIABLE="Combinations of classification variables"
+    VALUE_TO_COPY="Value to copy"
     """Added by Percy end"""

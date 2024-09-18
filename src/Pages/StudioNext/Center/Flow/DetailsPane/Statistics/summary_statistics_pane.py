@@ -32,6 +32,10 @@ class SummaryStatisticsPane(BasicStepPane):
         self.add_columns(parent_label=Helper.data_locale.GROUP_ANALYSIS_BY, check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
     def add_columns_for_copy_variables(self, check_column_name_list: list = None,uncheck_column_name_list: list = None):
         self.add_columns(parent_label=Helper.data_locale.COPY_VARIABLES, check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
+
+    def set_value_to_copy(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.VALUE_TO_COPY, item_index=item_index,
+                                     item_value=item_value)
     def add_column_for_frequency_count(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.FREQUENCY_COUNT, column_name=column_name)
     def add_column_for_weight_variable(self, column_name: str):
