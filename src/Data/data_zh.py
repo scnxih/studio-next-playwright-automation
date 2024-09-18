@@ -1196,4 +1196,5 @@ class DataZH(Data):
     SHOW_STATISTICS= "显示统计量"
     SHOW_ANALYSIS_LABELS= "显示分析标签"
     COMBINAIONS_OF_CLASSIFICATION_VARIABLE= "分类变量的组合"
+    VALUE_TO_COPY="要复制的值"
     """Added by Percy end"""
