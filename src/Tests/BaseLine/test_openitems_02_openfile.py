@@ -11,11 +11,11 @@ from src.Pages.Common.dialog import *
 
 
 def test_01_openfile(page, init):
-    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     PageHelper.new_sas_program(page)
     text = "'中文测试'"
     PageHelper.type_code_in_codeeditor(page, text)
-    PageHelper.save_program(page, folder_path, "中文测试.sas", True)
+    PageHelper.save_program(page, Helper.public_folder_path, "中文测试.sas", True)
 
     PageHelper.close_all_tabs(page)
 

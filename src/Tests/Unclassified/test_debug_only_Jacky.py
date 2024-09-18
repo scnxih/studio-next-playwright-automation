@@ -1,6 +1,7 @@
 import time
 from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
+from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.branch_rows_pane import BranchRowsPane
@@ -20,6 +21,7 @@ from src.Pages.StudioNext.Dialog.select_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+from src.Pages.StudioNext.Left.steps_page import StepsPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import TopMenuItem, AccordionType
@@ -37,6 +39,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.StatisticalProcessControl.capa
     CapabilityAnalysisPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.transitive_closure_pane import \
     TransitiveClosurePane
+from src.Pages.Common.dialog import Dialog
 
 
 def test_00_click_show_tab_lables(page, init):
@@ -1664,7 +1667,6 @@ def test_41_same_birthday_in_flow(page, init):
     WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")
 
 
-
 def test_42_box_plot_in_flow(page, init):
     """
     """
@@ -1799,11 +1801,11 @@ run;
     tp_ta_pane.set_save_term_by_document_matrix()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -1817,11 +1819,11 @@ run;
     tp_ta_pane.set_save_term_information()
 
     # Incomplete function (Studio Next on daily.pgc)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.genericText.outputport.termInformationTable.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "词条信息表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "词条信息表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -1910,11 +1912,11 @@ run;
 
     tp_ta_pane.set_number_of_topics_to("3")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY,
                                                  "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.textparsingandtopicdiscovery.outputports.topicDistOutputDSName.displayname.title}")
 
-    # flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "添加输出端口", "父表")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -2164,7 +2166,7 @@ run;
     transitive_closure_pane.set_log_details(item_value=Helper.data_locale.NO_SUMMARY)
 
     transitive_closure_pane.set_code_generation(item_index=1)
-    transitive_closure_pane.set_code_generation(item_value= Helper.data_locale.USE_CAS_PROCEDURE)
+    transitive_closure_pane.set_code_generation(item_value=Helper.data_locale.USE_CAS_PROCEDURE)
 
     # Run the flow
     flow.run(True)
@@ -2173,3 +2175,251 @@ run;
 
     time.sleep(3)
     flow.screenshot_self("results")
+
+
+def test_49_accordion_steps(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+    time.sleep(1)
+    whole.screenshot_self("steps_pane")
+    steps = StepsPage(page)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    steps.navigate_to_step(step_path)
+
+    # steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DATA], "折叠")
+
+    # Original
+    AccordionPage(page).screenshot_self("Data")
+
+    # Collapse after screenshot steps.tree.navigate_to_element_and_click_context_menu([
+    # Helper.data_locale.STEP_CATEGORY_DATA], Helper.data_locale.COLLAPSE)
+
+    steps.tree.navigate_to_element_and_click_context_menu([step_path[0]],
+                                                          Helper.data_locale.COLLAPSE)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
+    steps.navigate_to_step(step_path)
+
+    AccordionPage(page).screenshot_self("Data_Quality",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+    # Collapse after screenshot
+    steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DATA_QUALITY],
+                                                          Helper.data_locale.COLLAPSE)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Develop")
+
+    # Collapse after screenshot
+    steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DEVELOP],
+                                                          Helper.data_locale.COLLAPSE)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
+    # steps.navigate_to_step(step_path)
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    AccordionPage(page).screenshot_self("Econometrics")
+
+    # steps.collapse_parent(step_path)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_PHONE_NUMBERS]
+    steps.navigate_to_step(step_path)
+    AccordionPage(page).screenshot_self("Enrichment")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_LIST_TABLE_ATTRIBUTES]
+    steps.navigate_to_step(step_path)
+
+    AccordionPage(page).screenshot_self("Examine_Data",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
+    steps.navigate_to_step(step_path)
+
+    AccordionPage(page).screenshot_self("Merge_Table",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+    steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Machine_Learning")
+    AccordionPage(page).screenshot_self("Machine_Learning",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS,
+                       Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
+    steps.navigate_to_step(step_path)
+
+    # AccordionPage(page).screenshot_self("Register_Python")
+    AccordionPage(page).screenshot_self("Register_Python",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                       Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    steps.navigate_to_step(step_path)
+
+    # AccordionPage(page).screenshot_self("Core")
+    AccordionPage(page).screenshot_self("Core",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    # Collapse after screenshot
+    # steps.tree.icon_expand_element().click()
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
+                       Helper.data_locale.STEP_STANDARDIZE_DATA]
+    steps.navigate_to_step(step_path)
+
+    # AccordionPage(page).screenshot_self("Standardize_Data")
+    AccordionPage(page).screenshot_self("Standardize_Data",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                       Helper.data_locale.STEP_PARETO_ANALYSIS]
+    steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Pareto")
+    AccordionPage(page).screenshot_self("Pareto",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
+                       Helper.data_locale.STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS]
+    steps.navigate_to_step(step_path)
+
+    AccordionPage(page).screenshot_self("Multidimensional",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
+                       Helper.data_locale.STEP_TRANSPOSE_DATA]
+    steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Transpose")
+    AccordionPage(page).screenshot_self("Transpose",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                       Helper.data_locale.STEP_TEXT_MAP]
+    steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Text_Map")
+    AccordionPage(page).screenshot_self("Text_Map",
+                                        mask=[AccordionPage(page).ag_body_vertical_scroll_bar],
+                                        mask_color='#000000')
+
+
+def test_50_accordion_steps(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+    time.sleep(1)
+    whole.screenshot_self("steps_pane")
+    steps = StepsPage(page)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    # steps.navigate_to_step(step_path)
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DATA], "折叠")
+
+    # Original
+    # AccordionPage(page).screenshot_self("Data")
+
+    # Collapse after screenshot steps.tree.navigate_to_element_and_click_context_menu([
+    # Helper.data_locale.STEP_CATEGORY_DATA], Helper.data_locale.COLLAPSE)
+
+    # steps.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA_QUALITY, Helper.data_locale.STEP_PARSE_DATA]
+    # steps.navigate_to_step(step_path)
+
+    # AccordionPage(page).screenshot_self("Data_Quality", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+    # Collapse after screenshot
+    # steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DATA_QUALITY], Helper.data_locale.COLLAPSE)
+
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_PYTHON_PROGRAM]
+    # steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Develop")
+
+    # Collapse after screenshot
+    # steps.tree.navigate_to_element_and_click_context_menu([Helper.data_locale.STEP_CATEGORY_DEVELOP], Helper.data_locale.COLLAPSE)
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # AccordionPage(page).screenshot_self("Econometrics")
+
+    # steps.collapse_parent(step_path)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_PHONE_NUMBERS]
+    # steps.navigate_to_step(step_path)
+    # AccordionPage(page).screenshot_self("Enrichment")
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_LIST_TABLE_ATTRIBUTES]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Examine_Data", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Merge_Table", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # AccordionPage(page).screenshot_self("Machine_Learning")
+    # AccordionPage(page).screenshot_self("Machine_Learning", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS, Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Register_Python")
+    # AccordionPage(page).screenshot_self("Register_Python", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Core")
+    # AccordionPage(page).screenshot_self("Core", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    # Collapse after screenshot
+    # steps.tree.icon_expand_element().click()
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
+                       Helper.data_locale.STEP_STANDARDIZE_DATA]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Standardize_Data")
+    # AccordionPage(page).screenshot_self("Standardize_Data", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                       Helper.data_locale.STEP_PARETO_ANALYSIS]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # AccordionPage(page).screenshot_self("Pareto")
+    # AccordionPage(page).screenshot_self("Pareto", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
+                       Helper.data_locale.STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+
+    # AccordionPage(page).screenshot_self("Multidimensional", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA,
+                       Helper.data_locale.STEP_TRANSPOSE_DATA]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # AccordionPage(page).screenshot_self("Transpose")
+    # AccordionPage(page).screenshot_self("Transpose", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                       Helper.data_locale.STEP_TEXT_MAP]
+    steps.navigate_to_step_then_collapse_parent(step_path)
+    # AccordionPage(page).screenshot_self("Text_Map")
+    # AccordionPage(page).screenshot_self("Text_Map", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')

@@ -18,7 +18,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Data/Process variable
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.add_column(parent_label=Helper.data_locale.PROCESS_VARIABLE,
                         column_name=column_name)
@@ -29,7 +29,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Switch to Data tab page, expand and set target value
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.expand_windowshade(Helper.data_locale.SPECIFICATION_LIMITS)
 
@@ -44,7 +44,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Switch to Data tab page, expand and set lower limit value
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.expand_windowshade(Helper.data_locale.SPECIFICATION_LIMITS)
 
@@ -59,7 +59,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Switch to Data tab page, expand and set lower limit value
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.expand_windowshade(Helper.data_locale.SPECIFICATION_LIMITS)
 
@@ -74,7 +74,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Data/Classification variable
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.expand_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
 
@@ -89,7 +89,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Data/Classification variable
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
         self.expand_windowshade(Helper.data_locale.ADDITIONAL_ROLES)
 
@@ -104,7 +104,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         """
         Check Plots checkbox in Options tab page
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.expand_windowshade(Helper.data_locale.PLOTS)
 
@@ -119,7 +119,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         Check Plots checkbox in Options tab page
         Check Beta for Histogram
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.expand_windowshade(Helper.data_locale.PLOTS)
 
@@ -141,7 +141,7 @@ class CapabilityAnalysisPane(BasicStepPane):
         Check Plots checkbox in Options tab page
         Check Beta for Histogram
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
         self.expand_windowshade(Helper.data_locale.PLOTS)
 

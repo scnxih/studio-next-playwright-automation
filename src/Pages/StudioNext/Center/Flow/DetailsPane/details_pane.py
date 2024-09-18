@@ -18,7 +18,7 @@ class DetailsPane(BasePage):
         self.base_xpath = "//div[@class='sas_components-views-dataflow-FlowView_selected-pane']"
         self.tab_group = TabGroup("", page)
 
-    def click_Tab(self, text: str):
+    def click_tab(self, text: str):
         """
         Description: click the tab in details pane.
         @text: the text of the tab.
@@ -30,7 +30,7 @@ class DetailsPane(BasePage):
         Description: set node name.
         @name: the name you want to specify for the node.
         """
-        self.click_Tab(Helper.data_locale.NODE)
+        self.click_tab(Helper.data_locale.NODE)
         Text(self.base_xpath, self.page,
              supplement_base_xpath="[../../../descendant::label[contains(text(),'" + Helper.data_locale.NODE_NAME + "')]]").fill_text(
             name)
@@ -40,7 +40,7 @@ class DetailsPane(BasePage):
         Description: set node description.
         @description: the description you want to specify for the node.
         """
-        self.click_Tab(Helper.data_locale.NODE)
+        self.click_tab(Helper.data_locale.NODE)
         Textarea(self.base_xpath, self.page).fill_text(description)
 
     def set_notes(self, notes: str):
@@ -48,38 +48,38 @@ class DetailsPane(BasePage):
         Description: set node notes.
         @notes: the notes you want to specify for the node.
         """
-        self.click_Tab(Helper.data_locale.NOTES)
+        self.click_tab(Helper.data_locale.NOTES)
         Textarea(self.base_xpath, self.page).fill_text(notes)
 
     def click_data_tab(self):
         """
         Description: click Data tab.
         """
-        self.click_Tab(Helper.data_locale.DATA)
+        self.click_tab(Helper.data_locale.DATA)
 
     def click_options_tab(self):
         """
         Description: click Options tab.
         """
-        self.click_Tab(Helper.data_locale.OPTIONS)
+        self.click_tab(Helper.data_locale.OPTIONS)
 
     def click_output_tab(self):
         """
         Description: click Output tab.
         """
-        self.click_Tab(Helper.data_locale.OUTPUT)
+        self.click_tab(Helper.data_locale.OUTPUT)
 
     def click_node_tab(self):
         """
         Description: click Node tab.
         """
-        self.click_Tab(Helper.data_locale.NODE)
+        self.click_tab(Helper.data_locale.NODE)
 
     def click_notes_tab(self):
         """
         Description: click Notes tab.
         """
-        self.click_Tab(Helper.data_locale.NOTES)
+        self.click_tab(Helper.data_locale.NOTES)
 
     def _add_column_button(self, parent_label: str, section_label:str = None):
         if section_label == None:
@@ -419,7 +419,7 @@ class DetailsPane(BasePage):
                                                uncheck_column_name_list=uncheck_column_name_list)
         self._click_move_down_column_button(parent_label)
 
-    def set_value_for_numeric_stepper(self, parent_label:str, value:int):
+    def set_value_for_numeric_stepper(self, parent_label:str, value:str):
         get_numeric_stepper(self.base_xpath,self.page,parent_label=parent_label).set_value(value)
 
     def click_increment_value_for_numeric_stepper(self, parent_label:str, times:int):

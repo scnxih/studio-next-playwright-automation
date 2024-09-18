@@ -15,8 +15,8 @@ def test_01_save_all_files(page, init):
     :param init:
     :return:
     """
-    # folder_path = ["SAS 内容", "Public"]
-    folder_path = ["SAS Content", "Public"]
+    folder_path = ["SAS 内容", "Public"]
+    # folder_path = ["SAS Content", "Public"]
 
     xml_editor = PageHelper.create_plain_editor_factory().create_editor("xml", page)
     xml_editor.fill_text_area_with("<html></html>")
@@ -39,8 +39,8 @@ def test_02_save_program_files(page, init):
     :param init:
     :return:
     """
-    # folder_path = ["SAS 内容", "Public"]
-    folder_path = ["SAS Content", "Public"]
+    folder_path = ["SAS 内容", "Public"]
+    # folder_path = ["SAS Content", "Public"]
 
     sas_program_editor = PageHelper.create_program_editor_factory().create_program_editor("sas_program", page)
     sas_program_editor.save_file(folder_path, "program_factory_sas_program_file.sas", True)

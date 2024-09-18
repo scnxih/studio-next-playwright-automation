@@ -167,7 +167,7 @@ N 1
     table_pane.set_library("MYCAS")
     table_pane.set_table("NODESETIN")
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
@@ -180,12 +180,12 @@ N 1
     flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
                                                  "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputNodesDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -194,7 +194,7 @@ N 1
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_NODES")
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
                                                  "{sasstudio-steps-gui-icu.centralitymetrics.outputports.outputLinksDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -338,7 +338,7 @@ N 7
     table_pane.set_table("NODESETIN")
 
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETIN")
     flow.arrange_nodes()
     time.sleep(2)
@@ -468,19 +468,19 @@ N 7
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "aa")
 
     flow.arrange_nodes()
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "bb")
     flow.arrange_nodes()
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "c")
     flow.arrange_nodes()
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "d")
     flow.arrange_nodes()
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "e")
     flow.arrange_nodes()
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "f")
     flow.arrange_nodes()
     flow.view_expand_all_ports()
@@ -520,9 +520,16 @@ def test_10_numeric_stepper(page, init):
                  Helper.data_locale.STEP_STACK_COLUMNS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STACK_COLUMNS)
+    flow.apply_detail_layout_vertical()
     pane = StackColumnsPane(page)
     time.sleep(1)
-    pane.set_number_of_stacked_cariables_to_create(4)
+    pane.set_number_of_stacked_cariables_to_create("4")
+    time.sleep(1)
+    pane.click_increment_value_for_number_of_stacked_variables_to_create(8)
+    time.sleep(1)
+    pane.click_decrement_value_for_number_of_stacked_variables_to_create(3)
+    time.sleep(1)
+
 
 
 def test_11_section_label_for_checkbox_combobox(page,init):
@@ -564,6 +571,89 @@ def test_11_section_label_for_checkbox_combobox(page,init):
     time.sleep(1)
     pane.set_text_for_second_label_for_y_axis("Y label 2")
     time.sleep(1)
+
+def test_12_contextmenu(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.sas_program)
+    pane = SASProgramPane(page)
+    pane.type_into_text_area("proc print data=sashelp.class;run;")
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+
+    flow.click_remove_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    flow.click_remove_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+
+    flow.click_add_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+
+    flow.click_add_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+
+    flow.click_add_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+
+    time.sleep(2)
+
+    flow.click_remove_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM,"输入表 1")
+    flow.click_remove_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM,"输入表 2")
+    flow.click_remove_input_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_expand_ports_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_collapse_ports_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+
+    flow.click_remove_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM,"输出表 1")
+    flow.click_remove_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM,"输出表 2")
+    flow.click_remove_output_port_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+
+    time.sleep(1)
+    
+    flow.click_run_node_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(2)
+    flow.click_run_from_node_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(2)
+    flow.click_go_to_last_submitted_code_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_flow_tab()
+    flow.click_go_to_last_submitted_log_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    flow.click_flow_tab()
+    flow.click_code_tab()
+    time.sleep(1)
+    flow.click_log_tab()
+    time.sleep(1)
+    flow.click_results_tab()
+    time.sleep(1)
+    flow.click_output_data_tab()
+    time.sleep(1)
+    flow.click_flow_tab()
+    time.sleep(1)
+
+
+    flow.click_copy_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_cut_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_paste_in_context_menu_on_canvas()
+    time.sleep(1)
+    flow.click_run_now_in_context_menu_on_canvas()
+    time.sleep(2)
+
+    flow.click_add_note_in_context_menu_on_canvas()
+    time.sleep(1)
+
+    flow.click_collapse_all_ports_in_context_menu_on_canvas()
+    flow.click_expand_all_ports_in_context_menu_on_canvas()
+    time.sleep(2)
+
+    flow.add_node(FlowNodeType.sas_program)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+    flow.click_delete_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
+    time.sleep(1)
+
+
+
 
 
 
