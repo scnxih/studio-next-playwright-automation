@@ -143,11 +143,18 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     # page.get_by_text(Helper.data_locale.PASTE).click()
     flow.click_paste_in_context_menu_on_canvas()
     time.sleep(1)
-    CenterPage(page).screenshot_self("paste_node_in_flow_canvas")
+    CenterPage(page).screenshot_self("paste_node_in_flow_canvas",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.view_expand_all_ports()
     time.sleep(2)
-    CenterPage(page).screenshot_self("expanded_all_ports")
+    CenterPage(page).screenshot_self("expanded_all_ports",
+                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
+                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
+
 
     flow.view_collapse_all_ports()
     time.sleep(2)

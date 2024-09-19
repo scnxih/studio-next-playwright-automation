@@ -344,7 +344,7 @@ class DataZH(Data):
 
     STEP_CATEGORY_ECONOMETRICS = "计量经济学"
     STEP_CAUSAL_MODELS = "因果模型"
-    STEP_CAUSAL_Hidden_MARKOV_MODELS = "隐藏的 Markov 模型"
+    STEP_HIDDEN_MARKOV_MODELS = "隐藏的 Markov 模型"
 
     STEP_CATEGORY_ENRICHMENT = "扩充"
     STEP_GEOCODE_DATA = "地理编码数据"
@@ -440,7 +440,7 @@ class DataZH(Data):
     STEP_SEGMENTATION = "分段"
     STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY = "文本解析和主题发现"
     STEP_TEXT_SCORING = "文本评分"
-    STEP_TEXT_SUMMARY = "文本汇总"
+    STEP_TEXT_SUMMARIZATION = "文本汇总"
 
     STEP_CATEGORY_TRANSFORM_DATA = "转换数据"
     STEP_BRANCH_ROWS = "分支行"
@@ -826,6 +826,14 @@ class DataZH(Data):
     CREATE_OUTPUT_DATA = "创建输出数据"
     INCLUDE_VARIABLES_FROM_THE_INPUT_CAS_TABLE = "包括输入 CAS 表中的变量"
     INCLUDE_THESE_VARIABLES = "包括以下变量"
+    KEY_VARIABLE = "键变量"
+    EACH_DOCUMENT = "每个文档"
+    ENTIRE_CORPUS = "整个语料库"
+    USE_TERMS = "使用词条"
+    USE_ENTITIES_AND_NOUN_GROUPS = "使用实体和名称组"
+    DOCUMENT_SUMMARIES = "文档汇总"
+    CORPUS_SUMMARY = "语料库汇总"
+    SHOW_OUTPUT_DATA = "显示输出数据"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -1069,6 +1077,12 @@ class DataZH(Data):
     PERCENT_99 = "99%"
     PERFORM_FORECASTING_AFTER_EACH_OBSERVATION = "在每个观测后执行预测"
     NUM_OF_PERIODS_TO_HOLD_BACK = "要阻止的期间数"
+    BICONNECTED_COMPONENTS = "双连通分量"
+    CONNECTED_COMPONENTS = "连通分量"
+    APPROXIMATE_DIAMETER = "近似直径"
+    SHORTEST_PATHS = "最短路径"
+    CREATE_OUTPUT_TABLE = "创建输出表"
+    CREATE_LINKS_TABLE = "创建链接表"
     """Added by Frank end"""
 
     """Added by Jacky start"""

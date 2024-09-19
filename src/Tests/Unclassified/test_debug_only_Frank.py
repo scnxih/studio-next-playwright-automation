@@ -10,6 +10,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.scatter_map_pane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.t_tests_pane import TTestsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.canonical_correlation_pane import CanonicalCorrelationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.core_decomposition_pane import CoreDecompositionPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.hidden_markov_models_pane import HiddenMarkovModelsPane
 from src.Data.input_data_zh import *
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -435,26 +436,26 @@ def test_canonical_correlation_l1(page, init):
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CREATE_STAT_DATASET)
     time.sleep(0.5)
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.canonicalcorrelation.outputports.outputTableOne.displayname.title}")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
+                                            "{sasstudio-steps-gui-icu.canonicalcorrelation.outputports.outputTableOne.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("WORK")
-    table_pane.set_table("SCORE'数据'")
+    table_pane.set_table("SCORE'数据")
     time.sleep(0.8)
-    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "SCOREDATA")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "SCORE'数据")
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.statisticsTable.title}")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
+                                            "{sasstudio-steps-gui-icu.genericText.outputport.statisticsTable.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("WORK")
-    table_pane.set_table("STAT'数据'")
+    table_pane.set_table("STAT'数据")
     time.sleep(0.8)
-    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "STATDATA")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "STAT'数据")
     flow.arrange_nodes()
     flow.run(True)
 
@@ -474,7 +475,8 @@ def test_core_decomposition_l0(page, init):
     table_pane.set_table("LINKSETIN'链接")
     time.sleep(0.8)
 
-    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_CORE_DECOMPOSITION]
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
@@ -490,7 +492,7 @@ def test_core_decomposition_l0(page, init):
     core_decomposition_pane.click_output_tab()
     core_decomposition_pane.set_check_for_checkbox(Helper.data_locale.CREATE_NODES_TABLE)
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     time.sleep(0.5)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -524,12 +526,13 @@ def test_core_decomposition_l1(page, init):
     table_pane.set_table("NODESETIN'节点")
     time.sleep(0.8)
 
-    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_CORE_DECOMPOSITION]
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
+                                            "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.arrange_nodes()
     flow.apply_detail_layout_vertical()
@@ -543,4 +546,85 @@ def test_core_decomposition_l1(page, init):
     core_decomposition_pane.expand_windowshade(Helper.data_locale.NODES)
     core_decomposition_pane.add_column_for_node("node'中")
     time.sleep(0.8)
+    flow.run(True)
+
+
+def test_hidden_markov_models_l0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.HIDDEN_MARKOV_MODELS)
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("ONE'中")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("ONE'中", Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS)
+
+    hidden_markov_models_pane = HiddenMarkovModelsPane(page)
+    hidden_markov_models_pane.add_columns(Helper.data_locale.DEPENDENT_VARS, check_column_name_list=["y'中", "x'中"])
+    time.sleep(0.8)
+    hidden_markov_models_pane.add_column(Helper.data_locale.TIME_ID, "t'中")
+    time.sleep(0.8)
+    flow.run(True)
+
+
+def test_hidden_markov_models_l1(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.HIDDEN_MARKOV_MODELS)
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("ONE'中")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("ONE'中", Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_HIDDEN_MARKOV_MODELS)
+
+    hidden_markov_models_pane = HiddenMarkovModelsPane(page)
+    hidden_markov_models_pane.add_columns(Helper.data_locale.DEPENDENT_VARS, check_column_name_list=["y'中", "x'中"])
+    time.sleep(0.8)
+    hidden_markov_models_pane.add_column(Helper.data_locale.TIME_ID, "t'中")
+    time.sleep(0.8)
+
+    hidden_markov_models_pane.click_model_tab()
+    hidden_markov_models_pane.set_option_for_combobox(Helper.data_locale.MODEL_TYPE,
+                                                      item_value=Helper.data_locale.REGIME_SWITCHING_AUTOREGRESSION)
+    time.sleep(0.5)
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.ADD_SEASONAL_DUMMIES_AS_REGRESSORS)
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.ADD_TIME_TRENDS_AS_REGRESSORS)
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.ADD_LAGS_OF_THE_INDEPENDENT_VARS)
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.INCLUDE_ONLY_THE_LAGGED_VALUES_OF_THE_INDEPENDENT_VARS)
+    time.sleep(0.8)
+
+    hidden_markov_models_pane.click_options_tab()
+    time.sleep(0.5)
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.ESTIMATE_THE_NONSTATIONARY_MARKOV_CHAIN)
+    hidden_markov_models_pane.expand_windowshade_nonlinear_optimization()
+    hidden_markov_models_pane.set_check_for_checkbox(Helper.data_locale.ENABLE_MULTISTART_MODE)
+    hidden_markov_models_pane.select_procedure(Helper.data_locale.USE_CAS_PROCEDURE)
+    time.sleep(0.8)
+
     flow.run(True)
