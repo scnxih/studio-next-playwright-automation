@@ -4,6 +4,7 @@ Date: Mar 05, 2024
 Description: This is base class of all Flow details pane.
 
 """
+import time
 
 from src.Pages.Common.common_component_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
@@ -366,6 +367,36 @@ class DetailsPane(BasePage):
         if item_value != None:
             combobox.select_item(item_value)
             return
+    def set_option_for_combobox_exact_label(self, parent_label: str, preceding_label: str = None, section_label:str = None, item_index: int = None,
+                                item_value: str = None):
+        """
+        Description: set option for combobox (dropdown list).
+        @parent_label: the label of the combobox.
+        @preceding_label: the preceding label of the combobox, the parameter is used only when there are more than one combobox with the same parent label but different preceding label under the same section.
+        @section_label: the section label of the combobox, the parameter is used only when there are more than one combobox with the same parent label but different section label.
+        @item_index: the index of the selected option of the combobox, starting from 0.
+        @item_value: the value of the selected option of the combobox.
+        """
+        combobox = None
+        if section_label == None:
+            if preceding_label == None:
+                combobox = get_combobox(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../../descendant::label[text()='{0}']]".format(
+                                        parent_label))
+            else:
+                combobox = get_combobox(self.base_xpath, self.page,
+                                    supplement_base_xpath="[../../../../../../descendant::label[text()='{0}']/../../../../../../preceding-sibling::div[1][.//label[contains(text(),'{1}')]]]".format(
+                                        parent_label, preceding_label))
+        else:
+            combobox= get_combobox(self.base_xpath,self.page,supplement_base_xpath=
+            "[../../../../../../descendant::label[text()='{0}']/../../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='{1}']]]".format(parent_label,section_label))
+
+        if item_index != None:
+            combobox.select_item_by_index(item_index)
+            return
+        if item_value != None:
+            combobox.select_item(item_value)
+            return
 
     def set_text_for_text_control(self, parent_label: str, input_text: str, section_label:str= None):
         """
@@ -427,3 +458,33 @@ class DetailsPane(BasePage):
 
     def click_decrement_value_for_numeric_stepper(self, parent_label:str, times:int):
         get_numeric_stepper(self.base_xpath, self.page, parent_label=parent_label).click_decrement_value(times)
+
+    def set_rgb_for_color_picker(self, red_value: int, green_value: int, blue_value: int, parent_label:str =None, section_label:str = None):
+        if parent_label == None:
+            if section_label == None:
+                get_button(self.base_xpath, self.page, supplement_base_xpath=
+                "[contains(@aria-label,'{0}')]".format(Helper.data_locale.CHOOSE_COLOR)).click_self()
+            else:
+                get_button(self.base_xpath, self.page, supplement_base_xpath=
+                "[contains(@aria-label,'{0}')][../../../../../preceding-sibling::div[.//span[text()='{1}']]]".format(Helper.data_locale.CHOOSE_COLOR,section_label)).click_self()
+        else:
+            if section_label == None:
+                get_button(self.base_xpath, self.page, supplement_base_xpath=
+                "[contains(@aria-label,'{0}')][../following-sibling::div[.//label[text()='{1}']]]".format(Helper.data_locale.CHOOSE_COLOR,parent_label)).click_self()
+            else:
+                get_button(self.base_xpath, self.page, supplement_base_xpath=
+                "[contains(@aria-label,'{0}')][../following-sibling::div[.//label[text()='{1}']]/../../../../preceding-sibling::div[.//span[text()='{2}']]]".
+                           format(Helper.data_locale.CHOOSE_COLOR, parent_label, section_label)).click_self()
+        time.sleep(1)
+        color_picker = get_color_picker("", self.page)
+        time.sleep(0.5)
+        color_picker.click_custom()
+        time.sleep(0.5)
+        color_picker.set_red_value(red_value)
+        time.sleep(0.5)
+        color_picker.set_green_value(green_value)
+        time.sleep(0.5)
+        color_picker.set_blue_value(blue_value)
+        time.sleep(0.5)
+        color_picker.click_ok()
+        time.sleep(0.5)

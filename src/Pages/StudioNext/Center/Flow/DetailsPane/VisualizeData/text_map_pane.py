@@ -167,3 +167,12 @@ class TextMapPane(BasicStepPane):
     def set_units(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_index=item_index,
                                  item_value=item_value)
+
+    """Added by Alice on Sep 14, 2024 start"""
+    def set_option_for_style(self,item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox_exact_label(parent_label="样式:",item_index=item_index,item_value=item_value)
+
+    def set_option_for_line_style(self,item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox_exact_label(parent_label="线条样式:",item_index=item_index,item_value=item_value)
+
+    """Added by Alice on Sep 14, 2024 end"""
