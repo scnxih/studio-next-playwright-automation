@@ -211,7 +211,7 @@ def test_Maximal_Cliques_level0(page, init):
 
     flow.run(True)
 
-def test_Summary_Statistics_level0(page, init):
+def test_summary_statistics_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -280,7 +280,7 @@ def test_Summary_Statistics_level1(page, init):
     flow.arrange_nodes()
 
     flow.run(True)
-def test_Rank_Data_level0(page, init):
+def test_rank_data_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
