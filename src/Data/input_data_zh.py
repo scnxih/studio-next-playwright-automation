@@ -128,3 +128,126 @@ data "jobs'中"n;
 63 45 5 22 67 53
 run;
 """
+
+    CORE_DECOMPOSITION = """
+libname mycas cas;
+data mycas."LinkSetIn'链接"n;
+   input "from'始"n $ "to'终"n $ "community'中"n "weight'中"n "wt'中"n;
+   datalines;
+A B 1 3 3 
+A C 1 2 2
+A D 1 1 1
+B C 1 5 5
+C D 1 7 7
+C E 1 2 2
+D F . 3 3
+F G 2 9 9
+F H 2 3 3
+F I 2 5 5
+G H 2 7 7
+G I 2 3 3
+I J . 3 3
+J K 3 1 2
+J L 3 6 6
+K L 3 3 3
+;
+ 
+data mycas."NodeSetIn'节点"n;
+   input "node'中"n $ @@;
+   datalines;
+A    M   N
+;
+ 
+data mycas."NodeSubet'节点子网"n;
+   input "node'中"n $ "reachId'中"n;
+   datalines;
+A 1 
+C 2
+G 1
+J 2
+K 2
+;
+    """
+
+    HIDDEN_MARKOV_MODELS = """
+libname mycas cas;
+/* The following statements simulate the bivariate vector time series from the previous model to provide test data for the HMM procedure: */
+%let pi1 = 0.5;
+%let a11 = 0.001;
+%let a22 = 0.001;
+%let mu1_1 = 1;
+%let mu1_2 = 1;
+%let sigma1_11 = 1;
+%let sigma1_21 = 0;
+%let sigma1_22 = 1;
+%let mu2_1 = -1;
+%let mu2_2 = -1;
+%let sigma2_11 = 1;
+%let sigma2_21 = 0;
+%let sigma2_22 = 1;
+%let T = 1000;
+%let seed = 1234;
+ 
+data DGPone;
+	retain cd1_11 cd1_21 cd1_22 cd2_11 cd2_21 cd2_22;
+ 
+	do "t'中"n=1 to &T.;
+		if("t'中"n=1) then
+			do;
+				/* initial probability distribution */
+				p=&pi1.;
+ 
+				/* Cholesky decomposition of sigma1 */
+				cd1_11=sqrt(&sigma1_11.);
+				cd1_21=&sigma1_21./sqrt(&sigma1_11.);
+				cd1_22=sqrt(&sigma1_22.-&sigma1_21.*&sigma1_21./&sigma1_11.);
+ 
+				/* Cholesky decomposition of sigma2 */
+				cd2_11=sqrt(&sigma2_11.);
+				cd2_21=&sigma2_21./sqrt(&sigma2_11.);
+				cd2_22=sqrt(&sigma2_22.-&sigma2_21.*&sigma2_21./&sigma2_11.);
+			end;
+		else
+			do;
+				/* transition probability matrix */
+				if(lags=1) then
+					p=&a11.;
+				else
+					p=1-&a22.;
+			end;
+		u=uniform(&seed.);
+ 
+		if(u<=p) then
+			s=1;
+		else
+			s=2;
+		e1=normal(&seed.);
+		e2=normal(&seed.);
+ 
+		if(s=1) then
+			do;
+				/* ("x'中"n,"y'中"n) ~ N(mu1, Sigma1) at state 1 */
+				"x'中"n=&mu1_1. + cd1_11*e1;
+				"y'中"n=&mu1_2. + cd1_21*e1+cd1_22*e2;
+			end;
+		else
+			do;
+				/* ("x'中"n,"y'中"n) ~ N(mu2, Sigma2) at state 2 */
+				"x'中"n=&mu2_1. + cd2_11*e1;
+				"y'中"n=&mu2_2. + cd2_21*e1+cd2_22*e2;
+			end;
+		output;
+		lags=s;
+	end;
+run;
+ 
+/* In general, the data generating process is unknown. What can be seen is the data set One, but not the data set DGPone. */
+data One;
+	set DGPone;
+	keep "t'中"n "x'中"n "y'中"n;
+run;
+ 
+data mycas."One'中"n;
+	set One;
+run;
+    """

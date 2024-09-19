@@ -5,7 +5,8 @@ from src.Pages.Common.toolbar import *
 
 class ManageGitConnectionDialog(Dialog):
     def __init__(self, page):
-        Dialog.__init__(self, page, Helper.data_locale.MANAGE_GIT_CONNECTION)
+        # Dialog.__init__(self, page, Helper.data_locale.MANAGE_GIT_CONNECTION)
+        Dialog.__init__(self, page, Data.MANAGE_GIT_CONNECTION)
         self.toolbar = Toolbar(self.base_xpath, page, supplement_base_xpath="class='sas_components-Toolbar"
                                                                             "-__internal__-BaseToolbar_toolbar'")
 

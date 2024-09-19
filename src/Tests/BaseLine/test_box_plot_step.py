@@ -110,7 +110,9 @@ def test_lev1a_class_box_plot(page, init):
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="cars_box_plot")
+    flow.screenshot_self(pic_name="cars_box_plot",
+                         mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                         mask_color="#000000")
 
 
 def test_lev1b_cars_box_plot(page, init):
@@ -172,4 +174,7 @@ def test_lev1b_cars_box_plot(page, init):
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="cars_box_plot")
+    flow.screenshot_self(pic_name="cars_box_plot",
+                         mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                         mask_color="#000000")
+

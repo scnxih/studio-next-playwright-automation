@@ -84,20 +84,23 @@ class StepsPage(AccordionPage):
         time.sleep(0.5)
 
         self.screenshot_self("step_category")
+        time.sleep(0.5)
+
         self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
                         "nav_stp_ag",
                         user_assigned_xpath=True)
-
+        time.sleep(0.5)
         # //div[@class="ag-center-cols-container"][@role="rowgroup"]
         self.screenshot('//div[@class="ag-center-cols-container"][@role="rowgroup"]',
                         "rowgroup",
                         user_assigned_xpath=True)
-
+        time.sleep(0.5)
         #//div[@role="treegrid"]
 
         self.screenshot('//div[@role="treegrid"]',
                         "treegrid",
                         user_assigned_xpath=True)
+        time.sleep(0.5)
 
         self.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
 
