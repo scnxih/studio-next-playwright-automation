@@ -3,6 +3,8 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: August 13th, 2024
 """
+import time
+
 # -*- coding: UTF-8 -*-
 from src.Helper.helper import Helper
 from src.Pages.Common.common_component_factory import get_combobox, get_text
@@ -66,6 +68,7 @@ class BoxPlotPane(BasicStepPane):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.PLOT_ORIENTATION,
                                         item_index=item_index,
                                         item_value=item_value)
+        time.sleep(0.5)
 
         self.screenshot_self("set_plot_orientation")
 
@@ -138,6 +141,7 @@ class BoxPlotPane(BasicStepPane):
         self.expand_windowshade(Helper.data_locale.BOX)
         self.set_option_for_combobox(parent_label=Helper.data_locale.COLOR_TRANSPARENCY,
                                      item_index=item_index, item_value=item_value)
+        time.sleep(0.5)
 
         self.screenshot_self("set_color_transparency_percentage")
 
@@ -158,6 +162,7 @@ class BoxPlotPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.EFFECT,
                                      item_index=item_index,
                                      item_value=item_value)
+        time.sleep(0.5)
 
         self.screenshot_self("set_effect")
 
@@ -201,6 +206,7 @@ class BoxPlotPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNIT,
                                      item_index=item_index,
                                      item_value=item_value)
+        time.sleep(0.5)
 
         # Collapse window shade: Graph Size
         self.collapse_windowshade(Helper.data_locale.GRAPH_SIZE)
