@@ -669,9 +669,12 @@ def test_36_flow(page, init):
 def test_38_quick_import(page, init):
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.run(True)
+
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    quick_import.saveas(Helper.public_folder_path, "test_import.sas", True, True)
+
+    # Naming rule changed
+    quick_import.saveas(Helper.public_folder_path, "test_import_sas", True, True)
     quick_import.add_to_snippets()
     quick_import.schedule_as_job()
     quick_import.add_to_my_favorites()
