@@ -1185,7 +1185,7 @@ def test_26_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1255,7 +1255,7 @@ def test_27_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1323,7 +1323,7 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
