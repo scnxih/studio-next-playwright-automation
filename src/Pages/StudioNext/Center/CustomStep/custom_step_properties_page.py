@@ -48,17 +48,17 @@ class CustomStepPropertiesPage(BasePage):
 
     def set_visibility(self, text: str):
         self.expand_dependencies()
-        get_textarea(self.base_xpath, self.page, textarea_label=Helper.data_locale.VISIBILITY).fill_text(text)
+        get_textarea(self.base_xpath, self.page, parent_label=Helper.data_locale.VISIBILITY).fill_text(text)
 
     def set_enablement(self, text: str):
         self.expand_dependencies()
-        get_textarea(self.base_xpath, self.page, textarea_label=Helper.data_locale.ENABLEMENT).fill_text(text)
+        get_textarea(self.base_xpath, self.page, parent_label=Helper.data_locale.ENABLEMENT).fill_text(text)
 
     def click_select_color(self):
         get_button(self.base_xpath, self.page, supplement_base_xpath="[contains(@aria-label,'{0}')]".format(
             Helper.data_locale.CHOOSE_COLOR)).click_self()
 
-    def set_RGB(self, red_value: int, green_value: int, blue_value: int):
+    def set_rgb(self, red_value: int, green_value: int, blue_value: int):
         color_picker = get_color_picker("", self.page)
         time.sleep(0.5)
         color_picker.click_custom()

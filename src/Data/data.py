@@ -348,7 +348,7 @@ class Data:
 
     STEP_CATEGORY_ECONOMETRICS = "Econometrics"
     STEP_CAUSAL_MODELS = "Causal Models"
-    STEP_CAUSAL_Hidden_MARKOV_MODELS = "Hidden Markov Models"
+    STEP_HIDDEN_MARKOV_MODELS = "Hidden Markov Models"
 
     STEP_CATEGORY_ENRICHMENT = "Enrichment"
     STEP_GEOCODE_DATA = "Geocode Data"
@@ -1077,6 +1077,12 @@ class Data:
     PERCENT_99 = "99%"
     PERFORM_FORECASTING_AFTER_EACH_OBSERVATION = "Perform forecasting after each observation"
     NUM_OF_PERIODS_TO_HOLD_BACK = "Number of periods to hold back"
+    BICONNECTED_COMPONENTS = "Biconnected components"
+    CONNECTED_COMPONENTS = "Connected components"
+    APPROXIMATE_DIAMETER = "Approximate diameter"
+    SHORTEST_PATHS = "Shortest paths"
+    CREATE_OUTPUT_TABLE = "Create output table"
+    CREATE_LINKS_TABLE = "Create links table"
     """Added by Frank end"""
 
     """Added by Jacky start"""

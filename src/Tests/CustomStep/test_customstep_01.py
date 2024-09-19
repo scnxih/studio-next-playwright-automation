@@ -274,6 +274,7 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
 
 def test_12_set_properties_01(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    time.sleep(3)
     custom_step.insert_control(DesignerControlType.checkbox)
     custom_step.insert_control(DesignerControlType.color_picker)
     custom_step.insert_control(DesignerControlType.input_table)
@@ -294,7 +295,7 @@ def test_12_set_properties_01(page, init):
 
     custom_step.select_control(DesignerControlType.color_picker, 1)
     properties.click_select_color()
-    properties.set_RGB(160, 95, 238)
+    properties.set_rgb(160, 95, 238)
     time.sleep(2)
 
     custom_step.select_control(DesignerControlType.input_table, 1)
@@ -609,7 +610,7 @@ def test_14_demo_zh_CN(page, init):
     custom_step.select_control(DesignerControlType.color_picker,1)
     #properties.set_indent("1")    
     properties.click_select_color()
-    properties.set_RGB(160, 95, 238)
+    properties.set_rgb(160, 95, 238)
 
     # insert_section(page,6,"日期和时间控件")
     # insert_text(page,6, "使用日期和时间控件选择日期和时间。")

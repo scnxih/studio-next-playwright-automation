@@ -7,6 +7,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane 
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.stack_columns_pane import StackColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.one_way_frequencies_pane import OneWayFrequencies
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.scatter_map_pane import ScatterMapPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.text_map_pane import TextMapPane
 
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -652,6 +654,37 @@ def test_12_contextmenu(page,init):
     flow.click_delete_in_context_menu_on_node(Helper.data_locale.SAS_PROGRAM)
     time.sleep(1)
 
+def test_13_combobox_exact_label(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                 Helper.data_locale.STEP_TEXT_MAP]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_MAP)
+    flow.apply_detail_layout_vertical()
+    pane = TextMapPane(page)
+
+    pane.set_check_include_choropleth_map_layer()
+    pane.click_options_tab()
+    pane.expand_windowshade_text()
+    pane.set_option_for_style(item_index=2)
+    pane.expand_windowshade_choromap()
+    pane.expand_windowshade_line_attributes()
+    pane.set_option_for_line_style(item_index=3)
+    time.sleep(4)
+
+
+def test_14_color_picker(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
+                 Helper.data_locale.STEP_SCATTER_MAP]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SCATTER_MAP)
+    pane = ScatterMapPane(page)
+    pane.click_options_tab()
+    pane.expand_windowshade_markers()
+    pane.set_check_for_set_color_in_markers()
+    pane.set_rgb_for_color_in_marker(100,100,200)
+    time.sleep(2)
 
 
 
