@@ -19,30 +19,29 @@ class TTestsPane(BasicStepPane):
     def empty_filter_input_data(self):
         self.set_filter_input_data("")
 
-    def set_t_tests_type(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.T_TEST_LOWER, item_index=item_index,
-                                     item_value=item_value)
+    def set_t_tests_type(self, item_value: str):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.T_TEST_LOWER, item_value=item_value)
 
-    def add_column_for_analysis_var(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE, column_name=column_name)
+    def add_column_for_analysis_var(self, col_name: str):
+        self.add_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE, column_name=col_name)
 
     def delete_column_for_analysis_var(self):
         self.delete_column(parent_label=Helper.data_locale.ANALYSIS_VARIABLE)
 
-    def add_column_for_group1_var(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.GROUP_1_VAR, column_name=column_name)
+    def add_column_for_group1_var(self, col_name: str):
+        self.add_column(parent_label=Helper.data_locale.GROUP_1_VAR, column_name=col_name)
 
     def delete_column_for_group1_var(self):
         self.delete_column(parent_label=Helper.data_locale.GROUP_1_VAR)
 
-    def add_column_for_group2_var(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.GROUP_2_VAR, column_name=column_name)
+    def add_column_for_group2_var(self, col_name: str):
+        self.add_column(parent_label=Helper.data_locale.GROUP_2_VAR, column_name=col_name)
 
     def delete_column_for_group2_var(self):
         self.delete_column(parent_label=Helper.data_locale.GROUP_2_VAR)
 
-    def add_column_for_class_var(self, column_name: str):
-        self.add_column(parent_label=Helper.data_locale.CLASS_VAR, column_name=column_name)
+    def add_column_for_class_var(self, col_name: str):
+        self.add_column(parent_label=Helper.data_locale.CLASS_VAR, column_name=col_name)
 
     def delete_column_for_class_var(self):
         self.delete_column(parent_label=Helper.data_locale.CLASS_VAR)
@@ -54,9 +53,8 @@ class TTestsPane(BasicStepPane):
     def collapse_windowshade_tests(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.TESTS)
 
-    def set_tails_type(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.TAILS, item_index=item_index,
-                                     item_value=item_value)
+    def set_tails_type(self, item_value: str):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.TAILS, item_value=item_value)
 
     def input_alternative_hypothesis(self, alternative_hypothesis: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.ALTERNATIVE_HYPOTHESIS,
@@ -95,8 +93,8 @@ class TTestsPane(BasicStepPane):
     def collapse_windowshade_plots(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.PLOTS)
 
-    def set_plots_combo(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.PLOTS, item_index=item_index, item_value=item_value)
+    def set_plots_combo(self, item_value: str):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.PLOTS, item_value=item_value)
 
     def set_check_histogram_and_box_plot(self):
         self.set_check_for_checkbox(label=Helper.data_locale.HISTOGRAM_AND_BOX_PLOT)

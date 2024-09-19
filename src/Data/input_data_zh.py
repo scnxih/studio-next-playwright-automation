@@ -129,6 +129,7 @@ data "jobs'中"n;
 run;
 """
 
+    # Following tables can be also used for Network Summary step
     CORE_DECOMPOSITION = """
 libname mycas cas;
 data mycas."LinkSetIn'链接"n;

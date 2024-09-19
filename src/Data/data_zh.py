@@ -344,7 +344,7 @@ class DataZH(Data):
 
     STEP_CATEGORY_ECONOMETRICS = "计量经济学"
     STEP_CAUSAL_MODELS = "因果模型"
-    STEP_CAUSAL_Hidden_MARKOV_MODELS = "隐藏的 Markov 模型"
+    STEP_HIDDEN_MARKOV_MODELS = "隐藏的 Markov 模型"
 
     STEP_CATEGORY_ENRICHMENT = "扩充"
     STEP_GEOCODE_DATA = "地理编码数据"
@@ -1069,6 +1069,12 @@ class DataZH(Data):
     PERCENT_99 = "99%"
     PERFORM_FORECASTING_AFTER_EACH_OBSERVATION = "在每个观测后执行预测"
     NUM_OF_PERIODS_TO_HOLD_BACK = "要阻止的期间数"
+    BICONNECTED_COMPONENTS = "双连通分量"
+    CONNECTED_COMPONENTS = "连通分量"
+    APPROXIMATE_DIAMETER = "近似直径"
+    SHORTEST_PATHS = "最短路径"
+    CREATE_OUTPUT_TABLE = "创建输出表"
+    CREATE_LINKS_TABLE = "创建链接表"
     """Added by Frank end"""
 
     """Added by Jacky start"""

@@ -63,6 +63,12 @@ class DetailsPane(BasePage):
         """
         self.click_tab(Helper.data_locale.OPTIONS)
 
+    def click_model_tab(self):
+        """
+        Description: click Options tab.
+        """
+        self.click_tab(Helper.data_locale.MODEL_TAB)
+
     def click_output_tab(self):
         """
         Description: click Output tab.
