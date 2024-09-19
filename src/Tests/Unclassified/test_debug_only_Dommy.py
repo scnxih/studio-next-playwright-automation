@@ -1590,3 +1590,63 @@ def test_32_text_summarization_in_flow_l1(page, init):
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
     flow.run(True)
+
+
+def test_33_text_summarization_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'TEXTSUMMARY''中文'n;
+    set AUTOLIB.'TEXTSUMMARY''中文'n;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Corpus'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Corpus'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    text_summarization_pane.set_key_variable(item_index=1)
+    text_summarization_pane.add_column_for_key_variable("key'中文")
+
+    text_summarization_pane.click_options_tab()
+    text_summarization_pane.set_uncheck_each_document()
+    text_summarization_pane.set_check_entire_corpus()
+    text_summarization_pane.set_check_use_entities_and_noun_groups()
+
+    text_summarization_pane.click_output_tab()
+    text_summarization_pane.expand_windowshade_corpus_summary()
+    text_summarization_pane.set_check_show_output_data()
+    flow.run(True)
