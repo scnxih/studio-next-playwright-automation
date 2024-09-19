@@ -219,9 +219,12 @@ class ScatterMapPane(BasicStepPane):
         self.collapse_windowshade(parent_label=Helper.data_locale.MARKERS)
 
     def set_check_for_set_color_in_markers(self):
-        get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
-                     .format(Helper.data_locale.SET_COLOR, Helper.data_locale.MARKERS)).set_check()
+        # get_checkbox(self.base_xpath, self.page,
+        #              supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
+        #              .format(Helper.data_locale.SET_COLOR, Helper.data_locale.MARKERS)).set_check()
+        """Added by Alice on 2024-09-19 start"""
+        self.set_check_for_checkbox(label="设置颜色",section_label="标记")
+        """Added by Alice on 2024-09-19 end"""
 
     def set_uncheck_for_set_color_in_markers(self):
         get_checkbox(self.base_xpath, self.page,
@@ -370,3 +373,9 @@ class ScatterMapPane(BasicStepPane):
 
     def decrease_plot_height(self, times: int):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.HEIGHT, times)
+
+    """Added by Alice on 2024-09-19 start"""
+    def set_rgb_for_color_in_marker(self,red_value: int, green_value:int, blue_value:int ):
+        self.set_rgb_for_color_picker(red_value=red_value,green_value=green_value,blue_value=blue_value,parent_label="颜色",section_label="标记")
+
+    """Added by Alice on 2024-09-19 end"""

@@ -206,7 +206,7 @@ def test_02_custom_step_en_US(page, init):
     custom_step.select_control(DesignerControlType.color_picker, 1)
     #properties.set_indent("1")
     properties.click_select_color()
-    properties.set_RGB(160, 95, 238)
+    properties.set_rgb(160, 95, 238)
 
     # insert_section(page,6,"日期和时间控件")
     # insert_text(page,6, "使用日期和时间控件选择日期和时间。")
@@ -671,7 +671,7 @@ def test_04_custom_step_zh_CN(page, init):
     custom_step.select_control(DesignerControlType.color_picker, 1)
     # properties.set_indent("1")
     properties.click_select_color()
-    properties.set_RGB(160, 95, 238)
+    properties.set_rgb(160, 95, 238)
 
     # insert_section(page,6,"日期和时间控件")
     # insert_text(page,6, "使用日期和时间控件选择日期和时间。")

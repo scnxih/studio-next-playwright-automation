@@ -1,7 +1,5 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
     SemiSupervisedLearning
-from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
-    CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.minimun_spanning_tree_pane import \
@@ -9,6 +7,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.cluster_variables_pane import ClusterVariablesPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.coin_toss_simulation_pane import CoinTossSimulationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.poker_hand_probability_pane import PokerHandProbabilityPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_summarization_pane import TextSummarization
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.line_chart_pane import LineChartPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.text_map_pane import TextMapPane
 
@@ -512,8 +511,8 @@ def test_14_cluster_variables_in_flow_l1(page, init):
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.clustervariables.outputports"
-                                                 ".statDSName.displayname.title}")
+                                            "{sasstudio-steps-gui-icu.clustervariables.outputports"
+                                            ".statDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -522,8 +521,8 @@ def test_14_cluster_variables_in_flow_l1(page, init):
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.clustervariables.outputports"
-                                                 ".treeDSName.displayname.title}")
+                                            "{sasstudio-steps-gui-icu.clustervariables.outputports"
+                                            ".treeDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -620,12 +619,12 @@ def test_16_text_map_in_flow_l1(page, init):
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.inputport.mapInputData.title}")
+                                            "{sasstudio-steps-gui-icu.genericText.inputport.mapInputData.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("AUTOLIB")
     table_pane.set_table("NEVADA'中文")
-    flow.link_two_nodes_in_flow("NEVADA'中文",Helper.data_locale.STEP_TEXT_MAP )
+    flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_TEXT_MAP)
     flow.arrange_nodes()
 
     # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
@@ -1134,7 +1133,6 @@ def test_25_semi_supervised_learning_in_flow_l0(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     semi_supervised_learning_pane = SemiSupervisedLearning(page)
     semi_supervised_learning_pane.expand_windowshade_labeled()
@@ -1188,7 +1186,7 @@ def test_26_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1258,7 +1256,7 @@ def test_27_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1281,6 +1279,7 @@ def test_27_semi_supervised_learning_in_flow_l1(page, init):
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
     flow.run(True)
 
+
 def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
@@ -1288,16 +1287,16 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'labeled''中文'n;
-        set AUTOLIB.'labeled''中文'n;
-        run;
-        data casuser.'unlabeled''中文'n;
-        set AUTOLIB.'unlabeled''中文'n;
-        run;
-        """
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'labeled''中文'n;
+    set AUTOLIB.'labeled''中文'n;
+    run;
+    data casuser.'unlabeled''中文'n;
+    set AUTOLIB.'unlabeled''中文'n;
+    run;
+    """
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1325,7 +1324,7 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
     flow.arrange_nodes()
 
-    flow.click_context_menu_for_the_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -1350,5 +1349,244 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     semi_supervised_learning_pane.set_check_create_output_data()
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
     semi_supervised_learning_pane.set_include_variables_from_input_CAS_table(item_index=2)
-    semi_supervised_learning_pane.add_columns_for_include_these_variables(check_column_name_list=["x1'中文", "y'中文", "id'中文"])
+    semi_supervised_learning_pane.add_columns_for_include_these_variables(
+        check_column_name_list=["x1'中文", "y'中文", "id'中文"])
+    flow.run(True)
+
+
+def test_29_text_summarization_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'TEXTSUMMARY''中文'n;
+    set AUTOLIB.'TEXTSUMMARY''中文'n;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Document'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Document'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    flow.run(True)
+
+
+def test_30_text_summarization_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'TEXTSUMMARY''中文'n;
+    set AUTOLIB.'TEXTSUMMARY''中文'n;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Document'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Document'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    text_summarization_pane.set_key_variable(item_index=1)
+    text_summarization_pane.add_column_for_key_variable("key'中文")
+
+    text_summarization_pane.click_options_tab()
+    text_summarization_pane.set_check_use_entities_and_noun_groups()
+    flow.run(True)
+
+
+def test_31_text_summarization_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'TEXTSUMMARY''中文'n;
+    set AUTOLIB.'TEXTSUMMARY''中文'n;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Document'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Document'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Corpus'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Corpus'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    text_summarization_pane.set_key_variable(item_index=1)
+    text_summarization_pane.add_column_for_key_variable("key'中文")
+
+    text_summarization_pane.click_options_tab()
+    text_summarization_pane.set_check_entire_corpus()
+    text_summarization_pane.set_check_use_entities_and_noun_groups()
+
+    flow.run(True)
+
+
+def test_32_text_summarization_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'TEXTSUMMARY''中文'n;
+    set AUTOLIB.'TEXTSUMMARY''中文'n;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Document'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Document'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Corpus'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Corpus'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    text_summarization_pane.set_key_variable(item_index=1)
+    text_summarization_pane.add_column_for_key_variable("key'中文")
+
+    text_summarization_pane.click_options_tab()
+    text_summarization_pane.set_check_entire_corpus()
+    text_summarization_pane.set_check_use_entities_and_noun_groups()
+
+    text_summarization_pane.click_output_tab()
+    text_summarization_pane.set_include_variables_from_input_CAS_table(item_index=3)
+    text_summarization_pane.add_columns_for_include_these_variables(check_column_name_list=["text'中文"])
+    text_summarization_pane.expand_windowshade_corpus_summary()
+    text_summarization_pane.set_check_show_output_data()
     flow.run(True)
