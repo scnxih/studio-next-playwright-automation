@@ -38,7 +38,7 @@ def test_01_accordion_steps(page, init):
     step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS, Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]

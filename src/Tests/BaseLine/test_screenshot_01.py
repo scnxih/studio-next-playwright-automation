@@ -640,7 +640,7 @@ def test_09_accordion_steps(page, init):
                                         mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
     # AccordionPage(page).screenshot_self("Machine_Learning")
     AccordionPage(page).screenshot_self("Machine_Learning",
