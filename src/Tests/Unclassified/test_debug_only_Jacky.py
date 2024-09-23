@@ -11,6 +11,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Center.center_page import CenterPage
+from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
@@ -2537,3 +2538,75 @@ def test_53_accordion_steps(page, init):
 
     # WORKS
     expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '导出', '文件', '导入文件', '表'])
+
+
+def test_54_hover_info_assertion(page, init):
+
+    """
+    Test title-assertion
+    """
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    expect(editor.toolbar.get_by_test_id("programViewPane-toolbar-runButton")).to_have_accessible_description(Helper.data_locale.RUN)
+
+
+def test_55_locator_assertion(page, init):
+    """
+    Locator Assertions
+    """
+    TopMenuPage(page).check_view_item(TopMenuItem.view_navigation_panes_sas_content)
+    acc: AccordionPage = AccordionPage(page)
+
+    acc.show_accordion(AccordionType.sas_content)
+
+    # ERROR
+    # //button[@data-testid="sascontentNavPane-deleteButton"]
+    # expect(acc.get_by_test_id("sascontentNavPane-deleteButton")).to_have_accessible_description(Helper.data_locale.DELETE)
+
+    # ERROR
+    # expect(acc.get_by_test_id("sascontentNavPane-deleteButton")).to_have_accessible_name(Helper.data_locale.DELETE)
+
+    expect(acc.get_by_test_id("sascontentNavPane-deleteButton")).to_have_accessible_name("删除选择")
+
+    expect(acc.get_by_test_id("sascontentNavPane-deleteButton")).to_have_accessible_description("删除选择")
+
+    expect(acc.get_by_test_id("sascontentNavPane-deleteButton")).to_have_role("button")
+
+
+def test_56_page_assertions(page, init):
+    """
+    Test Page Assertions
+    """
+    expect(page).to_have_title("SAS® Studio Next")
+    expect(page).not_to_have_title("SAS Studio")
+
+    expect(page).to_have_url("https://daily.pgc.unx.sas.com/SASStudioNext/")
+    expect(page).not_to_have_url("https://daily.pgc.unx.sas.com/SASStudio/")
+
+
+def test_57_api_response_assertion(page, init):
+    """
+
+    """
+    # ERROR
+    # response = page.request.get('https://daily.pgc.unx.sas.com')
+
+    # WORKS
+    response = page.request.get('https://playwright.dev')
+    expect(response).to_be_ok()
+
+
+def test_58_press_sequentially(page, init):
+    """
+    Mock human-typing
+    """
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+
+    # Type instantly
+    # editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+
+    # Mimic human-typing
+    editor.get_by_test_id("programView-editorPane-editor").press_sequentially("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;", delay=500)
