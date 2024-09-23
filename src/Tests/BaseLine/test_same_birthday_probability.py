@@ -38,7 +38,13 @@ def test_lev0_same_birthday(page, init):
     flow.tab_group.click_tab_by_text("输出数据 (1)")
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="flow_results_same_birthday")
+
+    # flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # Mask table name
+    # //h5[@data-testid="dataPane-toolbar-nameHeading"]
+    flow.screenshot_self(pic_name="flow_results_same_birthday",
+                         mask=['//h5[@data-testid="dataPane-toolbar-nameHeading"]'],
+                         mask_color="#000000")
     # WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")
 
 
@@ -81,5 +87,10 @@ def test_lev1_same_birthday(page, init):
     flow.tab_group.click_tab_by_text("输出数据 (1)")
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # Mask table name
+    # //h5[@data-testid="dataPane-toolbar-nameHeading"]
+    flow.screenshot_self(pic_name="flow_results_same_birthday",
+                         mask=['//h5[@data-testid="dataPane-toolbar-nameHeading"]'],
+                         mask_color="#000000")
     # WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")

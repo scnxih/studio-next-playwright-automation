@@ -40,6 +40,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.StatisticalProcessControl.capa
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.transitive_closure_pane import \
     TransitiveClosurePane
 from src.Pages.Common.dialog import Dialog
+from playwright.sync_api import expect
 
 
 def test_00_click_show_tab_lables(page, init):
@@ -2244,7 +2245,7 @@ def test_49_accordion_steps(page, init):
                                         mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
     # AccordionPage(page).screenshot_self("Machine_Learning")
     AccordionPage(page).screenshot_self("Machine_Learning",
@@ -2374,7 +2375,7 @@ def test_50_accordion_steps(page, init):
     # AccordionPage(page).screenshot_self("Merge_Table", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step_then_collapse_parent(step_path)
     # AccordionPage(page).screenshot_self("Machine_Learning")
     # AccordionPage(page).screenshot_self("Machine_Learning", mask=[AccordionPage(page).ag_body_vertical_scroll_bar], mask_color='#000000')
@@ -2458,7 +2459,7 @@ def test_51_accordion_steps_backup(page, init):
     steps.navigate_to_step_then_collapse_parent(step_path)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS, Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
@@ -2490,3 +2491,40 @@ def test_51_accordion_steps_backup(page, init):
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step_then_collapse_parent(step_path)
+
+
+def test_52_accordion_steps(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+    time.sleep(1)
+    whole.screenshot_self("steps_pane")
+    steps = StepsPage(page)
+
+    # step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    # steps.navigate_to_step(step_path)
+
+    # expect(page.locator("ul > li")).to_have_text(["Text 1", "Text 2", "Text 3"])
+
+    # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(["数据（输入和输出）", "数据质量", "开发"])
+    expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(
+        ['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习',
+         '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据',
+         '可视化数据'])
+
+
+def test_53_accordion_steps(page, init):
+    dialog: Dialog = Dialog(page)
+    base: BasePage = BasePage(page)
+    whole: WholePage = WholePage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+    time.sleep(1)
+    whole.screenshot_self("steps_pane")
+    steps = StepsPage(page)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    steps.navigate_to_step(step_path)
+
+    # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(["数据（输入和输出）", "数据质量", "开发"])
+    expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '导出', '文件', '导入文件', '表'])

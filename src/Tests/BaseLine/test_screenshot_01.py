@@ -211,7 +211,11 @@ def test_05_screenshot_top_menu_view(page, init):
 
     # Added Mask and Mask Color
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
-                                    mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'],
+                                    # mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'], # Changed
+                                    mask=[
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-agGrid"]',
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"]'
+                                    ],
                                     mask_color="#000000")
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
@@ -640,7 +644,7 @@ def test_09_accordion_steps(page, init):
                                         mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
     # AccordionPage(page).screenshot_self("Machine_Learning")
     AccordionPage(page).screenshot_self("Machine_Learning",

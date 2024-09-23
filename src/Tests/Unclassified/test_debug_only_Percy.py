@@ -2,6 +2,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.bubble_map_pane 
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.split_columns_pane import SplitColumnsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.maximal_cliques_pane import MaximalCliquesPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.summary_statistics_pane import SummaryStatisticsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.rank_data_pane import RankDataPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -210,7 +211,7 @@ def test_Maximal_Cliques_level0(page, init):
 
     flow.run(True)
 
-def test_Summary_Statistics_level0(page, init):
+def test_summary_statistics_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -258,6 +259,7 @@ def test_Summary_Statistics_level1(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SUMMARY_STATISTICS)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SUMMARY_STATISTICS)
+
     Summary_Statistics_Pane = SummaryStatisticsPane(page)
     Summary_Statistics_Pane.click_data_tab()
     Summary_Statistics_Pane.add_columns_for_analysis_variables(check_column_name_list=["nHits'中", "CrHits'中"])
@@ -269,10 +271,43 @@ def test_Summary_Statistics_level1(page, init):
     Summary_Statistics_Pane.set_value_to_copy(item_index=1)
     Summary_Statistics_Pane.add_column_for_frequency_count(column_name="CrAtBat'中")
     Summary_Statistics_Pane.add_column_for_weight_variable(column_name="Salary'中")
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
     table_pane.set_table("Result'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
+
+    flow.run(True)
+def test_rank_data_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_RANK_DATA]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_RANK_DATA)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_RANK_DATA)
+    Rank_data_pane = RankDataPane(page)
+    Rank_data_pane.click_data_tab()
+    Rank_data_pane.set_filter_input_data("'nAtBat''中'n > 200")
+    Rank_data_pane.add_columns_for_columns_to_rank(check_column_name_list=["Team'中文", "nRBI'中"])
+    Rank_data_pane.expand_windowshade_additional_roles()
+    Rank_data_pane.add_columns_for_rank_by(check_column_name_list=["nHits'中", "nHome'中"])
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("WORK")
+    table_pane.set_table("Result'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_RANK_DATA, "Result'中文")
+    flow.arrange_nodes()
+
     flow.run(True)

@@ -1,3 +1,5 @@
+from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.robust_principal_component_analysis_pane import \
+    RobustPrincipalComponentAnalysis
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
     SemiSupervisedLearning
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
@@ -23,8 +25,8 @@ def test_01_list_data_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -51,8 +53,8 @@ def test_02_list_data_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -89,8 +91,8 @@ def test_03_list_data_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -134,8 +136,8 @@ def test_04_list_data_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -179,8 +181,8 @@ def test_05_line_chart_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -211,8 +213,8 @@ def test_06_line_chart_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -256,8 +258,8 @@ def test_07_line_chart_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;    
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -334,8 +336,8 @@ def test_10_poker_hand_probablity_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -371,8 +373,8 @@ def test_11_cluster_variables_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -403,8 +405,8 @@ def test_12_cluster_variables_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -445,8 +447,8 @@ def test_13_cluster_variables_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -491,8 +493,8 @@ def test_14_cluster_variables_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -564,8 +566,8 @@ def test_15_text_map_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -599,8 +601,8 @@ def test_16_text_map_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -672,8 +674,8 @@ def test_17_minimum_spanning_tree_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -706,8 +708,8 @@ def test_18_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -756,8 +758,8 @@ def test_19_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;    
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -807,13 +809,13 @@ def test_20_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'LINKSETINDATA''中文'n;
-        set AUTOLIB.'LINKSETINDATA''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'LINKSETINDATA''中文'n;
+set AUTOLIB.'LINKSETINDATA''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -864,13 +866,13 @@ def test_21_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'LINKSETINDATA''中文'n;
-        set AUTOLIB.'LINKSETINDATA''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'LINKSETINDATA''中文'n;
+set AUTOLIB.'LINKSETINDATA''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -921,13 +923,13 @@ def test_22_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'LINKSETINDATA''中文'n;
-        set AUTOLIB.'LINKSETINDATA''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'LINKSETINDATA''中文'n;
+set AUTOLIB.'LINKSETINDATA''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -978,13 +980,13 @@ def test_23_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'LINKSETINDATA''中文'n;
-        set AUTOLIB.'LINKSETINDATA''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'LINKSETINDATA''中文'n;
+set AUTOLIB.'LINKSETINDATA''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1037,13 +1039,13 @@ def test_24_minimum_spanning_tree_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'LINKSETINDATA''中文'n;
-        set AUTOLIB.'LINKSETINDATA''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'LINKSETINDATA''中文'n;
+set AUTOLIB.'LINKSETINDATA''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1096,16 +1098,16 @@ def test_25_semi_supervised_learning_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'labeled''中文'n;
-        set AUTOLIB.'labeled''中文'n;
-        run;
-        data casuser.'unlabeled''中文'n;
-        set AUTOLIB.'unlabeled''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'labeled''中文'n;
+set AUTOLIB.'labeled''中文'n;
+run;
+data casuser.'unlabeled''中文'n;
+set AUTOLIB.'unlabeled''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1149,16 +1151,16 @@ def test_26_semi_supervised_learning_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'labeled''中文'n;
-        set AUTOLIB.'labeled''中文'n;
-        run;
-        data casuser.'unlabeled''中文'n;
-        set AUTOLIB.'unlabeled''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'labeled''中文'n;
+set AUTOLIB.'labeled''中文'n;
+run;
+data casuser.'unlabeled''中文'n;
+set AUTOLIB.'unlabeled''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1219,16 +1221,16 @@ def test_27_semi_supervised_learning_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-        libname AUTOLIB '/segatest/I18N/Autolib' ;
-        cas;
-        caslib _all_ assign;
-        data casuser.'labeled''中文'n;
-        set AUTOLIB.'labeled''中文'n;
-        run;
-        data casuser.'unlabeled''中文'n;
-        set AUTOLIB.'unlabeled''中文'n;
-        run;
-        """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'labeled''中文'n;
+set AUTOLIB.'labeled''中文'n;
+run;
+data casuser.'unlabeled''中文'n;
+set AUTOLIB.'unlabeled''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1287,16 +1289,16 @@ def test_28_semi_supervised_learning_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;
-    cas;
-    caslib _all_ assign;
-    data casuser.'labeled''中文'n;
-    set AUTOLIB.'labeled''中文'n;
-    run;
-    data casuser.'unlabeled''中文'n;
-    set AUTOLIB.'unlabeled''中文'n;
-    run;
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'labeled''中文'n;
+set AUTOLIB.'labeled''中文'n;
+run;
+data casuser.'unlabeled''中文'n;
+set AUTOLIB.'unlabeled''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1361,13 +1363,13 @@ def test_29_text_summarization_in_flow_l0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;
-    cas;
-    caslib _all_ assign;
-    data casuser.'TEXTSUMMARY''中文'n;
-    set AUTOLIB.'TEXTSUMMARY''中文'n;
-    run;
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'TEXTSUMMARY''中文'n;
+set AUTOLIB.'TEXTSUMMARY''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1410,13 +1412,13 @@ def test_30_text_summarization_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;
-    cas;
-    caslib _all_ assign;
-    data casuser.'TEXTSUMMARY''中文'n;
-    set AUTOLIB.'TEXTSUMMARY''中文'n;
-    run;
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'TEXTSUMMARY''中文'n;
+set AUTOLIB.'TEXTSUMMARY''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1464,13 +1466,13 @@ def test_31_text_summarization_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;
-    cas;
-    caslib _all_ assign;
-    data casuser.'TEXTSUMMARY''中文'n;
-    set AUTOLIB.'TEXTSUMMARY''中文'n;
-    run;
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'TEXTSUMMARY''中文'n;
+set AUTOLIB.'TEXTSUMMARY''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1529,13 +1531,13 @@ def test_32_text_summarization_in_flow_l1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
-    libname AUTOLIB '/segatest/I18N/Autolib' ;
-    cas;
-    caslib _all_ assign;
-    data casuser.'TEXTSUMMARY''中文'n;
-    set AUTOLIB.'TEXTSUMMARY''中文'n;
-    run;
-    """
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'TEXTSUMMARY''中文'n;
+set AUTOLIB.'TEXTSUMMARY''中文'n;
+run;
+"""
     sas_program_pane.type_into_text_area(code)
 
     flow.add_node(FlowNodeType.table)
@@ -1589,4 +1591,369 @@ def test_32_text_summarization_in_flow_l1(page, init):
     text_summarization_pane.add_columns_for_include_these_variables(check_column_name_list=["text'中文"])
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
+    flow.run(True)
+
+
+def test_33_text_summarization_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'TEXTSUMMARY''中文'n;
+set AUTOLIB.'TEXTSUMMARY''中文'n;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("TEXTSUMMARY'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
+                 Helper.data_locale.STEP_TEXT_SUMMARIZATION]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("TEXTSUMMARY'中文", Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
+                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("Corpus'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_SUMMARIZATION, "Corpus'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_SUMMARIZATION)
+    text_summarization_pane = TextSummarization(page)
+    text_summarization_pane.set_language(item_index=1)
+
+    text_summarization_pane.add_column_for_text_variable("text'中文")
+    text_summarization_pane.set_key_variable(item_index=1)
+    text_summarization_pane.add_column_for_key_variable("key'中文")
+
+    text_summarization_pane.click_options_tab()
+    text_summarization_pane.set_uncheck_each_document()
+    text_summarization_pane.set_check_entire_corpus()
+    text_summarization_pane.set_check_use_entities_and_noun_groups()
+
+    text_summarization_pane.click_output_tab()
+    text_summarization_pane.expand_windowshade_corpus_summary()
+    text_summarization_pane.set_check_show_output_data()
+    flow.run(True)
+
+
+def test_34_robust_principal_component_analysis_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'IRIS''中文'n;
+set AUTOLIB.'IRIS''中文'n;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("IRIS'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
+    robust_principal_component_analysis_pane.add_columns_for_interval_inputs(
+        check_column_name_list=["SepalLength'中文", "SepalWidth'中文", "PetalLength'中文", "PetalWidth'中文"])
+    flow.run(True)
+
+
+def test_35_robust_principal_component_analysis_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'IRIS''中文'n;
+set AUTOLIB.'IRIS''中文'n;
+'ID''中文'n=_n_;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("IRIS'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
+    robust_principal_component_analysis_pane.set_input_variables(item_index=0)
+    robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
+    flow.run(True)
+
+
+def test_36_robust_principal_component_analysis_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+    libname AUTOLIB '/segatest/I18N/Autolib' ;
+    cas;
+    caslib _all_ assign;
+    data casuser.'IRIS''中文'n;
+    set AUTOLIB.'IRIS''中文'n;
+    'ID''中文'n=_n_;
+    run;
+    """
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("IRIS'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
+    robust_principal_component_analysis_pane.set_input_variables(item_index=0)
+    robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
+
+    robust_principal_component_analysis_pane.click_options_tab()
+    robust_principal_component_analysis_pane.set_method(item_index=1)
+    robust_principal_component_analysis_pane.set_lambda(item_index=1)
+    robust_principal_component_analysis_pane.set_custom_lambda_value("2")
+    robust_principal_component_analysis_pane.set_lambda_weight(item_index=1)
+    robust_principal_component_analysis_pane.set_custom_lambda_weight_value("0.5")
+    robust_principal_component_analysis_pane.set_maximum_iterations("500")
+    robust_principal_component_analysis_pane.set_tolerance("0.00001")
+    robust_principal_component_analysis_pane.set_check_scale_observations()
+    robust_principal_component_analysis_pane.set_check_center_observations()
+    robust_principal_component_analysis_pane.set_initial_mu("0.001")
+    robust_principal_component_analysis_pane.set_check_use_fixed_value_for_mu()
+
+    robust_principal_component_analysis_pane.expand_windowshade_Singular_Value_Decomposition_Options()
+    robust_principal_component_analysis_pane.set_svd_method(item_index=1)
+    robust_principal_component_analysis_pane.set_maximum_rank("1234")
+    robust_principal_component_analysis_pane.set_power("1")
+
+    flow.run(True)
+
+
+def test_37_robust_principal_component_analysis_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'IRIS''中文'n;
+set AUTOLIB.'IRIS''中文'n;
+'ID''中文'n=_n_;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("IRIS'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.lowrankoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("lowrank'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "lowrank'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.sparseoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("sparse'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "sparse'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.erroroutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("error'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "error'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.lsvoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("left'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "left'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.svoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("singular'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "singular'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.rsvoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("right'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "right'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
+    robust_principal_component_analysis_pane.set_input_variables(item_index=0)
+    robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
+
+    robust_principal_component_analysis_pane.click_output_tab()
+    robust_principal_component_analysis_pane.set_check_save_low_rank_data()
+    robust_principal_component_analysis_pane.set_check_save_sparse_data()
+    robust_principal_component_analysis_pane.set_check_save_error_data()
+    robust_principal_component_analysis_pane.set_decomposition_method(item_index=1)
+    robust_principal_component_analysis_pane.set_check_save_left_singular_vectors_data()
+    robust_principal_component_analysis_pane.set_check_save_singular_values_data()
+    robust_principal_component_analysis_pane.set_check_save_right_singular_vectors_data()
+    flow.run(True)
+
+
+def test_38_robust_principal_component_analysis_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+cas;
+caslib _all_ assign;
+data casuser.'IRIS''中文'n;
+set AUTOLIB.'IRIS''中文'n;
+'ID''中文'n=_n_;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("IRIS'中文")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.cloutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("component'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "component'中文")
+    flow.arrange_nodes()
+
+    flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
+                                                       "{sasstudio-steps-gui-icu.rpca.outputports.pcoutputtable.displayname.title}")
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane.set_library("CASUSER")
+    table_pane.set_table("pc'中文")
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "pc'中文")
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
+    robust_principal_component_analysis_pane.set_input_variables(item_index=0)
+    robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
+
+    robust_principal_component_analysis_pane.click_output_tab()
+    robust_principal_component_analysis_pane.set_decomposition_method(item_index=2)
+    robust_principal_component_analysis_pane.set_check_save_component_loadings_data()
+    robust_principal_component_analysis_pane.set_check_save_pc_scores_data()
+
     flow.run(True)
