@@ -2526,5 +2526,14 @@ def test_53_accordion_steps(page, init):
     step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
     steps.navigate_to_step(step_path)
 
+    # ERROR: Inconsistent number
     # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(["数据（输入和输出）", "数据质量", "开发"])
+
+    # ERROR: Incorrect order
+    # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '表', '导出', '文件', '导入文件'])
+
+    # ERROR: Incorrect amount or order
+    # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '表', '导出', '文件', '导入文件'])
+
+    # WORKS
     expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '导出', '文件', '导入文件', '表'])
