@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright
 """ Added by Jacky(ID: jawang) on Sept. 1st, 2023 """
 from src.Helper.helper import *
 """ Added by Jacky(ID: jawang) on Sept. 1st, 2023 """
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def page():
     with sync_playwright() as playwright:
         pw_objects = PlaywrightHelper.init_create_page(playwright)

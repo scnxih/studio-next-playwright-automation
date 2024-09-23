@@ -281,7 +281,7 @@ class LineChartPane(BasicStepPane):
 
     def set_text_for_first_label_for_x_axis(self, input_text: str):
         get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.Label + "')]][../../../../following-sibling::div[1][.//label[text()=  '" + Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
+                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../following-sibling::div[1][.//label[text()=  '" + Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
             input_text)
 
     def set_text_for_second_label_for_x_axis(self, input_text: str):
