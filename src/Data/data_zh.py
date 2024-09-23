@@ -648,9 +648,9 @@ class DataZH(Data):
 
     # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>
     """Added by Alice on Aug 12,2024 start"""
-    CREATE_OUTPUT_NODES_DATA = "创建输出节点数据"
+    CREATE_NODES_DATA = "创建节点数据"
     REPLACE_EXISTING_OUTPUT_TABLE = "替换现有输出表"
-    CREATE_OUTPUT_LINKS_DATA = "创建输出链接数据"
+    CREATE_LINKS_DATA = "创建链接数据"
     MOVE_COLUMN_UP = "上移列"
     MOVE_COLUMN_DOWN = "下移列"
     NODES = "节点"

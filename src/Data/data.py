@@ -648,9 +648,9 @@ class Data:
     REPLACE_THE_TARGET_TABLE_IF_IT_EXISTS = "Replace the target table if it exists"
     # END Added by Jacky(ID: jawang) on July 29th, 2024 >>>
     """Added by Alice on Aug 12,2024 start"""
-    CREATE_OUTPUT_NODES_DATA = "Create output nodes data"
+    CREATE_NODES_DATA = "Create nodes data"
     REPLACE_EXISTING_OUTPUT_TABLE = "Replace existing output table"
-    CREATE_OUTPUT_LINKS_DATA = "Create output links data"
+    CREATE_LINKS_DATA = "Create links data"
     MOVE_COLUMN_UP = "Move column up"
     MOVE_COLUMN_DOWN = "Move column down"
     NODES = "Nodes"

@@ -1,5 +1,6 @@
 import sys, os
 
+
 from src.Utilities.enums import TopMenuItem, AccordionType
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -10,8 +11,6 @@ from playwright.sync_api import sync_playwright
 """ Added by Jacky(ID: jawang) on Sept. 1st, 2023 """
 from src.Helper.helper import *
 """ Added by Jacky(ID: jawang) on Sept. 1st, 2023 """
-
-
 @pytest.fixture(scope="module")
 def page():
     with sync_playwright() as playwright:
@@ -33,7 +32,8 @@ def init(page):
     PageHelper.login(page)
     ''' Added by Jacky(ID: jawang) on Sept. 4th, 2023 '''
 
-    output_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../..")), "Output\\")
+    # output_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../..")), "Output\\")
+    output_path = "C:\\studio-next-playwright-automation\\src\\Output\\"
     testfile_abbreviation = Helper.get_testfile_abbreviation()
 
     testmethod_number = Helper.get_testmethod_number()
