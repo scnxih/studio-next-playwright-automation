@@ -440,6 +440,8 @@ class SettingsDialog(Dialog):
 
         # Take __screenshot of the query tab page when reset button is not available, which means reset is done
         if self.is_visible(self.disabled_reset_btn_in_current_tab_page):
+            # Add extra waiting time to avoid diff, for background color would change after resetting.
+            time.sleep(1)
             self.screenshot(self.base_xpath, "reset")
 
     # END Added by Jacky(ID: jawang) on Nov.7th, 2023 >>>

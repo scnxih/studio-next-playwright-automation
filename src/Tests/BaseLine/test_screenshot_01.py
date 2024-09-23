@@ -211,7 +211,11 @@ def test_05_screenshot_top_menu_view(page, init):
 
     # Added Mask and Mask Color
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
-                                    mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'],
+                                    # mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'], # Changed
+                                    mask=[
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-agGrid"]',
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"]'
+                                    ],
                                     mask_color="#000000")
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
