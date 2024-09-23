@@ -399,6 +399,7 @@ class FlowPage(MainCenterPage):
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
 
+
     def click_flow_tab(self):
         get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.FLOW)
 
