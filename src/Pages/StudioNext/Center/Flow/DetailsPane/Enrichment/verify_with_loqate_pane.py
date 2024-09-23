@@ -54,6 +54,9 @@ class VerifyWithLoqate(BasicStepPane):
     def add_column_for_address_1(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.ADDRESS_1, column_name=column_name)
 
+    def add_column_for_address_2(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.ADDRESS_2, column_name=column_name)
+
     def add_column_for_postal_code(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.POSTAL_CODE, column_name=column_name)
 
@@ -63,11 +66,17 @@ class VerifyWithLoqate(BasicStepPane):
     def add_column_for_administrative_area_state_province(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.ADMINISTRATIVE_AREA_STATE_PROVINCE, column_name=column_name)
 
+    def add_column_for_sub_administrative_area_county_region(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.SUB_ADMINISTRATIVE_AREA_COUNTRY_REGION, column_name=column_name)
+
     def add_column_for_organization(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.ORGANIZATION, column_name=column_name)
 
     def add_column_for_building(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.BUILDING, column_name=column_name)
+
+    def add_column_for_sub_building(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.SUB_BUILDING, column_name=column_name)
 
     def add_column_for_post_box(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.POST_BOX, column_name=column_name)
