@@ -22,6 +22,7 @@ from src.Pages.StudioNext.Dialog.select_column_dialog import SelectColumnDialog
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+from src.Pages.StudioNext.Left.sas_content_server_page import SASContentServerPage
 from src.Pages.StudioNext.Left.steps_page import StepsPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
@@ -2537,11 +2538,13 @@ def test_53_accordion_steps(page, init):
     # expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '表', '导出', '文件', '导入文件'])
 
     # WORKS
-    expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习', '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据', '导出', '文件', '导入文件', '表'])
+    expect(steps.page.locator('//div[@role="gridcell"]//span[@data-sas-usetruncationtooltip="true"]')).to_have_text(
+        ['云分析服务', '数据（输入和输出）', '数据质量', '开发', '计量经济学', '扩充', '检查数据', '集成', '机器学习',
+         '管理模型', '优化和网络分析', '准备和探索数据', '统计过程控制', '统计量', '文本分析', '转换数据', '可视化数据',
+         '导出', '文件', '导入文件', '表'])
 
 
 def test_54_hover_info_assertion(page, init):
-
     """
     Test title-assertion
     """
@@ -2549,7 +2552,8 @@ def test_54_hover_info_assertion(page, init):
 
     editor = CodeEditorPage(page)
 
-    expect(editor.toolbar.get_by_test_id("programViewPane-toolbar-runButton")).to_have_accessible_description(Helper.data_locale.RUN)
+    expect(editor.toolbar.get_by_test_id("programViewPane-toolbar-runButton")).to_have_accessible_description(
+        Helper.data_locale.RUN)
 
 
 def test_55_locator_assertion(page, init):
@@ -2609,4 +2613,163 @@ def test_58_press_sequentially(page, init):
     # editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
 
     # Mimic human-typing
-    editor.get_by_test_id("programView-editorPane-editor").press_sequentially("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;", delay=500)
+    editor.get_by_test_id("programView-editorPane-editor").press_sequentially(
+        "data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;", delay=500)
+
+
+def test_59_drag_and_drop_integrated(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    # flow: FlowPage = PageHelper.new_flow(page)
+    sas_content = SASContentServerPage(page)
+    PageHelper.show_accordion(page, AccordionType.sas_content)
+
+    # file_path: list = [Helper.data_locale.SAS_CONTENT, "Public", "plain_factory_text_file.txt"]
+    sas_content.navigate_to_folder_or_file([Helper.public_folder_path])
+
+    # //div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]
+    # steps.locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(flow.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
+
+    # tab-group-overflow-_root_
+    sas_content.locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(
+        page.locator('//div[@data-testid="tab-group-overflow-_root_"]'))
+
+
+def test_60_hover_information(page, init):
+    """
+    Reference:
+    https://playwright.dev/python/docs/api/class-locatorassertions#locator-assertions-to-have-accessible-description
+    """
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+
+    # data-testid="programViewPane-toolbar-snippet"
+    expect(editor.get_by_test_id("programViewPane-toolbar-snippet")).to_have_accessible_description("另存为代码段。")
+
+
+def test_61_drag_and_drop_integrated(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    steps_content = StepsPage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    steps_content.navigate_to_step(step_path)
+
+    # //div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]
+    # steps_content.locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(flow.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
+    # steps_content.locate_xpath('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(flow.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
+    # steps_content.click('//div[@role="row"][@row-index="5"]')
+
+    # Works
+    # steps_content.dblclick('//div[@role="row"][@row-index="5"]')
+
+    # steps_content.locate_xpath('//div[@role="row"][@row-index="5"]').drag_to(flow.locate_xpath('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
+
+    # tab-group-overflow-_root_
+    # steps_content.locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(page.locator('//div[@data-testid="tab-group-overflow-_root_"]'))
+
+    steps_content.locate_xpath('//div[@role="row"][@row-index="5"]').hover(force=True, timeout=5000)
+    # steps_content.locate_xpath('//div[@role="row"][@row-index="5"]').screenshot()
+    # page.locator('//div[@role="row"][@row-index="5"]').()
+    # time.sleep(1)
+
+    steps_content.page.mouse.down(button="left")
+    # time.sleep(1)
+
+    flow.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(force=True, timeout=500)
+    # time.sleep(1)
+
+    page.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(force=True, timeout=500)
+    # time.sleep(1)
+
+    page.mouse.up(button="left")
+    # time.sleep(1)
+
+
+def test_62_drag_and_drop_integrated(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    PageHelper.new_item(page, TopMenuItem.new_quick_import)
+    PageHelper.new_item(page, TopMenuItem.new_python_program)
+
+    # //div[@role="tab"][@aria-label="SAS 程序.sas"]
+    WholePage(page).locator('//div[@role="tab"][@aria-label="SAS 程序.sas"]').drag_to(WholePage(page).locator('//div[@role="tab"][@aria-label="Python.py"]'))
+    # //div[@role="tab"][@aria-label="Python.py"]
+
+def test_63_drag_and_drop_integrated(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    flow: FlowPage = PageHelper.new_flow(page)
+    steps_content = StepsPage(page)
+    PageHelper.show_accordion(page, AccordionType.steps)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_DATA, Helper.data_locale.STEP_TABLE]
+    steps_content.navigate_to_step(step_path)
+
+    # //div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]
+    # WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
+    # WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(target=WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'), target_position= [{'x': 540, 'y': 480}, None])
+    WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(target=WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'), target_position= [{540, 480}, None])
+
+
+def test_64_drag_and_drop_custom_step(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+
+    time.sleep(1)
+    # //li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]
+
+    # WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 3 页"]').drag_to(WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]'))
+
+    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 3 页"]').drag_to(WholePage(page).locator('//button[@data-testid="deletePageButton"]'))
+
+    # source = '//li[@role="option"][@aria-label="复选框, 复选框"]'
+
+    # target = '//div[@data-testid="designCanvasTestID"]'
+
+    # WholePage(page).locator(source).drag_to(WholePage(page).locator(target))
+    # custom_step.locator('//li[@role="option"][@aria-label="复选框, 复选框"]').drag_to(custom_step.locator('//div[@data-testid="designCanvasTestID"]'))
+
+
+def test_65_drag_and_drop_custom_step(page, init):
+    """
+    Reference: https://playwright.dev/python/docs/input#drag-and-drop
+    Create a flow then DnD a table node to flow canvas
+    """
+    custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+    custom_step.add_page_by_toolbar()
+
+    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 5 页"]').hover()
+    time.sleep(0.5)
+    WholePage(page).page.mouse.down()
+    time.sleep(0.5)
+    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]').hover()
+    # WholePage(page).locator('//div[@data-testid="designCanvasTestID"]').hover()
+    time.sleep(0.5)
+    WholePage(page).page.mouse.up()
+
