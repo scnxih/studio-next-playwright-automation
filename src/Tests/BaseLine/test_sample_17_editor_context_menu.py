@@ -10,6 +10,8 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.Common.menu_page import MenuPage
 
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_sas_program_editor_context_menu(page, init):
     """
     Test context menu in text area

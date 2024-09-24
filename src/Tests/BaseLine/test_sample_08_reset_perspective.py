@@ -10,7 +10,8 @@ from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Utilities.enums import TopMenuItem
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_00_reset_view(page, init):
     """
     Reset View Perspective before testcase run

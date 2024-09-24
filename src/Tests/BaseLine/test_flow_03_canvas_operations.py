@@ -9,7 +9,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane 
 from src.Utilities.enums import *
 import time
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)

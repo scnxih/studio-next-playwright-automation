@@ -4,6 +4,8 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
+def test_init(page,init):
+    PageHelper.init_environments(page)
 
 def test_01_toolbar(page, init):
     PageHelper.show_settings_dialog(page)

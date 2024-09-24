@@ -333,9 +333,13 @@ class SettingsDialog(Dialog):
 
             self.click(self.__assemble_tab_page_xpath(tab_page_text))
 
-            time.sleep(2)
-            self.screenshot(self.base_xpath, str(setting_tab_page).split('.')[-1])
-            time.sleep(1)
+            # MODIFIED
+            # <<< Modified by Jacky(ID: jawang) on Sept.23rd 2024
+            # # Comment out to Eliminate the amount of screenshots
+            # time.sleep(2)
+            # self.screenshot(self.base_xpath, str(setting_tab_page).split('.')[-1])
+            # time.sleep(1)
+            # Modified by Jacky(ID: jawang) on Sept.23rd 2024 >>>
 
     def reset_global_general(self):
         """
