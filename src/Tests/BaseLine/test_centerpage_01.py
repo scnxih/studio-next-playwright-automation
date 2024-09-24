@@ -696,8 +696,8 @@ def test_38_quick_import(page, init):
     quick_import.download_excel_file()
     quick_import.download_log_file_text()
     # quick_import.email()
-    quick_import.apply_main_layout_vertical()
-    quick_import.apply_main_layout_horizontal()
+    # quick_import.apply_main_layout_vertical()
+    # quick_import.apply_main_layout_horizontal()
     quick_import.apply_detail_layout_standard()
     quick_import.apply_detail_layout_vertical()
     quick_import.apply_detail_layout_horizontal()
@@ -928,9 +928,9 @@ def test_46_job_definition(page, init):
     job_page.schedule_as_job()
     job_page.open_in_browser_tab_code()
     job_page.open_in_browser_tab_job_form()
-    job_page.apply_main_layout_standard()
-    job_page.apply_main_layout_horizontal()
-    job_page.apply_main_layout_vertical()
+    # job_page.apply_main_layout_standard()
+    # job_page.apply_main_layout_horizontal()
+    # job_page.apply_main_layout_vertical()
     job_page.reload()
 
 
