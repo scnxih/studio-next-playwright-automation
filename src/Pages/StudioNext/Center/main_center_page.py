@@ -129,11 +129,11 @@ class MainCenterPage(CenterPage):
     def apply_detail_layout_vertical(self):
         self.center_toolbar_helper.apply_detail_layout_vertical()
         time.sleep(3)
-        self.screenshot(self.base_xpath, "vert",
-                        mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
-                            self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout"),
-                            self.get_by_test_id("flowtoolbar-previewCodeButton")],
-                        mask_color="#000000")
+        # self.screenshot(self.base_xpath, "vert",
+        #                 mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
+        #                     self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout"),
+        #                     self.get_by_test_id("flowtoolbar-previewCodeButton")],
+        #                 mask_color="#000000")
 
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
