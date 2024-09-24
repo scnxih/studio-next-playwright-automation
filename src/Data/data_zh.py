@@ -1279,5 +1279,5 @@ class DataZH(Data):
     EXOGENOUS_EXPLANATORY_VARIABLES="外生解释变量"
     ENDOGENOUS_EXPLANATORY_VARIABLES="内生解释变量"
     EXCLUDED_INSTRUMENTAL_VARIABLES="排除的工具变量"
-    OUTCOME_EQUATION= "Outcome Equation"
+    OUTCOME_EQUATION= "结果方程"
     """Added by Percy end"""
