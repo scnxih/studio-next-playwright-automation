@@ -122,15 +122,13 @@ class VerifyWithLoqate(BasicStepPane):
     '''The following method is used when Verify address and verify phone are both checked.'''
 
     def set_check_perform_country_iso_standardization_before_processing_phone_both(self):
-        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='处理前执行国家/地区 "
-                                                                       "ISO 标准化']][../../preceding-sibling::div[1]["
-                                                                       ".//label[text()='启用电话验证']]]"
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']][../../preceding-sibling::div[1]["
+                                                                       ".//label[text()='" + Helper.data_locale.ENABLE_PHONE_VERIFICATION + "']]]"
                      ).set_check()
 
     def set_uncheck_perform_country_iso_standardization_before_processing_phone_both(self):
-        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='处理前执行国家/地区 "
-                                                                       "ISO 标准化']][../../preceding-sibling::div[1]["
-                                                                       ".//label[text()='启用电话验证']]]"
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']][../../preceding-sibling::div[1]["
+                                                                       ".//label[text()='" + Helper.data_locale.ENABLE_PHONE_VERIFICATION + "']]]"
                      ).set_uncheck()
 
     def set_check_show_api_input_and_output_csv_in_the_log_phone(self):
@@ -141,16 +139,18 @@ class VerifyWithLoqate(BasicStepPane):
 
     '''The following method is used when Verify email and verify phone are both checked.'''
 
+
     def set_check_show_api_input_and_output_csv_in_the_log_phone_both(self):
-        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='在日志中显示 API 输入和输出 CSV']]["
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG + "']]["
                                                                        "../../preceding-sibling::div[1][.//label["
-                                                                       "text()='处理前执行国家/地区 ISO 标准化']]]"
+                                                                       "text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']]]"
                      ).set_check()
 
+
     def set_uncheck_show_api_input_and_output_csv_in_the_log_phone_both(self):
-        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='在日志中显示 API 输入和输出 CSV']]["
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG + "']]["
                                                                        "../../preceding-sibling::div[1][.//label["
-                                                                       "text()='处理前执行国家/地区 ISO 标准化']]]"
+                                                                       "text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']]]"
                      ).set_uncheck()
 
     def add_column_for_phone_number(self, column_name: str):

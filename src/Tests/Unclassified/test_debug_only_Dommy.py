@@ -2190,7 +2190,7 @@ run;
     verify_with_loqate_pane.set_check_perform_country_iso_standardization_before_processing_phone_both()
     verify_with_loqate_pane.set_check_show_api_input_and_output_csv_in_the_log_phone_both()
     verify_with_loqate_pane.add_column_for_phone_number("Phone'测试")
-    verify_with_loqate_pane.add_column_for_country_phone("Country'测试")
+
 
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
