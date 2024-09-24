@@ -9,7 +9,8 @@ from src.conftest import *
 from src.Utilities.enums import TopMenuItem
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_sas_program_editor_widget(page, init):
     """
     Test widget  in code editor

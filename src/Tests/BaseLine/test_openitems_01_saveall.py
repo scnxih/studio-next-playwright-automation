@@ -11,7 +11,8 @@ from src.conftest import *
 from playwright.sync_api import Page, expect
 from src.Pages.Common.dialog import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_saveall(page, init):
     PageHelper.new_sas_program(page)
     text = "'中文测试'"

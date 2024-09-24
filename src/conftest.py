@@ -22,7 +22,7 @@ def page():
         context = pw_objects[1]
         browser = pw_objects[2]
         yield page
-        PageHelper.init_environments(page)
+        # PageHelper.init_environments(page)
         PageHelper.sign_out(page)
         page.close()
         context.close()

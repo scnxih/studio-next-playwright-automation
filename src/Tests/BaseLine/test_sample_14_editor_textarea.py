@@ -10,7 +10,8 @@ from src.conftest import *
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_central_editors(page, init):
     """
     Fill the central editor with text

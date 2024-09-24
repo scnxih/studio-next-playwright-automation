@@ -12,6 +12,8 @@ from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 
 
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_lev0_class_box_plot(page, init):
     """
     """
