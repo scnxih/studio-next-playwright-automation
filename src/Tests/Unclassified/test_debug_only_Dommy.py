@@ -1,3 +1,4 @@
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Enrichment.verify_with_loqate_pane import VerifyWithLoqate
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.robust_principal_component_analysis_pane import \
     RobustPrincipalComponentAnalysis
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
@@ -1956,4 +1957,95 @@ run;
     robust_principal_component_analysis_pane.set_check_save_component_loadings_data()
     robust_principal_component_analysis_pane.set_check_save_pc_scores_data()
 
+    flow.run(True)
+
+
+def test_39_verify_with_loqate_in_flow_l0(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("LOQATE.数据'TEST")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    verify_with_loqate_pane = VerifyWithLoqate(page)
+    verify_with_loqate_pane.set_check_enable_address_verification()
+    verify_with_loqate_pane.expand_windowshade_map_the_fields_for_address_verification()
+    verify_with_loqate_pane.add_column_for_country("Country'测试")
+    verify_with_loqate_pane.add_column_for_address_1("City'测试")
+
+    verify_with_loqate_pane.click_loqate_key_tab()
+    verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
+    verify_with_loqate_pane.set_uncheck_test_mode()
+    flow.run(True)
+
+
+def test_40_verify_with_loqate_in_flow_l1(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;
+run;
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("LOQATE.数据'TEST")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    verify_with_loqate_pane = VerifyWithLoqate(page)
+    verify_with_loqate_pane.set_check_enable_address_verification()
+    verify_with_loqate_pane.set_check_geocode_the_address()
+    verify_with_loqate_pane.set_check_perform_country_ISO_standardization_before_processing_address()
+    verify_with_loqate_pane.set_check_show_api_input_and_output_json_in_the_log()
+    verify_with_loqate_pane.set_batch_size_500_max("300")
+
+    verify_with_loqate_pane.expand_windowshade_map_the_fields_for_address_verification()
+    verify_with_loqate_pane.add_column_for_country("Country'测试")
+    verify_with_loqate_pane.add_column_for_address_1("Street Name'测试")
+    verify_with_loqate_pane.add_column_for_postal_code("Postal_Code'测试")
+    verify_with_loqate_pane.add_column_for_locality_city_municipality("City'测试")
+    verify_with_loqate_pane.add_column_for_administrative_area_state_province("State'测试")
+    verify_with_loqate_pane.add_column_for_sub_administrative_area_county_region("Regione'测试")
+    verify_with_loqate_pane.add_column_for_organization("Organization'测试")
+    verify_with_loqate_pane.add_column_for_building("Building'测试")
+
+    verify_with_loqate_pane.click_loqate_key_tab()
+    verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
+    verify_with_loqate_pane.set_uncheck_test_mode()
     flow.run(True)

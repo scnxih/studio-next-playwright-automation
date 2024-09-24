@@ -84,10 +84,10 @@ class RobustPrincipalComponentAnalysis(BasicStepPane):
     def set_uncheck_use_fixed_value_for_mu(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.USE_FIXED_VALUE_FOR_MU)
 
-    def expand_windowshade_Singular_Value_Decomposition_Options(self):
+    def expand_windowshade_singular_value_decomposition_options(self):
         self.expand_windowshade(parent_label=Helper.data_locale.SINGULAR_VALUE_DECOMPOSITION_OPTIONS)
 
-    def collapse_windowshade_Singular_Value_Decomposition_Options(self):
+    def collapse_windowshade_singular_value_decomposition_options(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.SINGULAR_VALUE_DECOMPOSITION_OPTIONS)
 
     def set_svd_method(self, item_index: int = None, item_value: str = None):

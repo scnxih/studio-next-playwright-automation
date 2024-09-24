@@ -129,8 +129,12 @@ class PageHelper:
         top_tab_group = TopTabGroup(page)
         top_tab_group.close_all_tabs()
 
-        # whole: WholePage = WholePage(page)
+        whole: WholePage = WholePage(page)
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Sept.23rd 2024
+        # # Comment out to eliminate the amount of screenshots
         # whole.screenshot_self("close_all_tabs")
+        # Modified by Jacky(ID: jawang) on Sept.23rd 2024 >>>
 
     @staticmethod
     def show_accordion(page, accordion_type: AccordionType):
