@@ -1270,4 +1270,8 @@ class Data:
     IF_VALUES_TIED="If values are tied"
     RANK_ORDER="Rank order"
     CREATE_NEW_VARIABLES_FOR_THE_RANKED_VARIABLES="Create new variables for the ranked variables"
+    EXOGENOUS_EXPLANATORY_VARIABLES="Exogenous explanatory variables"
+    ENDOGENOUS_EXPLANATORY_VARIABLES="Endogenous explanatory variables"
+    EXCLUDED_INSTRUMENTAL_VARIABLES="Excluded instrumental variables"
+    OUTCOME_EQUATION= "Outcome Equation"
     """Added by Percy end"""
