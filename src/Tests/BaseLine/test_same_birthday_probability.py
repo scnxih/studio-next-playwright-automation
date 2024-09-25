@@ -10,6 +10,8 @@ from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 
+def test_init(page,init):
+    PageHelper.init_environments(page)
 
 def test_lev0_same_birthday(page, init):
     """

@@ -8,7 +8,8 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     WholePage(page).screenshot_self("login")
     PageHelper.new_sas_program(page)

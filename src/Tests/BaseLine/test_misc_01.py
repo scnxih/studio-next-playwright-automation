@@ -3,7 +3,8 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def new_program_and_type_code(page):
     PageHelper.new_sas_program(page)
     text = '''

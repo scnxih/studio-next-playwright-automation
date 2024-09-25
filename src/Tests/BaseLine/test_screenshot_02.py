@@ -7,7 +7,8 @@ from src.Pages.Common.whole_page import WholePage
 from src.conftest import *
 from src.Helper.page_factory import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_accordion_steps(page, init):
     dialog: Dialog = Dialog(page)
     base: BasePage = BasePage(page)

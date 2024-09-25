@@ -3,6 +3,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.split_columns_pa
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.maximal_cliques_pane import MaximalCliquesPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.summary_statistics_pane import SummaryStatisticsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.rank_data_pane import RankDataPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.causal_models_pane import CausalModelsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -309,5 +310,34 @@ def test_rank_data_level0(page, init):
     table_pane.set_table("Result'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_RANK_DATA, "Result'中文")
     flow.arrange_nodes()
+
+    flow.run(True)
+def test_causal_models_2sls_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("PRICEDATA")
+    step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("PRICEDATA", Helper.data_locale.STEP_CAUSAL_MODELS)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAUSAL_MODELS)
+    Causal_models_pane = CausalModelsPane(page)
+    Causal_models_pane.click_data_tab()
+    Causal_models_pane.set_filter_input_data("('价格'n >= 30)")
+    Causal_models_pane.set_select_method(item_index=0)
+    Causal_models_pane.add_column_for_dependent_variable("销售")
+    Causal_models_pane.add_columns_for_endogenous_explanatory_variables(check_column_name_list=["价格1", "价格2"])
+    Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
+    Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
+    Causal_models_pane.expand_windowshade_additional_roles()
+    Causal_models_pane.add_columns_for_group_analysis_by(check_column_name_list=["销售"])
+
 
     flow.run(True)

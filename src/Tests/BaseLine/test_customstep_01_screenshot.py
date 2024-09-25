@@ -13,7 +13,8 @@ from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_text impor
 from src.conftest import *
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_add_page(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.add_page_by_toolbar()

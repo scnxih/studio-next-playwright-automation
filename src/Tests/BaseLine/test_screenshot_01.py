@@ -11,7 +11,8 @@ from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Helper.page_factory import *
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 
 def test_01_screenshot_new_centerpages_more_options(page, init):
     program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)

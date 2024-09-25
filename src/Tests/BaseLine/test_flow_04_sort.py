@@ -3,7 +3,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.sort_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Helper.page_helper import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_sasprogram_table_sort_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     time.sleep(0.5)

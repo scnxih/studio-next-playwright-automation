@@ -113,11 +113,23 @@ class VerifyWithLoqate(BasicStepPane):
     def set_check_enable_phone_verification(self):
         self.set_check_for_checkbox(label=Helper.data_locale.ENABLE_PHONE_VERIFICATION)
 
-    def set_check_perform_country_ISO_standardization_before_processing_phone(self):
+    def set_check_perform_country_iso_standardization_before_processing_phone(self):
         self.set_check_for_checkbox(label=Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING)
 
     def set_uncheck_perform_country_ISO_standardization_before_processing_phone(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING)
+
+    '''The following method is used when Verify address and verify phone are both checked.'''
+
+    def set_check_perform_country_iso_standardization_before_processing_phone_both(self):
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']][../../preceding-sibling::div[1]["
+                                                                       ".//label[text()='" + Helper.data_locale.ENABLE_PHONE_VERIFICATION + "']]]"
+                     ).set_check()
+
+    def set_uncheck_perform_country_iso_standardization_before_processing_phone_both(self):
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']][../../preceding-sibling::div[1]["
+                                                                       ".//label[text()='" + Helper.data_locale.ENABLE_PHONE_VERIFICATION + "']]]"
+                     ).set_uncheck()
 
     def set_check_show_api_input_and_output_csv_in_the_log_phone(self):
         self.set_check_for_checkbox(label=Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG)
@@ -125,10 +137,31 @@ class VerifyWithLoqate(BasicStepPane):
     def set_uncheck_show_api_input_and_output_csv_in_the_log_phone(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG)
 
+    '''The following method is used when Verify email and verify phone are both checked.'''
+
+
+    def set_check_show_api_input_and_output_csv_in_the_log_phone_both(self):
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG + "']]["
+                                                                       "../../preceding-sibling::div[1][.//label["
+                                                                       "text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']]]"
+                     ).set_check()
+
+
+    def set_uncheck_show_api_input_and_output_csv_in_the_log_phone_both(self):
+        get_checkbox(self.base_xpath, self.page, supplement_base_xpath="[.//label[text()='" + Helper.data_locale.SHOW_API_INPUT_AND_OUTPUT_CSV_IN_THE_LOG + "']]["
+                                                                       "../../preceding-sibling::div[1][.//label["
+                                                                       "text()='" + Helper.data_locale.PERFORM_COUNTRY_ISO_STANDARDIZATION_BEFORE_PROCESSING + "']]]"
+                     ).set_uncheck()
+
     def add_column_for_phone_number(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.PHONE_NUMBER, column_name=column_name)
 
     def add_column_for_country_phone(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.COUNTRY, column_name=column_name)
+
+    '''The following method is used when Verify email and verify phone are both checked.'''
+
+    def add_column_for_country_phone_both(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.COUNTRY, column_name=column_name)
 
     """Methods in Loqate Key tab"""

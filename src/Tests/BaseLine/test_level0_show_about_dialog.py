@@ -6,11 +6,14 @@ Date: 2024/1/17 10:09
 """
 import time
 
+from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 
 
 # \\huanghe\vtg\ECT\TESTCASE\SAS Studio\6.0\Automated\About0001_ShowAboutDialog.docx
+def test_init(page,init):
+    PageHelper.init_environments(page)
 
 def test_01_show_about_dialog(page, init):
     """
