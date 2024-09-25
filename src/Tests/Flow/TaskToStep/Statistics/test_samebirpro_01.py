@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from src.Helper.page_helper import PageHelper

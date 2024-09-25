@@ -192,9 +192,18 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.schedule_as_job()
     flow.add_to_my_favorites()
 
-    flow.apply_detail_layout_horizontal()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_horizontal()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_horizontal()
+
     time.sleep(1)
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     time.sleep(1)
     flow.apply_main_layout_vertical()
     time.sleep(1)
@@ -215,7 +224,11 @@ def test_04_details_pane_table(page, init):
     WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     time.sleep(1)
