@@ -207,7 +207,9 @@ def test_09_duplicate_checkbox(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
-    flow.apply_detail_layout_vertical()
+    # flow.apply_detail_layout_vertical()
+    flow.apply_flow_layout_vertical()
+
     pane = OneWayFrequencies(page)
     pane.click_options_tab()
     pane.expand_windowshade_statistics()

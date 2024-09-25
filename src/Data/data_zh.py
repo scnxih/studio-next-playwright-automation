@@ -692,6 +692,7 @@ class DataZH(Data):
     ADD_A_QUERY = "添加查询"
     RUN_FLOW ="运行流"
     ADD_A_NOTE ="添加注释"
+    APPLY_FLOW_LAYOUT = "Apply flow layout"
 
 
     """Added by Alice end"""

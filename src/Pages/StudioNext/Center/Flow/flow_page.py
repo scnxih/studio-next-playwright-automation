@@ -248,6 +248,11 @@ class FlowPage(MainCenterPage):
     def email(self):
         pass
 
+    def apply_flow_layout_horizontal(self):
+        self.center_toolbar_helper.apply_flow_layout_horizontal()
+    def apply_flow_layout_vertical(self):
+        self.center_toolbar_helper.apply_flow_layout_vertical()
+
     def flow_screenshot(self):
         self.screenshot(self.base_locator, "test")
 

@@ -693,6 +693,7 @@ class Data:
     REMOVE_OUTPUT_PORT = "Remove output port"
     REMOVE_INPUT_CONNECTION = "Remove input connection"
     REMOVE_OUTPUT_CONNECTION = "Remove output connection"
+    APPLY_FLOW_LAYOUT = "Apply flow layout"
     """Added by Alice end"""
 
     """Added by Allison start"""
