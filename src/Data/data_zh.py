@@ -692,6 +692,7 @@ class DataZH(Data):
     ADD_A_QUERY = "添加查询"
     RUN_FLOW ="运行流"
     ADD_A_NOTE ="添加注释"
+    APPLY_FLOW_LAYOUT = "Apply flow layout"
 
 
     """Added by Alice end"""
@@ -1276,4 +1277,8 @@ class DataZH(Data):
     IF_VALUES_TIED="若值为结值"
     RANK_ORDER="秩序"
     CREATE_NEW_VARIABLES_FOR_THE_RANKED_VARIABLES="为排名变量创建新变量"
+    EXOGENOUS_EXPLANATORY_VARIABLES="外生解释变量"
+    ENDOGENOUS_EXPLANATORY_VARIABLES="内生解释变量"
+    EXCLUDED_INSTRUMENTAL_VARIABLES="排除的工具变量"
+    OUTCOME_EQUATION= "结果方程"
     """Added by Percy end"""
