@@ -37,6 +37,10 @@ class Helper:
     def call_SDSTest():
         os.chdir("c:\\studio-next-playwright-automation\\src\\Helper")
         os.system("SDSTest.bat")
+    @staticmethod
+    def call_SDSTest_Steps():
+        os.chdir("c:\\studio-next-playwright-automation\\src\\Helper")
+        os.system("SDSTest_Steps.bat")
 
     @staticmethod
     def create_dir(folder_name):
