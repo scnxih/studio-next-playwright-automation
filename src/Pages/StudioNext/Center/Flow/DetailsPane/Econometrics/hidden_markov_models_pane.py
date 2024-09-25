@@ -28,14 +28,14 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.delete_columns_for_listbox(Helper.data_locale.DEPENDENT_VARS, check_column_name_list=check_columns_list,
                                         uncheck_column_name_list=uncheck_columns_list)
 
-    def add_column_for_time_ID(self, column_name: str):
-        self.add_column(Helper.data_locale.TIME_ID, column_name)
+    def add_column_for_time_ID(self, col_name: str):
+        self.add_column(Helper.data_locale.TIME_ID, col_name)
 
     def delete_column_for_time_ID(self):
         self.delete_column(Helper.data_locale.TIME_ID)
 
-    def add_column_for_cross_sectional_ID(self, column_name: str):
-        self.add_column(Helper.data_locale.CROSS_SECTIONAL_ID, column_name)
+    def add_column_for_cross_sectional_ID(self, col_name: str):
+        self.add_column(Helper.data_locale.CROSS_SECTIONAL_ID, col_name)
 
     def delete_column_for_cross_sectional_ID(self):
         self.delete_column(Helper.data_locale.CROSS_SECTIONAL_ID)
@@ -55,10 +55,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.NUM_OF_HIDDEN_STATES, times)
 
     def expand_windowshade_regressors(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.REGRESSORS)
+        self.expand_windowshade(Helper.data_locale.REGRESSORS)
 
     def collapse_windowshade_regressors(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.REGRESSORS)
+        self.collapse_windowshade(Helper.data_locale.REGRESSORS)
 
     def add_columns_for_independent_vars(self, check_columns_list: list, uncheck_columns_list: list = None):
         self.add_columns(Helper.data_locale.INDEPENDENT_VARS, check_column_name_list=check_columns_list,
@@ -134,13 +134,14 @@ class HiddenMarkovModelsPane(BasicStepPane):
     """Methods in Options tab"""
 
     def expand_windowshade_methods(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.METHODS)
+        self.expand_windowshade(Helper.data_locale.METHODS)
 
     def collapse_windowshade_methods(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.METHODS)
+        self.collapse_windowshade(Helper.data_locale.METHODS)
 
     def select_parameter_estimation_method(self, radio_option: str):
-        self.set_option_for_radio_group(Helper.data_locale.PARAMETER_EXTIMATION_METHOD, radio_option)
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.PARAMETER_EXTIMATION_METHOD,
+                                        item_value=radio_option)
 
     def set_check_estimate_the_nonstationary_markov_chain(self):
         self.set_check_for_checkbox(Helper.data_locale.ESTIMATE_THE_NONSTATIONARY_MARKOV_CHAIN)
@@ -161,13 +162,13 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.set_text_for_text_control(Helper.data_locale.RANDOM_SEED, input_text="")
 
     def expand_windowshade_nonlinear_optimization(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.NONLINEAR_OPTIMIZATION)
+        self.expand_windowshade(Helper.data_locale.NONLINEAR_OPTIMIZATION)
 
     def collapse_windowshade_nonlinear_optimization(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.NONLINEAR_OPTIMIZATION)
+        self.collapse_windowshade(Helper.data_locale.NONLINEAR_OPTIMIZATION)
 
     def select_algorithm(self, radio_option: str):
-        self.set_option_for_radio_group(Helper.data_locale.ALGORITHM, radio_option)
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.ALGORITHM, item_value=radio_option)
 
     def set_check_enable_multistart_mode(self):
         self.set_check_for_checkbox(Helper.data_locale.ENABLE_MULTISTART_MODE)
@@ -182,10 +183,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.set_text_for_text_control(Helper.data_locale.MAXIMUM_NUMBER_OF_ITERATIONS, input_text="")
 
     def expand_windowshade_initial_values(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.INITIAL_VALUES)
+        self.expand_windowshade(Helper.data_locale.INITIAL_VALUES)
 
     def collapse_windowshade_initial_values(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.INITIAL_VALUES)
+        self.collapse_windowshade(Helper.data_locale.INITIAL_VALUES)
 
     def set_check_set_the_initial_values_to_the_param(self):
         self.set_check_for_checkbox(Helper.data_locale.SET_THE_INIT_VALUES_TO_THE_PARAM_ESTIMATES_OF_A_MATCHED_MODEL)
@@ -194,15 +195,15 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.set_uncheck_for_checkbox(Helper.data_locale.SET_THE_INIT_VALUES_TO_THE_PARAM_ESTIMATES_OF_A_MATCHED_MODEL)
 
     def select_procedure(self, radio_option: str):
-        self.set_option_for_radio_group(Helper.data_locale.CODE_GENERATION, radio_option)
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.CODE_GENERATION, item_value=radio_option)
 
     """Methods in Output tab"""
 
     def set_check_create_scoring_model(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_SCORING_MODEL)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_SCORING_MODEL)
 
     def set_uncheck_create_scoring_model(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_SCORING_MODEL)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_SCORING_MODEL)
 
     def set_check_replace_existing_output_table_for_scoring_model(self):
         get_checkbox(self.base_xpath, self.page,
@@ -219,10 +220,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_SCORING_MODEL)).set_uncheck()
 
     def set_check_create_parameter_estimates(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_PARAMETER_ESTIMATES)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_PARAMETER_ESTIMATES)
 
     def set_uncheck_create_parameter_estimates(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_PARAMETER_ESTIMATES)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_PARAMETER_ESTIMATES)
 
     def set_check_replace_existing_output_table_for_parameter_estimates(self):
         get_checkbox(self.base_xpath, self.page,
@@ -239,16 +240,16 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_PARAMETER_ESTIMATES)).set_uncheck()
 
     def set_check_create_the_covariance_matrix_of_param_estimates_CAS_only(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_THE_COVARIANCE_MATRIX_OF_PARAM_ESTIMATES_CAS_ONLY)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_THE_COVARIANCE_MATRIX_OF_PARAM_ESTIMATES_CAS_ONLY)
 
     def set_uncheck_create_the_covariance_matrix_of_param_estimates_CAS_only(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_THE_COVARIANCE_MATRIX_OF_PARAM_ESTIMATES_CAS_ONLY)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_THE_COVARIANCE_MATRIX_OF_PARAM_ESTIMATES_CAS_ONLY)
 
     def set_check_create_fit_statistics(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_FIT_STAT)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_FIT_STAT)
 
     def set_uncheck_create_fit_statistics(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_FIT_STAT)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_FIT_STAT)
 
     def set_check_replace_existing_output_table_for_fit_statistics(self):
         get_checkbox(self.base_xpath, self.page,
@@ -265,10 +266,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_FIT_STAT)).set_uncheck()
 
     def set_check_create_forecasting_results(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_FORECASTING_RESULTS)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_FORECASTING_RESULTS)
 
     def set_uncheck_create_forecasting_results(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_FORECASTING_RESULTS)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_FORECASTING_RESULTS)
 
     def set_check_replace_existing_output_table_for_forecasting_results(self):
         get_checkbox(self.base_xpath, self.page,
@@ -285,10 +286,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_FORECASTING_RESULTS)).set_uncheck()
 
     def expand_windowshade_forecast_settings(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.FORECAST_SETTINGS)
+        self.expand_windowshade(Helper.data_locale.FORECAST_SETTINGS)
 
     def collapse_windowshade_forecast_settings(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.FORECAST_SETTINGS)
+        self.collapse_windowshade(Helper.data_locale.FORECAST_SETTINGS)
 
     def set_num_of_periods_to_forecast(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.NUM_OF_PERIODS_FORECAST, size)
@@ -324,10 +325,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.NUM_OF_PERIODS_TO_HOLD_BACK, times)
 
     def set_check_create_decoding_results(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_DECODING_RESULTS)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_DECODING_RESULTS)
 
     def set_uncheck_create_decoding_results(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_DECODING_RESULTS)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_DECODING_RESULTS)
 
     def set_check_replace_existing_output_table_for_decoding_results(self):
         get_checkbox(self.base_xpath, self.page,
@@ -344,10 +345,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_DECODING_RESULTS)).set_uncheck()
 
     def set_check_create_evaluation_results(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_EVALUATION_RESULTS)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_EVALUATION_RESULTS)
 
     def set_uncheck_create_evaluation_results(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_EVALUATION_RESULTS)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_EVALUATION_RESULTS)
 
     def set_check_replace_existing_output_table_for_evaluation_results(self):
         get_checkbox(self.base_xpath, self.page,
@@ -364,10 +365,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_EVALUATION_RESULTS)).set_uncheck()
 
     def set_check_create_filtering_results(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_FILTERING_RESULTS)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_FILTERING_RESULTS)
 
     def set_uncheck_create_filtering_results(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_FILTERING_RESULTS)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_FILTERING_RESULTS)
 
     def set_check_replace_existing_output_table_for_filtering_results(self):
         get_checkbox(self.base_xpath, self.page,
@@ -384,10 +385,10 @@ class HiddenMarkovModelsPane(BasicStepPane):
                              Helper.data_locale.CREATE_FILTERING_RESULTS)).set_uncheck()
 
     def set_check_create_smoothing_results(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_SMOOTHING_RESULTS)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_SMOOTHING_RESULTS)
 
     def set_uncheck_create_smoothing_results(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_SMOOTHING_RESULTS)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_SMOOTHING_RESULTS)
 
     def set_check_replace_existing_output_table_for_smoothing_results(self):
         get_checkbox(self.base_xpath, self.page,
