@@ -79,7 +79,7 @@ class FlowPage(MainCenterPage):
     def redo(self):
         self.center_toolbar_helper.redo()
 
-    def add_node(self, node_type: FlowNodeType):
+    def add_node_en_us(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
@@ -140,7 +140,7 @@ class FlowPage(MainCenterPage):
                 # self.toolbar.click_btn_menu_by_test_id(data_testid, Data.NOTES)
         time.sleep(0.5)
 
-    def add_node_org(self, node_type: FlowNodeType):
+    def add_node(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
