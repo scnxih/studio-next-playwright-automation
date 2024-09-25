@@ -1,8 +1,5 @@
-"""
-Author: Jacky(Jiaqi) Wang
-Contact: jiaqi.wang@sas.com
-Date: September 11th, 2024
-"""
+import pytest
+
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.box_plot_pane import BoxPlotPane
@@ -11,9 +8,23 @@ from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 
+"""This is testcase file for step Box Plot"""
+"""
+Author: Jacky(Jiaqi) Wang
+Contact: jiaqi.wang@sas.com
+Date: September 11th, 2024
+"""
 
-def test_lev0_class_box_plot(page, init):
+
+def test_init(page, init):
+    PageHelper.init_environments(page)
+
+
+@pytest.mark.level0_step
+def test_01_box_plot_lev0(page, init):
     """
+    Level-0 testcase for Visualization/Box Plot
+    Data Input: SASHELP.BASEBALL
     """
 
     # Create a flow
@@ -51,8 +62,11 @@ def test_lev0_class_box_plot(page, init):
     flow.screenshot_self(pic_name="baseball_box_plot")
 
 
-def test_lev1a_class_box_plot(page, init):
+@pytest.mark.level1_step
+def test_02_box_plot_lev1(page, init):
     """
+    Level-1 testcase for Visualization/Box Plot
+    Data Input: SASHELP.CLASS
     """
 
     # Create a flow
@@ -115,8 +129,11 @@ def test_lev1a_class_box_plot(page, init):
                          mask_color="#000000")
 
 
-def test_lev1b_cars_box_plot(page, init):
+@pytest.mark.level1_step
+def test_03_box_plot_lev1(page, init):
     """
+    Level-1 testcase for Visualization/Box Plot
+    Data Input: SASHELP.CARS
     """
 
     # Create a flow
@@ -177,4 +194,3 @@ def test_lev1b_cars_box_plot(page, init):
     flow.screenshot_self(pic_name="cars_box_plot",
                          mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                          mask_color="#000000")
-

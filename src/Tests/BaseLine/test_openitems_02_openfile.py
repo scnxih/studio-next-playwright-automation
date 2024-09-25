@@ -9,7 +9,8 @@ from src.conftest import *
 from playwright.sync_api import Page, expect
 from src.Pages.Common.dialog import *
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_openfile(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     PageHelper.new_sas_program(page)
@@ -23,8 +24,9 @@ def test_01_openfile(page, init):
     # <<< Modified by Jacky(ID: jawang) on Nov.22nd, 2023
     # INVISIBLE in the tree-grid
 
-    # PageHelper.show_accordion(page, AccordionType.open_item)
+    PageHelper.show_accordion(page, AccordionType.open_item)
     # PageHelper.openitems_open_file(page, folder_path, "中文测试.sas")
-    # expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text(Helper.data_locale.SAS_CONTENT+ ": /Public/中文测试.sas")
+    PageHelper.openitems_open_file(page, Helper.public_folder_path, "中文测试.sas")
+    expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text(Helper.data_locale.SAS_CONTENT+ ": /Public/中文测试.sas")
 
     # Modified by Jacky(ID: jawang) on Nov.22nd, 2023 >>>

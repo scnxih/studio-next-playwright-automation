@@ -11,7 +11,8 @@ from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Helper.page_factory import *
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 
 def test_01_screenshot_new_centerpages_more_options(page, init):
     program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
@@ -211,7 +212,11 @@ def test_05_screenshot_top_menu_view(page, init):
 
     # Added Mask and Mask Color
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
-                                    mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'],
+                                    # mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'], # Changed
+                                    mask=[
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-agGrid"]',
+                                        '//div[@data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"]'
+                                    ],
                                     mask_color="#000000")
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
@@ -640,7 +645,7 @@ def test_09_accordion_steps(page, init):
                                         mask_color='#000000')
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
-                       Helper.data_locale.STEP_Robust_PRINCIPAL_COMPONENT_ANALYSIS]
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step(step_path)
     # AccordionPage(page).screenshot_self("Machine_Learning")
     AccordionPage(page).screenshot_self("Machine_Learning",

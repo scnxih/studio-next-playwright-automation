@@ -128,11 +128,18 @@ class MainCenterPage(CenterPage):
 
     def apply_detail_layout_vertical(self):
         self.center_toolbar_helper.apply_detail_layout_vertical()
-        time.sleep(3)
-        self.screenshot(self.base_xpath, "vert",
-                        mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
-                            self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
-                        mask_color="#000000")
+
+        # MODIFIED
+        # <<< Modified by Jacky(ID: jawang) on Sept.23rd 2024
+        # # To Eliminate the amount of screenshots
+        # time.sleep(3)
+        # self.screenshot(self.base_xpath, "vert",
+        #                 mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
+        #                     self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout"),
+        #                     self.get_by_test_id("flowtoolbar-previewCodeButton")],
+        #                 mask_color="#000000")
+        #
+        # Modified by Jacky(ID: jawang) on Sept.23rd 2024 >>>
 
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
@@ -146,7 +153,7 @@ class MainCenterPage(CenterPage):
         self.center_toolbar_helper.show_detail_tabs_code()
         time.sleep(3)
         self.screenshot(self.base_xpath, "show_code",
-                        mask= self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
+                        mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 

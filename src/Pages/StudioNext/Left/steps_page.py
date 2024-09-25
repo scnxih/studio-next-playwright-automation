@@ -70,6 +70,8 @@ class StepsPage(AccordionPage):
         locator = self.navigate_to_step(step_path)
         self.click_context_menu(locator, Helper.data_locale.ADD_TO_FLOW)
         time.sleep(1)
+        self.collapse_parent(step_path)
+
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on September 12th, 2024

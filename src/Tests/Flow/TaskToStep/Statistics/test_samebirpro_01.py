@@ -1,8 +1,5 @@
-"""
-Author: Jacky(Jiaqi) Wang
-Contact: jiaqi.wang@sas.com
-Date: September 11th, 2024
-"""
+import pytest
+
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
@@ -10,11 +7,23 @@ from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Utilities.enums import FlowNodeType
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.same_birthday_pane import SameBirthdayProbabilityPane
 
+"""
+Author: Jacky(Jiaqi) Wang
+Contact: jiaqi.wang@sas.com
+Date: September 11th, 2024
+"""
 
-def test_lev0_same_birthday(page, init):
+"""This is test case file for step Same Birthday Probability"""
+
+
+def test_init(page, init):
+    PageHelper.init_environments(page)
+
+
+def test_01_same_birthday_lev0(page, init):
     """
-    Statistics/Same Birthday Probability
-    Level-0: https://sww2.sas.com/saspedia/SAS_Studio_Same_Birthday_Probability_task#Level_0_Scenario
+    Level-0 testcase for Statistics/Same Birthday Probability
+    Reference: https://sww2.sas.com/saspedia/SAS_Studio_Same_Birthday_Probability_task#Level_0_Scenario
     """
 
     # Create a flow
@@ -38,14 +47,19 @@ def test_lev0_same_birthday(page, init):
     flow.tab_group.click_tab_by_text("输出数据 (1)")
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # Mask table name
+    # //h5[@data-testid="dataPane-toolbar-nameHeading"]
+    flow.screenshot_self(pic_name="flow_results_same_birthday",
+                         mask=['//h5[@data-testid="dataPane-toolbar-nameHeading"]'],
+                         mask_color="#000000")
     # WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")
 
 
-def test_lev1_same_birthday(page, init):
+def test_02_same_birthday_lev1(page, init):
     """
-    Statistics/Same Birthday Probability
-    Level-0: https://sww2.sas.com/saspedia/SAS_Studio_Same_Birthday_Probability_task#Level_0_Scenario
+    Level-1 testcase for Statistics/Same Birthday Probability
+    Reference: https://sww2.sas.com/saspedia/SAS_Studio_Same_Birthday_Probability_task#Level_0_Scenario
     """
 
     # Create a flow
@@ -81,5 +95,10 @@ def test_lev1_same_birthday(page, init):
     flow.tab_group.click_tab_by_text("输出数据 (1)")
     time.sleep(3)
 
-    flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # flow.screenshot_self(pic_name="flow_results_same_birthday")
+    # Mask table name
+    # //h5[@data-testid="dataPane-toolbar-nameHeading"]
+    flow.screenshot_self(pic_name="flow_results_same_birthday",
+                         mask=['//h5[@data-testid="dataPane-toolbar-nameHeading"]'],
+                         mask_color="#000000")
     # WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")

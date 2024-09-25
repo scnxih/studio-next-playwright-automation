@@ -9,7 +9,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane 
 from src.Utilities.enums import *
 import time
 
-
+def test_init(page,init):
+    PageHelper.init_environments(page)
 def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
@@ -34,27 +35,42 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
 
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
-    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
-    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                    mask_color="#000000")
+
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     # MODIFIED
     # Changed waiting and screenshot order to eliminte diffs caused by the undo/redo icon status
     # <<< Modified by Jacky(ID: jawang) on Sept.10th, 2024
     select_node_in_flow_canvas(page, Helper.data_locale.TABLE)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_table")
+    CenterPage(page).screenshot_self("selected_table",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.FILE)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_file")
+    CenterPage(page).screenshot_self("selected_file",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_branch_rows")
+    # CenterPage(page).screenshot_self("selected_branch_rows")
+    CenterPage(page).screenshot_self("selected_branch_rows",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.CALCULATE_COLUMNS)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_calculate_columns")
+    CenterPage(page).screenshot_self("selected_calculate_columns",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
+
     # Modified by Jacky(ID: jawang) on Sept.10th, 2024 >>>
 
 
@@ -67,25 +83,39 @@ def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_ro
 
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
-    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
-    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
+
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                    mask_color="#000000")
+
+    CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     # Screenshot: Flow canvas + Details pane below
     select_node_in_flow_canvas(page, Helper.data_locale.SAS_PROGRAM)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_sas_program")
+    CenterPage(page).screenshot_self("selected_sas_program",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.EXECUTE_DECISIONS)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_execute_decisions")
+    CenterPage(page).screenshot_self("selected_execute_decisions",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.EXPORT)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_export")
+    CenterPage(page).screenshot_self("selected_export",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     select_node_in_flow_canvas(page, Helper.data_locale.FILTER_ROWS)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_filter_rows")
+    CenterPage(page).screenshot_self("selected_filter_rows",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
 
 def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
@@ -101,36 +131,49 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
     WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.TABLE, Helper.data_locale.QUERY)
     # Screenshot: Flow canvas + Details pane below
     time.sleep(1)
-    CenterPage(page).screenshot_self("linked_table_and_query")
+    CenterPage(page).screenshot_self("linked_table_and_query",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.QUERY, Helper.data_locale.FILTER_ROWS)
     # Screenshot: Flow canvas + Details pane below
     time.sleep(1)
-    CenterPage(page).screenshot_self("linked_query_and_filter_rows")
+    CenterPage(page).screenshot_self("linked_query_and_filter_rows",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.FILTER_ROWS, Helper.data_locale.MANAGE_COLUMNS)
     # Screenshot: Flow canvas + Details pane below
     time.sleep(1)
-    CenterPage(page).screenshot_self("linked_filter_rows_and_manage_columns")
+    CenterPage(page).screenshot_self("linked_filter_rows_and_manage_columns",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.MANAGE_COLUMNS, Helper.data_locale.SORT)
     # Screenshot: Flow canvas + Details pane below
     time.sleep(1)
-    CenterPage(page).screenshot_self("linked_manage_columns_and_sort")
+    CenterPage(page).screenshot_self("linked_manage_columns_and_sort",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SORT, Helper.data_locale.EXPORT)
     # Screenshot: Flow canvas + Details pane below
     time.sleep(1)
-    CenterPage(page).screenshot_self("linked_sort_and_export")
+    CenterPage(page).screenshot_self("linked_sort_and_export",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.arrange_nodes()
     time.sleep(2)
-    CenterPage(page).screenshot_self("arrange_nodes")
+    CenterPage(page).screenshot_self("arrange_nodes",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     # flow._open_context_menu_for_the_node_in_flow(Helper.data_locale.TABLE)
     # time.sleep(1)
@@ -153,11 +196,15 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     # page.get_by_text(Helper.data_locale.PASTE).click()
     flow.click_paste_in_context_menu_on_canvas()
     time.sleep(1)
-    CenterPage(page).screenshot_self("paste_node_in_flow_canvas")
+    CenterPage(page).screenshot_self("paste_node_in_flow_canvas",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.view_expand_all_ports()
     time.sleep(2)
-    CenterPage(page).screenshot_self("expanded_all_ports")
+    CenterPage(page).screenshot_self("expanded_all_ports",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     flow.view_collapse_all_ports()
     time.sleep(2)
@@ -165,21 +212,19 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     # Mask 'Preview Code' button to eliminate noises
     # //button[@data-testid="flowtoolbar-previewCodeButton"]
     CenterPage(page).screenshot_self("collapsed_all_ports",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     flow.show_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("show_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
-                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     flow.hide_over_view_map()
     time.sleep(2)
     CenterPage(page).screenshot_self("hide_over_view_map",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]',
-                                           flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
@@ -190,7 +235,7 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.paste_step()
     time.sleep(2)
     CenterPage(page).screenshot_self("flow_paste_step",
-                                     mask=['//button[@data-testid="flowtoolbar-previewCodeButton"]'],
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
     flow.cut_step()
@@ -241,7 +286,9 @@ def test_04_details_pane_table(page, init):
 
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     time.sleep(1)
-    CenterPage(page).screenshot_self("selected_table")
+    CenterPage(page).screenshot_self("selected_table",
+                                     mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                     mask_color="#000000")
 
     table = TablePane(page)
     table.set_library("sashelp")

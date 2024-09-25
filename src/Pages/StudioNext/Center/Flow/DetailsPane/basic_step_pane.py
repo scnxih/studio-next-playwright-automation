@@ -13,37 +13,37 @@ class BasicStepPane(DetailsPane):
     def set_filter_nodes_data(self,filter_text:str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_NODES_DATA,input_text=filter_text)
     def set_check_create_output_nodes_data(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_NODES_DATA)
+        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_NODES_DATA)
 
     def set_uncheck_create_output_nodes_data(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_NODES_DATA)
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_NODES_DATA)
 
     def set_check_create_output_links_data(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_LINKS_DATA)
+        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_LINKS_DATA)
 
     def set_uncheck_create_output_links_data(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_LINKS_DATA)
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_LINKS_DATA)
 
     def set_check_replace_existing_output_table_for_nodes(self):
         get_checkbox(self.base_xpath,self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label[contains(text(),'{1}')]]]".format(
-                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_OUTPUT_NODES_DATA)).set_check()
+                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_NODES_DATA)).set_check()
 
 
     def set_uncheck_replace_existing_output_table_for_nodes(self):
         get_checkbox(self.base_xpath,self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label[contains(text(),'{1}')]]]".format(
-                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_OUTPUT_NODES_DATA)).set_uncheck()
+                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_NODES_DATA)).set_uncheck()
 
     def set_check_replace_existing_output_table_for_links(self):
         get_checkbox(self.base_xpath,self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label[contains(text(),'{1}')]]]".format(
-                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_OUTPUT_LINKS_DATA)).set_check()
+                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_LINKS_DATA)).set_check()
 
 
     def set_uncheck_replace_existing_output_table_for_links(self):
         get_checkbox(self.base_xpath,self.page,
                      supplement_base_xpath="[.//label[text()='{0}']][../../../preceding-sibling::div[.//label[contains(text(),'{1}')]]]".format(
-                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_OUTPUT_LINKS_DATA)).set_uncheck()
+                         Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE,Helper.data_locale.CREATE_LINKS_DATA)).set_uncheck()
 
 

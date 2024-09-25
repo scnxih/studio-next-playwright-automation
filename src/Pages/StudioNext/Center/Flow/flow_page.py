@@ -79,7 +79,7 @@ class FlowPage(MainCenterPage):
     def redo(self):
         self.center_toolbar_helper.redo()
 
-    def add_node(self, node_type: FlowNodeType):
+    def add_node_en_us(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
@@ -140,7 +140,7 @@ class FlowPage(MainCenterPage):
                 # self.toolbar.click_btn_menu_by_test_id(data_testid, Data.NOTES)
         time.sleep(0.5)
 
-    def add_node_org(self, node_type: FlowNodeType):
+    def add_node(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
@@ -227,7 +227,11 @@ class FlowPage(MainCenterPage):
         pass
 
     def apply_main_layout_standard(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
+        # Original
+        # self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
+
+        # Sept. 24th 2024 Missing zh-CN strings for overflow menu items
+        self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.STANDARD)
 
     def apply_main_layout_horizontal(self):
         self.center_toolbar_helper.apply_main_layout_horizontal()
@@ -243,6 +247,11 @@ class FlowPage(MainCenterPage):
 
     def email(self):
         pass
+
+    def apply_flow_layout_horizontal(self):
+        self.center_toolbar_helper.apply_flow_layout_horizontal()
+    def apply_flow_layout_vertical(self):
+        self.center_toolbar_helper.apply_flow_layout_vertical()
 
     def flow_screenshot(self):
         self.screenshot(self.base_locator, "test")
@@ -398,6 +407,7 @@ class FlowPage(MainCenterPage):
         acc.show_accordion(AccordionType.steps)
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
+
 
     def click_flow_tab(self):
         get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.FLOW)
