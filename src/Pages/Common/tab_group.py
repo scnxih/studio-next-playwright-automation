@@ -139,6 +139,13 @@ class TabGroup(CommonComponent):
         :return:
         """
         return self.locate_xpath(f"/descendant::li/descendant::span[text()='{tab_text}']")
+    def tab_contains_text(self, tab_text):
+        """
+        Tab from specified text
+        :param tab_text:
+        :return:
+        """
+        return self.locate_xpath(f"/descendant::li/descendant::span[contains(text(),'{tab_text}')]")
 
     def click_first_tab_page_by_text(self, tab_text):
         """
@@ -171,6 +178,14 @@ class TabGroup(CommonComponent):
         :return:
         """
         self.click(self.tab_by_text(tab_text))
+
+    def click_tab_contains_text(self, tab_text):
+        """
+        Click tab page by specified tab text
+        :param tab_text:
+        :return:
+        """
+        self.click(self.tab_contains_text(tab_text))
 
     def tag_group_layout_by_text(self, tab_text):
         """

@@ -113,7 +113,7 @@ class ScatterMapPane(BasicStepPane):
                      .format(Helper.data_locale.ID_VARIABLE)).set_uncheck()
 
     def select_radio_base_map(self, item_value: str):
-        self.set_option_for_radio_group(Helper.data_locale.BASE_MAP, item_value=item_value)
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.BASE_MAP, item_value=item_value)
 
     def input_Esri_URL(self, esri_url: str):
         self.set_text_for_text_control(Helper.data_locale.SPECIFY_ESRI_BASE_MAP_URL, input_text=esri_url)
@@ -130,7 +130,7 @@ class ScatterMapPane(BasicStepPane):
         self.collapse_windowshade(Helper.data_locale.DATA_LABELS)
 
     def add_column_for_label_variable(self, col_name: str):
-        self.add_column(Helper.data_locale.LABEL_VARIABLE, column_name=col_name)
+        self.add_column(Helper.data_locale.LABEL_VARIABLE, col_name)
 
     def delete_column_for_label_variable(self):
         self.delete_column(Helper.data_locale.LABEL_VARIABLE)
@@ -166,25 +166,25 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_7_PT, times)
 
     def select_font_style(self, style: str):
-        self.set_option_for_combobox(Helper.data_locale.FONT_STYLE, style)
+        self.set_option_for_combobox(Helper.data_locale.FONT_STYLE, item_value=style)
 
     def select_font_weight(self, weight: str):
-        self.set_option_for_combobox(Helper.data_locale.FONT_WEIGHT, weight)
+        self.set_option_for_combobox(Helper.data_locale.FONT_WEIGHT, item_value=weight)
 
     def select_label_position(self, position: str):
-        self.set_option_for_combobox(Helper.data_locale.LABEL_POSITION, position)
+        self.set_option_for_combobox(Helper.data_locale.LABEL_POSITION, item_value=position)
 
     def expand_windowshade_legend(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.LEGEND)
+        self.expand_windowshade(Helper.data_locale.LEGEND)
 
     def collapse_windowshade_legend(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.LEGEND)
+        self.collapse_windowshade(Helper.data_locale.LEGEND)
 
     def set_check_generate_choromap_legend(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.GENERATE_CHOROMAP_LEGEND)
+        self.set_check_for_checkbox(Helper.data_locale.GENERATE_CHOROMAP_LEGEND)
 
     def set_uncheck_generate_choromap_legend(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.GENERATE_CHOROMAP_LEGEND)
+        self.set_uncheck_for_checkbox(Helper.data_locale.GENERATE_CHOROMAP_LEGEND)
 
     def input_choromap_legend_label(self, legend_label: str):
         get_text(self.base_xpath, self.page,
@@ -197,10 +197,10 @@ class ScatterMapPane(BasicStepPane):
                  .format(Helper.data_locale.GENERATE_CHOROMAP_LEGEND)).clear_text()
 
     def set_check_generate_plot_legend(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.GENERATE_PLOT_LEGEND)
+        self.set_check_for_checkbox(Helper.data_locale.GENERATE_PLOT_LEGEND)
 
     def set_uncheck_generate_plot_legend(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.GENERATE_PLOT_LEGEND)
+        self.set_uncheck_for_checkbox(Helper.data_locale.GENERATE_PLOT_LEGEND)
 
     def input_plot_legend_label(self, legend_label: str):
         get_text(self.base_xpath, self.page,
@@ -213,26 +213,24 @@ class ScatterMapPane(BasicStepPane):
                  .format(Helper.data_locale.GENERATE_PLOT_LEGEND)).clear_text()
 
     def expand_windowshade_markers(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.MARKERS)
+        self.expand_windowshade(Helper.data_locale.MARKERS)
 
     def collapse_windowshade_markers(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.MARKERS)
+        self.collapse_windowshade(Helper.data_locale.MARKERS)
 
     def set_check_for_set_color_in_markers(self):
-        # get_checkbox(self.base_xpath, self.page,
-        #              supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
-        #              .format(Helper.data_locale.SET_COLOR, Helper.data_locale.MARKERS)).set_check()
-        """Added by Alice on 2024-09-19 start"""
-        self.set_check_for_checkbox(label="设置颜色",section_label="标记")
+        self.set_check_for_checkbox(Helper.data_locale.SET_COLOR, section_label=Helper.data_locale.MARKERS)
         """Added by Alice on 2024-09-19 end"""
 
     def set_uncheck_for_set_color_in_markers(self):
-        get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
-                     .format(Helper.data_locale.SET_COLOR, Helper.data_locale.MARKERS)).set_uncheck()
+        self.set_uncheck_for_checkbox(Helper.data_locale.SET_COLOR, section_label=Helper.data_locale.MARKERS)
+
+    def set_color_for_markers(self, red_value: int, green_value: int, blue_value: int):
+        self.set_rgb_for_color_picker(red_value, green_value, blue_value, parent_label=Helper.data_locale.COLOR,
+                                      section_label=Helper.data_locale.MARKERS)
 
     def select_symbol_type(self, item_value: str):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.SYMBOL, item_value=item_value)
+        self.set_option_for_combobox(Helper.data_locale.SYMBOL, item_value=item_value)
 
     def set_markers_size(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.SIZE_DEFAULT_7_PIXEL, size)
@@ -244,46 +242,56 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.SIZE_DEFAULT_7_PIXEL, times)
 
     def expand_windowshade_plot(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.PLOT)
+        self.expand_windowshade(Helper.data_locale.PLOT)
 
     def collapse_windowshade_plot(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.PLOT)
+        self.collapse_windowshade(Helper.data_locale.PLOT)
 
     def input_transparency_in_plot(self, transparency: str):
         """
         :param transparency: should be an integer and between 0 and 100.
         :return:
         """
-        get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
-                                                                   "/../../../../../../../..//span[text()='{1}']]".
-                 format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.PLOT)).fill_text(transparency)
+        # get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
+        #                                                            "/../../../../../../../..//span[text()='{1}']]".
+        #          format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.PLOT)).fill_text(transparency)
+        self.set_text_for_text_control(Helper.data_locale.TRANSPARENCY_PERCENT, transparency,
+                                       section_label=Helper.data_locale.PLOT)
 
     def empty_transparency_in_plot(self):
-        get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
-                                                                   "/../../../../../../../..//span[text()='{1}']]".
-                 format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.PLOT)).fill_text("")
+        # get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
+        #                                                            "/../../../../../../../..//span[text()='{1}']]".
+        #          format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.PLOT)).fill_text("")
+        self.set_text_for_text_control(Helper.data_locale.TRANSPARENCY_PERCENT, "",
+                                       section_label=Helper.data_locale.PLOT)
 
     def expand_windowshade_choromap(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.CHOROMAP)
+        self.expand_windowshade(Helper.data_locale.CHOROMAP)
 
     def collapse_windowshade_choromap(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.CHOROMAP)
+        self.collapse_windowshade(Helper.data_locale.CHOROMAP)
 
     def expand_windowshade_line_attr(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.LINE_ATTRIBUTES)
+        self.expand_windowshade(Helper.data_locale.LINE_ATTRIBUTES)
 
     def collapse_windowshade_line_attr(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.LINE_ATTRIBUTES)
+        self.collapse_windowshade(Helper.data_locale.LINE_ATTRIBUTES)
 
     def set_check_for_set_color_in_line_attr(self):
-        get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
-                     .format(Helper.data_locale.SET_COLOR, Helper.data_locale.LINE_ATTRIBUTES)).set_check()
+        # get_checkbox(self.base_xpath, self.page,
+        #              supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
+        #              .format(Helper.data_locale.SET_COLOR, Helper.data_locale.LINE_ATTRIBUTES)).set_check()
+        self.set_check_for_checkbox(Helper.data_locale.SET_COLOR, section_label=Helper.data_locale.LINE_ATTRIBUTES)
 
     def set_uncheck_for_set_color_in_line_attr(self):
-        get_checkbox(self.base_xpath, self.page,
-                     supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
-                     .format(Helper.data_locale.SET_COLOR, Helper.data_locale.LINE_ATTRIBUTES)).set_uncheck()
+        # get_checkbox(self.base_xpath, self.page,
+        #              supplement_base_xpath="[.//label[text()='{0}']/../../../../../../../..//span[text()='{1}']]"
+        #              .format(Helper.data_locale.SET_COLOR, Helper.data_locale.LINE_ATTRIBUTES)).set_uncheck()
+        self.set_uncheck_for_checkbox(Helper.data_locale.SET_COLOR, section_label=Helper.data_locale.LINE_ATTRIBUTES)
+
+    def set_color_for_line_attr(self, red_value, green_value, blue_value):
+        self.set_rgb_for_color_picker(red_value, green_value, blue_value, parent_label=Helper.data_locale.COLOR,
+                                      section_label=Helper.data_locale.LINE_ATTRIBUTES)
 
     def set_line_thickness(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.LINE_THICKNESS, size)
@@ -295,33 +303,37 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.LINE_THICKNESS, times)
 
     def select_line_style(self, item_value: str):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_STYLE, item_value=item_value)
+        self.set_option_for_combobox(Helper.data_locale.LINE_STYLE, item_value=item_value)
 
     def input_transparency_in_choromap(self, transparency: str):
         """
         :param transparency: should be an integer and between 0 and 100.
         :return:
         """
-        get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
-                                                                   "/../../../../../../../..//span[text()='{1}']]".
-                 format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.CHOROMAP)).fill_text(transparency)
+        # get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
+        #                                                            "/../../../../../../../..//span[text()='{1}']]".
+        #          format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.CHOROMAP)).fill_text(transparency)
+        self.set_text_for_text_control(Helper.data_locale.TRANSPARENCY_PERCENT, transparency,
+                                       section_label=Helper.data_locale.CHOROMAP)
 
     def empty_transparency_in_choromap(self):
-        get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
-                                                                   "/../../../../../../../..//span[text()='{1}']]".
-                 format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.CHOROMAP)).fill_text("")
+        # get_text(self.base_xpath, self.page, supplement_base_xpath="[./../../..//label[contains(text(),'{0}')]"
+        #                                                            "/../../../../../../../..//span[text()='{1}']]".
+        #          format(Helper.data_locale.TRANSPARENCY_PERCENT, Helper.data_locale.CHOROMAP)).fill_text("")
+        self.set_text_for_text_control(Helper.data_locale.TRANSPARENCY_PERCENT, "",
+                                       section_label=Helper.data_locale.CHOROMAP)
 
     def expand_windowshade_title_and_footnote(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+        self.expand_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
 
     def collapse_windowshade_title_and_footnote(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
+        self.collapse_windowshade(Helper.data_locale.TITLE_AND_FOOTNOTE)
 
     def input_title(self, title: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text=title)
+        self.set_text_for_text_control(Helper.data_locale.TITLE, title)
 
     def empty_title(self):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.TITLE, input_text="")
+        self.set_text_for_text_control(Helper.data_locale.TITLE, "")
 
     def set_font_size_for_title(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_14_PT, size)
@@ -333,10 +345,10 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_14_PT, times)
 
     def input_footnote(self, footnote: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text=footnote)
+        self.set_text_for_text_control(Helper.data_locale.FOOTNOTE, footnote)
 
     def empty_footnote(self):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.FOOTNOTE, input_text="")
+        self.set_text_for_text_control(Helper.data_locale.FOOTNOTE, "")
 
     def set_font_size_for_footnote(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_12_PT, size)
@@ -348,13 +360,13 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.FONT_SIZE_DEFAULT_12_PT, times)
 
     def expand_windowshade_graph_size(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+        self.expand_windowshade(Helper.data_locale.GRAPH_SIZE)
 
     def collapse_windowshade_graph_size(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.GRAPH_SIZE)
+        self.collapse_windowshade(Helper.data_locale.GRAPH_SIZE)
 
     def select_units(self, item_value: str):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_value=item_value)
+        self.set_option_for_combobox(Helper.data_locale.UNITS, item_value=item_value)
 
     def set_plot_width(self, size: str):
         self.set_value_for_numeric_stepper(Helper.data_locale.WIDTH, size)
@@ -375,7 +387,7 @@ class ScatterMapPane(BasicStepPane):
         self.click_decrement_value_for_numeric_stepper(Helper.data_locale.HEIGHT, times)
 
     """Added by Alice on 2024-09-19 start"""
-    def set_rgb_for_color_in_marker(self,red_value: int, green_value:int, blue_value:int ):
+    def set_rgb_for_color_in_marker(self, red_value: int, green_value: int, blue_value: int):
         self.set_rgb_for_color_picker(red_value=red_value,green_value=green_value,blue_value=blue_value,parent_label="颜色",section_label="标记")
 
     """Added by Alice on 2024-09-19 end"""

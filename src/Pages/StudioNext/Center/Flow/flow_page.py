@@ -79,7 +79,7 @@ class FlowPage(MainCenterPage):
     def redo(self):
         self.center_toolbar_helper.redo()
 
-    def add_node(self, node_type: FlowNodeType):
+    def add_node_en_us(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
@@ -140,7 +140,7 @@ class FlowPage(MainCenterPage):
                 # self.toolbar.click_btn_menu_by_test_id(data_testid, Data.NOTES)
         time.sleep(0.5)
 
-    def add_node_org(self, node_type: FlowNodeType):
+    def add_node(self, node_type: FlowNodeType):
         data_testid = "flowtoolbar-addStepMenuButton-button"
         match node_type:
             case FlowNodeType.table:
@@ -247,6 +247,11 @@ class FlowPage(MainCenterPage):
 
     def email(self):
         pass
+
+    def apply_flow_layout_horizontal(self):
+        self.center_toolbar_helper.apply_flow_layout_horizontal()
+    def apply_flow_layout_vertical(self):
+        self.center_toolbar_helper.apply_flow_layout_vertical()
 
     def flow_screenshot(self):
         self.screenshot(self.base_locator, "test")
@@ -424,5 +429,5 @@ class FlowPage(MainCenterPage):
 
     def click_output_data_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
 

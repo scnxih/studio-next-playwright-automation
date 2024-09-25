@@ -2765,11 +2765,11 @@ def test_65_drag_and_drop_custom_step(page, init):
     custom_step.add_page_by_toolbar()
 
     WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 5 页"]').hover()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     WholePage(page).page.mouse.down()
-    time.sleep(0.5)
+    time.sleep(1.0)
     WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]').hover()
     # WholePage(page).locator('//div[@data-testid="designCanvasTestID"]').hover()
-    time.sleep(0.5)
+    time.sleep(1.0)
     WholePage(page).page.mouse.up()
 

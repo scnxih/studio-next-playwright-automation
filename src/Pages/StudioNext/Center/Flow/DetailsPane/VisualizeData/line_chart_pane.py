@@ -3,7 +3,7 @@
 @date: 2024/08/21
 @description: define panes of Line Chart step
 """
-from src.Pages.Common.common_component_factory import get_text
+from src.Pages.Common.common_component_factory import get_text, get_radio_group
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 from src.Pages.Common.textarea import *
 
@@ -130,13 +130,23 @@ class LineChartPane(BasicStepPane):
     def set_uncheck_show_tick_values_in_data_order(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_TICK_VALUES_IN_DATA_ORDER)
 
-    def set_display_label_x(self, item_index: int = None, item_value: str = None):
+    def set_check_for_create_reference_line_for_x_axis(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
+                                    section_label=Helper.data_locale.X_AXIS)
+
+    def set_uncheck_for_create_reference_line_for_x_axis(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
+                                      section_label=Helper.data_locale.X_AXIS)
+
+    def set_option_for_display_label_for_x_axis(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
-                                     preceding_label=Helper.data_locale.X_AXIS, item_index=item_index,
+                                     section_label=Helper.data_locale.X_AXIS, item_index=item_index,
                                      item_value=item_value)
 
-    def set_label_x(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
+    def set_text_for_first_label_for_x_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../following-sibling::div[1][.//label[text()=  '" + Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
+            input_text)
 
     def set_check_rotate_values_in_case_of_tick_collisions(self):
         self.set_check_for_checkbox(label=Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS)
@@ -145,14 +155,9 @@ class LineChartPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS)
 
     def set_rotate_degree(self, item_index=None, item_value=None):
-        self.set_option_for_radio_group(parent_label=Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS,
-                                        item_index=item_index, item_value=item_value)
-
-    def set_check_create_reference_line_x(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
-
-    def set_uncheck_create_reference_lines_x(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
+        get_radio_group(self.base_xpath, self.page,
+                        supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS + "')]]").set_check_for_index(
+            index=item_index)
 
     def set_reference_values_x(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.LINE_STYLE, item_index=item_index,
@@ -166,8 +171,10 @@ class LineChartPane(BasicStepPane):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.CREATE_REFERENCE_LINE,
                                         item_index=item_index, item_value=item_value)
 
-    def set_label_for_reference_x(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
+    def set_text_for_second_label_for_x_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
+            input_text)
 
     def expand_windowshade_y_axis(self):
         self.expand_windowshade(parent_label=Helper.data_locale.Y_AXIS)
@@ -199,8 +206,9 @@ class LineChartPane(BasicStepPane):
     def set_uncheck_show_grid_lines(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SHOW_GRID_LINES)
 
-    def set_display_label_for_y_axis(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL, item_index=item_index,
+    def set_option_for_display_label_for_y_axis(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
+                                     section_label=Helper.data_locale.Y_AXIS, item_index=item_index,
                                      item_value=item_value)
 
     def set_check_use_logarithmic_scale(self):
@@ -213,11 +221,13 @@ class LineChartPane(BasicStepPane):
         self.set_option_for_combobox(parent_label=Helper.data_locale.BASE_VALUE, item_index=item_index,
                                      item_value=item_value)
 
-    def set_check_create_reference_line_y(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
+    def set_check_for_create_reference_line_for_y_axis(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
+                                    section_label=Helper.data_locale.Y_AXIS)
 
-    def set_uncheck_create_reference_lines_y(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE)
+    def set_uncheck_for_create_reference_line_for_y_axis(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
+                                      section_label=Helper.data_locale.Y_AXIS)
 
     def set_reference_values_y(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.REFERENCE_VALUE, input_text=input_text)
@@ -228,6 +238,16 @@ class LineChartPane(BasicStepPane):
 
     def set_label_for_reference_y(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
+
+    def set_text_for_first_label_for_y_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../following-sibling::div[1][.//label[text()= '" + Helper.data_locale.USE_LOGARITHMIC_SCALE + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.Y_AXIS + "']]]").fill_text(
+            input_text)
+
+    def set_text_for_second_label_for_y_axis(self, input_text: str):
+        get_text(self.base_xpath, self.page,
+                 supplement_base_xpath="[../../../descendant::label[contains(text(),'" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='" + Helper.data_locale.Y_AXIS + "']]]").fill_text(
+            input_text)
 
     def expand_windowshade_title_footnote(self):
         self.expand_windowshade(parent_label=Helper.data_locale.TITLE_AND_FOOTNOTE)
@@ -250,53 +270,3 @@ class LineChartPane(BasicStepPane):
     def set_units(self, item_index: int = None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.UNITS, item_index=item_index,
                                      item_value=item_value)
-
-    """Added by Alice on Sep 10,2024 start"""
-
-    def set_check_for_create_reference_line_for_x_axis(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
-                                    section_label=Helper.data_locale.X_AXIS)
-
-    def set_uncheck_for_create_reference_line_for_x_axis(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
-                                      section_label=Helper.data_locale.X_AXIS)
-
-    def set_check_for_create_reference_line_for_y_axis(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
-                                    section_label=Helper.data_locale.Y_AXIS)
-
-    def set_uncheck_for_create_reference_line_for_y_axis(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_REFERENCE_LINE,
-                                      section_label=Helper.data_locale.Y_AXIS)
-
-    def set_option_for_dispaly_label_for_x_axis(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
-                                     section_label=Helper.data_locale.X_AXIS, item_index=item_index,
-                                     item_value=item_value)
-
-    def set_option_for_dispaly_label_for_y_axis(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.DISPLAY_LABEL,
-                                     section_label=Helper.data_locale.Y_AXIS, item_index=item_index,
-                                     item_value=item_value)
-
-    def set_text_for_first_label_for_x_axis(self, input_text: str):
-        get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../following-sibling::div[1][.//label[text()=  '" + Helper.data_locale.ROTATE_VALUES_IN_CASE_OF_TICK_COLLISIONS + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
-            input_text)
-
-    def set_text_for_second_label_for_x_axis(self, input_text: str):
-        get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
-            input_text)
-
-    def set_text_for_first_label_for_y_axis(self, input_text: str):
-        get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../following-sibling::div[1][.//label[text()= '" + Helper.data_locale.USE_LOGARITHMIC_SCALE + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.Y_AXIS + "']]]").fill_text(
-            input_text)
-
-    def set_text_for_second_label_for_y_axis(self, input_text: str):
-        get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(),'" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()='" + Helper.data_locale.Y_AXIS + "']]]").fill_text(
-            input_text)
-
-    """Added by Alice on Sep 10,2024 end"""

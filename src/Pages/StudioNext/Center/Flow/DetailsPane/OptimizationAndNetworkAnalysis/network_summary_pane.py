@@ -94,10 +94,10 @@ class NetworkSummaryPane(BasicStepPane):
     """Methods in Options tab"""
 
     def expand_windowshade_statistics(self):
-        self.expand_windowshade(parent_label=Helper.data_locale.STATISTICS)
+        self.expand_windowshade(Helper.data_locale.STATISTICS)
 
     def collapse_windowshade_statistics(self):
-        self.collapse_windowshade(parent_label=Helper.data_locale.STATISTICS)
+        self.collapse_windowshade(Helper.data_locale.STATISTICS)
 
     def set_check_biconnected_components(self):
         self.set_check_for_checkbox(Helper.data_locale.BICONNECTED_COMPONENTS)
@@ -144,10 +144,10 @@ class NetworkSummaryPane(BasicStepPane):
     """Methods in Output tab"""
 
     def set_check_create_output_table(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_TABLE)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_OUTPUT_TABLE)
 
     def set_uncheck_create_output_table(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_OUTPUT_TABLE)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_OUTPUT_TABLE)
 
     def set_check_replace_existing_output_table_for_output_table(self):
         get_checkbox(self.base_xpath, self.page,
@@ -164,10 +164,10 @@ class NetworkSummaryPane(BasicStepPane):
                              Helper.data_locale.CREATE_OUTPUT_TABLE)).set_uncheck()
 
     def set_check_create_nodes_table(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_NODES_TABLE)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_NODES_TABLE)
 
     def set_uncheck_create_nodes_table(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_NODES_TABLE)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_NODES_TABLE)
 
     def set_check_replace_existing_output_table_for_nodes_table(self):
         get_checkbox(self.base_xpath, self.page,
@@ -184,10 +184,10 @@ class NetworkSummaryPane(BasicStepPane):
                              Helper.data_locale.CREATE_NODES_TABLE)).set_uncheck()
 
     def set_check_create_links_table(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.CREATE_LINKS_TABLE)
+        self.set_check_for_checkbox(Helper.data_locale.CREATE_LINKS_TABLE)
 
     def set_uncheck_create_links_table(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.CREATE_LINKS_TABLE)
+        self.set_uncheck_for_checkbox(Helper.data_locale.CREATE_LINKS_TABLE)
 
     def set_check_replace_existing_output_table_for_links_table(self):
         get_checkbox(self.base_xpath, self.page,
