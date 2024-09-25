@@ -600,8 +600,19 @@ def test_36_flow(page, init):
     # flow.download_log_file_html()
     # flow.download_log_file_text()
     flow.email()
-    flow.apply_detail_layout_horizontal()
-    flow.apply_detail_layout_vertical()
+
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_horizontal()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_horizontal()
+
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
+
     flow.apply_main_layout_vertical()
     flow.apply_main_layout_standard()
     flow.apply_main_layout_horizontal()
