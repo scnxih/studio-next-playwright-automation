@@ -11,6 +11,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.t_tests_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.canonical_correlation_pane import CanonicalCorrelationPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.core_decomposition_pane import CoreDecompositionPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.hidden_markov_models_pane import HiddenMarkovModelsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.network_summary_pane import NetworkSummaryPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.traveling_salesman_problem_pane import TravelingSalesmanProblemPane
 from src.Data.input_data_zh import *
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -28,59 +30,89 @@ def test_input_table(page, init):
     editor.run(True)
 
 
-def test_scatter_map_controls_in_data_pane(page, init):
+def test_traveling_salesman_problem(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.CORE_DECOMPOSITION)
+    editor.run(True)
+
     flow: FlowPage = PageHelper.new_flow(page)
     flow.apply_detail_layout_vertical()
-    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_SCATTER_MAP]
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("LinkSetIn'链接")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM]
     flow.add_step_from_stepspane_to_flow(step_path)
     time.sleep(0.5)
-    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SCATTER_MAP)
-    scatter_map_pane = ScatterMapPane(page)
-    scatter_map_pane.collapse_windowshade_plot_data()
+
+    flow.link_two_nodes_in_flow("LinkSetIn'链接", Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM)
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM)
+    traveling_salesman_problem_pane = TravelingSalesmanProblemPane(page)
+    traveling_salesman_problem_pane.select_server(Helper.data_locale.CAS)
     time.sleep(0.5)
-    scatter_map_pane.expand_windowshade_plot_data()
+    traveling_salesman_problem_pane.expand_windowshade_note_about_server_selection()
     time.sleep(0.5)
-    scatter_map_pane.input_filter_input_data("This is expression.")
+    traveling_salesman_problem_pane.collapse_windowshade_note_about_server_selection()
     time.sleep(0.5)
-    scatter_map_pane.collapse_windowshade_plot_data()
+    traveling_salesman_problem_pane.input_filter_links_data("This is a filter expression.")
     time.sleep(0.5)
-    scatter_map_pane.set_check_include_choropleth_map_layer()
+    traveling_salesman_problem_pane.empty_filter_links_data()
     time.sleep(0.5)
-    scatter_map_pane.set_uncheck_include_choropleth_map_layer()
+    traveling_salesman_problem_pane.set_link_direction(Helper.data_locale.DIRECTED)
     time.sleep(0.5)
-    scatter_map_pane.set_check_include_choropleth_map_layer()
+    traveling_salesman_problem_pane.set_link_direction(Helper.data_locale.UNDIRECTED)
     time.sleep(0.5)
-    scatter_map_pane.collapse_windowshade_map_data()
+    traveling_salesman_problem_pane.add_column_for_from_node("from'始")
     time.sleep(0.5)
-    scatter_map_pane.expand_windowshade_map_data()
+    traveling_salesman_problem_pane.add_column_for_to_node("to'终")
     time.sleep(0.5)
-    scatter_map_pane.input_filter_map_data("This is expression.")
+    traveling_salesman_problem_pane.add_column_for_weight("weight'中")
     time.sleep(0.5)
-    scatter_map_pane.collapse_windowshade_map_data()
+    traveling_salesman_problem_pane.expand_windowshade_additional_roles()
     time.sleep(0.5)
-    scatter_map_pane.set_check_include_response_data()
+    traveling_salesman_problem_pane.click_options_tab()
     time.sleep(0.5)
-    scatter_map_pane.set_uncheck_include_response_data()
+    traveling_salesman_problem_pane.set_max_time(Helper.data_locale.USE_CUSTOM_VALUE)
     time.sleep(0.5)
-    scatter_map_pane.set_check_include_response_data()
+    traveling_salesman_problem_pane.input_time_in_seconds("1000")
     time.sleep(0.5)
-    scatter_map_pane.collapse_windowshade_map_response_data()
+    traveling_salesman_problem_pane.select_log_details(Helper.data_locale.DETAILED_SUMMARY)
     time.sleep(0.5)
-    scatter_map_pane.expand_windowshade_map_response_data()
+    traveling_salesman_problem_pane.set_solution_strategy(Helper.data_locale.MIXED_INTEGER_LINEAR_PROGRAMMING)
     time.sleep(0.5)
-    scatter_map_pane.input_filter_map_response_data("This is expression.")
+    traveling_salesman_problem_pane.expand_windowshade_MILP_solver_options()
     time.sleep(0.5)
-    scatter_map_pane.collapse_windowshade_map_response_data()
+    traveling_salesman_problem_pane.set_target_objective_value(Helper.data_locale.USE_CUSTOM_VALUE)
     time.sleep(0.5)
-    scatter_map_pane.set_uncheck_ID_variable()
+    traveling_salesman_problem_pane.set_target_objective_value(Helper.data_locale.NO_LIMIT)
     time.sleep(0.5)
-    scatter_map_pane.set_check_ID_variable()
+    traveling_salesman_problem_pane.set_absolute_gap_between_current_and_best_remaining_objective_value(Helper.data_locale.USE_CUSTOM_VALUE)
     time.sleep(0.5)
-    scatter_map_pane.select_radio_base_map(item_value=Helper.data_locale.ESRI_MAP)
+    traveling_salesman_problem_pane.set_absolute_gap_between_current_and_best_remaining_objective_value(Helper.data_locale.USE_000001)
     time.sleep(0.5)
-    scatter_map_pane.input_Esri_URL("http://www.google.com")
+    traveling_salesman_problem_pane.set_relative_gap_between_current_and_best_remaining_objective_value(Helper.data_locale.USE_CUSTOM_VALUE)
     time.sleep(0.5)
-    scatter_map_pane.select_radio_base_map(item_value=Helper.data_locale.OPEN_STREET_MAP)
+    traveling_salesman_problem_pane.set_relative_gap_between_current_and_best_remaining_objective_value(Helper.data_locale.USE_0001)
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.select_procedure(Helper.data_locale.USE_CAS_PROCEDURE)
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.click_output_tab()
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.set_check_save_tour_info()
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.set_check_save_tour_nodes_info()
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.set_uncheck_replace_existing_output_table_for_save_tour_info()
+    time.sleep(0.5)
+    traveling_salesman_problem_pane.set_uncheck_replace_existing_output_table_for_save_tour_nodes_info()
+    time.sleep(5)
 
 
 def test_scatter_map_l0(page, init):
@@ -627,4 +659,116 @@ def test_hidden_markov_models_l1(page, init):
     hidden_markov_models_pane.select_procedure(Helper.data_locale.USE_CAS_PROCEDURE)
     time.sleep(0.8)
 
+    flow.run(True)
+
+
+def test_network_summary_l0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.CORE_DECOMPOSITION)
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("LINKSETIN'链接")
+    time.sleep(0.8)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("NODESETIN'节点")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_NETWORK_SUMMARY]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "添加输入端口",
+                                            "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+    flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_NETWORK_SUMMARY)
+
+    network_summary_pane = NetworkSummaryPane(page)
+    network_summary_pane.add_column_for_from_node("from'始")
+    network_summary_pane.add_column_for_to_node("to'终")
+    time.sleep(0.8)
+    network_summary_pane.set_check_for_checkbox(Helper.data_locale.INCLUDE_NODES_DATA)
+    network_summary_pane.expand_windowshade(Helper.data_locale.NODES)
+    network_summary_pane.add_column_for_node("node'中")
+    time.sleep(0.8)
+
+    network_summary_pane.click_options_tab()
+    network_summary_pane.set_check_for_checkbox(Helper.data_locale.CONNECTED_COMPONENTS)
+    time.sleep(0.8)
+    flow.run(True)
+
+
+def test_network_summary_l1(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.CORE_DECOMPOSITION)
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("LINKSETIN'链接")
+    time.sleep(0.8)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("NODESETIN'节点")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_NETWORK_SUMMARY]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "添加输入端口",
+                                            "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+    flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.arrange_nodes()
+    flow.apply_detail_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_NETWORK_SUMMARY)
+
+    network_summary_pane = NetworkSummaryPane(page)
+    network_summary_pane.add_column_for_from_node("from'始")
+    network_summary_pane.add_column_for_to_node("to'终")
+    time.sleep(0.8)
+    network_summary_pane.set_check_for_checkbox(Helper.data_locale.INCLUDE_NODES_DATA)
+    network_summary_pane.expand_windowshade(Helper.data_locale.NODES)
+    network_summary_pane.add_column_for_node("node'中")
+    time.sleep(0.8)
+
+    network_summary_pane.click_options_tab()
+    network_summary_pane.set_check_for_checkbox(Helper.data_locale.BICONNECTED_COMPONENTS)
+    time.sleep(0.8)
+
+    network_summary_pane.click_output_tab()
+    network_summary_pane.set_check_for_checkbox(Helper.data_locale.CREATE_NODES_TABLE)
+
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "添加输出端口",
+                                            "{sasstudio-steps-gui-icu.genericText.outputport.nodesTable.title}")
+    flow.add_node(FlowNodeType.table)
+    time.sleep(0.5)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("输出节点表")
+    time.sleep(0.8)
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "输出节点表")
     flow.run(True)

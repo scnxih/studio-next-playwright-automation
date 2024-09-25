@@ -178,7 +178,8 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
 
 def test_05_line_chart_in_flow_l0(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
@@ -210,7 +211,8 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
 
 def test_06_line_chart_in_flow_l1(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
@@ -255,7 +257,8 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
 
 def test_07_line_chart_in_flow_l1(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
-    flow.add_node(FlowNodeType.sas_program)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
     sas_program_pane = SASProgramPane(page)
     code = """ 
@@ -296,6 +299,35 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane.set_color_transparency(item_index=2)
     line_chart_pane.set_line_style(item_index=5)
     line_chart_pane.add_column_for_url_variable("Div'中")
+
+    line_chart_pane.expand_windowshade_x_axis()
+    line_chart_pane.set_check_reverse_tick_values()
+    line_chart_pane.set_check_show_tick_values_in_data_order()
+    line_chart_pane.set_option_for_display_label_for_x_axis(item_index=2)
+    line_chart_pane.set_text_for_first_label_for_x_axis("x轴标签")
+    line_chart_pane.set_check_rotate_values_in_case_of_tick_collisions()
+    line_chart_pane.set_rotate_degree(item_index=1)
+    line_chart_pane.set_check_for_create_reference_line_for_x_axis()
+    line_chart_pane.set_reference_values_x(item_index=15)
+    line_chart_pane.set_line_offset(item_index=3)
+
+    line_chart_pane.expand_windowshade_y_axis()
+    line_chart_pane.set_check_specify_minimum_value()
+    line_chart_pane.set_minimum_value("1200")
+    line_chart_pane.set_check_specify_maximum_value()
+    line_chart_pane.set_maximum_value("2000")
+    line_chart_pane.set_option_for_display_label_for_y_axis(item_index=4)
+    line_chart_pane.set_text_for_first_label_for_y_axis("y轴标签")
+    line_chart_pane.set_check_use_logarithmic_scale()
+    line_chart_pane.set_base_value(item_index=1)
+    line_chart_pane.set_check_for_create_reference_line_for_y_axis()
+    line_chart_pane.set_reference_values_y("1500")
+
+
+    line_chart_pane.expand_windowshade_title_footnote()
+    line_chart_pane.set_title("线图中文标题")
+    line_chart_pane.set_footnote("线图中文脚注")
+
     flow.run(True)
 
 
