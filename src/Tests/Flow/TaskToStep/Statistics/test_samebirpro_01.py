@@ -34,7 +34,11 @@ def test_01_same_birthday_lev0(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     # Connect output port with same birthday node
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY)
 
     same_birthday_probability_pane = SameBirthdayProbabilityPane(page)
@@ -82,7 +86,11 @@ def test_02_same_birthday_lev1(page, init):
     flow.select_output_port_node_in_flow(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY, "prob_same_birthday")
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SAME_BIRTHDAY_PROBABILITY)
 
     same_birthday_probability_pane = SameBirthdayProbabilityPane(page)
