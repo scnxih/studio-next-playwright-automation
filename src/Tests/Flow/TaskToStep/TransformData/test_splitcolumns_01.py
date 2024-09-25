@@ -46,5 +46,4 @@ def test_01_Split_Columns_level0(page, init):
     table_pane.set_table("OUTPUT'中文测试")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SPLIT_COLUMNS,"OUTPUT'中文测试")
-
-    flow.run(True)s"""
+    flow.run(True)
