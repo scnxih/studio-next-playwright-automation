@@ -429,5 +429,5 @@ class FlowPage(MainCenterPage):
 
     def click_output_data_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
+        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
 
