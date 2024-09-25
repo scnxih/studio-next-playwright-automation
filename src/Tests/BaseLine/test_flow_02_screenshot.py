@@ -10,4 +10,5 @@ def test_init(page,init):
     PageHelper.init_environments(page)
 def test_01_add_page(page, init):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
-    flow.flow_screenshot()
+    # flow.flow_screenshot()
+    flow.screenshot_self("flow")

@@ -253,9 +253,6 @@ class FlowPage(MainCenterPage):
     def apply_flow_layout_vertical(self):
         self.center_toolbar_helper.apply_flow_layout_vertical()
 
-    def flow_screenshot(self):
-        self.screenshot(self.base_locator, "test")
-
     def select_node_in_flow_canvas(self, node_name):
         select_node_in_flow_canvas(self.page, node_name)
 

@@ -9,4 +9,4 @@ from src.conftest import *
 
 def test_01_add_page(page, init):
     flow:FlowPage = PageHelper.new_item(page,TopMenuItem.new_flow)
-    flow.flow_screenshot()
+    # flow.flow_screenshot()

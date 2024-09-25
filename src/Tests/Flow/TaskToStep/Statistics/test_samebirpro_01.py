@@ -16,8 +16,6 @@ Date: September 11th, 2024
 """This is test case file for step Same Birthday Probability"""
 
 
-def test_init(page, init):
-    PageHelper.init_environments(page)
 
 @pytest.mark.level0_step
 def test_01_same_birthday_lev0(page, init):
