@@ -92,7 +92,7 @@ run;
 
     # Run the flow
     flow.run(True)
-
+    flow.wait_toast_disappear()
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
@@ -101,7 +101,7 @@ run;
 
 
 @pytest.mark.level1_step
-def test_02_cap_anlys_lev1_(page, init):
+def test_02_cap_anlys_lev1(page, init):
     """
     Level-1 testcase for Capability Analysis
     """
