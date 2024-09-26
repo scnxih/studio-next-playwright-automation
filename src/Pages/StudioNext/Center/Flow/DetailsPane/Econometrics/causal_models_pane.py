@@ -81,6 +81,9 @@ class CausalModelsPane(BasicStepPane):
     def set_uncheck_iteration_history_objective_function(self):
         self.set_check_for_checkbox(label=Helper.data_locale.ITERATION_HISTORY_OF_OBJECTIVE_FUCTION)
 
+    def set_select_pots_display(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.SELECT_PLOTS_TO_DISPLAY, item_index=item_index,item_value=item_value)
+
     """Methods in Output tab"""
     def set_check_create_parameter_estimates_data_set(self):
         self.set_check_for_checkbox(label=Helper.data_locale.CREATE_PARAMETER_ESTIMATES_DATASET)
