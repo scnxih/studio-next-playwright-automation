@@ -396,6 +396,4 @@ def test_causal_models_heckman_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
-
-
     flow.run(True)
