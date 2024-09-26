@@ -21,6 +21,9 @@ def test_01_causal_models_2sls_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("PRICEDATA", Helper.data_locale.STEP_CAUSAL_MODELS)
+    time.sleep(0.5)
+    flow.click_on_canvas_in_flow()
+    time.sleep(0.5)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAUSAL_MODELS)
     Causal_models_pane = CausalModelsPane(page)
     Causal_models_pane.click_data_tab()

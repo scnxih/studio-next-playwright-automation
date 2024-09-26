@@ -255,6 +255,8 @@ class FlowPage(MainCenterPage):
 
     def select_node_in_flow_canvas(self, node_name):
         select_node_in_flow_canvas(self.page, node_name)
+    def click_on_canvas_in_flow(self):
+        click_on_canvas_in_flow(self.page)
 
     def link_two_nodes_in_flow(self, node1_name, node2_name):
         link_two_nodes_in_flow(self.page, node1_name, node2_name)
