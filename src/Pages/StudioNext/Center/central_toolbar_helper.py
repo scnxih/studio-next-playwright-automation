@@ -269,11 +269,11 @@ class CentralToolbarHelper:
         Dialog(self.toolbar.page, Helper.data_locale.EMAIL).click_button_in_footer(Helper.data_locale.CANCEL)
 
     def apply_flow_layout_horizontal(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT, Data.HORIZONTAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT, Helper.data_locale.HORIZONTAL)
 
     def apply_flow_layout_vertical(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT,
-                                                    Data.VERTICAL)
+                                                    Helper.data_locale.VERTICAL)
 
     def apply_detail_layout_standard(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.STANDARD)
@@ -334,21 +334,21 @@ class CentralToolbarHelper:
 
     def apply_main_layout_standard(self):
         # Original
-        # self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
 
         # Sept. 24th 2024 Missing zh-CN strings for overflow menu items
-        self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.STANDARD)
+        # self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.STANDARD)
 
     def apply_main_layout_horizontal(self):
         # Original
-        # self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.HORIZONTAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.HORIZONTAL)
 
         # Sept. 24th 2024 Missing zh-CN strings for overflow menu items
-        self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.HORIZONTAL)
+        # self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.HORIZONTAL)
 
     def apply_main_layout_vertical(self):
         # Original
-        # self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.VERTICAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.VERTICAL)
 
         # Sept. 24th 2024 Missing zh-CN strings for overflow menu items
-        self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.VERTICAL)
+        # self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.VERTICAL)

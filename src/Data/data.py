@@ -418,6 +418,7 @@ class Data:
 
     STEP_CATEGORY_STATISTICS = "Statistics"
     STEP_CLUSTER_VARIABLES = "Cluster Variables"
+    STEP_HIERARCHICAL_CLUSTERING = "Hierarchical Clustering"
     STEP_COMPUTE_SIMILARITIES_AND_DISTANCES = "Compute Similarities and Distances"
     STEP_COIN_TOSS_SIMULATION = "Coin Toss Simulation"
     STEP_COMBINATIONS = "Combinations"

@@ -408,6 +408,7 @@ class DataZH(Data):
 
     STEP_CATEGORY_STATISTICS = "统计量"
     STEP_CLUSTER_VARIABLES = "聚类变量"
+    STEP_HIERARCHICAL_CLUSTERING = "层次聚类"
     STEP_COMPUTE_SIMILARITIES_AND_DISTANCES = "计算相似性和距离"
     STEP_COIN_TOSS_SIMULATION = "投掷硬币模拟"
     STEP_COMBINATIONS = "组合"
@@ -692,7 +693,7 @@ class DataZH(Data):
     ADD_A_QUERY = "添加查询"
     RUN_FLOW ="运行流"
     ADD_A_NOTE ="添加注释"
-    APPLY_FLOW_LAYOUT = "Apply flow layout"
+    APPLY_FLOW_LAYOUT = "应用流布局"
 
 
     """Added by Alice end"""
