@@ -8,8 +8,11 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     WholePage(page).screenshot_self("login")
     PageHelper.new_sas_program(page)
@@ -21,6 +24,9 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
     editor = CodeEditorPage(page)
+
+    # Wait until gutters appear to avoid diffs
+    WholePage(page).is_visible('//button[@title=" ' + Helper.data_locale.SUBMISSION_FILTER_PANE_STATUS_ERROR + '"]')
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024

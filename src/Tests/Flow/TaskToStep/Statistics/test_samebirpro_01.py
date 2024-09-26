@@ -19,6 +19,7 @@ Date: September 11th, 2024
 def test_init(page, init):
     PageHelper.init_environments(page)
 
+
 @pytest.mark.level0_step
 def test_01_same_birthday_lev0(page, init):
     """
@@ -63,6 +64,7 @@ def test_01_same_birthday_lev0(page, init):
     #                      mask=['//h5[@data-testid="dataPane-toolbar-nameHeading"]'],
     #                      mask_color="#000000")
     # WholePage(page).screenshot_self(pic_name="flow_results_same_birthday")
+
 
 @pytest.mark.level1_step
 def test_02_same_birthday_lev1(page, init):
