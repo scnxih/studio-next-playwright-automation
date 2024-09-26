@@ -1320,4 +1320,5 @@ class Data:
     DESCRIPTIVE_STATISTICS="Descriptive statistics"
     DISPLAY_MINIMUM_AND_MAXIMUM_DATE="Display minimum and maximum date"
     FREQUENCY_PLOT="Frequency plot"
+    VARIABLES_COLON="Variables:"
     """Added by Percy end"""
