@@ -61,6 +61,8 @@ run;
     sas_program.editor.type_into_text_area(sas_program_code)
     sas_program.format_program()
     sas_program.run(True)
+    sas_program.wait_toast_disappear()
+    sas_program.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + " (1)")
 
     # Create a flow and add table node
     flow: FlowPage = PageHelper.new_flow(page)
@@ -146,6 +148,7 @@ run;
     flow.arrange_nodes()
 
 
+@pytest.mark.level0_step
 def test_02_txt_and_topic_lev0(page, init):
     """
     Level 0 Scenarios (for topic model = LDA)
@@ -186,7 +189,10 @@ run;
 
     sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
     sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.format_program()
     sas_program.run(True)
+    sas_program.wait_toast_disappear()
+    sas_program.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + " (1)")
 
     # Create a flow and add table node
     flow: FlowPage = PageHelper.new_flow(page)
@@ -222,7 +228,9 @@ run;
     table_pane = TablePane(page)
     table_pane.refresh_table()
     table_pane.tab_group.click_tab_by_text(Helper.data_locale.PREVIEW_DATA)
+    table_pane.refresh_table()
     table_pane.tab_group.click_tab_by_text(Helper.data_locale.NOTES)
+    table_pane.refresh_table()
     table_pane.tab_group.click_tab_by_text(Helper.data_locale.TABLE_PROPERTIES)
     table_pane.refresh_table()
 
