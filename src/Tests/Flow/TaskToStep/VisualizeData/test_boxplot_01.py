@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from src.Helper.page_helper import PageHelper
@@ -16,8 +18,7 @@ Date: September 11th, 2024
 """
 
 
-def test_init(page, init):
-    PageHelper.init_environments(page)
+
 
 
 @pytest.mark.level0_step
@@ -46,20 +47,34 @@ def test_01_box_plot_lev0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("baseball", Helper.data_locale.STEP_BOX_PLOT)
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
 
     box_plot_pane = BoxPlotPane(page)
     box_plot_pane.set_filter_input_data("Team IS NOT MISSING")
     box_plot_pane.set_analysis_variable("nHome")
-
+    time.sleep(0.5)
+    box_plot_pane.screenshot_self("data")
     flow.run(True)
+    time.sleep(0.5)
+    flow.screenshot_self("run")
 
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-    time.sleep(3)
 
-    flow.screenshot_self(pic_name="baseball_box_plot")
+    # flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+    # flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
+    flow.click_results_tab()
+    time.sleep(0.5)
+    flow.screenshot_self("results")
+    flow.click_log_tab()
+    time.sleep(0.5)
+    flow.screenshot_self("log")
+    # time.sleep(3)
+    #
+    # flow.screenshot_self(pic_name="baseball_box_plot")
 
 
 @pytest.mark.level1_step
@@ -88,7 +103,11 @@ def test_02_box_plot_lev1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("class", Helper.data_locale.STEP_BOX_PLOT)
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
 
     box_plot_pane = BoxPlotPane(page)
@@ -155,7 +174,11 @@ def test_03_box_plot_lev1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("cars", Helper.data_locale.STEP_BOX_PLOT)
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
 
     box_plot_pane = BoxPlotPane(page)

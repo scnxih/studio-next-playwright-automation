@@ -8,8 +8,11 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     WholePage(page).screenshot_self("login")
     PageHelper.new_sas_program(page)
@@ -21,6 +24,9 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
     editor = CodeEditorPage(page)
+
+    # Wait until gutters appear to avoid diffs
+    WholePage(page).is_visible('//button[@title=" ' + Helper.data_locale.SUBMISSION_FILTER_PANE_STATUS_ERROR + '"]')
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
@@ -600,8 +606,19 @@ def test_36_flow(page, init):
     # flow.download_log_file_html()
     # flow.download_log_file_text()
     flow.email()
-    flow.apply_detail_layout_horizontal()
-    flow.apply_detail_layout_vertical()
+
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_horizontal()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_horizontal()
+
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
+
     flow.apply_main_layout_vertical()
     flow.apply_main_layout_standard()
     flow.apply_main_layout_horizontal()

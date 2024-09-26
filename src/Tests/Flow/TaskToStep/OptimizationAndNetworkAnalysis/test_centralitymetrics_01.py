@@ -1,5 +1,6 @@
 import pytest
 
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.centrality_metrics_pane import \
     CentralityMetricsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
@@ -118,7 +119,7 @@ N 1
     table_pane.set_table("OUTPUT_LINKS")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_LINKS")
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    flow.apply_flow_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
@@ -149,7 +150,7 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.add_column_for_weight_in_nodes(column_name="weight'")
     time.sleep(1)
-
+    centrality_metrics_pane.screenshot_self("data")
     centrality_metrics_pane.click_options_tab()
     centrality_metrics_pane.set_check_degree()
 
@@ -187,6 +188,7 @@ N 1
 
     centrality_metrics_pane.set_code_generation(item_index=1)
     time.sleep(0.5)
+    centrality_metrics_pane.screenshot_self("options")
     centrality_metrics_pane.click_output_tab()
     time.sleep(0.8)
     centrality_metrics_pane.set_check_create_output_nodes_data()
@@ -195,11 +197,23 @@ N 1
     centrality_metrics_pane.set_check_create_output_links_data()
     centrality_metrics_pane.set_check_replace_existing_output_table_for_links()
     time.sleep(0.8)
+    centrality_metrics_pane.screenshot_self("output")
     centrality_metrics_pane.set_node_description("This is test for description.")
     time.sleep(0.5)
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
     time.sleep(0.5)
+
     flow.run(True)
+    time.sleep(3)
+    flow.apply_flow_layout_horizontal()
+    time.sleep(0.5)
+    flow.screenshot_self("run")
+    flow.click_log_tab()
+    time.sleep(0.5)
+    flow.screenshot_self("log")
+    flow.click_output_data_tab()
+    time.sleep(0.5)
+    flow.screenshot_self("output_data")
 @pytest.mark.level1_step
 def test_02_centrality_metrics_in_flow(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
@@ -304,7 +318,7 @@ N 1
     table_pane.set_table("OUTPUT_LINKS")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_LINKS")
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    flow.apply_flow_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
@@ -407,7 +421,7 @@ def test_04_combobox_exact_label(page,init):
                  Helper.data_locale.STEP_TEXT_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_MAP)
-    flow.apply_detail_layout_vertical()
+    flow.apply_flow_layout_vertical()
     pane = TextMapPane(page)
 
     pane.set_check_include_choropleth_map_layer()
