@@ -96,7 +96,7 @@ class LineChartPane(BasicStepPane):
         self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
 
     def set_check_set_color(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.SET_COLOR)
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_COLOR_LINE_CHART)
 
     def set_uncheck_set_color(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SET_COLOR)

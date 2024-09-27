@@ -46,6 +46,7 @@ def test_01_box_plot_lev0(page, init):
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("baseball", Helper.data_locale.STEP_BOX_PLOT)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     # Fow overflow menu changed
     # flow.apply_detail_layout_vertical()
@@ -102,6 +103,7 @@ def test_02_box_plot_lev1(page, init):
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("class", Helper.data_locale.STEP_BOX_PLOT)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     # Fow overflow menu changed
     # flow.apply_detail_layout_vertical()
@@ -173,6 +175,7 @@ def test_03_box_plot_lev1(page, init):
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BOX_PLOT)
     flow.link_two_nodes_in_flow("cars", Helper.data_locale.STEP_BOX_PLOT)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     # Fow overflow menu changed
     # flow.apply_detail_layout_vertical()

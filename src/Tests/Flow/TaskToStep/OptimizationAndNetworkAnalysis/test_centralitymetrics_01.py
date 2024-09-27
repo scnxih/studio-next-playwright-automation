@@ -95,6 +95,7 @@ N 1
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
@@ -126,6 +127,7 @@ N 1
     centrality_metrics_pane.set_filter_input_data("\"weight'权重\"n>=0")
     centrality_metrics_pane.set_link_direction(item_index=1)
     centrality_metrics_pane.set_link_direction(item_index=0)
+
     centrality_metrics_pane.add_column_for_from_node("from'从")
     time.sleep(0.5)
     centrality_metrics_pane.add_column_for_to_node("to'到")
@@ -317,12 +319,14 @@ N 1
     table_pane.set_library("MYCAS")
     table_pane.set_table("OUTPUT_LINKS")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_LINKS")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
     centrality_metrics_pane.set_filter_input_data("\"weight'权重\"n>=0")
+
     centrality_metrics_pane.set_link_direction(item_index=1)
     centrality_metrics_pane.set_link_direction(item_index=0)
     centrality_metrics_pane.add_column_for_from_node("from'从")
