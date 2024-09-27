@@ -20,6 +20,9 @@ class BarLineChartPane(BasicStepPane):
     def collapse_windowshade_data(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.DATA)
 
+    def set_filter(self,filter_text:str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER, input_text=filter_text)
+
     def expand_windowshade_roles(self):
         self.expand_windowshade(parent_label=Helper.data_locale.ROLES)
 
@@ -36,8 +39,12 @@ class BarLineChartPane(BasicStepPane):
         self.add_column(parent_label=Helper.data_locale.BAR_VARIABLE, column_name=column_name)
 
     def set_statistics_bar(self, item_index: int = None, item_value: str = None):
+        # get_radio_group(self.base_xpath, self.page,
+        #                 supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.BAR_VARIABLE + "')]]").set_check_for_index(
+        #
+        #     index=item_index)
         get_radio_group(self.base_xpath, self.page,
-                        supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.BAR_VARIABLE + "')]]").set_check_for_index(
+                        supplement_base_xpath="[../../../following-sibling::div[1][.//label[contains(text(), '线条变量')]]]").set_check_for_index(
             index=item_index)
 
     def add_column_for_line_variable(self, column_name: str):

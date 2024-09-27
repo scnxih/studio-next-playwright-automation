@@ -17,6 +17,7 @@ class Text(CommonComponent):
         self.fill(self.base_locator, text)
         self.key_press("Enter")
 
+
     def clear_text(self):
         self.scroll_if_needed(self.base_locator)
         self.clear(self.base_locator)

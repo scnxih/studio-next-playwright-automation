@@ -187,7 +187,6 @@ class BasePage:
 
     def fill(self, locator_or_xpath, text):
         r_locator = self.transform_to_locator(locator_or_xpath)
-        self.clear(r_locator)
         r_locator.fill(text)
 
     #
