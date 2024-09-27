@@ -27,6 +27,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -34,6 +35,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LINE_CHART)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
@@ -61,6 +63,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -68,6 +71,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LINE_CHART)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)

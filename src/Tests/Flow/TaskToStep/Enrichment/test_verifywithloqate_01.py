@@ -28,12 +28,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -68,12 +70,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -119,12 +123,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -160,12 +166,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -208,6 +216,7 @@ run;
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)

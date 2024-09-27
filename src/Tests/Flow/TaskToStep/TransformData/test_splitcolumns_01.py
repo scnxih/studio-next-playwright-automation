@@ -23,6 +23,7 @@ def test_01_Split_Columns_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_SPLIT_COLUMNS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SPLIT_COLUMNS)
+    flow.click_on_canvas_in_flow()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SPLIT_COLUMNS)
     Split_Columns_pane = SplitColumnsPane(page)

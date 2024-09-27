@@ -30,6 +30,7 @@ def test_00_t_test_one_sample_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)
@@ -60,6 +61,7 @@ def test_01_t_test_paired_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)
@@ -92,6 +94,7 @@ def test_02_t_test_two_sample_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)
@@ -126,6 +129,7 @@ def test_03_t_test_one_sample_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)
@@ -169,6 +173,7 @@ def test_04_t_test_paired_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)
@@ -210,6 +215,7 @@ def test_05_t_test_two_sample_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_T_TESTS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_T_TESTS)

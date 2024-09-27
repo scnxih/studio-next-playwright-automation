@@ -28,6 +28,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -35,6 +36,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -63,6 +65,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -70,6 +73,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -78,6 +82,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_library("work")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -114,6 +119,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -121,6 +127,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -129,6 +136,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_library("work")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -171,6 +179,7 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -178,6 +187,7 @@ run;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -186,6 +196,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -229,6 +240,7 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -236,6 +248,7 @@ run;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -244,6 +257,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -287,6 +301,7 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -294,6 +309,7 @@ run;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -302,6 +318,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -345,6 +362,7 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -352,6 +370,7 @@ run;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -360,6 +379,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -405,6 +425,7 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -412,6 +433,7 @@ run;
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -420,6 +442,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)

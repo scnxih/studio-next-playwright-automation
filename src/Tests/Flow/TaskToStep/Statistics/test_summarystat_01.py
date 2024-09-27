@@ -22,6 +22,7 @@ def test_01_summary_statistics_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_SUMMARY_STATISTICS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SUMMARY_STATISTICS)
+    flow.click_on_canvas_in_flow()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SUMMARY_STATISTICS)
     Summary_Statistics_Pane = SummaryStatisticsPane(page)
     Summary_Statistics_Pane.click_data_tab()
@@ -54,6 +55,7 @@ def test_02_Summary_Statistics_level1(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_SUMMARY_STATISTICS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SUMMARY_STATISTICS)
+    flow.click_on_canvas_in_flow()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SUMMARY_STATISTICS)
 
     Summary_Statistics_Pane = SummaryStatisticsPane(page)

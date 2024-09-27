@@ -35,6 +35,7 @@ run;
     table_pane.set_table("labeled'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -48,9 +49,11 @@ run;
                  Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
@@ -88,6 +91,7 @@ run;
     table_pane.set_table("labeled'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -101,9 +105,11 @@ run;
                  Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
@@ -112,6 +118,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("SSL'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
@@ -158,6 +165,7 @@ run;
     table_pane.set_table("labeled'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -171,9 +179,11 @@ run;
                  Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
@@ -182,6 +192,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("SSL'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
@@ -226,6 +237,7 @@ run;
     table_pane.set_table("labeled'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -239,9 +251,11 @@ run;
                  Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("unlabeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.link_two_nodes_in_flow("labeled'中文", Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "添加输出端口")
@@ -250,6 +264,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("SSL'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING, "SSL'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING)

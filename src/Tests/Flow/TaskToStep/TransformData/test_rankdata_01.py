@@ -21,6 +21,7 @@ def test_01_rank_data_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_RANK_DATA]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_RANK_DATA)
+    flow.click_on_canvas_in_flow()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_RANK_DATA)
     Rank_data_pane = RankDataPane(page)
     Rank_data_pane.click_data_tab()

@@ -32,6 +32,7 @@ run;
     table_pane.set_table("IRIS'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -39,6 +40,7 @@ run;
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
@@ -73,6 +75,7 @@ run;
     table_pane.set_table("IRIS'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -80,6 +83,7 @@ run;
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
@@ -120,6 +124,7 @@ run;
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
@@ -173,6 +178,7 @@ run;
     table_pane.set_table("IRIS'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -180,6 +186,7 @@ run;
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -189,6 +196,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("lowrank'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "lowrank'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -198,6 +206,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("sparse'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "sparse'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -207,6 +216,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("error'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "error'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -216,6 +226,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("left'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "left'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -225,6 +236,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("singular'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "singular'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -234,6 +246,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("right'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "right'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
@@ -277,6 +290,7 @@ run;
     table_pane.set_table("IRIS'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -284,6 +298,7 @@ run;
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("IRIS'中文", Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -293,6 +308,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("component'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "component'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
@@ -302,6 +318,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("pc'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS, "pc'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS)

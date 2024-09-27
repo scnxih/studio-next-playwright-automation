@@ -30,6 +30,7 @@ def test_00_core_decomposition_in_flow(page, init):
                  Helper.data_locale.STEP_CORE_DECOMPOSITION]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -41,6 +42,7 @@ def test_00_core_decomposition_in_flow(page, init):
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
                                             "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
+    flow.click_on_canvas_in_flow()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CORE_DECOMPOSITION)
 
@@ -83,9 +85,11 @@ def test_01_core_decomposition_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
+    flow.click_on_canvas_in_flow()
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
                                             "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CORE_DECOMPOSITION)
@@ -114,6 +118,7 @@ def test_01_core_decomposition_in_flow(page, init):
     table_pane.set_table("输出节点表")
     time.sleep(0.5)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "输出节点表")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     time.sleep(0.5)
     flow.run(True)
