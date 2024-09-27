@@ -763,6 +763,7 @@ class DataZH(Data):
     SHOW_LINE_LABEL = "显示线条标签（若分配了子类别，则不适用）"
     LABEL = "标签"
     SET_COLOR = "设置颜色"
+    SET_COLOR_LINE_CHART = "设置颜色（若分配了子类别，则不适用）"
     LINE_STYLE = "线条样式"
     URL_VARIABLE = "URL 变量"
     X_AXIS = "X 轴"

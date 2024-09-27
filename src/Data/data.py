@@ -762,6 +762,7 @@ class Data:
     SHOW_LINE_LABEL = "Show line label (does not apply if a subcategory is assigned)"
     LABEL = "Label"
     SET_COLOR = "Set color"
+    SET_COLOR_LINE_CHART = "Set color (does not apply if a subcategory is assigned)"
     LINE_STYLE = "Line style"
     URL_VARIABLE = "URL variable"
     X_AXIS = "X Axis"
