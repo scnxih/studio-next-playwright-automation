@@ -39,12 +39,9 @@ class BarLineChartPane(BasicStepPane):
         self.add_column(parent_label=Helper.data_locale.BAR_VARIABLE, column_name=column_name)
 
     def set_statistics_bar(self, item_index: int = None, item_value: str = None):
-        # get_radio_group(self.base_xpath, self.page,
-        #                 supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.BAR_VARIABLE + "')]]").set_check_for_index(
-        #
-        #     index=item_index)
+
         get_radio_group(self.base_xpath, self.page,
-                        supplement_base_xpath="[../../../following-sibling::div[1][.//label[contains(text(), '线条变量')]]]").set_check_for_index(
+                        supplement_base_xpath="[../../../following-sibling::div[1][.//label[contains(text(), '" + Helper.data_locale.LINE_VARIABLE + "')]]]").set_check_for_index(
             index=item_index)
 
     def add_column_for_line_variable(self, column_name: str):
@@ -52,7 +49,7 @@ class BarLineChartPane(BasicStepPane):
 
     def set_statistics_line(self, item_index: int = None, item_value: str = None):
         get_radio_group(self.base_xpath, self.page,
-                        supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.LINE_VARIABLE + "')]]").set_check_for_index(
+                        supplement_base_xpath="[../../../preceding-sibling::div[2][.//label[contains(text(), '"  + Helper.data_locale.LINE_VARIABLE + "')]]]").set_check_for_index(
             index=item_index)
 
     def expand_windowshade_additional_roles(self):
