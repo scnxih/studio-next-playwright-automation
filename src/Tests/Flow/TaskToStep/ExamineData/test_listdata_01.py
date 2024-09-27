@@ -1,4 +1,6 @@
 """This is test case file for step List Data"""
+import time
+
 """Added by Dommy 2024-9-25"""
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -62,11 +64,15 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LIST_DATA)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LIST_DATA)
     list_data_pane = ListDataPane(page)
     list_data_pane.set_filter_input_data("UPPER('Division''中'n) = '东部'")
+
+
+
     list_data_pane.add_columns_for_list_variables(check_column_name_list=["姓名1", "Team'中文"])
     list_data_pane.add_columns_for_group_analysis_by(check_column_name_list=["League'中"])
     list_data_pane.add_columns_for_total_of(check_column_name_list=["nAtBat'中", "nHits'中"])
@@ -94,6 +100,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -101,11 +108,13 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LIST_DATA)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LIST_DATA)
     list_data_pane = ListDataPane(page)
     list_data_pane.set_filter_input_data("UPPER('Division''中'n) = '东部'")
+
     list_data_pane.add_columns_for_list_variables(check_column_name_list=["姓名1", "Team'中文"])
     list_data_pane.add_columns_for_group_analysis_by(check_column_name_list=["League'中"])
     list_data_pane.add_columns_for_total_of(check_column_name_list=["nAtBat'中", "nHits'中"])
@@ -140,6 +149,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.run(True)
 
@@ -147,11 +157,13 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_LIST_DATA)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LIST_DATA)
     list_data_pane = ListDataPane(page)
     list_data_pane.set_filter_input_data("UPPER('Division''中'n) = '东部'")
+
     list_data_pane.add_columns_for_list_variables(check_column_name_list=["姓名1", "Team'中文"])
     list_data_pane.add_columns_for_group_analysis_by(check_column_name_list=["League'中"])
     list_data_pane.add_columns_for_total_of(check_column_name_list=["nAtBat'中", "nHits'中"])

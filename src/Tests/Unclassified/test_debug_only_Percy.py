@@ -485,7 +485,6 @@ def test_characterize_date_level1(page, init):
     Characterize_Data_Pane.expand_windowshade_automatic_characterization()
     Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
     Characterize_Data_Pane.expand_windowshade_custom_characterization()
-    """Characterize_Data_Pane.add_columns_for_categorical_variables(check_column_name_list=["nRuns'中", "nHome'中"])"""
     Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
 
     Characterize_Data_Pane.click_options_tab()
