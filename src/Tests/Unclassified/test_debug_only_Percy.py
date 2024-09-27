@@ -4,6 +4,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.summary_statistics_pane import SummaryStatisticsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.rank_data_pane import RankDataPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.causal_models_pane import CausalModelsPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.ExamineData.characterize_data_pane import CharacterizeDataPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -396,6 +397,108 @@ def test_causal_models_heckman_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
+    flow.run(True)
 
+def test_causal_models_2sls_level1(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
 
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("PRICEDATA")
+    step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS, Helper.data_locale.STEP_CAUSAL_MODELS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("PRICEDATA", Helper.data_locale.STEP_CAUSAL_MODELS)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CAUSAL_MODELS)
+    Causal_models_pane = CausalModelsPane(page)
+
+    Causal_models_pane.click_data_tab()
+    Causal_models_pane.set_filter_input_data("('价格'n >= 30)")
+    Causal_models_pane.set_select_method(item_index=0)
+    Causal_models_pane.add_column_for_dependent_variable("销售")
+    Causal_models_pane.add_columns_for_endogenous_explanatory_variables(check_column_name_list=["价格1", "价格2"])
+    Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
+    Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
+    Causal_models_pane.expand_windowshade_additional_roles()
+    Causal_models_pane.add_columns_for_group_analysis_by(check_column_name_list=["日期"])
+
+    Causal_models_pane.click_options_tab()
+    Causal_models_pane.set_select_optimization_method(item_index=1)
+    Causal_models_pane.set_select_maximum_number_of_iterations(item_index=1)
+    Causal_models_pane.set_maximum_number_of_iterations_text(input_text="200")
+    Causal_models_pane.set_select_statistics_to_display(item_index=2)
+    Causal_models_pane.set_select_pots_display(item_index=2)
+
+    flow.run(True)
+
+def test_characterize_date_level0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    step_path = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_CHARACTERIZE_DATA]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CHARACTERIZE_DATA)
+    flow.click_on_canvas_in_flow()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CHARACTERIZE_DATA)
+    Characterize_Data_Pane =CharacterizeDataPane(page)
+    Characterize_Data_Pane.click_data_tab()
+    Characterize_Data_Pane.set_filter_input_data("'nAtBat''中'n > 200")
+    Characterize_Data_Pane.expand_windowshade_automatic_characterization()
+    Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
+    Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
+    flow.arrange_nodes()
+    flow.run(True)
+
+def test_characterize_date_level1(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    step_path = [Helper.data_locale.STEP_CATEGORY_EXAMINE_DATA, Helper.data_locale.STEP_CHARACTERIZE_DATA]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CHARACTERIZE_DATA)
+    flow.click_on_canvas_in_flow()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CHARACTERIZE_DATA)
+    Characterize_Data_Pane =CharacterizeDataPane(page)
+    Characterize_Data_Pane.click_data_tab()
+    Characterize_Data_Pane.set_filter_input_data("'nAtBat''中'n > 200")
+    Characterize_Data_Pane.expand_windowshade_automatic_characterization()
+    Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
+    Characterize_Data_Pane.expand_windowshade_custom_characterization()
+    """Characterize_Data_Pane.add_columns_for_categorical_variables(check_column_name_list=["nRuns'中", "nHome'中"])"""
+    Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
+
+    Characterize_Data_Pane.click_options_tab()
+    Characterize_Data_Pane.expand_windowshade_categorical_variables()
+    Characterize_Data_Pane.set_check_frequency_table()
+    Characterize_Data_Pane.set_check_frequency_chart()
+    Characterize_Data_Pane.set_check_treat_missing_values_valid_level()
+    Characterize_Data_Pane.set_check_limit_categorical_values()
+    Characterize_Data_Pane.expand_windowshade_numeric_variables()
+    Characterize_Data_Pane.set_check_descriptive_statistics()
+    Characterize_Data_Pane.set_check_histogram()
+    Characterize_Data_Pane.expand_windowshade_date_variables()
+    Characterize_Data_Pane.set_check_display_minimum_maximum_date()
+    Characterize_Data_Pane.set_check_frequency_plot()
+    flow.arrange_nodes()
     flow.run(True)

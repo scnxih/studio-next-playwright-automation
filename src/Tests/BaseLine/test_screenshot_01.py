@@ -751,7 +751,12 @@ def test_10_flow_details_pane(page, init):
     """
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.table)
-    flow.apply_detail_layout_vertical()
+
+    # Fow overflow menu changed
+    # flow.apply_detail_layout_vertical()
+
+    # New overflow menu: Apply flow layout
+    flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
 
     time.sleep(1)

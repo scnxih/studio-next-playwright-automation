@@ -90,6 +90,22 @@ def open_context_menu_for_the_node_in_flow(page, node_name):
         execute_right_mouse_press_script = f"{js_functions}\nexecute_right_mouse_press({x_coordinate}, {y_coordinate});"
         page.evaluate(execute_right_mouse_press_script)
 
+def click_on_canvas_in_flow(page):
+    """
+    Args:
+        page:
+    """
+    # Get the directory of the current script
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    # Construct the relative path to functions.js
+    functions_js_path = os.path.join(current_directory,
+                                     "canvas_javascript.js")
+    with open(functions_js_path, "r", encoding="utf-8") as js_file:
+        js_functions = js_file.read()
+        x_coordinate = int(0)
+        y_coordinate = int(0)
+        execute_mouse_press_script = f"{js_functions}\nexecute_mouse_press({x_coordinate}, {y_coordinate});"
+        page.evaluate(execute_mouse_press_script)
 
 def open_context_menu_for_canvas_in_flow(page):
     """
