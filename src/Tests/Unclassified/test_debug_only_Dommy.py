@@ -1,5 +1,6 @@
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import SASProgramPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.bar_line_chart_pane import BarLineChartPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.text_map_pane import TextMapPane
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -114,6 +115,40 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.run(True)
 
 
+def test_01_bar_line_chart_in_flow(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM)
+    sas_program_pane = SASProgramPane(page)
+    code = """ 
+libname AUTOLIB '/segatest/I18N/Autolib' ;    
+"""
+    sas_program_pane.type_into_text_area(code)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("BASEBALL'中文测试")
+    flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.arrange_nodes()
+    flow.run(True)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_BAR_LINE_CHART]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_BAR_LINE_CHART)
+    flow.click_on_canvas_in_flow()
+    flow.arrange_nodes()
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_BAR_LINE_CHART)
+    bar_line_chart_pane = BarLineChartPane(page)
+
+    bar_line_chart_pane.add_column_for_category("Team'中文")
+    bar_line_chart_pane.add_column_for_bar_variable("nAtBat'中")
+    bar_line_chart_pane.add_column_for_line_variable("nHits'中")
+    flow.run(True)
 
 
 

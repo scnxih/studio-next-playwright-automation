@@ -33,7 +33,7 @@ class BarLineChartPane(BasicStepPane):
         self.add_column_exact_label(parent_label=Helper.data_locale.SUBCATEGORY_WITH_COLON, column_name=column_name)
 
     def add_column_for_bar_variable(self, column_name: str):
-        self.add_column_exact_label(parent_label=Helper.data_locale.BAR_VARIABLE, column_name=column_name)
+        self.add_column(parent_label=Helper.data_locale.BAR_VARIABLE, column_name=column_name)
 
     def set_statistics_bar(self, item_index: int = None, item_value: str = None):
         get_radio_group(self.base_xpath, self.page,
@@ -41,7 +41,7 @@ class BarLineChartPane(BasicStepPane):
             index=item_index)
 
     def add_column_for_line_variable(self, column_name: str):
-        self.add_column_exact_label(parent_label=Helper.data_locale.LINE_VARIABLE, column_name=column_name)
+        self.add_column(parent_label=Helper.data_locale.LINE_VARIABLE, column_name=column_name)
 
     def set_statistics_line(self, item_index: int = None, item_value: str = None):
         get_radio_group(self.base_xpath, self.page,
