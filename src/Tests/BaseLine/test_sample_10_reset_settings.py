@@ -14,8 +14,11 @@ from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDi
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_reset_preference_dialog(page, init):
     """
     Change the language in Settings dialog and reset afterward
