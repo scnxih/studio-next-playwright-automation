@@ -1,4 +1,4 @@
-from Tools.scripts.summarize_stats import Section
+# from Tools.scripts.summarize_stats import Section
 
 
 class Data:
