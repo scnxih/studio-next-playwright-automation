@@ -213,7 +213,41 @@ def test_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
     flow.run(True)
+def test_Maximal_Cliques_level1(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
+    editor.run(True)
 
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("linksetincharnode'中文")
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_MAXIMAL_CLIQUES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("linksetincharnode'中文", Helper.data_locale.STEP_MAXIMAL_CLIQUES)
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MAXIMAL_CLIQUES)
+    Maximal_Cliques_Pane = MaximalCliquesPane(page)
+    Maximal_Cliques_Pane.set_select_server_for_step(item_index=0)
+    Maximal_Cliques_Pane.set_filter_link_data("'weight''中文'n <> 15")
+    Maximal_Cliques_Pane.add_column_for_from_node("from'中文")
+    Maximal_Cliques_Pane.add_column_for_to_node("to'中文")
+
+    Maximal_Cliques_Pane.click_options_tab()
+    Maximal_Cliques_Pane.set_check_maximum_number_of_cliques()
+    Maximal_Cliques_Pane.set_maximum_number_of_cliques("5")
+    Maximal_Cliques_Pane.set_select_maximum_time(item_index=1)
+    Maximal_Cliques_Pane.set_maximum_time("600")
+    Maximal_Cliques_Pane.set_log_details(item_index=1)
+    Maximal_Cliques_Pane.set_select_code_generation(item_index=1)
+
+    Maximal_Cliques_Pane.click_output_tab()
+    Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
+
+    flow.run(True)
 def test_summary_statistics_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
