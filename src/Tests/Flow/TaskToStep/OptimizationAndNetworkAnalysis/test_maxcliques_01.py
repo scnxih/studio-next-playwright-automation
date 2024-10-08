@@ -21,6 +21,7 @@ def test_Maximal_Cliques_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_MAXIMAL_CLIQUES]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("linksetincharnode'中文", Helper.data_locale.STEP_MAXIMAL_CLIQUES)
+    flow.click_on_canvas_in_flow()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MAXIMAL_CLIQUES)
     Maximal_Cliques_Pane = MaximalCliquesPane(page)
@@ -57,6 +58,7 @@ def test_Maximal_Cliques_level1(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_MAXIMAL_CLIQUES]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("linksetincharnode'中文", Helper.data_locale.STEP_MAXIMAL_CLIQUES)
+    flow.click_on_canvas_in_flow()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MAXIMAL_CLIQUES)
     Maximal_Cliques_Pane = MaximalCliquesPane(page)
