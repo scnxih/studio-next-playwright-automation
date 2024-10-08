@@ -58,6 +58,20 @@ def test_02_click_sas_studio_general_via_aria_xpath(page, init):
     # Step-5: Close the dialog
     setting_dialog.close_dialog()
 
+    # Step-6: Reset the theme settings
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    setting_dialog = SettingsDialog(page)
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.global_general)
+    setting_dialog.reset_global_general()
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.sas_studio_general)
+    setting_dialog.reset_sas_studio_general()
+
+    # Step-7: Close the dialog
+    setting_dialog.close_dialog()
+
 
 def test_03_click_tab_pages_via_aria_composation(page, init):
     """
@@ -91,6 +105,21 @@ def test_03_click_tab_pages_via_aria_composation(page, init):
     # Step-5: Close the dialog
     setting_dialog.close_dialog()
 
+    # Step-6: Reset the theme settings
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    setting_dialog = SettingsDialog(page)
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.global_general)
+    setting_dialog.reset_global_general()
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.sas_studio_general)
+    setting_dialog.reset_sas_studio_general()
+
+    # Step-7: Close the dialog
+    setting_dialog.close_dialog()
+
+
 
 def test_04_click_tab_pages_via_aria_composition(page, init):
     # Step-1: Open Settings dialog
@@ -109,10 +138,12 @@ def test_04_click_tab_pages_via_aria_composition(page, init):
 
     # setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.sas_studio_general)
     # setting_dialog.switch_to_tab_page_via_aria(setting_tab_page=SettingsTabPages.sas_studio_general)
+
+    # Step-3: Switch to SAS Studio/General tab page
     setting_dialog.switch_to_tab_page_aria_xpath_dict(setting_tab_page=SettingsTabPages.sas_studio_general)
     setting_dialog.select_tab_type_after_submission("输出数据")
 
-    # Step-2: Switch to Global/General tab page
+    # Step-4: Switch to Global/General tab page
     # setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.code_and_log)
     # setting_dialog.switch_to_tab_page_via_aria(setting_tab_page=SettingsTabPages.code_and_log)
     setting_dialog.switch_to_tab_page_aria_xpath_dict(setting_tab_page=SettingsTabPages.code_and_log)
@@ -121,5 +152,19 @@ def test_04_click_tab_pages_via_aria_composition(page, init):
     setting_dialog.reset_query()
 
     # Step-5: Close the dialog
+    setting_dialog.close_dialog()
+
+    # Step-6: Reset the theme settings
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    setting_dialog = SettingsDialog(page)
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.global_general)
+    setting_dialog.reset_global_general()
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.sas_studio_general)
+    setting_dialog.reset_sas_studio_general()
+
+    # Step-7 Close the dialog
     setting_dialog.close_dialog()
 

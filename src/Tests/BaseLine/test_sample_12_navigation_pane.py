@@ -40,6 +40,21 @@ def test_01_click_tab_pages_via_navigation_pane(page, init):
     setting_dialog.reset_query()
     setting_dialog.close_dialog()
 
+    # Step-5: Reset the theme settings
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    setting_dialog = SettingsDialog(page)
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.global_general)
+    setting_dialog.reset_global_general()
+
+    setting_dialog.switch_to_tab_page(setting_tab_page=SettingsTabPages.sas_studio_general)
+    setting_dialog.reset_sas_studio_general()
+
+    # Step-6: Close the dialog
+    setting_dialog.close_dialog()
+
+
 
 def test_02_count_expand_icons(page, init):
     """
