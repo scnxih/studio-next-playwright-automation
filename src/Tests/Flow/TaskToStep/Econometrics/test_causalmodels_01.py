@@ -69,7 +69,7 @@ def test_02_causal_models_heckman_level0(page, init):
     Causal_models_pane.set_select_distinct_value_dependent_variable(item_index=1)
     Causal_models_pane.add_columns_for_continuous_variable_selection_equation(check_column_name_list=["All_中'文","_3D_中'文"])
     Causal_models_pane.set_check_intercept_selection_equation()
-
+    flow.screenshot_self("data")
     Causal_models_pane.click_output_tab()
     Causal_models_pane.set_check_create_parameter_estimates_data_set()
 
@@ -82,7 +82,7 @@ def test_02_causal_models_heckman_level0(page, init):
     flow.arrange_nodes()
 
     flow.run(True)
-
+    flow.screenshot_self("run")
 @pytest.mark.level1_step
 def test_causal_models_2sls_level1(page, init):
     PageHelper.new_sas_program(page)

@@ -6,7 +6,7 @@ from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
 @pytest.mark.level0_step
-def test_Maximal_Cliques_level0(page, init):
+def test_01_Maximal_Cliques_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -43,7 +43,7 @@ def test_Maximal_Cliques_level0(page, init):
 
     flow.run(True)
 @pytest.mark.level1_step
-def test_Maximal_Cliques_level1(page, init):
+def test_02_Maximal_Cliques_level1(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
