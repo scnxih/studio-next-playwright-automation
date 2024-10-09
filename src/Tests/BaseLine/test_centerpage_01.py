@@ -26,8 +26,7 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     editor = CodeEditorPage(page)
 
     # Wait until gutters appear to avoid diffs
-    WholePage(page).is_visible('//button[@title=" ' + Helper.data_locale.SUBMISSION_FILTER_PANE_STATUS_ERROR + '"]')
-
+    time.sleep(1)
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
     # Mask the cursor
