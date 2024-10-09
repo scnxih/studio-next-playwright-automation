@@ -1,4 +1,4 @@
-from Tools.scripts.summarize_stats import Section
+# from Tools.scripts.summarize_stats import Section
 
 
 class Data:
@@ -1346,4 +1346,9 @@ class Data:
     DISPLAY_MINIMUM_AND_MAXIMUM_DATE="Display minimum and maximum date"
     FREQUENCY_PLOT="Frequency plot"
     VARIABLES_COLON="Variables:"
+    FACTOR_EXTRACTION="Factor Extraction"
+    SHOW_ONLY_COMMON_EXTRACTION_METHODS="Show only common extraction methods"
+    FACTOR_EXTRACTION_METHOD="Factor extraction method"
+    NUMBER_OF_FACTORS="Number of factors"
+    CUSTOM_NUMBER_OF_FACTORS="Custom number of factors"
     """Added by Percy end"""

@@ -30,11 +30,12 @@ def test_01_causal_models_2sls_level0(page, init):
     Causal_models_pane.set_filter_input_data("('价格'n >= 30)")
     Causal_models_pane.set_select_method(item_index=0)
     Causal_models_pane.add_column_for_dependent_variable("销售")
+    flow.screenshot_self("data")
     Causal_models_pane.add_columns_for_endogenous_explanatory_variables(check_column_name_list=["价格1", "价格2"])
     Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
     Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
-
     flow.run(True)
+    flow.screenshot_self("run")
 @pytest.mark.level0_step
 def test_02_causal_models_heckman_level0(page, init):
     PageHelper.new_sas_program(page)
@@ -68,7 +69,7 @@ def test_02_causal_models_heckman_level0(page, init):
     Causal_models_pane.set_select_distinct_value_dependent_variable(item_index=1)
     Causal_models_pane.add_columns_for_continuous_variable_selection_equation(check_column_name_list=["All_中'文","_3D_中'文"])
     Causal_models_pane.set_check_intercept_selection_equation()
-
+    flow.screenshot_self("data")
     Causal_models_pane.click_output_tab()
     Causal_models_pane.set_check_create_parameter_estimates_data_set()
 
@@ -81,7 +82,7 @@ def test_02_causal_models_heckman_level0(page, init):
     flow.arrange_nodes()
 
     flow.run(True)
-
+    flow.screenshot_self("run")
 @pytest.mark.level1_step
 def test_causal_models_2sls_level1(page, init):
     PageHelper.new_sas_program(page)
