@@ -88,7 +88,7 @@ N 1
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_CENTRALITY_METRICS]
@@ -205,11 +205,11 @@ N 1
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
     time.sleep(0.5)
 
-    flow.run(True)
+    flow.run(False)
     time.sleep(3)
     flow.apply_flow_layout_horizontal()
     time.sleep(0.5)
-    flow.screenshot_self("run")
+    flow.screenshot_without_toast("run")
     flow.click_log_tab()
     time.sleep(0.5)
     flow.screenshot_self("log")
@@ -289,7 +289,7 @@ N 1
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_CENTRALITY_METRICS]
@@ -403,7 +403,7 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_03_color_picker(page,init):

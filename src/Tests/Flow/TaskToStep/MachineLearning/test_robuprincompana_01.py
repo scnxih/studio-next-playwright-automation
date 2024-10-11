@@ -34,7 +34,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
@@ -47,7 +47,9 @@ run;
     robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
     robust_principal_component_analysis_pane.add_columns_for_interval_inputs(
         check_column_name_list=["SepalLength'中文", "SepalWidth'中文", "PetalLength'中文", "PetalWidth'中文"])
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
+
 
 
 @pytest.mark.level1_step
@@ -77,7 +79,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
@@ -90,7 +92,8 @@ run;
     robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
     robust_principal_component_analysis_pane.set_input_variables(item_index=0)
     robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_03_robust_principal_component_analysis_in_flow(page, init):
@@ -118,7 +121,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
@@ -149,9 +152,9 @@ run;
     robust_principal_component_analysis_pane.set_svd_method(item_index=1)
     robust_principal_component_analysis_pane.set_maximum_rank("1234")
     robust_principal_component_analysis_pane.set_power("1")
-
-    flow.run(True)
-
+    flow.screenshot_self("options")
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_04_robust_principal_component_analysis_in_flow(page, init):
@@ -180,7 +183,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
@@ -262,7 +265,9 @@ run;
     robust_principal_component_analysis_pane.set_check_save_left_singular_vectors_data()
     robust_principal_component_analysis_pane.set_check_save_singular_values_data()
     robust_principal_component_analysis_pane.set_check_save_right_singular_vectors_data()
-    flow.run(True)
+    flow.screenshot_self("output")
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 
 @pytest.mark.level1_step
@@ -292,7 +297,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "IRIS'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
                  Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
@@ -325,10 +330,17 @@ run;
     robust_principal_component_analysis_pane = RobustPrincipalComponentAnalysis(page)
     robust_principal_component_analysis_pane.set_input_variables(item_index=0)
     robust_principal_component_analysis_pane.add_column_for_id_variable("ID'中文")
-
+    flow.screenshot_self("data")
     robust_principal_component_analysis_pane.click_output_tab()
     robust_principal_component_analysis_pane.set_decomposition_method(item_index=2)
     robust_principal_component_analysis_pane.set_check_save_component_loadings_data()
     robust_principal_component_analysis_pane.set_check_save_pc_scores_data()
-
-    flow.run(True)
+    flow.screenshot_self("output")
+    flow.run(False)
+    flow.screenshot_without_toast("run")
+    flow.click_results_tab()
+    time.sleep(1)
+    flow.screenshot_without_toast("results")
+    flow.click_output_data_tab()
+    time.sleep(1)
+    flow.screenshot_without_toast("output_data")

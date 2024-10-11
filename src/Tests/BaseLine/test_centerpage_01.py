@@ -567,7 +567,7 @@ def test_36_flow(page, init):
     flow.add_node(FlowNodeType.sort)
     flow.add_node(FlowNodeType.union_rows)
     flow.add_node(FlowNodeType.notes)
-    # flow.run(True)
+    # flow.run(False)
     # PageHelper.close_alert_if_needed(page)
     # flow.run_single_node()
     # flow.run_nodes_downstream()

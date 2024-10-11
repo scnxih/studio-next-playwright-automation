@@ -38,7 +38,7 @@ def test_00_t_test_one_sample_in_flow(page, init):
     t_tests_pane = TTestsPane(page)
     t_tests_pane.add_column_for_analysis_var("马力")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level0_step
@@ -71,7 +71,7 @@ def test_01_t_test_paired_in_flow(page, init):
     t_tests_pane.add_column_for_group1_var("城市油耗")
     t_tests_pane.add_column_for_group2_var("高速油耗")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level0_step
@@ -106,7 +106,7 @@ def test_02_t_test_two_sample_in_flow(page, init):
     time.sleep(0.5)
     t_tests_pane.add_column_for_class_var("League'中")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -150,7 +150,7 @@ def test_03_t_test_one_sample_in_flow(page, init):
     t_tests_pane.set_check_for_checkbox(Helper.data_locale.CONFIDENCE_INTERVAL_PLOT)
     time.sleep(0.5)
 
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -192,7 +192,7 @@ def test_04_t_test_paired_in_flow(page, init):
     t_tests_pane.set_check_for_checkbox(Helper.data_locale.CONFIDENCE_INTERVAL_PLOT)
     time.sleep(0.5)
 
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -239,4 +239,4 @@ def test_05_t_test_two_sample_in_flow(page, init):
     time.sleep(0.5)
     t_tests_pane.set_check_for_checkbox(Helper.data_locale.WILCOXON_BOX_PLOT)
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)

@@ -6,7 +6,7 @@ from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
 @pytest.mark.level0_step
-def test_characterize_date_level0(page, init):
+def test_01_characterize_date_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -29,11 +29,14 @@ def test_characterize_date_level0(page, init):
     Characterize_Data_Pane.expand_windowshade_automatic_characterization()
     Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
     Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
+    time.sleep(1)
+    flow.screenshot_self("data")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
-def test_characterize_date_level1(page, init):
+def test_02_characterize_date_level1(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -57,7 +60,7 @@ def test_characterize_date_level1(page, init):
     Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
     Characterize_Data_Pane.expand_windowshade_custom_characterization()
     Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
-
+    flow.screenshot_self("data")
     Characterize_Data_Pane.click_options_tab()
     Characterize_Data_Pane.expand_windowshade_categorical_variables()
     Characterize_Data_Pane.set_check_frequency_table()
@@ -70,5 +73,9 @@ def test_characterize_date_level1(page, init):
     Characterize_Data_Pane.expand_windowshade_date_variables()
     Characterize_Data_Pane.set_check_display_minimum_maximum_date()
     Characterize_Data_Pane.set_check_frequency_plot()
+    flow.screenshot_self("options")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
+    flow.click_results_tab()
+    flow.screenshot_without_toast("results")

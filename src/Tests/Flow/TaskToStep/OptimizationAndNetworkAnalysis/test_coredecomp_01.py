@@ -54,7 +54,7 @@ def test_00_core_decomposition_in_flow(page, init):
     core_decomposition_pane.expand_windowshade(Helper.data_locale.NODES)
     core_decomposition_pane.add_column_for_node("node'中")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -121,4 +121,4 @@ def test_01_core_decomposition_in_flow(page, init):
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)

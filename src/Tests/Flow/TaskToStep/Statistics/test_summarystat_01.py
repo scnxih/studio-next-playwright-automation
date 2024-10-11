@@ -38,7 +38,7 @@ def test_01_summary_statistics_level0(page, init):
     table_pane.set_table("Result'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 @pytest.mark.level1_step
 def test_02_Summary_Statistics_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -77,4 +77,4 @@ def test_02_Summary_Statistics_level1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)

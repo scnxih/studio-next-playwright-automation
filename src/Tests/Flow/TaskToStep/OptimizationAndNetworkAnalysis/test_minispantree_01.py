@@ -30,7 +30,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -43,7 +43,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane = MinimunSpanningTree(page)
     minimum_spanning_tree_pane.add_column_for_from_node("from'中文")
     minimum_spanning_tree_pane.add_column_for_to_node("to'中文")
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -67,7 +67,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -97,7 +97,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -121,7 +121,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -152,7 +152,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -181,7 +181,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -213,7 +213,7 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -242,7 +242,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -274,7 +274,7 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -303,7 +303,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -335,7 +335,7 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -364,7 +364,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -398,7 +398,7 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -427,7 +427,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
@@ -461,4 +461,4 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)

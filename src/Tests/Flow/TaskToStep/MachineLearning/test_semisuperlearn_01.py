@@ -37,7 +37,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -62,7 +62,7 @@ run;
     semi_supervised_learning_pane.add_column_for_target_variable("y'中文")
     semi_supervised_learning_pane.add_columns_for_input_variables(check_column_name_list=["x1'中文", "x2'中文"])
 
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_02_semi_supervised_learning_in_flow(page, init):
@@ -93,7 +93,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -136,7 +136,7 @@ run;
     semi_supervised_learning_pane.click_output_tab()
     semi_supervised_learning_pane.set_check_create_output_data()
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_03_semi_supervised_learning_in_flow(page, init):
@@ -167,7 +167,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -208,7 +208,7 @@ run;
     semi_supervised_learning_pane.click_output_tab()
     semi_supervised_learning_pane.set_check_create_output_data()
     semi_supervised_learning_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_04_semi_supervised_learning_in_flow(page, init):
@@ -239,7 +239,7 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "labeled'中文")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -286,5 +286,5 @@ run;
     semi_supervised_learning_pane.set_include_variables_from_input_CAS_table(item_index=2)
     semi_supervised_learning_pane.add_columns_for_include_these_variables(
         check_column_name_list=["x1'中文", "y'中文", "id'中文"])
-    flow.run(True)
+    flow.run(False)
 

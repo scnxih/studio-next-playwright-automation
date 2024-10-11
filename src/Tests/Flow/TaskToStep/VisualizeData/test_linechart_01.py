@@ -29,7 +29,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -41,7 +41,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_LINE_CHART)
     line_chart_pane = LineChartPane(page)
     line_chart_pane.add_column_for_category("Team'中文")
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -65,7 +65,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -90,7 +90,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane.expand_windowshade_additional_roles()
     line_chart_pane.add_column_for_group_analysis_by("League'中")
     line_chart_pane.add_column_for_weight("nHome'中")
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -114,7 +114,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_LINE_CHART]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -168,4 +168,4 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane.set_title("线图中文标题")
     line_chart_pane.set_footnote("线图中文脚注")
 
-    flow.run(True)
+    flow.run(False)

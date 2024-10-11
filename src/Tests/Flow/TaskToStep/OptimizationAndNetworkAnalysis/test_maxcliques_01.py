@@ -41,7 +41,7 @@ def test_01_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
-    flow.run(True)
+    flow.run(False)
 @pytest.mark.level1_step
 def test_02_Maximal_Cliques_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -78,4 +78,4 @@ def test_02_Maximal_Cliques_level1(page, init):
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
-    flow.run(True)
+    flow.run(False)

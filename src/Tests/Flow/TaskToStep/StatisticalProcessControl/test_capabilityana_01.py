@@ -91,7 +91,7 @@ run;
     capability_analysis.set_upper_limit_to("3.55")
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.wait_toast_disappear()
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
@@ -170,7 +170,7 @@ def test_02_cap_anlys_lev1(page, init):
     capability_analysis.set_include_inset_table()
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.wait_toast_disappear()
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)

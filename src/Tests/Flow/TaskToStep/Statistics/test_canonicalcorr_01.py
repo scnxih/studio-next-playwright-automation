@@ -40,7 +40,7 @@ def test_00_canonical_correlation_in_flow(page, init):
     time.sleep(0.5)
     canonical_correlation_pane.add_columns_for_var_set2(["variety'中", "feedback'中", "autonomy'中"])
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -138,4 +138,4 @@ def test_00_canonical_correlation_in_flow(page, init):
     time.sleep(0.5)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "STAT'数据")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)

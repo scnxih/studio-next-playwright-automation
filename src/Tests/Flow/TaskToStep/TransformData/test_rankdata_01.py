@@ -37,4 +37,4 @@ def test_01_rank_data_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_RANK_DATA, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)

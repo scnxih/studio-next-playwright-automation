@@ -6,7 +6,7 @@ from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
 @pytest.mark.level0_step
-def test_describe_missing_data_level0(page, init):
+def test_01_describe_missing_data_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -29,5 +29,10 @@ def test_describe_missing_data_level0(page, init):
     Discribe_Missing_Data_Pane.add_columns_for_analysis_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
     Discribe_Missing_Data_Pane.expand_windowshade_additional_roles()
     Discribe_Missing_Data_Pane.add_columns_for_group_analysis_by(check_column_name_list=["nRuns'中", "nRBI'中"])
+    flow.screenshot_self("data")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
+    flow.click_results_tab()
+    time.sleep(1)
+    flow.screenshot_without_toast("results")

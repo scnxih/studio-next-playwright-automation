@@ -56,7 +56,7 @@ def test_Bubble_Map_in_flow_level0(page,init):
     bubble_map_pane.add_column(Helper.data_locale.BUBBLE_SIZE,"population_city'中文",None)
     bubble_map_pane.add_column(Helper.data_locale.GROUP, "COUNTY_NAME'中文", None)
 
-    flow.run(True)
+    flow.run(False)
 def test_Bubble_Map_in_flow_level1_01(page,init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -134,7 +134,7 @@ def test_Bubble_Map_in_flow_level1_01(page,init):
     bubble_map_pane.expand_windowshade_graph_size()
     bubble_map_pane.set_units(item_index=1)
 
-    flow.run(True)
+    flow.run(False)
 
 def test_Split_Columns_level0(page, init):
     PageHelper.new_sas_program(page)
@@ -176,7 +176,7 @@ def test_Split_Columns_level0(page, init):
 
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SPLIT_COLUMNS,"OUTPUT'中文测试")
 
-    flow.run(True)
+    flow.run(False)
 
 def test_Maximal_Cliques_level0(page, init):
     PageHelper.new_sas_program(page)
@@ -212,7 +212,7 @@ def test_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
-    flow.run(True)
+    flow.run(False)
 def test_Maximal_Cliques_level1(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -247,7 +247,7 @@ def test_Maximal_Cliques_level1(page, init):
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
-    flow.run(True)
+    flow.run(False)
 def test_summary_statistics_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -278,7 +278,7 @@ def test_summary_statistics_level0(page, init):
     table_pane.set_table("Result'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
 def test_Summary_Statistics_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -316,7 +316,7 @@ def test_Summary_Statistics_level1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
 def test_rank_data_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -347,7 +347,7 @@ def test_rank_data_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_RANK_DATA, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
 def test_causal_models_2sls_level0(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -373,7 +373,7 @@ def test_causal_models_2sls_level0(page, init):
     Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
     Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_causal_models_heckman_level0(page, init):
@@ -432,7 +432,7 @@ def test_causal_models_heckman_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
 
 def test_causal_models_2sls_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -469,7 +469,7 @@ def test_causal_models_2sls_level1(page, init):
     Causal_models_pane.set_select_statistics_to_display(item_index=2)
     Causal_models_pane.set_select_pots_display(item_index=2)
 
-    flow.run(True)
+    flow.run(False)
 
 def test_characterize_date_level0(page, init):
     PageHelper.new_sas_program(page)
@@ -495,7 +495,7 @@ def test_characterize_date_level0(page, init):
     Characterize_Data_Pane.add_columns_for_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
     Characterize_Data_Pane.add_column_for_grouping_variable(column_name="nRBI'中")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
 def test_characterize_date_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -535,7 +535,7 @@ def test_characterize_date_level1(page, init):
     Characterize_Data_Pane.set_check_display_minimum_maximum_date()
     Characterize_Data_Pane.set_check_frequency_plot()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
 def test_describe_missing_data_level0(page, init):
     PageHelper.new_sas_program(page)

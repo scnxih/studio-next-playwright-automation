@@ -1240,7 +1240,7 @@ def test_34_filter_rows(page, init):
 
     filter_rows.set_condition_to("等于", "M")
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_35_load_table(page, init):
@@ -1312,7 +1312,7 @@ def test_36_load_table_source_target(page, init):
     load_table.set_load_technique()
     load_table.set_target_library('work')
     load_table.set_target_table('out_class')
-    flow.run(True)
+    flow.run(False)
 
 
 def test_37_load_table_column_resolution(page, init):
@@ -1365,7 +1365,7 @@ run;
     load_table.filter_ignored_mapping()
     load_table.filter_informational_mapping()
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_38_load_table_if_nonexist_create_one(page, init):
@@ -1545,7 +1545,7 @@ run;
     # load_table.select_key_column("Team'中文")
 
     # Flow could run successfully
-    flow.run(True)
+    flow.run(False)
 
     # Change target table
     load_table.set_target_library('CASUSER')
@@ -1660,7 +1660,7 @@ def test_41_same_birthday_in_flow(page, init):
     same_birthday_probability_pane = SameBirthdayProbabilityPane(page)
     same_birthday_probability_pane.set_number_of_people_in_a_room("2")
 
-    flow.run(True)
+    flow.run(False)
 
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     # flow.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + "(1)")
@@ -1987,7 +1987,7 @@ run;
     capability_analysis.set_upper_limit_to("3.55")
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
 
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
@@ -2052,7 +2052,7 @@ def test_46_lev1_capability_analysis(page, init):
     capability_analysis.set_include_inset_table()
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
@@ -2110,7 +2110,7 @@ B C  B D  C B  D A  D C
     transitive_closure_pane.set_from_node("from")
     transitive_closure_pane.set_to_node("to")
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_48_lev1_transitive_closure(page, init):
@@ -2172,7 +2172,7 @@ run;
     transitive_closure_pane.set_code_generation(item_value=Helper.data_locale.USE_CAS_PROCEDURE)
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 

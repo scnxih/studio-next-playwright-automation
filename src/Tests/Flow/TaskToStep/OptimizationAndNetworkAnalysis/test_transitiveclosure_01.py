@@ -84,7 +84,7 @@ B C  B D  C B  D A  D C
     transitive_closure_pane.set_from_node("from")
     transitive_closure_pane.set_to_node("to")
 
-    flow.run(True)
+    flow.run(False)
     flow.wait_toast_disappear()
 
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
@@ -161,7 +161,7 @@ run;
     transitive_closure_pane.set_code_generation(item_value=Helper.data_locale.USE_CAS_PROCEDURE)
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.wait_toast_disappear()
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)

@@ -27,7 +27,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "一手牌'INPUT")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_POKER_HAND_PROBABILITY]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -42,4 +42,4 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_POKER_HAND_PROBABILITY, "一手牌输出'data")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
