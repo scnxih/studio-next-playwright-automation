@@ -431,4 +431,4 @@ class FlowPage(MainCenterPage):
         get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
 
     def screenshot_without_toast(self,pic_name:str):
-        self.screenshot_self(pic_name=pic_name,clip={'x': 0, 'y': 0, 'width': 1883, 'height': 940})
+        self.screenshot_self(pic_name=pic_name,clip={'x': 435, 'y': 0, 'width': 1883, 'height': 940})
