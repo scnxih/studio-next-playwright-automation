@@ -11,8 +11,11 @@ from src.conftest import *
 from playwright.sync_api import Page, expect
 from src.Pages.Common.dialog import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_saveall(page, init):
     PageHelper.new_sas_program(page)
     text = "'中文测试'"
@@ -30,4 +33,3 @@ def test_01_saveall(page, init):
     file_name_list = ["测试1", "测试2"]
     PageHelper.save_all_files(page, folder_path_list, file_name_list, True)
     # expect(page.get_by_text("文件“测试1.sas”保存成功。")).to_be_visible()
-
