@@ -405,7 +405,7 @@ N 1
     time.sleep(0.5)
     flow.run(False)
 
-@pytest.mark.level1_step
+
 def test_03_color_picker(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
