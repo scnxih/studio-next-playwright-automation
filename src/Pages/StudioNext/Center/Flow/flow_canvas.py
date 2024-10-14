@@ -53,12 +53,12 @@ def link_two_nodes_in_flow(page, node1_name, node2_name):
         # Needed to add padding for the coordinates in order for the drawing to work.  (December 11, 2023)
         # subtract 4 from x, and add 5 to y
         # The initial location is either the upper left corner of the node or center of node location. Unsure at this time
-        x1_coordinate = int(step1_location.split()[0]) + flow_node_width_for_linking_nodes_in_canvas - 4
-        y1_coordinate = int(step1_location.split()[1]) + 5
+        x1_coordinate = int(math.floor(float(step1_location.split()[0]))) + flow_node_width_for_linking_nodes_in_canvas - 4
+        y1_coordinate = int(math.floor(float(step1_location.split()[1]))) + 5
 
         step2_location = page.evaluate(js_functions + f'\nget_node_location("{node2_name}")')
-        x2_coordinate = int(step2_location.split()[0]) - flow_node_width_for_linking_nodes_in_canvas - 4
-        y2_coordinate = int(step2_location.split()[1]) + 5
+        x2_coordinate = int(math.floor(float(step2_location.split()[0]))) - flow_node_width_for_linking_nodes_in_canvas - 4
+        y2_coordinate = int(math.floor(float(step2_location.split()[1]))) + 5
 
         execute_mouse_move_script = (
             f"{js_functions}\nexecute_mouse_move({x1_coordinate}, " f"{y1_coordinate}, {x2_coordinate}, {y2_coordinate});"

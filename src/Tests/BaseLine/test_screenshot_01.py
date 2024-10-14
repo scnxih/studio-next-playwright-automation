@@ -52,7 +52,17 @@ def test_01_screenshot_new_centerpages_more_options(page, init):
 
     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
     text.click_more_options()
+
+    # Original
     WholePage(page).screenshot_self("text")
+
+    # Mask added
+    WholePage(page).screenshot_self("text",
+                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("text_more_options")
 
     xml: XMLPage = PageHelper.new_item(page, TopMenuItem.new_file_types_xml)

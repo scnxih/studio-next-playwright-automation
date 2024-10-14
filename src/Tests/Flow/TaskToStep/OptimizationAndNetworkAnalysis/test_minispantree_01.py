@@ -28,21 +28,23 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
     minimum_spanning_tree_pane = MinimunSpanningTree(page)
     minimum_spanning_tree_pane.add_column_for_from_node("from'中文")
     minimum_spanning_tree_pane.add_column_for_to_node("to'中文")
-    flow.run(True)
-
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_02_minimum_spanning_tree_in_flow(page, init):
@@ -63,13 +65,15 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -78,6 +82,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_library("work")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -88,11 +93,15 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
 
     minimum_spanning_tree_pane.click_options_tab()
     minimum_spanning_tree_pane.set_log_details(item_index=2)
-
+    time.sleep(1)
+    flow.screenshot_self("options")
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()
+
+
 
 
 @pytest.mark.level1_step
@@ -114,13 +123,15 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -129,6 +140,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_library("work")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -144,7 +156,8 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -171,13 +184,15 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -186,6 +201,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -202,7 +218,8 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -229,13 +246,15 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -244,6 +263,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -260,8 +280,8 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
-
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_06_minimum_spanning_tree_in_flow(page, init):
@@ -287,13 +307,15 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -302,6 +324,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -318,8 +341,8 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
-
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_07_minimum_spanning_tree_in_flow(page, init):
@@ -345,13 +368,15 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -360,6 +385,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -378,8 +404,8 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
-
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_08_minimum_spanning_tree_in_flow(page, init):
@@ -405,13 +431,15 @@ run;
     table_pane.set_table("LINKSETINDATA'中文")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LINKSETINDATA'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_MINIMUM_SPANNING_TREE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LINKSETINDATA'中文", Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "添加输出端口")
@@ -420,6 +448,7 @@ run;
     table_pane.set_library("CASUSER")
     table_pane.set_table("MST'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE, "MST'中文")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_SPANNING_TREE)
@@ -438,4 +467,6 @@ run;
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()
+

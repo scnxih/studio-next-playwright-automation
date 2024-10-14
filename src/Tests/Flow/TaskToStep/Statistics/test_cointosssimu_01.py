@@ -13,7 +13,7 @@ def test_01_coin_toss_simulation_in_flow(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_COIN_TOSS_SIMULATION]
     flow.add_step_from_stepspane_to_flow(step_path)
 
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -37,4 +37,5 @@ def test_02_coin_toss_simulation_in_flow(page, init):
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_COIN_TOSS_SIMULATION, "输出'cointest")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()
