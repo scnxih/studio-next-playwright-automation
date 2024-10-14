@@ -44,7 +44,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane.add_column_for_from_node("from'中文")
     minimum_spanning_tree_pane.add_column_for_to_node("to'中文")
     flow.run(False)
-
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_02_minimum_spanning_tree_in_flow(page, init):
@@ -93,11 +93,15 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
 
     minimum_spanning_tree_pane.click_options_tab()
     minimum_spanning_tree_pane.set_log_details(item_index=2)
-
+    time.sleep(1)
+    flow.screenshot_self("options")
     minimum_spanning_tree_pane.click_output_tab()
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
+    flow.screenshot_after_run()
+
+
 
 
 @pytest.mark.level1_step
@@ -153,6 +157,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -214,6 +219,7 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -275,7 +281,7 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
-
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_06_minimum_spanning_tree_in_flow(page, init):
@@ -336,7 +342,7 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
-
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_07_minimum_spanning_tree_in_flow(page, init):
@@ -399,7 +405,7 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
-
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_08_minimum_spanning_tree_in_flow(page, init):
@@ -462,3 +468,5 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
+    flow.screenshot_after_run()
+

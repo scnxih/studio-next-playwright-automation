@@ -43,3 +43,4 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_POKER_HAND_PROBABILITY, "一手牌输出'data")
     flow.arrange_nodes()
     flow.run(False)
+    flow.screenshot_after_run()

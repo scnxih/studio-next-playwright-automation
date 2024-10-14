@@ -31,7 +31,7 @@ def test_01_summary_statistics_level0(page, init):
     Summary_Statistics_Pane.expand_windowshade_additional_roles()
     Summary_Statistics_Pane.add_columns_for_group_analysis_by(check_column_name_list=["nAtBat'中", "nHits'中"])
     Summary_Statistics_Pane.add_columns_for_copy_variables(check_column_name_list=["nBB'中", "YrMajor'中"])
-
+    flow.screenshot_self("data")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -39,6 +39,7 @@ def test_01_summary_statistics_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
     flow.run(False)
+    flow.screenshot_after_run()
 @pytest.mark.level1_step
 def test_02_Summary_Statistics_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -78,3 +79,4 @@ def test_02_Summary_Statistics_level1(page, init):
     flow.arrange_nodes()
 
     flow.run(False)
+    flow.screenshot_after_run()
