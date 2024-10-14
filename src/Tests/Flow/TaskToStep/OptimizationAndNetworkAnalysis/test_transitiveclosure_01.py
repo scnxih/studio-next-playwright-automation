@@ -14,8 +14,7 @@ from src.Utilities.enums import FlowNodeType, TopMenuItem
 """This is test case file for step Transitive Closure"""
 
 
-def test_init(page, init):
-    PageHelper.init_environments(page)
+
 
 
 @pytest.mark.level0_step
@@ -63,7 +62,7 @@ B C  B D  C B  D A  D C
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
     flow.link_two_nodes_in_flow("LINKSETINTC", Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
     flow.arrange_nodes()
-    flow.apply_detail_layout_vertical()
+    # flow.apply_detail_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TRANSITIVE_CLOSURE)
 
     # NOTE: Extra Refresh Operations Are Added Owing to CAS Server Instability
@@ -83,12 +82,11 @@ B C  B D  C B  D A  D C
 
     transitive_closure_pane.set_from_node("from")
     transitive_closure_pane.set_to_node("to")
-
+    flow.screenshot_self("data")
     flow.run(False)
-    flow.wait_toast_disappear()
+    flow.screenshot_after_run()
 
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
+
 
 
 @pytest.mark.level1_step
@@ -159,11 +157,8 @@ run;
 
     transitive_closure_pane.set_code_generation(item_index=1)
     transitive_closure_pane.set_code_generation(item_value=Helper.data_locale.USE_CAS_PROCEDURE)
-
+    flow.screenshot_without_toast("data")
     # Run the flow
     flow.run(False)
-    flow.wait_toast_disappear()
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
+    flow.screenshot_after_run()
 
-    flow.screenshot_self("results")

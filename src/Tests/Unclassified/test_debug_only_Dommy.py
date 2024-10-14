@@ -26,7 +26,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "CITY_POP_LOC'中文")
     flow.arrange_nodes()
-    flow.run(False)
+    flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_TEXT_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -39,7 +39,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     text_map_pane.add_column_for_latitude("LAT'中文")
     text_map_pane.add_column_for_longitude("LONG'中文")
     text_map_pane.add_column_for_text("COUNTY_NAME'中文")
-    flow.run(False)
+    flow.run(True)
 
 
 def test_16_text_map_in_flow_l1(page, init):
@@ -61,7 +61,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "CITY_POP_LOC'中文")
     flow.arrange_nodes()
-    flow.run(False)
+    flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_TEXT_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -112,7 +112,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     text_map_pane.set_line_style(item_index=5)
     text_map_pane.click_options_tab()
 
-    flow.run(False)
+    flow.run(True)
 
 
 def test_01_bar_line_chart_in_flow(page, init):
@@ -133,7 +133,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.arrange_nodes()
-    flow.run(False)
+    flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_BAR_LINE_CHART]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -148,7 +148,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     bar_line_chart_pane.add_column_for_category("Team'中文")
     bar_line_chart_pane.add_column_for_bar_variable("nAtBat'中")
     bar_line_chart_pane.add_column_for_line_variable("nHits'中")
-    flow.run(False)
+    flow.run(True)
 
 
 def test_02_bar_line_chart_in_flow(page, init):
@@ -169,7 +169,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.arrange_nodes()
-    flow.run(False)
+    flow.run(True)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_BAR_LINE_CHART]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -194,4 +194,4 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     bar_line_chart_pane.expand_windowshade_additional_roles()
     bar_line_chart_pane.add_column_for_group_analysis_by("League'中")
     bar_line_chart_pane.add_column_for_weight("nHome'中")
-    flow.run(False)
+    flow.run(True)

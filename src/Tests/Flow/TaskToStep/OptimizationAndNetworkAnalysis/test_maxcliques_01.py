@@ -37,11 +37,17 @@ def test_01_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.set_maximum_time("600")
     Maximal_Cliques_Pane.set_log_details(item_index=0)
     Maximal_Cliques_Pane.set_select_code_generation(item_index=0)
-
+    time.sleep(1)
+    flow.screenshot_self("options")
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
     flow.run(False)
+    flow.screenshot_without_toast("run")
+    flow.click_results_tab()
+    flow.screenshot_without_toast("results")
+    flow.click_output_data_tab()
+    flow.screenshot_without_toast("output_data")
 @pytest.mark.level1_step
 def test_02_Maximal_Cliques_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -77,5 +83,6 @@ def test_02_Maximal_Cliques_level1(page, init):
 
     Maximal_Cliques_Pane.click_output_tab()
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
-
+    flow.screenshot_self("output")
     flow.run(False)
+    flow.screenshot_after_run()

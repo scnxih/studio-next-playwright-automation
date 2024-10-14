@@ -40,7 +40,10 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
     cluster_variables_pane = ClusterVariablesPane(page)
     cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
+    flow.screenshot_self("data")
     flow.run(False)
+    flow.screenshot_after_run()
+
 
 
 @pytest.mark.level1_step
@@ -85,7 +88,9 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_maximum_number_of_clusters(item_index=1)
     cluster_variables_pane.set_check_maximum_second_eigenvalue()
     cluster_variables_pane.set_eigenvalue("2")
+    flow.screenshot_self("options")
     flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -134,7 +139,10 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_analyze(item_index=1)
     cluster_variables_pane.set_check_maximum_number_of_iterations()
     cluster_variables_pane.set_iterations("5")
+    flow.screenshot_self("options")
     flow.run(False)
+    flow.screenshot_after_run()
+
 
 
 @pytest.mark.level1_step
@@ -208,4 +216,6 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_check_replace_existing_output_table_for_statistics()
     cluster_variables_pane.set_check_create_tree_information_data()
     cluster_variables_pane.set_check_replace_existing_output_table_for_tree_information()
+    flow.screenshot_self("output")
     flow.run(False)
+    flow.screenshot_after_run()
