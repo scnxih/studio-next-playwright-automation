@@ -102,7 +102,17 @@ class PageHelper:
         # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
 
         whole: WholePage = WholePage(page)
-        whole.screenshot_self("new_all_tabs")
+
+        # Original
+        # whole.screenshot_self("new_all_tabs")
+
+        # Masks added
+        whole.screenshot_self("new_all_tabs",
+                              mask=[
+                                  "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                  '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                  '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                              mask_color='#000000')
 
     """Updated by Alice on 11/07/2023 start"""
     """Added by Alice on 11/06/2023 start"""
@@ -841,8 +851,7 @@ class PageHelper:
     """Added by Alice on 11/27/2023 end"""
 
     @staticmethod
-    def add_step_to_flow(page: Page,step_path: list):
-        PageHelper.show_accordion(page,AccordionType.steps)
+    def add_step_to_flow(page: Page, step_path: list):
+        PageHelper.show_accordion(page, AccordionType.steps)
         step_page = StepsPage(page)
         step_page.add_to_flow(step_path)
-

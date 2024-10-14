@@ -36,7 +36,8 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
     WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
-                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
                                     mask_color="#000000")
 
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes",
@@ -85,7 +86,8 @@ def test_02_flow_canvas_select_node_sasprogram_executedecisions_export_filter_ro
     time.sleep(1)
 
     WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
-                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
                                     mask_color="#000000")
 
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes",
@@ -130,7 +132,13 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
 
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
-    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+
+    # WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+                                    mask_color="#000000")
 
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
@@ -288,7 +296,12 @@ def test_04_details_pane_table(page, init):
 
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
-    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
+                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+                                    mask_color="#000000")
+
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
     # Fow overflow menu changed

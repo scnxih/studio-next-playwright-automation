@@ -60,6 +60,7 @@ class StartupInitializationLogPage(CenterPage):
         # Mask CPU Time & Real Time
         WholePage(page).screenshot_self("open_in_browser_tab_page",
                                         mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//span[@class="mtk1"][contains(text(),"实际")]/..'],
                                         mask_color="#000000")
 
