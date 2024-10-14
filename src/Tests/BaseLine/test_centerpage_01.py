@@ -14,7 +14,15 @@ def test_init(page, init):
 
 
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
-    WholePage(page).screenshot_self("login")
+    # Original
+    # WholePage(page).screenshot_self("login")
+
+    # With Mask
+    WholePage(page).screenshot_self("login",
+                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
+                                          '//button[@data-testid="programViewPane-toolbar-snippet"]'],
+                                    mask_color="#000000")
+
     PageHelper.new_sas_program(page)
 
     # MODIFIED
@@ -29,11 +37,21 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     time.sleep(1)
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+
     # Mask the cursor
+    editor.click_dialog_title_or_studionext_header()
+
     WholePage(page).screenshot_self("newprogram",
-                                    mask=[editor.editor.base_xpath,
+                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
                                           '//button[@data-testid="programViewPane-toolbar-snippet"]'],
-                                    mask_color="#012345")
+                                    mask_color="#000000")
+
+    # Original
+    # WholePage(page).screenshot_self("newprogram",
+    #                                 mask=[editor.editor.base_xpath,
+    #                                       '//button[@data-testid="programViewPane-toolbar-snippet"]'],
+    #                                 mask_color="#012345")
+
     # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
@@ -94,17 +112,29 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1: Page = page
     time.sleep(0.5)
     page1.keyboard.press("Enter")
+
+    editor.click_dialog_title_or_studionext_header()
+    time.sleep(0.5)
+
     WholePage(page).screenshot_self("00",
-                                    mask=[page1.get_by_test_id('tab-group-content-area-left'),
+                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
+
+    # WholePage(page).screenshot_self("00",
+    #                                 mask=[page1.get_by_test_id('tab-group-content-area-left'),
+    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+    #                                       '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+    #                                 mask_color='#000000')
 
     # WholePage(page).screenshot_self("01")
 
     #
     WholePage(page).screenshot_self("01",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
@@ -135,6 +165,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # WholePage(page).screenshot_self("02")
     WholePage(page).screenshot_self("02",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
     for i in range(3):
@@ -143,6 +174,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # WholePage(page).screenshot_self("03")
     WholePage(page).screenshot_self("03",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
     for i in range(3):
@@ -151,6 +183,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # WholePage(page).screenshot_self("04")
     WholePage(page).screenshot_self("04",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
     editor.run(True)
@@ -166,6 +199,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Hide vertical scroll bar
     WholePage(page).screenshot_self("05",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
                                           '//div[@class="visible scrollbar vertical"]',
@@ -182,6 +216,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # WholePage(page).screenshot_self("06")
     WholePage(page).screenshot_self("06",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//div[@class="visible scrollbar horizontal"]',
                                           '//div[@class="visible scrollbar vertical"]',
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'
@@ -194,6 +229,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # WholePage(page).screenshot_self("07")
     WholePage(page).screenshot_self("07",
                                     mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//div[@class="visible scrollbar horizontal"]',
                                           '//div[@class="visible scrollbar vertical"]',
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'
@@ -208,6 +244,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Added mask for scroll bar
     WholePage(page).screenshot_self("08",
                                     mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
+                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
                                           '//div[@class="visible scrollbar horizontal"]',
                                           '//div[@class="visible scrollbar vertical"]',
@@ -223,6 +260,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("09",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               WholePage(page).locator(
@@ -241,6 +279,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
         # Otherwise do not take the screenshots
         WholePage(page).screenshot_self("10",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               WholePage(page).locator(
@@ -260,6 +299,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
         # Otherwise do not take the screenshots
         WholePage(page).screenshot_self("11",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               WholePage(page).locator(
@@ -276,6 +316,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("12",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
@@ -293,6 +334,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("13",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               '//button[@data-testid="programViewPane-toolbar-runButton"]',
@@ -319,6 +361,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("14",
                                         mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                               '//div[@class="visible scrollbar horizontal"]',
                                               '//div[@class="visible scrollbar vertical"]',
                                               WholePage(page).locator(
