@@ -11,8 +11,11 @@ from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Helper.page_factory import *
-def test_init(page,init):
+
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
 
 def test_01_screenshot_new_centerpages_more_options(page, init):
     program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
@@ -20,69 +23,169 @@ def test_01_screenshot_new_centerpages_more_options(page, init):
 
     # Always cause noises
     # //button[@data-testid="programViewPane-toolbar-snippet"]
+
+    # Original: Recovery causes noises
+    # WholePage(page).screenshot_self("program",
+    #                                 mask=['//button[@data-testid="programViewPane-toolbar-snippet"]'],
+    #                                 mask_color='#000000')
+
     WholePage(page).screenshot_self("program",
-                                    mask=['//button[@data-testid="programViewPane-toolbar-snippet"]'],
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
+
     MenuPage(page).screenshot_self("program_more_options")
 
     python: PythonProgramPage = PageHelper.new_item(page, TopMenuItem.new_python_program)
     python.click_more_options()
-    WholePage(page).screenshot_self("python")
+
+    # Original
+    # WholePage(page).screenshot_self("python")
+
+    # Mask the recovery number
+    WholePage(page).screenshot_self("python",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("python_more_options")
 
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.click_more_options()
-    WholePage(page).screenshot_self("flow")
+
+    # Original
+    # WholePage(page).screenshot_self("flow")
+
+    # Mask noise caused by recovery doc number in status bar
+    WholePage(page).screenshot_self("flow",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("flow_more_options")
 
     query: QueryPage = PageHelper.new_item(page, TopMenuItem.new_query)
     query.click_more_options()
-    WholePage(page).screenshot_self("query")
+
+    # Original
+    # WholePage(page).screenshot_self("query")
+
+    # Mask noise caused by recovery doc number in status bar
+    WholePage(page).screenshot_self("query",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("query_more_options")
 
     importpage: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     importpage.click_more_options()
-    WholePage(page).screenshot_self("import")
+
+    # Original
+    # WholePage(page).screenshot_self("import")
+
+    # Mask noise caused by recovery doc number in status bar
+    WholePage(page).screenshot_self("import",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("import_more_options")
 
     jsonpage: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
     jsonpage.click_more_options()
-    WholePage(page).screenshot_self("json")
+
+    # Original
+    # WholePage(page).screenshot_self("json")
+
+    # Mask noise caused by recovery doc number in status bar
+    WholePage(page).screenshot_self("json",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//button[@data-testid="programViewPane-toolbar-snippet"]'
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("json_more_options")
 
     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
     text.click_more_options()
 
     # Original
-    WholePage(page).screenshot_self("text")
+    # WholePage(page).screenshot_self("text")
 
     # Mask added
     WholePage(page).screenshot_self("text",
-                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
                                     mask_color='#000000')
 
     MenuPage(page).screenshot_self("text_more_options")
 
     xml: XMLPage = PageHelper.new_item(page, TopMenuItem.new_file_types_xml)
     xml.click_more_options()
-    WholePage(page).screenshot_self("xml")
+    # WholePage(page).screenshot_self("xml")
+    WholePage(page).screenshot_self("xml",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("xml_more_options")
 
     workspace: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     workspace.click_more_options()
-    WholePage(page).screenshot_self("workspace")
+    # WholePage(page).screenshot_self("workspace")
+    WholePage(page).screenshot_self("workspace",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("workspace_more_options")
 
     job: JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
     job.click_more_options()
-    WholePage(page).screenshot_self("job")
+    # WholePage(page).screenshot_self("job")
+    WholePage(page).screenshot_self("job",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("job_more_options")
 
     step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     step.click_more_options()
-    WholePage(page).screenshot_self("step")
+    # WholePage(page).screenshot_self("step")
+    WholePage(page).screenshot_self("step",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
+
     MenuPage(page).screenshot_self("step_more_options")
 
 
@@ -104,7 +207,13 @@ def test_02_screenshot_top_menu(page, init):
     open_dlg.screenshot_self("open_dialog")
     open_dlg.close_dialog()
     time.sleep(1)
-    WholePage(page).screenshot_self("close_open")
+    # WholePage(page).screenshot_self("close_open")
+    WholePage(page).screenshot_self("close_open",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')
 
 
 def test_03_screenshot_navigation_panes(page, init):
@@ -212,6 +321,7 @@ def test_05_screenshot_top_menu_view(page, init):
     # //div[@class="sas_components-SearchField-SearchField_search-button-container"]
     WholePage(page).screenshot_self("submission_status",
                                     mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                         '//div[@class="sas_components-SearchField-SearchField_search-button-container"]'],
                                     mask_color="#000000")
 
@@ -224,6 +334,7 @@ def test_05_screenshot_top_menu_view(page, init):
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
                                     # mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'], # Changed
                                     mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                         '//div[@data-testid="scheduledJobsPane-monitoringTab-agGrid"]',
                                         '//div[@data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"]'
                                     ],
@@ -239,6 +350,7 @@ def test_05_screenshot_top_menu_view(page, init):
     # xpath for mask: //div[@class='sas_components-views-StartViewPane-RightView_welcome-container']
     WholePage(page).screenshot_self("start",
                                     mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                         "//div[@class='sas_components-views-StartViewPane-RightView_welcome-container']"],
                                     mask_color="#000000")
 
@@ -307,7 +419,10 @@ def test_06_screenshot_top_right_items(page, init):
 
     top.click_help()
     time.sleep(1)
-    WholePage(page).screenshot_self("help")
+    WholePage(page).screenshot_self("help",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+                                    mask_color='#000000')
 
     time.sleep(1)
     top.click_new_features()
@@ -335,7 +450,16 @@ def test_06_screenshot_top_right_items(page, init):
 
     top.click_user_option()
     time.sleep(2)
-    WholePage(page).screenshot_self("user_option")
+
+    # WholePage(page).screenshot_self("user_option")
+
+    WholePage(page).screenshot_self("user_option",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+                                    mask_color='#000000')
+
+    # Added, otherwise 'Logout' menu-item cannot be found
+    WholePage(page).click_dialog_title_or_studionext_header()
 
 
 def test_07_mask(page, init):
@@ -597,7 +721,12 @@ def test_09_accordion_steps(page, init):
     whole: WholePage = WholePage(page)
     PageHelper.show_accordion(page, AccordionType.steps)
     time.sleep(1)
-    whole.screenshot_self("steps_pane")
+    # whole.screenshot_self("steps_pane")
+    whole.screenshot_self("steps_pane",
+                          mask=[
+                              "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+                          mask_color='#000000')
+
     steps = StepsPage(page)
     # steps.new(NewStepsType.quick_start)
     # steps.new(NewStepsType.sample_controls)

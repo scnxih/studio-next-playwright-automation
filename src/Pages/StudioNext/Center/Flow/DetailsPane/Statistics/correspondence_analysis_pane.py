@@ -1,6 +1,6 @@
 """
 @author: Liu Jia
-@date: 2024/09/29
+@date: 2024/10/14
 @description: Define Correspondence Analysis pane
 """
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
