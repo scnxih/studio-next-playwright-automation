@@ -41,10 +41,11 @@ def test_00_canonical_correlation_in_flow(page, init):
     canonical_correlation_pane.add_columns_for_var_set2(["variety'中", "feedback'中", "autonomy'中"])
     time.sleep(0.5)
     flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
-def test_00_canonical_correlation_in_flow(page, init):
+def test_01_canonical_correlation_in_flow(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area(INPUTDATAZH.CANONICAL_CORRELATION)
@@ -73,7 +74,7 @@ def test_00_canonical_correlation_in_flow(page, init):
     time.sleep(0.5)
     canonical_correlation_pane.add_columns_for_var_set2(["variety'中", "feedback'中", "autonomy'中"])
     time.sleep(0.5)
-
+    flow.screenshot_self("data")
     canonical_correlation_pane.click_options_tab()
     time.sleep(0.2)
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CANONICAL_VAR_SCORE_PLOTS)
@@ -108,7 +109,7 @@ def test_00_canonical_correlation_in_flow(page, init):
     time.sleep(0.2)
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CANONICAL_REDUNDANCY_STAT)
     time.sleep(0.2)
-
+    flow.screenshot_self("options")
     canonical_correlation_pane.click_output_tab()
     time.sleep(0.2)
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CREATE_SCORE_DATASET)
@@ -139,3 +140,4 @@ def test_00_canonical_correlation_in_flow(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "STAT'数据")
     flow.arrange_nodes()
     flow.run(False)
+    flow.screenshot_after_run()
