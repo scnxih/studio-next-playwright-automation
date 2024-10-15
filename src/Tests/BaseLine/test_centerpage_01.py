@@ -41,10 +41,12 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # Mask the cursor
     editor.click_dialog_title_or_studionext_header()
 
-    WholePage(page).screenshot_self("newprogram",
-                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
-                                          '//button[@data-testid="programViewPane-toolbar-snippet"]'],
-                                    mask_color="#000000")
+    WholePage(page).screenshot_self("newprogram")
+
+    # WholePage(page).screenshot_self("newprogram",
+    #                                 mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
+    #                                       '//button[@data-testid="programViewPane-toolbar-snippet"]'],
+    #                                 mask_color="#000000")
 
     # Original
     # WholePage(page).screenshot_self("newprogram",
@@ -115,12 +117,9 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     editor.click_dialog_title_or_studionext_header()
     time.sleep(0.5)
+    # WholePage(page).screenshot_self("00")
 
-    WholePage(page).screenshot_self("00",
-                                    mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-                                          '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-                                          '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-                                    mask_color='#000000')
+    WholePage(page).screenshot_self("00")
 
     # WholePage(page).screenshot_self("00",
     #                                 mask=[page1.get_by_test_id('tab-group-content-area-left'),
