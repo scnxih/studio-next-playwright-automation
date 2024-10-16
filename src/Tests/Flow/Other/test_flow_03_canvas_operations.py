@@ -310,7 +310,7 @@ run;
     # time.sleep(1)
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
     # table_pane.click_tab("预览数据")
     table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
@@ -415,7 +415,7 @@ run;
     # time.sleep(1)
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
     table_pane.click_tab("预览数据")
     # table_pane.click_tab("Preview Data")

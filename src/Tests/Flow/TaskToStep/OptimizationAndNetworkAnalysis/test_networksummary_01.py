@@ -38,9 +38,11 @@ def test_00_network_summary_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_on_canvas_in_flow()
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "添加输入端口",
                                             "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_NETWORK_SUMMARY)
@@ -57,7 +59,7 @@ def test_00_network_summary_in_flow(page, init):
     network_summary_pane.click_options_tab()
     network_summary_pane.set_check_for_checkbox(Helper.data_locale.CONNECTED_COMPONENTS)
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 @pytest.mark.level1_step
@@ -88,9 +90,11 @@ def test_01_network_summary_in_flow(page, init):
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_on_canvas_in_flow()
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "添加输入端口",
                                             "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_NETWORK_SUMMARY)
@@ -121,4 +125,4 @@ def test_01_network_summary_in_flow(page, init):
     table_pane.set_table("输出节点表")
     time.sleep(0.5)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, "输出节点表")
-    flow.run(True)
+    flow.run(False)

@@ -13,8 +13,6 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.text_parsing_and
 """This is test case file for step Text Scoring"""
 
 
-def test_init(page, init):
-    PageHelper.init_environments(page)
 
 
 @pytest.mark.level0_step
@@ -148,6 +146,7 @@ run;
     flow.arrange_nodes()
 
 
+
 @pytest.mark.level0_step
 def test_02_txt_and_topic_lev0(page, init):
     """
@@ -255,3 +254,4 @@ run;
     table_pane.set_table("topicsWords")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "topicsWords")
     flow.arrange_nodes()
+

@@ -187,7 +187,6 @@ class BasePage:
 
     def fill(self, locator_or_xpath, text):
         r_locator = self.transform_to_locator(locator_or_xpath)
-        self.clear(r_locator)
         r_locator.fill(text)
 
     #
@@ -551,7 +550,7 @@ class BasePage:
         else:
             # Helper.logger.debug("1. toast is not none")
             try:
-                self.__div_toast.wait_for(timeout=5000, state="visible")
+                self.__div_toast.wait_for(timeout=2000, state="visible")
             except Exception as e:
                 # Helper.logger.debug("2. toast visible exception:" + type(e).__name__)
                 print(e)

@@ -228,10 +228,10 @@ class FlowPage(MainCenterPage):
 
     def apply_main_layout_standard(self):
         # Original
-        # self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_MAIN_LAYOUT, Helper.data_locale.STANDARD)
 
         # Sept. 24th 2024 Missing zh-CN strings for overflow menu items
-        self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.STANDARD)
+        # self.toolbar.click_menu_in_more_options(Data.APPLY_MAIN_LAYOUT, Data.STANDARD)
 
     def apply_main_layout_horizontal(self):
         self.center_toolbar_helper.apply_main_layout_horizontal()
@@ -429,4 +429,16 @@ class FlowPage(MainCenterPage):
     def click_output_data_tab(self):
         self.click_submitted_code_and_results_tab()
         get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
+
+    def screenshot_without_toast(self,pic_name:str):
+        self.screenshot_self(pic_name=pic_name,clip={'x': 435, 'y': 0, 'width': 1446, 'height': 940})
+
+    def screenshot_after_run(self):
+        self.screenshot_without_toast("run")
+        self.click_output_data_tab()
+        time.sleep(0.5)
+        self.screenshot_without_toast("output_data")
+        self.click_results_tab()
+        time.sleep(0.5)
+        self.screenshot_without_toast("results")
 

@@ -20,7 +20,7 @@ class CharacterizeDataPane(BasicStepPane):
     def collapse_windowshade_custom_characterization(self):
         self.collapse_windowshade(parent_label=Helper.data_locale.CUSTOM_CHARACTERIZATION)
     def add_columns_for_variables(self, check_column_name_list: list = None,uncheck_column_name_list: list = None):
-        self.add_columns(parent_label=Helper.data_locale.VARIABLES,check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
+        self.add_columns_exact_label(parent_label=Helper.data_locale.VARIABLES_COLON,check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
     def add_columns_for_categorical_variables(self, check_column_name_list: list = None,uncheck_column_name_list: list = None):
         self.add_columns(parent_label=Helper.data_locale.CATEGORICAL_VARIABLES,check_column_name_list=check_column_name_list,uncheck_column_name_list=uncheck_column_name_list)
     def add_columns_for_date_variables(self, check_column_name_list: list = None,uncheck_column_name_list: list = None):
@@ -38,9 +38,9 @@ class CharacterizeDataPane(BasicStepPane):
     def set_uncheck_frequency_table(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.FREQUENCY_TABLE)
     def set_check_frequency_chart(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.FREQUENCY_CHART)
+        self.set_check_for_checkbox(label=Helper.data_locale.FREQUENCY_CHART,section_label=Helper.data_locale.CATEGORICAL_VARIABLES)
     def set_uncheck_frequency_chart(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.FREQUENCY_CHART)
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.FREQUENCY_CHART,section_label=Helper.data_locale.CATEGORICAL_VARIABLES)
     def set_check_treat_missing_values_valid_level(self):
         self.set_check_for_checkbox(label=Helper.data_locale.TREAT_MISSING_VALUES_VALID_LEVEL)
     def set_uncheck_treat_missing_values_valid_level(self):
@@ -70,6 +70,6 @@ class CharacterizeDataPane(BasicStepPane):
     def set_uncheck_display_minimum_maximum_date(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.DISPLAY_MINIMUM_AND_MAXIMUM_DATE)
     def set_check_frequency_plot(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.FREQUENCY_PLOT)
+        self.set_check_for_checkbox(label=Helper.data_locale.FREQUENCY_PLOT,section_label=Helper.data_locale.DATE_VARIABLES)
     def set_uncheck_frequency_plot(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.FREQUENCY_PLOT)
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.FREQUENCY_PLOT,section_label=Helper.data_locale.DATE_VARIABLES)

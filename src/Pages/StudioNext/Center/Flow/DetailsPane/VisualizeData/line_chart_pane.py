@@ -96,7 +96,7 @@ class LineChartPane(BasicStepPane):
         self.set_text_for_text_control(parent_label=Helper.data_locale.LABEL, input_text=input_text)
 
     def set_check_set_color(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.SET_COLOR)
+        self.set_check_for_checkbox(label=Helper.data_locale.SET_COLOR_LINE_CHART)
 
     def set_uncheck_set_color(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SET_COLOR)
@@ -171,9 +171,14 @@ class LineChartPane(BasicStepPane):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.CREATE_REFERENCE_LINE,
                                         item_index=item_index, item_value=item_value)
 
+    def set_radio_reference_label_x_axis(self, item_index: int = None, item_value: str = None):
+        get_radio_group(self.base_xpath, self.page,
+                        supplement_base_xpath="[../../../../descendant::label[contains(text(),'" + Helper.data_locale.LINE_OFFSET + "')]]").set_check_for_index(
+            index=item_index)
+
     def set_text_for_second_label_for_x_axis(self, input_text: str):
         get_text(self.base_xpath, self.page,
-                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '参考值作为标签']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
+                 supplement_base_xpath="[../../../descendant::label[contains(text(), '" + Helper.data_locale.LABEL + "')]][../../../../preceding-sibling::div[1][.//label[text() = '" + Helper.data_locale.REFERENCE_VALUE_AS_LABEL + "']]][../../../../../../preceding-sibling::div[contains(@class,'WindowShade')][.//span[text()= '" + Helper.data_locale.X_AXIS + "']]]").fill_text(
             input_text)
 
     def expand_windowshade_y_axis(self):

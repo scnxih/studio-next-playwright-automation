@@ -23,6 +23,7 @@ def test_01_Split_Columns_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_SPLIT_COLUMNS]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_SPLIT_COLUMNS)
+    flow.click_on_canvas_in_flow()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SPLIT_COLUMNS)
     Split_Columns_pane = SplitColumnsPane(page)
@@ -32,12 +33,16 @@ def test_01_Split_Columns_level0(page, init):
     Split_Columns_pane.add_column_for_Labels_for_new_columns(column_name="nRBI'中")
     Split_Columns_pane.expand_windowshade_additional_roles()
     Split_Columns_pane.add_columns_for_group_analysis_by(check_column_name_list=["nHits'中", "CrHits'中"])
+    time.sleep(1)
+    flow.screenshot_self("data")
 
     Split_Columns_pane.click_output_tab()
     Split_Columns_pane.set_check_for_replace_existing_output_table()
     Split_Columns_pane.set_check_for_use_column_name_prefix()
     Split_Columns_pane.set_text_for_prefix("行'列")
     Split_Columns_pane.set_specify_data_to_show(item_index=1)
+    time.sleep(1)
+    flow.screenshot_self("output")
 
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -46,4 +51,5 @@ def test_01_Split_Columns_level0(page, init):
     table_pane.set_table("OUTPUT'中文测试")
 
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SPLIT_COLUMNS,"OUTPUT'中文测试")
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()

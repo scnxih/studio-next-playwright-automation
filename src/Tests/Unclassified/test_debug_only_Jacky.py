@@ -4,6 +4,7 @@ from src.Helper.page_helper import PageHelper
 from src.Pages.Common.base_page import BasePage
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
+from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.minimum_cut_pane import MinimumCutPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.branch_rows_pane import BranchRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.filter_rows_pane import FilterRowsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.manage_columns_pane import ManageColumnsPane
@@ -1240,7 +1241,7 @@ def test_34_filter_rows(page, init):
 
     filter_rows.set_condition_to("等于", "M")
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_35_load_table(page, init):
@@ -1312,7 +1313,7 @@ def test_36_load_table_source_target(page, init):
     load_table.set_load_technique()
     load_table.set_target_library('work')
     load_table.set_target_table('out_class')
-    flow.run(True)
+    flow.run(False)
 
 
 def test_37_load_table_column_resolution(page, init):
@@ -1365,7 +1366,7 @@ run;
     load_table.filter_ignored_mapping()
     load_table.filter_informational_mapping()
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_38_load_table_if_nonexist_create_one(page, init):
@@ -1545,7 +1546,7 @@ run;
     # load_table.select_key_column("Team'中文")
 
     # Flow could run successfully
-    flow.run(True)
+    flow.run(False)
 
     # Change target table
     load_table.set_target_library('CASUSER')
@@ -1660,7 +1661,7 @@ def test_41_same_birthday_in_flow(page, init):
     same_birthday_probability_pane = SameBirthdayProbabilityPane(page)
     same_birthday_probability_pane.set_number_of_people_in_a_room("2")
 
-    flow.run(True)
+    flow.run(False)
 
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     # flow.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + "(1)")
@@ -1987,7 +1988,7 @@ run;
     capability_analysis.set_upper_limit_to("3.55")
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
 
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
@@ -2052,7 +2053,7 @@ def test_46_lev1_capability_analysis(page, init):
     capability_analysis.set_include_inset_table()
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
@@ -2110,7 +2111,7 @@ B C  B D  C B  D A  D C
     transitive_closure_pane.set_from_node("from")
     transitive_closure_pane.set_to_node("to")
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_48_lev1_transitive_closure(page, init):
@@ -2172,7 +2173,7 @@ run;
     transitive_closure_pane.set_code_generation(item_value=Helper.data_locale.USE_CAS_PROCEDURE)
 
     # Run the flow
-    flow.run(True)
+    flow.run(False)
     flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
@@ -2773,3 +2774,140 @@ def test_65_drag_and_drop_custom_step(page, init):
     time.sleep(1.0)
     WholePage(page).page.mouse.up()
 
+
+def test_66_cluster_observation_lev0(page, init):
+    """
+    https://go.documentation.sas.com/doc/en/webeditorcdc/v_034/webeditorref/n1j31r9w1hjtejn1ntv83oubrosf.htm
+    """
+    # Create a sas program and run
+    sas_program_code = """
+data Protein;
+length Country $ 14;
+input RedMeat WhiteMeat Eggs Milk Fish Cereal Starch Nuts FruitVeg Country &$;
+datalines;
+10.1 1.4 0.5 8.9 0.2 42.3 0.6 5.5 1.7 Albania
+8.9 14.0 4.3 19.9 2.1 28.0 3.6 1.3 4.3 Austria
+13.5 9.3 4.1 17.5 4.5 26.6 5.7 2.1 4.0 Belgium
+7.8 6.0 1.6 8.3 1.2 56.7 1.1 3.7 4.2 Bulgaria
+9.7 11.4 2.8 12.5 2.0 34.3 5.0 1.1 4.0 Czechoslovakia
+10.6 10.8 3.7 25.0 9.9 21.9 4.8 0.7 2.4 Denmark
+8.4 11.6 3.7 11.1 5.4 24.6 6.5 0.8 3.6 E Germany
+9.5 4.9 2.7 33.7 5.8 26.3 5.1 1.0 1.4 Finland
+18.0 9.9 3.3 19.5 5.7 28.1 4.8 2.4 6.5 France
+10.2 3.0 2.8 17.6 5.9 41.7 2.2 7.8 6.5 Greece
+5.3 12.4 2.9 9.7 0.3 40.1 4.0 5.4 4.2 Hungary
+13.9 10.0 4.7 25.8 2.2 24.0 6.2 1.6 2.9 Ireland
+9.0 5.1 2.9 13.7 3.4 36.8 2.1 4.3 6.7 Italy
+9.5 13.6 3.6 23.4 2.5 22.4 4.2 1.8 3.7 Netherlands
+9.4 4.7 2.7 23.3 9.7 23.0 4.6 1.6 2.7 Norway
+6.9 10.2 2.7 19.3 3.0 36.1 5.9 2.0 6.6 Poland
+6.2 3.7 1.1 4.9 14.2 27.0 5.9 4.7 7.9 Portugal
+6.2 6.3 1.5 11.1 1.0 49.6 3.1 5.3 2.8 Romania
+7.1 3.4 3.1 8.6 7.0 29.2 5.7 5.9 7.2 Spain 
+9.9 7.8 3.5 4.7 7.5 19.5 3.7 1.4 2.0 Sweden
+13.1 10.1 3.1 23.8 2.3 25.6 2.8 2.4 4.9 Switzerland
+17.4 5.7 4.7 20.6 4.3 24.3 4.7 3.4 3.3 UK
+9.3 4.6 2.1 16.6 3.0 43.6 6.4 3.4 2.9 USSR
+11.4 12.5 4.1 18.8 3.4 18.6 5.2 1.5 3.8 W Germany
+4.4 5.0 1.2 9.5 0.6 55.9 3.0 5.7 3.2 Yugoslavia
+;
+    """
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.format_program()
+    sas_program.run(True)
+    sas_program.wait_toast_disappear()
+    sas_program.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + " (1)")
+
+    # Create a flow and add table node
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    # Add a table
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+
+    # Set lib and table
+    table_pane.set_library("WORK")
+    table_pane.set_table("PROTEIN")
+    table_pane.refresh_table()
+
+    # Add Transitive Closure node
+    step_path = [Helper.data_locale.STATISTICS,
+                 Helper.data_locale.STEP_HIERARCHICAL_CLUSTERING]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas("PROTEIN")
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_HIERARCHICAL_CLUSTERING)
+    flow.link_two_nodes_in_flow("PROTEIN", Helper.data_locale.STEP_HIERARCHICAL_CLUSTERING)
+    flow.arrange_nodes()
+
+    flow.apply_flow_layout_vertical()
+    flow.select_node_in_flow_canvas("PROTEIN")
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_HIERARCHICAL_CLUSTERING)
+
+
+def test_67_minimum_cut_lev0(page, init):
+    """
+    Optimization and Network Analysis/Minimum Cut
+    https://go.documentation.sas.com/doc/en/sasstudiocdc/v_049/webeditorcdc/webeditorref/p00i6dsk2daifen1ugvuno9lwrad.htm
+    """
+    # Create a sas program and run
+    sas_program_code = """
+data LinkSetIn;
+	input from to weight @@;
+	datalines;
+1 2 2  1 5 3  2 3 3  2 5 2  2 6 2
+3 4 4  3 7 2  4 7 2  4 8 2  5 6 3
+6 7 1  7 8 3
+;
+"""
+
+    sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
+    sas_program.editor.type_into_text_area(sas_program_code)
+    sas_program.format_program()
+    sas_program.run(True)
+    sas_program.wait_toast_disappear()
+    sas_program.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + " (1)")
+
+    # Create a flow and add table node
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    # Add a table
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+
+    # Set lib and table
+    table_pane.set_library("WORK")
+    table_pane.set_table("LinkSetIn")
+    table_pane.refresh_table()
+
+    # Add Transitive Closure node
+    step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                 Helper.data_locale.STEP_MINIMUM_CUT]
+
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    # Link two nodes
+    flow.select_node_in_flow_canvas("LinkSetIn")
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_CUT)
+    flow.link_two_nodes_in_flow("LinkSetIn", Helper.data_locale.STEP_MINIMUM_CUT)
+    flow.arrange_nodes()
+
+    flow.apply_flow_layout_vertical()
+    flow.select_node_in_flow_canvas("LinkSetIn")
+
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_MINIMUM_CUT)
+
+    # Set process variable
+    minimum_cut_pane = MinimumCutPane(page)
+    minimum_cut_pane.set_select_a_server_for_this_step(item_index=1)
+
+    minimum_cut_pane.set_from_node("from")
+    minimum_cut_pane.set_to_node("to")
+
+    flow.run(False)

@@ -61,7 +61,7 @@ def test_02_one_way_frequencies_in_flow_level0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
     one_way_frequencies = OneWayFrequencies(page)
     one_way_frequencies.add_columns_for_analysis_variables(check_column_name_list=["Team'中文", "nAtBat'中"])
-    flow.run(True)
+    flow.run(False)
 
 
 def test_03_one_way_frequencies_in_flow_level1(page, init):
@@ -107,7 +107,7 @@ def test_03_one_way_frequencies_in_flow_level1(page, init):
 
     one_way_frequencies.expand_windowshade_plots_and_missing_values()
     one_way_frequencies.set_check_include_in_frequency_table()
-    flow.run(True)
+    flow.run(False)
 
 
 def test_04_permutations_level0(page, init):
@@ -126,10 +126,10 @@ def test_04_permutations_level0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_PERMUTATIONS)
     permutations = Permutations(page)
     permutations.set_uncheck_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
     permutations.set_check_replace_existing_output_table()
-    flow.run(True)
+    flow.run(False)
 
 
 def test_05_standardize_data_in_flow_level0(page, init):
@@ -153,7 +153,7 @@ def test_05_standardize_data_in_flow_level0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STANDARDIZE_DATA)
     standardize_data = StandardizeData(page)
     standardize_data.add_columns_for_variables_to_standardize(check_column_name_list=["nAtBat'中", "nHits'中"])
-    flow.run(True)
+    flow.run(False)
 
 
 def test_06_standardize_data_in_flow_level1(page, init):
@@ -192,7 +192,7 @@ def test_06_standardize_data_in_flow_level1(page, init):
     standardize_data.click_output_tab()
     standardize_data.set_variables_to_include(item_index=0)
     standardize_data.set_specify_data_to_show(item_index=1)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_07_standardize_data_in_flow_level1(page, init):
@@ -231,7 +231,7 @@ def test_07_standardize_data_in_flow_level1(page, init):
     standardize_data.set_specify_prefix_radiobutton(item_index=1)
     standardize_data.set_prefix_for_original_variables(input_text="测试")
     standardize_data.set_specify_data_to_show(item_index=2)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_08_standardize_data_in_flow_level1(page, init):
@@ -273,7 +273,7 @@ def test_08_standardize_data_in_flow_level1(page, init):
     standardize_data.set_specify_prefix_radiobutton(item_index=0)
     standardize_data.set_prefix_for_standardized_variables(input_text="测试_std")
     standardize_data.set_specify_data_to_show(item_index=0)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_09_standardize_data_in_flow_level1(page, init):
@@ -321,4 +321,4 @@ def test_09_standardize_data_in_flow_level1(page, init):
     time.sleep(0.6)
 
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_STANDARDIZE_DATA, "out'标准化")
-    flow.run(True)
+    flow.run(False)

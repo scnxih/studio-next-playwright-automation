@@ -390,6 +390,8 @@ def test_14_color_picker(page,init):
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
                  Helper.data_locale.STEP_SCATTER_MAP]
     flow.add_step_from_stepspane_to_flow(step_path)
+    
+
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_SCATTER_MAP)
     pane = ScatterMapPane(page)
     pane.click_options_tab()
@@ -401,6 +403,13 @@ def test_14_color_picker(page,init):
 
 
 
+
+def test_15_no_node_name(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                 Helper.data_locale.STEP_SEMI_SUPERVISED_LEARNING]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.select_node_in_flow_canvas("")
 
 
 

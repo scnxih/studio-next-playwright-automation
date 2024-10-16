@@ -4,8 +4,10 @@ from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
 
 def test_01_toolbar(page, init):
     PageHelper.show_settings_dialog(page)
@@ -23,7 +25,8 @@ def test_01_toolbar(page, init):
     time.sleep(1)
     PageHelper.show_document_recovery_dialog(page)
     time.sleep(1)
-    Dialog(page).click_button_in_footer(Helper.data_locale.CANCEL)
+    # Dialog(page).click_button_in_footer(Helper.data_locale.CANCEL)
+    Dialog(page).click_button_in_footer(Data.CLOSE)
     time.sleep(1)
     PageHelper.show_submission_status(page)
 
@@ -97,9 +100,13 @@ def test_04_radio_group(page, init):
         setting.radiogroup("withEachSubmission-radioButton").set_check("追加日志")
         time.sleep(0.3)
         setting.click_tab("流")
-        setting.radiogroup("flowTabLayout-radioButton").set_check("水平")
+        # setting.radiogroup("flowTabLayout-radioButton").set_check("水平")
+        setting.radiogroup("flowTabLayout-radioButton").set_check(
+            "Studio-gui-icu.flow.toolbar.flowlayout.horizontal.label")
         time.sleep(0.3)
-        setting.radiogroup("flowTabLayout-radioButton").set_check("垂直")
+        # setting.radiogroup("flowTabLayout-radioButton").set_check("垂直")
+        setting.radiogroup("flowTabLayout-radioButton").set_check(
+            "Studio-gui-icu.flow.toolbar.flowlayout.vertical.label")
         time.sleep(0.3)
         setting.click_tab("后台提交")
         count = setting.radiogroup("locationOfFiles-radioButton").get_radio_items_count()

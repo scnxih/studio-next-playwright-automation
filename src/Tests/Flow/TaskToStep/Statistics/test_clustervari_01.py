@@ -27,18 +27,23 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
     cluster_variables_pane = ClusterVariablesPane(page)
     cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
-    flow.run(True)
+    flow.screenshot_self("data")
+    flow.run(False)
+    flow.screenshot_after_run()
+
 
 
 @pytest.mark.level1_step
@@ -60,12 +65,14 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     table_pane.set_table("BASEBALL'中文测试")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
@@ -81,7 +88,9 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_maximum_number_of_clusters(item_index=1)
     cluster_variables_pane.set_check_maximum_second_eigenvalue()
     cluster_variables_pane.set_eigenvalue("2")
-    flow.run(True)
+    flow.screenshot_self("options")
+    flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -104,15 +113,17 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CLUSTER_VARIABLES)
     cluster_variables_pane = ClusterVariablesPane(page)
+
     cluster_variables_pane.add_columns_for_variables_to_cluster(check_column_name_list=["nAtBat'中", "nHits'中"])
     cluster_variables_pane.expand_windowshade_additional_roles()
     cluster_variables_pane.add_columns_for_variables_to_partial_out(check_column_name_list=["nHome'中", "nRuns'中"])
@@ -128,7 +139,10 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_analyze(item_index=1)
     cluster_variables_pane.set_check_maximum_number_of_iterations()
     cluster_variables_pane.set_iterations("5")
-    flow.run(True)
+    flow.screenshot_self("options")
+    flow.run(False)
+    flow.screenshot_after_run()
+
 
 
 @pytest.mark.level1_step
@@ -151,7 +165,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "BASEBALL'中文测试")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS, Helper.data_locale.STEP_CLUSTER_VARIABLES]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -202,4 +216,6 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_check_replace_existing_output_table_for_statistics()
     cluster_variables_pane.set_check_create_tree_information_data()
     cluster_variables_pane.set_check_replace_existing_output_table_for_tree_information()
-    flow.run(True)
+    flow.screenshot_self("output")
+    flow.run(False)
+    flow.screenshot_after_run()

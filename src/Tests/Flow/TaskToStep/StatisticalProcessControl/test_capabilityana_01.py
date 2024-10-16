@@ -12,8 +12,7 @@ from src.Utilities.enums import FlowNodeType, TopMenuItem
 """This is test case file for step Capability Analysis"""
 
 
-def test_init(page, init):
-    PageHelper.init_environments(page)
+
 
 
 @pytest.mark.level0_step
@@ -89,19 +88,14 @@ run;
     # Set upper and lower limits
     capability_analysis.set_lower_limit_to("3.45")
     capability_analysis.set_upper_limit_to("3.55")
-
+    time.sleep(1)
+    flow.screenshot_self("data")
     # Run the flow
-    flow.run(True)
-
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-
-    time.sleep(3)
-    flow.screenshot_self("results")
-
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
-def test_02_cap_anlys_lev1_(page, init):
+def test_02_cap_anlys_lev1(page, init):
     """
     Level-1 testcase for Capability Analysis
     """
@@ -168,12 +162,9 @@ def test_02_cap_anlys_lev1_(page, init):
     capability_analysis.set_check_option_for_histogram_distribution("Gamma")
     capability_analysis.set_check_option_for_histogram_distribution("指数")
     capability_analysis.set_include_inset_table()
-
+    time.sleep(1)
+    flow.screenshot_without_toast("data")
     # Run the flow
-    flow.run(True)
-    flow.wait_toast_disappear()
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-
-    # time.sleep(10)
-    flow.screenshot_self("results")
+    flow.run(False)
+    flow.screenshot_after_run()
+    PageHelper.clear_autoexec(page)

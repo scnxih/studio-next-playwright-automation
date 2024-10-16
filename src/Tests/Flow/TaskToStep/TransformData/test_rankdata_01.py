@@ -21,6 +21,7 @@ def test_01_rank_data_level0(page, init):
     step_path = [Helper.data_locale.STEP_CATEGORY_TRANSFORM_DATA, Helper.data_locale.STEP_RANK_DATA]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_RANK_DATA)
+    flow.click_on_canvas_in_flow()
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_RANK_DATA)
     Rank_data_pane = RankDataPane(page)
     Rank_data_pane.click_data_tab()
@@ -28,7 +29,7 @@ def test_01_rank_data_level0(page, init):
     Rank_data_pane.add_columns_for_columns_to_rank(check_column_name_list=["Team'中文", "nRBI'中"])
     Rank_data_pane.expand_windowshade_additional_roles()
     Rank_data_pane.add_columns_for_rank_by(check_column_name_list=["nHits'中", "nHome'中"])
-
+    flow.screenshot_self("data")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
@@ -36,4 +37,5 @@ def test_01_rank_data_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_RANK_DATA, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()

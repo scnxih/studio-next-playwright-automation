@@ -1,4 +1,6 @@
 """This is test case file for step Causal Models"""
+import time
+
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.causal_models_pane import CausalModelsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
 from src.conftest import *
@@ -30,11 +32,19 @@ def test_01_causal_models_2sls_level0(page, init):
     Causal_models_pane.set_filter_input_data("('价格'n >= 30)")
     Causal_models_pane.set_select_method(item_index=0)
     Causal_models_pane.add_column_for_dependent_variable("销售")
+    flow.screenshot_self("data")
     Causal_models_pane.add_columns_for_endogenous_explanatory_variables(check_column_name_list=["价格1", "价格2"])
     Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
     Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
+    flow.run(False)
+    flow.screenshot_without_toast("run")
+    flow.click_results_tab()
+    time.sleep(0.5)
+    flow.screenshot_without_toast("results")
+    flow.click_output_data_tab()
+    time.sleep(0.5)
+    flow.screenshot_without_toast("output")
 
-    flow.run(True)
 @pytest.mark.level0_step
 def test_02_causal_models_heckman_level0(page, init):
     PageHelper.new_sas_program(page)
@@ -68,7 +78,7 @@ def test_02_causal_models_heckman_level0(page, init):
     Causal_models_pane.set_select_distinct_value_dependent_variable(item_index=1)
     Causal_models_pane.add_columns_for_continuous_variable_selection_equation(check_column_name_list=["All_中'文","_3D_中'文"])
     Causal_models_pane.set_check_intercept_selection_equation()
-
+    flow.screenshot_self("data")
     Causal_models_pane.click_output_tab()
     Causal_models_pane.set_check_create_parameter_estimates_data_set()
 
@@ -80,10 +90,11 @@ def test_02_causal_models_heckman_level0(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
-
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 @pytest.mark.level1_step
-def test_causal_models_2sls_level1(page, init):
+def test_04_causal_models_2sls_level1(page, init):
+
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area('libname autolib "/segatest/I18N/Autolib/";')
@@ -111,16 +122,18 @@ def test_causal_models_2sls_level1(page, init):
     Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
     Causal_models_pane.expand_windowshade_additional_roles()
     Causal_models_pane.add_columns_for_group_analysis_by(check_column_name_list=["日期"])
-
+    flow.screenshot_self("data")
     Causal_models_pane.click_options_tab()
     Causal_models_pane.set_select_optimization_method(item_index=1)
     Causal_models_pane.set_select_maximum_number_of_iterations(item_index=1)
     Causal_models_pane.set_maximum_number_of_iterations_text(input_text="200")
     Causal_models_pane.set_select_statistics_to_display(item_index=2)
     Causal_models_pane.set_select_pots_display(item_index=2)
-
+    time.sleep(1.5)
+    flow.screenshot_self("options")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")
 
 @pytest.mark.level1_step
 def test_03_causal_models_heckman_level1(page, init):
@@ -155,6 +168,7 @@ def test_03_causal_models_heckman_level1(page, init):
     Causal_models_pane.set_select_distinct_value_dependent_variable(item_index=1)
     Causal_models_pane.add_columns_for_continuous_variable_selection_equation(check_column_name_list=["All_中'文","_3D_中'文"])
     Causal_models_pane.set_check_intercept_selection_equation()
+    flow.screenshot_self("data")
 
     Causal_models_pane.click_options_tab()
     Causal_models_pane.set_select_optimization_method(item_index=1)
@@ -166,12 +180,12 @@ def test_03_causal_models_heckman_level1(page, init):
     Causal_models_pane.set_check_correlations_parameter_estimates()
     Causal_models_pane.set_check_covariances_parameter_estimates()
     Causal_models_pane.set_check_iteration_history_objective_function()
-
+    flow.screenshot_self("options")
     Causal_models_pane.click_output_tab()
     Causal_models_pane.set_check_create_parameter_estimates_data_set()
     Causal_models_pane.set_check_covariance_matrix_estimates()
     Causal_models_pane.set_check_correlation_matrix_estimates()
-
+    flow.screenshot_self("output")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
@@ -180,4 +194,5 @@ def test_03_causal_models_heckman_level1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_without_toast("run")

@@ -28,12 +28,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -46,7 +48,7 @@ run;
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
     verify_with_loqate_pane.set_uncheck_test_mode()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_02_verify_with_loqate_in_flow(page, init):
@@ -68,12 +70,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -97,7 +101,7 @@ run;
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
     verify_with_loqate_pane.set_uncheck_test_mode()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_03_verify_with_loqate_in_flow(page, init):
@@ -119,12 +123,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -138,7 +144,7 @@ run;
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
     verify_with_loqate_pane.set_uncheck_test_mode()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_04_verify_with_loqate_in_flow(page, init):
@@ -160,12 +166,14 @@ run;
     table_pane.set_table("LOQATE.数据'TEST")
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -180,7 +188,7 @@ run;
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
     verify_with_loqate_pane.set_uncheck_test_mode()
-    flow.run(True)
+    flow.run(False)
 
 @pytest.mark.level1_step
 def test_05_verify_with_loqate_in_flow(page, init):
@@ -203,11 +211,12 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "LOQATE.数据'TEST")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_ENRICHMENT, Helper.data_locale.STEP_VERIFY_WITH_LOQATE]
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.link_two_nodes_in_flow("LOQATE.数据'TEST", Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_VERIFY_WITH_LOQATE)
@@ -243,4 +252,4 @@ run;
     verify_with_loqate_pane.click_loqate_key_tab()
     verify_with_loqate_pane.set_loqate_key("YG77-BY96-PA11-KM34")
     verify_with_loqate_pane.set_uncheck_test_mode()
-    flow.run(True)
+    flow.run(False)

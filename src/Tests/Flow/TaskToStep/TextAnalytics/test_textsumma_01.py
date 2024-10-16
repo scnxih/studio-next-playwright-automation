@@ -32,7 +32,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
                  Helper.data_locale.STEP_TEXT_SUMMARIZATION]
@@ -54,7 +54,9 @@ run;
     text_summarization_pane.set_language(item_index=1)
 
     text_summarization_pane.add_column_for_text_variable("text'中文")
-    flow.run(True)
+    flow.screenshot_self("data")
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_02_text_summarization_in_flow(page, init):
@@ -81,7 +83,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
                  Helper.data_locale.STEP_TEXT_SUMMARIZATION]
@@ -108,7 +110,9 @@ run;
 
     text_summarization_pane.click_options_tab()
     text_summarization_pane.set_check_use_entities_and_noun_groups()
-    flow.run(True)
+    flow.screenshot_self("options")
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_03_text_summarization_in_flow(page, init):
@@ -135,7 +139,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
                  Helper.data_locale.STEP_TEXT_SUMMARIZATION]
@@ -168,12 +172,13 @@ run;
     text_summarization_pane.add_column_for_text_variable("text'中文")
     text_summarization_pane.set_key_variable(item_index=1)
     text_summarization_pane.add_column_for_key_variable("key'中文")
-
+    flow.screenshot_self("data")
     text_summarization_pane.click_options_tab()
     text_summarization_pane.set_check_entire_corpus()
     text_summarization_pane.set_check_use_entities_and_noun_groups()
-
-    flow.run(True)
+    flow.screenshot_self("options")
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_04_text_summarization_in_flow(page, init):
@@ -200,7 +205,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
                  Helper.data_locale.STEP_TEXT_SUMMARIZATION]
@@ -243,7 +248,9 @@ run;
     text_summarization_pane.add_columns_for_include_these_variables(check_column_name_list=["text'中文"])
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
-    flow.run(True)
+    flow.screenshot_self("output")
+    flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_05_text_summarization_in_flow(page, init):
@@ -270,7 +277,7 @@ run;
     time.sleep(0.8)
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "TEXTSUMMARY'中文")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS,
                  Helper.data_locale.STEP_TEXT_SUMMARIZATION]
@@ -303,4 +310,5 @@ run;
     text_summarization_pane.click_output_tab()
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
-    flow.run(True)
+    flow.run(False)
+    flow.screenshot_after_run()

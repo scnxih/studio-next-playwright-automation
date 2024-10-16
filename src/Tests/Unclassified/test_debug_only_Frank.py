@@ -171,7 +171,7 @@ def test_scatter_map_l0(page, init):
     time.sleep(0.5)
     scatter_map_pane.add_column_for_longitude("long'经度")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_hidden_markov_models_l0(page, init):
@@ -202,7 +202,7 @@ def test_hidden_markov_models_l0(page, init):
     time.sleep(0.8)
     hidden_markov_models_pane.add_column(Helper.data_locale.TIME_ID, "t'中")
     time.sleep(0.8)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_hidden_markov_models_l1(page, init):
@@ -252,7 +252,7 @@ def test_hidden_markov_models_l1(page, init):
     hidden_markov_models_pane.select_procedure(Helper.data_locale.USE_CAS_PROCEDURE)
     time.sleep(0.8)
 
-    flow.run(True)
+    flow.run(False)
 
 
 def test_traveling_salesman_problem_l0(page, init):
@@ -281,7 +281,7 @@ def test_traveling_salesman_problem_l0(page, init):
     traveling_salesman_problem_pane.add_column_for_from_node("from'始")
     traveling_salesman_problem_pane.add_column_for_to_node("to'终")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_traveling_salesman_problem_l1(page, init):
@@ -341,7 +341,7 @@ def test_traveling_salesman_problem_l1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, "输出节点表")
     flow.arrange_nodes()
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
 
 def test_mosaic_plot_l0(page, init):

@@ -88,13 +88,14 @@ N 1
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_CENTRALITY_METRICS]
     flow.add_step_from_stepspane_to_flow(step_path)
 
     flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
@@ -126,6 +127,7 @@ N 1
     centrality_metrics_pane.set_filter_input_data("\"weight'权重\"n>=0")
     centrality_metrics_pane.set_link_direction(item_index=1)
     centrality_metrics_pane.set_link_direction(item_index=0)
+
     centrality_metrics_pane.add_column_for_from_node("from'从")
     time.sleep(0.5)
     centrality_metrics_pane.add_column_for_to_node("to'到")
@@ -203,17 +205,17 @@ N 1
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
     time.sleep(0.5)
 
-    flow.run(True)
-    time.sleep(3)
+    flow.run(False)
+    time.sleep(0.5)
     flow.apply_flow_layout_horizontal()
     time.sleep(0.5)
-    flow.screenshot_self("run")
+    flow.screenshot_without_toast("run")
     flow.click_log_tab()
     time.sleep(0.5)
-    flow.screenshot_self("log")
+    flow.screenshot_without_toast("log")
     flow.click_output_data_tab()
     time.sleep(0.5)
-    flow.screenshot_self("output_data")
+    flow.screenshot_without_toast("output_data")
 @pytest.mark.level1_step
 def test_02_centrality_metrics_in_flow(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
@@ -287,7 +289,7 @@ N 1
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
-    flow.run(True)
+    flow.run(False)
 
     step_path = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
                  Helper.data_locale.STEP_CENTRALITY_METRICS]
@@ -317,12 +319,14 @@ N 1
     table_pane.set_library("MYCAS")
     table_pane.set_table("OUTPUT_LINKS")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_LINKS")
+    flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
     flow.apply_flow_layout_vertical()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_CENTRALITY_METRICS)
     centrality_metrics_pane = CentralityMetricsPane(page)
     centrality_metrics_pane.set_filter_input_data("\"weight'权重\"n>=0")
+
     centrality_metrics_pane.set_link_direction(item_index=1)
     centrality_metrics_pane.set_link_direction(item_index=0)
     centrality_metrics_pane.add_column_for_from_node("from'从")
@@ -399,9 +403,9 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.set_notes("You can set notes here to describe the step.")
     time.sleep(0.5)
-    flow.run(True)
+    flow.run(False)
 
-@pytest.mark.level1_step
+
 def test_03_color_picker(page,init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA,
