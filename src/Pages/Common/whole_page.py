@@ -23,6 +23,8 @@ class WholePage(BasePage):
         self.screenshot(self.base_xpath, pic_name, clip=clip,
                         mask=[
                             "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-                            "//span[contains(@class,'BaseButton' )][contains(text(), " + Helper.data_locale.COLUMN + ")]",
-                            '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                            # "//span[contains(@class,'BaseButton' )][contains(text(), " + Helper.data_locale.COLUMN + ")]",
+                            # "//div[@role='button'][@title='" + Helper.data_locale.USER_OPTION + "']",
+                            # '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                        ],
                         mask_color='#000000')
