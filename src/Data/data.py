@@ -1368,4 +1368,7 @@ class Data:
     EIGENVECTORS="Eigenvectors"
     FACTOR_SCORING_COEFFICIENTS = "Factor scoring coefficients"
     KAISER_MEASURE_SAMPLING_ADEQUACY="Kaiser's measure of sampling adequacy"
+    DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST="Display factor loadings with largest absolute loading first"
+    DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="Do not display small correlations and factor loadings"
+    MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="Minimum factor loading or correlation to display"
     """Added by Percy end"""

@@ -100,6 +100,8 @@ class FactorAnalysisPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SPECIFY_POWER_FOR_PROMAX_ROTATION)
     def set_power_for_promax_rotation(self, input_text: str):
         self.set_text_for_text_control(parent_label=Helper.data_locale.POWER_FOR_PROMAX_ROTATION, input_text=input_text)
+
+    """Statistics"""
     def expand_windowshade_statistics(self, parent_label: str):
         self.expand_windowshade(parent_label=Helper.data_locale.STATISTICS)
     def unexpand_windowshade_statistics(self, parent_label: str):
@@ -130,7 +132,21 @@ class FactorAnalysisPane(BasicStepPane):
         self.set_check_for_checkbox(label=Helper.data_locale.KAISER_MEASURE_SAMPLING_ADEQUACY)
     def set_uncheck_kaisers_measure_of_sampling_adequacy(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.KAISER_MEASURE_SAMPLING_ADEQUACY)
-    def set_check_kaisers_measure_of_sampling_adequacy(self):
-        self.set_check_for_checkbox(label=Helper.data_locale.KAISER_MEASURE_SAMPLING_ADEQUACY)
-    def set_uncheck_kaisers_measure_of_sampling_adequacy(self):
-        self.set_uncheck_for_checkbox(label=Helper.data_locale.KAISER_MEASURE_SAMPLING_ADEQUACY)
+    def set_check_display_factor_loading(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST)
+    def set_uncheck_display_factor_loading(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST)
+    def set_check_do_not_display_small_correlations(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS)
+    def set_uncheck_do_not_display_small_correlations(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS)
+    def set_minimum_factor_loading_correlation(self, input_text: str):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY, input_text=input_text)
+
+    """Select Plots to display"""
+    def set_select_plots_to_display(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.SELECT_PLOTS_TO_DISPLAY, item_index=item_index,item_value=item_value)
+    def set_check_eigenvalue_by_component(self):
+        self.set_check_for_checkbox(label=Helper.data_locale.EIGENVECTORS)
+    def set_uncheck_eigenvalue_by_component(self):
+        self.set_uncheck_for_checkbox(label=Helper.data_locale.EIGENVECTORS)
