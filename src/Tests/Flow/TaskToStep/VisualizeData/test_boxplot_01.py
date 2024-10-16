@@ -140,14 +140,8 @@ def test_02_box_plot_lev1(page, init):
     box_plot_pane.set_footnote_as("MyFootNote")
 
     flow.run(False)
+    flow.screenshot_after_run()
 
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-    time.sleep(3)
-
-    flow.screenshot_self(pic_name="cars_box_plot",
-                         mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
-                         mask_color="#000000")
 
 
 @pytest.mark.level1_step
@@ -211,12 +205,4 @@ def test_03_box_plot_lev1(page, init):
     box_plot_pane.set_footnote_as("MyFootNote")
 
     flow.run(False)
-
-    flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
-    # flow.tab_group.click_tab_by_text(Helper.data_locale.OUTPUT_DATA + "(1)")
-    flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-    time.sleep(3)
-
-    flow.screenshot_self(pic_name="cars_box_plot",
-                         mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
-                         mask_color="#000000")
+    flow.screenshot_after_run()

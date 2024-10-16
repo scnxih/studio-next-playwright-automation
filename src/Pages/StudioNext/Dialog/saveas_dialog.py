@@ -10,10 +10,10 @@ from src.Pages.Common.combobox import Combobox
 class SaveAsDialog(Dialog):
     def __init__(self, page):
         # Dialog.__init__(self, page, Helper.data_locale.SAVE_AS_A_Upper_Case)
-        Dialog.__init__(self, page,"")
+        Dialog.__init__(self, page, "")
 
-        self.folder_tree = TreeViewNova(self.base_xpath, page)
-        # self.folder_tree = TreeViewAGGrid(self.base_xpath,page,supplement_base_xpath = "[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
+        # self.folder_tree = TreeViewNova(self.base_xpath, page)
+        self.folder_tree = TreeViewAGGrid(self.base_xpath, page, supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
         self.toolbar = Toolbar(self.base_xpath, page)
         self.combobox_sort_by = Combobox(container_base_xpath=self.base_xpath, page=page,
                                          data_test_id="contentSelector-save-contentSelector-navigator-actionbar-sort-by")
@@ -32,6 +32,7 @@ class SaveAsDialog(Dialog):
         //div[@data-testid="contentSelector-save-contentSelector-navigator-table-gridWrapper"]
         """
         return self.get_by_test_id("contentSelector-save-contentSelector-navigator-table-gridWrapper")
+
     # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
     # ADDED
@@ -56,11 +57,14 @@ class SaveAsDialog(Dialog):
 
     def save_file(self, folder_path: list, file_name: str, if_replace, if_wait_toast_disappear=True):
 
-        # Since Save as does note work due to Nova 43.1, comment this save_file method temporarily.
+        # Since Save as does not work due to Nova 43.1, comment this save_file method temporarily.
         # self.close_dialog()
         # return False
+
+        # Original
         if not self.navigate_to_folder(folder_path):
             return False
+
         self.fill(self.input_file_name, file_name)
         time.sleep(0.3)
 

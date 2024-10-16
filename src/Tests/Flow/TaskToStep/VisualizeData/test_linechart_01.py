@@ -42,6 +42,8 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane = LineChartPane(page)
     line_chart_pane.add_column_for_category("Team'中文")
     flow.run(False)
+    flow.screenshot_after_run()
+
 
 
 @pytest.mark.level1_step
@@ -90,7 +92,10 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane.expand_windowshade_additional_roles()
     line_chart_pane.add_column_for_group_analysis_by("League'中")
     line_chart_pane.add_column_for_weight("nHome'中")
+    time.sleep(1)
+    flow.screenshot_self("data")
     flow.run(False)
+    flow.screenshot_after_run()
 
 
 @pytest.mark.level1_step
@@ -167,5 +172,6 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     line_chart_pane.expand_windowshade_title_footnote()
     line_chart_pane.set_title("线图中文标题")
     line_chart_pane.set_footnote("线图中文脚注")
-
+    flow.screenshot_self("options")
     flow.run(False)
+    flow.screenshot_after_run()
