@@ -605,9 +605,10 @@ class BasePage:
         while not self.is_enabled(locator_or_xpath) and i < wait_time * 10:
             time.sleep(0.1)
             i = i + 1
-
+        time.sleep(0.5)
         if self.is_enabled(locator_or_xpath):
             return True
+
         else:
             return False
 

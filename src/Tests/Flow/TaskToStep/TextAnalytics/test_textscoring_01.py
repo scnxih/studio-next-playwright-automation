@@ -254,3 +254,4 @@ run;
     table_pane.set_table("topicsWords")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TEXT_PARSING_AND_TOPIC_DISCOVERY, "topicsWords")
     flow.arrange_nodes()
+

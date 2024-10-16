@@ -29,7 +29,7 @@ def test_01_rank_data_level0(page, init):
     Rank_data_pane.add_columns_for_columns_to_rank(check_column_name_list=["Team'中文", "nRBI'中"])
     Rank_data_pane.expand_windowshade_additional_roles()
     Rank_data_pane.add_columns_for_rank_by(check_column_name_list=["nHits'中", "nHome'中"])
-
+    flow.screenshot_self("data")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
@@ -38,3 +38,4 @@ def test_01_rank_data_level0(page, init):
     flow.arrange_nodes()
 
     flow.run(False)
+    flow.screenshot_after_run()
