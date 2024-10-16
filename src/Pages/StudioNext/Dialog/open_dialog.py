@@ -11,15 +11,17 @@ class OpenDialog(Dialog):
     def __init__(self, page):
         Dialog.__init__(self, page, Helper.data_locale.OPEN)
         # Dialog.__init__(self, page, "Open")
-        self.folder_tree = TreeViewNova(self.base_xpath, page)
-        # self.folder_tree = TreeViewAGGrid(self.base_xpath, page,
-        #                                   supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
+
+        # self.folder_tree = TreeViewNova(self.base_xpath, page)
+
+        # Changed to AGGrid on Oct.16th 2024
+        self.folder_tree = TreeViewAGGrid(self.base_xpath, page, supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
 
         """modified by Alice on 09/15/2023 since common component constructor has been changed"""
         self.toolbar = Toolbar(self.base_xpath, page)
         ''' modified by Alice on 09/15/2023 since all common component constructor has been changed'''
         self.combobox_type = Combobox(container_base_xpath=self.base_xpath, page=page, data_test_id="contentSelector"
-                                                                                                   "-open-contentSelector-type")
+                                                                                                    "-open-contentSelector-type")
 
     def select_file(self, file_name):
         return self.locate_xpath("//span[contains(text(),'" + file_name + "')]")
@@ -36,7 +38,7 @@ class OpenDialog(Dialog):
             self.dblclick(self.select_file(file_name))
             time.sleep(2)
             return True
-        Helper.logger.debug("Cannot find file:"+"/".join(map(str, folder_path))+file_name)
+        Helper.logger.debug("Cannot find file:" + "/".join(map(str, folder_path)) + file_name)
         return False
 
     def open_by_type(self, open_by_type):
