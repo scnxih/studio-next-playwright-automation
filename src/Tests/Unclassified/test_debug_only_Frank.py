@@ -10,6 +10,8 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.scatter_map_pane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.hidden_markov_models_pane import HiddenMarkovModelsPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis.traveling_salesman_problem_pane import TravelingSalesmanProblemPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.segmentation_pane import SegmentationPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.TextAnalytics.boolean_rules_pane import BooleanRulesPane
+from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.mosaic_plot_pane import MosaicPlotPane
 from src.Data.input_data_zh import *
 from src.conftest import *
 from src.Helper.page_factory import *
@@ -340,3 +342,61 @@ def test_traveling_salesman_problem_l1(page, init):
     flow.arrange_nodes()
     time.sleep(0.5)
     flow.run(True)
+
+
+def test_mosaic_plot_l0(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area(INPUTDATAZH.AUTOLIB)
+    editor.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("AUTOLIB")
+    table_pane.set_table("CARS")
+    time.sleep(0.5)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_MOSAIC_PLOT]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("CARS", Helper.data_locale.STEP_MOSAIC_PLOT)
+    flow.arrange_nodes()
+    flow.apply_flow_layout_vertical()
+    time.sleep(0.5)
+
+    mosaic_plot_pane = MosaicPlotPane(page)
+    mosaic_plot_pane.add_column_for_y_axis("气缸")
+    time.sleep(0.5)
+    mosaic_plot_pane.add_column_for_X_axis("原产地")
+    time.sleep(0.5)
+    flow.run(True)
+
+
+def test_boolean_rules_expand_collapse_parse_text(page, init):
+    flow: FlowPage = PageHelper.new_flow(page)
+    step_path = [Helper.data_locale.STEP_CATEGORY_TEXT_ANALYTICS, Helper.data_locale.STEP_BOOLEAN_RULES]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.apply_flow_layout_vertical()
+    boolean_rules_pane = BooleanRulesPane(page)
+    boolean_rules_pane.click_options_tab()
+    time.sleep(1)
+    # boolean_rules_pane.collapse_windowshade_parse_text_in_options_tab()
+    # time.sleep(1)
+    # boolean_rules_pane.expand_windowshade_parse_text_in_options_tab()
+    # time.sleep(1)
+    boolean_rules_pane.collapse_windowshade_rules_extraction_in_options_tab()
+    time.sleep(1)
+    boolean_rules_pane.expand_windowshade_rules_extraction_in_options_tab()
+    time.sleep(1)
+    boolean_rules_pane.click_output_tab()
+    time.sleep(1)
+    boolean_rules_pane.collapse_windowshade_parse_text_in_output_tab()
+    time.sleep(1)
+    boolean_rules_pane.expand_windowshade_parse_text_in_output_tab()
+    time.sleep(1)
+    boolean_rules_pane.collapse_windowshade_rules_extraction_in_output_tab()
+    time.sleep(1)
+    boolean_rules_pane.expand_windowshade_rules_extraction_in_output_tab()
+    time.sleep(1)

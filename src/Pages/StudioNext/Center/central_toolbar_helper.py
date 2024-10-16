@@ -137,7 +137,8 @@ class CentralToolbarHelper:
         self.toolbar.click_menu_in_more_options(Helper.data_locale.ANALYZE_AND_CREATE_FLOW)
         time.sleep(0.5)
         if Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).is_open():
-            Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(Helper.data_locale.CANCEL)
+            Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW).click_button_in_footer(
+                Helper.data_locale.CANCEL)
             time.sleep(0.3)
 
         else:
@@ -269,11 +270,10 @@ class CentralToolbarHelper:
         Dialog(self.toolbar.page, Helper.data_locale.EMAIL).click_button_in_footer(Helper.data_locale.CANCEL)
 
     def apply_flow_layout_horizontal(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT, Data.HORIZONTAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT, Helper.data_locale.HORIZONTAL)
 
     def apply_flow_layout_vertical(self):
-        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT,
-                                                    Data.VERTICAL)
+        self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_FLOW_LAYOUT, Helper.data_locale.VERTICAL)
 
     def apply_detail_layout_standard(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.APPLY_DETAIL_LAYOUT, Helper.data_locale.STANDARD)
