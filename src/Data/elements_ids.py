@@ -49,6 +49,9 @@ class TestID:
     SELECT_A_COLUMN_DIALOG_FILTER_COMBO = "selectColumnDialog-filterMenuButton"
     SELECT_A_COLUMN_DIALOG_SEARCH_INPUT = "selectColumnDialog-searchField-searchInput-input"
     SELECT_A_COLUMN_DIALOG_SEARCH_BTN = "selectColumnDialog-searchField-searchButton"
+    SELECT_A_VALUE_DIALOG_FILTER_COMBO = "selectValueDialog-filterSelect"
+    SELECT_A_VALUE_DIALOG_SEARCH_INPUT = "selectValueDialog-searchField-searchInput-input"
+    SELECT_A_VALUE_DIALOG_SEARCH_BTN = "selectValueDialog-searchField-searchButton"
 
 
 class ColID:

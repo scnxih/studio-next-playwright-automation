@@ -252,3 +252,54 @@ data mycas."One'中"n;
 	set One;
 run;
     """
+
+    SEGMENTATION = """
+libname mycas cas;
+ 
+data mycas."reviews'中"n;
+       infile datalines delimiter='|' missover;
+       length "text'中"n $300 "category'中"n $20;
+       input "text'中"n$ "positive'中"n "category'中"n$ "did'中"n;
+       datalines;
+    这是有史以来最棒的手机！喜欢它！|1|电子产品|1
+    手机电池寿命太短。|0|电子产品|2
+    屏幕分辨率较低，但我喜欢这台电视。|1|电子产品|3
+    尽管分辨率较低，但电影本身很棒。|1|电影|4
+    这部电影的故事很无聊，表演也很差。|0|电影|5
+    我在电视上看了这部电影，小屏幕上效果不佳。|0|电影|6
+    先看了电影就很喜欢，书甚至更好！|1|书籍|7
+    我喜欢这本书里的故事，他们应该把它搬上银幕。|1|书籍|8
+    我喜欢这个作者，但这本书浪费时间，不要买。|0|书籍|9
+;
+    """
+
+    BOOLEAN_RULES = """
+libname mycas cas;
+ 
+data mycas."getstart'中"n;
+    infile datalines delimiter='|' missover;
+    length "text'中"n $150;
+    input "text'中"n$ "apple_fruit'中"n "did'中"n$;
+    datalines;
+美味又香脆的苹果是最受欢迎的水果之一 | 1 |d01
+苹果是水果之王。 | 1 |d02
+番荔枝或 Sitaphal 是一种甜而多汁的水果 | 1 |d03
+苹果是热带地区常见的树种 | 1 |d04
+苹果是圆形的，味道很甜 | 1 |d05
+热带苹果树结出甜苹果| 1| d06
+甜苹果爱好者喜爱富士，因为它是| 1 |d07
+这棵苹果树很小 | 1 |d08
+Apple Store 商店出售 iPhone x 和 iPhone x Plus。| 0 |d09
+查看全球 Apple 电话号码列表。| 0 |d10
+查找用户指南的链接并联系 Apple 支持，| 0 |d11
+苹果推出 iPhone 画廊来反击三星 Galaxy 产品 | 0 |d12
+苹果智能手机 - Verizon Wireless。| 0 |d13
+苹果公司这位反复无常的首席执行官，非常愤怒。| 0 |d14
+苹果已经升级了这款手机。| 0 |d15
+新款 Apple iPhone x 的强大功能。| 0 |d16
+苹果 甜美的苹果 iphone。| 0 |d17
+苹果将生产汽车 | 0 |d18
+苹果也做手表| 0 |d19
+苹果也生产电脑| 0 |d20
+;
+    """
