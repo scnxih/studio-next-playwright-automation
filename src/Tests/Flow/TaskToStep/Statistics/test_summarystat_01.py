@@ -1,4 +1,6 @@
 """This is test case file for step Summary Statistics"""
+import time
+
 from src.Pages.StudioNext.Center.Flow.DetailsPane.Statistics.summary_statistics_pane import SummaryStatisticsPane
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -38,8 +40,17 @@ def test_01_summary_statistics_level0(page, init):
     table_pane.set_table("Result'中文")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_SUMMARY_STATISTICS, "Result'中文")
     flow.arrange_nodes()
+    time.sleep(1)
     flow.run(False)
-    flow.screenshot_after_run()
+    time.sleep(1)
+
+    flow.screenshot_without_toast("run")
+    flow.click_output_data_tab()
+    time.sleep(1.5)
+    flow.screenshot_without_toast("output_data")
+    flow.click_results_tab()
+    time.sleep(1.5)
+    flow.screenshot_without_toast("results")
 @pytest.mark.level1_step
 def test_02_Summary_Statistics_level1(page, init):
     PageHelper.new_sas_program(page)
@@ -79,4 +90,11 @@ def test_02_Summary_Statistics_level1(page, init):
     flow.arrange_nodes()
 
     flow.run(False)
-    flow.screenshot_after_run()
+    time.sleep(1)
+    flow.screenshot_without_toast("run")
+    flow.click_output_data_tab()
+    time.sleep(1.5)
+    flow.screenshot_without_toast("output_data")
+    flow.click_results_tab()
+    time.sleep(1.5)
+    flow.screenshot_without_toast("results")

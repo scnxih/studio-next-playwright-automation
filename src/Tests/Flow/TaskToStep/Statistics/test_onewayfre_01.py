@@ -55,7 +55,7 @@ def test_02_one_way_frequencies_in_flow_level1(page, init):
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_ONE_WAY_FREQUENCIES)
-    flow.apply_detail_layout_vertical()
+    # flow.apply_detail_layout_vertical()
     one_way_frequencies = OneWayFrequencies(page)
     one_way_frequencies.set_filter_input_data("'nAtBat''中'n> 220")
     one_way_frequencies.add_columns_for_analysis_variables(check_column_name_list=["nAtBat'中", "nHome'中"])

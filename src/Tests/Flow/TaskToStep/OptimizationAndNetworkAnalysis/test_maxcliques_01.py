@@ -43,11 +43,7 @@ def test_01_Maximal_Cliques_level0(page, init):
     Maximal_Cliques_Pane.set_check_save_maximal_cliques_data()
 
     flow.run(False)
-    flow.screenshot_without_toast("run")
-    flow.click_results_tab()
-    flow.screenshot_without_toast("results")
-    flow.click_output_data_tab()
-    flow.screenshot_without_toast("output_data")
+    flow.screenshot_after_run()
 @pytest.mark.level1_step
 def test_02_Maximal_Cliques_level1(page, init):
     PageHelper.new_sas_program(page)
