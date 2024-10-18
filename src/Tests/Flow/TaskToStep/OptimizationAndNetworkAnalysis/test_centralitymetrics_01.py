@@ -208,7 +208,7 @@ N 1
     flow.run(False)
     time.sleep(0.5)
     flow.apply_flow_layout_horizontal()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("run")
     flow.click_log_tab()
     time.sleep(0.5)
