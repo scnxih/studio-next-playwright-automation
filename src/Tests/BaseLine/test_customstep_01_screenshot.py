@@ -22,6 +22,7 @@ def test_01_add_page(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.add_page_by_toolbar()
     custom_step.add_page_on_page("第 1 页")
+    custom_step.screenshot_self("overwrite_vanilla")
 
 
 def test_02_delete_page(page, init):

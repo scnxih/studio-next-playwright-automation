@@ -48,6 +48,15 @@ class SaveAsDialog(Dialog):
 
     # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
+    def screenshot_self(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the vanilla screenshot_self method in BasePage
+        """
+        Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
+        self.screenshot(self.base_xpath, pic_name, clip=clip,
+                        mask=["//div[contains(@class, 'breadcrumb')]"],
+                        mask_color="#000000")
+
     def wait_for_open(self):
         # self.wait_for(self.input_file_name)
         time.sleep(2)
@@ -178,6 +187,12 @@ class SaveAsDialog(Dialog):
         # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
 
         time.sleep(0.5)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
+        self.screenshot_self('overwrite_save_as')
+        # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
+
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
         replace_alert = Alert(self.page, Helper.data_locale.SAVE_AS)

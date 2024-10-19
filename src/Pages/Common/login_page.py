@@ -33,6 +33,7 @@ class LoginPage(BasePage):
         # url = "https://mwf.pgc.unx.sas.com/SASStudioNext/"
         # url = "https://tth.pgc.unx.sas.com/SASStudioNext/"
         # url = "https://analyst.dev.pgc.unx.sas.com/SASStudioNext/"
+        # url = "https://analyst.de.dev.unx.sas.com/SASStudioNext/"
         self.goto(url)
         try:
             Helper.logger.info("enter _login.try")
