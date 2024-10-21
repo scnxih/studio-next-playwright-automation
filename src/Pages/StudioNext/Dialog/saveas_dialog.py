@@ -190,7 +190,7 @@ class SaveAsDialog(Dialog):
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
-        self.screenshot_self('overwrite_save_as')
+        self.screenshot_self('save_file')
         # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
