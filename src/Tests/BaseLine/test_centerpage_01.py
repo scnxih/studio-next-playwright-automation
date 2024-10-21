@@ -211,7 +211,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     time.sleep(3.0)
 
     # Original
-    # WholePage(page).screenshot_self("05")
+    WholePage(page).screenshot_self("05")
     editor.prt_scn('05')
 
     # Hide vertical scroll bar
@@ -231,7 +231,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     # Added to eliminate noise caused by scrollbar
     time.sleep(0.5)
 
-    # WholePage(page).screenshot_self("06")
+    WholePage(page).screenshot_self("06")
     editor.prt_scn('06')
 
     # WholePage(page).screenshot_self("06",
