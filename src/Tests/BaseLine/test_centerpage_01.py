@@ -212,6 +212,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # Original
     # WholePage(page).screenshot_self("05")
+    editor.prt_scn('05')
 
     # Hide vertical scroll bar
     # WholePage(page).screenshot_self("05",
@@ -231,6 +232,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     time.sleep(0.5)
 
     # WholePage(page).screenshot_self("06")
+    editor.prt_scn('06')
 
     # WholePage(page).screenshot_self("06",
     #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
