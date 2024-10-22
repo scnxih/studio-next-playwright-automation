@@ -1,4 +1,6 @@
 """This is test case file for Robust Principal Component Analysis"""
+import time
+
 """Added by Dommy 2024-9-25"""
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.robust_principal_component_analysis_pane import \
     RobustPrincipalComponentAnalysis
@@ -337,10 +339,11 @@ run;
     robust_principal_component_analysis_pane.set_check_save_pc_scores_data()
     flow.screenshot_self("output")
     flow.run(False)
+    time.sleep(1)
     flow.screenshot_without_toast("run")
     flow.click_results_tab()
-    time.sleep(1)
+    time.sleep(2)
     flow.screenshot_without_toast("results")
     flow.click_output_data_tab()
-    time.sleep(1)
+    time.sleep(2)
     flow.screenshot_without_toast("output_data")
