@@ -22,6 +22,7 @@ class WholePage(BasePage):
         # Overwrite the screenshot_self function in basePage
         self.screenshot(self.base_xpath, pic_name, clip=clip,
                         mask=[
+                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
                             "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                             # "//span[contains(@class,'BaseButton' )][contains(text(), " + Helper.data_locale.COLUMN + ")]",
                             # "//div[@role='button'][@title='" + Helper.data_locale.USER_OPTION + "']",

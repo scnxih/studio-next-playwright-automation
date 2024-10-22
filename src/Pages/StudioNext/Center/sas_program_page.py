@@ -15,6 +15,8 @@ from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
 # ADDED
 # <<< Added by Jacky(ID: jawang) on Jan.12th, 2024
 from src.Pages.Common.widget import Widget
+
+
 # Added by Jacky(ID: jawang) on Jan.12th, 2024 >>>
 
 class SASProgramPage(MainCenterPage):
@@ -26,6 +28,24 @@ class SASProgramPage(MainCenterPage):
         # <<< Added by Jacky(ID: jawang) on Jan.12th, 2024
         self.widget = Widget(self.base_xpath, page)
         # Added by Jacky(ID: jawang) on Jan.12th, 2024 >>>
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("screenshot_self in SASProgramPage")
+
+        # NOT Real whole page
+        # self.screenshot(self.base_xpath, pic_name, clip=clip,
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=[
+                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                            self.locator("//button[@type='button'][.//span[contains(text(), '"+Helper.data_locale.OPERATE_RECOVERY+"')]]"),
+                            '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                        ],
+                        mask_color='#000000')
 
     def undo(self):
         self.center_toolbar_helper.undo()
@@ -82,12 +102,11 @@ class SASProgramPage(MainCenterPage):
         # Note: In addition to xpath, such as base_xpath, locator can be passes as the parameter.
         self.screenshot("//div[contains(@data-testid, 'container')][contains(@class, 'EditorPane')]", "formatted")
 
-
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
+
     def debug(self):
         # self.toolbar.click_btn_by_test_id("view-toolbar-debug")
         return
-
 
     def analyze_and_create_flow(self):
         self.center_toolbar_helper.analyze_and_create_flow()
