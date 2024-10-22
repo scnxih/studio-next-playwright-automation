@@ -13,7 +13,8 @@ class SaveAsDialog(Dialog):
         Dialog.__init__(self, page, "")
 
         # self.folder_tree = TreeViewNova(self.base_xpath, page)
-        self.folder_tree = TreeViewAGGrid(self.base_xpath, page, supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
+        self.folder_tree = TreeViewAGGrid(self.base_xpath, page,
+                                          supplement_base_xpath="[descendant::span[@class='ag-icon ag-icon-tree-closed']]")
         self.toolbar = Toolbar(self.base_xpath, page)
         self.combobox_sort_by = Combobox(container_base_xpath=self.base_xpath, page=page,
                                          data_test_id="contentSelector-save-contentSelector-navigator-actionbar-sort-by")
@@ -48,13 +49,13 @@ class SaveAsDialog(Dialog):
 
     # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
-    def screenshot_self(self, pic_name, clip=None, mask=None, mask_color=None):
+    def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
         """
         Overwrite the vanilla screenshot_self method in BasePage
         """
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        mask=["//div[contains(@class, 'breadcrumb')]"],
+                        mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree, self.temp_content_selector],
                         mask_color="#000000")
 
     def wait_for_open(self):
@@ -145,14 +146,14 @@ class SaveAsDialog(Dialog):
 
         # NOTE: This is the whole page
         # x: [384: 840] y:[220: 711]
-        self.screenshot(self.base_xpath,
-                        "save_file_w_clip",
-                        user_assigned_xpath=True,
-                        clip={'x': 384, 'y': 220, 'width': 460, 'height': 491},
-                        mask=[self.temp_content_selector],
-                        mask_color="#000000")
-
-        self.screenshot(self.base_xpath, "save_file_w_mask", mask=[self.temp_content_selector], mask_color="#000000")
+        # self.screenshot(self.base_xpath,
+        #                 "save_file_w_clip",
+        #                 user_assigned_xpath=True,
+        #                 clip={'x': 384, 'y': 220, 'width': 460, 'height': 491},
+        #                 mask=[self.temp_content_selector],
+        #                 mask_color="#000000")
+        #
+        # self.screenshot(self.base_xpath, "save_file_w_mask", mask=[self.temp_content_selector], mask_color="#000000")
         # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
         # ADDED
@@ -190,7 +191,7 @@ class SaveAsDialog(Dialog):
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
-        self.screenshot_self('save_file')
+        self.selfie('save_file')
         # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
