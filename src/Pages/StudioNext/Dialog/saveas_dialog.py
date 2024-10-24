@@ -194,6 +194,9 @@ class SaveAsDialog(Dialog):
         self.selfie('save_file')
         # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
 
+        # Wait for the Content Selector on RHS, otherwise save path alert dialog would appear.
+        self.wait_for(self.temp_content_selector)
+
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
         replace_alert = Alert(self.page, Helper.data_locale.SAVE_AS)
