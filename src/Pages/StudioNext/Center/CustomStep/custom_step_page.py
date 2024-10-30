@@ -13,6 +13,7 @@ from src.Utilities.enums import *
 from src.Pages.Common.text import Text
 
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
+from src.Pages.Common.treeview_common import TreeViewCommon
 
 
 def convert_control_type_to_testid_prefix(control_type: DesignerControlType) -> str:
@@ -106,6 +107,7 @@ class CustomStepPage(CenterPage):
         self.listbox_controls = Listbox(self.base_xpath, self.page, aria_labelledby="controlList")
         self.tab_group = TabGroup("", page)
         self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
+        self.control_category_tree = TreeViewCommon(self.base_xpath, page)
 
     """The save functions is not implemented in StudioNext, so pass now"""
 
@@ -233,7 +235,7 @@ class CustomStepPage(CenterPage):
     def clear_filter(self):
         self.text_filter.clear_text()
 
-    def insert_control(self, control_type: DesignerControlType):
+    def insert_control_former(self, control_type: DesignerControlType):
 
         text = convert_control_type_to_text(control_type)
         self.listbox_controls.click_context_menu_on_list_item(text, Helper.data_locale.INSERT_CONTROL)
@@ -243,3 +245,19 @@ class CustomStepPage(CenterPage):
         designer_control.base_locator.click(position={"x": 2, "y": 2})
         time.sleep(0.3)
         return designer_control
+
+    def insert_control(self, control_type: DesignerControlType):
+        """
+        Organization changed: Common tree is adopted to categorize controls
+        """
+        text = convert_control_type_to_text(control_type)
+
+        if control_type in [DesignerControlType.column_selector, DesignerControlType.new_column, DesignerControlType.input_table, DesignerControlType.output_table]:
+            Helper.logger.debug('Control type: ' + text)
+            Helper.logger.debug('Control Category: ' + 'Data')
+
+            self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
+            Helper.logger.debug('Control Category: ' + text)
+
+        else:
+            self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
