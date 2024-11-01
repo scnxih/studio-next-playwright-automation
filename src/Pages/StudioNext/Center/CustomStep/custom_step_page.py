@@ -256,8 +256,10 @@ class CustomStepPage(CenterPage):
             Helper.logger.debug('Control type: ' + text)
             Helper.logger.debug('Control Category: ' + 'Data')
 
-            self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
+            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.DATA, text])
             Helper.logger.debug('Control Category: ' + text)
 
         else:
-            self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
+            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])

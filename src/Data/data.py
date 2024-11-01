@@ -1236,6 +1236,7 @@ class Data:
     """Added by Frank end"""
 
     """Added by Jacky start"""
+    COMMON = "Common"
     PREVIEW_CODE = "Preview code"
     THE_INPUT_TABLE_CONTAINS = "The input table contains"
     LANGUAGE = "Language"
