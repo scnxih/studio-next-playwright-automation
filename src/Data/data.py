@@ -1237,6 +1237,7 @@ class Data:
 
     """Added by Jacky start"""
     COMMON = "Common"
+    NEW_SNIPPETS = "New Snippets"
     PREVIEW_CODE = "Preview code"
     THE_INPUT_TABLE_CONTAINS = "The input table contains"
     LANGUAGE = "Language"

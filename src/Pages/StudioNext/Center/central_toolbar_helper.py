@@ -10,6 +10,7 @@ from src.Pages.StudioNext.Dialog.saveas_dialog import SaveAsDialog
 from src.Helper.helper import *
 from src.Pages.Common.windows_control import *
 
+from src.Pages.StudioNext.Dialog.new_snippets_dialog import NewSnippetsDialog
 
 class CentralToolbarHelper:
     def __init__(self, toolbar: Toolbar):
@@ -113,9 +114,10 @@ class CentralToolbarHelper:
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def add_to_snippets(self):
-        # self.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
+        self.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
         # Implemented on Nov.1st 2024
-        self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)
+        if NewSnippetsDialog(self.toolbar.page).is_open():
+            self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)
         time.sleep(1)
         self.close_alert_if_needed()
 
