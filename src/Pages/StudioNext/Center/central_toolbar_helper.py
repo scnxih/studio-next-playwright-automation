@@ -113,7 +113,9 @@ class CentralToolbarHelper:
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def add_to_snippets(self):
-        self.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
+        # self.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
+        # Implemented on Nov.1st 2024
+        self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)
         time.sleep(1)
         self.close_alert_if_needed()
 
