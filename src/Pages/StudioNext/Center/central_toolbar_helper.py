@@ -116,8 +116,10 @@ class CentralToolbarHelper:
     def add_to_snippets(self):
         self.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
         # Implemented on Nov.1st 2024
-        if NewSnippetsDialog(self.toolbar.page).is_open():
-            self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)
+        if NewSnippetsDialog(self.toolbar.get_page()).is_open():
+            Helper.logger.debug("New Snippets Dialog Opened")
+            NewSnippetsDialog(self.toolbar.get_page()).close_dialog()
+
         time.sleep(1)
         self.close_alert_if_needed()
 
