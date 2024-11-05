@@ -127,7 +127,7 @@ class Data:
     IMPLEMENT_SCD = "Implement SCD"
     LOAD_TABLE = "Load Table"
     MERGE_TABLE = "Merge Table"
-    NOTES = "Notes"
+    NOTES = "Note"
     COLLAPSE_ALL_PORTS = "Collapse all ports"
     EXPAND_ALL_PORTS = "Expand all ports"
     SCHEDULE_AS_JOB = "Schedule as a job"

@@ -197,8 +197,8 @@ class FlowPage(MainCenterPage):
                                                        Helper.data_locale.UNION_ROWS)
 
             case FlowNodeType.notes:
-                self.toolbar.click_btn_menu_by_test_id(data_testid,
-                                                       Helper.data_locale.NOTES)
+                # self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.NOTES)
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Data.NOTES)
         time.sleep(0.5)
 
     def view_collapse_all_ports(self):
