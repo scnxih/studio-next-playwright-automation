@@ -44,9 +44,10 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.OptimizationAndNetworkAnalysis
     TransitiveClosurePane
 from src.Pages.Common.dialog import Dialog
 from playwright.sync_api import expect
+from src.Pages.StudioNext.Dialog.new_snippets_dialog import NewSnippetsDialog
 
 
-def test_00_click_show_tab_lables(page, init):
+def test_00_click_show_tab_labels(page, init):
     """
     Test commitment after switching git account.
     :param page:
@@ -2911,3 +2912,16 @@ data LinkSetIn;
     minimum_cut_pane.set_to_node("to")
 
     flow.run(False)
+
+
+def test_68_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+    editor.toolbar.click_btn_by_test_id_contains("toolbar-snippet")
+    if NewSnippetsDialog(page).is_open():
+        Helper.logger.debug("New Snippets dialog is open: ")
+        NewSnippetsDialog(page).new_snippet('test_snippet_name',
+                                            'test_snippet_abbreviation',
+                                            'test_snippet_description')
+        # NewSnippetsDialog(page).new_abbreviation('test_snippet_abbreviation')

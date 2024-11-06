@@ -49,13 +49,31 @@ class SaveAsDialog(Dialog):
 
     # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
+    @property
+    def button_new(self):
+        """
+        'New' button next to 'Refresh' on the right upper corner.
+        NOTE: This button would be available when the folder navigated to (in navigator tree) is autherized to save
+        PS: Need to check this button visibility, otherwise error would occur.
+        """
+        return self.locator("//button[@type='button'][contains(@data-testid, 'contentSelector')][@title='" + Helper.data_locale.NEW + "']")
+
+    @property
+    def bread_crumb(self):
+        """
+        breadcrumb located in the upper left corner of 'Save as' dialog that serves to lead or guide
+        NOTE: This breadcrumb causes SDSTest diffs, which require masks
+        """
+        return self.locator("//div[contains(@class, 'breadcrumb')][contains(@data-testid, 'contentSelector')]")
+
     def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
         """
         Overwrite the vanilla screenshot_self method in BasePage
         """
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree, self.temp_content_selector],
+                        # mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree, self.temp_content_selector],
+                        mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],
                         mask_color="#000000")
 
     def wait_for_open(self):
@@ -193,6 +211,12 @@ class SaveAsDialog(Dialog):
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
         self.selfie('save_file')
         # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
+
+        # Wait for the Content Selector on RHS, otherwise save path alert dialog would appear.
+        # self.wait_for(self.content_selector_navigator_tree)
+        # self.wait_for(self.temp_content_selector)
+        # self.wait_for(self.locate_xpath("//div[contains(@class, 'breadcrumb')]"))
+        self.wait_for(self.button_new)
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)

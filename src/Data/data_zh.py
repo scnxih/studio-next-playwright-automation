@@ -1243,6 +1243,8 @@ class DataZH(Data):
     Test6 = "Added"
 
     Test7= "Add"
+    COMMON = "公共"
+    NEW_SNIPPETS = "新建代码段"
 
     PREVIEW_CODE = "预览代码"
     THE_INPUT_TABLE_CONTAINS = "输入表包含"
