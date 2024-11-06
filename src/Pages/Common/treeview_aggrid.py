@@ -61,7 +61,7 @@ class TreeViewAGGrid(CommonComponent):
 
     def navigate_to_element_and_click_context_menu(self, element_path: list, *context_menu_text):
         element = self.navigate_to_element(element_path)
-        self.click_context_menu(element, *context_menu_text)
+        self.click_context_menu_by_right_click(element, *context_menu_text)
 
     def navigate_to_element_and_dblclick(self, element_path: list):
         element = self.navigate_to_element(element_path)

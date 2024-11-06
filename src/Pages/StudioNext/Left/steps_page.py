@@ -68,7 +68,7 @@ class StepsPage(AccordionPage):
 
     def add_to_flow(self, step_path: list):
         locator = self.navigate_to_step(step_path)
-        self.click_context_menu(locator, Helper.data_locale.ADD_TO_FLOW)
+        self.click_context_menu_by_right_click(locator, Helper.data_locale.ADD_TO_FLOW)
         time.sleep(1)
         self.collapse_parent(step_path)
 
