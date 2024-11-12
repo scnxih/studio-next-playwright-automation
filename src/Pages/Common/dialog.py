@@ -18,6 +18,7 @@ class Dialog(BasePage):
             self.base_xpath += f"[.//span[text()='{title}']]"
         else:
             self.title = ""
+
     @property
     def span_header(self):
         return self.locate_xpath("//span[text()='" + self.title + "']")
@@ -67,6 +68,8 @@ class Dialog(BasePage):
 
     def click_cancel_button(self):
         self.click_button_in_footer(Helper.data_locale.CANCEL)
+
+
 class Alert(Dialog):
 
     def __init__(self, page, title=''):

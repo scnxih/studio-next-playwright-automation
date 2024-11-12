@@ -2925,3 +2925,34 @@ def test_68_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
                                             'test_snippet_abbreviation',
                                             'test_snippet_description')
         # NewSnippetsDialog(page).new_abbreviation('test_snippet_abbreviation')
+
+
+def test_69_central_toolbar_run_cancel_save_saveas(page, init):
+    """
+    Test Save as alert dialog
+    """
+    # Original
+    WholePage(page).screenshot_self("login")
+
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    # Wait until gutters appear to avoid diffs
+    time.sleep(1)
+    editor.click_dialog_title_or_studionext_header()
+
+    WholePage(page).screenshot_self("newprogram")
+    editor.prt_scn("newprogram")
+
+    editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+    editor.run(True)
+
+    # folder_path = ["SAS 服务器", "主目录"]
+    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = [Helper.data_locale.SAS_CONTENT, "我的收藏夹"]
+
+    # WORKS
+    # folder_path = Helper.public_folder_path
+
+    editor.saveas(folder_path, "test.sas", False, False)
