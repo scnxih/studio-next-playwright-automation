@@ -3,6 +3,7 @@ Author: Alice
 Date: November 07, 2023
 Description: CustomStepPage will inherit from CenterPage class。
 """
+import time
 
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
@@ -103,7 +104,8 @@ class CustomStepPage(CenterPage):
         self.toolbar_control_library = Toolbar(self.base_xpath, self.page,
                                                supplement_base_xpath="[.//span[text()='{0}']]".format(
                                                    Helper.data_locale.ADD_PAGE_P_UPPER_CASE))
-        self.listbox_pages = Listbox(self.base_xpath, self.page, data_test_id="pageList")
+        # self.listbox_pages = Listbox(self.base_xpath, self.page, data_test_id="pageList")
+        self.listbox_pages = Listbox(self.base_xpath, self.page)
         self.listbox_controls = Listbox(self.base_xpath, self.page, aria_labelledby="controlList")
         self.tab_group = TabGroup("", page)
         self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
@@ -181,6 +183,7 @@ class CustomStepPage(CenterPage):
         self.listbox_pages.click_list_item(page_text)
         self.key_press("Delete")
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
+        time.sleep(2)
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 

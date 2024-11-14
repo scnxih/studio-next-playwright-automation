@@ -8,7 +8,8 @@ from src.Pages.Common.common_component import *
 
 class Listbox(CommonComponent):
     def set_base_xpath(self):
-        self.base_xpath += "//ul[@role='listbox']"
+        # self.base_xpath += "//ul[@role='listbox']"
+        self.base_xpath += "//div[@role='row']"
 
     # If the page contains more than one listbox, data_test_id or aria_label or aria_labelledby is required.
     def __init__(self, container_base_xpath, page, data_test_id="", aria_label="", aria_labelledby="",
@@ -28,10 +29,19 @@ class Listbox(CommonComponent):
         if Helper.if_contain_quotation(text):
             escaped_text = Helper.escape_quotation_for_xpath(text)
             return self.locate_xpath(
-            f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={escaped_text}]")
+            # Component changed on Nov.14th 2024
+            # f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={escaped_text}]")
+
+            # New
+            f"//div[@role='gridcell']//span[contains(@class,'sas_components-List-Item-Item_item-text')][text()={escaped_text}]")
+
         else:
-            return self.locate_xpath(
-                f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+            # Component changed on Nov.14th 2024
+            # return self.locate_xpath(f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+
+            # New
+            return self.locate_xpath(f"//div[@role='gridcell']//span[contains(@class,'sas_components-List-Item-Item_item-text')][text()='{text}']")
+
 
 
     def li_item(self, text: str):
