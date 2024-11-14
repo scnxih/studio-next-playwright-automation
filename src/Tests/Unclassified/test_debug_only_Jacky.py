@@ -2687,10 +2687,14 @@ def test_61_drag_and_drop_integrated(page, init):
     steps_content.page.mouse.down(button="left")
     # time.sleep(1)
 
-    flow.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(force=True, timeout=500)
+    flow.locator(
+        '//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(
+        force=True, timeout=500)
     # time.sleep(1)
 
-    page.locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(force=True, timeout=500)
+    page.locator(
+        '//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]').hover(
+        force=True, timeout=500)
     # time.sleep(1)
 
     page.mouse.up(button="left")
@@ -2708,8 +2712,10 @@ def test_62_drag_and_drop_integrated(page, init):
     PageHelper.new_item(page, TopMenuItem.new_python_program)
 
     # //div[@role="tab"][@aria-label="SAS 程序.sas"]
-    WholePage(page).locator('//div[@role="tab"][@aria-label="SAS 程序.sas"]').drag_to(WholePage(page).locator('//div[@role="tab"][@aria-label="Python.py"]'))
+    WholePage(page).locator('//div[@role="tab"][@aria-label="SAS 程序.sas"]').drag_to(
+        WholePage(page).locator('//div[@role="tab"][@aria-label="Python.py"]'))
     # //div[@role="tab"][@aria-label="Python.py"]
+
 
 def test_63_drag_and_drop_integrated(page, init):
     """
@@ -2726,7 +2732,10 @@ def test_63_drag_and_drop_integrated(page, init):
     # //div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]
     # WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'))
     # WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(target=WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'), target_position= [{'x': 540, 'y': 480}, None])
-    WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(target=WholePage(page).locator('//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'), target_position= [{540, 480}, None])
+    WholePage(page).locator('//div[@role="row"][@row-id="GENERIC_TABLE_TRANSFORMATION"]').drag_to(
+        target=WholePage(page).locator(
+            '//canvas[text()="This text is displayed if your browser does not support the Canvas HTML element."]'),
+        target_position=[{540, 480}, None])
 
 
 def test_64_drag_and_drop_custom_step(page, init):
@@ -2745,7 +2754,9 @@ def test_64_drag_and_drop_custom_step(page, init):
 
     # WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 3 页"]').drag_to(WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]'))
 
-    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 3 页"]').drag_to(WholePage(page).locator('//button[@data-testid="deletePageButton"]'))
+    WholePage(page).locator(
+        '//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 3 页"]').drag_to(
+        WholePage(page).locator('//button[@data-testid="deletePageButton"]'))
 
     # source = '//li[@role="option"][@aria-label="复选框, 复选框"]'
 
@@ -2766,11 +2777,13 @@ def test_65_drag_and_drop_custom_step(page, init):
     custom_step.add_page_by_toolbar()
     custom_step.add_page_by_toolbar()
 
-    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 5 页"]').hover()
+    WholePage(page).locator(
+        '//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 5 页"]').hover()
     # time.sleep(0.5)
     WholePage(page).page.mouse.down()
     time.sleep(1.0)
-    WholePage(page).locator('//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]').hover()
+    WholePage(page).locator(
+        '//li[@role="option"]//span[contains(@class,"sas_components-ListBox-List_item-text")][text()="第 1 页"]').hover()
     # WholePage(page).locator('//div[@data-testid="designCanvasTestID"]').hover()
     time.sleep(1.0)
     WholePage(page).page.mouse.up()
@@ -2956,3 +2969,30 @@ def test_69_central_toolbar_run_cancel_save_saveas(page, init):
     # folder_path = Helper.public_folder_path
 
     editor.saveas(folder_path, "test.sas", False, False)
+
+
+def test_70_page_context_menu(page, init):
+    custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    whole = WholePage(page)
+    # custom_step.add_page_on_page("第 1 页")
+    custom_step.control_library_grid.click_context_menu_on_grid_item("第 1 页", Helper.data_locale.ADD_PAGE)
+    time.sleep(1)
+    whole.screenshot_self("01")
+    custom_step.add_page_on_page("第 2 页")
+
+    custom_step.add_page_on_page("第 3 页")
+
+    # custom_step.move_up_on_page("第 1 页")
+
+    custom_step.move_up_on_page("第 2 页")
+
+    custom_step.move_up_on_page("第 3 页")
+
+    custom_step.move_up_on_page("第 4 页")
+
+    # custom_step.move_down_on_page("第 1 页")
+
+    custom_step.control_library_grid.click_grid_item("第 2 页")
+
+
+
