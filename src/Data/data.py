@@ -1236,6 +1236,7 @@ class Data:
     """Added by Frank end"""
 
     """Added by Jacky start"""
+    FILTER_CONTROLS = "Filter Controls"
     COMMON = "Common"
     NEW_SNIPPETS = "New Snippets"
     PREVIEW_CODE = "Preview code"

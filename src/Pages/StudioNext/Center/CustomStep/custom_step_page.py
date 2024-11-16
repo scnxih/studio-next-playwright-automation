@@ -113,8 +113,10 @@ class CustomStepPage(CenterPage):
 
         self.listbox_controls = Listbox(self.base_xpath, self.page, aria_labelledby="controlList")
         self.tab_group = TabGroup("", page)
-        self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
-        self.control_category_tree = TreeViewCommon(self.base_xpath, page)
+        # self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
+        self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER_CONTROLS)
+        # self.control_category_tree = TreeViewCommon(self.base_xpath, page)
+        self.control_category_tree = TreeViewAGGrid(self.base_xpath, page)
 
     """The save functions is not implemented in StudioNext, so pass now"""
 
@@ -302,10 +304,12 @@ class CustomStepPage(CenterPage):
             Helper.logger.debug('Control type: ' + text)
             Helper.logger.debug('Control Category: ' + 'Data')
 
-            # self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
-            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.DATA, text])
+            self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.DATA, text])
+            # self.control_category_tree.navigate_to_element_and_click_context_menu([Helper.data_locale.COMMON, text], Helper.data_locale.INSERT_CONTROL)
             Helper.logger.debug('Control Category: ' + text)
 
         else:
-            # self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
-            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])
+            self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])
+            # self.control_category_tree.navigate_to_element_and_click_context_menu([Helper.data_locale.COMMON, text], Helper.data_locale.INSERT_CONTROL)

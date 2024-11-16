@@ -1243,6 +1243,7 @@ class DataZH(Data):
     Test6 = "Added"
 
     Test7= "Add"
+    FILTER_CONTROLS = "过滤控件"
     COMMON = "公共"
     NEW_SNIPPETS = "新建代码段"
 
