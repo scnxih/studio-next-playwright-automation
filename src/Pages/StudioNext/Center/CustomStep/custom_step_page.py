@@ -3,6 +3,7 @@ Author: Alice
 Date: November 07, 2023
 Description: CustomStepPage will inherit from CenterPage class。
 """
+import time
 
 from src.Pages.Common.tab_group import TabGroup
 from src.Pages.StudioNext.Center.CustomStep.DesignerControls.designer_control import DesignerControl
@@ -14,6 +15,7 @@ from src.Pages.Common.text import Text
 
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.Common.treeview_common import TreeViewCommon
+from src.Pages.Common.treeview_aggrid import TreeViewAGGrid
 
 
 def convert_control_type_to_testid_prefix(control_type: DesignerControlType) -> str:
@@ -103,11 +105,18 @@ class CustomStepPage(CenterPage):
         self.toolbar_control_library = Toolbar(self.base_xpath, self.page,
                                                supplement_base_xpath="[.//span[text()='{0}']]".format(
                                                    Helper.data_locale.ADD_PAGE_P_UPPER_CASE))
-        self.listbox_pages = Listbox(self.base_xpath, self.page, data_test_id="pageList")
+        # self.listbox_pages = Listbox(self.base_xpath, self.page, data_test_id="pageList")
+        # self.listbox_pages = Listbox(self.base_xpath, self.page)
+        self.control_library_pages = TreeViewAGGrid(self.base_xpath, self.page)
+        # self.control_library_grid = TreeViewAGGrid(self.base_xpath, self.page, supplement_base_xpath="[@grid-id='2']")
+        self.control_library_grid = TreeViewAGGrid(self.base_xpath, self.page)
+
         self.listbox_controls = Listbox(self.base_xpath, self.page, aria_labelledby="controlList")
         self.tab_group = TabGroup("", page)
-        self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
-        self.control_category_tree = TreeViewCommon(self.base_xpath, page)
+        # self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER)
+        self.text_filter = Text(self.base_xpath, page, aria_label=Helper.data_locale.FILTER_CONTROLS)
+        # self.control_category_tree = TreeViewCommon(self.base_xpath, page)
+        self.control_category_tree = TreeViewAGGrid(self.base_xpath, page)
 
     """The save functions is not implemented in StudioNext, so pass now"""
 
@@ -168,19 +177,25 @@ class CustomStepPage(CenterPage):
         self.toolbar_control_library.click_btn_by_test_id("addPageButton")
 
     def add_page_by_context_menu(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
+        self.control_library_grid.click_context_menu_on_grid_item(page_text, Helper.data_locale.ADD_PAGE)
 
     def delete_page_by_toolbar(self, page_text: str):
-        self.listbox_pages.click_list_item(page_text)
+        # self.listbox_pages.click_list_item(page_text)
+        # self.listbox_pages.click_grid_item(page_text)
+        self.control_library_pages.click_grid_item(page_text)
         self.toolbar_control_library.click_btn_by_test_id("deletePageButton")
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 
     def delete_page_by_keyboard(self, page_text: str):
-        self.listbox_pages.click_list_item(page_text)
+        # self.listbox_pages.click_list_item(page_text)
+        # self.listbox_pages.click_grid_item(page_text)
+        self.control_library_pages.click_grid_item(page_text)
         self.key_press("Delete")
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
+        time.sleep(2)
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 
@@ -191,43 +206,75 @@ class CustomStepPage(CenterPage):
         self.toolbar_control_library.uncheck_menu_in_more_options(Helper.data_locale.SHOW_SINGLE_PAGE_AS_TAB)
 
     def add_page_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.ADD_PAGE)
 
     def move_up_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_UP)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_UP)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_UP)
 
     def move_down_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_DOWN)
+        # self.listbox_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_DOWN)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_DOWN)
+
+    def move_down_on_page2(self, page_text: str):
+        """
+        Use tree-grid instead
+        """
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_DOWN)
+        # self.control_library_grid.label_element_name(page_text).click()
+        self.click(self.control_library_grid.label_element_name(page_text))
+        time.sleep(1)
+        self.right_click(self.control_library_grid.label_element_name(page_text))
+        time.sleep(1)
+
+        self.key_press("ArrowDown")
+        time.sleep(1)
+
+        self.key_press("ArrowDown")
+        time.sleep(1)
+
+        self.key_press("Enter")
 
     def move_to_top_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_TOP)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_TOP)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_TO_TOP)
 
     def move_to_end_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_END)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_END)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_TO_END)
 
     def insert_page_above_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_ABOVE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_ABOVE)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.INSERT_PAGE_ABOVE)
 
     def insert_page_below_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_BELOW)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_BELOW)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.INSERT_PAGE_BELOW)
 
+    #
     def duplicate_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DUPLICATE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DUPLICATE)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.DUPLICATE)
 
     def delete_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DELETE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DELETE)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.DELETE)
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 
     def cut_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.CUT)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.CUT)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.CUT)
 
     def copy_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.COPY)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.COPY)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.COPY)
 
     def paste_on_page(self, page_text: str):
-        self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.PASTE)
+        # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.PASTE)
+        self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.PASTE)
 
     def filter_controls(self, search_text: str):
         self.text_filter.fill_text(search_text)
@@ -252,14 +299,17 @@ class CustomStepPage(CenterPage):
         """
         text = convert_control_type_to_text(control_type)
 
-        if control_type in [DesignerControlType.column_selector, DesignerControlType.new_column, DesignerControlType.input_table, DesignerControlType.output_table]:
+        if control_type in [DesignerControlType.column_selector, DesignerControlType.new_column,
+                            DesignerControlType.input_table, DesignerControlType.output_table]:
             Helper.logger.debug('Control type: ' + text)
             Helper.logger.debug('Control Category: ' + 'Data')
 
-            # self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
-            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.DATA, text])
+            self.control_category_tree.navigate_to_element_and_dblclick(['Data', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.DATA, text])
+            # self.control_category_tree.navigate_to_element_and_click_context_menu([Helper.data_locale.COMMON, text], Helper.data_locale.INSERT_CONTROL)
             Helper.logger.debug('Control Category: ' + text)
 
         else:
-            # self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
-            self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])
+            self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
+            # self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])
+            # self.control_category_tree.navigate_to_element_and_click_context_menu([Helper.data_locale.COMMON, text], Helper.data_locale.INSERT_CONTROL)

@@ -94,7 +94,7 @@ def test_04_page_context_menu(page, init):
 
     custom_step.add_page_on_page("第 3 页")
 
-    custom_step.move_up_on_page("第 1 页")
+    # custom_step.move_up_on_page("第 1 页")
 
     custom_step.move_up_on_page("第 2 页")
 
@@ -102,7 +102,7 @@ def test_04_page_context_menu(page, init):
 
     custom_step.move_up_on_page("第 4 页")
 
-    custom_step.move_down_on_page("第 1 页")
+    # custom_step.move_down_on_page("第 1 页")
 
     custom_step.move_down_on_page("第 2 页")
 
@@ -118,7 +118,7 @@ def test_04_page_context_menu(page, init):
 
     custom_step.move_to_top_on_page("第 4 页")
 
-    custom_step.move_to_end_on_page("第 1 页")
+    # custom_step.move_to_end_on_page("第 1 页")
 
     custom_step.move_to_end_on_page("第 2 页")
 

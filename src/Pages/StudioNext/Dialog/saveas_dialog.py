@@ -220,6 +220,23 @@ class SaveAsDialog(Dialog):
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
+
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Nov.12th, 2024
+        # path_alert = Alert(self.toolbar.page, Helper.data_locale.SAVE_AS)
+
+        # path_alert = self.page.locator('//div[@data-testid="contentSelector-save-contentSelector-errorDialog-dialog"]')
+        path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
+        # path_alert.page.sc
+
+        time.sleep(1)
+        if path_alert.is_visible():
+            Helper.logger.debug("WARNING: Path is not specified for save-as process")
+            path_alert.get_by_text(Helper.data_locale.CLOSE).click()
+            self.click_button_in_footer(Helper.data_locale.CANCEL)
+            return False
+        # END Added by Jacky(ID: jawang) on Nov.12th, 2024 >>>
+
         replace_alert = Alert(self.page, Helper.data_locale.SAVE_AS)
         time.sleep(1)
         if replace_alert.is_open():

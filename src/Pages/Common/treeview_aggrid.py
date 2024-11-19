@@ -12,10 +12,31 @@ class TreeViewAGGrid(CommonComponent):
         # self.base_xpath += "//div[@class='ag-body ag-layout-normal']"
         self.base_xpath += "//div[@class='ag-root-wrapper ag-ltr ag-layout-normal']"
 
-
-    def __init__(self,container_base_xpath, page, data_test_id="", supplement_base_xpath=""):
-        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page,data_test_id=data_test_id,
+    def __init__(self, container_base_xpath, page, data_test_id="", supplement_base_xpath=""):
+        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,
                                  supplement_base_xpath=supplement_base_xpath)
+
+    def grid_item(self, text: str):
+        """
+        Return gridcell item in AG-Grid
+        //div[@role='gridcell']/descendant::span[text()='{0}}']
+        """
+        if Helper.if_contain_quotation(text):
+            escaped_text = Helper.escape_quotation_for_xpath(text)
+            return self.locate_xpath(f"//div[@role='gridcell']"
+                                     f"[descendant::span[text()={escaped_text}]]")
+        else:
+            return self.locate_xpath(f"//div[@role='gridcell']"
+                                     f"[descendant::span[text()='{text}']]")
+
+    def click_grid_item(self, item_text: str):
+        """
+        Click AG-Grid item obtained from grid_item()
+        """
+        self.grid_item(item_text).click()
+
+    def click_context_menu_on_grid_item(self, item_text: str, *context_menu_text):
+        self.click_context_menu_by_right_click(self.grid_item(item_text), *context_menu_text)
 
     def label_element_name(self, label):
         return self.locate_xpath("//span[text()='{0}']".format(label))
