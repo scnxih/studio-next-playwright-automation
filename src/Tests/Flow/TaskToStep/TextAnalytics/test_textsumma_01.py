@@ -41,7 +41,9 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -92,7 +94,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -148,7 +151,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -157,7 +161,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -214,7 +219,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -223,7 +229,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -286,7 +293,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")

@@ -694,6 +694,49 @@ class DataZH(Data):
     RUN_FLOW ="运行流"
     ADD_A_NOTE ="添加注释"
     APPLY_FLOW_LAYOUT = "应用流布局"
+    LOW_RANK_OUTPUT_TABLE = "低排名输出表"
+    SPARSE_OUTPUT_TABLE = "稀疏输出表"
+    ERROR_OUTPUT_TABLE = "误差输出表"
+    LEFT_SINGULAR_VECTORS_OUTPUT_TABLE = "左奇异向量输出表"
+    SINGULAR_VALUES_OUTPUT_TABLE = "奇异值输出表"
+    RIGHT_SINGULAR_VECTORS_OUTPUT_TABLE = "右奇异向量输出表"
+    COMPONENT_LOADINGS_OUTPUT_TABLE = "成分负荷输出表"
+    PC_SCORES_OUTPUT_TABLE = "PC 评分输出表"
+    NODES_TABLE= "节点表"
+    LINKS_TABLE = "链接表"
+    NODES_DATA = "节点数据"
+    INPUT_DATA= "输入数据"
+    NODES_INPUT_DATA = "节点输入数据"
+    SCORE_TABLE = "评分表"
+    STATISTICS_TABLE = "统计量表"
+    STATISTICS_DATA = "统计量数据"
+    TREE_INFORMATION_DATA = "树信息数据"
+    TERMS_DATA = "词条数据"
+    START_LIST_DATA = "启用列表数据"
+    STOP_LIST_DATA = "停用列表数据"
+    SYNONYM_LIST_DATA = "同义词列表数据"
+    MULTI_WORD_TERMS_LIST_DATA = "多词词条列表数据"
+    TOPIC_WORD_DISTRIBUTION_TABLE = "主题词分布表"
+    PARENT_TABLE = "父表"
+    CHILD_TABLE = "子表"
+    TERM_INFORMATION_TABLE = "词条信息表"
+    CONFIGURATION_INFORMATION_TABLE = "配置信息表"
+    TOPICS_TABLE = "主题表"
+    DOCUMENT_PROJECTIONS_TABLE = "文档投影表"
+    SCORING_MODEL_TABLE = "评分模型表"
+    DOCUMENT_TOPIC_DISTRIBUTION_TABLE = "文档主题分布表"
+    SINGULAR_VALUES_TABLE = "奇异值表"
+    LEFT_SINGULAR_VECTORS_TABLE = "左奇异向量表"
+    RIGHT_SINGULAR_VECTORS_TABLE = "右奇异向量表"
+    DOCUMENT_SUMMARIES_TABLE = "文档汇总表"
+    CORPUS_SUMMARY_TABLE = "语料库汇总表"
+
+
+
+
+
+
+
 
 
     """Added by Alice end"""

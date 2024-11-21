@@ -99,12 +99,12 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+                                            Helper.data_locale.NODES_DATA)
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.nodesTable.title}")
+                                            Helper.data_locale.NODES_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -113,7 +113,7 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.linksTable.title}")
+                                            Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -300,12 +300,14 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+                                            Helper.data_locale.NODES_DATA)
+
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.nodesTable.title}")
+                                            Helper.data_locale.NODES_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -314,7 +316,7 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.linksTable.title}")
+                                            Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")

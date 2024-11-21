@@ -40,7 +40,8 @@ def test_00_core_decomposition_in_flow(page, init):
     time.sleep(0.5)
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
-                                            "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
+                                            Helper.data_locale.NODES_INPUT_DATA)
+                                            # "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()
     flow.apply_flow_layout_vertical()
@@ -87,7 +88,8 @@ def test_01_core_decomposition_in_flow(page, init):
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, "添加输入端口",
-                                            "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
+                                            Helper.data_locale.NODES_INPUT_DATA)
+                                            # "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
