@@ -399,6 +399,7 @@ class DataZH(Data):
     STEP_Binning = "分箱"
     STEP_STANDARDIZE_DATA = "标准化数据"
     STEP_IMPUTATION = "补缺"
+    STEP_TRANSFORM_COLUMNS = "转换列"
 
     STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL = "统计过程控制"
     STEP_ANALYSIS_OF_MEANS = "均值分析"
@@ -948,6 +949,14 @@ class DataZH(Data):
     USE_UNIFORM_SCALE = "使用统一尺度"
     BAR_AXIS = "直条坐标轴"
     LINE_AXIS = "线条坐标轴"
+    TRANSFORM = "转换"
+    TRANSFORM_1 = "转换 1"
+    TRANSFORM_2 = "转换 2"
+    TRANSFORM_3 = "转换 3"
+    VARIABLE_1 = "变量 1"
+    VARIABLE_2 = "变量 2"
+    VARIABLE_3 = "变量 3"
+    CUSTOM_TRANSFORM = "自定义转换"
     """Added by Dommy end"""
 
     """Added by Frank start"""

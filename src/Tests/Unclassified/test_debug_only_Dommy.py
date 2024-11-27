@@ -5,6 +5,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.VisualizeData.text_map_pane im
 from src.conftest import *
 from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
+from src.Pages.StudioNext.Center.Flow.DetailsPane.PrepareAndExploreData.transform_columns_pane import TransformColumns
 
 
 def test_15_text_map_in_flow_l0(page, init):
@@ -113,4 +114,3 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     text_map_pane.click_options_tab()
 
     flow.run(True)
-
