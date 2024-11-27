@@ -731,8 +731,11 @@ class DataZH(Data):
     RIGHT_SINGULAR_VECTORS_TABLE = "右奇异向量表"
     DOCUMENT_SUMMARIES_TABLE = "文档汇总表"
     CORPUS_SUMMARY_TABLE = "语料库汇总表"
-
-
+    SEVERITY = "严重性"
+    SPECIFY_LOSS_SEVERITY_MODEL = "指定损失严重性模型"
+    COUNT = "计数"
+    SPECIFY_LOSS_COUNT_MODEL = "指定损失计数模型"
+    COUNT_MODEL_TYPE = "计数模型类型"
 
 
 
