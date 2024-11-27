@@ -86,7 +86,7 @@ def test_02_causal_models_heckman_level0(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
     table_pane.set_table("Result'中文")
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, Helper.data_locale.ADD_OUTPUT_PORT)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 
@@ -190,7 +190,7 @@ def test_03_causal_models_heckman_level1(page, init):
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("WORK")
     table_pane.set_table("Result'中文")
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, Helper.data_locale.ADD_OUTPUT_PORT)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CAUSAL_MODELS, "Result'中文")
     flow.arrange_nodes()
 

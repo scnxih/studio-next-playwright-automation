@@ -84,7 +84,7 @@ N 1
     table_pane.set_library("MYCAS")
     table_pane.set_table("NODESETIN")
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, Helper.data_locale.ADD_OUTPUT_PORT)
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
@@ -98,12 +98,12 @@ N 1
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT,
                                             Helper.data_locale.NODES_DATA)
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.NODES_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -112,7 +112,7 @@ N 1
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_NODES")
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -286,7 +286,7 @@ N 1
     table_pane.set_library("MYCAS")
     table_pane.set_table("NODESETIN")
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, "添加输出端口")
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.SAS_PROGRAM, Helper.data_locale.ADD_OUTPUT_PORT)
 
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "NODESETIN")
     flow.arrange_nodes()
@@ -299,13 +299,13 @@ N 1
     flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT,
                                             Helper.data_locale.NODES_DATA)
 
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.NODES_TABLE)
 
     flow.add_node(FlowNodeType.table)
@@ -315,7 +315,7 @@ N 1
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "OUTPUT_NODES")
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)

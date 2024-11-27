@@ -322,7 +322,7 @@ def test_traveling_salesman_problem_l1(page, init):
     traveling_salesman_problem_pane.set_check_save_tour_nodes_info()
     time.sleep(0.5)
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, Helper.data_locale.ADD_OUTPUT_PORT,
                                             "{sasstudio-steps-gui-icu.travelingsalesmanproblem.outputports.outDSName.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -331,7 +331,7 @@ def test_traveling_salesman_problem_l1(page, init):
     table_pane.set_table("输出表")
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, "输出表")
     time.sleep(0.5)
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TRAVELING_SALESMAN_PROBLEM, Helper.data_locale.ADD_OUTPUT_PORT,
                                             "{sasstudio-steps-gui-icu.travelingsalesmanproblem.outputports.outNodesDSName.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)

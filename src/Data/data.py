@@ -731,6 +731,12 @@ class Data:
     RIGHT_SINGULAR_VECTORS_TABLE = "Right Singular Vectors Table"
     DOCUMENT_SUMMARIES_TABLE = "Document Summaries Table"
     CORPUS_SUMMARY_TABLE = "Corpus Summary Table"
+    SEVERITY = "Severity"
+    SPECIFY_LOSS_SEVERITY_MODEL = "Specify the loss severity model"
+    COUNT = "Count"
+    SPECIFY_LOSS_COUNT_MODEL = "Specify the loss count model"
+    COUNT_MODEL_TYPE = "Count model type"
+
     """Added by Alice end"""
 
     """Added by Allison start"""

@@ -172,7 +172,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_CLUSTER_VARIABLES)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.STATISTICS_DATA)
                                             # "{sasstudio-steps-gui-icu.clustervariables.outputports"
                                             # ".statDSName.displayname.title}")
@@ -183,7 +183,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "输出'stat")
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.TREE_INFORMATION_DATA)
                                             # "{sasstudio-steps-gui-icu.clustervariables.outputports"
                                             # ".treeDSName.displayname.title}")

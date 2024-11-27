@@ -117,7 +117,7 @@ def test_01_canonical_correlation_in_flow(page, init):
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CREATE_STAT_DATASET)
     time.sleep(0.2)
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.SCORE_TABLE)
                                             # "{sasstudio-steps-gui-icu.canonicalcorrelation.outputports.outputTableOne.displayname.title}")
     flow.add_node(FlowNodeType.table)
@@ -130,7 +130,7 @@ def test_01_canonical_correlation_in_flow(page, init):
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "添加输出端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.STATISTICS_TABLE)
                                             # "{sasstudio-steps-gui-icu.genericText.outputport.statisticsTable.title}")
     flow.add_node(FlowNodeType.table)

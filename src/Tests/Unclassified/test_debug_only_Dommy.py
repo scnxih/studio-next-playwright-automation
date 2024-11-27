@@ -68,7 +68,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow("CITY_POP_LOC'中文", Helper.data_locale.STEP_TEXT_MAP)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, Helper.data_locale.ADD_INPUT_PORT,
                                             "{sasstudio-steps-gui-icu.genericText.inputport.mapInputData.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
@@ -77,7 +77,7 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_TEXT_MAP)
     flow.arrange_nodes()
 
-    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, "添加输入端口",
+    # flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_TEXT_MAP, Helper.data_locale.ADD_INPUT_PORT,
     # "{sasstudio-steps-gui-icu.genericText.inputport.mapResponseData.title}")
     # flow.view_expand_all_ports()
     # flow.add_node(FlowNodeType.table)
