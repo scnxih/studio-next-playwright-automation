@@ -11,14 +11,28 @@ from src.Pages.StudioNext.Dialog.saveas_dialog import SaveAsDialog
 from src.Helper.helper import *
 
 
-
-
 class CodeEditorPage(MainCenterPage):
     def __init__(self, page):
         MainCenterPage.__init__(self, page)
         """Updated by Alice on 09/22/2023 start"""
         self.editor = EditorTextArea(self.base_xpath, page)
         """Updated by Alice on 09/22/2023 end"""
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("screenshot_self in CodeEditorPage")
+
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=[
+                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                            self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                            '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                        ],
+                        mask_color='#000000')
 
     def type_code_in_codeeditor(self, text):
         self.editor.type_into_text_area(text)
@@ -44,7 +58,6 @@ class CodeEditorPage(MainCenterPage):
             return save_as_dialog.save_file(folder_path, file_name, if_replace)
         Helper.logger.error("save as failed.")
         return False
-
 
     def format_program(self):
         self.center_toolbar_helper.format_program()

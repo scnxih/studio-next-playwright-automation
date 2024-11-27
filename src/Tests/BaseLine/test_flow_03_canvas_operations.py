@@ -297,10 +297,12 @@ def test_04_details_pane_table(page, init):
     # Take a screenshot after all nodes have been added into canvas
     time.sleep(1)
 
-    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
-                                    mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
-                                          "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
-                                    mask_color="#000000")
+    WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes")
+
+    # WholePage(page).screenshot_self("whole_page_flow_canvas_with_nodes",
+    #                                 mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE),
+    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
+    #                                 mask_color="#000000")
 
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes")
 
@@ -499,7 +501,8 @@ run;
 
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
-    table_pane.click_tab("预览数据")
+    # table_pane.click_tab("预览数据")
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
     # table_pane.click_tab("Preview Data")
     time.sleep(3)
     flow.add_node(FlowNodeType.sort)
@@ -535,7 +538,8 @@ run;
     time.sleep(3)
     flow.select_node_in_flow_canvas("SORTED")
     time.sleep(2)
-    table_pane.click_tab("预览数据")
+    # table_pane.click_tab("预览数据")
+    table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
     # table_pane.click_tab("Preview Data")
     time.sleep(2)
 

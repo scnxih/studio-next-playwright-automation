@@ -8,11 +8,12 @@ from src.Pages.Common.common_component import *
 
 class Listbox(CommonComponent):
     def set_base_xpath(self):
-        self.base_xpath += "//ul[@role='listbox']"
+        # self.base_xpath += "//ul[@role='listbox']"
+        self.base_xpath += "//div[@role='row']"
 
     # If the page contains more than one listbox, data_test_id or aria_label or aria_labelledby is required.
     def __init__(self, container_base_xpath, page, data_test_id="", aria_label="", aria_labelledby="",
-                 supplement_base_xpath="",parent_label=""):
+                 supplement_base_xpath="", parent_label=""):
         if parent_label != "":
             supplement_base_xpath = "[../../descendant::label[contains(text(),'{0}')]]".format(parent_label)
         CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,
@@ -28,11 +29,18 @@ class Listbox(CommonComponent):
         if Helper.if_contain_quotation(text):
             escaped_text = Helper.escape_quotation_for_xpath(text)
             return self.locate_xpath(
-            f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={escaped_text}]")
-        else:
-            return self.locate_xpath(
-                f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+                # Component in custom step changed on Nov.14th 2024
+                f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={escaped_text}]")
 
+            # WRONG
+            # f"//div[@role='gridcell']//span[contains(@class,'sas_components-List-Item-Item_item-text')][text()={escaped_text}]")
+        else:
+            # Component in custom step changed on Nov.14th 2024
+            return self.locate_xpath(f"//li[@role='option']//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{text}']")
+
+            # WRONG
+            # return self.locate_xpath(
+            #     f"//div[@role='gridcell']//span[contains(@class,'sas_components-List-Item-Item_item-text')][text()='{text}']")
 
     def li_item(self, text: str):
         """
@@ -43,13 +51,12 @@ class Listbox(CommonComponent):
         if Helper.if_contain_quotation(text):
             escaped_text = Helper.escape_quotation_for_xpath(text)
             return self.locate_xpath(
-            "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={0}]]".format(
-                escaped_text))
+                "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()={0}]]".format(
+                    escaped_text))
         else:
             return self.locate_xpath(
                 "//li[@role='option'][.//span[contains(@class,'sas_components-ListBox-List_item-text')][text()='{0}']]".format(
                     text))
-
 
     def is_checked_li_item(self, text: str):
         if self.get_attribute(self.li_item(text), "aria-selected").lower() == "true":
@@ -69,6 +76,7 @@ class Listbox(CommonComponent):
             return
         else:
             return
+
     def dblclick_list_item(self, item_text: str):
         """
         Description: double click a list item.

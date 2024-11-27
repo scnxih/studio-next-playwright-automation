@@ -21,6 +21,12 @@ class OpenItemsPage(AccordionPage):
         return self.locate_xpath('//*[@href="#sas-svg-saveall"]')
 
     def save_all_files(self, folder_path: list, file_name: list, if_replace):
+        #  Modified on Nov.8th 2024
+        #  Abnormal status check of unsaved files,
+        #  except for custom steps, which caused relevant failures in automation.
+        #  https://rndjira.sas.com/browse/SASSTUDIO-40251
+        return
+
         self.click(self.btn_saveall())
 
         Helper.logger.debug("after click save all button")

@@ -76,6 +76,4 @@ def test_02_characterize_date_level1(page, init):
     flow.screenshot_self("options")
     flow.arrange_nodes()
     flow.run(False)
-    flow.screenshot_without_toast("run")
-    flow.click_results_tab()
-    flow.screenshot_without_toast("results")
+    flow.screenshot_after_run()

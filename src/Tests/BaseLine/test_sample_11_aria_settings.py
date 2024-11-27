@@ -11,8 +11,11 @@ from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_click_global_general_via_aria_xpath(page, init):
     """
 
@@ -120,7 +123,6 @@ def test_03_click_tab_pages_via_aria_composation(page, init):
     setting_dialog.close_dialog()
 
 
-
 def test_04_click_tab_pages_via_aria_composition(page, init):
     # Step-1: Open Settings dialog
     top_right = TopRightToolbar(page)
@@ -167,4 +169,3 @@ def test_04_click_tab_pages_via_aria_composition(page, init):
 
     # Step-7 Close the dialog
     setting_dialog.close_dialog()
-

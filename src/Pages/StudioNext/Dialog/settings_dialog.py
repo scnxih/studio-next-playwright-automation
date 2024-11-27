@@ -143,7 +143,8 @@ class SettingsDialog(Dialog):
     # BEGIN <<< Added by Jacky(ID: jawang) on Nov.9th, 2023
     def __assemble_tab_page_aria_xpath_dict(self, setting_tab_page: SettingsTabPages):
         aria_dict = {
-            "SettingsTabPages.global_general": ('2', '1', '3'),
+            # "SettingsTabPages.global_general": ('2', '1', '3'),
+            "SettingsTabPages.global_general": ('2', '2', '4'),  # Changed on Oct.16th 2024
             "SettingsTabPages.sas_studio_general": ('2', '2', '10'),
             # "SettingsTabPages.sas_studio_general": ('2', '2', '9'),
             "SettingsTabPages.code_and_log": ('3', '1', '2')
@@ -184,7 +185,8 @@ class SettingsDialog(Dialog):
         if setting_tab_page == SettingsTabPages.global_general:
             Helper.logger.debug("Switch to: Global/General via aira-composing")
             # self.switch_to_global_general()
-            tab_page_aria_combination = ('2', '1', '3')
+            # tab_page_aria_combination = ('2', '1', '3')
+            tab_page_aria_combination = ('2', '2', '4')
 
         elif setting_tab_page == SettingsTabPages.sas_studio_general:
             Helper.logger.debug("Switch to: SAS Studio/General via aira-composing")
@@ -229,7 +231,10 @@ class SettingsDialog(Dialog):
         :return:
         """
         Helper.logger.debug("Switch to Global/General via aira-xpath")
-        self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="1"][@aria-setsize="3"]')
+        # self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="1"][@aria-setsize="3"]')
+
+        # //div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="4"]
+        self.click('//div[@role="treeitem"][@aria-level="2"][@aria-posinset="2"][@aria-setsize="4"]')
 
     def switch_to_sas_studio_general_via_aria(self):
         """

@@ -1,4 +1,6 @@
 """This is test case file for Robust Principal Component Analysis"""
+import time
+
 """Added by Dommy 2024-9-25"""
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.robust_principal_component_analysis_pane import \
     RobustPrincipalComponentAnalysis
@@ -193,7 +195,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.lowrankoutputtable.displayname.title}")
+                                                       Helper.data_locale.LOW_RANK_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -203,7 +206,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.sparseoutputtable.displayname.title}")
+                                                       Helper.data_locale.SPARSE_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -213,7 +217,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.erroroutputtable.displayname.title}")
+                                                       Helper.data_locale.ERROR_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -223,7 +228,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.lsvoutputtable.displayname.title}")
+                                                       Helper.data_locale.LEFT_SINGULAR_VECTORS_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -233,7 +239,7 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.svoutputtable.displayname.title}")
+                                                       Helper.data_locale.SINGULAR_VALUES_OUTPUT_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -243,7 +249,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.rsvoutputtable.displayname.title}")
+                                                       Helper.data_locale.RIGHT_SINGULAR_VECTORS_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -307,7 +314,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.cloutputtable.displayname.title}")
+                                                       Helper.data_locale.COMPONENT_LOADINGS_OUTPUT_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -317,7 +325,7 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS,
-                                                       "{sasstudio-steps-gui-icu.rpca.outputports.pcoutputtable.displayname.title}")
+                                                       Helper.data_locale.PC_SCORES_OUTPUT_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -337,10 +345,11 @@ run;
     robust_principal_component_analysis_pane.set_check_save_pc_scores_data()
     flow.screenshot_self("output")
     flow.run(False)
+    time.sleep(1)
     flow.screenshot_without_toast("run")
     flow.click_results_tab()
-    time.sleep(1)
+    time.sleep(2)
     flow.screenshot_without_toast("results")
     flow.click_output_data_tab()
-    time.sleep(1)
+    time.sleep(2)
     flow.screenshot_without_toast("output_data")

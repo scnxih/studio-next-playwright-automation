@@ -99,12 +99,12 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+                                            Helper.data_locale.NODES_DATA)
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.nodesTable.title}")
+                                            Helper.data_locale.NODES_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -113,7 +113,7 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.linksTable.title}")
+                                            Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -138,20 +138,21 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.expand_windowshade_additional_roles()
     time.sleep(0.5)
-    centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到", "community"])
-    centrality_metrics_pane.delete_columns_for_group_analysis_by(
-        check_column_name_list=["from'从", "to'到", "community"])
+    # centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到", "community"])
+    centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["community"])
+    # centrality_metrics_pane.delete_columns_for_group_analysis_by(
+    #     check_column_name_list=["from'从", "to'到", "community"])
     time.sleep(0.5)
     centrality_metrics_pane.collapse_windowshade_links()
     time.sleep(0.5)
-    centrality_metrics_pane.set_check_include_nodes_data()
-    time.sleep(0.5)
-    centrality_metrics_pane.expand_windowshade_nodes()
-    centrality_metrics_pane.set_filter_nodes_data("\"weight'\"n>=0")
-    centrality_metrics_pane.add_column_for_node(column_name="node'")
-    time.sleep(0.5)
-    centrality_metrics_pane.add_column_for_weight_in_nodes(column_name="weight'")
-    time.sleep(1)
+    # centrality_metrics_pane.set_check_include_nodes_data()
+    # time.sleep(0.5)
+    # centrality_metrics_pane.expand_windowshade_nodes()
+    # centrality_metrics_pane.set_filter_nodes_data("\"weight'\"n>=0")
+    # centrality_metrics_pane.add_column_for_node(column_name="node'")
+    # time.sleep(0.5)
+    # centrality_metrics_pane.add_column_for_weight_in_nodes(column_name="weight'")
+    # time.sleep(1)
     centrality_metrics_pane.screenshot_self("data")
     centrality_metrics_pane.click_options_tab()
     centrality_metrics_pane.set_check_degree()
@@ -208,7 +209,7 @@ N 1
     flow.run(False)
     time.sleep(0.5)
     flow.apply_flow_layout_horizontal()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("run")
     flow.click_log_tab()
     time.sleep(0.5)
@@ -299,12 +300,14 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输入端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.inputport.nodesData.title}")
+                                            Helper.data_locale.NODES_DATA)
+
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.nodesTable.title}")
+                                            Helper.data_locale.NODES_TABLE)
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -313,7 +316,7 @@ N 1
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, "添加输出端口",
-                                                 "{sasstudio-steps-gui-icu.genericText.outputport.linksTable.title}")
+                                            Helper.data_locale.LINKS_TABLE)
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("MYCAS")
@@ -339,9 +342,10 @@ N 1
     time.sleep(0.5)
     centrality_metrics_pane.expand_windowshade_additional_roles()
     time.sleep(0.5)
-    centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到", "community"])
-    centrality_metrics_pane.delete_columns_for_group_analysis_by(
-        check_column_name_list=["from'从", "to'到", "community"])
+    # centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["from'从", "to'到", "community"])
+    # centrality_metrics_pane.add_columns_for_group_analysis_by(check_column_name_list=["community"])
+    # centrality_metrics_pane.delete_columns_for_group_analysis_by(
+    #     check_column_name_list=["from'从", "to'到", "community"])
     time.sleep(0.5)
     centrality_metrics_pane.collapse_windowshade_links()
     time.sleep(0.5)

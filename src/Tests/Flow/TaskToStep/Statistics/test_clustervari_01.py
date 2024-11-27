@@ -173,8 +173,9 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
-                                            "{sasstudio-steps-gui-icu.clustervariables.outputports"
-                                            ".statDSName.displayname.title}")
+                                            Helper.data_locale.STATISTICS_DATA)
+                                            # "{sasstudio-steps-gui-icu.clustervariables.outputports"
+                                            # ".statDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")
@@ -183,8 +184,9 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CLUSTER_VARIABLES, "添加输出端口",
-                                            "{sasstudio-steps-gui-icu.clustervariables.outputports"
-                                            ".treeDSName.displayname.title}")
+                                            Helper.data_locale.TREE_INFORMATION_DATA)
+                                            # "{sasstudio-steps-gui-icu.clustervariables.outputports"
+                                            # ".treeDSName.displayname.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("work")

@@ -41,7 +41,9 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -54,7 +56,9 @@ run;
     text_summarization_pane.set_language(item_index=1)
 
     text_summarization_pane.add_column_for_text_variable("text'中文")
+    flow.screenshot_self("data")
     flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_02_text_summarization_in_flow(page, init):
@@ -90,7 +94,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -108,7 +113,9 @@ run;
 
     text_summarization_pane.click_options_tab()
     text_summarization_pane.set_check_use_entities_and_noun_groups()
+    flow.screenshot_self("options")
     flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_03_text_summarization_in_flow(page, init):
@@ -144,7 +151,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -153,7 +161,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -168,12 +177,13 @@ run;
     text_summarization_pane.add_column_for_text_variable("text'中文")
     text_summarization_pane.set_key_variable(item_index=1)
     text_summarization_pane.add_column_for_key_variable("key'中文")
-
+    flow.screenshot_self("data")
     text_summarization_pane.click_options_tab()
     text_summarization_pane.set_check_entire_corpus()
     text_summarization_pane.set_check_use_entities_and_noun_groups()
-
+    flow.screenshot_self("options")
     flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_04_text_summarization_in_flow(page, init):
@@ -209,7 +219,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
+                                                       Helper.data_locale.DOCUMENT_SUMMARIES_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.docSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -218,7 +229,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -243,7 +255,9 @@ run;
     text_summarization_pane.add_columns_for_include_these_variables(check_column_name_list=["text'中文"])
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
+    flow.screenshot_self("output")
     flow.run(False)
+    flow.screenshot_after_run()
 
 @pytest.mark.level1_step
 def test_05_text_summarization_in_flow(page, init):
@@ -279,7 +293,8 @@ run;
     flow.arrange_nodes()
 
     flow.click_add_output_port_in_context_menu_on_node(Helper.data_locale.STEP_TEXT_SUMMARIZATION,
-                                                       "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
+                                                       Helper.data_locale.CORPUS_SUMMARY_TABLE)
+                                                       # "{sasstudio-steps-gui-icu.textsummarization.outputports.corpusSumOutTbl.title}")
     flow.add_node(FlowNodeType.table)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane.set_library("CASUSER")
@@ -304,3 +319,4 @@ run;
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
     flow.run(False)
+    flow.screenshot_after_run()

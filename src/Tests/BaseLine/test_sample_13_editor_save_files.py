@@ -4,11 +4,14 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: 2023/11/29 11:31 
 """
-
+from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.conftest import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_save_all_files(page, init):
     """
     Save *.xml *.json *.text *.workspace to SAS/Content/Public

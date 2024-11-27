@@ -23,7 +23,10 @@ class NumericStepperSelectMode(CommonComponent):
     @property
     def div_value(self):
         return self.locate_xpath(
-            "//div[@class='sas_components-NumericStepper-NumericStepper_select-mode']")
+            # "//div[@class='sas_components-NumericStepper-NumericStepper_select-mode']")
+
+            # Changed on Oct.16th 2024
+            "//div[@class='sas_components-NumericStepper-NumericStepper_non-editable-text-field']")
 
     def click_decrement_value(self, times:int=None):
         """

@@ -197,8 +197,7 @@ class FlowPage(MainCenterPage):
                                                        Helper.data_locale.UNION_ROWS)
 
             case FlowNodeType.notes:
-                self.toolbar.click_btn_menu_by_test_id(data_testid,
-                                                       Helper.data_locale.NOTES)
+                self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.NOTES)
         time.sleep(0.5)
 
     def view_collapse_all_ports(self):
@@ -431,7 +430,7 @@ class FlowPage(MainCenterPage):
         get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
 
     def screenshot_without_toast(self,pic_name:str):
-        self.screenshot_self(pic_name=pic_name,clip={'x': 435, 'y': 0, 'width': 1883, 'height': 940})
+        self.screenshot_self(pic_name=pic_name,clip={'x': 435, 'y': 0, 'width': 1446, 'height': 940})
 
     def screenshot_after_run(self):
         self.screenshot_without_toast("run")

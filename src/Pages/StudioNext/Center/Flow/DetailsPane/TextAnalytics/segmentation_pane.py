@@ -15,10 +15,10 @@ class SegmentationPane(BasicStepPane):
     """Methods in Data tab"""
 
     def input_filter_input_data(self, filter_expression: str):
-        self.set_text_for_text_control(Helper.data_locale.FILTER_INPUT_DATA, input_text=filter_expression)
+        self.set_filter_input_data(filter_expression)
 
     def empty_filter_input_data(self):
-        self.set_text_for_text_control(Helper.data_locale.FILTER_INPUT_DATA, input_text="")
+        self.set_filter_input_data("")
 
     def select_language(self, lang: str):
         self.set_option_for_combobox(Helper.data_locale.LANGUAGE, item_value=lang)
