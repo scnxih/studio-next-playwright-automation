@@ -410,6 +410,7 @@ class Data:
     STEP_Binning = "Binning"
     STEP_STANDARDIZE_DATA = "Standardize Data"
     STEP_IMPUTATION = "Imputation"
+    STEP_TRANSFORM_COLUMNS = "Transform Columns"
 
     STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL = "Statistical Process Control"
     STEP_ANALYSIS_OF_MEANS = "Analysis of Means"
@@ -946,6 +947,14 @@ class Data:
     USE_UNIFORM_SCALE = "Use uniform scale"
     BAR_AXIS = "Bar Axis"
     LINE_AXIS = "Line Axis"
+    TRANSFORM = "Transform"
+    TRANSFORM_1 = "Transform 1"
+    TRANSFORM_2 = "Transform 2"
+    TRANSFORM_3 = "Transform 3"
+    VARIABLE_1 = "Variable 1"
+    VARIABLE_2 = "Variable 2"
+    VARIABLE_3 = "Variable 3"
+    CUSTOM_TRANSFORM = "Custom transform"
     """Added by Dommy end"""
 
     """Added by Frank start"""
