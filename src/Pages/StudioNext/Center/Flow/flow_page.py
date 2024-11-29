@@ -260,6 +260,14 @@ class FlowPage(MainCenterPage):
     def link_two_nodes_in_flow(self, node1_name, node2_name):
         link_two_nodes_in_flow(self.page, node1_name, node2_name)
 
+    # Note the node2_input_port_number must be the latest input port and it should be >=3, and before use the method,
+    # make sure to expand ports by call flow.view_expand_all_ports
+    def link_from_node_to_input_port_in_flow(self,node1_name, node2_name, node2_input_port_number:int):
+        link_from_node_to_input_port_in_flow(self.page,node1_name, node2_name, node2_input_port_number)
+
+    def link_from_node_to_input_port_in_flow_first_of_two(self,node1_name, node2_name ):
+        link_from_node_to_input_port_in_flow_first_of_two(self.page,node1_name, node2_name)
+
     def _open_context_menu_on_canvas_in_flow(self):
         open_context_menu_for_canvas_in_flow(self.page)
 

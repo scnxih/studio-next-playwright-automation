@@ -349,6 +349,7 @@ class Data:
     STEP_CATEGORY_ECONOMETRICS = "Econometrics"
     STEP_CAUSAL_MODELS = "Causal Models"
     STEP_HIDDEN_MARKOV_MODELS = "Hidden Markov Models"
+    STEP_AGGREGATE_LOSS_MODELS = "Aggregate Loss Models"
 
     STEP_CATEGORY_ENRICHMENT = "Enrichment"
     STEP_GEOCODE_DATA = "Geocode Data"

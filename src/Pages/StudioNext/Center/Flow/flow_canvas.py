@@ -67,7 +67,80 @@ def link_two_nodes_in_flow(page, node1_name, node2_name):
         page.evaluate(execute_mouse_move_script)
         time.sleep(1)
         select_node_in_flow_canvas(page, node2_name)
+# Added by Alice on 2024/11/28
+# Used for the node2_input_port_number is the latest input port and it is >=3
+def link_from_node_to_input_port_in_flow(page, node1_name, node2_name, node2_input_port_number:int):
+    # Get the directory of the current script
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    # Construct the relative path to functions.js
+    functions_js_path = os.path.join(current_directory,
+                                     "canvas_javascript.js")
+    with open(functions_js_path, "r", encoding="utf-8") as js_file:
+        js_functions = js_file.read()
+        #  node.Location gives the mid-value of the node, to reach the end of the node, we have to figure out first
+        #  if the node has ports or not
+        step1_info = page.evaluate(js_functions + f'\nget_node_shape_information("{node1_name}")')
+        step1_shape_info = step1_info.upper()
+        if step1_shape_info == "CIRCLE":
+            flow_node_width_for_linking_nodes_in_canvas = NODE_WIDTH_WITHOUT_PORTS_CONSTANT
+        else:
+            flow_node_width_for_linking_nodes_in_canvas = NODE_WIDTH_WITH_PORTS_CONSTANT
+        step1_location = page.evaluate(js_functions + f'\nget_node_location("{node1_name}")')
 
+        # Needed to add padding for the coordinates in order for the drawing to work.  (December 11, 2023)
+        # subtract 4 from x, and add 5 to y
+        # The initial location is either the upper left corner of the node or center of node location. Unsure at this time
+        x1_coordinate = int(math.floor(float(step1_location.split()[0]))) + flow_node_width_for_linking_nodes_in_canvas - 4
+        y1_coordinate = int(math.floor(float(step1_location.split()[1]))) + 5
+
+        step2_location = page.evaluate(js_functions + f'\nget_node_location("{node2_name}")')
+        x2_coordinate = int(math.floor(float(step2_location.split()[0]))) - 79
+        y2_coordinate = int(math.floor(float(step2_location.split()[1]))) + 17*(node2_input_port_number-1)
+
+        execute_mouse_move_script = (
+            f"{js_functions}\nexecute_mouse_move({x1_coordinate}, " f"{y1_coordinate}, {x2_coordinate}, {y2_coordinate});"
+        )
+
+        page.evaluate(execute_mouse_move_script)
+        time.sleep(1)
+        select_node_in_flow_canvas(page, node2_name)
+def link_from_node_to_input_port_in_flow_first_of_two(page, node1_name, node2_name):
+    # Get the directory of the current script
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    # Construct the relative path to functions.js
+    functions_js_path = os.path.join(current_directory,
+                                     "canvas_javascript.js")
+    with open(functions_js_path, "r", encoding="utf-8") as js_file:
+        js_functions = js_file.read()
+        #  node.Location gives the mid-value of the node, to reach the end of the node, we have to figure out first
+        #  if the node has ports or not
+        step1_info = page.evaluate(js_functions + f'\nget_node_shape_information("{node1_name}")')
+        step1_shape_info = step1_info.upper()
+        if step1_shape_info == "CIRCLE":
+            flow_node_width_for_linking_nodes_in_canvas = NODE_WIDTH_WITHOUT_PORTS_CONSTANT
+        else:
+            flow_node_width_for_linking_nodes_in_canvas = NODE_WIDTH_WITH_PORTS_CONSTANT
+        step1_location = page.evaluate(js_functions + f'\nget_node_location("{node1_name}")')
+
+        # Needed to add padding for the coordinates in order for the drawing to work.  (December 11, 2023)
+        # subtract 4 from x, and add 5 to y
+        # The initial location is either the upper left corner of the node or center of node location. Unsure at this time
+        x1_coordinate = int(
+            math.floor(float(step1_location.split()[0]))) + flow_node_width_for_linking_nodes_in_canvas - 4
+        y1_coordinate = int(math.floor(float(step1_location.split()[1]))) + 5
+
+        step2_location = page.evaluate(js_functions + f'\nget_node_location("{node2_name}")')
+        x2_coordinate = int(
+            math.floor(float(step2_location.split()[0]))) - flow_node_width_for_linking_nodes_in_canvas - 4
+        y2_coordinate = int(math.floor(float(step2_location.split()[1]))) + 5 -22
+
+        execute_mouse_move_script = (
+            f"{js_functions}\nexecute_mouse_move({x1_coordinate}, " f"{y1_coordinate}, {x2_coordinate}, {y2_coordinate});"
+        )
+
+        page.evaluate(execute_mouse_move_script)
+        time.sleep(1)
+        select_node_in_flow_canvas(page, node2_name)
 
 def open_context_menu_for_the_node_in_flow(page, node_name):
     """
