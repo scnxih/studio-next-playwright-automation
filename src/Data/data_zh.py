@@ -345,6 +345,7 @@ class DataZH(Data):
     STEP_CATEGORY_ECONOMETRICS = "计量经济学"
     STEP_CAUSAL_MODELS = "因果模型"
     STEP_HIDDEN_MARKOV_MODELS = "隐藏的 Markov 模型"
+    STEP_AGGREGATE_LOSS_MODELS = "聚合损失模型"
 
     STEP_CATEGORY_ENRICHMENT = "扩充"
     STEP_GEOCODE_DATA = "地理编码数据"
@@ -736,6 +737,7 @@ class DataZH(Data):
     COUNT = "计数"
     SPECIFY_LOSS_COUNT_MODEL = "指定损失计数模型"
     COUNT_MODEL_TYPE = "计数模型类型"
+    "计数数据"
 
 
 

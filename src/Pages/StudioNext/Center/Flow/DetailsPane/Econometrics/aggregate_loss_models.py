@@ -40,7 +40,5 @@ class AggregateLossModelsPane(BasicStepPane):
     def set_count_model_type(self, item_index=None, item_value=None):
         self.set_option_for_radio_group(parent_label=Helper.data_locale.COUNT_MODEL_TYPE,
                                         item_index=item_index, item_value=item_value)
-    def set_filter_input_data(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.FILTER_INPUT_DATA, input_text=input_text)
 
     """Methods in Severity tab"""

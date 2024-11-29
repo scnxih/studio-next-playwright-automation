@@ -6,7 +6,16 @@ function get_node_location(node_name) {
     const filteredNodes = nodeDataArray.filter(n => n.name === node_name);
     return filteredNodes[0].location;
 }
-
+////get input port coordinates
+////added by Alice on 2024/11/28
+//function get_input_port_location(node_name, input_port_number) {
+//    // Perform some operations to compute the value
+//    const elements = document.getElementsByClassName('sas_styles-Diagram_diagram-component');
+//    const nodeDataArray = elements[0].robot.diagram.model.nodeDataArray;
+//    const filteredNodes = nodeDataArray.filter(n => n.name === node_name);
+//    const input_port_info = filteredNodes[0].inPorts[input_port_number]
+//    return input_port_info.location;
+//}
 // do the select the node action
 function execute_mouse_press(x_coordinate, y_coordinate) {
     document.getElementsByClassName('sas_styles-Diagram_diagram-component')[0].robot.mousePressAction(x_coordinate, y_coordinate);
