@@ -88,6 +88,12 @@ class DetailsPane(BasePage):
         """
         self.click_tab(Helper.data_locale.NOTES)
 
+    def click_plots_tab(self):
+        """
+        Description: click Notes tab.
+        """
+        self.click_tab(Helper.data_locale.PLOTS)
+
     def _add_column_button(self, parent_label: str, section_label:str = None):
         if section_label == None:
             return get_button(self.base_xpath, self.page,
