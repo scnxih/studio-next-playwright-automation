@@ -411,5 +411,69 @@ def test_15_no_node_name(page,init):
     flow.add_step_from_stepspane_to_flow(step_path)
     flow.select_node_in_flow_canvas("")
 
+def test_16_link_to_input_port(page,init):
+    flow: FlowPage = PageHelper.new_flow(page)
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    table.set_table("class")
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    table.set_table("cars")
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    table.set_table("prdsale")
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    table.set_table("air")
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table = TablePane(page)
+    table.set_library("sashelp")
+    table.set_table("buy")
+
+    flow.arrange_nodes()
+    flow.add_node(node_type=FlowNodeType.union_rows)
+
+
+    flow.link_from_node_to_input_port_in_flow_first_of_two("class","联合行")
+    flow.arrange_nodes()
+    flow.link_two_nodes_in_flow("cars","联合行")
+    flow.arrange_nodes()
+
+    flow.click_context_menu_on_node_in_flow("联合行",Helper.data_locale.ADD_INPUT_PORT)
+
+    flow.view_expand_all_ports()
+
+
+    flow.link_from_node_to_input_port_in_flow("prdsale","联合行",3)
+
+    flow.arrange_nodes()
+
+    flow.click_context_menu_on_node_in_flow("联合行", Helper.data_locale.ADD_INPUT_PORT)
+
+    flow.link_from_node_to_input_port_in_flow("air", "联合行", 4)
+    flow.arrange_nodes()
+
+    flow.click_context_menu_on_node_in_flow("联合行", Helper.data_locale.ADD_INPUT_PORT)
+    flow.arrange_nodes()
+
+    flow.link_from_node_to_input_port_in_flow("buy", "联合行", 5)
+    flow.arrange_nodes()
+
+
+
 
 

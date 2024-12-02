@@ -135,3 +135,21 @@ run;
     flow.link_two_nodes_in_flow(Helper.data_locale.SAS_PROGRAM, "SinglePolicy")
     flow.arrange_nodes()
     flow.run(False)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_ECONOMETRICS,
+                 Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS]
+    flow.add_step_from_stepspane_to_flow(step_path)
+
+    flow.link_two_nodes_in_flow("Losses",Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS,
+                                            Helper.data_locale.ADD_INPUT_PORT,Helper.data_locale.INPUT_DATA)
+    flow.link_two_nodes_in_flow("SinglePolicy",Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS,
+                                            Helper.data_locale.ADD_INPUT_PORT, "计数数据")
+
+    flow.view_expand_all_ports()
+    flow.link_from_node_to_input_port_in_flow("LossCounts", Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS,3)
+    flow.click_on_canvas_in_flow()
+    flow.arrange_nodes()
+
+
