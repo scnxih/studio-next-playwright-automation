@@ -151,5 +151,41 @@ run;
     flow.link_from_node_to_input_port_in_flow("LossCounts", Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS,3)
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
+    flow.apply_flow_layout_vertical()
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_AGGREGATE_LOSS_MODELS)
+    aggregate_pane = AggregateLossModelsPane(page)
+    aggregate_pane.click_data_tab()
+    aggregate_pane.set_loss_severity_model(item_index=0)
+    aggregate_pane.expand_windowshade_severity()
+    aggregate_pane.set_loss_severity_model(item_index=0)
+    aggregate_pane.expand_windowshade_count()
+    aggregate_pane.set_loss_count_model(item_index=1)
+    aggregate_pane.set_count_model_type(item_index=0)
+    aggregate_pane.click_tab(Helper.data_locale.SEVERITY)
+    aggregate_pane.add_column_for_loss_variable("lossamount")
+    aggregate_pane.add_columns_for_continuous_variables_in_severity(check_column_name_list=["carSafety","income"])
+    aggregate_pane.delete_columns_for_listbox(parent_label="连续变量",check_column_name_list=["income"])
+    aggregate_pane.add_columns_for_categorical_variables_in_severity(check_column_name_list=["carType"])
+    aggregate_pane.click_tab(Helper.data_locale.COUNT)
+    aggregate_pane.add_column_for_dependent_count_variable("numloss")
+    aggregate_pane.add_columns_for_continuous_variables_in_count(check_column_name_list=["annualMiles","age"])
+    aggregate_pane.add_columns_for_categorical_variables_in_count(check_column_name_list=["gender","carType","education"])
+    aggregate_pane.click_tab(Helper.data_locale.OPTIONS)
+    aggregate_pane.set_sample_size("567")
+    aggregate_pane.set_maxi_number_of_loss_count("98")
+    aggregate_pane.set_statistics_to_display(item_index=2)
+    aggregate_pane.set_check_probability_density_function()
+    aggregate_pane.set_check_empirical_distribution_function()
+
+    aggregate_pane.click_tab(Helper.data_locale.OUTPUT)
+    aggregate_pane.set_check_save_summary_statistics_of_aggregate_loss_sample_data()
+    aggregate_pane.set_check_save_aggregate_loss_samples_data()
+
+
+
+
+
+
+
 
 

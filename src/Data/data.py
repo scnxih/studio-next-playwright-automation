@@ -738,6 +738,26 @@ class Data:
     COUNT = "Count"
     SPECIFY_LOSS_COUNT_MODEL = "Specify the loss count model"
     COUNT_MODEL_TYPE = "Count model type"
+    LOSS_VARIABLE = "Loss variable"
+    CONTINUOUS_VARIABLES = "Continuous variables"
+    CATEGORICAL_VARIABLES = "Categorical variables"
+    SET_LEFT_CENSORING_LIMIT = "Set the left-censoring limit"
+    SET_RIGHT_CENSORING_LIMIT = "Set the right-censoring limit"
+    SET_LEFT_TRUNCATION_THRESHOLD = "Set the left-truncation threshold"
+    SET_RIGHT_TRUNCATION_THRESHOLD = "Set the right-truncation threshold"
+    DEPENDENT_COUNT_VARIABLE = "Dependent count variable"
+    DISTRIBUTION = "Distribution"
+    SAMPLE_SIZE = "Sample size"
+    MAXIMUM_NUMBER_OF_LOSS_COUNT_FOR_SIMULATING_ONE_AGGREGATE_LOSS_SAMPLE_POINT = "Maximum number of loss count for simulating one aggregate loss sample point"
+    STATISTICS_TO_DISPLAY = "Statistics to display"
+    SAVE_SUMMARY_STATISTICS_OF_AGGREGATE_LOSS_SAMPLES_DATA = "Save summary statistics of the aggregate loss samples data"
+    SAVE_AGGREGATE_LOSS_SAMPLES_DATA = "Save aggregate loss samples data"
+    PROBABILITY_DENSITY_FUNCTION = "Probability density function"
+    EMPIRICAL_DISTRIBUTION_FUNCTION = "Empirical distribution function"
+
+
+
+
 
     """Added by Alice end"""
 

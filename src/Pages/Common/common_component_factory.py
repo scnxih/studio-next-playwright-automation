@@ -98,8 +98,8 @@ def get_tab_group(container_base_xpath, page, data_test_id="", supplement_base_x
 def get_widget(container_base_xpath, page):
     return Widget(container_base_xpath, page)
 
-def get_grid(container_base_xpath, page,data_test_id=""):
-    return Grid(container_base_xpath,page,data_test_id=data_test_id)
+def get_grid(container_base_xpath, page,data_test_id="", supplement_base_xpath=""):
+    return Grid(container_base_xpath,page,data_test_id=data_test_id, supplement_base_xpath=supplement_base_xpath)
 
 
 def get_treegrid(container_base_xpath, page, data_test_id=""):

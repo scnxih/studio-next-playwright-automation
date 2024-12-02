@@ -737,13 +737,22 @@ class DataZH(Data):
     COUNT = "计数"
     SPECIFY_LOSS_COUNT_MODEL = "指定损失计数模型"
     COUNT_MODEL_TYPE = "计数模型类型"
-    "计数数据"
-
-
-
-
-
-
+    LOSS_VARIABLE = "损失变量"
+    CONTINUOUS_VARIABLES = "连续变量"
+    CATEGORICAL_VARIABLES = "分类变量"
+    SET_LEFT_CENSORING_LIMIT = "设置左删失限值"
+    SET_RIGHT_CENSORING_LIMIT = "设置右删失限值"
+    SET_LEFT_TRUNCATION_THRESHOLD = "设置左截断阈值"
+    SET_RIGHT_TRUNCATION_THRESHOLD = "设置右截断阈值"
+    DEPENDENT_COUNT_VARIABLE = "计数因变量"
+    DISTRIBUTION = "分布"
+    SAMPLE_SIZE = "样本大小"
+    MAXIMUM_NUMBER_OF_LOSS_COUNT_FOR_SIMULATING_ONE_AGGREGATE_LOSS_SAMPLE_POINT = "模拟一个聚合损失样本点的最大损失计数"
+    STATISTICS_TO_DISPLAY = "要显示的统计量"
+    SAVE_SUMMARY_STATISTICS_OF_AGGREGATE_LOSS_SAMPLES_DATA = "保存聚合损失样本数据的汇总统计量"
+    SAVE_AGGREGATE_LOSS_SAMPLES_DATA = "保存聚合损失样本数据"
+    PROBABILITY_DENSITY_FUNCTION = "概率密度函数"
+    EMPIRICAL_DISTRIBUTION_FUNCTION = "经验分布函数"
 
     """Added by Alice end"""
 

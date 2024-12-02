@@ -15,8 +15,9 @@ class Grid(CommonComponent):
     def set_base_xpath(self):
         self.base_xpath += "//div[@role='grid']"
 
-    def __init__(self, container_base_xpath, page, data_test_id=""):
-        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id)
+    def __init__(self, container_base_xpath, page, data_test_id="",supplement_base_xpath=""):
+        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,
+                                 supplement_base_xpath=supplement_base_xpath)
 
     def row_in_grid(self, row_index=None, grid_cell_text=None):
         """

@@ -207,6 +207,23 @@ class DetailsPane(BasePage):
         self._click_add_exact_column_button(parent_label=parent_label,section_label=section_label)
         select_column_dialog = SelectColumnDialog(self.page)
         select_column_dialog.select_a_column_and_OK(column_name)
+    def add_columns_with_supplement_xpath(self,supplement_xpath, check_column_name_list: list=None, uncheck_column_name_list: list=None):
+        get_button(self.base_xpath, self.page,
+                   supplement_base_xpath="[@aria-label='{0}']{1}".format(
+                       Helper.data_locale.ADD_COLUMN, supplement_xpath)).click_self()
+
+        select_column_dialog = SelectColumnDialog(self.page)
+        if check_column_name_list != None:
+            for check_column_name in check_column_name_list:
+                select_column_dialog.set_check_in_a_row(check_column_name)
+
+        if uncheck_column_name_list != None:
+            for uncheck_column_name in uncheck_column_name_list:
+                select_column_dialog.set_uncheck_in_a_row(uncheck_column_name)
+
+        time.sleep(0.5)
+        select_column_dialog.click_ok_button()
+        time.sleep(0.5)
 
     def add_columns(self, parent_label: str, section_label:str = None, check_column_name_list: list=None, uncheck_column_name_list: list=None):
         """
