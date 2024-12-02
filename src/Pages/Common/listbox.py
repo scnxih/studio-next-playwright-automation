@@ -8,8 +8,8 @@ from src.Pages.Common.common_component import *
 
 class Listbox(CommonComponent):
     def set_base_xpath(self):
-        # self.base_xpath += "//ul[@role='listbox']"
-        self.base_xpath += "//div[@role='row']"
+        self.base_xpath += "//ul[@role='listbox']"
+        # self.base_xpath += "//div[@role='row']"
 
     # If the page contains more than one listbox, data_test_id or aria_label or aria_labelledby is required.
     def __init__(self, container_base_xpath, page, data_test_id="", aria_label="", aria_labelledby="",
