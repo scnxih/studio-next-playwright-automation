@@ -7,8 +7,11 @@ from src.Pages.Common.whole_page import WholePage
 from src.conftest import *
 from src.Helper.page_factory import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_accordion_steps(page, init):
     dialog: Dialog = Dialog(page)
     base: BasePage = BasePage(page)
@@ -39,19 +42,23 @@ def test_01_accordion_steps(page, init):
     step_path: list = [Helper.data_locale.STEP_CATEGORY_INTEGRATE, Helper.data_locale.STEP_MERGE_TABLE]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING, Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_MACHINE_LEARNING,
+                       Helper.data_locale.STEP_ROBUST_PRINCIPAL_COMPONENT_ANALYSIS]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_MANAGE_MODELS, Helper.data_locale.STEP_REGISTER_PYTHON_MODEL]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS, Helper.data_locale.STEP_CORE_DECOMPOSITION]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_OPTIMIZATION_AND_NETWORK_ANALYSIS,
+                       Helper.data_locale.STEP_CORE_DECOMPOSITION]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA, Helper.data_locale.STEP_STANDARDIZE_DATA]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA,
+                       Helper.data_locale.STEP_STANDARDIZE_DATA]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
-    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL, Helper.data_locale.STEP_PARETO_ANALYSIS]
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_STATISTICAL_PROCESS_CONTROL,
+                       Helper.data_locale.STEP_PARETO_ANALYSIS]
     steps.navigate_to_step_then_collapse_parent(step_path)
 
     # WORKS FINE
