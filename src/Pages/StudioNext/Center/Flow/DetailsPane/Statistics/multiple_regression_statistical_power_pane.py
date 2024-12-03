@@ -1,6 +1,6 @@
 """"
 @author: Dommy (Fuying) Chen
-@date: 2024/11/9
+@date: 2024/11/29
 @description: define panes of Transform Columns step
 """
 from src.Pages.Common.common_component_factory import get_checkbox
@@ -8,7 +8,7 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicSt
 from src.Pages.Common.textarea import *
 
 
-class MultipleRegressionStatisticalPower(BasicStepPane):
+class MultipleRegressionStatisticalPowerPane(BasicStepPane):
     def __init__(self, page):
         BasicStepPane.__init__(self, page)
 
