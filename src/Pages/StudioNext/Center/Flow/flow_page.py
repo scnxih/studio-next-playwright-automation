@@ -448,4 +448,13 @@ class FlowPage(MainCenterPage):
         self.click_results_tab()
         time.sleep(0.5)
         self.screenshot_without_toast("results")
+    def screenshot_after_run_slow(self):
+        time.sleep(1.5)
+        self.screenshot_without_toast("run")
+        self.click_output_data_tab()
+        time.sleep(1.5)
+        self.screenshot_without_toast("output_data")
+        self.click_results_tab()
+        time.sleep(1.5)
+        self.screenshot_without_toast("results")
 

@@ -38,4 +38,4 @@ def test_02_coin_toss_simulation_in_flow(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_COIN_TOSS_SIMULATION, "输出'cointest")
     flow.arrange_nodes()
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

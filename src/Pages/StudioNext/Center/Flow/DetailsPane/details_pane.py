@@ -517,3 +517,14 @@ class DetailsPane(BasePage):
         time.sleep(0.5)
         color_picker.click_ok()
         time.sleep(0.5)
+
+    # def set_uncheck_for_listbox_item(self, parent_label: str, item_text: str):
+    #     """
+    #     Description: set check for listbox item.
+    #     @parent_label: the label of the listbox control.
+    #     @item_text: the text of list item.
+    #     """
+    #     get_listbox(self.base_xpath, self.page, parent_label=parent_label).set_uncheck_li_item(item_text)
+    #
+    # # def set_check_for_grid_item(self,parent_label:str, item_index: int, item_text_str):
+    #     get_grid(self.base_xpath,self.page,parent_label = parent_label).

@@ -58,7 +58,7 @@ run;
     text_summarization_pane.add_column_for_text_variable("text'中文")
     flow.screenshot_self("data")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_02_text_summarization_in_flow(page, init):
@@ -115,7 +115,7 @@ run;
     text_summarization_pane.set_check_use_entities_and_noun_groups()
     flow.screenshot_self("options")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_03_text_summarization_in_flow(page, init):
@@ -183,7 +183,7 @@ run;
     text_summarization_pane.set_check_use_entities_and_noun_groups()
     flow.screenshot_self("options")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_04_text_summarization_in_flow(page, init):
@@ -257,7 +257,7 @@ run;
     text_summarization_pane.set_check_show_output_data()
     flow.screenshot_self("output")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_05_text_summarization_in_flow(page, init):
@@ -319,4 +319,4 @@ run;
     text_summarization_pane.expand_windowshade_corpus_summary()
     text_summarization_pane.set_check_show_output_data()
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

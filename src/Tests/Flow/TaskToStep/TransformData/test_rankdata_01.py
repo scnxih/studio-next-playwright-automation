@@ -38,4 +38,4 @@ def test_01_rank_data_level0(page, init):
     flow.arrange_nodes()
 
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

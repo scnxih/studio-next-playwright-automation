@@ -40,7 +40,7 @@ def test_00_t_test_one_sample_in_flow(page, init):
     time.sleep(0.5)
     flow.screenshot_self("data")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 
 @pytest.mark.level0_step
@@ -74,7 +74,7 @@ def test_01_t_test_paired_in_flow(page, init):
     t_tests_pane.add_column_for_group2_var("高速油耗")
     time.sleep(0.5)
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 
 @pytest.mark.level0_step
@@ -110,7 +110,7 @@ def test_02_t_test_two_sample_in_flow(page, init):
     t_tests_pane.add_column_for_class_var("League'中")
     time.sleep(0.5)
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 
 @pytest.mark.level1_step
@@ -155,7 +155,7 @@ def test_03_t_test_one_sample_in_flow(page, init):
     time.sleep(0.5)
     flow.screenshot_self("options")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_04_t_test_paired_in_flow(page, init):
@@ -197,7 +197,7 @@ def test_04_t_test_paired_in_flow(page, init):
     time.sleep(0.5)
     flow.screenshot_self("options")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 
 @pytest.mark.level1_step
@@ -246,4 +246,4 @@ def test_05_t_test_two_sample_in_flow(page, init):
     time.sleep(0.5)
     flow.screenshot_self("options")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

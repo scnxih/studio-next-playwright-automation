@@ -92,7 +92,7 @@ run;
     flow.screenshot_self("data")
     # Run the flow
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 @pytest.mark.level1_step
 def test_02_cap_anlys_lev1(page, init):
@@ -166,5 +166,5 @@ def test_02_cap_anlys_lev1(page, init):
     flow.screenshot_without_toast("data")
     # Run the flow
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
     PageHelper.clear_autoexec(page)

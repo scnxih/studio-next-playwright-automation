@@ -42,7 +42,7 @@ def test_01_summary_statistics_level0(page, init):
     flow.arrange_nodes()
     time.sleep(1)
     flow.run(False)
-    time.sleep(1)
+    time.sleep(3)
 
     flow.screenshot_without_toast("run")
     flow.click_output_data_tab()
@@ -90,7 +90,7 @@ def test_02_Summary_Statistics_level1(page, init):
     flow.arrange_nodes()
 
     flow.run(False)
-    time.sleep(1)
+    time.sleep(3)
     flow.screenshot_without_toast("run")
     flow.click_output_data_tab()
     time.sleep(1.5)
