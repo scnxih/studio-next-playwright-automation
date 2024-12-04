@@ -439,6 +439,7 @@ class Data:
     STEP_CORRESPONDENCE_ANALYSIS = "Correspondence Analysis"
     STEP_FACTOR_ANALYSIS = "Factor Analysis"
     STEP_MULTIDIMENSIONAL_PREFERENCE_ANALYSIS = "Multidimensional Preference Analysis"
+    STEP_MULTIPLE_REGRESSION_STATISTICAL_POWER = "Multiple Regression Statistical Power"
 
     STEP_CATEGORY_TEXT_ANALYTICS = "Text Analytics"
     STEP_TEXT_SUMMARIZATION = "Text Summarization"
