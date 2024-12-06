@@ -37,9 +37,9 @@ def test_00_canonical_correlation_in_flow(page, init):
 
     canonical_correlation_pane = CanonicalCorrelationPane(page)
     canonical_correlation_pane.add_columns_for_var_set1(["career'中", "supervisor'中", "finance'中"])
-    time.sleep(0.5)
+    time.sleep(1.5)
     canonical_correlation_pane.add_columns_for_var_set2(["variety'中", "feedback'中", "autonomy'中"])
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.run(False)
     flow.screenshot_after_run()
 
@@ -115,7 +115,7 @@ def test_01_canonical_correlation_in_flow(page, init):
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CREATE_SCORE_DATASET)
     time.sleep(0.2)
     canonical_correlation_pane.set_check_for_checkbox(Helper.data_locale.CREATE_STAT_DATASET)
-    time.sleep(0.2)
+    time.sleep(1.2)
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, Helper.data_locale.ADD_OUTPUT_PORT,
                                             Helper.data_locale.SCORE_TABLE)
@@ -125,9 +125,11 @@ def test_01_canonical_correlation_in_flow(page, init):
     table_pane = TablePane(page)
     table_pane.set_library("WORK")
     table_pane.set_table("SCORE'数据")
-    time.sleep(0.5)
+
+    time.sleep(3)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "SCORE'数据")
     flow.click_on_canvas_in_flow()
+    time.sleep(1)
     flow.arrange_nodes()
 
     flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, Helper.data_locale.ADD_OUTPUT_PORT,
@@ -138,8 +140,9 @@ def test_01_canonical_correlation_in_flow(page, init):
     table_pane = TablePane(page)
     table_pane.set_library("WORK")
     table_pane.set_table("STAT'数据")
-    time.sleep(0.5)
+    time.sleep(1)
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_CANONICAL_CORRELATION, "STAT'数据")
+    time.sleep(1)
     flow.arrange_nodes()
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

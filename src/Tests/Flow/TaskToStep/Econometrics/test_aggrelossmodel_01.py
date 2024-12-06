@@ -164,8 +164,11 @@ run;
     aggregate_pane.click_tab(Helper.data_locale.SEVERITY)
     aggregate_pane.add_column_for_loss_variable("lossamount")
     aggregate_pane.add_columns_for_continuous_variables_in_severity(check_column_name_list=["carSafety","income"])
-    aggregate_pane.delete_columns_for_listbox(parent_label="连续变量",check_column_name_list=["income"])
     aggregate_pane.add_columns_for_categorical_variables_in_severity(check_column_name_list=["carType"])
+    aggregate_pane.expand_windowshade_distribution()
+    aggregate_pane.set_check_for_specify_candidate_distributions_of_loss_severity(row_index=1)
+    aggregate_pane.set_check_for_specify_candidate_distributions_of_loss_severity(row_index=6)
+
     aggregate_pane.click_tab(Helper.data_locale.COUNT)
     aggregate_pane.add_column_for_dependent_count_variable("numloss")
     aggregate_pane.add_columns_for_continuous_variables_in_count(check_column_name_list=["annualMiles","age"])

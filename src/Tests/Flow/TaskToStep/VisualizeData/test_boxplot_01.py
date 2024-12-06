@@ -61,17 +61,17 @@ def test_01_box_plot_lev0(page, init):
     time.sleep(0.5)
     box_plot_pane.screenshot_self("data")
     flow.run(False)
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("run")
 
 
     # flow.tab_group.click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
     # flow.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
     flow.click_results_tab()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast ("results")
     flow.click_log_tab()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("log")
     # time.sleep(3)
     #
@@ -140,7 +140,7 @@ def test_02_box_plot_lev1(page, init):
     box_plot_pane.set_footnote_as("MyFootNote")
 
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
 
 
@@ -205,4 +205,4 @@ def test_03_box_plot_lev1(page, init):
     box_plot_pane.set_footnote_as("MyFootNote")
 
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()

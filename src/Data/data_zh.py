@@ -754,6 +754,15 @@ class DataZH(Data):
     SAVE_AGGREGATE_LOSS_SAMPLES_DATA = "保存聚合损失样本数据"
     PROBABILITY_DENSITY_FUNCTION = "概率密度函数"
     EMPIRICAL_DISTRIBUTION_FUNCTION = "经验分布函数"
+    SPECIFY_CANDIDATE_DISTRIBUTION_OF_LOSS_SEVERITY = "指定损失严重性的候选分布"
+
+
+
+
+
+
+
+
 
     """Added by Alice end"""
 

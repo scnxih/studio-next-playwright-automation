@@ -207,15 +207,15 @@ N 1
     time.sleep(0.5)
 
     flow.run(False)
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.apply_flow_layout_horizontal()
     time.sleep(1.5)
     flow.screenshot_without_toast("run")
     flow.click_log_tab()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("log")
     flow.click_output_data_tab()
-    time.sleep(0.5)
+    time.sleep(1.5)
     flow.screenshot_without_toast("output_data")
 @pytest.mark.level1_step
 def test_02_centrality_metrics_in_flow(page,init):

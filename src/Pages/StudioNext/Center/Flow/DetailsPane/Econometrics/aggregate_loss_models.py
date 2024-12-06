@@ -76,6 +76,11 @@ class AggregateLossModelsPane(BasicStepPane):
     def set_uncheck_left_censoring_limit(self):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SET_LEFT_CENSORING_LIMIT)
 
+    def set_check_for_specify_candidate_distributions_of_loss_severity(self, row_index:int):
+        self.set_check_for_grid_item(parent_label=Helper.data_locale.SPECIFY_CANDIDATE_DISTRIBUTION_OF_LOSS_SEVERITY,row_index = row_index)
+
+    def set_uncheck_for_specify_candidate_distributions_of_loss_severity(self, row_index:int):
+        self.set_uncheck_for_grid_item(parent_label=Helper.data_locale.SPECIFY_CANDIDATE_DISTRIBUTION_OF_LOSS_SEVERITY,row_index = row_index)
     """Methods in Count tab"""
     def add_column_for_dependent_count_variable(self, column_name: str):
         self.add_column(parent_label=Helper.data_locale.DEPENDENT_COUNT_VARIABLE, column_name=column_name)

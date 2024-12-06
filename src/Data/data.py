@@ -755,7 +755,7 @@ class Data:
     SAVE_AGGREGATE_LOSS_SAMPLES_DATA = "Save aggregate loss samples data"
     PROBABILITY_DENSITY_FUNCTION = "Probability density function"
     EMPIRICAL_DISTRIBUTION_FUNCTION = "Empirical distribution function"
-
+    SPECIFY_CANDIDATE_DISTRIBUTION_OF_LOSS_SEVERITY = "Specify candidate distributions of the loss severity"
 
 
 

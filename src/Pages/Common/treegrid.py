@@ -18,8 +18,10 @@ class TreeGrid(CommonComponent):
 
     """Modified by Alice on 15/09/2023"""
 
-    def __init__(self, container_base_xpath, page, data_test_id=""):
-        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id)
+    def __init__(self, container_base_xpath, page, data_test_id="",supplement_base_xpath="",parent_label=""):
+        if parent_label != "":
+            supplement_base_xpath = "[.. /../../../../../ descendant::label[contains(text(), {0})]]".format(parent_label)
+        CommonComponent.__init__(self, container_base_xpath=container_base_xpath, page=page, data_test_id=data_test_id,supplement_base_xpath= supplement_base_xpath)
 
     def col_header(self, col_id: str):
         """
@@ -196,10 +198,59 @@ class TreeGrid(CommonComponent):
         :param name_text: the name text of a row
         """
         if self.is_visible(self.input_in_a_row(test_id, row_index=row_index, name_text=name_text)):
-            self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).get_value()
+            return self.input_in_a_row(test_id, row_index=row_index, name_text=name_text).get_value()
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
+            
+    """Added by Alice on 2024/12/05 start"""
+
+    def input_in_a_cell(self,col_id: str, row_index:int):
+        """
+        Description: get an input object (not a locator) in a cell by col_id and row_index.
+        :param col_id: the string of col-id
+        :param row_index: start from 0
+        """
+
+        return Text(self.base_xpath+"//div[@row-index='{0}']//div[@col-id='{1}']".format(row_index,col_id), self.page)
+
+
+    def fill_input_in_a_cell(self,col_id: str, row_index:int, fill_text: str):
+        """
+        Description: fill an input in a cell by col_id and row_index.
+        :param col_id: the string of col-id
+        :param row_index: start from 0
+        :param fill_text: filling text
+        """
+        text = self.input_in_a_cell(col_id=col_id, row_index=row_index)
+        if self.is_visible(text):
+            text.fill_text(fill_text)
         else:
             Helper.logger.debug("The input field is not available, please provide the correct input field information.")
 
+    def clear_input_in_a_cell(self,col_id: str, row_index:int):
+        """
+        Description: clear an input in a cell by col_id and row_index.
+        :param col_id: the string of col-id
+        :param row_index: start from 0
+        """
+        text = self.input_in_a_cell(col_id=col_id, row_index=row_index)
+        if self.is_visible(text):
+            text.clear_text()
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
+
+    def get_value_input_in_a_cell(self,col_id: str, row_index:int):
+        """
+        Description: get value from an input in a cell by col_id and row_index.
+        :param col_id: the string of col-id
+        :param row_index: start from 0
+        """
+        text = self.input_in_a_cell(col_id=col_id, row_index=row_index)
+        if self.is_visible(text):
+            return text.get_value()
+        else:
+            Helper.logger.debug("The input field is not available, please provide the correct input field information.")
+    """Added by Alice on 224/12/05 end"""
     def btn_in_a_row(self, row_index=None, name_text=None, test_id=None):
         """
         Description: determine a row by row-index or name of the row, then get a button by data-testid if there is not

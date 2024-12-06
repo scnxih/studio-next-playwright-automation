@@ -102,8 +102,8 @@ def get_grid(container_base_xpath, page,data_test_id="", supplement_base_xpath="
     return Grid(container_base_xpath,page,data_test_id=data_test_id, supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
-def get_treegrid(container_base_xpath, page, data_test_id=""):
-    return TreeGrid(container_base_xpath,page,data_test_id=data_test_id)
+def get_treegrid(container_base_xpath, page, data_test_id="",supplement_base_xpath="",parent_label=""):
+    return TreeGrid(container_base_xpath,page,data_test_id=data_test_id,supplement_base_xpath=supplement_base_xpath,parent_label=parent_label)
 
 
 def get_treegrid_cont_menu(container_base_xpath, page):

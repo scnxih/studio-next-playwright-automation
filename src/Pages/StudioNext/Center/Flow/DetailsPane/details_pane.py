@@ -526,5 +526,31 @@ class DetailsPane(BasePage):
     #     """
     #     get_listbox(self.base_xpath, self.page, parent_label=parent_label).set_uncheck_li_item(item_text)
     #
-    # # def set_check_for_grid_item(self,parent_label:str, item_index: int, item_text_str):
-    #     get_grid(self.base_xpath,self.page,parent_label = parent_label).
+
+
+    def set_check_for_grid_item(self,parent_label:str, row_index: int):
+        """
+        Description: set check for grid item row.
+        @parent_label: the parent label of the grid.
+        @row_index: the row index, starting from 1 instead of 0.
+        """
+        get_grid(self.base_xpath,self.page,parent_label = parent_label).check_checkbox_in_a_cell(row_index=row_index,col_index=1)
+    def set_uncheck_for_grid_item(self,parent_label:str, row_index: int):
+        """
+        Description: set check for grid item row.
+        @parent_label: the parent label of the grid.
+        @row_index: the row index, starting from 1 instead of 0.
+        """
+        get_grid(self.base_xpath,self.page,parent_label = parent_label).uncheck_checkbox_in_a_cell(row_index=row_index,col_index=1)
+
+    def __set_value_for_cell_in_tree_grid(self, parent_label: str, col_id: str, row_index: int, fill_text: str):
+        get_treegrid(self.base_xpath,self.page,parent_label=parent_label).fill_input_in_a_cell(col_id=col_id,row_index=row_index,fill_text=fill_text)
+
+    def __select_a_row_in_tree_grid(self, parent_label: str, row_index: int):
+        get_treegrid(self.base_xpath,self.page,parent_label=parent_label).select_a_row(row_index=row_index)
+
+    def set_value_for_cell_in_option_table(self,parent_label: str, col_id: str, row_index: int, fill_text: str):
+        self.__set_value_for_cell_in_tree_grid(parent_label=parent_label, col_id=col_id, row_index=row_index, fill_text=fill_text)
+
+    def select_a_row_in_option_table(self, parent_label: str, row_index: int):
+        self.__select_a_row_in_tree_grid(parent_label=parent_label,row_index=row_index)

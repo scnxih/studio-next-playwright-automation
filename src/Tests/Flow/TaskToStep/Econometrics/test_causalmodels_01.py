@@ -37,12 +37,13 @@ def test_01_causal_models_2sls_level0(page, init):
     Causal_models_pane.add_columns_for_exogenous_explanatory_variables(check_column_name_list=["价格3", "价格4"])
     Causal_models_pane.add_columns_for_excluded_instrumental_variables(check_column_name_list=["价格5", "价格6"])
     flow.run(False)
+    time.sleep(1)
     flow.screenshot_without_toast("run")
     flow.click_results_tab()
-    time.sleep(0.5)
+    time.sleep(3)
     flow.screenshot_without_toast("results")
     flow.click_output_data_tab()
-    time.sleep(0.5)
+    time.sleep(3)
     flow.screenshot_without_toast("output")
 
 @pytest.mark.level0_step
