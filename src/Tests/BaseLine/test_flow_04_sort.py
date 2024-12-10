@@ -100,8 +100,6 @@ run;
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
 
-    table_pane.refresh_table()
-    table_pane.refresh_table()
     # table_pane.click_tab("预览数据")
 
     # Original
