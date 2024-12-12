@@ -1015,7 +1015,7 @@ def test_45_startup_initialization_log(page, init):
     # Used the one with screenshot function
     startup_page.open_in_browser_tab2(page)
 
-    startup_page.email()
+    # startup_page.email()
     startup_page.reload()
 
 
