@@ -21,6 +21,15 @@ class SettingsDialogTest(Dialog):
                                                   data_test_id="settings-global-regionAndLanguageForm"
                                                                "-offlineLocale", items_count=100)
 
+        # ADDED
+        # BEGIN <<< Added by Jacky(ID: jawang) on Dec.12th, 2024
+        # data-testid="flowTabLayout-select"
+        self.combobox_flow_tab_layout = Combobox(container_base_xpath=self.base_xpath, page=page,
+                                                  data_test_id="flowTabLayout-select",
+                                                  items_count=100)
+
+        # END Added by Jacky(ID: jawang) on Dec.12th, 2024 >>>
+
     def wait_for_open(self):
         time.sleep(1)
 
@@ -59,6 +68,10 @@ class SettingsDialogTest(Dialog):
         # the var combobox_offline_language
         self.combobox(data_test_id="settings-global-regionAndLanguageForm-offlineLocale",
                       items_count=100).select_item(language)
+
+    def select_flow_tab_layout(self, layout):
+        # data-testid="flowTabLayout-select"
+        self.combobox(data_test_id="flowTabLayout-select", items_count=3).select_item(layout)
 
     def set_check(self, label):
         self.checkbox(label).set_check()

@@ -649,8 +649,9 @@ def test_36_flow(page, init):
     flow.add_node(FlowNodeType.python_program)
     flow.add_node(FlowNodeType.query)
     flow.add_node(FlowNodeType.sort)
-    flow.add_node(FlowNodeType.union_rows)
+    # flow.add_node(FlowNodeType.union_rows)
     flow.add_node(FlowNodeType.notes)
+    flow.add_node(FlowNodeType.union_rows)
     # flow.run(False)
     # PageHelper.close_alert_if_needed(page)
     # flow.run_single_node()
@@ -660,11 +661,14 @@ def test_36_flow(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     flow.saveas(Helper.public_folder_path, "test_flow.sas", True, True)
+
     flow.copy_step()
     flow.paste_step()
     flow.cut_step()
+
     flow.undo()
     flow.redo()
+
     flow.view_expand_all_ports()
     flow.view_collapse_all_ports()
     flow.arrange_nodes()
@@ -816,7 +820,15 @@ def test_38_quick_import(page, init):
 
 def test_39_JsonPage(page, init):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
-    json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
+    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
+
+    # json.editor.type_into_text_area('{"\ntype":"json file",\n"name":"json example"')
+    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"')
+
+    # json.editor.type_into_text_area('{')
+
+    json.editor.type_into_text_area('''{"type":"json file","name":"json example"}''')
+
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     json.saveas(Helper.public_folder_path, "test_json.json", True, True)

@@ -24,7 +24,7 @@ class XMLPage(TextCenterPage):
                         user_assigned_xpath=True)
 
     def redo(self):
-        self.center_toolbar_helper.undo()
+        self.center_toolbar_helper.redo()
         time.sleep(0.5)
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
                         'xml_redo',
