@@ -883,7 +883,7 @@ def test_42_WorkSapcePage(page, init):
     time.sleep(2)
     work_space.undo()
     work_space.redo()
-    work_space.add_to_snippets()
+    # work_space.add_to_snippets()
     work_space.add_to_my_favorites()
     work_space.open_in_browser_tab()
     work_space.email()
@@ -1009,7 +1009,7 @@ def test_45_startup_initialization_log(page, init):
 
     # NOTE: Saving initialization file does not work at the moment
     # startup_page.saveas(Helper.public_folder_path, "startup_initialization_log.log", True, True)
-    startup_page.add_to_snippets()
+    # startup_page.add_to_snippets()
     startup_page.add_to_my_favorites()
 
     # Used the one with screenshot function
