@@ -39,8 +39,8 @@ def test_00_core_decomposition_in_flow(page, init):
     table_pane.set_table("NODESETIN'节点")
     time.sleep(0.5)
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_INPUT_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, Helper.data_locale.ADD_INPUT_PORT
+                                            )
                                             # "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()
@@ -87,8 +87,8 @@ def test_01_core_decomposition_in_flow(page, init):
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_INPUT_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CORE_DECOMPOSITION, Helper.data_locale.ADD_INPUT_PORT
+                                            )
                                             # "{sasstudio-steps-gui-icu.coredecomposition.inputports.nodesdataset.displayname.title}")
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_CORE_DECOMPOSITION)
     flow.click_on_canvas_in_flow()

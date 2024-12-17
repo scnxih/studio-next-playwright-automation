@@ -39,8 +39,8 @@ def test_00_network_summary_in_flow(page, init):
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
     flow.click_on_canvas_in_flow()
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, Helper.data_locale.ADD_INPUT_PORT
+                                            )
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
@@ -91,8 +91,8 @@ def test_01_network_summary_in_flow(page, init):
 
     flow.link_two_nodes_in_flow("LINKSETIN'链接", Helper.data_locale.STEP_NETWORK_SUMMARY)
     flow.click_on_canvas_in_flow()
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_NETWORK_SUMMARY, Helper.data_locale.ADD_INPUT_PORT
+                                            )
     flow.link_two_nodes_in_flow("NODESETIN'节点", Helper.data_locale.STEP_NETWORK_SUMMARY)
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()

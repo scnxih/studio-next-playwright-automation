@@ -98,8 +98,8 @@ N 1
     flow.click_on_canvas_in_flow()
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT
+                                            )
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
@@ -299,8 +299,8 @@ N 1
     flow.link_two_nodes_in_flow("LINKSETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
 
-    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT,
-                                            Helper.data_locale.NODES_DATA)
+    flow.click_context_menu_on_node_in_flow(Helper.data_locale.STEP_CENTRALITY_METRICS, Helper.data_locale.ADD_INPUT_PORT
+                                            )
 
     flow.link_two_nodes_in_flow("NODESETIN", Helper.data_locale.STEP_CENTRALITY_METRICS)
     flow.arrange_nodes()
