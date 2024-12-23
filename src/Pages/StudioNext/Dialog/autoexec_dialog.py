@@ -19,7 +19,7 @@ from src.Pages.Common.tab_group import TabGroup
 
 
 # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
-
+from src.Pages.Common.dialog import Alert
 
 class AutoexecDialog(Dialog):
     def __init__(self, page):
@@ -97,7 +97,15 @@ class AutoexecDialog(Dialog):
     def save(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.SAVE))
         self.wait_for_page_load()
-        # time.sleep(1)
+        time.sleep(3)
+
+        if Alert(self.page).is_open():
+            time.sleep(1)
+            self.key_press("Tab")
+            time.sleep(1)
+            self.key_press("Tab")
+            time.sleep(1)
+            self.key_press("Enter")
 
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))
