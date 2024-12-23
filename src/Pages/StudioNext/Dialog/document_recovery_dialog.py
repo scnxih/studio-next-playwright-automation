@@ -24,6 +24,24 @@ class DocumentRecoveryDialog(Dialog):
     def btn_delete_all(self):
         return self.get_by_test_id(TestID.DOC_RECOVERY_BTN_DELETE_ALL)
 
+    def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the vanilla screenshot_self method in BasePage
+        """
+        Helper.logger.debug("DocumentRecoveryDialog: Overwrite the vanilla screenshot_self method in BasePage")
+
+        self.screenshot(self.base_xpath, pic_name, clip=clip,
+
+                        # mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree,
+                        # self.temp_content_selector],
+                        # mask=[self.bread_crumb, self.content_selector_navigator_tree,
+                        # self.temp_content_selector],
+
+                        # Mask files list in dialog
+                        mask=['//div[@role="rowgroup"][@class="ag-center-cols-container"]'
+                              '[../../descendant::div[@data-testid="recoveryDialog-fileActionSelector"]]'],
+                        mask_color="#000000")
+
     def cancel_dialog(self):
         Helper.logger.debug("Cancel Recovery dialog.")
         self.click_button_in_footer(Helper.data_locale.CANCEL)

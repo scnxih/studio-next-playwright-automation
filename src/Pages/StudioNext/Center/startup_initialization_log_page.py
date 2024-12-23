@@ -16,6 +16,31 @@ class StartupInitializationLogPage(CenterPage):
     def __init__(self, page):
         CenterPage.__init__(self, page)
 
+    @property
+    def time_info_in_log(self):
+        """
+        Time information in start-up initialization log file
+        Since this keeps changing, masking is an absolute necessity.
+        """
+
+        return ['//span[contains(text(),"CPU")]/..',
+                '//span[contains(text(),"实际")]/..']
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("screenshot_self in StartupInitializationLogPage")
+
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=self.time_info_in_log + [
+                            self.locator(
+                                "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                        ],
+                        mask_color='#000000')
+
     def saveas(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)
 

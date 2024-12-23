@@ -1015,6 +1015,9 @@ def test_45_startup_initialization_log(page, init):
     # Used the one with screenshot function
     startup_page.open_in_browser_tab2(page)
 
+    # Replace with src.Pages.StudioNext.Center.startup_initialization_log_page.StartupInitializationLogPage.prt_scn
+    startup_page.prt_scn("open_in_browser_tab_page_masked")
+
     # startup_page.email()
     startup_page.reload()
 
