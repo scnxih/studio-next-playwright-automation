@@ -781,7 +781,10 @@ def test_38_quick_import(page, init):
 
     # Naming rule changed
     quick_import.saveas(Helper.public_folder_path, "test_import_sas", True, True)
-    quick_import.add_to_snippets()
+
+    # Dec.26th 2024 'Add to Snippets' N/A
+    # quick_import.add_to_snippets()
+
     quick_import.schedule_as_job()
     quick_import.add_to_my_favorites()
     quick_import.open_in_browser_tab_results()

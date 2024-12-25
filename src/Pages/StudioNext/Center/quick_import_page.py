@@ -17,13 +17,11 @@ class QuickImportPage(MainCenterPage):
     def __init__(self, page):
         MainCenterPage.__init__(self, page)
 
-
     def apply_main_layout_horizontal(self):
         self.center_toolbar_helper.apply_main_layout_horizontal()
 
     def apply_main_layout_vertical(self):
         self.center_toolbar_helper.apply_main_layout_vertical()
-
 
     def add_to_snippets(self):
         self.center_toolbar_helper.add_to_snippets()
