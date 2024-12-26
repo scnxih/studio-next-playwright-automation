@@ -781,7 +781,10 @@ def test_38_quick_import(page, init):
 
     # Naming rule changed
     quick_import.saveas(Helper.public_folder_path, "test_import_sas", True, True)
-    quick_import.add_to_snippets()
+
+    # Dec.26th 2024 'Add to Snippets' N/A
+    # quick_import.add_to_snippets()
+
     quick_import.schedule_as_job()
     quick_import.add_to_my_favorites()
     quick_import.open_in_browser_tab_results()
@@ -1014,6 +1017,9 @@ def test_45_startup_initialization_log(page, init):
 
     # Used the one with screenshot function
     startup_page.open_in_browser_tab2(page)
+
+    # Replace with src.Pages.StudioNext.Center.startup_initialization_log_page.StartupInitializationLogPage.prt_scn
+    startup_page.prt_scn("open_in_browser_tab_page_masked")
 
     # startup_page.email()
     startup_page.reload()

@@ -389,6 +389,8 @@ def test_05_screenshot_top_menu_view(page, init):
                             '//div[@role="row"][@row-index="0"][@aria-rowindex="2"][contains(@row-id, "Public")]'],
                         mask_color="#000000")
 
+    doc.selfie("document_with_masks")
+
     doc.close_dialog()
 
     top.click_menu_item_view_navigation()
