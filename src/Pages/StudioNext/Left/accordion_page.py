@@ -1,3 +1,5 @@
+import time
+
 from playwright.sync_api import Locator
 from src.Pages.Common.base_page import BasePage
 from src.Utilities.enums import *
@@ -157,7 +159,12 @@ class AccordionPage(BasePage):
         if self.is_visible(pane):
             return
         self.click(tab)
-        time.sleep(1)
+        while True:
+            if self.is_visible(pane):
+                break
+            self.click(tab)
+            time.sleep(0.5)
+        time.sleep(0.5)
 
     def collapse_all(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.COLLAPSE_ALL)
