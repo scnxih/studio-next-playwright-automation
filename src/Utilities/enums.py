@@ -159,6 +159,7 @@ class CenterPageType(Enum):
     submission_status_page = 11
     job_definition_page = 12
     custom_step_page = 13
+    start_page = 14
 
 
 """Added by Alice on 11/07/2023 end"""

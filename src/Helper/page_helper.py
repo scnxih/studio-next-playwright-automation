@@ -3,6 +3,7 @@ from src.Pages.Common.menu_page import MenuPage
 from src.Pages.Common.tab_group import *
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.center_page import CenterPage
+from src.Pages.StudioNext.Center.start_page import StartPage
 from src.Pages.StudioNext.Center.top_tab_group import TopTabGroup
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.StudioNext.Dialog.document_recovery_dialog import DocumentRecoveryDialog
@@ -817,6 +818,12 @@ class PageHelper:
         return get_center_page(page, CenterPageType.start_initialization_log_page)
 
     """Added by Alice on 11/06/2023 end"""
+
+    @staticmethod
+    def show_start_page(page) -> StartPage:
+        top_menu = TopMenuPage(page)
+        top_menu.check_view_item(TopMenuItem.view_start_page)
+        return get_center_page(page, CenterPageType.start_page)
 
     """Added by Alice on 11/27/2023 start"""
 

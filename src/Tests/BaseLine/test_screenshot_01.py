@@ -11,6 +11,7 @@ from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Helper.page_factory import *
+from src.Pages.StudioNext.Center.start_page import StartPage
 
 
 def test_init(page, init):
@@ -343,11 +344,14 @@ def test_05_screenshot_top_menu_view(page, init):
     top.uncheck_view_item(TopMenuItem.view_start_page)
     top.check_view_item(TopMenuItem.view_start_page)
 
-    # Oritinal
+    # Optional
     # WholePage(page).screenshot_self("start")
 
     # Mask recent files listed on the RHS
     # xpath for mask: //div[@class='sas_components-views-StartViewPane-RightView_welcome-container']
+    # StartPage(page).prt_scn("start_with_masks")
+    start_page = PageHelper.show_start_page(page)
+    start_page.prt_scn("start_with_masks")
     WholePage(page).screenshot_self("start",
                                     mask=[
                                         "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
@@ -355,13 +359,14 @@ def test_05_screenshot_top_menu_view(page, init):
                                     mask_color="#000000")
 
     top.check_view_item(TopMenuItem.view_startup_initialization_log)
-
+    startup_page = PageHelper.show_view_startup_initialization_log(page)
+    startup_page.prt_scn("times")
     # Original
     # WholePage(page).screenshot_self("init")
 
     # Added mask for time displayed in log
     # Note: class value in xpath
-    CenterPage(page).screenshot_self("times",
+    CenterPage(page).screenshot_self("times_with_masks",
                                      mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
                                            '//span[@class="mtk1"][contains(text(),"实际")]/..'],
                                      mask_color="#000000")

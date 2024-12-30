@@ -7,6 +7,7 @@ Description: This file includes functions which will create different pages.
 from typing import Dict
 from typing import Type
 from src.Pages.StudioNext.Center.center_page import CenterPage
+from src.Pages.StudioNext.Center.start_page import StartPage
 from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 from src.Pages.StudioNext.Dialog.add_profile_dialog import AddProfileDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
@@ -69,7 +70,9 @@ def get_center_page(page: Page, center_page_type: CenterPageType = CenterPageTyp
         CenterPageType.start_initialization_log_page: StartupInitializationLogPage,
         CenterPageType.submission_status_page: SubmissionStatusPage,
         CenterPageType.job_definition_page: JobDefinitionPage,
-        CenterPageType.custom_step_page: CustomStepPage
+        CenterPageType.custom_step_page: CustomStepPage,
+        CenterPageType.start_page: StartPage
+
     }
     return created_page[center_page_type](page)
 

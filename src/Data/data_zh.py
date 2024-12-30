@@ -1403,6 +1403,8 @@ class DataZH(Data):
     SELECT_A_SERVER_FOR_THIS_STEP = "为该步骤选择服务器"
     COLLAPSE = "折叠"
 
+    RECENT = "最近"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

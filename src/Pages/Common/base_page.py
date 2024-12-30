@@ -35,6 +35,14 @@ class BasePage:
             return None
         return self.page.locator("xpath=" + self.base_xpath)
 
+    @property
+    def recovery_number(self):
+        """
+        The number of recoveries in status bar.
+        """
+        return [self.page.locator("//button[@type='button'][.//span[contains(text(), '" +
+                                 Helper.data_locale.OPERATE_RECOVERY + "')]]")]
+
     def get_page(self):
         return self.page
 
@@ -262,7 +270,7 @@ class BasePage:
         time.sleep(0.5)
 
         if take_screenshot is True:
-             # Whole page xpath: //div[@id='app']
+            # Whole page xpath: //div[@id='app']
             self.screenshot("//div[@id='app']", 'true_context_menu', user_assigned_xpath=True)
 
         # END Added by Jacky(ID: jawang) on Apr.12th, 2024 >>>
@@ -584,8 +592,6 @@ class BasePage:
                 Helper.logger.debug("2. toast visible exception:" + type(e).__name__)
                 print(e)
 
-
-
     # END Added by Jacky(ID: jawang) on May.29th, 2024 >>>
 
     def is_read_only(self, locator_or_xpath):
@@ -603,7 +609,7 @@ class BasePage:
     def wait_until_enabled(self, locator_or_xpath, wait_time=5):
         i = 0
         wait = True
-        Helper.logger.debug("Enter  wait_until_enabled,  wait_time*100={0}".format(str(wait_time*100)))
+        Helper.logger.debug("Enter  wait_until_enabled,  wait_time*100={0}".format(str(wait_time * 100)))
 
         while i < 3000 and wait:
             Helper.logger.debug("before i={0}".format(i))
@@ -611,7 +617,7 @@ class BasePage:
             if self.is_enabled(locator_or_xpath):
                 wait = False
                 break
-            i = i+1
+            i = i + 1
             Helper.logger.debug("after i={0}".format(i))
         # while (( not self.is_enabled(locator_or_xpath)) and i < 6000):
         #     Helper.logger.debug("before i={0}".format(i))
@@ -633,16 +639,16 @@ class BasePage:
 
         if self.is_enabled(locator_or_xpath):
             if not is_locator(locator_or_xpath):
-                Helper.logger.debug("{0} is enabled, i = {1}".format(locator_or_xpath,i))
+                Helper.logger.debug("{0} is enabled, i = {1}".format(locator_or_xpath, i))
             else:
-                Helper.logger.debug("{0} is enabled, i = {1}".format(str(locator_or_xpath),i))
+                Helper.logger.debug("{0} is enabled, i = {1}".format(str(locator_or_xpath), i))
             return True
 
         else:
             if not is_locator(locator_or_xpath):
-                Helper.logger.debug("{0} is not enabled, i = {1}".format(locator_or_xpath,i))
+                Helper.logger.debug("{0} is not enabled, i = {1}".format(locator_or_xpath, i))
             else:
-                Helper.logger.debug("{0} is not enabled, i = {1}".format(str(locator_or_xpath),i))
+                Helper.logger.debug("{0} is not enabled, i = {1}".format(str(locator_or_xpath), i))
             return False
 
     """Updated by Alice on 2024/03/26 start, below are __screenshot related methods"""
