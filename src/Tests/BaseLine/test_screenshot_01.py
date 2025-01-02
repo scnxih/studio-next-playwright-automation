@@ -332,6 +332,10 @@ def test_05_screenshot_top_menu_view(page, init):
     # WholePage(page).screenshot_self("deployed_and_scheduled_jobs")
 
     # Added Mask and Mask Color
+    # src.Pages.StudioNext.Center.deployed_scheduled_job_page.DeployedScheduledJobPage.prt_scn
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_and_scheduled_jobs_page.prt_scn("deployed_and_scheduled_jobs_with_masks")
+
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
                                     # mask=['//div[@data-testid="scheduledJobsPane-lastRefreshLabel"]'], # Changed
                                     mask=[
