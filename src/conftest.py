@@ -51,7 +51,7 @@ def init(page):
                                                                     testmethod_number) + " in fixture")
 
     ''' Added by Jacky(ID: jawang) on Sept. 4th, 2023 '''
-
+    PageHelper.close_license_warning(page)
     PageHelper.close_all_tabs(page)
     """Added by Alice on 2024/03/22 start"""
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_file_references)

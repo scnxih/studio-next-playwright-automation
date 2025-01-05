@@ -74,9 +74,17 @@ class FlowPage(MainCenterPage):
         self.toolbar.click_btn_by_test_id("flowtoolbar-cutButton")
 
     def undo(self):
+        """
+        Jan 5, 2025 Undo & Redo removed from flow toolbar
+        """
+        return
         self.center_toolbar_helper.undo()
 
     def redo(self):
+        """
+        Jan 5, 2025 Undo & Redo removed from flow toolbar
+        """
+        return
         self.center_toolbar_helper.redo()
 
     def add_node_en_us(self, node_type: FlowNodeType):

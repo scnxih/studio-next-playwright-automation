@@ -148,6 +148,15 @@ class PageHelper:
         # Modified by Jacky(ID: jawang) on Sept.23rd 2024 >>>
 
     @staticmethod
+    def close_license_warning(page):
+        """
+        # Close license expiration warning dialog
+        # data-testid="appLicenseDialog-dialog"
+        """
+        if page.get_by_test_id("appLicenseDialog-dialog").is_visible():
+            page.get_by_test_id("appLicenseDialog-dismissButton").click()
+
+    @staticmethod
     def show_accordion(page, accordion_type: AccordionType):
         acc: AccordionPage = AccordionPage(page)
         acc.show_accordion(accordion_type)
