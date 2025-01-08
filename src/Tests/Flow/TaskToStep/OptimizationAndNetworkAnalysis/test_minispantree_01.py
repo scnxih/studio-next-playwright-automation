@@ -468,5 +468,5 @@ run;
     minimum_spanning_tree_pane.set_check_save_minimum_spanning_tree_information_date()
     minimum_spanning_tree_pane.set_check_replace_existing_output_table()
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
 
