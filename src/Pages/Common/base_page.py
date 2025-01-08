@@ -43,6 +43,23 @@ class BasePage:
         return [self.page.locator("//button[@type='button'][.//span[contains(text(), '" +
                                  Helper.data_locale.OPERATE_RECOVERY + "')]]")]
 
+    @property
+    def status_bar(self):
+        """
+        Return: mask STRING of status bar locator by using @data-landmark-label
+        """
+        return "//div[@data-landmark-label='" + Helper.data_locale.STATUS_BAR + "']"
+
+    @property
+    def ln_col_number(self):
+        """
+        Return: mask[] of 'line & column number' in status bar
+        Line & Column number of mouse cursor in code editor
+        //div[@data-landmark-label="状态栏"]//h6[@data-testid="appFooterToolbar-caretLabel"]
+        """
+
+        return [self.page.locator(self.status_bar + "//h6[@data-testid='appFooterToolbar-caretLabel']")]
+
     def get_page(self):
         return self.page
 
