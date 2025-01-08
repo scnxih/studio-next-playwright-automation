@@ -220,4 +220,4 @@ libname AUTOLIB '/segatest/I18N/Autolib' ;
     cluster_variables_pane.set_check_replace_existing_output_table_for_tree_information()
     flow.screenshot_self("output")
     flow.run(False)
-    flow.screenshot_after_run()
+    flow.screenshot_after_run_slow()
