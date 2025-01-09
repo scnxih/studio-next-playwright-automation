@@ -169,6 +169,7 @@ def test_05_filter(page, init):
     custom_step.filter_controls("选取器")
     time.sleep(1)
     whole.screenshot_self("selector")
+    custom_step.prt_scn("selector")
 
     time.sleep(0.5)
     custom_step.filter_controls("列表")
@@ -186,16 +187,19 @@ def test_05_filter(page, init):
     custom_step.filter_controls("文本")
     time.sleep(1)
     whole.screenshot_self("Text")
+    custom_step.prt_scn("Text")
 
     time.sleep(0.5)
     custom_step.filter_controls("文本区域")
     time.sleep(1)
     whole.screenshot_self("Text_Area")
+    custom_step.prt_scn("Text_Area")
 
     time.sleep(0.5)
     custom_step.filter_controls("文本或数值字段")
     time.sleep(1)
     whole.screenshot_self("Field")
+    custom_step.prt_scn("Field")
 
     time.sleep(0.5)
     custom_step.filter_controls("输入表")
@@ -207,6 +211,7 @@ def test_05_filter(page, init):
     custom_step.filter_controls("输出表")
     time.sleep(1)
     whole.screenshot_self("Output_Table")
+    custom_step.prt_scn("Output_Table")
 
     time.sleep(0.5)
     custom_step.clear_filter()
