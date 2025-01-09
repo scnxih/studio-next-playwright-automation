@@ -31,6 +31,7 @@ def test_02_delete_page(page, init):
     custom_step.add_page_by_toolbar()
     time.sleep(1)
     whole.screenshot_self("page1")
+    custom_step.prt_scn("page1")
     custom_step.add_page_by_toolbar()
     time.sleep(1)
 
@@ -40,10 +41,12 @@ def test_02_delete_page(page, init):
     custom_step.add_page_by_toolbar()
     time.sleep(1)
     whole.screenshot_self("page2")
+    custom_step.prt_scn("page2")
 
     custom_step.delete_page_by_toolbar("第 1 页")
     time.sleep(1)
     whole.screenshot_self("delete_page_1")
+    custom_step.prt_scn("delete_page_1")
 
     custom_step.delete_page_by_toolbar("第 2 页")
     time.sleep(1)
@@ -54,6 +57,7 @@ def test_02_delete_page(page, init):
     custom_step.delete_page_by_keyboard("第 4 页")
     time.sleep(1)
     whole.screenshot_self("delete_page_2")
+    custom_step.prt_scn("delete_page_2")
 
 
 def test_03_show_single_page_as_tab(page, init):
@@ -61,6 +65,7 @@ def test_03_show_single_page_as_tab(page, init):
     whole = WholePage(page)
     custom_step.check_show_single_page_as_tab()
     whole.screenshot_self("single")
+    custom_step.prt_scn("single")
     time.sleep(1)
     custom_step.add_page_by_toolbar()
     time.sleep(1)
@@ -72,7 +77,7 @@ def test_03_show_single_page_as_tab(page, init):
                           mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
                                 custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
                           mask_color="#000000")
-
+    custom_step.prt_scn("add_page")
     custom_step.uncheck_show_single_page_as_tab()
     time.sleep(1)
 
@@ -82,6 +87,7 @@ def test_03_show_single_page_as_tab(page, init):
                           mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
                                 custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
                           mask_color="#000000")
+    custom_step.prt_scn("uncheck_single")
 
 
 def test_04_page_context_menu(page, init):
@@ -89,7 +95,10 @@ def test_04_page_context_menu(page, init):
     whole = WholePage(page)
     custom_step.add_page_on_page("第 1 页")
     time.sleep(1)
+
     whole.screenshot_self("01")
+    custom_step.prt_scn("01")
+
     custom_step.add_page_on_page("第 2 页")
 
     custom_step.add_page_on_page("第 3 页")
@@ -159,7 +168,7 @@ def test_04_page_context_menu(page, init):
                           mask=[custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
                                 custom_step.toolbar.btn_by_title(Helper.data_locale.SAVE)],
                           mask_color="#000000")
-
+    custom_step.prt_scn("02")
 
 def test_05_filter(page, init):
     whole = WholePage(page)
@@ -257,6 +266,7 @@ def test_06_insert_all_controls(page, init):
     custom_step.insert_control(DesignerControlType.output_table)
     time.sleep(1)
     whole.screenshot_self("01")
+    custom_step.prt_scn("01")
 
 
 def test_07_insert_checkbox_and_select_checkbox_move(page, init):
@@ -284,6 +294,7 @@ def test_07_insert_checkbox_and_select_checkbox_move(page, init):
     designer_checkbox.move_to_page(Helper.data_locale.NEW_PAGE)
     time.sleep(1)
     whole.screenshot_self("01")
+    custom_step.prt_scn("01")
 
 
 def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_delete(page, init):
@@ -312,6 +323,7 @@ def test_08_insert_checkbox_and_select_checkbox_copy_duplicate_copy_paste_cut_de
     designer_checkbox2.delete()
     time.sleep(1)
     whole.screenshot_self("01")
+    custom_step.prt_scn("01")
 
 
 def test_09_insert_all_controls_twice(page, init):
@@ -454,3 +466,4 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
     designer_list1.move_to_page(Helper.data_locale.NEW_PAGE)
     time.sleep(1)
     whole.screenshot_self("01")
+    custom_step.prt_scn("01")
