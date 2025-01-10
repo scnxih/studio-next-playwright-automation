@@ -41,7 +41,7 @@ class BasePage:
         The number of recoveries in status bar.
         """
         return [self.page.locator("//button[@type='button'][.//span[contains(text(), '" +
-                                 Helper.data_locale.OPERATE_RECOVERY + "')]]")]
+                                  Helper.data_locale.OPERATE_RECOVERY + "')]]")]
 
     @property
     def status_bar(self):
