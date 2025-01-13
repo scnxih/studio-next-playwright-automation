@@ -58,27 +58,27 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.editor.force_click(editor.editor.get_text_area())
     page1.keyboard.press("End")
 
-    # TODO Change with press_consequentially
+    # Former Version
+    # page1.keyboard.press("/")
+    # page1.keyboard.press("*")
+    # page1.keyboard.press("T")
+    # page1.keyboard.press("h")
+    # page1.keyboard.press("i")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("i")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("t")
+    # page1.keyboard.press("e")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("t")
+    # page1.keyboard.press(".")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("*")
+    # page1.keyboard.press("/")
 
-    page1.keyboard.press("/")
-    page1.keyboard.press("*")
-    page1.keyboard.press("T")
-    page1.keyboard.press("h")
-    page1.keyboard.press("i")
-    page1.keyboard.press("s")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("i")
-    page1.keyboard.press("s")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("t")
-    page1.keyboard.press("e")
-    page1.keyboard.press("s")
-    page1.keyboard.press("t")
-    page1.keyboard.press(".")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("*")
-    page1.keyboard.press("/")
-
+    # Replaced with press_consequentially
     editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
     editor.editor.human_mimic_typing("\n/*        *       */")
     editor.editor.human_mimic_typing("\n/*       **       */")
@@ -364,7 +364,22 @@ def test_34_sas_program(page, init):
 def test_35_python(page, init):
     python_program: PythonProgramPage = PageHelper.new_item(page, TopMenuItem.new_python_program)
 
-    python_program.editor.type_into_text_area("print('It is python.')")
+    # Former Version
+    # python_program.editor.type_into_text_area("print('It is python.')")
+
+    # New Version
+    python_program.editor.human_mimic_typing("# ASCII number of 'A'")
+    python_program.editor.human_mimic_typing("\nascii_number = 65")
+    python_program.editor.human_mimic_typing("\nrows = 36")
+    python_program.editor.human_mimic_typing("\nfor i in range(0, rows):")
+    python_program.editor.human_mimic_typing("\nfor j in range(0, i + 1):")
+    python_program.editor.human_mimic_typing("\ncharacter = chr(ascii_number)")
+    python_program.editor.human_mimic_typing("\nprint(character, end=' ')")
+    python_program.editor.human_mimic_typing("\nascii_number += 1")
+    python_program.editor.human_mimic_typing("\nprint(" ")")
+    python_program.editor.key_press("Home")
+    python_program.editor.key_press("Shift+Tab")
+
     python_program.run(True)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
