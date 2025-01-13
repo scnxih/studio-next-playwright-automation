@@ -47,7 +47,6 @@ class EditorTextArea(CommonComponent):
         :return:
         """
         self.force_click(self.get_text_area())
-
         self.fill(self.get_text_area(), user_input)
         time.sleep(2)
 
@@ -60,4 +59,11 @@ class EditorTextArea(CommonComponent):
         self.screenshot(self.base_xpath, "text_area")
         time.sleep(1)
 
+    def human_mimic_typing(self, user_input):
+        """
+
+        """
+        self.force_click(self.get_text_area())
+
+        self.page.get_by_test_id("programView-editorPane-editor").press_sequentially(user_input, delay=100)
 

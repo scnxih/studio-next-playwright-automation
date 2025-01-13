@@ -59,6 +59,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("End")
 
     # TODO Change with press_consequentially
+
     page1.keyboard.press("/")
     page1.keyboard.press("*")
     page1.keyboard.press("T")
@@ -78,6 +79,25 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("*")
     page1.keyboard.press("/")
 
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
+    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/*       **       */")
+    editor.editor.human_mimic_typing("\n/*     * ** *     */")
+    editor.editor.human_mimic_typing("\n/*    ** ** **    */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/* ** ** ** ** ** */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/*    ** ** **    */")
+    editor.editor.human_mimic_typing("\n/*     * ** *     */")
+    editor.editor.human_mimic_typing("\n/*       **       */")
+    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
+    # ** ** ** ** *
+    # ** ** ** *
+    # ** ** *
+    # ** *
+    # *
     WholePage(page).screenshot_self("02")
     editor.prt_scn('02')
 
