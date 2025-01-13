@@ -96,36 +96,11 @@ class SaveAsDialog(Dialog):
         self.fill(self.input_file_name, file_name)
         time.sleep(0.3)
 
-        # MODIFIED
-        # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
-        # Stop to use
-        # self.screenshot(self.base_xpath, "save_file")
-        # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
         # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-
-        """
-        self.screenshot(self.base_xpath,
-                        "save_file",
-                        mask=[self.temp_content_selector],
-                        mask_color="#654321")
-        """
-
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-        # Test screenshot with mask and mask_color
-
-        """
-        self.screenshot(self.base_xpath,
-                        "save_file",
-                        mask=[self.temp_content_selector],
-                        mask_color="#000000")
-        """
-
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+        # BEGIN <<< Added by Jacky(ID: jawang) on {Monday, January 13, 2025}
+        # Click dialog title to avoid noise in input text-input-box
+        self.click_dialog_title_or_studionext_header()
+        # END Added by Jacky(ID: jawang) on {Monday, January 13, 2025} >>>
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
@@ -138,96 +113,17 @@ class SaveAsDialog(Dialog):
 
         # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-        # Hide content view in save as dialog
-
-        # Does not work
-        # self.screenshot(self.base_xpath, "w_mask", mask=[self.temp_content_selector], mask_color="#000000")
-
-        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 451, 'y': 161, 'width': 660, 'height': 328})
-        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-        # self.screenshot("save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-
-        # Part of the Content Selector
-        # self.screenshot(self.temp_content_selector,
-        #                 "save_file_w_clip",
-        #                 clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-
-        # Works
-        # self.screenshot(self.page.get_by_role("dialog"),
-        #                 "save_file_w_clip",
-        #                 user_assigned_xpath=True,
-        #                 clip={'x': 960, 'y': 540, 'width': 10, 'height': 25},
-        #                 mask=[self.temp_content_selector],
-        #                 mask_color="#000000")
-
-        # NOTE: This is the whole page
-        # x: [384: 840] y:[220: 711]
-        # self.screenshot(self.base_xpath,
-        #                 "save_file_w_clip",
-        #                 user_assigned_xpath=True,
-        #                 clip={'x': 384, 'y': 220, 'width': 460, 'height': 491},
-        #                 mask=[self.temp_content_selector],
-        #                 mask_color="#000000")
-        #
-        # self.screenshot(self.base_xpath, "save_file_w_mask", mask=[self.temp_content_selector], mask_color="#000000")
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
-
-        # Trial: Cover the input file name
-        # self.screenshot_self("save_file_w_mask", mask=[self.input_file_name])
-
-        # Trial: Cover the content selector---Works fine
-        # self.screenshot_self("save_file_w_mask", mask=[self.temp_content_selector])
-
-        # Trial: Cover the content selector---Works fine
-        # self.screenshot(self.base_xpath,"save_file_w_mask", mask=[self.temp_content_selector])
-
-        # Trial: Cover the content selector
-        """
-        
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask.png',
-                             mask=[self.temp_content_selector],
-                             mask_color="aliceblue")
-
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/MaskColorRGB.png',
-                             mask=[self.temp_content_selector],
-                             mask_color="rgb(255 0 153)")
-
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25''/MaskColorLightDark.png',
-                             mask=[self.temp_content_selector],
-                             mask_color= "light-dark(rgb(255 255 255), rgb(0 0 0))")
-        
-                             # mask_color="light-dark(white, black)")
-        """
-        # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
-
         time.sleep(0.5)
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
         self.selfie('save_file')
-        # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
-
-        # Wait for the Content Selector on RHS, otherwise save path alert dialog would appear.
-        # self.wait_for(self.content_selector_navigator_tree)
-        # self.wait_for(self.temp_content_selector)
-        # self.wait_for(self.locate_xpath("//div[contains(@class, 'breadcrumb')]"))
         self.wait_for(self.button_new)
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Nov.12th, 2024
-        # path_alert = Alert(self.toolbar.page, Helper.data_locale.SAVE_AS)
-
-        # path_alert = self.page.locator('//div[@data-testid="contentSelector-save-contentSelector-errorDialog-dialog"]')
         path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
-        # path_alert.page.sc
 
         time.sleep(1)
         if path_alert.is_visible():
