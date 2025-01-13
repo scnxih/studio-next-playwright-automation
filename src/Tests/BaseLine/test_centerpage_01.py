@@ -814,9 +814,9 @@ def test_46_job_definition(page, init):
     job_page.schedule_as_job()
     job_page.open_in_browser_tab_code()
     job_page.open_in_browser_tab_job_form()
-    # job_page.apply_main_layout_standard()
-    # job_page.apply_main_layout_horizontal()
-    # job_page.apply_main_layout_vertical()
+    job_page.apply_main_layout_standard()
+    job_page.apply_main_layout_horizontal()
+    job_page.apply_main_layout_vertical()
     job_page.reload()
 
 
