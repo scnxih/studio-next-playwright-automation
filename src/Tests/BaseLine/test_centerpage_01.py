@@ -857,6 +857,73 @@ def test_46_job_definition(page, init):
 
 
 def test_47_run_big_program(page, init):
+    """
+    Mimic long-time execution
+    """
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    # editor.editor.human_mimic_typing(
+    editor.editor.type_into_text_area(
+        """%macro blink_lights(num_blinks=5);
+%do i=1 %to &num_blinks;
+
+data _null_;
+length line1-line7 $50;
+array lights[7] $50 _temporary_ (' ', ' ', ' ', ' ', ' ', ' ', ' ');
+array patterns[3] $1 _temporary_ ('o', '*', '+');
+call streaminit(&i);
+
+do j=1 to 7;
+
+if rand("Bernoulli", 0.1 + (0.1 * (8 - j))) then 
+lights[j]=patterns[ceil(rand('uniform') * 3)];
+else lights[j]=' ';
+end;
+line0='|-----------------|';
+line1='|        *        |';
+line2='|       ***       |';
+line3='|      *****      |';
+line4='|     *******     |';
+line5='|    *********    |';
+line6='|   ***********   |';
+line7='|  *************  |';
+put line0;
+put line1;
+put line2;
+put line3;
+put line4;
+put line5;
+put line6;
+put line7;
+put '      |||||';
+
+do j=1 to 7;
+
+if lights[j] ne ' ' then put '        ' lights[j];
+else put '       ***';
+end;
+run;
+
+data _null_;
+call sleep(100);
+run;
+
+%end;
+%mend blink_lights;
+
+%blink_lights(num_blinks=300);
+""")
+    editor.click_dialog_title_or_studionext_header()
+    editor.format_program()
+    editor.run(True)
+    time.sleep(2)
+    editor.prt_scn('long_time_execution')
+
+
+def test_48_run_big_program(page, init):
+    """
+    Original
+    """
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
