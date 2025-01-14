@@ -65,5 +65,5 @@ class EditorTextArea(CommonComponent):
         """
         self.force_click(self.get_text_area())
 
-        self.page.get_by_test_id("programView-editorPane-editor").press_sequentially(user_input, delay=100)
+        self.page.get_by_test_id("programView-editorPane-editor").press_sequentially(user_input, delay=30)
 

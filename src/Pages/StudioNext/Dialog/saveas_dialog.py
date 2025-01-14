@@ -72,7 +72,6 @@ class SaveAsDialog(Dialog):
         """
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        # mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree, self.temp_content_selector],
                         mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],
                         mask_color="#000000")
 

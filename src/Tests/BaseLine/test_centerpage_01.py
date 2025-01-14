@@ -26,18 +26,40 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 
     editor.click_dialog_title_or_studionext_header()
 
-    WholePage(page).screenshot_self("newprogram")
+    # WholePage(page).screenshot_self("newprogram")
     editor.prt_scn("newprogram")
 
-    editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+    # editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+    editor.editor.human_mimic_typing("proc iml;\n"
+                                     "start row(x);\n"
+                                     "return(repeat(T(1:nrow(x)), 1, ncol(x)));\n"
+                                     "finish;\n"
+                                     "start col(x);\n"
+                                     "return(repeat(1:ncol(x), nrow(x)));\n"
+                                     "finish;\n"
+                                     "p=10;\n"
+                                     "x=j(p, p, 0);\n"
+                                     "r=row(x);\n"
+                                     "c=col(x);\n"
+                                     "lowerIdx=loc(r > c);\n"
+                                     "call randseed(12345);\n"
+                                     "y=j(1, ncol(lowerIdx));\n"
+                                     "call randgen(y, \"Normal\");\n"
+                                     "x[lowerIdx]=y;\n"
+                                     "print x;")
     editor.run(True)
 
     editor.saveas(Helper.public_folder_path, "test.sas", True, True)
-    editor.type_code_in_codeeditor("proc print data=sashelp.class;run;")
 
-    # Cease hard-coded wait
-    # time.sleep(0.5)
+    editor.editor.human_mimic_typing("\n")
+    editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
+                                     "run;")
     editor.save()
+    SASProgramPage(page).format_program()
+
+    editor.save()
+    editor.run(True)
+
 
 
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
