@@ -21,7 +21,9 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 
     editor = CodeEditorPage(page)
 
-    time.sleep(1)
+    # Cease hard-coded wait
+    # time.sleep(1)
+
     editor.click_dialog_title_or_studionext_header()
 
     WholePage(page).screenshot_self("newprogram")
@@ -32,7 +34,9 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 
     editor.saveas(Helper.public_folder_path, "test.sas", True, True)
     editor.type_code_in_codeeditor("proc print data=sashelp.class;run;")
-    time.sleep(0.5)
+
+    # Cease hard-coded wait
+    # time.sleep(0.5)
     editor.save()
 
 

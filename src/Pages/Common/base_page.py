@@ -29,6 +29,13 @@ class BasePage:
         # self.data_locale = self.get_data_locale()
 
     @property
+    def doorbell_icon_in_toast_message(self):
+        """
+        Return mask[] of the doorbell icon in toast message
+        """
+        return [self.page.locator('//div[@data-testid="appMessageToast"]//span[''@role="img"]')]
+
+    @property
     def base_locator(self):
         if self.base_xpath == "":
             Helper.logger.debug("page_locator = None since base_path=''")

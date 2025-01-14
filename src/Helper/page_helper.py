@@ -108,7 +108,12 @@ class PageHelper:
         # whole.screenshot_self("new_all_tabs")
 
         # Masks added
+        whole.click_dialog_title_or_studionext_header()
         whole.screenshot_self("new_all_tabs",
+                              mask=[whole.recovery_number + whole.ln_col_number],
+                              mask_color='#000000')
+
+        whole.screenshot_self("new_all_tabs0",
                               mask=[
                                   "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                   '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
