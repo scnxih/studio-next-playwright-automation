@@ -6,6 +6,8 @@ Date: 2023/11/29 14:26
 """
 import time
 
+from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
+from src.Pages.StudioNext.Center.sas_program_page import SASProgramPage
 from src.conftest import *
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
@@ -88,20 +90,86 @@ def test_03_custom_code_editor(page, init):
     :param init:
     :return:
     """
+    PageHelper.click_options(page, TopMenuItem.options_custom_code)
+    custom_code_dialog = CustomCodeDialog(page)
 
-    text = '''
-    proc print data=sashelp.class;
-    run;
-    '''
+    custom_code_dialog.clear_custom_code_thru_keyboard()
+
+    # custom_code_dialog.type_codes_in_preamble(preamble_code)
+    # preamble
+    preamble_code = '''
+options formchar="|----|+|---+=|-/\<>*";
+data contours;
+format Z 5.1;
+do X=0 to 400 by 5;
+do Y=0 to 350 by 10;
+z=46.2+.09*x-.0005*x**2+.1*y-.0005*y**2+.0004*x*y;
+output;
+end;
+end;
+run;'''
 
     PageHelper.click_options(page, TopMenuItem.options_custom_code)
-    custom_code_editor = PageHelper.create_plain_editor_factory().create_editor("custom", page)
-    custom_code_editor.fill_text_area_with(text)
-    #
-    custom_code_dialog = CustomCodeDialog(page)
-    custom_code_dialog.run()
+
+    custom_code_dialog.sequential_type_codes_in_preamble(preamble_code)
+
+
     custom_code_dialog.save()
 
+    postmble_code = '''
+proc plot data=contours;
+plot y*x=z / contour=10;
+title 'A Contour Plot';run;
+'''
+
+    PageHelper.click_options(page, TopMenuItem.options_custom_code)
+
+    custom_code_dialog.sequential_type_codes_in_postamble(postmble_code)
+    custom_code_dialog.save()
+
+    # central editor
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    editor.click_dialog_title_or_studionext_header()
+
+    editor.prt_scn("newprogram")
+
+    editor.editor.human_mimic_typing("proc print data=contours(obs=5) noobs;\n"
+                                     "title1 'CONTOURS Data Set';\n"
+                                     "title2 'First 5 Observations Only';\n"
+                                     "run;")
+    editor.run(True)
+
+    editor.saveas(Helper.public_folder_path, "test.sas", True, True)
+
+    # editor.hide_detail_tabs_code()
+    # editor.hide_detail_tabs_submitted_code()
+    # editor.hide_detail_tabs_log()
+    # editor.show_detail_tabs_result()
+    editor.apply_detail_layout_standard()
+    editor.apply_detail_layout_horizontal()
+    editor.apply_detail_layout_vertical()
+    #
+    # editor.show_detail_tabs_code()
+    editor.force_click(editor.editor.get_text_area())
+    editor.key_press('Control+A')
+    editor.key_press('Delete')
+    editor.editor.human_mimic_typing("\n")
+    editor.editor.human_mimic_typing("\nproc print data=contours;"
+                                     "title1 'CONTOURS Data Set';\n"
+                                     "title2 'All Observations';\n"
+                                     "run;")
+    editor.save()
+    SASProgramPage(page).format_program()
+
+    editor.save()
+    editor.run(True)
+    #
+    editor.apply_detail_layout_standard()
+    editor.apply_detail_layout_horizontal()
+    editor.apply_detail_layout_vertical()
 
 def test_04_editor_context_menu(page, init):
     """

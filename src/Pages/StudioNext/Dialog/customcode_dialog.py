@@ -1,29 +1,13 @@
-import time
-from src.Pages.Common.dialog import Dialog
-
-# ADDED
-"""<<< Added by Jacky(ID: jawang) on Sept.11th, 2023 """
 from src.Pages.Common.editor_text_area import EditorTextArea
-from src.Helper.helper import Helper
-""" Added by Jacky(ID: jawang) on Sept.11th, 2023 >>>"""
-
-
-
-# ADDED
-# <<< Added by Jacky(ID: jawang) on Sept.13th, 2023
 from src.Pages.Common.tab_group import TabGroup
-# Added by Jacky(ID: jawang) on Sept.13th, 2023 >>>
-
-
-# Modified by Liu Jia 20230821
 from src.Pages.Common.dialog import *
 from src.Utilities.enums import *
 import time
+
+
 class CustomCodeDialog(Dialog):
     def __init__(self, page):
         Dialog.__init__(self, page, Helper.data_locale.CUSTOM_CODE_TITLE)
-        # ADDED
-        # <<< Added by Jacky(ID: jawang) on Sept.13th, 2023
         self.tab_group = TabGroup("", page)
         self.editor_text_area = EditorTextArea("", page)
 
@@ -51,18 +35,6 @@ class CustomCodeDialog(Dialog):
     def div_first_line(self):
         return self.locate_xpath('//div[@class="view-line"]')
 
-    def type_codes_in_preamble(self, text):
-        self.click(self.tab_preamble)
-        # self.click(self.textarea)
-        self.fill(self.textarea, text)
-        self.screenshot("//div[@data-testid='customCodeEditorPreamble-editor']", "critical_user_custom_code")
-
-    def type_codes_in_postamble(self, text):
-        self.click(self.tab_postamble)
-        self.click(self.textarea)
-        self.fill(self.textarea, text)
-
-    # Added by Jacky(ID: jawang) on Sept.13th, 2023 >>>
     @property
     def tab_vertical_front(self):
         return self.get_by_test_id("vertical-Tab-tab0-text")
@@ -106,6 +78,37 @@ class CustomCodeDialog(Dialog):
     @property
     def btn_backgroundsubmits(self):
         return self.locate_xpath('//button[@class="sas_components-Switch-Switch_switch-button"]')
+
+    def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the vanilla screenshot_self method in BasePage
+        """
+        Helper.logger.debug("CustomCodeDialog: Overwrite the vanilla screenshot_self method in BasePage")
+        self.screenshot(self.base_xpath, pic_name, clip=clip,
+                        # mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],
+                        mask_color="#000000")
+
+    def type_codes_in_preamble(self, text):
+        self.click(self.tab_preamble)
+        self.force_click(self.textarea)
+        self.fill(self.textarea, text)
+
+    def type_codes_in_postamble(self, text):
+        self.click(self.tab_postamble)
+        self.force_click(self.textarea)
+        self.fill(self.textarea, text)
+
+    def sequential_type_codes_in_preamble(self, user_input):
+        self.click(self.tab_preamble)
+        self.force_click(self.textarea)
+        self.textarea.press_sequentially(user_input)
+        self.selfie('preamble')
+
+    def sequential_type_codes_in_postamble(self, text):
+        self.click(self.tab_postamble)
+        self.force_click(self.textarea)
+        self.fill(self.textarea, text)
+        self.selfie('postamble')
 
     def run(self):
         self.click(self.btn_run)
@@ -154,7 +157,6 @@ class CustomCodeDialog(Dialog):
         :param textarea:
         :return:
         """
-
         # Step-1: Click
         self.force_click(textarea)
         # time.sleep(1)
@@ -172,7 +174,6 @@ class CustomCodeDialog(Dialog):
 
         :return:
         """
-
         # Step-1: Clear Code Tab Page
         self.wait_for(self.tab_Code)
         # time.sleep(1)
@@ -195,8 +196,6 @@ class CustomCodeDialog(Dialog):
 
         self.save()
 
-
-    # Added by Jacky(ID: jawang) on Oct.27th, 2023 >>>
     def clear_CustomCode(self):
         self.click(self.tab_Code)
         time.sleep(1)

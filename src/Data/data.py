@@ -1399,6 +1399,8 @@ class Data:
     //div[@data-landmark-label= "Status Bar"]
     """
     STATUS_BAR = "Status Bar"
+    PREAMBLE = "Preamble"
+    POSTAMBLE = "Postamble"
 
     """Added by Jacky end"""
 

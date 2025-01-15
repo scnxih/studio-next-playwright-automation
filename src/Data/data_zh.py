@@ -1405,12 +1405,9 @@ class DataZH(Data):
 
     RECENT = "最近"
 
-    """
-    Trial on Jan 8 2025
-    //div[@data-landmark-label= "certain-region-name"]
-    //div[@data-landmark-label= "状态栏"]
-    """
     STATUS_BAR = "状态栏"
+    PREAMBLE = "前置代码"
+    POSTAMBLE = "后置代码"
 
 
     """Added by Jacky end"""
