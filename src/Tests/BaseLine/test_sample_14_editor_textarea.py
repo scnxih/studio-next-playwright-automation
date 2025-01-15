@@ -10,8 +10,11 @@ from src.conftest import *
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_central_editors(page, init):
     """
     Fill the central editor with text
@@ -54,17 +57,27 @@ def test_02_autoexec_editor(page, init):
     :param init:
     :return:
     """
-    text = '''
-    proc print data=sashelp.class;
-    run;
-    '''
-
     PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
     autoexec_editor = PageHelper.create_plain_editor_factory().create_editor("autoexec", page)
-    autoexec_editor.fill_text_area_with(text)
+    # autoexec_editor.fill_text_area_with(text)
+    autoexec_editor.editor_text_area.human_mimic_typing("%macro print_current_date_with_weekday;\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%let current_date_num = %sysfunc(date());\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%let current_date = "
+                                                        "%sysfunc(putn(&current_date_num, yymmdd10.), $10.);\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%let weekday = "
+                                                        "%sysfunc(putn(&current_date_num, Weekdate.), $3.);\n")
+
+    autoexec_editor.editor_text_area.human_mimic_typing("\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%put Current Date (YYYY-MM-DD): &current_date;\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%put Weekday: &weekday;\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%mend;\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("\n")
+    autoexec_editor.editor_text_area.human_mimic_typing("%print_current_date_with_weekday;\n")
 
     autoexec_dialog = AutoexecDialog(page)
     autoexec_dialog.run()
+    autoexec_dialog.click_tab_log()
+    autoexec_dialog.selfie('autoexec_log')
     autoexec_dialog.save()
 
 

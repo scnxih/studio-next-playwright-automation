@@ -61,9 +61,14 @@ class EditorTextArea(CommonComponent):
 
     def human_mimic_typing(self, user_input):
         """
+        //div[contains(@data-testid, 'container')][contains(@class, 'EditorPane')]//div[contains(@data-testid,'editor' )]
 
         """
         self.force_click(self.get_text_area())
 
-        self.page.get_by_test_id("programView-editorPane-editor").press_sequentially(user_input, delay=30)
+        # Jan 15 2025
+        # self.page.get_by_test_id("programView-editorPane-editor").press_sequentially(user_input, delay=30)
+
+        # Jan 15 2025
+        self.get_text_area().press_sequentially(user_input, delay=30)
 

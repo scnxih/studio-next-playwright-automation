@@ -17,9 +17,9 @@ from src.Pages.Common.dialog import Dialog
 # <<< Added by Jacky(ID: jawang) on Sept.12th, 2023 """
 from src.Pages.Common.tab_group import TabGroup
 
-
 # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
 from src.Pages.Common.dialog import Alert
+
 
 class AutoexecDialog(Dialog):
     def __init__(self, page):
@@ -36,6 +36,7 @@ class AutoexecDialog(Dialog):
         self.tab_group = TabGroup("", page)
         # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
 
+
     @property
     def time_info_in_log_tab(self):
         """
@@ -43,7 +44,7 @@ class AutoexecDialog(Dialog):
         NOTE: This might be UNSTABLE owing to the future change of data-testid
         """
         return ['//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"CPU")]',
-               '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]']
+                '//div[@data-testid="autoexecLogViewer-detail"]//span[@class="mtk25"][contains(text(),"实际")]']
 
     @property
     def time_info_in_log_tab2(self):
@@ -84,6 +85,15 @@ class AutoexecDialog(Dialog):
         scroll bar in the dialog
         """
         return ['//div[@role="presentation"][@class="visible scrollbar vertical"]']
+
+    def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the vanilla screenshot_self method in BasePage
+        """
+        Helper.logger.debug("AutoexecDialog: Overwrite the vanilla screenshot_self method in BasePage")
+        self.screenshot(self.base_xpath, pic_name, clip=clip,
+                        # mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],
+                        mask_color="#000000")
 
     def type_codes(self, text):
         self.click(self.tab_Code)
