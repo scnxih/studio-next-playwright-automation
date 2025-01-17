@@ -29,6 +29,9 @@ class SettingsDialog(Dialog):
             self.key_press("ArrowLeft")
             Helper.logger.debug("Pressed {ArrowLeft} " + str(i+1) + " time(s)")
 
+        # Step-4: Finally, click header to remove the focus.
+        self.click_dialog_title_or_studionext_header()
+
         Helper.logger.debug("... Exit Settings dialog splitter position resetting")
 
     def combobox(self, data_test_id="", items_count=4):
