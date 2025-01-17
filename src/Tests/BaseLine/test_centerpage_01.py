@@ -61,7 +61,6 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     editor.run(True)
 
 
-
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)

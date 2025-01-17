@@ -96,12 +96,18 @@ class SASProgramPage(MainCenterPage):
     def format_program(self):
         self.toolbar.click_btn_by_title(Helper.data_locale.FORMAT_PROGRAM)
 
+        self.click_dialog_title_or_studionext_header()
+
         # Works fine but __screenshot is the area contains tab group on the RHS
         # self.screenshot(self.base_xpath, "formatted")
 
         # Works fine
         # Note: In addition to xpath, such as base_xpath, locator can be passes as the parameter.
         self.screenshot("//div[contains(@data-testid, 'container')][contains(@class, 'EditorPane')]", "formatted")
+
+
+        # Alternative
+        #//div[@data-testid="programView-editorPane-editor"]//div[@role="code"]
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
