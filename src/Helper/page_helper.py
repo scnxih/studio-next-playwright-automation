@@ -94,13 +94,14 @@ class PageHelper:
         top_menu.new_item(TopMenuItem.new_file_types_text)
         top_menu.new_item(TopMenuItem.new_file_types_xml)
         top_menu.new_item(TopMenuItem.new_file_types_workspace)
-
+        # workspace: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
         # Wait until the menu disappear
         # Otherwise, menu will be shown in screenshot
         time.sleep(0.5)
         # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
+        # workspace.prt_scn('debug')
 
         whole: WholePage = WholePage(page)
 
@@ -109,8 +110,16 @@ class PageHelper:
 
         # Masks added
         whole.click_dialog_title_or_studionext_header()
+
+        # whole.screenshot_self('debug',
+        #                       mask=[
+        #                           '//div[@data-testid="open-files-list"]//span[@role="img"][contains(@aria-label, "workspace")]/../../div[contains(@style, "margin")]'])
+
         whole.screenshot_self("new_all_tabs",
-                              mask=[whole.recovery_number + whole.ln_col_number],
+                              mask=[whole.recovery_number + whole.ln_col_number] +
+                                   [whole.page.locator(
+                                       '//div[@data-testid="open-files-list"]//span[@role="img"][contains(@aria-label, "workspace")]/../../div[contains(@style, "margin")]')],
+                              # '//div[@data-testid="open-files-list"]'],
                               mask_color='#000000')
 
         whole.screenshot_self("new_all_tabs0",

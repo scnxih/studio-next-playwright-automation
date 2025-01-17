@@ -6,6 +6,7 @@ Description: WorkspacePage will inherit from TextCenterPage class, thus the meth
 
 """
 import time
+from src.Helper.helper import Helper
 from src.Pages.Common.editor_text_area import EditorTextArea
 from src.Pages.StudioNext.Center.text_center_page import TextCenterPage
 
@@ -14,6 +15,26 @@ class WorkspacePage(TextCenterPage):
     def __init__(self, page):
         TextCenterPage.__init__(self, page)
         self.editor = EditorTextArea(self.base_xpath, page)
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("screenshot_self in JobDefinitionPage")
+
+        # NOT Real whole page
+        # self.screenshot(self.base_xpath, pic_name, clip=clip,
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=[
+                                 self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                                 self.locator(
+                                     "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                                 '//button[@data-testid="programViewPane-toolbar-runButton"]',
+                                 self.locator('//div[@data-testid="open-files-list"]//span[@role="img"][contains(@aria-label, "workspace")]/../../div[contains(@style, "margin")]')] + self.ln_col_number,
+                        # mask[] of 'line & col number' in status bar
+                        mask_color='#000000')
 
     def undo(self):
         self.center_toolbar_helper.undo()

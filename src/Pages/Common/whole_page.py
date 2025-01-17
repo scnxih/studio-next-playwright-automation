@@ -22,10 +22,16 @@ class WholePage(BasePage):
         # Overwrite the screenshot_self function in basePage
         self.screenshot(self.base_xpath, pic_name, clip=clip,
                         mask=[
+                            # MASK # Workspace icon in Open Items pane
+                            self.locator(
+                                '//div[@data-testid="open-files-list"]//span[@role="img"][contains(@aria-label, '
+                                '"workspace")]/../../div[contains(@style, "margin")]'),
+
+                            # MASK # Bell-shape icon in toast message
                             self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-                            "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-                            # "//span[contains(@class,'BaseButton' )][contains(text(), " + Helper.data_locale.COLUMN + ")]",
-                            # "//div[@role='button'][@title='" + Helper.data_locale.USER_OPTION + "']",
-                            # '//button[@data-testid="programViewPane-toolbar-runButton"]'
+
+                            # MASK # Recovery Doc in Status Bar
+                            "//button[@type='button'][.//span[contains(text(), '"
+                            + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                         ],
                         mask_color='#000000')
