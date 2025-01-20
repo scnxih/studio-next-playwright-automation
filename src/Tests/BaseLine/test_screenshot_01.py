@@ -250,7 +250,9 @@ def test_03_screenshot_navigation_panes(page, init):
     acc.show_accordion(AccordionType.git)
     time.sleep(1)
     acc.screenshot_self("git")
-    acc.show_accordion(AccordionType.clinical_repository)
+    # Jan 20 2025
+    # acc.show_accordion(AccordionType.clinical_repository)
+    # SASSTUDIO-42024 Clinical Repository navigation pane should not appear if unlicensed/no permissions
     time.sleep(1)
     acc.screenshot_self("clinical_repository")
     acc.show_accordion(AccordionType.file_references)
