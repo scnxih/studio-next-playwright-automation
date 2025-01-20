@@ -405,6 +405,9 @@ def test_35_python(page, init):
     python_program.editor.key_press("Home")
     python_program.editor.key_press("Shift+Tab")
 
+    python_program.click_dialog_title_or_studionext_header()
+    python_program.editor.screenshot_self('python_program')
+
     python_program.run(True)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
