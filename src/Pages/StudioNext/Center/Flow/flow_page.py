@@ -39,11 +39,15 @@ class FlowPage(MainCenterPage):
         so that masks can be added, removed and modified in the same place.
         """
 
-        Helper.logger.debug("FlowPage print screen")
+        Helper.logger.debug("Enter detail pane print screen ...")
+
+        self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
                         mask=self.mask_preview_code_button + self.recovery_number + self.doorbell_icon_in_toast_message,
                         mask_color='#000000')
+
+        Helper.logger.debug("... Exit detail pane print screen")
 
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
         self.toolbar.click_btn_by_test_id("flowtoolbar-runButton")
