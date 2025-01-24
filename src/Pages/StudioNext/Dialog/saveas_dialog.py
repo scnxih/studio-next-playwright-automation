@@ -73,6 +73,7 @@ class SaveAsDialog(Dialog):
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
                         # mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],  # Comment out masks Jan 21, 2025
+                        mask=[self.temp_content_selector],  # Supplemented  masks Jan 24, 2025
                         mask_color="#000000")
 
     def wait_for_open(self):
