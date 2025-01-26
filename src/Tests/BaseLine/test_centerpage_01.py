@@ -450,7 +450,11 @@ def test_35_python(page, init):
 
     python_program.background_submit()
 
-    python_program.code_to_flow()
+    # Removed on Jan 24, 2025
+    # Confluence Page Record:
+    #  Diff #22: Removal of 'Code to Flow' button from the toolbar within python program page.
+
+    # python_program.code_to_flow()
     python_program.add_to_snippets()
 
     python_program.clear_log()

@@ -239,6 +239,8 @@ class MainCenterPage(CenterPage):
                         mask_color="#000000")
 
     def hide_detail_tabs_listing(self):
+        Helper.logger.debug('Removed on Jan 26 2025')
+        return
         self.center_toolbar_helper.hide_detail_tabs_listing()
         time.sleep(1)
         self.selfie("hide_listing")
@@ -248,6 +250,8 @@ class MainCenterPage(CenterPage):
                         mask_color="#000000")
 
     def show_detail_tabs_listing(self):
+        Helper.logger.debug('Removed on Jan 26 2025')
+        return
         self.center_toolbar_helper.show_detail_tabs_listing()
         time.sleep(1)
         self.selfie("show_listing")
