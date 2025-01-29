@@ -162,6 +162,9 @@ class TopMenuPage(BasePage):
                                                        Helper.data_locale.FILE_REFERENCES)
 
             case TopMenuItem.view_navigation_panes_clinical_repositories:
+                Helper.logger.debug('Product Change: Removal of View -> Navigation Pane -> Clinical Repository')
+                return
+
                 self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.NAVIGATION_PANES,
                                                        Helper.data_locale.CLINICAL_REPOSITORY)
         # ADDED
