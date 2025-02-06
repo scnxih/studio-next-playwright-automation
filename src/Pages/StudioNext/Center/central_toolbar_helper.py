@@ -111,6 +111,13 @@ class CentralToolbarHelper:
     def code_to_flow(self):
         self.toolbar.click_btn_by_title(Helper.data_locale.CODE_TO_FLOW)
 
+    def copy_to_flow(self):
+        """
+        Thursday, Feb 6, 2025
+        Product change: 'Copy to flow' used to replace 'Code to flow' button located in sas program toolbar.
+        """
+        self.toolbar.click_btn_by_title(Helper.data_locale.COPY_TO_FLOW)
+
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def add_to_snippets(self):

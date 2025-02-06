@@ -46,5 +46,12 @@ class PythonProgramPage(MainCenterPage):
     def code_to_flow(self):
         self.center_toolbar_helper.code_to_flow()
 
+    def copy_to_flow(self):
+        """
+        Thursday, Feb 6, 2025
+        Product change: 'Copy to flow' used to replace 'Code to flow' button located in sas program toolbar.
+        """
+        self.center_toolbar_helper.copy_to_flow()
+
     def add_to_snippets(self):
         self.center_toolbar_helper.add_to_snippets()

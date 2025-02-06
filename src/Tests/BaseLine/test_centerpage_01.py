@@ -161,7 +161,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.prt_scn('06')
 
     time.sleep(0.5)
-    editor.code_to_flow()
+    # editor.code_to_flow()
+    editor.copy_to_flow()
     time.sleep(1)
 
     WholePage(page).screenshot_self("07")
@@ -375,7 +376,8 @@ def test_34_sas_program(page, init):
 
     sas_program.background_submit()
 
-    sas_program.code_to_flow()
+    # sas_program.code_to_flow()
+    sas_program.copy_to_flow()
     sas_program.add_to_snippets()
 
     sas_program.clear_log()
