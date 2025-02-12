@@ -13,6 +13,55 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+def test_24_central_toolbar_run_cancel_save_saveas(page, init):
+    """
+    Supplemented a testcase to save files to SAS Server.
+    
+    NOTE: 
+        1.use saveas2()
+        2.reset destination by save to a folder on SAS Content for the second time 
+    """
+
+    WholePage(page).screenshot_self("login")
+
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    editor.editor.human_mimic_typing("proc iml;\n"
+                                     "start row(x);\n"
+                                     "return(repeat(T(1:nrow(x)), 1, ncol(x)));\n"
+                                     "finish;\n"
+                                     "start col(x);\n"
+                                     "return(repeat(1:ncol(x), nrow(x)));\n"
+                                     "finish;\n"
+                                     "p=10;\n"
+                                     "x=j(p, p, 0);\n"
+                                     "r=row(x);\n"
+                                     "c=col(x);\n"
+                                     "lowerIdx=loc(r > c);\n"
+                                     "call randseed(12345);\n"
+                                     "y=j(1, ncol(lowerIdx));\n"
+                                     "call randgen(y, \"Normal\");\n"
+                                     "x[lowerIdx]=y;\n"
+                                     "print x;")
+    editor.run(True)
+
+    editor.saveas2(Helper.tmp_folder_path, "test_sas_server_tmp.sas", True, True)
+
+    editor.editor.human_mimic_typing("\n")
+    editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
+                                     "run;")
+    editor.save()
+    SASProgramPage(page).format_program()
+
+    editor.save()
+    editor.run(True)
+
+    editor.saveas2(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
+    editor.saveas2(Helper.public_folder_path, "test.sas", True, True)
+
+
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # Original
     WholePage(page).screenshot_self("login")

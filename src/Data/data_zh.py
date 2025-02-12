@@ -1408,7 +1408,7 @@ class DataZH(Data):
     STATUS_BAR = "状态栏"
     PREAMBLE = "前置代码"
     POSTAMBLE = "后置代码"
-    COPY_TO_FLOW = "Copy to flow"
+    COPY_TO_FLOW = "复制到流"
 
     """Added by Jacky end"""
 

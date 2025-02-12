@@ -82,6 +82,16 @@ class CentralToolbarHelper:
             return save_as_dialog.save_file(folder_path, file_name, if_replace, if_wait_toast_disappear)
         return False
 
+    def saveas2(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
+        """
+        Supplemented a method to click SAS Content/SAS Server grid-cell while saving files.
+        """
+        self.toolbar.click_btn_by_title(Helper.data_locale.SAVE_AS)
+        save_as_dialog = SaveAsDialog(self.toolbar.page)
+        if save_as_dialog.is_open():
+            return save_as_dialog.save_file2(folder_path, file_name, if_replace, if_wait_toast_disappear)
+        return False
+
     def undo(self):
         self.toolbar.click_btn_by_title(Helper.data_locale.UNDO)
 

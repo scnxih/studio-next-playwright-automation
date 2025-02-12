@@ -59,6 +59,12 @@ class MainCenterPage(CenterPage):
     def saveas(self, folder_path: list, file_name, if_replace, if_wait_toast_disappear):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)
 
+    def saveas2(self, folder_path: list, file_name, if_replace, if_wait_toast_disappear):
+        """
+        Supplemented a method to click SAS Content/SAS Server grid-cell while saving files.
+        """
+        self.center_toolbar_helper.saveas2(folder_path, file_name, if_replace, if_wait_toast_disappear)
+
     def schedule_as_job(self):
         self.center_toolbar_helper.schedule_as_job()
         # Dialog(self.toolbar.page, Helper.data_locale.ANALYZE_AND_CREATE_FLOW)

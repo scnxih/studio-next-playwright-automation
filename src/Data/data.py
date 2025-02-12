@@ -1401,6 +1401,7 @@ class Data:
     STATUS_BAR = "Status Bar"
     PREAMBLE = "Preamble"
     POSTAMBLE = "Postamble"
+    COPY_TO_FLOW = "Copy to flow"
 
     """Added by Jacky end"""
 
