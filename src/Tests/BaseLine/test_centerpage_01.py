@@ -19,7 +19,7 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
     
     NOTE: 
         1.use saveas2()
-        2.reset destination by save to a folder on SAS Content for the second time 
+        2.reset destination by save to a folder on SAS Content for the second time
     """
 
     WholePage(page).screenshot_self("login")
@@ -47,7 +47,7 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
                                      "print x;")
     editor.run(True)
 
-    editor.saveas2(Helper.tmp_folder_path, "test_sas_server_tmp.sas", True, True)
+    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp.sas", True, True)
 
     editor.editor.human_mimic_typing("\n")
     editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
@@ -58,8 +58,10 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
     editor.save()
     editor.run(True)
 
-    editor.saveas2(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
-    editor.saveas2(Helper.public_folder_path, "test.sas", True, True)
+    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
+
+    # NOTE: Save again to SAS Content, otherwise position is incorrect.
+    editor.saveas(Helper.public_folder_path, "test.sas", True, True)
 
 
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
@@ -462,7 +464,9 @@ def test_35_python(page, init):
     python_program.run(True)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    python_program.saveas(Helper.public_folder_path, "test_python_program.sas", True, True)
+    # Thursday, Feb 13, 2025
+    python_program.saveas(Helper.tmp_folder_path, "test_python_program_sas_server_tmp.py", True, True)
+
     python_program.schedule_as_job()
 
     python_program.add_to_my_favorites()
@@ -514,6 +518,7 @@ def test_35_python(page, init):
     python_program.clear_output_data()
     python_program.clear_code()
     python_program.clear_all()
+    python_program.saveas(Helper.public_folder_path, "test_python_program.py", True, True)
 
 
 def test_36_flow(page, init):
@@ -546,7 +551,7 @@ def test_36_flow(page, init):
     # flow.background_submit()
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    flow.saveas(Helper.public_folder_path, "test_flow.sas", True, True)
+    flow.saveas(Helper.tmp_folder_path, "test_flow_server_tmp", True, True)
 
     flow.copy_step()
     flow.paste_step()
@@ -597,6 +602,7 @@ def test_36_flow(page, init):
     flow.apply_main_layout_standard()
     flow.apply_main_layout_horizontal()
     flow.reload()
+    flow.saveas(Helper.public_folder_path, "test_flow_content_punlic", True, True)
 
 
 # def test_37_query(page, init):
@@ -729,6 +735,7 @@ def test_39_JsonPage(page, init):
     json.open_in_browser_tab()
     json.email()
     json.reload()
+    json.saveas(Helper.tmp_folder_path, "test_json", True, True)
 
 
 def test_40_TextPage(page, init):
@@ -745,6 +752,7 @@ def test_40_TextPage(page, init):
     text.open_in_browser_tab()
     text.email()
     text.reload()
+    text.saveas(Helper.tmp_folder_path, "test_text", True, True)
 
 
 def test_41_XMLPage(page, init):
@@ -752,7 +760,7 @@ def test_41_XMLPage(page, init):
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    xml.saveas(Helper.public_folder_path, "test_xml.xml", True, True)
+    xml.saveas(Helper.public_folder_path, "test_xml_content_public", True, True)
     time.sleep(1)
     xml.undo()
     xml.redo()
@@ -761,6 +769,7 @@ def test_41_XMLPage(page, init):
     xml.open_in_browser_tab()
     xml.email()
     xml.reload()
+    xml.saveas(Helper.tmp_folder_path, "test_xml_server_tmp", True, True)
 
 
 def test_42_WorkSapcePage(page, init):
@@ -777,6 +786,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.open_in_browser_tab()
     work_space.email()
     work_space.reload()
+    work_space.saveas(Helper.tmp_folder_path, "test_workspace", True, True)
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
@@ -937,6 +947,7 @@ def test_46_job_definition(page, init):
     job_page.apply_main_layout_horizontal()
     job_page.apply_main_layout_vertical()
     job_page.reload()
+    job_page.saveas(Helper.public_folder_path, 'JobDefinition', True, True)
 
 
 def test_47_run_big_program(page, init):

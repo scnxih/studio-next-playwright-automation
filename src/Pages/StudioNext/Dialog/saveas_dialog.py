@@ -93,6 +93,7 @@ class SaveAsDialog(Dialog):
             if folder_path[0] == Helper.data_locale.SAS_SERVER:
                 self.click(self.sas_server_gridcell)
             else:
+                Helper.logger.debug("Error location!")
                 self.close_dialog()
 
         # Original
@@ -166,6 +167,17 @@ class SaveAsDialog(Dialog):
         # self.close_dialog()
         # return False
 
+        # Determine if destination is SAS Content or SAS Server
+        if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            self.click(self.sas_content_gridcell)
+        else:
+            if folder_path[0] == Helper.data_locale.SAS_SERVER:
+                self.click(self.sas_server_gridcell)
+            else:
+                Helper.logger.debug("Error location!")
+                self.close_dialog()
+
+
         # Original
         if not self.navigate_to_folder(folder_path):
             return False
@@ -195,7 +207,11 @@ class SaveAsDialog(Dialog):
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
         self.selfie('save_file')
-        self.wait_for(self.button_new)
+
+        if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            self.wait_for(self.button_new)
+        else:
+            time.sleep(1.0)
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
