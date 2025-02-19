@@ -36,11 +36,21 @@ class CentralToolbarHelper:
     # END Added by Jacky(ID: jawang) on Apr.24nd, 2024 >>>
 
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
-        self.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+
+        # Original
+        # self.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+
+        # Revised on Feb 19 2025
+        self.toolbar.click_btn_by_test_id_contains("toolbar-runButton")
+
         if if_wait_toast_disappear:
             self.toolbar.wait_toast_disappear()
         if if_wait_run_enabled:
-            self.toolbar.wait_until_enabled(self.toolbar.btn_by_title(Helper.data_locale.RUN))
+            # Original
+            # self.toolbar.wait_until_enabled(self.toolbar.btn_by_title(Helper.data_locale.RUN))
+
+            # Revised on Feb 19 2025
+            self.toolbar.wait_until_enabled(self.toolbar.btn_by_test_id_contains("toolbar-runButton"))
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Apr.24nd, 2024
@@ -119,6 +129,8 @@ class CentralToolbarHelper:
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 
     def code_to_flow(self):
+        Helper.logger.debug('Bypass {Code to Flow} which has not been implemented')
+        return
         self.toolbar.click_btn_by_title(Helper.data_locale.CODE_TO_FLOW)
 
     def copy_to_flow(self):
@@ -126,6 +138,8 @@ class CentralToolbarHelper:
         Thursday, Feb 6, 2025
         Product change: 'Copy to flow' used to replace 'Code to flow' button located in sas program toolbar.
         """
+        Helper.logger.debug('Bypass {Copy to Flow} which has not been implemented')
+        return
         self.toolbar.click_btn_by_title(Helper.data_locale.COPY_TO_FLOW)
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """

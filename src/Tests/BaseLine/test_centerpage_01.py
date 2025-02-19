@@ -45,9 +45,9 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
                                      "call randgen(y, \"Normal\");\n"
                                      "x[lowerIdx]=y;\n"
                                      "print x;")
-    editor.run(True)
+    editor.run(True, True)
 
-    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp.sas", True, True)
+    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp", True, True)
 
     editor.editor.human_mimic_typing("\n")
     editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
@@ -56,7 +56,7 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
     SASProgramPage(page).format_program()
 
     editor.save()
-    editor.run(True)
+    editor.run(True, True)
 
     editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
 
