@@ -113,7 +113,6 @@ run;'''
 
     custom_code_dialog.sequential_type_codes_in_preamble(preamble_code)
 
-
     custom_code_dialog.save()
 
     postmble_code = '''
@@ -171,6 +170,7 @@ title 'A Contour Plot';run;
     editor.apply_detail_layout_horizontal()
     editor.apply_detail_layout_vertical()
 
+
 def test_04_editor_context_menu(page, init):
     """
     Test context menu in text area
@@ -195,4 +195,8 @@ def test_04_editor_context_menu(page, init):
 
     # WORKS FINE
     sas_program_editor.click_context_menu(sas_program_editor.div_first_line, Helper.data_locale.RUN)
-    sas_program_editor.wait_until_enabled(sas_program_editor.toolbar.btn_by_title(Helper.data_locale.RUN))
+
+    # Original
+    # sas_program_editor.wait_until_enabled(sas_program_editor.toolbar.btn_by_title(Helper.data_locale.RUN))
+
+    sas_program_editor.wait_until_enabled(sas_program_editor.toolbar.btn_by_test_id_contains("toolbar-runButton"))

@@ -18,8 +18,11 @@ from src.Utilities.enums import TopMenuItem
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_sas_program_check_log(page, init):
     """
     Check log tab page after sas program run
@@ -32,7 +35,12 @@ def test_01_sas_program_check_log(page, init):
 
     sas_program_editor.fill_text_area_with("proc print data = sashelp.cars; run;")
 
-    sas_program_editor.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+    # Original
+    # sas_program_editor.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+
+    # Revised on Feb 19 2025
+    sas_program_editor.toolbar.btn_by_test_id_contains("toolbar-runButton")
+
     sas_program_editor.wait_toast_disappear()
     sas_program_editor.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
 
@@ -166,7 +174,11 @@ def test_07_python_program_check(page, init):
     python_program_editor = PageHelper.create_program_editor_factory().create_program_editor("python", page)
     python_program_editor.fill_text_area_with("print('Hello, world!')")
 
-    python_program_editor.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+    # Original
+    # python_program_editor.toolbar.click_btn_by_title(Helper.data_locale.RUN)
+
+    # Revised on Feb 19 2025
+    python_program_editor.toolbar.btn_by_test_id_contains("toolbar-runButton")
+
     python_program_editor.wait_toast_disappear()
     python_program_editor.tab_group.click_tab_by_text(Helper.data_locale.RESULTS)
-
