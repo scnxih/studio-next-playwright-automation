@@ -42,7 +42,13 @@ class MainCenterPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
         time.sleep(0.5)
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        mask=self.time_info_in_log + self.proc_print_page_num_in_log + [self.toolbar.btn_by_title(Helper.data_locale.RUN)],
+
+                        # Original
+                        # mask=self.time_info_in_log + self.proc_print_page_num_in_log + [self.toolbar.btn_by_title(Helper.data_locale.RUN)],
+
+                        # Revised on Thursday, Feb 20, 2025
+                        mask=self.time_info_in_log + self.proc_print_page_num_in_log +
+                             [self.toolbar.btn_by_test_id_contains("toolbar-runButton")],
                         mask_color="#000000")
 
         Helper.logger.debug("... Exit MainCenterPage selfie")
