@@ -41,10 +41,11 @@ class SASProgramPage(MainCenterPage):
         # self.screenshot(self.base_xpath, pic_name, clip=clip,
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
                         mask=[
-                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-                            self.locator("//button[@type='button'][.//span[contains(text(), '"+Helper.data_locale.OPERATE_RECOVERY+"')]]"),
-                            '//button[@data-testid="programViewPane-toolbar-runButton"]'
-                        ],
+                                 self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                                 self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                                 '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                             ]
+                             + self.ln_col_number,  # mask[] of 'line & col number' in status bar
                         mask_color='#000000')
 
     def undo(self):
@@ -89,11 +90,20 @@ class SASProgramPage(MainCenterPage):
     def code_to_flow(self):
         self.center_toolbar_helper.code_to_flow()
 
+    def copy_to_flow(self):
+        """
+        Thursday, Feb 6, 2025
+        Product change: 'Copy to flow' used to replace 'Code to flow' button located in sas program toolbar.
+        """
+        self.center_toolbar_helper.copy_to_flow()
+
     def add_to_snippets(self):
         self.center_toolbar_helper.add_to_snippets()
 
     def format_program(self):
         self.toolbar.click_btn_by_title(Helper.data_locale.FORMAT_PROGRAM)
+
+        self.click_dialog_title_or_studionext_header()
 
         # Works fine but __screenshot is the area contains tab group on the RHS
         # self.screenshot(self.base_xpath, "formatted")
@@ -101,6 +111,10 @@ class SASProgramPage(MainCenterPage):
         # Works fine
         # Note: In addition to xpath, such as base_xpath, locator can be passes as the parameter.
         self.screenshot("//div[contains(@data-testid, 'container')][contains(@class, 'EditorPane')]", "formatted")
+
+
+        # Alternative
+        #//div[@data-testid="programView-editorPane-editor"]//div[@role="code"]
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 

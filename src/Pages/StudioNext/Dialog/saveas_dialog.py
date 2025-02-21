@@ -56,7 +56,8 @@ class SaveAsDialog(Dialog):
         NOTE: This button would be available when the folder navigated to (in navigator tree) is autherized to save
         PS: Need to check this button visibility, otherwise error would occur.
         """
-        return self.locator("//button[@type='button'][contains(@data-testid, 'contentSelector')][@title='" + Helper.data_locale.NEW + "']")
+        return self.locator(
+            "//button[@type='button'][contains(@data-testid, 'contentSelector')][@title='" + Helper.data_locale.NEW + "']")
 
     @property
     def bread_crumb(self):
@@ -66,14 +67,91 @@ class SaveAsDialog(Dialog):
         """
         return self.locator("//div[contains(@class, 'breadcrumb')][contains(@data-testid, 'contentSelector')]")
 
+    @property
+    def sas_content_gridcell(self):
+        """
+        Grid-cell 'SAS Content' in Save-as dialog
+        """
+        return self.locate_xpath("//div[@role='gridcell']//span[text()= '" + Helper.data_locale.SAS_CONTENT + "']")
+
+    @property
+    def sas_server_gridcell(self):
+        """
+        Grid-cell 'SAS Server' in Save-as dialog
+        """
+        return self.locate_xpath("//div[@role='gridcell']//span[text()= '" + Helper.data_locale.SAS_SERVER + "']")
+
+    def save_file2(self, folder_path: list, file_name: str, if_replace, if_wait_toast_disappear=True):
+        """
+        Supplemented a method to click SAS Content/SAS Server grid-cell while saving files.
+        """
+
+        # Determine if destination is SAS Content or SAS Server
+        if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            self.click(self.sas_content_gridcell)
+        else:
+            if folder_path[0] == Helper.data_locale.SAS_SERVER:
+                self.click(self.sas_server_gridcell)
+            else:
+                Helper.logger.debug("Error location!")
+                self.close_dialog()
+
+        # Original
+        if not self.navigate_to_folder(folder_path):
+            return False
+
+        self.fill(self.input_file_name, file_name)
+        time.sleep(0.3)
+
+        # Click dialog title to avoid noise in input text-input-box
+        self.click_dialog_title_or_studionext_header()
+
+        self.screenshot(self.base_xpath,
+                        "save_file",
+                        # mask=[self.temp_content_selector, self.content_selector_navigator_tree],
+                        mask_color="#000000")
+
+        time.sleep(0.5)
+
+        self.selfie('save_file')
+        # self.wait_for(self.button_new)
+
+        self.click_button_in_footer(Helper.data_locale.SAVE)
+        time.sleep(1)
+
+        path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
+
+        time.sleep(1)
+        if path_alert.is_visible():
+            Helper.logger.debug("WARNING: Path is not specified for save-as process")
+            path_alert.get_by_text(Helper.data_locale.CLOSE).click()
+            self.click_button_in_footer(Helper.data_locale.CANCEL)
+            return False
+
+        replace_alert = Alert(self.page, Helper.data_locale.SAVE_AS)
+        time.sleep(1)
+        if replace_alert.is_open():
+            if if_replace:
+                replace_alert.click_button_in_footer(Helper.data_locale.REPLACE)
+                if if_wait_toast_disappear:
+                    self.wait_toast_disappear()
+                return True
+            else:
+                replace_alert.click_button_in_footer(Helper.data_locale.CANCEL)
+                return False
+        else:
+            if if_wait_toast_disappear:
+                self.wait_toast_disappear()
+            return True
+
     def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
         """
         Overwrite the vanilla screenshot_self method in BasePage
         """
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        # mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree, self.temp_content_selector],
-                        mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],
+                        # mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],  # Comment out masks Jan 21, 2025
+                        mask=[self.temp_content_selector],  # Supplemented  masks Jan 24, 2025
                         mask_color="#000000")
 
     def wait_for_open(self):
@@ -89,6 +167,17 @@ class SaveAsDialog(Dialog):
         # self.close_dialog()
         # return False
 
+        # Determine if destination is SAS Content or SAS Server
+        if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            self.click(self.sas_content_gridcell)
+        else:
+            if folder_path[0] == Helper.data_locale.SAS_SERVER:
+                self.click(self.sas_server_gridcell)
+            else:
+                Helper.logger.debug("Error location!")
+                self.close_dialog()
+
+
         # Original
         if not self.navigate_to_folder(folder_path):
             return False
@@ -96,36 +185,11 @@ class SaveAsDialog(Dialog):
         self.fill(self.input_file_name, file_name)
         time.sleep(0.3)
 
-        # MODIFIED
-        # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
-        # Stop to use
-        # self.screenshot(self.base_xpath, "save_file")
-        # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
         # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-
-        """
-        self.screenshot(self.base_xpath,
-                        "save_file",
-                        mask=[self.temp_content_selector],
-                        mask_color="#654321")
-        """
-
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-        # Test screenshot with mask and mask_color
-
-        """
-        self.screenshot(self.base_xpath,
-                        "save_file",
-                        mask=[self.temp_content_selector],
-                        mask_color="#000000")
-        """
-
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
+        # BEGIN <<< Added by Jacky(ID: jawang) on {Monday, January 13, 2025}
+        # Click dialog title to avoid noise in input text-input-box
+        self.click_dialog_title_or_studionext_header()
+        # END Added by Jacky(ID: jawang) on {Monday, January 13, 2025} >>>
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
@@ -138,96 +202,21 @@ class SaveAsDialog(Dialog):
 
         # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
-        # Hide content view in save as dialog
-
-        # Does not work
-        # self.screenshot(self.base_xpath, "w_mask", mask=[self.temp_content_selector], mask_color="#000000")
-
-        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 451, 'y': 161, 'width': 660, 'height': 328})
-        # self.screenshot(self.base_xpath, "save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-        # self.screenshot("save_file_w_clip", clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-
-        # Part of the Content Selector
-        # self.screenshot(self.temp_content_selector,
-        #                 "save_file_w_clip",
-        #                 clip={'x': 10, 'y': 10, 'width': 10, 'height': 25})
-
-        # Works
-        # self.screenshot(self.page.get_by_role("dialog"),
-        #                 "save_file_w_clip",
-        #                 user_assigned_xpath=True,
-        #                 clip={'x': 960, 'y': 540, 'width': 10, 'height': 25},
-        #                 mask=[self.temp_content_selector],
-        #                 mask_color="#000000")
-
-        # NOTE: This is the whole page
-        # x: [384: 840] y:[220: 711]
-        # self.screenshot(self.base_xpath,
-        #                 "save_file_w_clip",
-        #                 user_assigned_xpath=True,
-        #                 clip={'x': 384, 'y': 220, 'width': 460, 'height': 491},
-        #                 mask=[self.temp_content_selector],
-        #                 mask_color="#000000")
-        #
-        # self.screenshot(self.base_xpath, "save_file_w_mask", mask=[self.temp_content_selector], mask_color="#000000")
-        # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
-
-        # Trial: Cover the input file name
-        # self.screenshot_self("save_file_w_mask", mask=[self.input_file_name])
-
-        # Trial: Cover the content selector---Works fine
-        # self.screenshot_self("save_file_w_mask", mask=[self.temp_content_selector])
-
-        # Trial: Cover the content selector---Works fine
-        # self.screenshot(self.base_xpath,"save_file_w_mask", mask=[self.temp_content_selector])
-
-        # Trial: Cover the content selector
-        """
-        
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask.png',
-                             mask=[self.temp_content_selector],
-                             mask_color="aliceblue")
-
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/MaskColorRGB.png',
-                             mask=[self.temp_content_selector],
-                             mask_color="rgb(255 0 153)")
-
-        self.page.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25''/MaskColorLightDark.png',
-                             mask=[self.temp_content_selector],
-                             mask_color= "light-dark(rgb(255 255 255), rgb(0 0 0))")
-        
-                             # mask_color="light-dark(white, black)")
-        """
-        # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
-
         time.sleep(0.5)
 
         # ADDED
         # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
         self.selfie('save_file')
-        # END Added by Jacky(ID: jawang) on Oct.17th, 2024 >>>
 
-        # Wait for the Content Selector on RHS, otherwise save path alert dialog would appear.
-        # self.wait_for(self.content_selector_navigator_tree)
-        # self.wait_for(self.temp_content_selector)
-        # self.wait_for(self.locate_xpath("//div[contains(@class, 'breadcrumb')]"))
-        self.wait_for(self.button_new)
+        if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            self.wait_for(self.button_new)
+        else:
+            time.sleep(1.0)
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
         time.sleep(1)
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Nov.12th, 2024
-        # path_alert = Alert(self.toolbar.page, Helper.data_locale.SAVE_AS)
-
-        # path_alert = self.page.locator('//div[@data-testid="contentSelector-save-contentSelector-errorDialog-dialog"]')
         path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
-        # path_alert.page.sc
 
         time.sleep(1)
         if path_alert.is_visible():

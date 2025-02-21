@@ -1405,6 +1405,11 @@ class DataZH(Data):
 
     RECENT = "最近"
 
+    STATUS_BAR = "状态栏"
+    PREAMBLE = "前置代码"
+    POSTAMBLE = "后置代码"
+    COPY_TO_FLOW = "复制到流"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

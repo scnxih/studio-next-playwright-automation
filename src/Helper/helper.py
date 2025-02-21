@@ -33,10 +33,17 @@ class Helper:
     public_folder_path = [data_locale.SAS_CONTENT, "Public"]
     # END Added by Jacky(ID: jawang) on September 12th, 2024 >>>
 
+    # ADDED
+    # BEGIN <<< Added by Jacky(ID: jawang) on Tuesday 11th, 2025
+    # Path to save files on SAS Server, i.e. {SAS Server/Home/tmp}
+    tmp_folder_path = [data_locale.SAS_SERVER, "SAS Server", "Home", "tmp"]
+    # END Added by Jacky(ID: jawang) on Tuesday 11th, 2025 >>>
+
     @staticmethod
     def call_SDSTest():
         os.chdir("c:\\studio-next-playwright-automation\\src\\Helper")
         os.system("SDSTest.bat")
+
     @staticmethod
     def call_SDSTest_Steps():
         os.chdir("c:\\studio-next-playwright-automation\\src\\Helper")

@@ -3,8 +3,11 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.sort_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Helper.page_helper import *
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_sasprogram_table_sort_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     time.sleep(0.5)
@@ -43,6 +46,8 @@ run;
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
                                     mask_color='#000000')
 
+    flow.prt_scn("03_after_unfold")
+
     sasprogram_pane.pop_find_widget()
     sasprogram_pane.find("cars", False, False)
     time.sleep(1)
@@ -54,6 +59,7 @@ run;
     WholePage(page).screenshot_self(pic_name="04_after_find",
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
                                     mask_color='#000000')
+    flow.prt_scn("04_after_find")
 
     sasprogram_pane.replace_all("cars", "class", False, False, False)
     time.sleep(2)
@@ -65,6 +71,7 @@ run;
     WholePage(page).screenshot_self(pic_name="05_after_replace",
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
                                     mask_color='#000000')
+    flow.prt_scn("05_after_replace")
 
     sasprogram_pane.set_node_name("Create class")
     # time.sleep(1)
@@ -97,6 +104,8 @@ run;
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]'],
                                     mask_color='#000000')
 
+    flow.prt_scn("06_after_link_two_nodes")
+
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
 
@@ -120,6 +129,7 @@ run;
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                           ],
                                     mask_color='#000000')
+    flow.prt_scn("07_preview_before_sorted")
 
     flow.add_node(FlowNodeType.sort)
     # time.sleep(1)
@@ -148,6 +158,9 @@ run;
     sort_pane.add_sort(list1, SortWay.descending)
     # time.sleep(1)
     WholePage(page).screenshot_self(pic_name="08_add_sort")
+
+    flow.prt_scn("08_add_sort")
+
     flow.add_node(FlowNodeType.table)
     # flow.select_node_in_flow_canvas("表")
 
@@ -184,3 +197,4 @@ run;
                                           '//button[@data-testid="programViewPane-toolbar-runButton"]'
                                           ],
                                     mask_color='#000000')
+    flow.prt_scn("09_preview_sorted_table")

@@ -123,6 +123,35 @@ class CustomStepPage(CenterPage):
     def __designer_canvas(self):
         return self.locate_xpath("//div[@data-testid='designCanvasTestID']")
 
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("Enter CustomStepPage print screen ...")
+
+        # Click the designer canvas
+        self.__designer_canvas().click(position={"x": 500, "y": 400})
+
+        # Scroll down twelve times so that noise caused by scrollbar can be avoided
+        for i in range(12):
+            self.page.mouse.wheel(0, 200)
+            Helper.logger.debug("Mouse wheel " + str(i + 1) + " time(s)")
+
+        # Click header to avoid any possible noise
+        self.click_dialog_title_or_studionext_header()
+
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=[self.toolbar.btn_by_title(Helper.data_locale.SAVE),
+                              self.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
+                              self.locator("//button[@type='button'][.//span[contains(text(), '" +
+                                           Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                              ],
+                        mask_color='#000000')
+
+        Helper.logger.debug("... Exit CustomStepPage print screen")
+
     def screenshot_self(self, pic_name, clip=None, mask=None, mask_color=None):
         """
         Overwrite the vanilla screenshot_self method in BasePage

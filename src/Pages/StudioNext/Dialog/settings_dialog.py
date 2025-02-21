@@ -1,6 +1,3 @@
-import re
-import time
-
 from src.Pages.Common.checkbox import Checkbox
 from src.Pages.Common.dialog import *
 from src.Pages.Common.combobox import *
@@ -13,8 +10,30 @@ class SettingsDialog(Dialog):
         Dialog.__init__(self, page, Helper.data_locale.SETTINGS)
         self.navigation_pane = NavigationPane(self.base_xpath, page)
 
-    # ADDED
-    # BEGIN <<< Added by Jacky (ID: jawang) on Nov.7th, 2023
+    def __reset_splitter_position(self):
+        """
+        Drag vertical splitter to the very left,
+        so that noise in SDSTest can be avoided.
+        """
+        Helper.logger.debug("Enter Settings dialog splitter position resetting ... ")
+        # Step-1: Click header.
+        self.click_dialog_title_or_studionext_header()
+
+        # Step-2: Press {Tab} THREE times to move mouse focus upon vertical splitter.
+        for i in range(3):
+            self.key_press("Tab")
+            Helper.logger.debug("Pressed {Tab} " + str(i+1) + " time(s)")
+
+        # Step-3: Press {LeftArrow} FIVE times to move the vertical splitter to the very left.
+        for i in range(10):
+            self.key_press("ArrowLeft")
+            Helper.logger.debug("Pressed {ArrowLeft} " + str(i+1) + " time(s)")
+
+        # Step-4: Finally, click header to remove the focus.
+        self.click_dialog_title_or_studionext_header()
+
+        Helper.logger.debug("... Exit Settings dialog splitter position resetting")
+
     def combobox(self, data_test_id="", items_count=4):
         """
         To handle combo boxes in Settings dialog
@@ -92,7 +111,9 @@ class SettingsDialog(Dialog):
             self.btn_reset.click()
             # TO-DO
             # Change to locale-dependent value
-            alert = Alert(self.page, "重置为默认值")
+            # alert = Alert(self.page, "重置为默认值")
+
+            alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
             time.sleep(1)
             if alert.is_open():
                 # alert.click_button_in_footer("重置")
@@ -450,6 +471,7 @@ class SettingsDialog(Dialog):
         # Take __screenshot of the query tab page when reset button is not available, which means reset is done
         if self.is_visible(self.disabled_reset_btn_in_current_tab_page):
             # Add extra waiting time to avoid diff, for background color would change after resetting.
+            self.__reset_splitter_position()
             time.sleep(1)
             self.screenshot(self.base_xpath, "reset")
 

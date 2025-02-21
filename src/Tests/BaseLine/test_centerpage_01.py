@@ -13,99 +13,103 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+def test_24_central_toolbar_run_cancel_save_saveas(page, init):
+    """
+    Supplemented a testcase to save files to SAS Server.
+    
+    NOTE: 
+        1.use saveas2()
+        2.reset destination by save to a folder on SAS Content for the second time
+    """
+
+    WholePage(page).screenshot_self("login")
+
+    PageHelper.new_sas_program(page)
+
+    editor = CodeEditorPage(page)
+
+    editor.editor.human_mimic_typing("proc iml;\n"
+                                     "start row(x);\n"
+                                     "return(repeat(T(1:nrow(x)), 1, ncol(x)));\n"
+                                     "finish;\n"
+                                     "start col(x);\n"
+                                     "return(repeat(1:ncol(x), nrow(x)));\n"
+                                     "finish;\n"
+                                     "p=10;\n"
+                                     "x=j(p, p, 0);\n"
+                                     "r=row(x);\n"
+                                     "c=col(x);\n"
+                                     "lowerIdx=loc(r > c);\n"
+                                     "call randseed(12345);\n"
+                                     "y=j(1, ncol(lowerIdx));\n"
+                                     "call randgen(y, \"Normal\");\n"
+                                     "x[lowerIdx]=y;\n"
+                                     "print x;")
+    editor.run(True, True)
+
+    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp", True, True)
+
+    editor.editor.human_mimic_typing("\n")
+    editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
+                                     "run;")
+    editor.save()
+    SASProgramPage(page).format_program()
+
+    editor.save()
+    editor.run(True, True)
+
+    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
+
+    # NOTE: Save again to SAS Content, otherwise position is incorrect.
+    editor.saveas(Helper.public_folder_path, "test.sas", True, True)
+
+
 def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     # Original
     WholePage(page).screenshot_self("login")
 
-    # With Mask
-    # WholePage(page).screenshot_self("login",
-    #                                 mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
-    #                                       '//button[@data-testid="programViewPane-toolbar-snippet"]'],
-    #                                 mask_color="#000000")
-
     PageHelper.new_sas_program(page)
-
-    # MODIFIED
-    # <<< Modified by Jacky(ID: jawang) on Apr.26th, 2024
-    # Comment out since it has no mask
-    # WholePage(page).screenshot_self("newprogram")
-    # Modified by Jacky(ID: jawang) on Apr.26th, 2024 >>>
 
     editor = CodeEditorPage(page)
 
-    # Wait until gutters appear to avoid diffs
-    time.sleep(1)
-    # ADDED
-    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.26th, 2024
+    # Cease hard-coded wait
+    # time.sleep(1)
 
-    # Mask the cursor
     editor.click_dialog_title_or_studionext_header()
 
-    WholePage(page).screenshot_self("newprogram")
+    # WholePage(page).screenshot_self("newprogram")
     editor.prt_scn("newprogram")
 
-    # WholePage(page).screenshot_self("newprogram",
-    #                                 mask=["//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY+ "')]]",
-    #                                       '//button[@data-testid="programViewPane-toolbar-snippet"]'],
-    #                                 mask_color="#000000")
-
-    # Original
-    # WholePage(page).screenshot_self("newprogram",
-    #                                 mask=[editor.editor.base_xpath,
-    #                                       '//button[@data-testid="programViewPane-toolbar-snippet"]'],
-    #                                 mask_color="#012345")
-
-    # END Added by Jacky(ID: jawang) on Apr.26th, 2024 >>>
-
-    editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+    # editor.type_code_in_codeeditor("data test;set sashelp.class;run;")
+    editor.editor.human_mimic_typing("proc iml;\n"
+                                     "start row(x);\n"
+                                     "return(repeat(T(1:nrow(x)), 1, ncol(x)));\n"
+                                     "finish;\n"
+                                     "start col(x);\n"
+                                     "return(repeat(1:ncol(x), nrow(x)));\n"
+                                     "finish;\n"
+                                     "p=10;\n"
+                                     "x=j(p, p, 0);\n"
+                                     "r=row(x);\n"
+                                     "c=col(x);\n"
+                                     "lowerIdx=loc(r > c);\n"
+                                     "call randseed(12345);\n"
+                                     "y=j(1, ncol(lowerIdx));\n"
+                                     "call randgen(y, \"Normal\");\n"
+                                     "x[lowerIdx]=y;\n"
+                                     "print x;")
     editor.run(True)
-    # editor.type_code_in_codeeditor("data null;call sleep(60,1);run;")
-    # editor.run(False)
-    # editor.cancel(True)
 
-    # Former hard-code method
-    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-
-    # When the ;SAS Content' is not translated in 'Save as' dialog
-    # folder_path = ["SAS Content", "Public"]
-
-    # Works fine: Test public path defined in Helper
-    # folder_path = Helper.public_folder_path
-
-    # New method: src/Helper/helper.py:33
-    # SAS Content/Public defined in Helper
     editor.saveas(Helper.public_folder_path, "test.sas", True, True)
-    editor.type_code_in_codeeditor("proc print data=sashelp.class;run;")
-    time.sleep(0.5)
+
+    editor.editor.human_mimic_typing("\n")
+    editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
+                                     "run;")
     editor.save()
+    SASProgramPage(page).format_program()
 
-    # ADDED
-    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
-    p: Page = page
-
-    # NOTE: Upgrade playwright to v1.41+ so that mask_color can function normally
-    # References:
-    #   [1] https://github.com/microsoft/playwright-python/issues/2204
-    #   [2] https://github.com/microsoft/playwright-python/pull/2205
-
-    # Test Mask Color --- Works Fine
-    # p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Mask_Black.png',
-    #              mask=[p.get_by_test_id('tab-group-content-area-left')],
-    #              mask_color='#000000')
-
-    # Test Clip --- Works Fine: Clip the Accordion on LHS
-
-    # p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Clip.png',
-    #              clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
-
-    # Test Omit Background --- Can not tell difference
-    '''
-    p.screenshot(path='C:/studio-next-playwright-automation/src/Output/centerpage_01_25/Omit.png',
-                 clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050},
-                 omit_background=True)
-    '''
-
-    # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
+    editor.save()
+    editor.run(True)
 
 
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
@@ -118,63 +122,60 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     editor.click_dialog_title_or_studionext_header()
     time.sleep(0.5)
-    # WholePage(page).screenshot_self("00")
 
-    # editor.screenshot_self('overwrite_in_sas_prog')
     editor.prt_scn('00')
     WholePage(page).screenshot_self("00")
 
-    # WholePage(page).screenshot_self("00",
-    #                                 mask=[page1.get_by_test_id('tab-group-content-area-left'),
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-    #                                 mask_color='#000000')
-
     WholePage(page).screenshot_self("01")
     editor.prt_scn('01')
-
-    #
-    # WholePage(page).screenshot_self("01",
-    #                                 mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-    #                                 mask_color='#000000')
 
     time.sleep(0.5)
 
     editor.editor.force_click(editor.editor.get_text_area())
     page1.keyboard.press("End")
 
-    # TODO Change with press_consequentially
-    page1.keyboard.press("/")
-    page1.keyboard.press("*")
-    page1.keyboard.press("T")
-    page1.keyboard.press("h")
-    page1.keyboard.press("i")
-    page1.keyboard.press("s")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("i")
-    page1.keyboard.press("s")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("t")
-    page1.keyboard.press("e")
-    page1.keyboard.press("s")
-    page1.keyboard.press("t")
-    page1.keyboard.press(".")
-    page1.keyboard.press("Space")
-    page1.keyboard.press("*")
-    page1.keyboard.press("/")
+    # Former Version
+    # page1.keyboard.press("/")
+    # page1.keyboard.press("*")
+    # page1.keyboard.press("T")
+    # page1.keyboard.press("h")
+    # page1.keyboard.press("i")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("i")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("t")
+    # page1.keyboard.press("e")
+    # page1.keyboard.press("s")
+    # page1.keyboard.press("t")
+    # page1.keyboard.press(".")
+    # page1.keyboard.press("Space")
+    # page1.keyboard.press("*")
+    # page1.keyboard.press("/")
 
+    # Replaced with press_consequentially
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
+    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/*       **       */")
+    editor.editor.human_mimic_typing("\n/*     * ** *     */")
+    editor.editor.human_mimic_typing("\n/*    ** ** **    */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/* ** ** ** ** ** */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/*  * ** ** ** *  */")
+    editor.editor.human_mimic_typing("\n/*    ** ** **    */")
+    editor.editor.human_mimic_typing("\n/*     * ** *     */")
+    editor.editor.human_mimic_typing("\n/*       **       */")
+    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
+    # ** ** ** ** *
+    # ** ** ** *
+    # ** ** *
+    # ** *
+    # *
     WholePage(page).screenshot_self("02")
     editor.prt_scn('02')
-
-    # WholePage(page).screenshot_self("02",
-    #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-    #                                 mask_color='#000000')
 
     for i in range(3):
         editor.undo()
@@ -182,25 +183,12 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     WholePage(page).screenshot_self("03")
     editor.prt_scn('03')
 
-    #
-    # WholePage(page).screenshot_self("03",
-    #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-    #                                 mask_color='#000000')
-
     for i in range(3):
         editor.redo()
         time.sleep(0.5)
 
     WholePage(page).screenshot_self("04")
     editor.prt_scn('04')
-
-    # WholePage(page).screenshot_self("04",
-    #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'],
-    #                                 mask_color='#000000')
 
     editor.run(True)
     time.sleep(0.5)
@@ -214,17 +202,6 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     WholePage(page).screenshot_self("05")
     editor.prt_scn('05')
 
-    # Hide vertical scroll bar
-    # WholePage(page).screenshot_self("05",
-    #                                 mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       '//div[@class="visible scrollbar horizontal"]',
-    #                                       '//div[@class="visible scrollbar vertical"]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-    #                                       ],
-    #                                 mask_color='#000000')
-
     time.sleep(0.5)
     editor.debug()
 
@@ -234,46 +211,20 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     WholePage(page).screenshot_self("06")
     editor.prt_scn('06')
 
-    # WholePage(page).screenshot_self("06",
-    #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//div[@class="visible scrollbar horizontal"]',
-    #                                       '//div[@class="visible scrollbar vertical"]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-    #                                       ],
-    #                                 mask_color='#000000')
     time.sleep(0.5)
-    editor.code_to_flow()
+    # editor.code_to_flow()
+    editor.copy_to_flow()
     time.sleep(1)
 
     WholePage(page).screenshot_self("07")
     editor.prt_scn('07')
 
-    # WholePage(page).screenshot_self("07",
-    #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//div[@class="visible scrollbar horizontal"]',
-    #                                       '//div[@class="visible scrollbar vertical"]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-    #                                       ],
-    #                                 mask_color='#000000')
     time.sleep(0.5)
     editor.add_to_snippets()
 
     # Original
     WholePage(page).screenshot_self("08")
     editor.prt_scn('08')
-
-    # Added mask for scroll bar
-    # WholePage(page).screenshot_self("08",
-    #                                 mask=['//div[@role="presentation"][@class="visible scrollbar vertical"]',
-    #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-    #                                       '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-    #                                       '//div[@class="visible scrollbar horizontal"]',
-    #                                       '//div[@class="visible scrollbar vertical"]',
-    #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-    #                                       ],
-    #                                 mask_color='#000000')
 
     time.sleep(1.0)
     editor.clear_code()
@@ -283,83 +234,25 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
         WholePage(page).screenshot_self("09")
         editor.prt_scn('09')
 
-        # WholePage(page).screenshot_self("09",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-        #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-        #                                       ],
-        #                                 mask_color='#000000')
-
     editor.clear_log()
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("10")
 
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("10")
         editor.prt_scn('10')
 
-        # Take the screenshot when toast message popped up
-        # Otherwise do not take the screenshots
-        # WholePage(page).screenshot_self("10",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
-        #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-        #                                       ],
-        #                                 mask_color='#000000')
-
     editor.clear_output_data()
 
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("11")
-
     if WholePage(page).wait_toast_pop():
-        # Take the screenshot when toast message popped up
-        # Otherwise do not take the screenshots
         WholePage(page).screenshot_self("11")
         editor.prt_scn('11')
 
-        # WholePage(page).screenshot_self("11",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[''@role="img"]'),
-        #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]'
-        #                                       ],
-        #                                 mask_color='#000000')
-
     editor.clear_results()
-
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("12")
 
     if WholePage(page).wait_toast_pop():
         # Take the screenshot when toast message popped up
         # Otherwise do not take the screenshots
         WholePage(page).screenshot_self("12")
         editor.prt_scn('12')
-
-        # WholePage(page).screenshot_self("12",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
-        #                                       ],
-        #                                 mask_color='#000000')
 
     editor.clear_listing()
 
@@ -371,25 +264,6 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
         WholePage(page).screenshot_self("13")
         editor.prt_scn('13')
 
-        # WholePage(page).screenshot_self("13",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       '//button[@data-testid="programViewPane-toolbar-runButton"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
-        #                                       ],
-        #                                 mask_color='#000000')
-    """
-    WholePage(page).screenshot_self("13b",
-                                    mask=[WholePage(page).locator("//div[@data-testid='appMessageToast']")],
-                                    mask_color='#000000')
-
-    WholePage(page).screenshot_self("13c",
-                                    mask=[WholePage(page).locator('//div[@data-testid="appMessageToast"]//span[@role="img"]')],
-                                    mask_color='#000000')
-    """
     editor.clear_all()
 
     # Original
@@ -400,16 +274,6 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("14")
         editor.prt_scn('14')
-
-        # WholePage(page).screenshot_self("14",
-        #                                 mask=['//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
-        #                                       "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
-        #                                       '//div[@class="visible scrollbar horizontal"]',
-        #                                       '//div[@class="visible scrollbar vertical"]',
-        #                                       WholePage(page).locator(
-        #                                           '//div[@data-testid="appMessageToast"]//span[''@role="img"]')
-        #                                       ],
-        #                                 mask_color='#000000')
 
 
 def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
@@ -437,9 +301,10 @@ def test_28_run_download(page, init):
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
     editor.run(True)
     # editor.download_code_file()
-    # editor.download_log_file_html()
-    # editor.download_log_file_text()
-    # editor.download_results_file()
+    editor.download_submitted_code_file()
+    editor.download_log_file_html()
+    editor.download_log_file_text()
+    editor.download_results_file()
     editor.download_pdf_file()
     editor.download_word_file()
     editor.download_rtf_file()
@@ -562,7 +427,8 @@ def test_34_sas_program(page, init):
 
     sas_program.background_submit()
 
-    sas_program.code_to_flow()
+    # sas_program.code_to_flow()
+    sas_program.copy_to_flow()
     sas_program.add_to_snippets()
 
     sas_program.clear_log()
@@ -576,11 +442,31 @@ def test_34_sas_program(page, init):
 def test_35_python(page, init):
     python_program: PythonProgramPage = PageHelper.new_item(page, TopMenuItem.new_python_program)
 
-    python_program.editor.type_into_text_area("print('It is python.')")
+    # Former Version
+    # python_program.editor.type_into_text_area("print('It is python.')")
+
+    # New Version
+    python_program.editor.human_mimic_typing("# ASCII number of 'A'")
+    python_program.editor.human_mimic_typing("\nascii_number = 65")
+    python_program.editor.human_mimic_typing("\nrows = 36")
+    python_program.editor.human_mimic_typing("\nfor i in range(0, rows):")
+    python_program.editor.human_mimic_typing("\nfor j in range(0, i + 1):")
+    python_program.editor.human_mimic_typing("\ncharacter = chr(ascii_number)")
+    python_program.editor.human_mimic_typing("\nprint(character, end=' ')")
+    python_program.editor.human_mimic_typing("\nascii_number += 1")
+    python_program.editor.human_mimic_typing("\nprint(" ")")
+    python_program.editor.key_press("Home")
+    python_program.editor.key_press("Shift+Tab")
+
+    python_program.click_dialog_title_or_studionext_header()
+    python_program.editor.screenshot_self('python_program')
+
     python_program.run(True)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    python_program.saveas(Helper.public_folder_path, "test_python_program.sas", True, True)
+    # Thursday, Feb 13, 2025
+    python_program.saveas(Helper.tmp_folder_path, "test_python_program_sas_server_tmp.py", True, True)
+
     python_program.schedule_as_job()
 
     python_program.add_to_my_favorites()
@@ -619,7 +505,11 @@ def test_35_python(page, init):
 
     python_program.background_submit()
 
-    python_program.code_to_flow()
+    # Removed on Jan 24, 2025
+    # Confluence Page Record:
+    #  Diff #22: Removal of 'Code to Flow' button from the toolbar within python program page.
+
+    # python_program.code_to_flow()
     python_program.add_to_snippets()
 
     python_program.clear_log()
@@ -628,6 +518,7 @@ def test_35_python(page, init):
     python_program.clear_output_data()
     python_program.clear_code()
     python_program.clear_all()
+    python_program.saveas(Helper.public_folder_path, "test_python_program.py", True, True)
 
 
 def test_36_flow(page, init):
@@ -660,7 +551,7 @@ def test_36_flow(page, init):
     # flow.background_submit()
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    flow.saveas(Helper.public_folder_path, "test_flow.sas", True, True)
+    flow.saveas(Helper.tmp_folder_path, "test_flow_server_tmp", True, True)
 
     flow.copy_step()
     flow.paste_step()
@@ -711,6 +602,7 @@ def test_36_flow(page, init):
     flow.apply_main_layout_standard()
     flow.apply_main_layout_horizontal()
     flow.reload()
+    flow.saveas(Helper.public_folder_path, "test_flow_content_punlic", True, True)
 
 
 # def test_37_query(page, init):
@@ -843,6 +735,7 @@ def test_39_JsonPage(page, init):
     json.open_in_browser_tab()
     json.email()
     json.reload()
+    json.saveas(Helper.tmp_folder_path, "test_json", True, True)
 
 
 def test_40_TextPage(page, init):
@@ -859,6 +752,7 @@ def test_40_TextPage(page, init):
     text.open_in_browser_tab()
     text.email()
     text.reload()
+    text.saveas(Helper.tmp_folder_path, "test_text", True, True)
 
 
 def test_41_XMLPage(page, init):
@@ -866,7 +760,7 @@ def test_41_XMLPage(page, init):
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    xml.saveas(Helper.public_folder_path, "test_xml.xml", True, True)
+    xml.saveas(Helper.public_folder_path, "test_xml_content_public", True, True)
     time.sleep(1)
     xml.undo()
     xml.redo()
@@ -875,6 +769,7 @@ def test_41_XMLPage(page, init):
     xml.open_in_browser_tab()
     xml.email()
     xml.reload()
+    xml.saveas(Helper.tmp_folder_path, "test_xml_server_tmp", True, True)
 
 
 def test_42_WorkSapcePage(page, init):
@@ -891,6 +786,7 @@ def test_42_WorkSapcePage(page, init):
     work_space.open_in_browser_tab()
     work_space.email()
     work_space.reload()
+    work_space.saveas(Helper.tmp_folder_path, "test_workspace", True, True)
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
@@ -1047,13 +943,81 @@ def test_46_job_definition(page, init):
     job_page.schedule_as_job()
     job_page.open_in_browser_tab_code()
     job_page.open_in_browser_tab_job_form()
-    # job_page.apply_main_layout_standard()
-    # job_page.apply_main_layout_horizontal()
-    # job_page.apply_main_layout_vertical()
+    job_page.apply_main_layout_standard()
+    job_page.apply_main_layout_horizontal()
+    job_page.apply_main_layout_vertical()
     job_page.reload()
+    job_page.saveas(Helper.public_folder_path, 'JobDefinition', True, True)
 
 
 def test_47_run_big_program(page, init):
+    """
+    Mimic long-time execution
+    """
+    PageHelper.new_sas_program(page)
+    editor = SASProgramPage(page)
+    # editor.editor.human_mimic_typing(
+    editor.editor.type_into_text_area(
+        """%macro blink_lights(num_blinks=5);
+%do i=1 %to &num_blinks;
+
+data _null_;
+length line1-line7 $50;
+array lights[7] $50 _temporary_ (' ', ' ', ' ', ' ', ' ', ' ', ' ');
+array patterns[3] $1 _temporary_ ('o', '*', '+');
+call streaminit(&i);
+
+do j=1 to 7;
+
+if rand("Bernoulli", 0.1 + (0.1 * (8 - j))) then 
+lights[j]=patterns[ceil(rand('uniform') * 3)];
+else lights[j]=' ';
+end;
+line0='|-----------------|';
+line1='|        *        |';
+line2='|       ***       |';
+line3='|      *****      |';
+line4='|     *******     |';
+line5='|    *********    |';
+line6='|   ***********   |';
+line7='|  *************  |';
+put line0;
+put line1;
+put line2;
+put line3;
+put line4;
+put line5;
+put line6;
+put line7;
+put '      |||||';
+
+do j=1 to 7;
+
+if lights[j] ne ' ' then put '        ' lights[j];
+else put '       ***';
+end;
+run;
+
+data _null_;
+call sleep(100);
+run;
+
+%end;
+%mend blink_lights;
+
+%blink_lights(num_blinks=300);
+""")
+    editor.click_dialog_title_or_studionext_header()
+    editor.format_program()
+    editor.run(True)
+    time.sleep(2)
+    editor.prt_scn('long_time_execution')
+
+
+def test_48_run_big_program(page, init):
+    """
+    Original
+    """
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")

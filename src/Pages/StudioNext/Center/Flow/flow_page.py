@@ -25,6 +25,30 @@ class FlowPage(MainCenterPage):
     def __init__(self, page):
         MainCenterPage.__init__(self, page)
 
+    @property
+    def mask_preview_code_button(self):
+        """
+        Return mask[] of {Preview code} in toolbar
+
+        """
+        return [self.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)]
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("Enter detail pane print screen ...")
+
+        self.click_dialog_title_or_studionext_header()
+
+        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+                        mask=self.mask_preview_code_button + self.recovery_number + self.doorbell_icon_in_toast_message,
+                        mask_color='#000000')
+
+        Helper.logger.debug("... Exit detail pane print screen")
+
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
         self.toolbar.click_btn_by_test_id("flowtoolbar-runButton")
         if if_wait_toast_disappear:
@@ -257,11 +281,13 @@ class FlowPage(MainCenterPage):
 
     def apply_flow_layout_horizontal(self):
         self.center_toolbar_helper.apply_flow_layout_horizontal()
+
     def apply_flow_layout_vertical(self):
         self.center_toolbar_helper.apply_flow_layout_vertical()
 
     def select_node_in_flow_canvas(self, node_name):
         select_node_in_flow_canvas(self.page, node_name)
+
     def click_on_canvas_in_flow(self):
         click_on_canvas_in_flow(self.page)
 
@@ -270,11 +296,11 @@ class FlowPage(MainCenterPage):
 
     # Note the node2_input_port_number must be the latest input port and it should be >=3, and before use the method,
     # make sure to expand ports by call flow.view_expand_all_ports
-    def link_from_node_to_input_port_in_flow(self,node1_name, node2_name, node2_input_port_number:int):
-        link_from_node_to_input_port_in_flow(self.page,node1_name, node2_name, node2_input_port_number)
+    def link_from_node_to_input_port_in_flow(self, node1_name, node2_name, node2_input_port_number: int):
+        link_from_node_to_input_port_in_flow(self.page, node1_name, node2_name, node2_input_port_number)
 
-    def link_from_node_to_input_port_in_flow_first_of_two(self,node1_name, node2_name ):
-        link_from_node_to_input_port_in_flow_first_of_two(self.page,node1_name, node2_name)
+    def link_from_node_to_input_port_in_flow_first_of_two(self, node1_name, node2_name):
+        link_from_node_to_input_port_in_flow_first_of_two(self.page, node1_name, node2_name)
 
     def _open_context_menu_on_canvas_in_flow(self):
         open_context_menu_for_canvas_in_flow(self.page)
@@ -306,70 +332,73 @@ class FlowPage(MainCenterPage):
     def click_context_menu_on_node_in_flow(self, node_name, *menu_item_text):
         self._open_context_menu_for_the_node_in_flow(node_name)
         self.click_menu_item(*menu_item_text)
-    def click_add_a_query_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.ADD_A_QUERY)
-    def click_run_node_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_NODE)
-    def click_run_from_node_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_FROM_NODE)
 
-    def click_run_to_node_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.RUN_TO_NODE)
+    def click_add_a_query_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.ADD_A_QUERY)
 
-    def click_go_to_last_submitted_code_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.GO_TO_LAST_SUBMITTED_CODE)
+    def click_run_node_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.RUN_NODE)
 
-    def click_go_to_last_submitted_log_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.GO_TO_LAST_SUBMITTED_LOG)
+    def click_run_from_node_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.RUN_FROM_NODE)
 
-    def click_expand_ports_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.EXPAND_PORTS)
-    def click_collapse_ports_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.COLLAPSE_PORTS)
+    def click_run_to_node_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.RUN_TO_NODE)
 
+    def click_go_to_last_submitted_code_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.GO_TO_LAST_SUBMITTED_CODE)
 
-    def click_add_input_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+    def click_go_to_last_submitted_log_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.GO_TO_LAST_SUBMITTED_LOG)
+
+    def click_expand_ports_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.EXPAND_PORTS)
+
+    def click_collapse_ports_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.COLLAPSE_PORTS)
+
+    def click_add_input_port_in_context_menu_on_node(self, node_name, menu_item_text: str = None):
         self._open_context_menu_for_the_node_in_flow(node_name)
         if menu_item_text == None:
             self.click_menu_item(Helper.data_locale.ADD_INPUT_PORT)
         else:
-            self.click_menu_item(Helper.data_locale.ADD_INPUT_PORT,menu_item_text)
+            self.click_menu_item(Helper.data_locale.ADD_INPUT_PORT, menu_item_text)
 
-    def click_add_output_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+    def click_add_output_port_in_context_menu_on_node(self, node_name, menu_item_text: str = None):
         self._open_context_menu_for_the_node_in_flow(node_name)
         if menu_item_text == None:
             self.click_menu_item(Helper.data_locale.ADD_OUTPUT_PORT)
         else:
-            self.click_menu_item(Helper.data_locale.ADD_OUTPUT_PORT,menu_item_text)
-    def click_remove_input_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+            self.click_menu_item(Helper.data_locale.ADD_OUTPUT_PORT, menu_item_text)
+
+    def click_remove_input_port_in_context_menu_on_node(self, node_name, menu_item_text: str = None):
         self._open_context_menu_for_the_node_in_flow(node_name)
         if menu_item_text == None:
             self.click_menu_item(Helper.data_locale.REMOVE_INPUT_PORT)
         else:
-            self.click_menu_item(Helper.data_locale.REMOVE_INPUT_PORT,menu_item_text)
+            self.click_menu_item(Helper.data_locale.REMOVE_INPUT_PORT, menu_item_text)
 
-    def click_remove_output_port_in_context_menu_on_node(self,node_name,menu_item_text:str=None):
+    def click_remove_output_port_in_context_menu_on_node(self, node_name, menu_item_text: str = None):
         self._open_context_menu_for_the_node_in_flow(node_name)
         if menu_item_text == None:
             self.click_menu_item(Helper.data_locale.REMOVE_OUTPUT_PORT)
         else:
             self.click_menu_item(Helper.data_locale.REMOVE_OUTPUT_PORT, menu_item_text)
 
-    def click_cut_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.CUT)
+    def click_cut_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.CUT)
 
-    def click_copy_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.COPY)
+    def click_copy_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.COPY)
 
-    def click_delete_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.DELETE)
+    def click_delete_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.DELETE)
 
-    def click_remove_input_connection_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.REMOVE_INPUT_CONNECTION)
+    def click_remove_input_connection_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.REMOVE_INPUT_CONNECTION)
 
-    def click_remove_output_connection_in_context_menu_on_node(self,node_name):
-        self.click_context_menu_on_node_in_flow(node_name,Helper.data_locale.REMOVE_OUTPUT_CONNECTION)
-
+    def click_remove_output_connection_in_context_menu_on_node(self, node_name):
+        self.click_context_menu_on_node_in_flow(node_name, Helper.data_locale.REMOVE_OUTPUT_CONNECTION)
 
     def select_input_port_node_in_flow(self, node_name):
         select_input_port_node_in_flow(self.page, node_name)
@@ -422,31 +451,42 @@ class FlowPage(MainCenterPage):
         step_page = StepsPage(self.page)
         step_page.add_to_flow(step_path)
 
-
     def click_flow_tab(self):
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.FLOW)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(
+            Helper.data_locale.FLOW)
 
     def click_submitted_code_and_results_tab(self):
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[parent::div[@data-testid='flowPane-StandardTabBar-scrollWindow']]").click_tab_by_text(
+            Helper.data_locale.SUBMITTED_CODE_AND_RESULTS)
 
     def click_code_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.CODE)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(
+            Helper.data_locale.CODE)
 
     def click_log_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.LOG)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(
+            Helper.data_locale.LOG)
 
     def click_results_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(Helper.data_locale.RESULTS)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_by_text(
+            Helper.data_locale.RESULTS)
 
     def click_output_data_tab(self):
         self.click_submitted_code_and_results_tab()
-        get_tab_group(self.base_xpath,self.page,supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
+        get_tab_group(self.base_xpath, self.page,
+                      supplement_base_xpath="[../../../parent::div[@data-testid='tab-group-bar-left']]").click_tab_contains_text(
+            Helper.data_locale.OUTPUT_DATA_D_Upper_Case)
 
-    def screenshot_without_toast(self,pic_name:str):
-        self.screenshot_self(pic_name=pic_name,clip={'x': 435, 'y': 0, 'width': 1446, 'height': 940})
+    def screenshot_without_toast(self, pic_name: str):
+        self.screenshot_self(pic_name=pic_name, clip={'x': 435, 'y': 0, 'width': 1446, 'height': 940})
 
     def screenshot_after_run(self):
         self.screenshot_without_toast("run")
@@ -456,6 +496,7 @@ class FlowPage(MainCenterPage):
         self.click_results_tab()
         time.sleep(0.5)
         self.screenshot_without_toast("results")
+
     def screenshot_after_run_slow(self):
         time.sleep(1.5)
         self.screenshot_without_toast("run")
@@ -465,4 +506,3 @@ class FlowPage(MainCenterPage):
         self.click_results_tab()
         time.sleep(1.5)
         self.screenshot_without_toast("results")
-

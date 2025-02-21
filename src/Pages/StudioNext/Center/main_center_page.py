@@ -8,6 +8,7 @@ import time
 
 from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.Common.tab_group import TabGroup
+from src.Helper.helper import Helper
 
 
 class MainCenterPage(CenterPage):
@@ -30,6 +31,28 @@ class MainCenterPage(CenterPage):
     def program_toolbar(self):
         return ['//div[@role="group"][@data-testid="programViewPane-toolbar"]']
 
+    def selfie(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the vanilla screenshot_self method in BasePage
+        """
+        Helper.logger.debug("Enter MainCenterPage selfie ...")
+
+        Helper.logger.debug("MainCenterPage: Overwrite the vanilla screenshot_self method in BasePage")
+        time.sleep(0.5)
+        self.click_dialog_title_or_studionext_header()
+        time.sleep(0.5)
+        self.screenshot(self.base_xpath, pic_name, clip=clip,
+
+                        # Original
+                        # mask=self.time_info_in_log + self.proc_print_page_num_in_log + [self.toolbar.btn_by_title(Helper.data_locale.RUN)],
+
+                        # Revised on Thursday, Feb 20, 2025
+                        mask=self.time_info_in_log + self.proc_print_page_num_in_log +
+                             [self.toolbar.btn_by_test_id_contains("toolbar-runButton")],
+                        mask_color="#000000")
+
+        Helper.logger.debug("... Exit MainCenterPage selfie")
+
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
         self.center_toolbar_helper.run(if_wait_toast_disappear, if_wait_run_enabled)
 
@@ -41,6 +64,12 @@ class MainCenterPage(CenterPage):
 
     def saveas(self, folder_path: list, file_name, if_replace, if_wait_toast_disappear):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)
+
+    def saveas2(self, folder_path: list, file_name, if_replace, if_wait_toast_disappear):
+        """
+        Supplemented a method to click SAS Content/SAS Server grid-cell while saving files.
+        """
+        self.center_toolbar_helper.saveas2(folder_path, file_name, if_replace, if_wait_toast_disappear)
 
     def schedule_as_job(self):
         self.center_toolbar_helper.schedule_as_job()
@@ -113,37 +142,29 @@ class MainCenterPage(CenterPage):
         """
 
         # data-testid="importViewPane-toolbar-toggle-detail-layout"
+        self.selfie("std")
         self.screenshot(self.base_xpath, "std",
                         mask=[self.get_by_test_id(
-                            "importViewPane-toolbar-toggle-detail-layout")] + self.time_info_in_log + self.proc_print_page_num_in_log,
-                        mask_color="#000000")
+                            "importViewPane-toolbar-toggle-detail-layout")] + self.time_info_in_log + self.proc_print_page_num_in_log +
+                             [self.toolbar.btn_by_title(Helper.data_locale.RUN)], mask_color="#000000")
 
     def apply_detail_layout_horizontal(self):
         self.center_toolbar_helper.apply_detail_layout_horizontal()
         time.sleep(3)
+        self.selfie("horz")
         self.screenshot(self.base_xpath, "horz",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
-                            self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
+                            self.toolbar.btn_by_title(Helper.data_locale.RUN)] + [
+                                 self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 
     def apply_detail_layout_vertical(self):
         self.center_toolbar_helper.apply_detail_layout_vertical()
 
-        # MODIFIED
-        # <<< Modified by Jacky(ID: jawang) on Sept.23rd 2024
-        # # To Eliminate the amount of screenshots
-        # time.sleep(3)
-        # self.screenshot(self.base_xpath, "vert",
-        #                 mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
-        #                     self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout"),
-        #                     self.get_by_test_id("flowtoolbar-previewCodeButton")],
-        #                 mask_color="#000000")
-        #
-        # Modified by Jacky(ID: jawang) on Sept.23rd 2024 >>>
-
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
         time.sleep(1)
+        self.selfie("hide_code")
         self.screenshot(self.base_xpath, "hide_code",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -152,6 +173,7 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_code(self):
         self.center_toolbar_helper.show_detail_tabs_code()
         time.sleep(3)
+        self.selfie("show_code")
         self.screenshot(self.base_xpath, "show_code",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -160,6 +182,7 @@ class MainCenterPage(CenterPage):
     def hide_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.hide_detail_tabs_submitted_code()
         time.sleep(1)
+        self.selfie("hide_code")
         self.screenshot(self.base_xpath, "hide_code",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -168,6 +191,7 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.show_detail_tabs_submitted_code()
         time.sleep(3)
+        self.selfie("show_code")
         self.screenshot(self.base_xpath, "show_code",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -176,6 +200,7 @@ class MainCenterPage(CenterPage):
     def hide_detail_tabs_log(self):
         self.center_toolbar_helper.hide_detail_tabs_log()
         time.sleep(1)
+        self.selfie("hide_log")
         self.screenshot(self.base_xpath, "hide_log",
                         mask=[self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
@@ -183,6 +208,7 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_log(self):
         self.center_toolbar_helper.show_detail_tabs_log()
         time.sleep(3)
+        self.selfie("show_log")
         self.screenshot(self.base_xpath, "show_log",
                         mask=self.program_toolbar + self.proc_print_page_num_in_log + self.time_info_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -191,6 +217,7 @@ class MainCenterPage(CenterPage):
     def hide_detail_tabs_result(self):
         self.center_toolbar_helper.hide_detail_tabs_result()
         time.sleep(3)
+        self.selfie("hide_result")
         self.screenshot(self.base_xpath, "hide_result",
                         mask=self.time_info_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -199,6 +226,7 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_result(self):
         self.center_toolbar_helper.show_detail_tabs_result()
         time.sleep(1)
+        self.selfie("show_details")
         self.screenshot(self.base_xpath, "show_details",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -207,6 +235,7 @@ class MainCenterPage(CenterPage):
     def hide_detail_tabs_output_data(self):
         self.center_toolbar_helper.hide_detail_tabs_output_data()
         time.sleep(1)
+        self.selfie("hide_output")
         self.screenshot(self.base_xpath, "hide_output",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -215,22 +244,29 @@ class MainCenterPage(CenterPage):
     def show_detail_tabs_output_data(self):
         self.center_toolbar_helper.show_detail_tabs_output_data()
         time.sleep(1)
+        self.selfie("show_output")
         self.screenshot(self.base_xpath, "show_output",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log +
                              [self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 
     def hide_detail_tabs_listing(self):
+        Helper.logger.debug('Removed on Jan 26 2025')
+        return
         self.center_toolbar_helper.hide_detail_tabs_listing()
         time.sleep(1)
+        self.selfie("hide_listing")
         self.screenshot(self.base_xpath, "hide_listing",
                         mask=self.time_info_array + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
                         mask_color="#000000")
 
     def show_detail_tabs_listing(self):
+        Helper.logger.debug('Removed on Jan 26 2025')
+        return
         self.center_toolbar_helper.show_detail_tabs_listing()
         time.sleep(1)
+        self.selfie("show_listing")
         self.screenshot(self.base_xpath, "show_listing",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
                             self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],

@@ -1390,6 +1390,19 @@ class Data:
 
     SELECT_A_SERVER_FOR_THIS_STEP = "Select a server for this step"
     COLLAPSE = "折叠"
+
+    RECENT = "最近"
+
+    """
+    Trial on Jan 8 2025
+    //div[@data-landmark-label= "certain-region-name"]
+    //div[@data-landmark-label= "Status Bar"]
+    """
+    STATUS_BAR = "Status Bar"
+    PREAMBLE = "Preamble"
+    POSTAMBLE = "Postamble"
+    COPY_TO_FLOW = "Copy to flow"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

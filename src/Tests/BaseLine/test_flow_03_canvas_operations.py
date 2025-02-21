@@ -46,6 +46,7 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
     CenterPage(page).screenshot_self("center_page_flow_canvas_with_nodes",
                                      mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
+    flow.prt_scn("flow_canvas_with_nodes")
 
     # MODIFIED
     # Changed waiting and screenshot order to eliminte diffs caused by the undo/redo icon status

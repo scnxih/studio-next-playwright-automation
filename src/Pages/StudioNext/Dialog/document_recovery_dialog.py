@@ -31,16 +31,15 @@ class DocumentRecoveryDialog(Dialog):
         Helper.logger.debug("DocumentRecoveryDialog: Overwrite the vanilla screenshot_self method in BasePage")
 
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-
-                        # mask=["//div[contains(@class, 'breadcrumb')]", self.content_selector_navigator_tree,
-                        # self.temp_content_selector],
-                        # mask=[self.bread_crumb, self.content_selector_navigator_tree,
-                        # self.temp_content_selector],
-
-                        # Mask files list in dialog
-                        mask=['//div[@role="rowgroup"][@class="ag-center-cols-container"]'
-                              '[../../descendant::div[@data-testid="recoveryDialog-fileActionSelector"]]'],
+                        mask=['//div[contains(@class, "ag-body-viewport")]'],
                         mask_color="#000000")
+
+        # Mask files list in dialog
+        # mask=['//div[@role="rowgroup"][@class="ag-center-cols-container"]'
+        #       '[../../descendant::div[@data-testid="recoveryDialog-fileActionSelector"]]'],   # Oversize mask
+        # mask_color="#000000")
+
+        Helper.logger.debug("... Exit DocumentRecoveryDialog selfie")
 
     def cancel_dialog(self):
         Helper.logger.debug("Cancel Recovery dialog.")
