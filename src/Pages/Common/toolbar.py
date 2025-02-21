@@ -26,6 +26,9 @@ class Toolbar(CommonComponent):
     def div_by_title(self, title):
         return self.locate_xpath(f"//div[@title='{title}']")
 
+    def btn_by_aria_label(self, aria_label):
+        return self.locate_xpath(f"//button[@aria-label='{aria_label}']")
+
     """Added by Alice on 09/25/2023 Start"""
 
     def btn_by_test_id_contains(self, data_test_id):
@@ -35,6 +38,14 @@ class Toolbar(CommonComponent):
 
     def btn_by_test_id(self, data_test_id):
         return self.get_by_test_id(data_test_id)
+
+    def click_btn_by_aria_label(self, aria_label):
+        if self.is_enabled(self.btn_by_aria_label(aria_label)):
+            self.click(self.btn_by_aria_label(aria_label))
+            return True
+        else:
+            Helper.logger.debug("This btn is disabled now:" + aria_label)
+            return False
 
     def click_btn_by_title_contains(self, title):
         if self.is_enabled(self.btn_by_title_contains(title)):
