@@ -519,6 +519,11 @@ class BasePage:
         r_locator.click(button="right")
 
     def is_enabled(self, locator_or_xpath):
+        # On Feb 21 2025
+        # It was found that BaseLine.test_centerpage_01.test_38_quick_import would fall into an endless loop
+        # which was caused by this function.
+        # TODO
+        # One possible solution is to implement a time-out mechanism.
         r_locator = self.transform_to_locator(locator_or_xpath)
         self.wait_for(r_locator)
         time.sleep(0.3)
