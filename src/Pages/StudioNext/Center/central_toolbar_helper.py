@@ -12,6 +12,7 @@ from src.Pages.Common.windows_control import *
 
 from src.Pages.StudioNext.Dialog.new_snippets_dialog import NewSnippetsDialog
 
+
 class CentralToolbarHelper:
     def __init__(self, toolbar: Toolbar):
         self.toolbar = toolbar
@@ -37,6 +38,8 @@ class CentralToolbarHelper:
 
     def run(self, if_wait_toast_disappear, if_wait_run_enabled=True):
 
+        Helper.logger.debug('Entering src.Pages.StudioNext.Center.central_toolbar_helper.CentralToolbarHelper.run')
+
         # Original
         # self.toolbar.click_btn_by_title(Helper.data_locale.RUN)
 
@@ -61,6 +64,8 @@ class CentralToolbarHelper:
         # self.toolbar.screenshot_self('run_wo_time_stamp', self.toolbar, mask_color='#000000')
         # self.screenshot_self('run_wo_time_stamp', self.center_toolbar_helper.time_stamp, mask_color='#000000')
         # END Added by Jacky(ID: jawang) on Apr.24nd, 2024 >>>
+
+        Helper.logger.debug('Leaving src.Pages.StudioNext.Center.central_toolbar_helper.CentralToolbarHelper.run')
 
     def cancel(self, if_wait_toast_disappear):
         self.toolbar.click_btn_by_title(Helper.data_locale.CANCEL)

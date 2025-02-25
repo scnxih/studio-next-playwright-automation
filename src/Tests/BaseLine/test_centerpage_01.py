@@ -666,7 +666,14 @@ def test_36_flow(page, init):
 
 def test_38_quick_import(page, init):
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
-    quick_import.run(True)
+
+    # Changed on Friday, Feb 21, 2025
+    # Disabled 'Run' button for Quick import
+
+    # On Feb 21 2025
+    # It was found that BaseLine.test_centerpage_01.test_38_quick_import would fall into an endless loop
+    # which was caused by this function.
+    # quick_import.run(True)
 
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
