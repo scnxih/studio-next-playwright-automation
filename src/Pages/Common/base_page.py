@@ -635,7 +635,7 @@ class BasePage:
         wait = True
         Helper.logger.debug("Enter  wait_until_enabled,  wait_time*100={0}".format(str(wait_time * 100)))
 
-        while i < 3000 and wait:
+        while i < 300 and wait:
             Helper.logger.debug("before i={0}".format(i))
             time.sleep(0.1)
             if self.is_enabled(locator_or_xpath):
@@ -643,23 +643,19 @@ class BasePage:
                 break
             i = i + 1
             Helper.logger.debug("after i={0}".format(i))
-        # while (( not self.is_enabled(locator_or_xpath)) and i < 6000):
-        #     Helper.logger.debug("before i={0}".format(i))
-        #     time.sleep(0.1)
-        #     i = i + 1
-        #     Helper.logger.debug("after i={0}".format(i))
 
-        time.sleep(0.5)
-        i = 0
-        wait = True
-        while i < 3000 and wait:
-            Helper.logger.debug("before i={0} second".format(i))
-            time.sleep(0.1)
-            if self.is_enabled(locator_or_xpath):
-                wait = False
-                break
-            i = i + 1
-            Helper.logger.debug("after i={0} second".format(i))
+
+        # time.sleep(0.5)
+        # i = 0
+        # wait = True
+        # while i < 3000 and wait:
+        #     Helper.logger.debug("before i={0} second".format(i))
+        #     time.sleep(0.1)
+        #     if self.is_enabled(locator_or_xpath):
+        #         wait = False
+        #         break
+        #     i = i + 1
+        #     Helper.logger.debug("after i={0} second".format(i))
 
         if self.is_enabled(locator_or_xpath):
             if not is_locator(locator_or_xpath):

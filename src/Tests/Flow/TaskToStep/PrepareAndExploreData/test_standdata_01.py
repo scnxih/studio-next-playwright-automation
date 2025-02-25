@@ -79,7 +79,7 @@ def test_02_standardize_data_in_flow_level1(page, init):
     flow.screenshot_self("options")
     standardize_data.click_output_tab()
     standardize_data.set_variables_to_include(item_index=0)
-    standardize_data.set_specify_data_to_show(item_index=1)
+    # standardize_data.set_specify_data_to_show(item_index=1)
     time.sleep(0.5)
     flow.screenshot_self("output")
     flow.run(False)
