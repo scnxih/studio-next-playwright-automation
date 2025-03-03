@@ -254,7 +254,7 @@ run;
     text_summarization_pane.set_include_variables_from_input_CAS_table(item_index=3)
     text_summarization_pane.add_columns_for_include_these_variables(check_column_name_list=["text'中文"])
     text_summarization_pane.expand_windowshade_corpus_summary()
-    text_summarization_pane.set_check_show_output_data()
+    # text_summarization_pane.set_check_show_output_data()
     flow.screenshot_self("output")
     flow.run(False)
     flow.screenshot_after_run_slow()
@@ -317,6 +317,6 @@ run;
 
     text_summarization_pane.click_output_tab()
     text_summarization_pane.expand_windowshade_corpus_summary()
-    text_summarization_pane.set_check_show_output_data()
+    # text_summarization_pane.set_check_show_output_data()
     flow.run(False)
     flow.screenshot_after_run_slow()

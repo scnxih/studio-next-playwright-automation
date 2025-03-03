@@ -40,7 +40,7 @@ def test_01_Split_Columns_level0(page, init):
     Split_Columns_pane.set_check_for_replace_existing_output_table()
     Split_Columns_pane.set_check_for_use_column_name_prefix()
     Split_Columns_pane.set_text_for_prefix("行'列")
-    Split_Columns_pane.set_specify_data_to_show(item_index=1)
+    # Split_Columns_pane.set_specify_data_to_show(item_index=1)
     time.sleep(1)
     flow.screenshot_self("output")
 

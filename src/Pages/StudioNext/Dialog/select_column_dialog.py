@@ -32,9 +32,14 @@ class SelectColumnDialog(Dialog):
 
     def select_a_column_and_OK(self, col_name: str):
         self.clear_input_search()
+        self.fill_input_search(col_name)
+        self.key_press("Enter")
+        time.sleep(1)
         if self.is_visible(self.col_treegrid.row_in_treegrid(name_text=col_name)):
             self.col_treegrid.select_a_row(name_text=col_name)
+
             self.click_button_in_footer(Helper.data_locale.OK)
+
         else:
             Helper.logger.debug("The column is not exist, please provide an existing column name.")
 
