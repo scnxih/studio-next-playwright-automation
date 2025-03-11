@@ -26,7 +26,7 @@ class LoginPage(BasePage):
 
     def _login(self):
         # Original
-        url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
+        url = "https://3xdaily.pgc.unx.sas.com/SASStudioNext/"
 
 
         # Backup server
