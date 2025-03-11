@@ -177,7 +177,6 @@ class SaveAsDialog(Dialog):
                 Helper.logger.debug("Error location!")
                 self.close_dialog()
 
-
         # Original
         if not self.navigate_to_folder(folder_path):
             return False
