@@ -142,5 +142,18 @@ class Widget(CommonComponent):
         """
         if self.checkbox_by_title(title).get_attribute("aria-checked").lower() == "true":
             self.toggle_checkbox_by_title(title)
-
     """Added by Alice on Mar 15,2024 end"""
+
+    def toggle_off_checkbox_by_aria_label(self, aria_label):
+        """
+        Make sure the checkbox is toggled off
+        Element in xpath changed to aria-label from title for buttons
+        (Match Case, Match Whole Word and Use Regular Expression) in Code Editor Find widget.
+
+        :param aria_label:
+        :return:
+        """
+        # Thursday, March 13, 2025, #2
+        if self.checkbox_by_aria_label(aria_label).get_attribute("aria-checked").lower() == "true":
+            self.toggle_on_checkbox_by_aria_label(aria_label)
+

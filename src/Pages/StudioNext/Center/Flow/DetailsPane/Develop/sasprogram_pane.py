@@ -50,21 +50,50 @@ class SASProgramPane(DetailsPane):
 
     def __match_case(self, if_match_case: bool):
         if if_match_case:
-            self.widget.toggle_on_checkbox_by_title(Helper.data_locale.MATCH_CASE)
+
+            # Original
+            # self.widget.toggle_on_checkbox_by_title(Helper.data_locale.MATCH_CASE)
+
+            # Thursday, March 13, 2025, #2
+            # Element in xpath changed to aria-lable from title for buttons
+            # (Match Case, Match Whole Word and Use Regular Expression) in Code Editor Find widget.
+            self.widget.toggle_on_checkbox_by_aria_label(Helper.data_locale.MATCH_CASE)
         else:
-            self.widget.toggle_off_checkbox_by_title(Helper.data_locale.MATCH_CASE)
+            # Original
+            # self.widget.toggle_off_checkbox_by_title(Helper.data_locale.MATCH_CASE)
+
+            # Thursday, March 13, 2025, #2
+            # Element in xpath changed to aria-lable from title for buttons
+            # (Match Case, Match Whole Word and Use Regular Expression) in Code Editor Find widget.
+            self.widget.toggle_on_checkbox_by_aria_label(Helper.data_locale.MATCH_CASE)
 
     def __match_whole_word(self, if_match_whole_word: bool):
         if if_match_whole_word:
-            self.widget.toggle_on_checkbox_by_title(Helper.data_locale.MATCH_WHOLE_WORD)
+            # Original
+            # self.widget.toggle_on_checkbox_by_title(Helper.data_locale.MATCH_WHOLE_WORD)
+
+            # Changed on Thursday, Mar 13, 2025
+            self.widget.toggle_on_checkbox_by_aria_label(Helper.data_locale.MATCH_WHOLE_WORD)
+
         else:
-            self.widget.toggle_off_checkbox_by_title(Helper.data_locale.MATCH_WHOLE_WORD)
+            # Original
+            # self.widget.toggle_off_checkbox_by_title(Helper.data_locale.MATCH_WHOLE_WORD)
+
+            # Changed on Thursday, Mar 13, 2025
+            self.widget.toggle_on_checkbox_by_aria_label(Helper.data_locale.MATCH_WHOLE_WORD)
 
     def __preserve_case(self, if_preserve_case: bool):
         if if_preserve_case:
-            self.widget.toggle_on_checkbox_by_title(Helper.data_locale.PRESERVE_CASE)
+            # Original
+            # self.widget.toggle_on_checkbox_by_title(Helper.data_locale.PRESERVE_CASE)
+
+            # Changed on Thursday, Mar 13, 2025
+            self.widget.toggle_on_checkbox_by_aria_label(Helper.data_locale.PRESERVE_CASE)
         else:
-            self.widget.toggle_off_checkbox_by_title(Helper.data_locale.PRESERVE_CASE)
+            # Original
+            # self.widget.toggle_off_checkbox_by_title(Helper.data_locale.PRESERVE_CASE)
+            # Changed on Thursday, Mar 13, 2025
+            self.widget.toggle_off_checkbox_by_aria_label(Helper.data_locale.PRESERVE_CASE)
 
     def __replace_visible(self):
         if self.is_visible(self.widget.textarea_by_placeholder(Helper.data_locale.REPLACE)):
@@ -98,4 +127,11 @@ class SASProgramPane(DetailsPane):
 
     def replace_all(self, find_str, replace_str, if_match_case, if_match_whole_word, if_preserve_case):
         self.__internal_replace(find_str, replace_str, if_match_case, if_match_whole_word, if_preserve_case)
-        self.widget.click_btn_by_title(Helper.data_locale.REPLACE_ALL_ENTER)
+
+        # Original
+        # self.widget.click_btn_by_title(Helper.data_locale.REPLACE_ALL_ENTER)
+
+        # Changed on Thursday, March 13, 2025
+        # Element in xpath changed to aria-lable from title for buttons
+        # (Match Case, Match Whole Word and Use Regular Expression) in Code Editor Find widget.
+        self.widget.click_btn_by_aria_label(Helper.data_locale.REPLACE_ALL_ENTER)
