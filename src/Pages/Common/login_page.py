@@ -28,8 +28,8 @@ class LoginPage(BasePage):
         # Original
         url = "https://3xdaily.pgc.unx.sas.com/SASStudioNext/"
 
-
         # Backup server
+        # url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
         # url = "https://mwf.pgc.unx.sas.com/SASStudioNext/"
         # url = "https://tth.pgc.unx.sas.com/SASStudioNext/"
         # url = "https://analyst.dev.pgc.unx.sas.com/SASStudioNext/"

@@ -79,6 +79,15 @@ class Widget(CommonComponent):
         """
         return self.locate_xpath(f"//div[@role='checkbox'][@title='" + title + "']")
 
+    def checkbox_by_aria_label(self, aria_label):
+        """
+        Get checkbox(such as Match Case, Match Whole Word and Use Regular Expression in Code Editor Find widget) xpath
+        according to title.
+        :param aria_label: checkbox aria-label
+        :return: checkbox
+        """
+        return self.locate_xpath(f"//div[@role='checkbox'][@aria-label='" + aria_label + "']")
+
     def click_btn_by_title(self, title):
         """
         Click button according to title.
@@ -104,7 +113,8 @@ class Widget(CommonComponent):
         self.checkbox_by_title(title).click()
 
     """Added by Alice on Mar 15,2024 start"""
-    def toggle_on_checkbox_by_title(self,title):
+
+    def toggle_on_checkbox_by_title(self, title):
         """
         Make sure the checkbox is toggled on
         :param title:
@@ -114,7 +124,17 @@ class Widget(CommonComponent):
             return
         self.toggle_checkbox_by_title(title)
 
-    def toggle_off_checkbox_by_title(self,title):
+    def toggle_on_checkbox_by_aria_label(self, aria_label):
+        """
+        Make sure the checkbox is toggled on
+        :param aria_label:
+        :return:
+        """
+        if self.checkbox_by_aria_label(aria_label).get_attribute("aria-checked").lower() == "true":
+            return
+        self.checkbox_by_aria_label(aria_label)
+
+    def toggle_off_checkbox_by_title(self, title):
         """
         Make sure the checkbox is toggled off
         :param title:
@@ -123,4 +143,17 @@ class Widget(CommonComponent):
         if self.checkbox_by_title(title).get_attribute("aria-checked").lower() == "true":
             self.toggle_checkbox_by_title(title)
     """Added by Alice on Mar 15,2024 end"""
+
+    def toggle_off_checkbox_by_aria_label(self, aria_label):
+        """
+        Make sure the checkbox is toggled off
+        Element in xpath changed to aria-label from title for buttons
+        (Match Case, Match Whole Word and Use Regular Expression) in Code Editor Find widget.
+
+        :param aria_label:
+        :return:
+        """
+        # Thursday, March 13, 2025, #2
+        if self.checkbox_by_aria_label(aria_label).get_attribute("aria-checked").lower() == "true":
+            self.toggle_on_checkbox_by_aria_label(aria_label)
 
