@@ -227,9 +227,9 @@ def test_05_t_test_two_sample_in_flow(page, init):
 
     t_tests_pane = TTestsPane(page)
     t_tests_pane.set_option_for_combobox(Helper.data_locale.T_TEST_LOWER, item_value=Helper.data_locale.TWO_SAMPLE_TEST)
-    time.sleep(0.5)
+    time.sleep(1)
     t_tests_pane.add_column_for_analysis_var("nHome'中")
-    time.sleep(0.5)
+    time.sleep(1)
     t_tests_pane.add_column_for_class_var("League'中")
     time.sleep(0.5)
 

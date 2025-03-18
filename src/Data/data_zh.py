@@ -957,7 +957,7 @@ class DataZH(Data):
     VERIFY_PHONE_NUMBERS = "验证电话号码"
     ENABLE_PHONE_VERIFICATION = "启用电话验证"
     PHONE_NUMBER = "电话号码"
-    LOQATE_KEY_UPPERCASE= "Loqate 密钥"
+    LOQATE_KEY_UPPERCASE= "Loqate"
     LOQATE_KEY= "Loqate 密钥"
     TEST_MODE = "测试模式"
     SHOW_DETAILED_LOG_INFORMATION = "显示详细日志信息"

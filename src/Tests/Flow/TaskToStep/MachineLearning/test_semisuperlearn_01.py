@@ -1,4 +1,6 @@
 """This is test case file for step Semi-supervised Learning"""
+import time
+
 """Added by Dommy 2024-9-25"""
 from src.Pages.StudioNext.Center.Flow.DetailsPane.MachineLearning.semi_supervised_learning_pane import \
     SemiSupervisedLearning
@@ -96,6 +98,7 @@ run;
     flow.run(False)
 
     flow.add_node(FlowNodeType.table)
+    time.sleep(1)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("CASUSER")
