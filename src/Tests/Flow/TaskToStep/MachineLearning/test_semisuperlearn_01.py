@@ -42,6 +42,7 @@ run;
     flow.run(False)
 
     flow.add_node(FlowNodeType.table)
+    time.sleep(1)
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
     table_pane = TablePane(page)
     table_pane.set_library("CASUSER")
