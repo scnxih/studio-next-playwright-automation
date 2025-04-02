@@ -124,9 +124,11 @@ class CustomCodeDialog(Dialog):
 
         if if_match_alert.is_visible():
             Helper.logger.debug("WARNING: Error message appears")
-
             if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
-            # self.click_button_in_footer(Helper.data_locale.CANCEL)
+
+        if if_match_alert.is_visible():
+            Helper.logger.debug("WARNING: Again error message appears")
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
 
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))
