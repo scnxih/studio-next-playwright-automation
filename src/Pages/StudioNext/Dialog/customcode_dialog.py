@@ -119,6 +119,15 @@ class CustomCodeDialog(Dialog):
         self.wait_for_page_load()
         time.sleep(1)
 
+        # Error handling
+        if_match_alert = self.page.get_by_test_id("appMessageDialog-dialog")
+
+        if if_match_alert.is_visible():
+            Helper.logger.debug("WARNING: Error message appears")
+
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+            # self.click_button_in_footer(Helper.data_locale.CANCEL)
+
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))
         self.wait_for_page_load()
