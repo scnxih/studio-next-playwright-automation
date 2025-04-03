@@ -130,7 +130,13 @@ class CustomCodeDialog(Dialog):
 
             # Close the dialog
             if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
-                if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                Helper.logger.debug("CONFIRM error message appears")
+
+                if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_enabled():
+                    Helper.logger.debug("CLOSE button is visible")
+
+                    if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                    Helper.logger.debug("CLOSE button clicked")
 
         if if_match_alert.is_visible():
             Helper.logger.debug("WARNING: Again error message appears")
@@ -140,7 +146,13 @@ class CustomCodeDialog(Dialog):
 
             # Close the dialog
             if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
-                if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                Helper.logger.debug("CLOSE button is visible")
+
+                if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_enabled():
+                    Helper.logger.debug("CLOSE button is visible")
+
+                    if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                    Helper.logger.debug("CLOSE button clicked")
 
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))

@@ -467,6 +467,12 @@ class BasePage:
     #     r_locator = self.transform_to_locator(locator_or_xpath)
     #     r_locator.scroll_into_view_if_needed()
 
+    # TODO
+    # It seems that scroll_if_needed() fails to work with the following testcase while searching in the Open dialog
+    # src.Tests.BaseLine.test_openitems_02_openfile.test_01_openfile
+
+    # Currently, work-around is adapted by adding 'A' into filename so that it appears at the top,
+    # which can be found without scrollbar handling.
     def scroll_if_needed(self, locator_or_xpath):
         self.scroll_vertical_if_needed(locator_or_xpath)
         self.scroll_horizontal_if_needed(locator_or_xpath)
