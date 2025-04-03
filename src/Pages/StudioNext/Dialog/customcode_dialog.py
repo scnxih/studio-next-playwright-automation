@@ -124,11 +124,23 @@ class CustomCodeDialog(Dialog):
 
         if if_match_alert.is_visible():
             Helper.logger.debug("WARNING: Error message appears")
-            if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+
+            # Avoid timeout error
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).wait_for(timeout=3000)
+
+            # Close the dialog
+            if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
+                if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
 
         if if_match_alert.is_visible():
             Helper.logger.debug("WARNING: Again error message appears")
-            if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+
+            # Avoid timeout error
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).wait_for(timeout=3000)
+
+            # Close the dialog
+            if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
+                if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
 
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))
