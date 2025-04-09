@@ -63,7 +63,7 @@ class Data:
     INTERACTIVE = "Interactive"
     RESET_SAS_SESSION = "Reset SAS session"
     SEARCH = "Search"
-    SUBMISSION_STATUS = "Submission status"
+    SUBMISSION_STATUS = "Submissions and job status"
     DEPLOYED_AND_SCHEDULED_JOBS = "Deployed and scheduled jobs"
     COMMAND = "Command"
     CONSOLE = "Console"

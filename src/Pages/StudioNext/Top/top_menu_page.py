@@ -11,10 +11,16 @@ from src.Pages.Common.toolbar import *
 from src.Pages.Common.dialog import Alert
 from src.Data.data import Data
 
+
 class TopMenuPage(BasePage):
     def __init__(self, page):
         BasePage.__init__(self, page)
-        self.toolbar = Toolbar(self.base_xpath, page, data_test_id="appHeaderToolbar-toolbar")
+
+        # Original
+        # self.toolbar = Toolbar(self.base_xpath, page, data_test_id="appHeaderToolbar-toolbar")
+
+        # Changed on Wednesday, April 9, 2025,
+        self.toolbar = Toolbar(self.base_xpath, page, data_test_id="appHeaderToolbar-view")
 
     def click_options(self, top_menu: TopMenuItem):
         test_id = "appHeaderToolbar-options-button"
@@ -124,11 +130,24 @@ class TopMenuPage(BasePage):
                 # Try
                 # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
-                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
+                # Original
+                # self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
+
+                # Work-Around: Missing zh-CN string
+                self.toolbar.check_btn_menu_by_test_id(test_id, Data.SUBMISSION_STATUS)
+
             case TopMenuItem.view_deployed_and_scheduled_jobs:
-                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
-                # Try
-                # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
+
+                # Original
+                # self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.DEPLOYED_AND_SCHEDULED_JOBS)
+
+                # Work-Around: Missing zh-CN string
+                # self.toolbar.check_btn_menu_by_test_id(test_id, Data.DEPLOYED_AND_SCHEDULED_JOBS)
+
+                # Changed on Wednesday, April 9, 2025,
+                # Removal of this menu item
+                Helper.logger.debug('Product Change: Removal of View -> Deployed and scheduled jobs')
+                return
 
             case TopMenuItem.view_start_page:
                 self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.START_PAGE)

@@ -13,8 +13,10 @@ from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Utilities.enums import TopMenuItem, AccordionType
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
 
 def test_00_click_show_tab_lables(page, init):
     """
@@ -91,5 +93,3 @@ def test_02_show_accordion_tab_labels(page, init):
     time.sleep(3)
 
     custom_step_page.tab_group.click_tab_by_text(Helper.data_locale.PROPERTIES)
-
-

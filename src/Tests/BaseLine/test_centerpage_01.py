@@ -821,11 +821,15 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
     # data-testid="scheduledJobsPane-monitoringTab-agGrid"
+
+    '''
     center_page.screenshot_self('deployed_and_scheduled',
                                 mask=['//div[@class="ag-center-cols-viewport"]',
                                       '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
                                       center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
                                 mask_color="#000000")
+    '''
+
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     time.sleep(1)
@@ -840,10 +844,14 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
+
+    '''
     center_page.screenshot_self('submission_status',
                                 mask=['//div[@class="ag-center-cols-viewport"]',
                                       center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
                                 mask_color="#000000")
+    '''
+
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     # ADDED
