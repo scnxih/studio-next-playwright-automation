@@ -39,7 +39,7 @@ class StartupInitializationLogPage(CenterPage):
                             self.locator(
                                 "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
                         ],
-                        mask_color='#000000')
+                        mask_color='#F9FAFB')
 
     def saveas(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)

@@ -32,7 +32,7 @@ class CodeEditorPage(MainCenterPage):
                             self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
                             '//button[@data-testid="programViewPane-toolbar-runButton"]'
                         ],
-                        mask_color='#000000')
+                        mask_color='#F9FAFB')
 
     def type_code_in_codeeditor(self, text):
         self.editor.type_into_text_area(text)

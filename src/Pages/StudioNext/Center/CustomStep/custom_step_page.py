@@ -148,7 +148,7 @@ class CustomStepPage(CenterPage):
                               self.locator("//button[@type='button'][.//span[contains(text(), '" +
                                            Helper.data_locale.OPERATE_RECOVERY + "')]]"),
                               ],
-                        mask_color='#000000')
+                        mask_color='#F9FAFB')
 
         Helper.logger.debug("... Exit CustomStepPage print screen")
 

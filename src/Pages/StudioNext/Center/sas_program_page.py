@@ -46,7 +46,7 @@ class SASProgramPage(MainCenterPage):
                                  '//button[@data-testid="programViewPane-toolbar-runButton"]'
                              ]
                              + self.ln_col_number,  # mask[] of 'line & col number' in status bar
-                        mask_color='#000000')
+                        mask_color='#F9FAFB')
 
     def undo(self):
         self.center_toolbar_helper.undo()
