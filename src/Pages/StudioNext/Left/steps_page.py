@@ -72,7 +72,6 @@ class StepsPage(AccordionPage):
         time.sleep(1)
         self.collapse_parent(step_path)
 
-
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on September 12th, 2024
     def collapse_parent(self, step_path: list):
@@ -97,7 +96,19 @@ class StepsPage(AccordionPage):
                         "rowgroup",
                         user_assigned_xpath=True)
         time.sleep(0.5)
-        #//div[@role="treegrid"]
+        # //div[@role="treegrid"]
+
+        #
+        # Eliminate the shadowing for selected step
+
+        # Method-1
+        # locator.press(self, "Escape") # NOT WORK
+
+        # Method-2
+        # self.tree.navigate_to_element(step_path.pop(-1))
+
+        # Method-3
+        # self.toolbar.click_btn_by_title(Helper.data_locale.REFRESH)
 
         self.screenshot('//div[@role="treegrid"]',
                         "treegrid",

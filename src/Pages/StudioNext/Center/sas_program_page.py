@@ -40,11 +40,12 @@ class SASProgramPage(MainCenterPage):
         # NOT Real whole page
         # self.screenshot(self.base_xpath, pic_name, clip=clip,
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=[
-                                 self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-                                 self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
-                                 '//button[@data-testid="programViewPane-toolbar-runButton"]'
-                             ]
+                        mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number + [
+                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                            # self.locator(
+                            #     "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
+                            '//button[@data-testid="programViewPane-toolbar-runButton"]'
+                        ]
                              + self.ln_col_number,  # mask[] of 'line & col number' in status bar
                         mask_color='#F9FAFB')
 
@@ -112,9 +113,8 @@ class SASProgramPage(MainCenterPage):
         # Note: In addition to xpath, such as base_xpath, locator can be passes as the parameter.
         self.screenshot("//div[contains(@data-testid, 'container')][contains(@class, 'EditorPane')]", "formatted")
 
-
         # Alternative
-        #//div[@data-testid="programView-editorPane-editor"]//div[@role="code"]
+        # //div[@data-testid="programView-editorPane-editor"]//div[@role="code"]
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """
 

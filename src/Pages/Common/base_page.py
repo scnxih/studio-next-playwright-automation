@@ -51,6 +51,31 @@ class BasePage:
                                   Helper.data_locale.OPERATE_RECOVERY + "')]]")]
 
     @property
+    def success_status(self):
+        """
+        The success status in status bar.
+        XPATH: //span[contains(text(), '成功')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" +
+                                  Helper.data_locale.FILTER_COLUMN_MAPPING_SUCCESSFUL + "')]/../..")]
+
+    @property
+    def utf8_encoding(self):
+        """
+        The default UTF-8 encoding in status bar.
+        XPATH: //span[contains(text(), 'UTF-8')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" + Data.UTF_8 + "')]/../..")]
+
+    @property
+    def submit_number(self):
+        """
+        The success status in status bar.
+        XPATH: //span[contains(text(), '提交')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" + Helper.data_locale.SUBMIT + "')]/../..")]
+
+    @property
     def status_bar(self):
         """
         Return: mask STRING of status bar locator by using @data-landmark-label

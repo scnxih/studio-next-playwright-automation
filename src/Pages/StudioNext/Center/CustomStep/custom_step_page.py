@@ -143,11 +143,9 @@ class CustomStepPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=[self.toolbar.btn_by_title(Helper.data_locale.SAVE),
-                              self.toolbar.btn_by_title(Helper.data_locale.SAVE_AS),
-                              self.locator("//button[@type='button'][.//span[contains(text(), '" +
-                                           Helper.data_locale.OPERATE_RECOVERY + "')]]"),
-                              ],
+                        mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number +
+                             [self.toolbar.btn_by_title(Helper.data_locale.SAVE),
+                              self.toolbar.btn_by_title(Helper.data_locale.SAVE_AS)],
                         mask_color='#F9FAFB')
 
         Helper.logger.debug("... Exit CustomStepPage print screen")

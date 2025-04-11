@@ -1399,6 +1399,8 @@ class Data:
     //div[@data-landmark-label= "Status Bar"]
     """
     STATUS_BAR = "Status Bar"
+    UTF_8 = "UTF-8"
+    SUBMIT = ""
     PREAMBLE = "Preamble"
     POSTAMBLE = "Postamble"
     COPY_TO_FLOW = "Copy to flow"

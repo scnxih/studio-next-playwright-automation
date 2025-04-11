@@ -39,8 +39,8 @@ class DeployedScheduledJobPage(CenterPage):
         Helper.logger.debug("screenshot_self in CodeEditorPage")
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.recovery_number +
-                             self.mask_last_refresh_label +
+                        mask=self.recovery_number + self.utf8_encoding + self.recovery_number + self.success_status +
+                             self.submit_number + self.mask_last_refresh_label +
                              self.mask_deployed_and_scheduled_jobs_treegrid,
                         mask_color='#F9FAFB')
 
