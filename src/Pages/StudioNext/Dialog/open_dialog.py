@@ -29,8 +29,11 @@ class OpenDialog(Dialog):
     def navigate_to_folder(self, folder_path: list):
         return self.folder_tree.navigate_to_element(folder_path)
 
+    def navigate_to_folder_org(self, folder_path: list):
+        return self.folder_tree.navigate_to_element_org(folder_path)
+
     def open_file(self, folder_path: list, file_name):
-        if not self.navigate_to_folder(folder_path):
+        if not self.navigate_to_folder_org(folder_path):
             return False
         self.click(self.locate_xpath("//div[@data-testid='contentSelector-open-contentSelector-navigator-table']"))
         self.scroll_if_needed(self.select_file(file_name))

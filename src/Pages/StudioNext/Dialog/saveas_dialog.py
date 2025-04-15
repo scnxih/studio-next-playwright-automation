@@ -97,7 +97,7 @@ class SaveAsDialog(Dialog):
                 self.close_dialog()
 
         # Original
-        if not self.navigate_to_folder(folder_path):
+        if not self.navigate_to_folder_org(folder_path):
             return False
 
         self.fill(self.input_file_name, file_name)
@@ -161,6 +161,9 @@ class SaveAsDialog(Dialog):
     def navigate_to_folder(self, folder_path: list):
         return self.folder_tree.navigate_to_element(folder_path)
 
+    def navigate_to_folder_org(self, folder_path: list):
+        return self.folder_tree.navigate_to_element_org(folder_path)
+
     def save_file(self, folder_path: list, file_name: str, if_replace, if_wait_toast_disappear=True):
 
         # Since Save as does not work due to Nova 43.1, comment this save_file method temporarily.
@@ -178,7 +181,7 @@ class SaveAsDialog(Dialog):
                 self.close_dialog()
 
         # Original
-        if not self.navigate_to_folder(folder_path):
+        if not self.navigate_to_folder_org(folder_path):
             return False
 
         self.fill(self.input_file_name, file_name)
