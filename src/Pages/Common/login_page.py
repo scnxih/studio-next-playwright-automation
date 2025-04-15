@@ -26,14 +26,14 @@ class LoginPage(BasePage):
 
     def _login(self):
         # Original
-        url = "https://3xdaily.pgc.unx.sas.com/SASStudio/"
+        # url = "https://3xdaily.pgc.unx.sas.com/SASStudio/"
 
         # Backup server
-        # url = "https://daily.pgc.unx.sas.com/SASStudioNext/"
-        # url = "https://mwf.pgc.unx.sas.com/SASStudioNext/"
-        # url = "https://tth.pgc.unx.sas.com/SASStudioNext/"
+        # url = "https://daily.pgc.unx.sas.com/SASStudio/"
+        url = "https://mwf.pgc.unx.sas.com/SASStudio/"
+        # url = "https://tth.pgc.unx.sas.com/SASStudio/"
         # url = "https://analyst.dev.pgc.unx.sas.com/SASStudioNext/"
-        # url = "https://analyst.de.dev.unx.sas.com/SASStudioNext/"
+        # url = "https://analyst.de.dev.unx.sas.com/SASStudio/"
         self.goto(url)
         try:
             Helper.logger.info("enter _login.try")
