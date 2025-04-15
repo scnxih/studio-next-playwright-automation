@@ -41,12 +41,20 @@ class TreeViewAGGrid(CommonComponent):
     def label_element_name(self, label):
         return self.locate_xpath("//span[text()='{0}']".format(label))
 
-    def icon_expand_element(self, label):
+    def icon_expand_element_org(self, label):
         return self.locate_xpath("//span[text()='{0}']/../../../../../../descendant::span[@class='ag-group-expanded "
                                  "']/span[1]".format(label))
 
-    def icon_collapse_element(self, label):
+    def icon_collapse_element_org(self, label):
         return self.locate_xpath("//span[text()='{0}']/../../../../../../descendant::span[@class='ag-group-contracted "
+                                 "']/span[1]".format(label))
+
+    def icon_expand_element(self, label):
+        return self.locate_xpath("//span[text()='{0}']/../../../../descendant::span[@class='ag-group-expanded "
+                                 "']/span[1]".format(label))
+
+    def icon_collapse_element(self, label):
+        return self.locate_xpath("//span[text()='{0}']/../../../../descendant::span[@class='ag-group-contracted "
                                  "']/span[1]".format(label))
 
     def navigate_to_element(self, element_path: list):
