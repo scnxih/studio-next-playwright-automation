@@ -399,13 +399,17 @@ def test_10_insert_checkbox_text_and_move_duplicate(page, init):
 
     designer_text2: DesignerText = custom_step.select_control(DesignerControlType.text, 2)
     str_section = "区段标签 1"
-    designer_text2.move_to_section(str_section)
 
-    designer_text2.move_to_end()
+    # Original
+    # designer_text2.move_to_section(str_section)
+    # designer_text2.move_to_end()
+
+    designer_text1.move_to_section(Helper.data_locale.NEW_SECTION)
+    designer_text1.move_to_end()
 
     designer_checkbox1.move_to_section(str_section)
-    designer_checkbox2.move_to_section(str_section)
-    designer_checkbox3.move_to_section(str_section)
+    designer_checkbox2.move_to_section("区段标签 2")
+    designer_checkbox3.move_to_section(Helper.data_locale.NEW_SECTION)
 
     designer_checkbox1.move_to_top()
     designer_checkbox2.move_down()
