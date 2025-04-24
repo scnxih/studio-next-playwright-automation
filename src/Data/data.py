@@ -1405,6 +1405,9 @@ class Data:
     POSTAMBLE = "Postamble"
     COPY_TO_FLOW = "Copy to flow"
 
+    SHOW_TAB_LABELS = "Show tab labels"
+    HIDE_TAB_LABELS = "Hide tab labels"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

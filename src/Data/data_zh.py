@@ -1411,6 +1411,9 @@ class DataZH(Data):
     POSTAMBLE = "后置代码"
     COPY_TO_FLOW = "复制到流"
 
+    SHOW_TAB_LABELS = "显示选项卡标签"
+    HIDE_TAB_LABELS = "隐藏选项卡标签"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

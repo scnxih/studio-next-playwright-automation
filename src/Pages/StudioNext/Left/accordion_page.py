@@ -18,15 +18,28 @@ class AccordionPage(BasePage):
             self.base_xpath += f"[.//span[text()='" + title + "']]"
         self.toolbar = Toolbar(self.base_xpath, page)
 
-    # ADDED
-    # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
+    @property
+    def icon_show_tab_labels(self):
+        """
+        Icon used to expand the Left Accordion by clicking the button in the lower left corner
+        :return:
+        """
+        return self.locate_xpath(f"//button[@aria-label='" + Helper.data_locale.SHOW_TAB_LABELS + "']")
+
+    @property
+    def icon_hide_tab_labels(self):
+        """
+        Icon used to collapse the Left Accordion by clicking the button in the lower left corner
+        :return:
+        """
+        return self.locate_xpath(f"//button[@aria-label='" + Helper.data_locale.HIDE_TAB_LABELS + "']")
+
     @property
     def ag_body_vertical_scroll_bar(self):
         """
         Vertical scroll bar xpath: //div[@class="ag-body-vertical-scroll"]
         """
         return self.locate_xpath("//div[@class='ag-body-vertical-scroll']")
-    # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
 
     @property
     def tab_open_item(self):
@@ -169,25 +182,19 @@ class AccordionPage(BasePage):
     def collapse_all(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.COLLAPSE_ALL)
 
-    # ADDED
-    # <<< Added by Jacky(ID: jawang) on Oct.12nd, 2023
     def show_tab_labels(self):
         """
-        Expand the Accordion by clicking the button in the lowever left corner
+        Expand the Accordion by clicking the button in the lower left corner
         :return:
         """
+        self.locate_xpath(f"//button[@aria-label='" + Helper.data_locale.SHOW_TAB_LABELS + "']").click()
 
-        # //div[@class='sas_components-AppRoot-AppLayout_content']/descendant::section[1]//button[@aria-label="Show tab labels"]
-
-        # locale: en-US
-        # self.locate_xpath(f"//button[@aria-label='Show tab labels']").click()
-
-        # locale: zh-CN
-        self.locate_xpath(f"//button[@aria-label='显示选项卡标签']").click()
-
-    # Added by Jacky(ID: jawang) on Oct.12nd, 2023 >>>
+    def hide_tab_labels(self):
+        """
+        Collapse the Accordion by clicking the button in the lower left corner
+        :return:
+        """
+        self.locate_xpath(f"//button[@aria-label='" + Helper.data_locale.HIDE_TAB_LABELS + "']").click()
 
     def click_more_options(self):
         self.toolbar.click_more_options()
-
-

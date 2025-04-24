@@ -785,14 +785,23 @@ class PageHelper:
 
     ''' ----- Added by Frank, 3/18/2024 end ----- '''
 
-    # ADDED
-    # <<< Added by Jacky(ID: jawang) on Oct.12nd, 2023
+    @staticmethod
+    def hide_accordion_tab_labels(page):
+        lhs_accordion: AccordionPage = AccordionPage(page)
+
+        if lhs_accordion.icon_hide_tab_labels.is_visible():
+            Helper.logger.debug('In Left Accordion: <Hide tab labels> icon is visible')
+            lhs_accordion.icon_hide_tab_labels.click()
+            Helper.logger.debug('Have clicked <Hide tab labels> icon')
+
     @staticmethod
     def show_accordion_tab_labels(page):
-        acc: AccordionPage = AccordionPage(page)
-        acc.show_tab_labels()
+        lhs_accordion: AccordionPage = AccordionPage(page)
 
-    # Added by Jacky(ID: jawang) on Oct.12nd, 2023 >>>
+        if lhs_accordion.icon_show_tab_labels.is_visible():
+            Helper.logger.debug('In Left Accordion: <Show tab labels> icon is visible')
+            lhs_accordion.icon_show_tab_labels.click()
+            Helper.logger.debug('Have clicked <Show tab labels> icon')
 
     """added by Alice on 10/26/2023 start"""
 
@@ -870,6 +879,7 @@ class PageHelper:
         PageHelper.clear_autoexec(page)
         PageHelper.switch_to_standard_perspective(page)
         PageHelper.reset_settings_dialog(page)
+        PageHelper.hide_accordion_tab_labels(page)
 
     def reset_all_settings_dialog(page: Page):
         top_right = TopRightToolbar(page)
