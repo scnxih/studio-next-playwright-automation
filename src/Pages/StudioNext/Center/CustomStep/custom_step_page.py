@@ -146,7 +146,7 @@ class CustomStepPage(CenterPage):
                         mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number +
                              [self.toolbar.btn_by_title(Helper.data_locale.SAVE),
                               self.toolbar.btn_by_title(Helper.data_locale.SAVE_AS)],
-                        mask_color='#F9FAFB')
+                        mask_color='#F4F4F6')
 
         Helper.logger.debug("... Exit CustomStepPage print screen")
 

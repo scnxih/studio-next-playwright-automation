@@ -42,7 +42,7 @@ class DeployedScheduledJobPage(CenterPage):
                         mask=self.recovery_number + self.utf8_encoding + self.recovery_number + self.success_status +
                              self.submit_number + self.mask_last_refresh_label +
                              self.mask_deployed_and_scheduled_jobs_treegrid,
-                        mask_color='#F9FAFB')
+                        mask_color='#F4F4F6')
 
     def run_now(self):
         self.toolbar.click_btn_by_test_id("scheduledJobsPane-runNowButton")

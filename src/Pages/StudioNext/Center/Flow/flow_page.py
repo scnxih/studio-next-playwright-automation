@@ -47,7 +47,7 @@ class FlowPage(MainCenterPage):
         # Always getting noise from status bar
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
                         mask=self.mask_preview_code_button + self.utf8_encoding + self.recovery_number + self.success_status + self.doorbell_icon_in_toast_message,
-                        mask_color='#F9FAFB')
+                        mask_color='#F4F4F6')
 
         '''
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,

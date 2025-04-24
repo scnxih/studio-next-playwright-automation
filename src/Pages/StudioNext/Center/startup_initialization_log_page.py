@@ -36,7 +36,7 @@ class StartupInitializationLogPage(CenterPage):
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
                         mask=self.time_info_in_log + self.utf8_encoding + self.recovery_number + self.success_status +self.submit_number,
-                        mask_color='#F9FAFB')
+                        mask_color='#F4F4F6')
 
     def saveas(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)
