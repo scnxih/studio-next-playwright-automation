@@ -60,7 +60,7 @@ class DataZH(Data):
     INTERACTIVE = "交互式"
     RESET_SAS_SESSION = "重置 SAS 会话"
     SEARCH = "搜索"
-    SUBMISSION_STATUS = "提交状态"
+    SUBMISSION_STATUS = "提交和作业状态"
     DEPLOYED_AND_SCHEDULED_JOBS = "已部署和已预定的作业"
     COMMAND = "命令"
     CONSOLE = "控制台"

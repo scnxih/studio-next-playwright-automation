@@ -131,10 +131,10 @@ class TopMenuPage(BasePage):
                 # base.screenshot("//div[@data-testid='appHeaderToolbar-view-menu']", str(TopMenuItem.view), user_assigned_xpath=True)
 
                 # Original
-                # self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
+                self.toolbar.check_btn_menu_by_test_id(test_id, Helper.data_locale.SUBMISSION_STATUS)
 
                 # Work-Around: Missing zh-CN string
-                self.toolbar.check_btn_menu_by_test_id(test_id, Data.SUBMISSION_STATUS)
+                # self.toolbar.check_btn_menu_by_test_id(test_id, Data.SUBMISSION_STATUS)
 
             case TopMenuItem.view_deployed_and_scheduled_jobs:
 
