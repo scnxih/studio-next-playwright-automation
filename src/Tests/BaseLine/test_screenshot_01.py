@@ -308,6 +308,15 @@ def test_04_screenshot_top_menu_options(page, init):
     time.sleep(1.0)
     # //div[@data-testid="gitDialog-mgtConnection-spliter-splitterBar"]
     git.screenshot_self("git_repository")
+
+    git.click_tab_options()
+
+    # Try to eliminate diff caused by focus indicator
+    git.click_dialog_title_or_studionext_header()
+
+    time.sleep(1.0)
+    git.screenshot_self("git_options")
+
     git.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_manage_keyboard_shortcuts)
