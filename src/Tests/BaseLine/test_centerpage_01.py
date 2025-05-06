@@ -415,16 +415,25 @@ def test_34_sas_program(page, init):
     sas_program.open_in_browser_tab_listing()
     sas_program.open_in_browser_tab_log()
     sas_program.open_in_browser_tab_submitted_code()
-    sas_program.download_ppt_file()
+
     sas_program.download_log_file_html()
     sas_program.download_submitted_code_file()
     sas_program.download_results_file()
-    sas_program.download_rtf_file()
     sas_program.download_generated_data()
     sas_program.download_listing_file()
+
+    # '''
+    # Tuesday, May 6, 2025,
+    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    '''
+    sas_program.download_ppt_file()
+    sas_program.download_rtf_file()
     sas_program.download_excel_file()
     sas_program.download_word_file()
     sas_program.download_pdf_file()
+
+    '''
+    # '''
     sas_program.email()
     sas_program.apply_detail_layout_standard()
     sas_program.apply_detail_layout_vertical()
@@ -486,23 +495,31 @@ def test_35_python(page, init):
     python_program.saveas(Helper.tmp_folder_path, "test_python_program_sas_server_tmp.py", True, True)
 
     python_program.schedule_as_job()
-
     python_program.add_to_my_favorites()
+
     python_program.open_in_browser_tab_summary()
     python_program.open_in_browser_tab_results()
     python_program.open_in_browser_tab_listing()
     python_program.open_in_browser_tab_log()
     python_program.open_in_browser_tab_submitted_code()
-    python_program.download_ppt_file()
+
     python_program.download_log_file_html()
     python_program.download_submitted_code_file()
     python_program.download_results_file()
-    python_program.download_rtf_file()
     python_program.download_generated_data()
     python_program.download_listing_file()
+
+    # '''
+    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    '''
+    python_program.download_ppt_file()
+    python_program.download_rtf_file()
     python_program.download_excel_file()
     python_program.download_word_file()
     python_program.download_pdf_file()
+    '''
+    # '''
+
     python_program.email()
     python_program.apply_detail_layout_standard()
     python_program.apply_detail_layout_vertical()
@@ -711,16 +728,28 @@ def test_38_quick_import(page, init):
     quick_import.open_in_browser_tab_summary()
     quick_import.open_in_browser_tab_log()
     quick_import.download_submitted_code_file()
-    quick_import.download_pdf_file()
-    quick_import.download_rtf_file()
+
+
     quick_import.download_listing_file()
-    quick_import.download_ppt_file()
     quick_import.download_generated_data()
     quick_import.download_results_file()
-    quick_import.download_word_file()
     quick_import.download_log_file_html()
-    quick_import.download_excel_file()
     quick_import.download_log_file_text()
+
+    # '''
+    # Tuesday, May 6, 2025,
+    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    '''
+
+    quick_import.download_excel_file()
+    quick_import.download_word_file()
+    quick_import.download_pdf_file()
+    quick_import.download_rtf_file()
+    quick_import.download_ppt_file()
+
+    '''
+    # '''
+
     # quick_import.email()
     # quick_import.apply_main_layout_vertical()
     # quick_import.apply_main_layout_horizontal()
