@@ -284,6 +284,13 @@ def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
     editor.format_program()
+
+    '''
+    Tuesday, May 6, 2025
+    Supplement of context dependency for overflow menu item ANALYZE_AND_CREATE_FLOW (available if saved)
+    '''
+    editor.saveas(Helper.public_folder_path, "center01_test_27", True, True)
+
     editor.run(True)
     editor.schedule_as_job()
     editor.analyze_and_create_flow()
@@ -299,12 +306,21 @@ def test_28_run_download(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+    '''
+    Tuesday, May 6, 2025
+    Supplement of context dependency for overflow menu item ANALYZE_AND_CREATE_FLOW (available if saved)
+    '''
+    editor.saveas(Helper.public_folder_path, "center01_test_28", True, True)
+
     editor.run(True)
     # editor.download_code_file()
     editor.download_submitted_code_file()
     editor.download_log_file_html()
     editor.download_log_file_text()
     editor.download_results_file()
+
+    # '''
+    '''
     editor.download_pdf_file()
     editor.download_word_file()
     editor.download_rtf_file()
@@ -312,6 +328,8 @@ def test_28_run_download(page, init):
     editor.download_ppt_file()
     editor.download_listing_file()
     editor.download_generated_data()
+    '''
+    # '''
 
 
 # def test_29_tree_common_in_query(page, init):

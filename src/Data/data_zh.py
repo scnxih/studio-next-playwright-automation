@@ -221,7 +221,7 @@ class DataZH(Data):
 
     """Add by Alice on 09/22/2023 Start"""
     USE_ANOTHER_SESSION_BRG_SUBMISSION = "使用另一个会话在后台提交程序。"
-    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio Next - 开发代码和流"
+    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio - 开发代码和流"
     UNDO = "撤销"
     REDO = "恢复"
     FORMAT_PROGRAM = "格式程序"
