@@ -13,6 +13,15 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.xfail(reason="App name changed for upcoming release")
+def test_21_app_name_change_for_new_release(page, init):
+    """
+    Removal of the word 'Next' from App heading for the upcoming release.
+    Check out SASSTUDIO-44771 on JIRA for details
+    """
+    WholePage(page).locator("//span[text()='{0}']".format(Helper.data_locale.STUDIO_NEXT_DEV_CODE_AND_FLOW))
+
+
 @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
 def test_22_download_import_with_default_setting(page, init):
     """
@@ -352,7 +361,6 @@ def test_28_run_download(page, init):
     editor.download_log_file_html()
     editor.download_log_file_text()
     editor.download_results_file()
-
 
 
 # def test_29_tree_common_in_query(page, init):
