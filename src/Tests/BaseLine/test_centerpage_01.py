@@ -13,6 +13,40 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
+def test_22_download_import_with_default_setting(page, init):
+    """
+    Tuesday, May 6, 2025,
+    Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    """
+    quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
+
+    quick_import.download_excel_file()
+    quick_import.download_word_file()
+    quick_import.download_pdf_file()
+    quick_import.download_rtf_file()
+    quick_import.download_ppt_file()
+
+
+@pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
+def test_23_download_with_default_setting(page, init):
+    PageHelper.new_sas_program(page)
+    editor = CodeEditorPage(page)
+    editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+
+    editor.saveas(Helper.public_folder_path, "center01_test_28", True, True)
+
+    editor.run(True)
+
+    editor.download_pdf_file()
+    editor.download_word_file()
+    editor.download_rtf_file()
+    editor.download_excel_file()
+    editor.download_ppt_file()
+    editor.download_listing_file()
+    editor.download_generated_data()
+
+
 def test_24_central_toolbar_run_cancel_save_saveas(page, init):
     """
     Supplemented a testcase to save files to SAS Server.
@@ -319,17 +353,6 @@ def test_28_run_download(page, init):
     editor.download_log_file_text()
     editor.download_results_file()
 
-    # '''
-    '''
-    editor.download_pdf_file()
-    editor.download_word_file()
-    editor.download_rtf_file()
-    editor.download_excel_file()
-    editor.download_ppt_file()
-    editor.download_listing_file()
-    editor.download_generated_data()
-    '''
-    # '''
 
 
 # def test_29_tree_common_in_query(page, init):
@@ -729,28 +752,14 @@ def test_38_quick_import(page, init):
     quick_import.open_in_browser_tab_log()
     quick_import.download_submitted_code_file()
 
-
     quick_import.download_listing_file()
     quick_import.download_generated_data()
     quick_import.download_results_file()
     quick_import.download_log_file_html()
     quick_import.download_log_file_text()
 
-    # '''
-    # Tuesday, May 6, 2025,
-    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
-    '''
-
-    quick_import.download_excel_file()
-    quick_import.download_word_file()
-    quick_import.download_pdf_file()
-    quick_import.download_rtf_file()
-    quick_import.download_ppt_file()
-
-    '''
-    # '''
-
     # quick_import.email()
+
     # quick_import.apply_main_layout_vertical()
     # quick_import.apply_main_layout_horizontal()
     quick_import.apply_detail_layout_standard()

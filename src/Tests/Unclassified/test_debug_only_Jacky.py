@@ -2995,4 +2995,20 @@ def test_70_page_context_menu(page, init):
     custom_step.control_library_grid.click_grid_item("第 2 页")
 
 
+import pytest
+import sys
 
+
+# Windows 系统跳过
+@pytest.mark.skipif(sys.platform == "win64", reason="不支持 Windows 64 平台")
+def test_unix_specific_feature():
+    assert sys.platform != "win64"
+
+
+ENV = "prod"
+
+
+# 生产环境跳过测试
+@pytest.mark.skipif(global_locale == "zh-CN", reason=" zh-CN 不执行测试")
+def test_dev_feature():
+    assert global_locale == "zh-CN"
