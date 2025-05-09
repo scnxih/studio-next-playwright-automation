@@ -1414,6 +1414,9 @@ class DataZH(Data):
     SHOW_TAB_LABELS = "显示选项卡标签"
     HIDE_TAB_LABELS = "隐藏选项卡标签"
 
+    PRODUCE_PDF_OUTPUT = "生成 PDF 输出"
+
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

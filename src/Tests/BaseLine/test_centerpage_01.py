@@ -4,6 +4,7 @@ from pip._internal.cli.cmdoptions import python
 
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
+from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
@@ -11,6 +12,49 @@ from src.Helper.page_factory import *
 
 def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+@pytest.mark.xfail(reason="Insufficient settings")
+def test_19_run_empty_import(page, init):
+    # Step-1: Open Settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    settings_dialog = SettingsDialog(page)
+
+    # Step-2: First switch to other tab pages to verify normality
+    settings_dialog.enable_pdf_output()
+    settings_dialog.close_dialog()
+
+    # Step-3:Download PDF of Import File
+    quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
+    quick_import.run(if_wait_run_enabled=True, if_wait_toast_disappear=False)
+
+
+# @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
+def test_20_download_import_with_default_setting(page, init):
+    # Step-1: Open Settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+    settings_dialog = SettingsDialog(page)
+
+    # Step-2: First switch to other tab pages to verify normality
+    settings_dialog.enable_pdf_output()
+    settings_dialog.close_dialog()
+
+    # Step-3:Download PDF of SAS Program File
+    PageHelper.new_sas_program(page)
+    editor = CodeEditorPage(page)
+    editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+
+    editor.saveas(Helper.public_folder_path, "center01_test_20", True, True)
+
+    editor.run(True)
+
+    editor.download_pdf_file()
+
+    # Step-4: Reset
+    # top_right.click_settings()
+    settings_dialog.reset_results()
 
 
 @pytest.mark.xfail(reason="App name changed for upcoming release")

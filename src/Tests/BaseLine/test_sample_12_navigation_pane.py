@@ -10,8 +10,11 @@ from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 
 from src.Utilities.enums import SettingsTabPages
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
 def test_01_click_tab_pages_via_navigation_pane(page, init):
     """
     Test tab-page navigation by using encapsulated navigation pane
@@ -53,7 +56,6 @@ def test_01_click_tab_pages_via_navigation_pane(page, init):
 
     # Step-6: Close the dialog
     setting_dialog.close_dialog()
-
 
 
 def test_02_count_expand_icons(page, init):

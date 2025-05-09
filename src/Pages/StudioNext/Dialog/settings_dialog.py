@@ -2,7 +2,9 @@ from src.Pages.Common.checkbox import Checkbox
 from src.Pages.Common.dialog import *
 from src.Pages.Common.combobox import *
 from src.Pages.Common.navigation_pane import NavigationPane
+from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
+from playwright.sync_api import Page, expect
 
 
 class SettingsDialog(Dialog):
@@ -22,17 +24,34 @@ class SettingsDialog(Dialog):
         # Step-2: Press {Tab} THREE times to move mouse focus upon vertical splitter.
         for i in range(3):
             self.key_press("Tab")
-            Helper.logger.debug("Pressed {Tab} " + str(i+1) + " time(s)")
+            Helper.logger.debug("Pressed {Tab} " + str(i + 1) + " time(s)")
 
         # Step-3: Press {LeftArrow} FIVE times to move the vertical splitter to the very left.
         for i in range(10):
             self.key_press("ArrowLeft")
-            Helper.logger.debug("Pressed {ArrowLeft} " + str(i+1) + " time(s)")
+            Helper.logger.debug("Pressed {ArrowLeft} " + str(i + 1) + " time(s)")
 
         # Step-4: Finally, click header to remove the focus.
         self.click_dialog_title_or_studionext_header()
 
         Helper.logger.debug("... Exit Settings dialog splitter position resetting")
+
+    def enable_pdf_output(self):
+        """
+        Results/Produce PDF output UNCHECKED by default
+        """
+        Helper.logger.debug('Entering enable_pdf_output() function')
+
+        # Step-1 Go to Results tab page
+        self.switch_to_tab_page_via_aria(setting_tab_page=SettingsTabPages.results)
+
+        # Step-2 Toggle on the checkbox before Produce PDF output
+        self.check_checkbox(Helper.data_locale.PRODUCE_PDF_OUTPUT)
+
+        # Step-3 Sanity examination: Reset button, and options underneath
+        expect(self.btn_reset).to_be_enabled()
+
+        Helper.logger.debug('Exiting enable_pdf_output() function')
 
     def combobox(self, data_test_id="", items_count=4):
         """
@@ -66,10 +85,14 @@ class SettingsDialog(Dialog):
 
     def check_checkbox(self, label):
         self.checkbox(label).set_check()
+        Helper.logger.debug('Toggled ON checkbox')
+
+        if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
+            self.screenshot(self.base_xpath, "check")
 
     def uncheck_checkbox(self, label):
         self.checkbox(label).set_uncheck()
-
+        Helper.logger.debug('Toggled OFF checkbox')
         # Take __screenshot of the query tab page when reset button is not available, which means reset is done
         if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
             self.screenshot(self.base_xpath, "uncheck")
@@ -224,6 +247,7 @@ class SettingsDialog(Dialog):
             elif setting_tab_page == SettingsTabPages.results:
                 Helper.logger.debug("Switch to: SAS Studio/SAS Program/Results")
                 tab_page_text = Helper.data_locale.RESULTS
+                tab_page_aria_combination = ('3', '2', '2')
 
             elif setting_tab_page == SettingsTabPages.query:
                 Helper.logger.debug("Switch to: SAS Studio/Query")
@@ -436,6 +460,35 @@ class SettingsDialog(Dialog):
             Helper.logger.debug("Reset button is ENABLED!")
             self.click_reset_button()
             Helper.logger.debug("Reset button is CLICKED!")
+
+    def reset_results(self):
+        """
+        Reset settings in 'SAS Program/Results' tab page of Settings dialog
+        :return:
+        """
+
+        # Step-0: Open Settings dialog
+        # Temporarily carry out in testcases.
+        TopRightToolbar(self.page).click_settings()
+
+        # Step-1: Switch to 'SAS Studio/Query' tab page
+        self.switch_to_tab_page(setting_tab_page=SettingsTabPages.results)
+
+        # Step-3: Click the reset button in the upper right corner
+        if self.is_visible(self.disabled_reset_btn_in_current_tab_page):
+            Helper.logger.debug("Reset button is DISABLED!")
+
+        if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
+            Helper.logger.debug("Reset button is ENABLED!")
+            self.enabled_reset_btn_in_current_tab_page.click()
+
+            alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
+            time.sleep(1)
+            if alert.is_open():
+                alert.click_button_in_footer(Helper.data_locale.RESET)
+
+            self.close_dialog()
+            Helper.logger.debug("Reset button HAS BEEN CLICKED!")
 
     def reset_query(self):
         """

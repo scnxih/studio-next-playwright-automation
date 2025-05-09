@@ -1408,6 +1408,8 @@ class Data:
     SHOW_TAB_LABELS = "Show tab labels"
     HIDE_TAB_LABELS = "Hide tab labels"
 
+    PRODUCE_PDF_OUTPUT = "Produce PDF output"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
