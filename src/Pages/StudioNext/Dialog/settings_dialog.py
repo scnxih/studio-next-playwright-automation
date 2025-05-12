@@ -88,6 +88,11 @@ class SettingsDialog(Dialog):
         Helper.logger.debug('Toggled ON checkbox')
 
         if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
+
+            # click dialog header to avoid noise
+            self.click_dialog_title_or_studionext_header()
+
+            # take screenshot
             self.screenshot(self.base_xpath, "check")
 
     def uncheck_checkbox(self, label):
@@ -95,6 +100,11 @@ class SettingsDialog(Dialog):
         Helper.logger.debug('Toggled OFF checkbox')
         # Take __screenshot of the query tab page when reset button is not available, which means reset is done
         if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
+
+            # click dialog header to avoid noise
+            self.click_dialog_title_or_studionext_header()
+
+            # take screenshot
             self.screenshot(self.base_xpath, "uncheck")
 
     @property
