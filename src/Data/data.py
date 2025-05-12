@@ -1410,6 +1410,10 @@ class Data:
 
     PRODUCE_PDF_OUTPUT = "Produce PDF output"
 
+    MONITORING_JOBS = "Monitoring Jobs"
+    DEPLOYED_JOBS = "Deployed Jobs"
+    SCHEDULED_JOBS = "Scheduled Jobs"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

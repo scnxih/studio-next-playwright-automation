@@ -15,12 +15,48 @@ class DeployedScheduledJobPage(CenterPage):
         CenterPage.__init__(self, page)
 
     @property
+    def tab_submissions(self):
+        """
+
+        """
+        return self.locator("//div[@aria-label='{0}']".format(Helper.data_locale.SUBMIT))
+
+    @property
+    def tab_monitoring_jobs(self):
+        """
+
+        """
+        return self.locator("//div[@aria-label='{0}']".format(Helper.data_locale.MONITORING_JOBS))
+
+    @property
+    def tab_deployed_jobs(self):
+        """
+
+        """
+        return self.locator("//div[@aria-label='{0}']".format(Helper.data_locale.DEPLOYED_JOBS))
+
+    @property
+    def tab_scheduled_jobs(self):
+        """
+
+        """
+        return self.locator("//div[@aria-label='{0}']".format(Helper.data_locale.SCHEDULED_JOBS))
+
+    @property
     def mask_last_refresh_label(self):
         """
         In upper right corner of 'Deployed and Scheduled Jobs' page: Last Refresh (Time) Label
         # data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"
         """
         return [self.page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")]
+
+    @property
+    def mask_last_refresh_label_time(self):
+        """
+        In upper right corner of 'Deployed and Scheduled Jobs' page: Last Refresh (Time) Label
+        # data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"
+        """
+        return [self.page.locator("//div[contains(@data-testid, 'lastRefreshLabel')]")]
 
     @property
     def mask_deployed_and_scheduled_jobs_treegrid(self):
@@ -38,10 +74,10 @@ class DeployedScheduledJobPage(CenterPage):
 
         Helper.logger.debug("screenshot_self in CodeEditorPage")
 
+        self.click_dialog_title_or_studionext_header()
+
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.recovery_number + self.utf8_encoding + self.recovery_number + self.success_status +
-                             self.submit_number + self.mask_last_refresh_label +
-                             self.mask_deployed_and_scheduled_jobs_treegrid,
+                        mask=self.recovery_number + self.utf8_encoding + self.recovery_number + self.mask_last_refresh_label_time + self.mask_deployed_and_scheduled_jobs_treegrid,
                         mask_color='#F4F4F6')
 
     def run_now(self):

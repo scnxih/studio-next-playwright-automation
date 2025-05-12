@@ -1416,6 +1416,11 @@ class DataZH(Data):
 
     PRODUCE_PDF_OUTPUT = "生成 PDF 输出"
 
+    MONITORING_JOBS = "正在监控的作业"
+    DEPLOYED_JOBS = "部署的作业"
+    SCHEDULED_JOBS = "预定的作业"
+
+
 
     """Added by Jacky end"""
 

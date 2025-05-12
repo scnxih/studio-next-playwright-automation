@@ -4,6 +4,7 @@ from pip._internal.cli.cmdoptions import python
 
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
+from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Pages.Common.text import *
@@ -1010,8 +1011,27 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
 def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(2)
-    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
-                                                                                 TopMenuItem.view_deployed_and_scheduled_jobs)
+    # deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+    #                                                                              TopMenuItem.view_deployed_and_scheduled_jobs)
+
+    top = TopMenuPage(page)
+    top.check_view_item(TopMenuItem.view_submission_status)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+
+    time.sleep(3)
+
+    deployed_page.tab_submissions.click()
+    deployed_page.prt_scn('tab_submissions')
+
+    deployed_page.tab_monitoring_jobs.click()
+    deployed_page.prt_scn('tab_monitoring_jobs')
+
+    deployed_page.tab_deployed_jobs.click()
+    deployed_page.prt_scn('tab_deployed_jobs')
+
+    deployed_page.tab_scheduled_jobs.click()
+    deployed_page.prt_scn('tab_scheduled_jobs')
+
 
     """
     # Comment out temporarily because of the UI change
