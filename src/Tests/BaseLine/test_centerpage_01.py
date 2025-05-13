@@ -1048,11 +1048,10 @@ def test_44_deployed_and_scheduled_job(page, init):
 
 def test_45_startup_initialization_log(page, init):
     startup_page = PageHelper.show_view_startup_initialization_log(page)
-    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
 
     # NOTE: Saving initialization file does not work at the moment
-    # startup_page.saveas(Helper.public_folder_path, "startup_initialization_log.log", True, True)
-    # startup_page.add_to_snippets()
+    startup_page.saveas(Helper.public_folder_path, "startup_initialization_log", True, True)
     startup_page.add_to_my_favorites()
 
     # Used the one with screenshot function
@@ -1060,8 +1059,7 @@ def test_45_startup_initialization_log(page, init):
 
     # Replace with src.Pages.StudioNext.Center.startup_initialization_log_page.StartupInitializationLogPage.prt_scn
     startup_page.prt_scn("open_in_browser_tab_page_masked")
-
-    # startup_page.email()
+    startup_page.email()
     startup_page.reload()
 
 

@@ -272,14 +272,14 @@ def test_03_flow_canvas_link_nodes_toolbar_operations(page, init):
     flow.add_to_my_favorites()
 
     # Fow overflow menu changed
-    # flow.apply_detail_layout_horizontal()
+    flow.apply_detail_layout_horizontal()
 
     # New overflow menu: Apply flow layout
     flow.apply_flow_layout_horizontal()
 
     time.sleep(1)
     # Fow overflow menu changed
-    # flow.apply_detail_layout_vertical()
+    flow.apply_detail_layout_vertical()
 
     # New overflow menu: Apply flow layout
     flow.apply_flow_layout_vertical()
