@@ -251,10 +251,12 @@ class MainCenterPage(CenterPage):
                         mask_color="#000000")
 
     def hide_detail_tabs_listing(self):
-        Helper.logger.debug('Removed on Jan 26 2025')
-        return
+        Helper.logger.debug('Entering Hide detail tab-->Listing')
+
         self.center_toolbar_helper.hide_detail_tabs_listing()
-        time.sleep(1)
+
+        self.wait_for_page_load()
+
         self.selfie("hide_listing")
         self.screenshot(self.base_xpath, "hide_listing",
                         mask=self.time_info_array + self.proc_print_page_num_in_log + [
@@ -262,10 +264,12 @@ class MainCenterPage(CenterPage):
                         mask_color="#000000")
 
     def show_detail_tabs_listing(self):
-        Helper.logger.debug('Removed on Jan 26 2025')
-        return
+        Helper.logger.debug('Entering Show detail tab-->Listing')
+
         self.center_toolbar_helper.show_detail_tabs_listing()
-        time.sleep(1)
+
+        self.wait_for_page_load()
+
         self.selfie("show_listing")
         self.screenshot(self.base_xpath, "show_listing",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
