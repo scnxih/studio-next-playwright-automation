@@ -87,13 +87,18 @@ class SettingsDialog(Dialog):
         self.checkbox(label).set_check()
         Helper.logger.debug('Toggled ON checkbox')
 
+        self.wait_for_page_load()
+
         if self.is_visible(self.enabled_reset_btn_in_current_tab_page):
+            self.__reset_splitter_position()
 
             # click dialog header to avoid noise
             self.click_dialog_title_or_studionext_header()
 
             # take screenshot
             self.screenshot(self.base_xpath, "check")
+
+
 
     def uncheck_checkbox(self, label):
         self.checkbox(label).set_uncheck()
