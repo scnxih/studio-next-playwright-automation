@@ -15,7 +15,29 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
-@pytest.mark.xfail(reason="Insufficient settings")
+@pytest.mark.xfail(reason="Insufficient Flow settings")
+def test_18_run_empty_import(page, init):
+    """
+    JIRA Story: SASSTUDIO-28198 Finalize Flow Toolbar
+    Figma UX Design: https://www.figma.com/design/4MylsH8qoEi8wX5NJAZkW5/Flow-Framework?node-id=801-15871&t=SR2JKFDk6mcwaxNp-0
+
+    """
+    flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
+    flow.wait_for_page_load(page)
+
+    flow.toolbar.btn_by_title(Helper.data_locale.RUN)
+    flow.toolbar.btn_by_title(Helper.data_locale.CANCEL)
+
+    flow.toolbar.btn_by_title(Helper.data_locale.USE_ANOTHER_SESSION_BRG_SUBMISSION)
+
+    flow.toolbar.btn_by_title(Helper.data_locale.COPY)
+    flow.toolbar.btn_by_title(Helper.data_locale.PASTE)
+    flow.toolbar.btn_by_title(Helper.data_locale.CUT)
+
+    flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)
+
+
+@pytest.mark.xfail(reason="Insufficient Import File settings")
 def test_19_run_empty_import(page, init):
     # Step-1: Open Settings dialog
     top_right = TopRightToolbar(page)
@@ -909,7 +931,8 @@ def test_42_WorkSapcePage(page, init):
 def test_43_check_uncheck_menu_items_in_view(page, init):
     top = TopMenuPage(page)
     top.check_view_item(TopMenuItem.view_submission_status)
-    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+                                                                                 TopMenuItem.view_deployed_and_scheduled_jobs)
 
     # MODIFIED
     # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
@@ -933,10 +956,11 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
     # '''
     deployed_page.screenshot_self('deployed_and_scheduled',
-                                mask=['//div[@class="ag-center-cols-viewport"]',
-                                      '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
-                                      deployed_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
-                                mask_color="#000000")
+                                  mask=['//div[@class="ag-center-cols-viewport"]',
+                                        '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
+                                        deployed_page.get_by_test_id(
+                                            "scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                  mask_color="#000000")
     # '''
 
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
@@ -956,9 +980,9 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
     # '''
     deployed_page.screenshot_self('submission_status',
-                                mask=['//div[@class="ag-center-cols-viewport"]',
-                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
-                                mask_color="#000000")
+                                  mask=['//div[@class="ag-center-cols-viewport"]',
+                                        center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                  mask_color="#000000")
     # '''
 
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
@@ -1016,7 +1040,8 @@ def test_44_deployed_and_scheduled_job(page, init):
 
     top = TopMenuPage(page)
     top.check_view_item(TopMenuItem.view_submission_status)
-    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+                                                                                 TopMenuItem.view_deployed_and_scheduled_jobs)
 
     time.sleep(3)
 
@@ -1031,7 +1056,6 @@ def test_44_deployed_and_scheduled_job(page, init):
 
     deployed_page.tab_scheduled_jobs.click()
     deployed_page.prt_scn('tab_scheduled_jobs')
-
 
     """
     # Comment out temporarily because of the UI change
