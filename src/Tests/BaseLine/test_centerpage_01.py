@@ -15,8 +15,22 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.xfail(reason="Insufficient SAS Program settings")
+def test_17_empty_sas_program(page, init):
+    """
+    Several buttons & functions will be disabled for an empty sas program
+    """
+    PageHelper.new_sas_program(page)
+    editor = CodeEditorPage(page)
+    editor.wait_for_page_load()
+
+    editor.cancel(if_wait_toast_disappear=False)
+    SASProgramPage(page).format_program()
+
+    editor.reload()
+
 @pytest.mark.xfail(reason="Insufficient Flow settings")
-def test_18_run_empty_import(page, init):
+def test_18_empty_flow(page, init):
     """
     JIRA Story: SASSTUDIO-28198 Finalize Flow Toolbar
     Figma UX Design: https://www.figma.com/design/4MylsH8qoEi8wX5NJAZkW5/Flow-Framework?node-id=801-15871&t=SR2JKFDk6mcwaxNp-0
@@ -25,20 +39,13 @@ def test_18_run_empty_import(page, init):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.wait_for_page_load(page)
 
-    flow.toolbar.btn_by_title(Helper.data_locale.RUN)
-    flow.toolbar.btn_by_title(Helper.data_locale.CANCEL)
-
-    flow.toolbar.btn_by_title(Helper.data_locale.USE_ANOTHER_SESSION_BRG_SUBMISSION)
-
-    flow.toolbar.btn_by_title(Helper.data_locale.COPY)
-    flow.toolbar.btn_by_title(Helper.data_locale.PASTE)
-    flow.toolbar.btn_by_title(Helper.data_locale.CUT)
-
-    flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)
+    flow.run(if_wait_run_enabled=False, if_wait_toast_disappear=False)
+    flow.cancel(if_wait_toast_disappear=False)
+    flow.background_submit(if_wait_toast_disappear=False)
 
 
 @pytest.mark.xfail(reason="Insufficient Import File settings")
-def test_19_run_empty_import(page, init):
+def test_19_empty_import(page, init):
     # Step-1: Open Settings dialog
     top_right = TopRightToolbar(page)
     top_right.click_settings()
@@ -50,7 +57,11 @@ def test_19_run_empty_import(page, init):
 
     # Step-3:Download PDF of Import File
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
-    quick_import.run(if_wait_run_enabled=True, if_wait_toast_disappear=False)
+    quick_import.wait_for_page_load()
+    quick_import.run(if_wait_run_enabled=False, if_wait_toast_disappear=False)
+    quick_import.cancel(if_wait_toast_disappear=False)
+
+    quick_import.reload()
 
 
 # @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
