@@ -907,9 +907,9 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
-    time.sleep(2)
-    center_page: CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
-    time.sleep(3)
+    top = TopMenuPage(page)
+    top.check_view_item(TopMenuItem.view_submission_status)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
 
     # MODIFIED
     # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
@@ -931,13 +931,13 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
     # data-testid="scheduledJobsPane-monitoringTab-agGrid"
 
-    '''
-    center_page.screenshot_self('deployed_and_scheduled',
+    # '''
+    deployed_page.screenshot_self('deployed_and_scheduled',
                                 mask=['//div[@class="ag-center-cols-viewport"]',
                                       '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
-                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                      deployed_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
                                 mask_color="#000000")
-    '''
+    # '''
 
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
@@ -954,12 +954,12 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
 
-    '''
-    center_page.screenshot_self('submission_status',
+    # '''
+    deployed_page.screenshot_self('submission_status',
                                 mask=['//div[@class="ag-center-cols-viewport"]',
                                       center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
                                 mask_color="#000000")
-    '''
+    # '''
 
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
@@ -977,7 +977,7 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     #                        'subm_stat_clip',
     #                        clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
 
-    center_page.screenshot_self('subm_stat_clip', clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+    deployed_page.screenshot_self('subm_stat_clip', clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
 
     # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
 
