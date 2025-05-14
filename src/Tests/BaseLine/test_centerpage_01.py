@@ -15,6 +15,19 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.xfail(reason="Disabled [save all] button")
+def test_16_close_all_tabs(page, init):
+    PageHelper.new_all_items(page)
+
+    acc: AccordionPage = AccordionPage(page)
+    acc.show_accordion(AccordionType.open_item)
+
+    # Dummy paths and file names
+    folder_path = Helper.public_folder_path
+    folder_path_list = [folder_path, folder_path]
+    file_name_list = ["1", "2"]
+
+
 @pytest.mark.xfail(reason="Insufficient SAS Program settings")
 def test_17_empty_sas_program(page, init):
     """
@@ -28,6 +41,7 @@ def test_17_empty_sas_program(page, init):
     SASProgramPage(page).format_program()
 
     editor.reload()
+
 
 @pytest.mark.xfail(reason="Insufficient Flow settings")
 def test_18_empty_flow(page, init):

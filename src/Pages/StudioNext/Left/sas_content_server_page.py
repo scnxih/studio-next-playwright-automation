@@ -102,3 +102,11 @@ class SASContentServerPage(AccordionPage):
         Dialog(self.page).screenshot_self("column_settings")
         Dialog(self.page).close_dialog()
 
+    def click_delete_selection_btn(self):
+        self.toolbar.click_btn_by_title(Helper.data_locale.DELETE_SELECTION)
+
+    def click_refresh_selection_btn(self):
+        self.toolbar.click_btn_by_title(Helper.data_locale.REFRESH_SELECTION)
+
+    def click_properties_btn(self):
+        self.toolbar.click_btn_by_title(Helper.data_locale.PROPERTIES)

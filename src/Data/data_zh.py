@@ -1420,8 +1420,11 @@ class DataZH(Data):
     DEPLOYED_JOBS = "部署的作业"
     SCHEDULED_JOBS = "预定的作业"
 
+    DELETE_SELECTION = "删除选择"
+    REFRESH_SELECTION = "刷新选择"
 
-
+    UPLOAD_FILES_TO_SAS_CONTENT = "将文件从本地文件系统上传至“SAS 内容”。"
+    UPLOAD_FILES_TO_SAS_SERVER = "将文件从本地文件系统上传至“SAS 服务器”。"
     """Added by Jacky end"""
 
     """Added by Percy start"""
@@ -1575,3 +1578,4 @@ class DataZH(Data):
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="不显示小的相关和因子负荷"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="要显示的最小因子负荷或相关"
     """Added by Percy end"""
+

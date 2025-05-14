@@ -1414,6 +1414,9 @@ class Data:
     DEPLOYED_JOBS = "Deployed Jobs"
     SCHEDULED_JOBS = "Scheduled Jobs"
 
+    DELETE_SELECTION = "Delete selection"
+    REFRESH_SELECTION = "Refresh selection"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
