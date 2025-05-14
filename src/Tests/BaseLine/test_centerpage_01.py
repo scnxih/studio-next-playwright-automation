@@ -1,13 +1,8 @@
-import time
-
-from pip._internal.cli.cmdoptions import python
-
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
-from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 
 
@@ -252,42 +247,24 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
     page1: Page = page
-    time.sleep(0.5)
+    editor.wait_for_page_load()
     page1.keyboard.press("Enter")
 
     editor.click_dialog_title_or_studionext_header()
-    time.sleep(0.5)
+    # time.sleep(0.5)
+    editor.wait_for_page_load()
 
     editor.prt_scn('00')
     WholePage(page).screenshot_self("00")
 
     WholePage(page).screenshot_self("01")
     editor.prt_scn('01')
+    editor.wait_for_page_load()
 
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
     editor.editor.force_click(editor.editor.get_text_area())
     page1.keyboard.press("End")
-
-    # Former Version
-    # page1.keyboard.press("/")
-    # page1.keyboard.press("*")
-    # page1.keyboard.press("T")
-    # page1.keyboard.press("h")
-    # page1.keyboard.press("i")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("i")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("t")
-    # page1.keyboard.press("e")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("t")
-    # page1.keyboard.press(".")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("*")
-    # page1.keyboard.press("/")
 
     # Replaced with press_consequentially
     editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
@@ -304,64 +281,71 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.editor.human_mimic_typing("\n/*       **       */")
     editor.editor.human_mimic_typing("\n/*        *       */")
     editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
-    # ** ** ** ** *
-    # ** ** ** *
-    # ** ** *
-    # ** *
-    # *
+
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
+
     WholePage(page).screenshot_self("02")
     editor.prt_scn('02')
 
     for i in range(3):
         editor.undo()
-        time.sleep(0.5)
+        editor.wait_for_page_load()
+
+        # time.sleep(0.5)
+
     WholePage(page).screenshot_self("03")
     editor.prt_scn('03')
 
     for i in range(3):
         editor.redo()
-        time.sleep(0.5)
+        # time.sleep(0.5)
+        editor.wait_for_page_load()
 
     WholePage(page).screenshot_self("04")
     editor.prt_scn('04')
 
     editor.run(True)
-    time.sleep(0.5)
+
+    editor.wait_for_page_load()
+    # time.sleep(0.5)
 
     editor.format_program()
 
     # Added to eliminate noise caused by scrollbar
-    time.sleep(3.0)
+    # time.sleep(3.0)
+    editor.wait_for_page_load()
 
     # Original
     WholePage(page).screenshot_self("05")
     editor.prt_scn('05')
 
-    time.sleep(0.5)
+    editor.wait_for_page_load()
+    # time.sleep(0.5)
     editor.debug()
 
     # Added to eliminate noise caused by scrollbar
-    time.sleep(0.5)
+    # time.sleep(0.5)
+    editor.wait_for_page_load()
 
     WholePage(page).screenshot_self("06")
     editor.prt_scn('06')
 
-    time.sleep(0.5)
-    # editor.code_to_flow()
     editor.copy_to_flow()
-    time.sleep(1)
+
+    editor.wait_for_page_load()
 
     WholePage(page).screenshot_self("07")
     editor.prt_scn('07')
 
-    time.sleep(0.5)
+    editor.wait_for_page_load()
     editor.add_to_snippets()
 
     # Original
     WholePage(page).screenshot_self("08")
     editor.prt_scn('08')
 
-    time.sleep(1.0)
+    editor.wait_for_page_load()
     editor.clear_code()
 
     if WholePage(page).wait_toast_pop():
@@ -391,21 +375,12 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     editor.clear_listing()
 
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("13")
-
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("13")
         editor.prt_scn('13')
 
     editor.clear_all()
 
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("14")
-
-    # '//div[@data-testid="programViewPane-toolbar"]'],
     if WholePage(page).wait_toast_pop():
         WholePage(page).screenshot_self("14")
         editor.prt_scn('14')
