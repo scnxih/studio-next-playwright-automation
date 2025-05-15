@@ -81,41 +81,18 @@ class StepsPage(AccordionPage):
         self.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
 
     def navigate_to_step_then_collapse_parent(self, step_path: list):
+
         locator = self.tree.navigate_to_element(step_path)
-        time.sleep(0.5)
 
-        self.screenshot_self("step_category")
-        time.sleep(0.5)
-
-        self.screenshot(self.get_by_test_id("sasstepsNavPane-agGrid"),
-                        "nav_stp_ag",
-                        user_assigned_xpath=True)
-        time.sleep(0.5)
-        # //div[@class="ag-center-cols-container"][@role="rowgroup"]
-        self.screenshot('//div[@class="ag-center-cols-container"][@role="rowgroup"]',
-                        "rowgroup",
-                        user_assigned_xpath=True)
-        time.sleep(0.5)
-        # //div[@role="treegrid"]
-
-        #
-        # Eliminate the shadowing for selected step
-
-        # Method-1
-        # locator.press(self, "Escape") # NOT WORK
-
-        # Method-2
-        # self.tree.navigate_to_element(step_path.pop(-1))
-
-        # Method-3
-        # self.toolbar.click_btn_by_title(Helper.data_locale.REFRESH)
+        self.wait_for_page_load()
 
         self.screenshot('//div[@role="treegrid"]',
                         "treegrid",
                         user_assigned_xpath=True)
-        time.sleep(0.5)
 
         self.tree.navigate_to_element_and_click_context_menu([step_path[0]], Helper.data_locale.COLLAPSE)
+
+        self.wait_for_page_load()
 
         return locator
 
