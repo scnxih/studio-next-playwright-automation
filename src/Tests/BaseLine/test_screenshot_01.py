@@ -736,7 +736,7 @@ def test_07_mask(page, init):
 #     time.sleep(2)
 #     sas_server.show_column_settings()
 
-
+@pytest.mark.skipif(True, reason="Duplicate of src.Tests.BaseLine.test_screenshot_02.test_01_accordion_steps")
 def test_09_accordion_steps(page, init):
     dialog: Dialog = Dialog(page)
     base: BasePage = BasePage(page)
