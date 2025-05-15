@@ -17,14 +17,18 @@ class JsonPage(TextCenterPage):
 
     def undo(self):
         self.center_toolbar_helper.undo()
-        time.sleep(3.0)
+        # time.sleep(3.0)
+        self.wait_for_page_load()
+        self.click_dialog_title_or_studionext_header()
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
                         'json_undo',
                         user_assigned_xpath=True)
 
     def redo(self):
         self.center_toolbar_helper.redo()
-        time.sleep(3.0)
+        # time.sleep(3.0)
+        self.wait_for_page_load()
+        self.click_dialog_title_or_studionext_header()
         self.screenshot('//div[@data-testid="textViewPane-editorPane-editor"]',
                         'json_redo',
                         user_assigned_xpath=True)

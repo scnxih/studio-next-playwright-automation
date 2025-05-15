@@ -854,19 +854,11 @@ def test_38_quick_import(page, init):
 
 def test_39_JsonPage(page, init):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
-    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
-
-    # json.editor.type_into_text_area('{"\ntype":"json file",\n"name":"json example"')
-    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"')
-
-    # json.editor.type_into_text_area('{')
-
     json.editor.type_into_text_area('''{"type":"json file","name":"json example"}''')
-
-    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    # folder_path = ["SAS Content", "Public"]
     json.saveas(Helper.public_folder_path, "test_json.json", True, True)
-    time.sleep(1)
+
+    json.wait_for_page_load()
+
     json.undo()
     json.redo()
     json.add_to_snippets()
@@ -883,7 +875,7 @@ def test_40_TextPage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     text.saveas(Helper.public_folder_path, "test_text.txt", True, True)
-    time.sleep(1)
+    text.wait_for_page_load()
     text.undo()
     text.redo()
     text.add_to_snippets()
@@ -900,7 +892,7 @@ def test_41_XMLPage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     xml.saveas(Helper.public_folder_path, "test_xml_content_public", True, True)
-    time.sleep(1)
+    xml.wait_for_page_load()
     xml.undo()
     xml.redo()
     xml.add_to_snippets()
@@ -917,7 +909,7 @@ def test_42_WorkSapcePage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     work_space.saveas(Helper.public_folder_path, "test_workspace.workspace", True, True)
-    time.sleep(2)
+    work_space.wait_for_page_load()
     work_space.undo()
     work_space.redo()
     # work_space.add_to_snippets()
