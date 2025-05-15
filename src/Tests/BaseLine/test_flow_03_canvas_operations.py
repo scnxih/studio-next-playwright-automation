@@ -8,6 +8,7 @@ from src.Pages.StudioNext.Center.center_page import CenterPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Utilities.enums import *
 import time
+from src.conftest import *
 
 
 def test_init(page, init):
@@ -337,6 +338,7 @@ def test_04_details_pane_table(page, init):
     time.sleep(1)
 
 
+@pytest.mark.skipif(True, reason="Duplicate of src.Tests.BaseLine.test_flow_04_sort.test_01_sasprogram_table_sort_in_flow")
 def test_06_sasprogram_table_sort_zh_CN(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
@@ -446,6 +448,7 @@ run;
     # time.sleep(2)
 
 
+@pytest.mark.skipif(True, reason="Duplicate of src.Tests.BaseLine.test_flow_04_sort.test_01_sasprogram_table_sort_in_flow")
 def test_07_sasprogram_table_sort_en_US(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     flow.add_node(FlowNodeType.sas_program)
