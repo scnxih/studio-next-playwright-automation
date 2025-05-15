@@ -220,11 +220,18 @@ class CustomStepPage(CenterPage):
         # self.listbox_pages.click_list_item(page_text)
         # self.listbox_pages.click_grid_item(page_text)
         self.control_library_pages.click_grid_item(page_text)
+        self.wait_for_page_load()
+
         self.key_press("Delete")
+        self.wait_for_page_load()
+
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
-        time.sleep(2)
+        self.wait_for_page_load()
+
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
+
+        self.wait_for_page_load()
 
     def check_show_single_page_as_tab(self):
         self.toolbar_control_library.check_menu_in_more_options(Helper.data_locale.SHOW_SINGLE_PAGE_AS_TAB)
@@ -251,17 +258,27 @@ class CustomStepPage(CenterPage):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_DOWN)
         # self.control_library_grid.label_element_name(page_text).click()
         self.click(self.control_library_grid.label_element_name(page_text))
-        time.sleep(1)
+        self.wait_for_page_load()
+
+        # time.sleep(1)
+
         self.right_click(self.control_library_grid.label_element_name(page_text))
-        time.sleep(1)
+        self.wait_for_page_load()
+
+        # time.sleep(1)
 
         self.key_press("ArrowDown")
-        time.sleep(1)
+        self.wait_for_page_load()
+
+        # time.sleep(1)
 
         self.key_press("ArrowDown")
-        time.sleep(1)
+        self.wait_for_page_load()
+
+        # time.sleep(1)
 
         self.key_press("Enter")
+        self.wait_for_page_load()
 
     def move_to_top_on_page(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_TOP)
@@ -317,7 +334,9 @@ class CustomStepPage(CenterPage):
     def select_control(self, control_type: DesignerControlType, control_number: int) -> DesignerControl:
         designer_control = get_designer_control(self.page, control_type, control_number)
         designer_control.base_locator.click(position={"x": 2, "y": 2})
-        time.sleep(0.3)
+        # time.sleep(0.3)
+        self.wait_for_page_load()
+
         return designer_control
 
     def insert_control(self, control_type: DesignerControlType):
