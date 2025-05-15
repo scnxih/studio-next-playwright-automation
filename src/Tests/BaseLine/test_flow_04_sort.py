@@ -10,11 +10,14 @@ def test_init(page, init):
 
 def test_01_sasprogram_table_sort_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
-    time.sleep(0.5)
+    # time.sleep(0.5)
+    flow.wait_for_page_load()
+
     flow.add_node(FlowNodeType.sas_program)
-    time.sleep(0.8)
+    flow.wait_for_page_load()
+
     flow.select_node_in_flow_canvas(Helper.data_locale.SAS_PROGRAM_Upper_case)
-    # time.sleep(1)
+
     sasprogram_pane = SASProgramPane(page)
     str = """
 /***************************************************
@@ -28,18 +31,16 @@ data cars;
 set sashelp.cars;
 run;
 """
-    time.sleep(0.5)
-    sasprogram_pane.type_into_text_area(str)
-    # WholePage(page).screenshot_self(pic_name="01_before_fold")
-    # time.sleep(1)
-    sasprogram_pane.fold_all_regions()
-    time.sleep(1)
-    # WholePage(page).screenshot_self(pic_name="02_after_fold")
-    sasprogram_pane.unfold_all_regions()
-    time.sleep(1)
 
-    # Original One
-    # WholePage(page).screenshot_self(pic_name="03_after_unfold")
+    flow.wait_for_page_load()
+
+    sasprogram_pane.type_into_text_area(str)
+
+    sasprogram_pane.fold_all_regions()
+    flow.wait_for_page_load()
+
+    sasprogram_pane.unfold_all_regions()
+    flow.wait_for_page_load()
 
     # Mask flow toolbar so that noises from the icons can be avoided
     WholePage(page).screenshot_self(pic_name="03_after_unfold",
@@ -50,10 +51,7 @@ run;
 
     sasprogram_pane.pop_find_widget()
     sasprogram_pane.find("cars", False, False)
-    time.sleep(1)
-
-    # Original One
-    # WholePage(page).screenshot_self(pic_name="04_after_find")
+    flow.wait_for_page_load()
 
     # Mask flow toolbar so that noises from the icons can be avoided
     WholePage(page).screenshot_self(pic_name="04_after_find",
@@ -62,10 +60,7 @@ run;
     flow.prt_scn("04_after_find")
 
     sasprogram_pane.replace_all("cars", "class", False, False, False)
-    time.sleep(2)
-
-    # Original One
-    # WholePage(page).screenshot_self(pic_name="05_after_replace")
+    flow.wait_for_page_load()
 
     # Mask flow toolbar so that noises from the icons can be avoided
     WholePage(page).screenshot_self(pic_name="05_after_replace",
@@ -82,22 +77,19 @@ run;
     flow.arrange_nodes()
 
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
-    # time.sleep(1)
+    flow.wait_for_page_load()
     table_pane = TablePane(page)
     table_pane.set_library("WORK")
-    # time.sleep(1)
+    flow.wait_for_page_load()
     table_pane.set_table("CLASS")
-    # time.sleep(1)
+    flow.wait_for_page_load()
     table_pane.set_node_name("CLASS")
-    # time.sleep(1)
+    flow.wait_for_page_load()
     table_pane.set_node_description("This is class table created by SAS program.")
-    # time.sleep(1)
+    flow.wait_for_page_load()
     flow.link_two_nodes_in_flow("Create class", "CLASS")
-    # time.sleep(1)
+    flow.wait_for_page_load()
     flow.arrange_nodes()
-
-    # Original One
-    # WholePage(page).screenshot_self(pic_name="06_after_link_two_nodes")
 
     # Mask flow toolbar so that noises from the icons can be avoided
     WholePage(page).screenshot_self(pic_name="06_after_link_two_nodes",
@@ -109,16 +101,9 @@ run;
     flow.run(False)
     flow.select_node_in_flow_canvas("CLASS")
 
-    # table_pane.click_tab("预览数据")
-
-    # Original
-    # table_pane.click_tab("Preview Data")
-
-    # Revised
     table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
+    flow.wait_for_page_load()
 
-    time.sleep(3)
-    # WholePage(page).screenshot_self(pic_name="07_preview_before_sorted")
     WholePage(page).screenshot_self("07_preview_before_sorted",
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]',
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
@@ -132,45 +117,34 @@ run;
     flow.prt_scn("07_preview_before_sorted")
 
     flow.add_node(FlowNodeType.sort)
-    # time.sleep(1)
+    flow.wait_for_page_load()
     flow.arrange_nodes()
-
-    # flow.link_two_nodes_in_flow("CLASS","排序")
-
-    # Original
-    # flow.link_two_nodes_in_flow("CLASS", "Sort")
-
+    flow.wait_for_page_load()
     flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
-
-    # time.sleep(1)
+    flow.wait_for_page_load()
     flow.arrange_nodes()
-
-    # flow.select_node_in_flow_canvas("排序")
-
-    # Original
-    # flow.select_node_in_flow_canvas("Sort")
-
+    flow.wait_for_page_load()
     flow.link_two_nodes_in_flow("CLASS", Helper.data_locale.SORT)
 
     sort_pane = SortPane(page)
 
     list1 = ["Class", "Name"]
     sort_pane.add_sort(list1, SortWay.descending)
-    # time.sleep(1)
+    flow.wait_for_page_load()
     WholePage(page).screenshot_self(pic_name="08_add_sort")
 
     flow.prt_scn("08_add_sort")
 
     flow.add_node(FlowNodeType.table)
-    # flow.select_node_in_flow_canvas("表")
-
-    # Original
-    # flow.select_node_in_flow_canvas("Table")
-
+    flow.wait_for_page_load()
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    flow.wait_for_page_load()
 
     table_pane.set_node_name("SORTED")
+    flow.wait_for_page_load()
+
     table_pane.set_library("WORK")
+
     table_pane.set_table("SORTED")
     table_pane.refresh_table()
     # flow.link_two_nodes_in_flow("排序","SORTED")
@@ -180,13 +154,16 @@ run;
     flow.arrange_nodes()
     # time.sleep(1)
     # flow.run(False)
-    time.sleep(2)
+    flow.wait_for_page_load()
+
     flow.select_node_in_flow_canvas("SORTED")
-    time.sleep(0.5)
+    flow.wait_for_page_load()
+
     # table_pane.click_tab("预览数据")
     # table_pane.click_tab("Preview Data")
     table_pane.click_tab(Helper.data_locale.PREVIEW_DATA)
-    time.sleep(2)
+    flow.wait_for_page_load()
+
     WholePage(page).screenshot_self(pic_name="09_preview_sorted_table",
                                     mask=['//div[@role="group"][@data-testid="flowtoolbar"]',
                                           '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',

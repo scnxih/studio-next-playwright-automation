@@ -34,11 +34,16 @@ class TablePane(DetailsPane):
         self.click_tab(Helper.data_locale.PREVIEW_DATA)
 
         # Wait 3 sec to counteract delay owing to performance issue
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
 
     def refresh_table(self):
         self.click_tab(Helper.data_locale.TABLE_PROPERTIES)
+
+        self.wait_for_page_load()
+
         Button(self.base_xpath, self.page, aria_label=Helper.data_locale.REFRESH).click_self()
 
         # Wait 3 sec to counteract delay owing to performance issue
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
