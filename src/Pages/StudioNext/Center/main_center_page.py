@@ -133,8 +133,8 @@ class MainCenterPage(CenterPage):
 
     def apply_detail_layout_standard(self):
         self.center_toolbar_helper.apply_detail_layout_standard()
-        time.sleep(3)
-
+        # time.sleep(3)
+        self.wait_for_page_load()
         """
         self.screenshot(self.base_xpath, "std",
                         mask=self.time_info_in_log,
@@ -150,7 +150,8 @@ class MainCenterPage(CenterPage):
 
     def apply_detail_layout_horizontal(self):
         self.center_toolbar_helper.apply_detail_layout_horizontal()
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
         self.selfie("horz")
         self.screenshot(self.base_xpath, "horz",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -163,7 +164,9 @@ class MainCenterPage(CenterPage):
 
     def hide_detail_tabs_code(self):
         self.center_toolbar_helper.hide_detail_tabs_code()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
+
         self.selfie("hide_code")
         self.screenshot(self.base_xpath, "hide_code",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -172,7 +175,8 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_code(self):
         self.center_toolbar_helper.show_detail_tabs_code()
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
         self.selfie("show_code")
         self.screenshot(self.base_xpath, "show_code",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -181,7 +185,8 @@ class MainCenterPage(CenterPage):
 
     def hide_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.hide_detail_tabs_submitted_code()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
         self.selfie("hide_code")
         self.screenshot(self.base_xpath, "hide_code",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -190,7 +195,9 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_submitted_code(self):
         self.center_toolbar_helper.show_detail_tabs_submitted_code()
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
+
         self.selfie("show_code")
         self.screenshot(self.base_xpath, "show_code",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -199,7 +206,9 @@ class MainCenterPage(CenterPage):
 
     def hide_detail_tabs_log(self):
         self.center_toolbar_helper.hide_detail_tabs_log()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
+
         self.selfie("hide_log")
         self.screenshot(self.base_xpath, "hide_log",
                         mask=[self.get_by_test_id("importViewPane-toolbar-toggle-detail-layout")],
@@ -207,7 +216,9 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_log(self):
         self.center_toolbar_helper.show_detail_tabs_log()
-        time.sleep(3)
+        # time.sleep(3)
+        self.wait_for_page_load()
+
         self.selfie("show_log")
         self.screenshot(self.base_xpath, "show_log",
                         mask=self.program_toolbar + self.proc_print_page_num_in_log + self.time_info_in_log + [
@@ -225,7 +236,9 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_result(self):
         self.center_toolbar_helper.show_detail_tabs_result()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
+
         self.selfie("show_details")
         self.screenshot(self.base_xpath, "show_details",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -234,7 +247,9 @@ class MainCenterPage(CenterPage):
 
     def hide_detail_tabs_output_data(self):
         self.center_toolbar_helper.hide_detail_tabs_output_data()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
+
         self.selfie("hide_output")
         self.screenshot(self.base_xpath, "hide_output",
                         mask=self.time_info_in_log + self.proc_print_page_num_in_log + [
@@ -243,7 +258,9 @@ class MainCenterPage(CenterPage):
 
     def show_detail_tabs_output_data(self):
         self.center_toolbar_helper.show_detail_tabs_output_data()
-        time.sleep(1)
+        # time.sleep(1)
+        self.wait_for_page_load()
+
         self.selfie("show_output")
         self.screenshot(self.base_xpath, "show_output",
                         mask=self.program_toolbar + self.time_info_in_log + self.proc_print_page_num_in_log +
