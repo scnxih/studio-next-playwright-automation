@@ -5,6 +5,7 @@ from src.Pages.Common.treeview_aggrid import TreeViewAGGrid
 from src.Pages.Common.treeview_nova import *
 from src.Pages.Common.toolbar import Toolbar
 from src.Pages.Common.combobox import Combobox
+from src.Pages.Common.whole_page import WholePage
 
 
 class SaveAsDialog(Dialog):
@@ -23,8 +24,6 @@ class SaveAsDialog(Dialog):
     def input_file_name(self):
         return self.get_by_test_id("contentSelector-save-contentSelector-name-input")
 
-    # ADDED
-    # BEGIN <<< Added by Jacky(ID: jawang) on Apr.22nd, 2024
     @property
     def temp_content_selector(self):
         """
@@ -34,10 +33,6 @@ class SaveAsDialog(Dialog):
         """
         return self.get_by_test_id("contentSelector-save-contentSelector-navigator-table-gridWrapper")
 
-    # END Added by Jacky(ID: jawang) on Apr.22nd, 2024 >>>
-
-    # ADDED
-    # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
     @property
     def content_selector_navigator_tree(self):
         """
@@ -46,8 +41,6 @@ class SaveAsDialog(Dialog):
         //div[@data-testid="contentSelector-save-contentSelector-navigator-tree"]
         """
         return self.get_by_test_id("contentSelector-save-contentSelector-navigator-tree")
-
-    # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
 
     @property
     def button_new(self):
@@ -101,7 +94,8 @@ class SaveAsDialog(Dialog):
             return False
 
         self.fill(self.input_file_name, file_name)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
 
         # Click dialog title to avoid noise in input text-input-box
         self.click_dialog_title_or_studionext_header()
@@ -110,18 +104,19 @@ class SaveAsDialog(Dialog):
                         "save_file",
                         # mask=[self.temp_content_selector, self.content_selector_navigator_tree],
                         mask_color="#000000")
-
-        time.sleep(0.5)
+        self.wait_for_page_load()
+        # time.sleep(0.5)
 
         self.selfie('save_file')
         # self.wait_for(self.button_new)
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
-        time.sleep(1)
+        WholePage(self.page).wait_for_page_load()
+        # time.sleep(1)
 
         path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
 
-        time.sleep(1)
+        # time.sleep(1)
         if path_alert.is_visible():
             Helper.logger.debug("WARNING: Path is not specified for save-as process")
             path_alert.get_by_text(Helper.data_locale.CLOSE).click()
@@ -150,7 +145,6 @@ class SaveAsDialog(Dialog):
         """
         Helper.logger.debug("SaveAsDialog: Overwrite the vanilla screenshot_self method in BasePage")
         self.screenshot(self.base_xpath, pic_name, clip=clip,
-                        # mask=[self.bread_crumb, self.content_selector_navigator_tree, self.temp_content_selector],  # Comment out masks Jan 21, 2025
                         mask=[self.temp_content_selector],  # Supplemented  masks Jan 24, 2025
                         mask_color="#000000")
 
@@ -185,38 +179,29 @@ class SaveAsDialog(Dialog):
             return False
 
         self.fill(self.input_file_name, file_name)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on {Monday, January 13, 2025}
-        # Click dialog title to avoid noise in input text-input-box
         self.click_dialog_title_or_studionext_header()
-        # END Added by Jacky(ID: jawang) on {Monday, January 13, 2025} >>>
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on May.21st, 2024
         # Mask both the content selector on the right hand side and the navigator tree in the middle
-
         self.screenshot(self.base_xpath,
                         "save_file",
                         mask=[self.temp_content_selector, self.content_selector_navigator_tree],
                         mask_color="#000000")
 
-        # END Added by Jacky(ID: jawang) on May.21st, 2024 >>>
-
-        time.sleep(0.5)
-
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on Oct.17th, 2024
         self.selfie('save_file')
 
         if folder_path[0] == Helper.data_locale.SAS_CONTENT:
+            Helper.logger.debug("Target: SAS Content")
             self.wait_for(self.button_new)
         else:
-            time.sleep(1.0)
+            # time.sleep(1.0)
+            Helper.logger.debug("NOT SAS Content")
 
         self.click_button_in_footer(Helper.data_locale.SAVE)
-        time.sleep(1)
+        WholePage(self.page).wait_for_page_load()
+        # time.sleep(1)
 
         path_alert = self.page.get_by_test_id("contentSelector-save-contentSelector-errorDialog-dialog")
 
@@ -226,7 +211,6 @@ class SaveAsDialog(Dialog):
             path_alert.get_by_text(Helper.data_locale.CLOSE).click()
             self.click_button_in_footer(Helper.data_locale.CANCEL)
             return False
-        # END Added by Jacky(ID: jawang) on Nov.12th, 2024 >>>
 
         replace_alert = Alert(self.page, Helper.data_locale.SAVE_AS)
         time.sleep(1)
