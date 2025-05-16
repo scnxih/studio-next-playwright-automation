@@ -171,6 +171,7 @@ title 'A Contour Plot';run;
     editor.apply_detail_layout_vertical()
 
 
+@pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
 def test_04_editor_context_menu(page, init):
     """
     Test context menu in text area

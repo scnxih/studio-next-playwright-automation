@@ -2,12 +2,14 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.Develop.sasprogram_pane import
 from src.Pages.StudioNext.Center.Flow.DetailsPane.TransformData.sort_pane import SortPane
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import *
 from src.Helper.page_helper import *
+import pytest
 
 
 def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
 def test_01_sasprogram_table_sort_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     # time.sleep(0.5)
