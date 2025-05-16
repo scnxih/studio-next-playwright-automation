@@ -202,19 +202,31 @@ class CustomStepPage(CenterPage):
 
     def add_page_by_toolbar(self):
         self.toolbar_control_library.click_btn_by_test_id("addPageButton")
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.add_page_by_toolbar ')
 
     def add_page_by_context_menu(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
         self.control_library_grid.click_context_menu_on_grid_item(page_text, Helper.data_locale.ADD_PAGE)
 
     def delete_page_by_toolbar(self, page_text: str):
-        # self.listbox_pages.click_list_item(page_text)
-        # self.listbox_pages.click_grid_item(page_text)
         self.control_library_pages.click_grid_item(page_text)
+        self.wait_for_page_load()
+
         self.toolbar_control_library.click_btn_by_test_id("deletePageButton")
+        self.wait_for_page_load()
+
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
+
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
+            Helper.logger.debug('Closed alert dialog of DELETE_A_PAGE')
+
+        self.wait_for_page_load()
+
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.delete_page_by_toolbar')
 
     def delete_page_by_keyboard(self, page_text: str):
         # self.listbox_pages.click_list_item(page_text)
@@ -235,21 +247,44 @@ class CustomStepPage(CenterPage):
 
     def check_show_single_page_as_tab(self):
         self.toolbar_control_library.check_menu_in_more_options(Helper.data_locale.SHOW_SINGLE_PAGE_AS_TAB)
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.check_show_single_page_as_tab')
 
     def uncheck_show_single_page_as_tab(self):
         self.toolbar_control_library.uncheck_menu_in_more_options(Helper.data_locale.SHOW_SINGLE_PAGE_AS_TAB)
+        self.wait_for_page_load()
+        Helper.logger.debug('src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.uncheck_show_single_page_as_tab')
 
     def add_page_on_page(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.ADD_PAGE)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.ADD_PAGE)
+        self.wait_for_page_load()
+        Helper.logger.debug('Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.add_page_on_page ')
 
     def move_up_on_page(self, page_text: str):
+        """
+        Move up
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_UP)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_UP)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.move_up_on_page')
+
     def move_down_on_page(self, page_text: str):
+        """
+        Move down
+        """
         # self.listbox_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_DOWN)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_DOWN)
+
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.move_down_on_page')
 
     def move_down_on_page2(self, page_text: str):
         """
@@ -281,58 +316,123 @@ class CustomStepPage(CenterPage):
         self.wait_for_page_load()
 
     def move_to_top_on_page(self, page_text: str):
+        """
+        Move to top
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_TOP)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_TO_TOP)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.move_to_top_on_page')
+
     def move_to_end_on_page(self, page_text: str):
+        """
+
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.MOVE_TO_END)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.MOVE_TO_END)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('Exiting src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.move_to_end_on_page')
+
     def insert_page_above_on_page(self, page_text: str):
+        """
+        Insert a new page above current one
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_ABOVE)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.INSERT_PAGE_ABOVE)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.insert_page_above_on_page')
+
     def insert_page_below_on_page(self, page_text: str):
+        """
+        Insert a new page below current one
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.INSERT_PAGE_BELOW)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.INSERT_PAGE_BELOW)
 
-    #
+        self.wait_for_page_load()
+        Helper.logger.debug('src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage'
+                            '.insert_page_below_on_page')
+
     def duplicate_on_page(self, page_text: str):
+        """
+        Duplicate on page
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DUPLICATE)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.DUPLICATE)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.duplicate_on_page')
+
     def delete_on_page(self, page_text: str):
+        """
+        Delete a page
+        """
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.DELETE)
+
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.DELETE)
+
         delete_alert = Alert(self.page, Helper.data_locale.DELETE_A_PAGE)
+
         if delete_alert.is_open():
             delete_alert.click_button_in_footer(Helper.data_locale.DELETE)
 
+        self.wait_for_page_load()
+        Helper.logger.debug('src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.delete_on_page')
+
     def cut_on_page(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.CUT)
+
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.CUT)
+
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.cut_on_page")
 
     def copy_on_page(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.COPY)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.COPY)
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.copy_on_page")
 
     def paste_on_page(self, page_text: str):
         # self.listbox_pages.click_context_menu_on_list_item(page_text, Helper.data_locale.PASTE)
         self.control_library_pages.click_context_menu_on_grid_item(page_text, Helper.data_locale.PASTE)
 
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.paste_on_page")
+
     def filter_controls(self, search_text: str):
         self.text_filter.fill_text(search_text)
 
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.filter_controls")
+
     def clear_filter(self):
         self.text_filter.clear_text()
+
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.clear_filter")
 
     def insert_control_former(self, control_type: DesignerControlType):
 
         text = convert_control_type_to_text(control_type)
         self.listbox_controls.click_context_menu_on_list_item(text, Helper.data_locale.INSERT_CONTROL)
 
+        self.wait_for_page_load()
+        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage"
+                            ".insert_control_former")
+
     def select_control(self, control_type: DesignerControlType, control_number: int) -> DesignerControl:
+        """
+
+        """
         designer_control = get_designer_control(self.page, control_type, control_number)
+
         designer_control.base_locator.click(position={"x": 2, "y": 2})
         # time.sleep(0.3)
         self.wait_for_page_load()
@@ -359,3 +459,7 @@ class CustomStepPage(CenterPage):
             self.control_category_tree.navigate_to_element_and_dblclick(['Common', text])
             # self.control_category_tree.navigate_to_element_and_dblclick([Helper.data_locale.COMMON, text])
             # self.control_category_tree.navigate_to_element_and_click_context_menu([Helper.data_locale.COMMON, text], Helper.data_locale.INSERT_CONTROL)
+
+        self.wait_for_page_load()
+        Helper.logger.debug(
+            "Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.insert_control")

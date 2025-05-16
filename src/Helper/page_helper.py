@@ -99,11 +99,13 @@ class PageHelper:
         # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
         # Wait until the menu disappear
         # Otherwise, menu will be shown in screenshot
-        time.sleep(0.5)
+        # time.sleep(0.5)
+
         # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
         # workspace.prt_scn('debug')
 
         whole: WholePage = WholePage(page)
+        whole.wait_for_page_load()
 
         # Original
         # whole.screenshot_self("new_all_tabs")
@@ -226,7 +228,8 @@ class PageHelper:
 
         top_menu_page.click_menu_item_options()
 
-        time.sleep(1)
+        # time.sleep(1)
+        WholePage(page).wait_for_page_load()
 
         MenuPage(page).screenshot_self("options")
         BasePage(page).click_dialog_title_or_studionext_header()
@@ -262,7 +265,7 @@ class PageHelper:
         # Step-2: Reset before operations
         setting_dialog.reset_global_general()
         setting_dialog.reset_sas_studio_general()
-        time.sleep(2)
+        setting_dialog.wait_for_page_load()
         setting_dialog.reset_region_and_language()
 
         # Step-3: Close the Settingds dialog
@@ -826,7 +829,9 @@ class PageHelper:
 
         if topMenuItem == TopMenuItem.view_submission_status or topMenuItem == TopMenuItem.view_deployed_and_scheduled_jobs or topMenuItem == TopMenuItem.view_startup_initialization_log:
             center_page = get_center_page(page, transform_from_TopMenuItem_to_CenterPageType(topMenuItem))
-            time.sleep(1)
+            center_page.wait_for_page_load()
+            # time.sleep(1)
+
             return center_page
         else:
             return None

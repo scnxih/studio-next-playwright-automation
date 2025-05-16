@@ -25,7 +25,9 @@ def test_01_show_about_dialog(page, init):
     about_dialog = AboutDialog(page)
 
     # Step-2: Take the screenshot with mask
-    time.sleep(1)
+    about_dialog.wait_for_page_load()
+    # time.sleep(1)
+
     # Take the screenshot and hide the release, site name and site number.
     about_dialog.screenshot_self('about_dialog',
                                  mask=[about_dialog.release_number, about_dialog.site_name, about_dialog.site_number],
