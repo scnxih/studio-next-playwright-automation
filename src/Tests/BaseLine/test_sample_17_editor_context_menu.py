@@ -15,7 +15,7 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
-@pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
+# @pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
 def test_01_sas_program_editor_context_menu(page, init):
     """
     Test context menu in text area

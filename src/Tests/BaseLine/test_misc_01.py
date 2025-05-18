@@ -211,7 +211,7 @@ def test_13_other_method(page, init):
     PageHelper.save_all_files(page, folder_path_list, file_name_list, True)
 
 
-@pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
+# @pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
 def test_14_textarea(page, init):
     PageHelper.new_sas_program(page)
     page1: Page = page
