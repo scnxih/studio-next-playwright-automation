@@ -63,10 +63,8 @@ def test_19_empty_import(page, init):
     # Step-3:Download PDF of Import File
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.wait_for_page_load()
-    quick_import.run(if_wait_run_enabled=False, if_wait_toast_disappear=False)
-    quick_import.cancel(if_wait_toast_disappear=False)
 
-    quick_import.reload()
+    expect(quick_import.toolbar.btn_by_title(Helper.data_locale.CANCEL)).to_be_enabled(enabled=True, timeout=3000)
 
 
 # @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")

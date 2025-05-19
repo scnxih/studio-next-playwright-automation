@@ -7,16 +7,31 @@ Date: 2023/11/27 10:34
 
 import time
 
+import pytest
+
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Dialog.settings_dialog_just_for_test import SettingsDialogTest
 
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
+from playwright.sync_api import Page, expect
 
 
 def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+@pytest.mark.xfail(reason="Disabled [Reset] button in Settings dialog")
+def test_00_default_reset_btn_status(page, init):
+    # Step-1: Open Settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_settings()
+
+    settings_dialog = SettingsDialog(page)
+
+    # Step-2: Check [Reset] button status
+    expect(settings_dialog.enabled_reset_btn_in_current_tab_page).to_be_enabled(enabled=True, timeout=3000)
 
 
 def test_01_reset_preference_dialog(page, init):

@@ -4,7 +4,9 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: 2024/1/17 10:09 
 """
-import time
+
+import pytest
+from playwright.sync_api import Page, expect
 
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
@@ -12,8 +14,22 @@ from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 
 
 # \\huanghe\vtg\ECT\TESTCASE\SAS Studio\6.0\Automated\About0001_ShowAboutDialog.docx
-def test_init(page,init):
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+@pytest.mark.xfail(reason="")
+def test_00_about_dialog(page, init):
+    """
+
+    """
+    # Step-1: Open settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_about()
+    about_dialog = AboutDialog(page)
+
+    expect(about_dialog.btn_close).not_to_be_in_viewport(timeout=1000)
+
 
 def test_01_show_about_dialog(page, init):
     """
