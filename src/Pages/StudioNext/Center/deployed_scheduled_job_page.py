@@ -64,7 +64,13 @@ class DeployedScheduledJobPage(CenterPage):
         Container listing all jobs
         xpath: //div[@role='treegrid'][not (contains(@class, 'vertical'))]
         """
-        return [self.page.locator("//div[@role='treegrid'][not (contains(@class, 'vertical'))]")]
+        # Changed on May 19, 2025
+        # return [self.page.locator("//div[@role='treegrid'][not (contains(@class, 'vertical'))]")]
+
+        # NOT perfect
+        # return [self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][(contains(@style, '29'))]")]
+
+        return [self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][not (contains(@style, '1008'))]")]
 
     def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
         """
