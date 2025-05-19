@@ -25,7 +25,7 @@ class OpenItemsPage(AccordionPage):
         #  Abnormal status check of unsaved files,
         #  except for custom steps, which caused relevant failures in automation.
         #  https://rndjira.sas.com/browse/SASSTUDIO-40251
-        return
+        # return
 
         self.click(self.btn_saveall())
 

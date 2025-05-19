@@ -4,6 +4,7 @@ from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Helper.page_factory import *
+from playwright.sync_api import Page, expect
 
 
 def test_init(page, init):
@@ -17,10 +18,8 @@ def test_16_close_all_tabs(page, init):
     acc: AccordionPage = AccordionPage(page)
     acc.show_accordion(AccordionType.open_item)
 
-    # Dummy paths and file names
-    folder_path = Helper.public_folder_path
-    folder_path_list = [folder_path, folder_path]
-    file_name_list = ["1", "2"]
+    open_items = OpenItemsPage(page)
+    expect(open_items.btn_saveall()).to_be_enabled(enabled=True, timeout=3000)
 
 
 @pytest.mark.xfail(reason="Insufficient SAS Program settings")
@@ -29,13 +28,12 @@ def test_17_empty_sas_program(page, init):
     Several buttons & functions will be disabled for an empty sas program
     """
     PageHelper.new_sas_program(page)
+
     editor = CodeEditorPage(page)
     editor.wait_for_page_load()
 
-    editor.cancel(if_wait_toast_disappear=False)
-    SASProgramPage(page).format_program()
-
-    editor.reload()
+    # DISABLED Cancel button for an empty program
+    expect(editor.toolbar.btn_by_title(Helper.data_locale.CANCEL)).to_be_enabled(timeout=3000)
 
 
 @pytest.mark.xfail(reason="Insufficient Flow settings")
@@ -48,9 +46,7 @@ def test_18_empty_flow(page, init):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.wait_for_page_load(page)
 
-    flow.run(if_wait_run_enabled=False, if_wait_toast_disappear=False)
-    flow.cancel(if_wait_toast_disappear=False)
-    flow.background_submit(if_wait_toast_disappear=False)
+    expect(flow.toolbar.btn_by_title(Helper.data_locale.RUN)).to_be_enabled(enabled=True, timeout=3000)
 
 
 @pytest.mark.xfail(reason="Insufficient Import File settings")
