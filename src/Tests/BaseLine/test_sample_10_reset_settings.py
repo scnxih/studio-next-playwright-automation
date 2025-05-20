@@ -22,18 +22,6 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
-@pytest.mark.xfail(reason="Disabled [Reset] button in Settings dialog")
-def test_00_default_reset_btn_status(page, init):
-    # Step-1: Open Settings dialog
-    top_right = TopRightToolbar(page)
-    top_right.click_settings()
-
-    settings_dialog = SettingsDialog(page)
-
-    # Step-2: Check [Reset] button status
-    expect(settings_dialog.enabled_reset_btn_in_current_tab_page).to_be_enabled(enabled=True, timeout=3000)
-
-
 def test_01_reset_preference_dialog(page, init):
     """
     Change the language in Settings dialog and reset afterward

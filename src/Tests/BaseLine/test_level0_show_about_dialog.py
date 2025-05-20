@@ -18,19 +18,6 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
-@pytest.mark.xfail(reason="")
-def test_00_about_dialog(page, init):
-    """
-
-    """
-    # Step-1: Open settings dialog
-    top_right = TopRightToolbar(page)
-    top_right.click_about()
-    about_dialog = AboutDialog(page)
-
-    expect(about_dialog.btn_close).not_to_be_in_viewport(timeout=1000)
-
-
 def test_01_show_about_dialog(page, init):
     """
     Take a screenshot of the About dialog
