@@ -72,3 +72,6 @@ def test_01_accordion_steps(page, init):
 
     step_path: list = [Helper.data_locale.STEP_CATEGORY_VISUALIZE_DATA, Helper.data_locale.STEP_TEXT_MAP]
     steps.navigate_to_step_then_collapse_parent(step_path)
+
+    step_path: list = [Helper.data_locale.STEP_CATEGORY_FORECASTING, Helper.data_locale.STEP_MOTIF_SCORING]
+    steps.navigate_to_step_then_collapse_parent(step_path)

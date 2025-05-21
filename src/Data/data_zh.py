@@ -481,6 +481,10 @@ class DataZH(Data):
     STEP_SERIES_PLOT = "序列图"
     STEP_TEXT_MAP = "文本地图"
     STEP_MOSAIC_PLOT = "马赛克图"
+
+    STEP_CATEGORY_FORECASTING = "预测"
+    STEP_MODELING_AND_FORECASTING = "建模和预测"
+    STEP_MOTIF_SCORING = "Motif 评分"
     """Steps end"""
 
     # ADD

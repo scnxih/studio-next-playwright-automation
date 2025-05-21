@@ -484,6 +484,10 @@ class Data:
     STEP_TEXT_MAP = "Text Map"
     STEP_MOSAIC_PLOT = "Mosaic Plot"
 
+    STEP_CATEGORY_FORECASTING = "Forecasting"
+    STEP_MODELING_AND_FORECASTING = "Modeling And Forecasting"
+    STEP_MOTIF_SCORING = "Motif Scoring"
+
     """Steps end"""
     # ADD
     # <<< Modified by Jacky(ID: jawang) on Mar.28th, 2024
