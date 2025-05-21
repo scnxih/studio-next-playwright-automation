@@ -1425,6 +1425,9 @@ class DataZH(Data):
 
     UPLOAD_FILES_TO_SAS_CONTENT = "将文件从本地文件系统上传至“SAS 内容”。"
     UPLOAD_FILES_TO_SAS_SERVER = "将文件从本地文件系统上传至“SAS 服务器”。"
+
+    RUN_NOW = "立即运行"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

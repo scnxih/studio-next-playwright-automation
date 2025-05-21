@@ -1417,6 +1417,7 @@ class Data:
     DELETE_SELECTION = "Delete selection"
     REFRESH_SELECTION = "Refresh selection"
 
+    RUN_NOW = "Run now"
     """Added by Jacky end"""
 
     """Added by Percy start"""

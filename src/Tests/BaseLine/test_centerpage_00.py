@@ -20,7 +20,7 @@ def test_01_import_local_files(page, init):
     """
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.wait_for_page_load()
-    expect(quick_import.get_by_test_id("zeroStateLocalFile")).not_to_be_enabled(enabled=False, timeout=1000)
+    expect(quick_import.get_by_test_id("zeroStateLocalFile")).not_to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason="Enabled details switch")
@@ -29,8 +29,7 @@ def test_02_import_details_button(page, init):
     """
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
     quick_import.wait_for_page_load()
-    expect(quick_import.get_by_test_id("importViewPane-toolbar-toggle-detail-layout-button")).not_to_be_visible(
-        timeout=1000)
+    expect(quick_import.get_by_test_id("importViewPane-toolbar-toggle-detail-layout-button")).not_to_be_visible(timeout=1000)
 
 
 @pytest.mark.xfail(reason="Run an empty SAS Program settings")
@@ -46,37 +45,49 @@ def test_03_run_empty_sas_program(page, init):
     editor.editor.type_into_text_area("data null; call sleep(60,1);run;")
 
     editor.run(if_wait_run_enabled=False, if_wait_toast_disappear=False)
-    expect(editor.toolbar.btn_by_title(Helper.data_locale.CANCEL)).not_to_be_enabled(enabled=True, timeout=1000)
+    expect(editor.toolbar.btn_by_title(Helper.data_locale.CANCEL)).not_to_be_enabled(timeout=1000)
 
 
-@pytest.mark.xfail(reason='Submission and Job Status')
-def test_04_submission_and_job_status(page, init):
+@pytest.mark.xfail(reason='Disabled [Reset] button')
+def test_04_tab_monitoring_jobs(page, init):
+    """
+
+    """
     PageHelper.show_submission_status(page)
-    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page,
-                                                                                     TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
 
     deployed_and_scheduled_jobs_page.tab_monitoring_jobs.click()
-    expect(deployed_and_scheduled_jobs_page.mask_last_refresh_label).not_to_be_enabled(enabled=False, timeout=1000)
+    deployed_and_scheduled_jobs_page.wait_for_page_load()
+
+    expect(deployed_and_scheduled_jobs_page.tab_monitoring_jobs.get_by_title(Helper.data_locale.RESET)).to_be_enabled(timeout=1000)
 
 
-@pytest.mark.xfail(reason='Submission and Job Status')
-def test_05_submission_and_job_status(page, init):
+@pytest.mark.xfail(reason='Disabled [Run now] button')
+def test_05_tab_deployed_jobs(page, init):
+    """
+
+    """
     PageHelper.show_submission_status(page)
-    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page,
-                                                                                     TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
 
     deployed_and_scheduled_jobs_page.tab_deployed_jobs.click()
-    expect(deployed_and_scheduled_jobs_page.get_by_test_id("scheduledJobsPane-runNowButton")).to_be_enabled(
-        enabled=True, timeout=1000)
+    deployed_and_scheduled_jobs_page.wait_for_page_load()
+
+    expect(deployed_and_scheduled_jobs_page.tab_deployed_jobs.get_by_title(Helper.data_locale.RUN_NOW)).to_be_enabled(timeout=1000)
 
 
-@pytest.mark.xfail(reason='Submission and Job Status')
-def test_06_submission_and_job_status(page, init):
+@pytest.mark.xfail(reason='Disabled [Edit schedule] button')
+def test_06_tab_scheduled_jobs(page, init):
+    """
+
+    """
     PageHelper.show_submission_status(page)
-    submission_status = SubmissionStatusPage(page)
-    submission_status.wait_for_page_load()
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
 
-    expect(submission_status.btn_clear_all).to_be_enabled(enabled=True, timeout=1000)
+    deployed_and_scheduled_jobs_page.tab_scheduled_jobs.click()
+    deployed_and_scheduled_jobs_page.wait_for_page_load()
+
+    expect(deployed_and_scheduled_jobs_page.tab_scheduled_jobs.get_by_title(Helper.data_locale.EDIT_SCHEDULE)).to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason='Query')
@@ -87,7 +98,7 @@ def test_07_query_add_a_table(page, init):
     query: QueryPage = PageHelper.new_item(page, TopMenuItem.new_query)
 
     query.wait_for_page_load()
-    expect(query.btn_add_table_zero).not_to_be_enabled(enabled=False, timeout=1000)
+    expect(query.btn_add_table_zero).not_to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason='Query')
@@ -98,7 +109,7 @@ def test_08_query_add_a_table(page, init):
     query: QueryPage = PageHelper.new_item(page, TopMenuItem.new_query)
     query.wait_for_page_load()
 
-    expect(Columns(page).btn_search).to_be_visible(visible=True, timeout=1000)
+    expect(Columns(page).btn_search).to_be_visible(timeout=1000)
 
 
 @pytest.mark.xfail(reason='Start page is derived of toolbar')
@@ -110,32 +121,39 @@ def test_09_start_page_elements(page, init):
 
     start_page.wait_for_page_load()
 
-    expect(start_page.toolbar.btn_by_title(Helper.data_locale.RUN)).not_to_be_visible()
+    expect(start_page.toolbar.btn_by_title(Helper.data_locale.RUN)).to_be_visible()
 
 
 @pytest.mark.xfail(reason="Invisible [format program] button")
 def test_09_startup_init_log(page, init):
+    """
+
+    """
     startup_page = PageHelper.show_view_startup_initialization_log(page)
     startup_page.wait_for_page_load()
 
-    (expect(startup_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).
-     to_be_visible(visible=True, timeout=1000))
+    expect(startup_page.toolbar.btn_by_title(Helper.data_locale.SAVE_AS).to_be_disabled(timeout=1000))
 
 
 @pytest.mark.xfail(reason="Disabled [format program] button")
 def test_10_custom_steps_zero_state(page, init):
+    """
+
+    """
     top_menu = TopMenuPage(page)
     top_menu.new_item(TopMenuItem.new_custom_step)
 
     custom_step_page = CustomStepPageTest(page)
     custom_step_page.wait_for_page_load()
 
-    (expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).
-     to_be_enabled(enabled=True, timeout=1000))
+    expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM).to_be_enabled(timeout=1000))
 
 
 @pytest.mark.xfail(reason="Enabled [format program] button")
 def test_11_custom_steps_zero_state(page, init):
+    """
+
+    """
     top_menu = TopMenuPage(page)
     top_menu.new_item(TopMenuItem.new_custom_step)
 
@@ -145,12 +163,14 @@ def test_11_custom_steps_zero_state(page, init):
     custom_step_page.tab_group.click_tab_by_text(Helper.data_locale.JSON)
     custom_step_page.wait_for_page_load()
 
-    (expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).
-     not_to_be_enabled(enabled=False, timeout=1000))
+    expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM).not_to_be_enabled(timeout=1000))
 
 
 @pytest.mark.xfail(reason="Enabled [format program] button")
 def test_12_custom_steps_zero_state(page, init):
+    """
+
+    """
     top_menu = TopMenuPage(page)
     top_menu.new_item(TopMenuItem.new_custom_step)
 
@@ -160,41 +180,52 @@ def test_12_custom_steps_zero_state(page, init):
     custom_step_page.tab_group.click_tab_by_text(Helper.data_locale.CUSCODE_PROGRAM)
     custom_step_page.wait_for_page_load()
 
-    (expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).
-     not_to_be_enabled(enabled=False, timeout=1000))
+    expect(custom_step_page.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM).not_to_be_enabled(timeout=1000))
 
 
 @pytest.mark.xfail(reason="Disabled [redo] button")
 def test_13_json_zero_state(page, init):
+    """
+
+    """
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
     json.editor.type_into_text_area('''{"type":"json file","name":"json example"}''')
     json.wait_for_page_load()
-    expect(json.toolbar.btn_by_title(Helper.data_locale.REDO)).to_be_enabled(enabled=True, timeout=1000)
+    expect(json.toolbar.btn_by_title(Helper.data_locale.REDO)).to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason="Disabled [format program] button")
 def test_14_work_space_zero_state(page, init):
+    """
+
+    """
     work_space: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     work_space.wait_for_page_load()
-    expect(work_space.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).to_be_enabled(enabled=True, timeout=1000)
+    expect(work_space.toolbar.btn_by_title(Helper.data_locale.FORMAT_PROGRAM)).to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason="Disabled [save as] button")
 def test_15_txt_page_zero_state(page, init):
+    """
+
+    """
     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
     text.wait_for_page_load()
-    expect(text.toolbar.btn_by_title(Helper.data_locale.SAVE_AS)).not_to_be_enabled(enabled=False, timeout=1000)
+    expect(text.toolbar.btn_by_title(Helper.data_locale.SAVE_AS)).not_to_be_enabled(timeout=1000)
 
 
 @pytest.mark.xfail(reason="Disabled [save all] button")
 def test_16_close_all_tabs(page, init):
+    """
+
+    """
     PageHelper.new_all_items(page)
 
     acc: AccordionPage = AccordionPage(page)
     acc.show_accordion(AccordionType.open_item)
 
     open_items = OpenItemsPage(page)
-    expect(open_items.btn_saveall()).to_be_enabled(enabled=True, timeout=3000)
+    expect(open_items.btn_saveall()).to_be_enabled(timeout=3000)
 
 
 @pytest.mark.xfail(reason="Insufficient SAS Program settings")
@@ -221,7 +252,7 @@ def test_18_empty_flow(page, init):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.wait_for_page_load(page)
 
-    expect(flow.toolbar.btn_by_title(Helper.data_locale.RUN)).to_be_enabled(enabled=True, timeout=3000)
+    expect(flow.toolbar.btn_by_title(Helper.data_locale.RUN)).to_be_enabled(timeout=3000)
 
 
 @pytest.mark.xfail(reason="Insufficient Import File settings")

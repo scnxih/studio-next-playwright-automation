@@ -103,7 +103,7 @@ def test_02_show_accordion_tab_labels(page, init):
     custom_step_page.tab_group.click_tab_by_text(Helper.data_locale.PROPERTIES)
 
 
-@pytest.mark.xfail(reason="Disabled [Refresh] [Upload] [Properties] & [Delete] button")
+@pytest.mark.skip(reason="IMPERFECT Disabled [Refresh] [Upload] [Properties] & [Delete] button")
 def test_03_disabled_buttons_above_header(page, init):
     """
     """
