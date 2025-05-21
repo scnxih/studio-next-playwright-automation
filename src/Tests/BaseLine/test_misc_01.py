@@ -2,8 +2,8 @@ from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
-
-
+from src.Pages.Common.whole_page import WholePage
+from src.Pages.StudioNext.Left.accordion_page import AccordionPage
 def test_init(page, init):
     PageHelper.init_environments(page)
 
@@ -207,6 +207,9 @@ def test_13_other_method(page, init):
 
     # PageHelper.new_flow(page)
     PageHelper.show_accordion(page, AccordionType.open_item)
+    AccordionPage(page).wait_for_page_load()
+    WholePage(page).wait_for_page_load()
+
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     folder_path_list = [folder_path, folder_path, folder_path, folder_path, folder_path, folder_path, folder_path]
