@@ -135,30 +135,31 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
-    editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
-    page1: Page = page
+
+    editor.editor.type_into_text_area("\ndata test;\nset sashelp.class;\nrun;\nproc print data=sashelp.cars;\nrun;\n")
+    editor.format_program()
     editor.wait_for_page_load()
+
+    page1: Page = page
+    page1.keyboard.press("Enter")
     page1.keyboard.press("Enter")
 
-    editor.click_dialog_title_or_studionext_header()
-    # time.sleep(0.5)
+    editor.format_program()
     editor.wait_for_page_load()
-
     editor.prt_scn('00')
-    WholePage(page).screenshot_self("00")
 
-    WholePage(page).screenshot_self("01")
-    editor.prt_scn('01')
+    editor.click_dialog_title_or_studionext_header()
     editor.wait_for_page_load()
-
-    # time.sleep(0.5)
+    editor.prt_scn('01')
 
     editor.editor.force_click(editor.editor.get_text_area())
     page1.keyboard.press("End")
+    page1.keyboard.press("Enter")
+    page1.keyboard.press("Enter")
 
     # Replaced with press_consequentially
-    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
-    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */\n")
+    editor.editor.human_mimic_typing("\n/*                */")
     editor.editor.human_mimic_typing("\n/*       **       */")
     editor.editor.human_mimic_typing("\n/*     * ** *     */")
     editor.editor.human_mimic_typing("\n/*    ** ** **    */")
@@ -169,110 +170,79 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.editor.human_mimic_typing("\n/*    ** ** **    */")
     editor.editor.human_mimic_typing("\n/*     * ** *     */")
     editor.editor.human_mimic_typing("\n/*       **       */")
-    editor.editor.human_mimic_typing("\n/*        *       */")
-    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
+    editor.editor.human_mimic_typing("\n/*                */\n")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */\n")
 
     editor.click_dialog_title_or_studionext_header()
     editor.wait_for_page_load()
-
-    WholePage(page).screenshot_self("02")
     editor.prt_scn('02')
 
     for i in range(3):
         editor.undo()
         editor.wait_for_page_load()
 
-        # time.sleep(0.5)
-
-    WholePage(page).screenshot_self("03")
     editor.prt_scn('03')
 
     for i in range(3):
         editor.redo()
-        # time.sleep(0.5)
         editor.wait_for_page_load()
 
-    WholePage(page).screenshot_self("04")
     editor.prt_scn('04')
 
     editor.run(True)
 
     editor.wait_for_page_load()
-    # time.sleep(0.5)
-
     editor.format_program()
-
-    # Added to eliminate noise caused by scrollbar
-    # time.sleep(3.0)
     editor.wait_for_page_load()
 
-    # Original
-    WholePage(page).screenshot_self("05")
     editor.prt_scn('05')
 
     editor.wait_for_page_load()
-    # time.sleep(0.5)
     editor.debug()
 
     # Added to eliminate noise caused by scrollbar
-    # time.sleep(0.5)
     editor.wait_for_page_load()
-
-    WholePage(page).screenshot_self("06")
     editor.prt_scn('06')
 
     editor.copy_to_flow()
 
     editor.wait_for_page_load()
 
-    WholePage(page).screenshot_self("07")
     editor.prt_scn('07')
 
     editor.wait_for_page_load()
     editor.add_to_snippets()
-
-    # Original
-    WholePage(page).screenshot_self("08")
     editor.prt_scn('08')
 
     editor.wait_for_page_load()
     editor.clear_code()
 
     if WholePage(page).wait_toast_pop():
-        # Use the screenshot_self overwritten in WholePage
-        WholePage(page).screenshot_self("09")
         editor.prt_scn('09')
 
     editor.clear_log()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("10")
         editor.prt_scn('10')
 
     editor.clear_output_data()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("11")
         editor.prt_scn('11')
 
     editor.clear_results()
 
     if WholePage(page).wait_toast_pop():
-        # Take the screenshot when toast message popped up
-        # Otherwise do not take the screenshots
-        WholePage(page).screenshot_self("12")
         editor.prt_scn('12')
 
     editor.clear_listing()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("13")
         editor.prt_scn('13')
 
     editor.clear_all()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("14")
         editor.prt_scn('14')
 
 

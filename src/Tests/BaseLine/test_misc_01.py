@@ -4,6 +4,8 @@ from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+
+
 def test_init(page, init):
     PageHelper.init_environments(page)
 
@@ -178,6 +180,7 @@ def test_12_sas_server_tree_aggrid_combobox(page, init):
     PageHelper.save_program_test_tile_view_combobox(page, Helper.public_folder_path, "first.sas", True)
 
 
+@pytest.mark.skipif(True, reason="Debug & Duplicate")
 def test_13_other_method(page, init):
     # PageHelper.new_flow(page)
     # PageHelper.search_keyboard_shortcuts(page)
@@ -217,7 +220,7 @@ def test_13_other_method(page, init):
     PageHelper.save_all_files(page, folder_path_list, file_name_list, True)
 
 
-# @pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
+@pytest.mark.skipif(True, reason="Debug & Duplicate")
 def test_14_textarea(page, init):
     PageHelper.new_sas_program(page)
     page1: Page = page

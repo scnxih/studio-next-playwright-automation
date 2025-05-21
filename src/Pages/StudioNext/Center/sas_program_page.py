@@ -26,11 +26,17 @@ class SASProgramPage(MainCenterPage):
 
         Helper.logger.debug("screenshot_self in SASProgramPage")
 
-        self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
+        self.click_dialog_title_or_studionext_header()
+
+        self.wait_for_page_load()
+
+        self.screenshot("//div[@id='app']",
+                        pic_name,
+                        user_assigned_xpath=True,
                         mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number + [
                             self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-                            '//button[@data-testid="programViewPane-toolbar-runButton"]']
-                             + self.ln_col_number,  # mask[] of 'line & col number' in status bar
+                            '//button[@data-testid="programViewPane-toolbar-runButton"]'] +
+                             self.ln_col_number,  # mask[] of 'line & col number' in status bar
                         mask_color='#F4F4F6')
 
     def undo(self):
