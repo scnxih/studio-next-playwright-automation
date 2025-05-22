@@ -143,8 +143,8 @@ class CustomStepPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number +
-                             [self.toolbar.btn_by_title(Helper.data_locale.SAVE),
+                        mask=[self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]'),
+                              self.toolbar.btn_by_title(Helper.data_locale.SAVE),
                               self.toolbar.btn_by_title(Helper.data_locale.SAVE_AS)],
                         mask_color='#F4F4F6')
 
@@ -410,7 +410,8 @@ class CustomStepPage(CenterPage):
         self.text_filter.fill_text(search_text)
 
         self.wait_for_page_load()
-        Helper.logger.debug("Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.filter_controls")
+        Helper.logger.debug(
+            "Exit src.Pages.StudioNext.Center.CustomStep.custom_step_page.CustomStepPage.filter_controls")
 
     def clear_filter(self):
         self.text_filter.clear_text()

@@ -33,11 +33,12 @@ class SASProgramPage(MainCenterPage):
         self.screenshot("//div[@id='app']",
                         pic_name,
                         user_assigned_xpath=True,
-                        mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number + [
-                            self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
-                            '//button[@data-testid="programViewPane-toolbar-runButton"]'] +
-                             self.ln_col_number,  # mask[] of 'line & col number' in status bar
-                        mask_color='#F4F4F6')
+                        mask=
+                        # self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number +
+                        [self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]'),
+                         self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
+                         '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                        mask_color='#F5F4F6')
 
     def undo(self):
         self.center_toolbar_helper.undo()

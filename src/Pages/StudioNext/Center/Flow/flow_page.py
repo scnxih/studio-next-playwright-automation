@@ -46,8 +46,8 @@ class FlowPage(MainCenterPage):
         # Original Version
         # Always getting noise from status bar
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.mask_preview_code_button + self.utf8_encoding + self.recovery_number + self.success_status + self.doorbell_icon_in_toast_message,
-                        mask_color='#F4F4F6')
+                        mask=[self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')] + self.mask_preview_code_button + self.doorbell_icon_in_toast_message,
+                        mask_color='#F5F4F6')
 
         '''
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,

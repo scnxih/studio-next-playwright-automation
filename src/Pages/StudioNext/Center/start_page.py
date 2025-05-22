@@ -40,8 +40,8 @@ class StartPage(CenterPage):
 
         Helper.logger.debug("screenshot_self in StartupInitializationLogPage")
         Helper.logger.debug("%%% Recovery number from base:" + str(self.recovery_number) + " %%%")
-        time.sleep(1)
+        # time.sleep(1)
         self.screenshot("//div[@id='app']", pic_name,
                         user_assigned_xpath=True, clip=None,
-                        mask=self.recent_files_list + self.recovery_number,
-                        mask_color='#000000')
+                        mask=self.recent_files_list + [self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')],
+                        mask_color='#F5F4F6')

@@ -27,7 +27,8 @@ class CodeEditorPage(MainCenterPage):
         Helper.logger.debug("screenshot_self in CodeEditorPage")
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.utf8_encoding + self.recovery_number + self.success_status + self.submit_number + [
+                        mask=[
+                            self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]'),
                             self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
                             self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
                             '//button[@data-testid="programViewPane-toolbar-runButton"]'

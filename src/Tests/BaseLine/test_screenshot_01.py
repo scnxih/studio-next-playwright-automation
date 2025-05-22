@@ -335,7 +335,7 @@ def test_05_screenshot_top_menu_view(page, init):
                                     mask=[
                                         "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                         '//div[@class="sas_components-SearchField-SearchField_search-button-container"]'],
-                                    mask_color="#000000")
+                                    mask_color="#F5F4F6")
 
     top.check_view_item(TopMenuItem.view_deployed_and_scheduled_jobs)
 
@@ -354,7 +354,7 @@ def test_05_screenshot_top_menu_view(page, init):
                                         '//div[@data-testid="scheduledJobsPane-monitoringTab-agGrid"]',
                                         '//div[@data-testid="scheduledJobsPane-monitoringTab-lastRefreshLabel"]'
                                     ],
-                                    mask_color="#000000")
+                                    mask_color="#F5F4F6")
 
     top.uncheck_view_item(TopMenuItem.view_start_page)
     top.check_view_item(TopMenuItem.view_start_page)
@@ -366,15 +366,17 @@ def test_05_screenshot_top_menu_view(page, init):
     # xpath for mask: //div[@class='sas_components-views-StartViewPane-RightView_welcome-container']
     # StartPage(page).prt_scn("start_with_masks")
     start_page = PageHelper.show_start_page(page)
+    start_page.wait_for_page_load()
     start_page.prt_scn("start_with_masks")
     WholePage(page).screenshot_self("start",
                                     mask=[
                                         "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                                         "//div[@class='sas_components-views-StartViewPane-RightView_welcome-container']"],
-                                    mask_color="#000000")
+                                    mask_color="#F5F4F6")
 
     top.check_view_item(TopMenuItem.view_startup_initialization_log)
     startup_page = PageHelper.show_view_startup_initialization_log(page)
+    startup_page.wait_for_page_load()
     startup_page.prt_scn("times")
     # Original
     # WholePage(page).screenshot_self("init")
@@ -384,7 +386,7 @@ def test_05_screenshot_top_menu_view(page, init):
     CenterPage(page).screenshot_self("times_with_masks",
                                      mask=['//span[@class="mtk1"][contains(text(),"CPU")]/..',
                                            '//span[@class="mtk1"][contains(text(),"实际")]/..'],
-                                     mask_color="#000000")
+                                     mask_color="#F5F4F6")
 
     top.show_document_recovery()
     doc = DocumentRecoveryDialog(page)
@@ -407,7 +409,7 @@ def test_05_screenshot_top_menu_view(page, init):
                             '//div[@role="row"][@row-index="2"][@aria-rowindex="4"][contains(@row-id, "Public")]',
                             '//div[@role="row"][@row-index="1"][@aria-rowindex="3"][contains(@row-id, "Public")]',
                             '//div[@role="row"][@row-index="0"][@aria-rowindex="2"][contains(@row-id, "Public")]'],
-                        mask_color="#000000")
+                        mask_color="#F5F4F6")
 
     doc.selfie("document_with_masks")
 

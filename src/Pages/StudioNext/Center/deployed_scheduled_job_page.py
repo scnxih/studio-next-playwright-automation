@@ -83,8 +83,8 @@ class DeployedScheduledJobPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.recovery_number + self.utf8_encoding + self.recovery_number + self.mask_last_refresh_label_time + self.mask_deployed_and_scheduled_jobs_treegrid,
-                        mask_color='#F4F4F6')
+                        mask=[self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')]+self.mask_last_refresh_label_time + self.mask_deployed_and_scheduled_jobs_treegrid,
+                        mask_color='#F5F4F6')
 
     def run_now(self):
         self.toolbar.click_btn_by_test_id("scheduledJobsPane-runNowButton")
