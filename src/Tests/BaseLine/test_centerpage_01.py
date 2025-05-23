@@ -898,6 +898,7 @@ def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(3)
 
     deployed_page.tab_submissions.click()
+    deployed_page.clear_all_completed_submissions()
     deployed_page.prt_scn('tab_submissions')
 
     deployed_page.tab_monitoring_jobs.click()

@@ -1397,7 +1397,7 @@ class Data:
 
     RECENTS = "Recents"
     REMOVE_ALL = "Remove all"
-
+    DELETE_SUBMITTED_JOB = "Delete submitted job"
     """
     Trial on Jan 8 2025
     //div[@data-landmark-label= "certain-region-name"]

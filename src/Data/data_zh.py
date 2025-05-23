@@ -1432,7 +1432,7 @@ class DataZH(Data):
 
     RUN_NOW = "立即运行"
     REMOVE_ALL = "全部删除"
-
+    DELETE_SUBMITTED_JOB = "删除已提交的作业"
     """Added by Jacky end"""
 
     """Added by Percy start"""

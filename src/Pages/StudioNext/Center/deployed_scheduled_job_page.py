@@ -17,7 +17,7 @@ class DeployedScheduledJobPage(CenterPage):
     @property
     def tab_submissions(self):
         """
-
+        Tab page 'Submissions'
         """
         return self.locator("//div[@aria-label='{0}']".format(Helper.data_locale.SUBMIT))
 
@@ -70,7 +70,45 @@ class DeployedScheduledJobPage(CenterPage):
         # NOT perfect
         # return [self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][(contains(@style, '29'))]")]
 
-        return [self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][not (contains(@style, '1008'))]")]
+        # return [self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][not (contains(@style, '1008'))]")]
+
+        return self.page.locator("//div[contains(@class, 'ag-center-cols-viewport')][not (contains(@style, '1008'))]")
+
+    @property
+    def btn_clear_completed_submissions(self):
+        """
+
+        """
+        return self.get_by_test_id("submissionStatusPane-toolBarClearAllButton")
+
+    def clear_all_completed_submissions(self):
+        """
+        First, switch to 'Submissions' tab page.
+        Next, check the button status.
+        Finally, click the 'Clear completed submissions' button if it has been enabled.
+        """
+
+        self.tab_submissions.click()
+        self.wait_for_page_load()
+
+        if self.is_enabled(self.btn_clear_completed_submissions):
+            Helper.logger.debug("Enabled button [Clear completed submissions]")
+
+            self.btn_clear_completed_submissions.clear()
+            self.wait_for_page_load()
+            Helper.logger.debug("Clicked button [Clear completed submissions]")
+
+        Helper.logger.debug("Exiting [Clear completed submissions]")
+
+    def delete_all_submitted_jobs(self):
+        """
+        INCOMPLETE
+        """
+        self.tab_monitoring_jobs.click()
+        self.wait_for_page_load()
+        self.click_context_menu_by_right_click(Helper.data_locale.DELETE_SUBMITTED_JOB)
+        self.wait_for_page_load()
+
 
     def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
         """
@@ -83,7 +121,9 @@ class DeployedScheduledJobPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=[self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')]+self.mask_last_refresh_label_time + self.mask_deployed_and_scheduled_jobs_treegrid,
+                        mask=[self.locator(
+                            '//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')] +
+                             self.mask_last_refresh_label_time,  # self.mask_deployed_and_scheduled_jobs_treegrid,
                         mask_color='#F5F4F6')
 
     def run_now(self):
