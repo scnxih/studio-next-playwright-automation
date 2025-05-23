@@ -880,6 +880,7 @@ class PageHelper:
 
     @staticmethod
     def init_environments(page: Page):
+        PageHelper.remove_all_recent_items_in_start_page(page)
         PageHelper.clear_customcode(page)
         PageHelper.clear_autoexec(page)
         PageHelper.switch_to_standard_perspective(page)
@@ -900,3 +901,12 @@ class PageHelper:
         PageHelper.show_accordion(page, AccordionType.steps)
         step_page = StepsPage(page)
         step_page.add_to_flow(step_path)
+
+    @staticmethod
+    def remove_all_recent_items_in_start_page(page: Page):
+        """
+        RMC on list of 'Recents' and then select 'Clear all'
+        """
+        # src.Pages.StudioNext.Center.start_page.StartPage
+        PageHelper.show_start_page(page)
+        StartPage(page).remove_all_recent_items()

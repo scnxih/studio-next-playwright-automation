@@ -21,8 +21,7 @@ class StartPage(CenterPage):
         """
         List of recent files, which would cause diffs in SDSTest.
         """
-        return ['//div[contains(@class, "StartViewPane-RightView_list-full")]'
-                '[../../../descendant::span[text()="' + Helper.data_locale.RECENT + '"]]']
+        return '//div[contains(@class, "StartViewPane-RightView_list-full")]' + '[../../../descendant::span[text()="' + Helper.data_locale.RECENTS + '"]]'
 
     @property
     def recovery_number_1(self):
@@ -43,5 +42,16 @@ class StartPage(CenterPage):
         # time.sleep(1)
         self.screenshot("//div[@id='app']", pic_name,
                         user_assigned_xpath=True, clip=None,
-                        mask=self.recent_files_list + [self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')],
+                        mask=[self.recent_files_list] + [self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')],
                         mask_color='#F5F4F6')
+
+    def remove_all_recent_items(self):
+        """
+        RMC on list of 'Recents' and then select 'Clear all'
+        """
+        if self.page.is_visible(self.recent_files_list):
+            Helper.logger.debug("Visible 'Recent' list")
+
+            self.click_context_menu_by_right_click(self.recent_files_list, Helper.data_locale.REMOVE_ALL)
+            self.wait_for_page_load()
+            Helper.logger.debug("[Remova all] 'Recents' list")

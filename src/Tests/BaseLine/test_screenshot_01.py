@@ -367,6 +367,7 @@ def test_05_screenshot_top_menu_view(page, init):
     # StartPage(page).prt_scn("start_with_masks")
     start_page = PageHelper.show_start_page(page)
     start_page.wait_for_page_load()
+    start_page.remove_all_recent_items()
     start_page.prt_scn("start_with_masks")
     WholePage(page).screenshot_self("start",
                                     mask=[

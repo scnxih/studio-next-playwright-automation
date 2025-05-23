@@ -1407,7 +1407,7 @@ class DataZH(Data):
     SELECT_A_SERVER_FOR_THIS_STEP = "为该步骤选择服务器"
     COLLAPSE = "折叠"
 
-    RECENT = "最近"
+    RECENTS = "最近"
 
     STATUS_BAR = "状态栏"
     SUBMIT = "提交"
@@ -1431,6 +1431,7 @@ class DataZH(Data):
     UPLOAD_FILES_TO_SAS_SERVER = "将文件从本地文件系统上传至“SAS 服务器”。"
 
     RUN_NOW = "立即运行"
+    REMOVE_ALL = "全部删除"
 
     """Added by Jacky end"""
 
