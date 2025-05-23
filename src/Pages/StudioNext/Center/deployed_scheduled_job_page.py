@@ -93,10 +93,12 @@ class DeployedScheduledJobPage(CenterPage):
 
         if self.is_enabled(self.btn_clear_completed_submissions):
             Helper.logger.debug("Enabled button [Clear completed submissions]")
-
-            self.btn_clear_completed_submissions.clear()
+            self.btn_clear_completed_submissions.click()
             self.wait_for_page_load()
             Helper.logger.debug("Clicked button [Clear completed submissions]")
+
+        else:
+            Helper.logger.debug("DISABLED button [Clear completed submissions]")
 
         Helper.logger.debug("Exiting [Clear completed submissions]")
 

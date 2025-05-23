@@ -52,6 +52,16 @@ class StartPage(CenterPage):
         if self.page.is_visible(self.recent_files_list):
             Helper.logger.debug("Visible 'Recent' list")
 
-            self.click_context_menu_by_right_click(self.recent_files_list, Helper.data_locale.REMOVE_ALL)
+            self.right_click(self.recent_files_list)
+            # self.click_context_menu_by_right_click(self.recent_files_list, Helper.data_locale.REMOVE_ALL)
+
             self.wait_for_page_load()
+            self.key_press("ArrowUp")
+
+            self.wait_for_page_load()
+            self.key_press("Enter")
+
             Helper.logger.debug("[Remova all] 'Recents' list")
+        else:
+            Helper.logger.debug("Unavailable 'Recent' list")
+
