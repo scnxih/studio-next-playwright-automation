@@ -63,7 +63,8 @@ def test_03_combobox_checkbox_text_in_settings(page, init):
         setting.select_offline_language("Java 运行时环境的语言/区域")
         setting.wait_for_page_load()
 
-        setting.click_tab("SAS® Studio")
+        # setting.click_tab("SAS® Studio")
+        setting.click_tab("SAS Studio")
         setting.wait_for_page_load()
 
         setting.page.keyboard.press('ArrowDown')
