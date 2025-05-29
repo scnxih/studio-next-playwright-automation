@@ -1,10 +1,13 @@
 import pytest
 from playwright.sync_api import Page, expect
-
+from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.Query.query_page import QueryPage
+from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
+from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 
 from src.Helper.page_helper import PageHelper
+from src.Pages.Common.dialog import Dialog
 
 
 def test_init(page, init):
@@ -44,3 +47,44 @@ def test_02_query_page_elements(page, init):
     # expect(query.page.accessibility.snapshot()).to_be_empty()
     expect(query.btn_add_table_zero).to_be_focused()
 
+
+# @pytest.mark.xfail(reason='A11Y Focus')
+def test_03_show_about_dialog(page, init):
+    """
+    A11Y Test of the About dialog
+    """
+    # Step-1: Open settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_about()
+    about_dialog = AboutDialog(page)
+
+    # Step-2: Take the screenshot with mask
+    about_dialog.wait_for_page_load()
+
+    # Step-3: Close the dialog
+    about_dialog.close_dialog()
+    # about_dialog.key_press("Escape")
+
+    #
+    # WholePage(page).wait_for_page_load()
+
+    expect(top_right.toolbar.div_by_title(Helper.data_locale.USER_OPTION)).to_be_focused()
+    # expect(top_right.toolbar.div_by_title(Helper.data_locale.USER_OPTION)).not_to_be_focused()
+
+
+def test_04_whats_new_dialog(page, init):
+    """
+    A11Y Test of the About dialog
+    """
+    # Step-1: Open settings dialog
+    top_right = TopRightToolbar(page)
+    top_right.click_new_features()
+    whats_new_dialog = Dialog(page)
+
+    whats_new_dialog.page.wait_for_load_state("load")
+    expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("新功能")
+
+    # whats_new_dialog.wait_for_page_load()
+    # whats_new_dialog.key_press("Escape")
+
+    whats_new_dialog.close_dialog()
