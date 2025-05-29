@@ -156,7 +156,8 @@ class CentralToolbarHelper:
             Helper.logger.debug("New Snippets Dialog Opened")
             NewSnippetsDialog(self.toolbar.get_page()).close_dialog()
 
-        time.sleep(1)
+        WholePage.wait_for_page_load(self.toolbar)
+
         self.close_alert_if_needed()
 
     """After the funtion is implemented in Studionext now, below method should be changed accordingly """

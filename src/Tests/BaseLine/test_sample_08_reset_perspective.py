@@ -9,9 +9,14 @@ from src.Helper.page_helper import PageHelper
 
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Utilities.enums import TopMenuItem
+import pytest
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+@pytest.mark.skipif(True, reason="Duplicate of src.Helper.page_helper.PageHelper.init_environments")
 def test_00_reset_view(page, init):
     """
     Reset View Perspective before testcase run
@@ -44,4 +49,3 @@ def test_01_reset_view_pagehelper(page, init):
     PageHelper.switch_to_interactive_perspective(page)
     PageHelper.switch_to_standard_perspective(page)
     PageHelper.switch_to_standard_perspective_temp(page)
-

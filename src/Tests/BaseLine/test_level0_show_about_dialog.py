@@ -4,7 +4,9 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: 2024/1/17 10:09 
 """
-import time
+
+import pytest
+from playwright.sync_api import Page, expect
 
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
@@ -12,8 +14,9 @@ from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 
 
 # \\huanghe\vtg\ECT\TESTCASE\SAS Studio\6.0\Automated\About0001_ShowAboutDialog.docx
-def test_init(page,init):
+def test_init(page, init):
     PageHelper.init_environments(page)
+
 
 def test_01_show_about_dialog(page, init):
     """
@@ -25,7 +28,9 @@ def test_01_show_about_dialog(page, init):
     about_dialog = AboutDialog(page)
 
     # Step-2: Take the screenshot with mask
-    time.sleep(1)
+    about_dialog.wait_for_page_load()
+    # time.sleep(1)
+
     # Take the screenshot and hide the release, site name and site number.
     about_dialog.screenshot_self('about_dialog',
                                  mask=[about_dialog.release_number, about_dialog.site_name, about_dialog.site_number],

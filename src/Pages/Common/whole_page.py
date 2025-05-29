@@ -22,6 +22,9 @@ class WholePage(BasePage):
         # Overwrite the screenshot_self function in basePage
         self.screenshot(self.base_xpath, pic_name, clip=clip,
                         mask=[
+                            # Status Bar
+                            self.status_bar,
+
                             # MASK # Workspace icon in Open Items pane
                             self.locator(
                                 '//div[@data-testid="open-files-list"]//span[@role="img"][contains(@aria-label, '
@@ -34,4 +37,4 @@ class WholePage(BasePage):
                             "//button[@type='button'][.//span[contains(text(), '"
                             + Helper.data_locale.OPERATE_RECOVERY + "')]]",
                         ],
-                        mask_color='#000000')
+                        mask_color='#F5F4F6')

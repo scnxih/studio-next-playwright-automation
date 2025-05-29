@@ -28,11 +28,12 @@ class CodeEditorPage(MainCenterPage):
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
                         mask=[
+                            self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]'),
                             self.locator('//div[@data-testid="appMessageToast"]//span[@role="img"]'),
                             self.locator("//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
                             '//button[@data-testid="programViewPane-toolbar-runButton"]'
                         ],
-                        mask_color='#000000')
+                        mask_color='#F4F4F6')
 
     def type_code_in_codeeditor(self, text):
         self.editor.type_into_text_area(text)

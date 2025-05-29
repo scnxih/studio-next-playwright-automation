@@ -70,12 +70,20 @@ class ManageGitConnectionDialog(Dialog):
     @property
     def tab_profile(self):
         return self.locate_xpath("//div[@data-testid='gitDialog-mgtConnection-navPane-profileTab']")
+
     @property
     def tab_repository(self):
         return self.locate_xpath("//div[@data-testid='gitDialog-mgtConnection-navPane-repositoryTab']")
+
+    @property
+    def tab_options(self):
+        return self.locate_xpath("//div[@data-testid='gitDialog-mgtConnection-navPane-optionsTab']")
 
     def click_tab_profile(self):
         self.click(self.tab_profile)
 
     def click_tab_repository(self):
         self.click(self.tab_repository)
+
+    def click_tab_options(self):
+        self.click(self.tab_options)

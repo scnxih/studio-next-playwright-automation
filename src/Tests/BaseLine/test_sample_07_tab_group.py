@@ -6,6 +6,14 @@ Date: 2023/11/27 9:34
 """
 
 import time
+
+from src.Pages.StudioNext.Left.library_page import LibraryPage
+from src.Pages.StudioNext.Left.openitems_page import OpenItemsPage
+from src.Pages.StudioNext.Left.sas_content_server_page import SASContentServerPage
+from src.Pages.StudioNext.Left.sasserver_page import SASServerPage
+from src.Pages.StudioNext.Left.sascontent_page import SASContentPage
+
+from src.conftest import *
 from src.Helper.helper import Helper
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
@@ -13,10 +21,12 @@ from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Utilities.enums import TopMenuItem, AccordionType
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
 
-def test_00_click_show_tab_lables(page, init):
+
+def test_00_click_show_tab_labels(page, init):
     """
 
     :param page:
@@ -91,5 +101,46 @@ def test_02_show_accordion_tab_labels(page, init):
     time.sleep(3)
 
     custom_step_page.tab_group.click_tab_by_text(Helper.data_locale.PROPERTIES)
+
+
+@pytest.mark.skip(reason="IMPERFECT Disabled [Refresh] [Upload] [Properties] & [Delete] button")
+def test_03_disabled_buttons_above_header(page, init):
+    """
+    """
+    PageHelper.show_accordion(page, AccordionType.libraries)
+
+    lib_pane = LibraryPage(page)
+    lib_pane.wait_for_page_load()
+
+    lib_pane.properties_btn()
+    lib_pane.delete_btn()
+
+    PageHelper.show_accordion(page, AccordionType.open_item)
+
+    open_pane = OpenItemsPage(page)
+    open_pane.wait_for_page_load()
+
+    open_pane.btn_saveall()
+
+    PageHelper.show_accordion(page, AccordionType.sas_server)
+
+    server_pane = SASContentServerPage(page)
+    server_pane.wait_for_page_load()
+
+    server_pane.click_delete_selection_btn()
+    SASServerPage(page).click_upload_to_server_btn()
+    server_pane.click_refresh_selection_btn()
+    server_pane.click_properties_btn()
+
+    PageHelper.show_accordion(page, AccordionType.sas_content)
+
+    content_pane = SASContentServerPage(page)
+    content_pane.wait_for_page_load()
+
+    content_pane.click_delete_selection_btn()
+    SASContentPage(page).click_upload_to_content_btn()
+    content_pane.click_refresh_selection_btn()
+    content_pane.click_refresh_selection_btn()
+
 
 

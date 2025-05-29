@@ -60,7 +60,7 @@ class DataZH(Data):
     INTERACTIVE = "交互式"
     RESET_SAS_SESSION = "重置 SAS 会话"
     SEARCH = "搜索"
-    SUBMISSION_STATUS = "提交状态"
+    SUBMISSION_STATUS = "提交和作业状态"
     DEPLOYED_AND_SCHEDULED_JOBS = "已部署和已预定的作业"
     COMMAND = "命令"
     CONSOLE = "控制台"
@@ -221,7 +221,7 @@ class DataZH(Data):
 
     """Add by Alice on 09/22/2023 Start"""
     USE_ANOTHER_SESSION_BRG_SUBMISSION = "使用另一个会话在后台提交程序。"
-    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio Next - 开发代码和流"
+    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio - 开发代码和流"
     UNDO = "撤销"
     REDO = "恢复"
     FORMAT_PROGRAM = "格式程序"
@@ -481,6 +481,10 @@ class DataZH(Data):
     STEP_SERIES_PLOT = "序列图"
     STEP_TEXT_MAP = "文本地图"
     STEP_MOSAIC_PLOT = "马赛克图"
+
+    STEP_CATEGORY_FORECASTING = "预测"
+    STEP_MODELING_AND_FORECASTING = "建模和预测"
+    STEP_MOTIF_SCORING = "Motif 评分"
     """Steps end"""
 
     # ADD
@@ -1403,13 +1407,32 @@ class DataZH(Data):
     SELECT_A_SERVER_FOR_THIS_STEP = "为该步骤选择服务器"
     COLLAPSE = "折叠"
 
-    RECENT = "最近"
+    RECENTS = "最近"
 
     STATUS_BAR = "状态栏"
+    SUBMIT = "提交"
     PREAMBLE = "前置代码"
     POSTAMBLE = "后置代码"
     COPY_TO_FLOW = "复制到流"
 
+    SHOW_TAB_LABELS = "显示选项卡标签"
+    HIDE_TAB_LABELS = "隐藏选项卡标签"
+
+    PRODUCE_PDF_OUTPUT = "生成 PDF 输出"
+
+    MONITORING_JOBS = "正在监控的作业"
+    DEPLOYED_JOBS = "部署的作业"
+    SCHEDULED_JOBS = "预定的作业"
+
+    DELETE_SELECTION = "删除选择"
+    REFRESH_SELECTION = "刷新选择"
+
+    UPLOAD_FILES_TO_SAS_CONTENT = "将文件从本地文件系统上传至“SAS 内容”。"
+    UPLOAD_FILES_TO_SAS_SERVER = "将文件从本地文件系统上传至“SAS 服务器”。"
+
+    RUN_NOW = "立即运行"
+    REMOVE_ALL = "全部删除"
+    DELETE_SUBMITTED_JOB = "删除已提交的作业"
     """Added by Jacky end"""
 
     """Added by Percy start"""
@@ -1563,3 +1586,4 @@ class DataZH(Data):
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="不显示小的相关和因子负荷"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="要显示的最小因子负荷或相关"
     """Added by Percy end"""
+

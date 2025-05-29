@@ -2993,6 +2993,3 @@ def test_70_page_context_menu(page, init):
     # custom_step.move_down_on_page("第 1 页")
 
     custom_step.control_library_grid.click_grid_item("第 2 页")
-
-
-

@@ -119,6 +119,51 @@ class CustomCodeDialog(Dialog):
         self.wait_for_page_load()
         time.sleep(1)
 
+        # Error handling
+        if_match_alert = self.page.get_by_test_id("appMessageDialog-dialog")
+
+        if if_match_alert.is_visible():
+            Helper.logger.debug("WARNING: Error message appears")
+
+            # Avoid timeout error
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).wait_for(timeout=3000)
+
+            # Close the dialog
+            if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
+                Helper.logger.debug("CONFIRM error message appears")
+
+                if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_enabled():
+                    Helper.logger.debug("CLOSE button is visible")
+
+                    if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                    Helper.logger.debug("CLOSE button clicked")
+
+        if if_match_alert.is_visible():
+            Helper.logger.debug("WARNING: Again error message appears")
+
+            # Avoid timeout error
+            if_match_alert.get_by_text(Helper.data_locale.CLOSE).wait_for(timeout=3000)
+
+            # Close the dialog
+            if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
+                Helper.logger.debug("Again CONFIRM error message appears")
+                time.sleep(3)
+
+                if if_match_alert.get_by_text(Helper.data_locale.CLOSE).is_visible():
+                    Helper.logger.debug("Again CLOSE button is visible")
+
+                    # if_match_alert.get_by_text(Helper.data_locale.CLOSE).click()
+                    time.sleep(0.5)
+                    # if_match_alert.press("Tab")
+                    if_match_alert.press("Control+Tab")
+                    time.sleep(0.5)
+                    if_match_alert.press("Enter")
+
+                    Helper.logger.debug("Again CLOSE button clicked thru work-around")
+
+                else:
+                    Helper.logger.debug("Virtually CLOSE button clicked")
+
     def cancel(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.CANCEL))
         self.wait_for_page_load()

@@ -41,6 +41,14 @@ class TreeViewAGGrid(CommonComponent):
     def label_element_name(self, label):
         return self.locate_xpath("//span[text()='{0}']".format(label))
 
+    def icon_expand_element_org(self, label):
+        return self.locate_xpath("//span[text()='{0}']/../../../../../../descendant::span[@class='ag-group-expanded "
+                                 "']/span[1]".format(label))
+
+    def icon_collapse_element_org(self, label):
+        return self.locate_xpath("//span[text()='{0}']/../../../../../../descendant::span[@class='ag-group-contracted "
+                                 "']/span[1]".format(label))
+
     def icon_expand_element(self, label):
         return self.locate_xpath("//span[text()='{0}']/../../../../../../descendant::span[@class='ag-group-expanded "
                                  "']/span[1]".format(label))
@@ -69,6 +77,37 @@ class TreeViewAGGrid(CommonComponent):
             if self.is_visible(icon_expand):
                 continue
             icon_collapse = self.icon_collapse_element(label)
+            self.scroll_vertical_if_needed(icon_collapse)
+            time.sleep(0.5)
+            if self.is_visible(icon_collapse):
+                self.click(icon_collapse)
+                time.sleep(0.5)
+                self.wait_for(icon_expand)
+                time.sleep(0.5)
+                continue
+        Helper.logger.debug("failed to navigate to element:{0}".format("/".join(map(str, element_path))))
+        return None
+
+    def navigate_to_element_org(self, element_path: list):
+        for i in range(len(element_path)):
+            label = element_path[i]
+            if i == len(element_path) - 1:
+                Helper.logger.debug(" i == len(element_path) - 1")
+                element = self.label_element_name(label)
+                time.sleep(0.5)
+                self.scroll_vertical_if_needed(element)
+                if self.is_visible(element):
+                    Helper.logger.debug("see last element:" + label)
+                    self.click(element)
+                    return element
+                else:
+                    Helper.logger.debug("not last element even after scroll:" + label)
+                    return None
+            icon_expand = self.icon_expand_element_org(label)
+            time.sleep(0.5)
+            if self.is_visible(icon_expand):
+                continue
+            icon_collapse = self.icon_collapse_element_org(label)
             self.scroll_vertical_if_needed(icon_collapse)
             time.sleep(0.5)
             if self.is_visible(icon_collapse):

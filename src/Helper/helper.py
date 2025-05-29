@@ -37,7 +37,12 @@ class Helper:
     # BEGIN <<< Added by Jacky(ID: jawang) on Tuesday 11th, 2025
     # Path to save files on SAS Server, i.e. {SAS Server/Home/tmp}
     # Revert after the fix of SASSTUDIO-43504 : Duplicate 'SAS Server' nodes in central content selector
-    tmp_folder_path = [data_locale.SAS_SERVER, "SAS Server", "Home", "tmp"]
+
+    # Original Version
+    # tmp_folder_path = [data_locale.SAS_SERVER, "SAS Server", "Home", "tmp"]
+
+    # Changed on April 15, 2025
+    tmp_folder_path = [data_locale.SAS_SERVER, data_locale.SAS_SERVER, "Home", "tmp"]
     # tmp_folder_path = [data_locale.SAS_CONTENT, "Public"]
 
     # END Added by Jacky(ID: jawang) on Tuesday 11th, 2025 >>>

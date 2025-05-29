@@ -3,6 +3,7 @@ from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
 from src.Pages.Common.text import *
 from src.Helper.page_factory import *
+from src.Pages.Common.whole_page import WholePage
 
 
 def test_init(page, init):
@@ -11,24 +12,33 @@ def test_init(page, init):
 
 def test_01_toolbar(page, init):
     PageHelper.show_settings_dialog(page)
-    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
-    time.sleep(1)
-    PageHelper.show_new_features_dialog(page)
-    time.sleep(1)
-    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
-    time.sleep(1)
-    PageHelper.show_keyboard_shortcuts_dialog(page)
-    time.sleep(1)
 
     Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
-    # Dialog(page).click_button_in_footer("Close")
-    time.sleep(1)
+    WholePage(page).wait_for_page_load()
+
+    PageHelper.show_new_features_dialog(page)
+    Dialog(page).wait_for_page_load()
+    WholePage(page).wait_for_page_load()
+
+    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+    WholePage(page).wait_for_page_load()
+
+    PageHelper.show_keyboard_shortcuts_dialog(page)
+    Dialog(page).wait_for_page_load()
+    WholePage(page).wait_for_page_load()
+
+    Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+    WholePage(page).wait_for_page_load()
+
     PageHelper.show_document_recovery_dialog(page)
-    time.sleep(1)
+    Dialog(page).wait_for_page_load()
+    WholePage(page).wait_for_page_load()
+
     Dialog(page).click_button_in_footer(Helper.data_locale.CANCEL)
-    # Dialog(page).click_button_in_footer(Data.CLOSE)
-    time.sleep(1)
+    WholePage(page).wait_for_page_load()
+
     PageHelper.show_submission_status(page)
+    WholePage(page).wait_for_page_load()
 
 
 def test_02_combobox(page, init):
@@ -51,16 +61,21 @@ def test_03_combobox_checkbox_text_in_settings(page, init):
         setting.select_offline_language("德语 (德国) - Deutsch (Deutschland)‎")
         setting.select_language("浏览器语言/区域")
         setting.select_offline_language("Java 运行时环境的语言/区域")
-        time.sleep(1)
-        # setting.click_tab("启动")
-        setting.click_tab("SAS® Studio")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
+        # setting.click_tab("SAS® Studio")
+        setting.click_tab("SAS Studio")
+        setting.wait_for_page_load()
+
         setting.page.keyboard.press('ArrowDown')
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         setting.page.keyboard.press('Space')
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         setting.set_check("显示开始页")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         setting.set_check("自动消除")
         setting.set_uncheck("显示开始页")
         setting.set_uncheck("自动消除")
@@ -68,32 +83,44 @@ def test_03_combobox_checkbox_text_in_settings(page, init):
         setting.set_check("显示开始页")
         setting.set_uncheck("自动消除")
         setting.set_uncheck("显示开始页")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         setting.set_recent_items_count("30")
-        time.sleep(1)
+
+        setting.wait_for_page_load()
+
         setting.click_tab("代码和日志")
         alert = Alert(page, "离开该部分")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         if alert.is_open():
             alert.click_button_in_footer("继续")
-        time.sleep(1)
-        # setting.set_check("若日志大于指定长度或大小则显示警告")
-        # setting.set_check("Display warning if log is larger than specified size")
-        setting.set_check("若日志大于指定大小则显示警告")
 
-        # setting.set_max_log_lines("30000")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
+        setting.set_check("若日志大于指定大小则显示警告")
+        setting.wait_for_page_load()
+
         setting.set_max_size("2")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
+
         setting.click_tab("结果")
+
         alert = Alert(page, "离开该部分")
         time.sleep(1)
+
         if alert.is_open():
             alert.click_button_in_footer("继续")
-        time.sleep(1)
+
+        setting.wait_for_page_load()
+
         setting.set_check("生成 PPT 输出")
-        time.sleep(1)
+        setting.wait_for_page_load()
+
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
+        setting.wait_for_page_load()
+
     PageHelper.reset_all_settings_dialog(page)
 
 
@@ -101,37 +128,47 @@ def test_04_radio_group(page, init):
     top_right = TopRightToolbar(page)
     top_right.click_settings()
     setting = SettingsDialogTest(page)
+
     if setting.is_open():
         setting.click_tab("代码和日志")
+        setting.wait_for_page_load()
+
         setting.radiogroup("withEachSubmission-radioButton").set_check("追加日志")
-        time.sleep(0.3)
+        setting.wait_for_page_load()
+
         setting.click_tab("流")
+        setting.wait_for_page_load()
+
         setting.select_flow_tab_layout(Helper.data_locale.HORIZONTAL)
-        # setting.radiogroup("flowTabLayout-radioButton").set_check(Helper.data_locale.HORIZONTAL)
-        # setting.radiogroup("flowTabLayout-radioButton").set_check("Studio-gui-icu.flow.toolbar.flowlayout.horizontal.label")
-        time.sleep(0.3)
+        setting.wait_for_page_load()
+
         setting.select_flow_tab_layout(Helper.data_locale.VERTICAL)
-        # setting.radiogroup("flowTabLayout-radioButton").set_check(Helper.data_locale.VERTICAL)
-        # setting.radiogroup("flowTabLayout-radioButton").set_check("垂直")
-        # setting.radiogroup("flowTabLayout-radioButton").set_check("Studio-gui-icu.flow.toolbar.flowlayout.vertical.label")
-        time.sleep(0.3)
+        setting.wait_for_page_load()
+
         setting.click_tab("后台提交")
+        setting.wait_for_page_load()
+
         count = setting.radiogroup("locationOfFiles-radioButton").get_radio_items_count()
+
         for i in range(count):
             setting.radiogroup("locationOfFiles-radioButton").set_check_for_index(i)
-            time.sleep(0.3)
+            setting.wait_for_page_load()
 
         count = setting.radiogroup("filesExist-radioButton").get_radio_items_count()
         for i in range(count):
             setting.radiogroup("filesExist-radioButton").set_check_for_index(i)
-            time.sleep(0.3)
+            setting.wait_for_page_load()
 
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
         alert = Alert(page, "退出设置")
+
         time.sleep(1)
+
         if alert.is_open():
             alert.click_button_in_footer("继续")
-        time.sleep(1)
+
+        setting.wait_for_page_load()
+
     PageHelper.reset_all_settings_dialog(page)
 
 
@@ -143,20 +180,31 @@ def test_05_numeric_stepper(page, init):
         setting.click_tab("辅助功能")
         setting.set_check("调整弹出通知的显示持续时间")
         ns1 = setting.numeric_stepper(data_test_id="settings-global-AccessibilityForm-popupDuration")
+
         for i in range(5):
             ns1.click_decrement_value()
-            time.sleep(0.2)
+            # time.sleep(0.2)
+            setting.wait_for_page_load()
+
         for i in range(6):
             ns1.click_increment_value()
-            time.sleep(0.2)
+            # time.sleep(0.2)
+            setting.wait_for_page_load()
+
         value = ns1.get_value()
         Helper.logger.debug("current value=" + str(value))
         Dialog(page).click_button_in_footer(Helper.data_locale.CLOSE)
         alert = Alert(page, "退出设置")
-        time.sleep(1)
+
+        # time.sleep(1)
+
+        WholePage(page).wait_for_page_load()
         if alert.is_open():
             alert.click_button_in_footer("继续")
-        time.sleep(1)
+
+        WholePage(page).wait_for_page_load()
+        # time.sleep(1)
+
     PageHelper.reset_all_settings_dialog(page)
 
 

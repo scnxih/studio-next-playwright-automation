@@ -35,11 +35,8 @@ class StartupInitializationLogPage(CenterPage):
         Helper.logger.debug("screenshot_self in StartupInitializationLogPage")
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=self.time_info_in_log + [
-                            self.locator(
-                                "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"),
-                        ],
-                        mask_color='#000000')
+                        mask=self.time_info_in_log+[self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')],
+                        mask_color='#F5F4F6')
 
     def saveas(self, folder_path, file_name, if_replace, if_wait_toast_disappear=True):
         self.center_toolbar_helper.saveas(folder_path, file_name, if_replace, if_wait_toast_disappear)

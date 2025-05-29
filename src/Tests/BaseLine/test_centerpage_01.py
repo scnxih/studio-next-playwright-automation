@@ -1,16 +1,36 @@
-import time
-
-from pip._internal.cli.cmdoptions import python
-
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Center.codeeditor_page import CodeEditorPage
+from src.Pages.StudioNext.Center.custom_step_page_test import CustomStepPageTest
+from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
+from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.conftest import *
-from src.Pages.Common.text import *
 from src.Helper.page_factory import *
+from playwright.sync_api import Page, expect
+from src.Pages.StudioNext.Center.start_page import StartPage
+from src.Pages.StudioNext.Center.Query.columns_pane import Columns
 
 
 def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+# @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
+def test_23_download_with_default_setting(page, init):
+    PageHelper.new_sas_program(page)
+    editor = CodeEditorPage(page)
+    editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+
+    editor.saveas(Helper.public_folder_path, "center01_test_28", True, True)
+
+    editor.run(True)
+
+    editor.download_pdf_file()
+    editor.download_word_file()
+    editor.download_rtf_file()
+    editor.download_excel_file()
+    editor.download_ppt_file()
+    editor.download_listing_file()
+    editor.download_generated_data()
 
 
 def test_24_central_toolbar_run_cancel_save_saveas(page, init):
@@ -115,48 +135,31 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
 def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
-    editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+
+    editor.editor.type_into_text_area("\ndata test;\nset sashelp.class;\nrun;\nproc print data=sashelp.cars;\nrun;\n")
+    editor.format_program()
+    editor.wait_for_page_load()
+
     page1: Page = page
-    time.sleep(0.5)
+    page1.keyboard.press("Enter")
     page1.keyboard.press("Enter")
 
-    editor.click_dialog_title_or_studionext_header()
-    time.sleep(0.5)
-
+    editor.format_program()
+    editor.wait_for_page_load()
     editor.prt_scn('00')
-    WholePage(page).screenshot_self("00")
 
-    WholePage(page).screenshot_self("01")
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('01')
-
-    time.sleep(0.5)
 
     editor.editor.force_click(editor.editor.get_text_area())
     page1.keyboard.press("End")
-
-    # Former Version
-    # page1.keyboard.press("/")
-    # page1.keyboard.press("*")
-    # page1.keyboard.press("T")
-    # page1.keyboard.press("h")
-    # page1.keyboard.press("i")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("i")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("t")
-    # page1.keyboard.press("e")
-    # page1.keyboard.press("s")
-    # page1.keyboard.press("t")
-    # page1.keyboard.press(".")
-    # page1.keyboard.press("Space")
-    # page1.keyboard.press("*")
-    # page1.keyboard.press("/")
+    page1.keyboard.press("Enter")
+    page1.keyboard.press("Enter")
 
     # Replaced with press_consequentially
-    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
-    editor.editor.human_mimic_typing("\n/*        *       */")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */\n")
+    editor.editor.human_mimic_typing("\n/*                */")
     editor.editor.human_mimic_typing("\n/*       **       */")
     editor.editor.human_mimic_typing("\n/*     * ** *     */")
     editor.editor.human_mimic_typing("\n/*    ** ** **    */")
@@ -167,112 +170,79 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.editor.human_mimic_typing("\n/*    ** ** **    */")
     editor.editor.human_mimic_typing("\n/*     * ** *     */")
     editor.editor.human_mimic_typing("\n/*       **       */")
-    editor.editor.human_mimic_typing("\n/*        *       */")
-    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */")
-    # ** ** ** ** *
-    # ** ** ** *
-    # ** ** *
-    # ** *
-    # *
-    WholePage(page).screenshot_self("02")
+    editor.editor.human_mimic_typing("\n/*                */\n")
+    editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */\n")
+
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('02')
 
     for i in range(3):
         editor.undo()
-        time.sleep(0.5)
-    WholePage(page).screenshot_self("03")
+        editor.wait_for_page_load()
+
     editor.prt_scn('03')
 
     for i in range(3):
         editor.redo()
-        time.sleep(0.5)
+        editor.wait_for_page_load()
 
-    WholePage(page).screenshot_self("04")
     editor.prt_scn('04')
 
     editor.run(True)
-    time.sleep(0.5)
 
+    editor.wait_for_page_load()
     editor.format_program()
+    editor.wait_for_page_load()
 
-    # Added to eliminate noise caused by scrollbar
-    time.sleep(3.0)
-
-    # Original
-    WholePage(page).screenshot_self("05")
     editor.prt_scn('05')
 
-    time.sleep(0.5)
+    editor.wait_for_page_load()
     editor.debug()
 
     # Added to eliminate noise caused by scrollbar
-    time.sleep(0.5)
-
-    WholePage(page).screenshot_self("06")
+    editor.wait_for_page_load()
     editor.prt_scn('06')
 
-    time.sleep(0.5)
-    # editor.code_to_flow()
     editor.copy_to_flow()
-    time.sleep(1)
 
-    WholePage(page).screenshot_self("07")
+    editor.wait_for_page_load()
+
     editor.prt_scn('07')
 
-    time.sleep(0.5)
+    editor.wait_for_page_load()
     editor.add_to_snippets()
-
-    # Original
-    WholePage(page).screenshot_self("08")
     editor.prt_scn('08')
 
-    time.sleep(1.0)
+    editor.wait_for_page_load()
     editor.clear_code()
 
     if WholePage(page).wait_toast_pop():
-        # Use the screenshot_self overwritten in WholePage
-        WholePage(page).screenshot_self("09")
         editor.prt_scn('09')
 
     editor.clear_log()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("10")
         editor.prt_scn('10')
 
     editor.clear_output_data()
 
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("11")
         editor.prt_scn('11')
 
     editor.clear_results()
 
     if WholePage(page).wait_toast_pop():
-        # Take the screenshot when toast message popped up
-        # Otherwise do not take the screenshots
-        WholePage(page).screenshot_self("12")
         editor.prt_scn('12')
 
     editor.clear_listing()
 
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("13")
-
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("13")
         editor.prt_scn('13')
 
     editor.clear_all()
 
-    # Original
-    # time.sleep(1.0)
-    # WholePage(page).screenshot_self("14")
-
-    # '//div[@data-testid="programViewPane-toolbar"]'],
     if WholePage(page).wait_toast_pop():
-        WholePage(page).screenshot_self("14")
         editor.prt_scn('14')
 
 
@@ -284,6 +254,13 @@ def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_
     editor = SASProgramPage(page)
     editor.editor.type_into_text_area("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
     editor.format_program()
+
+    '''
+    Tuesday, May 6, 2025
+    Supplement of context dependency for overflow menu item ANALYZE_AND_CREATE_FLOW (available if saved)
+    '''
+    editor.saveas(Helper.public_folder_path, "center01_test_27", True, True)
+
     editor.run(True)
     editor.schedule_as_job()
     editor.analyze_and_create_flow()
@@ -299,19 +276,18 @@ def test_28_run_download(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
+    '''
+    Tuesday, May 6, 2025
+    Supplement of context dependency for overflow menu item ANALYZE_AND_CREATE_FLOW (available if saved)
+    '''
+    editor.saveas(Helper.public_folder_path, "center01_test_28", True, True)
+
     editor.run(True)
     # editor.download_code_file()
     editor.download_submitted_code_file()
     editor.download_log_file_html()
     editor.download_log_file_text()
     editor.download_results_file()
-    editor.download_pdf_file()
-    editor.download_word_file()
-    editor.download_rtf_file()
-    editor.download_excel_file()
-    editor.download_ppt_file()
-    editor.download_listing_file()
-    editor.download_generated_data()
 
 
 # def test_29_tree_common_in_query(page, init):
@@ -397,16 +373,25 @@ def test_34_sas_program(page, init):
     sas_program.open_in_browser_tab_listing()
     sas_program.open_in_browser_tab_log()
     sas_program.open_in_browser_tab_submitted_code()
-    sas_program.download_ppt_file()
+
     sas_program.download_log_file_html()
     sas_program.download_submitted_code_file()
     sas_program.download_results_file()
-    sas_program.download_rtf_file()
     sas_program.download_generated_data()
     sas_program.download_listing_file()
+
+    # '''
+    # Tuesday, May 6, 2025,
+    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    '''
+    sas_program.download_ppt_file()
+    sas_program.download_rtf_file()
     sas_program.download_excel_file()
     sas_program.download_word_file()
     sas_program.download_pdf_file()
+
+    '''
+    # '''
     sas_program.email()
     sas_program.apply_detail_layout_standard()
     sas_program.apply_detail_layout_vertical()
@@ -468,23 +453,31 @@ def test_35_python(page, init):
     python_program.saveas(Helper.tmp_folder_path, "test_python_program_sas_server_tmp.py", True, True)
 
     python_program.schedule_as_job()
-
     python_program.add_to_my_favorites()
+
     python_program.open_in_browser_tab_summary()
     python_program.open_in_browser_tab_results()
     python_program.open_in_browser_tab_listing()
     python_program.open_in_browser_tab_log()
     python_program.open_in_browser_tab_submitted_code()
-    python_program.download_ppt_file()
+
     python_program.download_log_file_html()
     python_program.download_submitted_code_file()
     python_program.download_results_file()
-    python_program.download_rtf_file()
     python_program.download_generated_data()
     python_program.download_listing_file()
+
+    # '''
+    # Default status changed to DISABLED for downloading word/excel/rtf/pdf... in overflow menu
+    '''
+    python_program.download_ppt_file()
+    python_program.download_rtf_file()
     python_program.download_excel_file()
     python_program.download_word_file()
     python_program.download_pdf_file()
+    '''
+    # '''
+
     python_program.email()
     python_program.apply_detail_layout_standard()
     python_program.apply_detail_layout_vertical()
@@ -693,17 +686,15 @@ def test_38_quick_import(page, init):
     quick_import.open_in_browser_tab_summary()
     quick_import.open_in_browser_tab_log()
     quick_import.download_submitted_code_file()
-    quick_import.download_pdf_file()
-    quick_import.download_rtf_file()
+
     quick_import.download_listing_file()
-    quick_import.download_ppt_file()
     quick_import.download_generated_data()
     quick_import.download_results_file()
-    quick_import.download_word_file()
     quick_import.download_log_file_html()
-    quick_import.download_excel_file()
     quick_import.download_log_file_text()
+
     # quick_import.email()
+
     # quick_import.apply_main_layout_vertical()
     # quick_import.apply_main_layout_horizontal()
     quick_import.apply_detail_layout_standard()
@@ -723,19 +714,11 @@ def test_38_quick_import(page, init):
 
 def test_39_JsonPage(page, init):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
-    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"\n}')
-
-    # json.editor.type_into_text_area('{"\ntype":"json file",\n"name":"json example"')
-    # json.editor.type_into_text_area('{\n"type":"json file",\n"name":"json example"')
-
-    # json.editor.type_into_text_area('{')
-
     json.editor.type_into_text_area('''{"type":"json file","name":"json example"}''')
-
-    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    # folder_path = ["SAS Content", "Public"]
     json.saveas(Helper.public_folder_path, "test_json.json", True, True)
-    time.sleep(1)
+
+    json.wait_for_page_load()
+
     json.undo()
     json.redo()
     json.add_to_snippets()
@@ -752,7 +735,7 @@ def test_40_TextPage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     text.saveas(Helper.public_folder_path, "test_text.txt", True, True)
-    time.sleep(1)
+    text.wait_for_page_load()
     text.undo()
     text.redo()
     text.add_to_snippets()
@@ -769,7 +752,7 @@ def test_41_XMLPage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     xml.saveas(Helper.public_folder_path, "test_xml_content_public", True, True)
-    time.sleep(1)
+    xml.wait_for_page_load()
     xml.undo()
     xml.redo()
     xml.add_to_snippets()
@@ -786,7 +769,7 @@ def test_42_WorkSapcePage(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     work_space.saveas(Helper.public_folder_path, "test_workspace.workspace", True, True)
-    time.sleep(2)
+    work_space.wait_for_page_load()
     work_space.undo()
     work_space.redo()
     # work_space.add_to_snippets()
@@ -798,9 +781,10 @@ def test_42_WorkSapcePage(page, init):
 
 
 def test_43_check_uncheck_menu_items_in_view(page, init):
-    time.sleep(2)
-    center_page: CenterPage = PageHelper.check_menu_item_in_view(page, TopMenuItem.view_deployed_and_scheduled_jobs)
-    time.sleep(3)
+    top = TopMenuPage(page)
+    top.check_view_item(TopMenuItem.view_submission_status)
+    deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+                                                                                 TopMenuItem.view_deployed_and_scheduled_jobs)
 
     # MODIFIED
     # <<< Modified by Jacky(ID: jawang) on Apr.29th, 2024
@@ -821,11 +805,16 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
     # data-testid="scheduledJobsPane-monitoringTab-agGrid"
-    center_page.screenshot_self('deployed_and_scheduled',
-                                mask=['//div[@class="ag-center-cols-viewport"]',
-                                      '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
-                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
-                                mask_color="#000000")
+
+    # '''
+    deployed_page.screenshot_self('deployed_and_scheduled',
+                                  mask=['//div[@class="ag-center-cols-viewport"]',
+                                        '//button[@data-testid="scheduledJobsPane-monitoringTab-refreshButton"]',
+                                        deployed_page.get_by_test_id(
+                                            "scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                  mask_color="#000000")
+    # '''
+
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     time.sleep(1)
@@ -840,10 +829,14 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on May.27th, 2024
-    center_page.screenshot_self('submission_status',
-                                mask=['//div[@class="ag-center-cols-viewport"]',
-                                      center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
-                                mask_color="#000000")
+
+    # '''
+    deployed_page.screenshot_self('submission_status',
+                                  mask=['//div[@class="ag-center-cols-viewport"]',
+                                        center_page.get_by_test_id("scheduledJobsPane-monitoringTab-lastRefreshLabel")],
+                                  mask_color="#000000")
+    # '''
+
     # END Added by Jacky(ID: jawang) on May.27th, 2024 >>>
 
     # ADDED
@@ -860,7 +853,7 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     #                        'subm_stat_clip',
     #                        clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
 
-    center_page.screenshot_self('subm_stat_clip', clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
+    deployed_page.screenshot_self('subm_stat_clip', clip={'x': 0, 'y': 0, 'width': 433, 'height': 1050})
 
     # END Added by Jacky(ID: jawang) on Apr.29th, 2024 >>>
 
@@ -894,8 +887,28 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
 def test_44_deployed_and_scheduled_job(page, init):
     time.sleep(2)
+    # deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
+    #                                                                              TopMenuItem.view_deployed_and_scheduled_jobs)
+
+    top = TopMenuPage(page)
+    top.check_view_item(TopMenuItem.view_submission_status)
     deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
                                                                                  TopMenuItem.view_deployed_and_scheduled_jobs)
+
+    time.sleep(3)
+
+    deployed_page.tab_submissions.click()
+    deployed_page.clear_all_completed_submissions()
+    deployed_page.prt_scn('tab_submissions')
+
+    deployed_page.tab_monitoring_jobs.click()
+    deployed_page.prt_scn('tab_monitoring_jobs')
+
+    deployed_page.tab_deployed_jobs.click()
+    deployed_page.prt_scn('tab_deployed_jobs')
+
+    deployed_page.tab_scheduled_jobs.click()
+    deployed_page.prt_scn('tab_scheduled_jobs')
 
     """
     # Comment out temporarily because of the UI change
@@ -912,11 +925,10 @@ def test_44_deployed_and_scheduled_job(page, init):
 
 def test_45_startup_initialization_log(page, init):
     startup_page = PageHelper.show_view_startup_initialization_log(page)
-    # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
+    folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
 
     # NOTE: Saving initialization file does not work at the moment
-    # startup_page.saveas(Helper.public_folder_path, "startup_initialization_log.log", True, True)
-    # startup_page.add_to_snippets()
+    startup_page.saveas(Helper.public_folder_path, "startup_initialization_log", True, True)
     startup_page.add_to_my_favorites()
 
     # Used the one with screenshot function
@@ -924,8 +936,7 @@ def test_45_startup_initialization_log(page, init):
 
     # Replace with src.Pages.StudioNext.Center.startup_initialization_log_page.StartupInitializationLogPage.prt_scn
     startup_page.prt_scn("open_in_browser_tab_page_masked")
-
-    # startup_page.email()
+    startup_page.email()
     startup_page.reload()
 
 

@@ -32,12 +32,18 @@ class SASProgramPane(DetailsPane):
 
     def find(self, find_str, if_match_case, if_match_whole_word):
         self.__switch_to_find_or_replace(FindOrReplace.find)
+
         self.__match_case(if_match_case)
-        time.sleep(0.5)
+        self.wait_for_page_load()
+        # time.sleep(0.5)
+
         self.__match_whole_word(if_match_whole_word)
-        time.sleep(0.5)
+        self.wait_for_page_load()
+        # time.sleep(0.5)
+
         self.widget.fill_textarea_by_placeholder(Helper.data_locale.FIND, find_str)
-        time.sleep(0.5)
+        self.wait_for_page_load()
+        # time.sleep(0.5)
 
     def find_next(self):
         self.widget.click_btn_by_aria_label(Helper.data_locale.NEXT_MATCH)
@@ -110,16 +116,26 @@ class SASProgramPane(DetailsPane):
 
     def __internal_replace(self, find_str, replace_str, if_match_case, if_match_whole_word, if_preserve_case):
         self.__switch_to_find_or_replace(FindOrReplace.replace)
+
         self.widget.fill_textarea_by_placeholder(Helper.data_locale.FIND, find_str)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
+
         self.widget.fill_textarea_by_placeholder(Helper.data_locale.REPLACE, replace_str)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
+
         self.__match_case(if_match_case)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
+
         self.__match_whole_word(if_match_whole_word)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
+
         self.__preserve_case(if_preserve_case)
-        time.sleep(0.3)
+        self.wait_for_page_load()
+        # time.sleep(0.3)
 
     def replace(self, find_str, replace_str, if_match_case, if_match_whole_word, if_preserve_case):
         self.__internal_replace(find_str, replace_str, if_match_case, if_match_whole_word, if_preserve_case)

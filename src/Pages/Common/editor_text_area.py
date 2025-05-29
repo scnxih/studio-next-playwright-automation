@@ -48,16 +48,16 @@ class EditorTextArea(CommonComponent):
         """
         self.force_click(self.get_text_area())
         self.fill(self.get_text_area(), user_input)
-        time.sleep(2)
+        self.wait_for_page_load()
+        # time.sleep(2)
 
-        # ADDED
-        # BEGIN <<< Added by Jacky(ID: jawang) on June 24th, 2024
         self.click_dialog_title_or_studionext_header()
-        time.sleep(1)
-        # END Added by Jacky(ID: jawang) on June 24th, 2024 >>>
+        self.wait_for_page_load()
+
+        # time.sleep(1)
 
         self.screenshot(self.base_xpath, "text_area")
-        time.sleep(1)
+        # time.sleep(1)
 
     def human_mimic_typing(self, user_input):
         """

@@ -99,11 +99,13 @@ class PageHelper:
         # BEGIN <<< Added by Jacky(ID: jawang) on May.23rd, 2024
         # Wait until the menu disappear
         # Otherwise, menu will be shown in screenshot
-        time.sleep(0.5)
+        # time.sleep(0.5)
+
         # END Added by Jacky(ID: jawang) on May.23rd, 2024 >>>
         # workspace.prt_scn('debug')
 
         whole: WholePage = WholePage(page)
+        whole.wait_for_page_load()
 
         # Original
         # whole.screenshot_self("new_all_tabs")
@@ -226,7 +228,8 @@ class PageHelper:
 
         top_menu_page.click_menu_item_options()
 
-        time.sleep(1)
+        # time.sleep(1)
+        WholePage(page).wait_for_page_load()
 
         MenuPage(page).screenshot_self("options")
         BasePage(page).click_dialog_title_or_studionext_header()
@@ -262,7 +265,7 @@ class PageHelper:
         # Step-2: Reset before operations
         setting_dialog.reset_global_general()
         setting_dialog.reset_sas_studio_general()
-        time.sleep(2)
+        setting_dialog.wait_for_page_load()
         setting_dialog.reset_region_and_language()
 
         # Step-3: Close the Settingds dialog
@@ -785,14 +788,23 @@ class PageHelper:
 
     ''' ----- Added by Frank, 3/18/2024 end ----- '''
 
-    # ADDED
-    # <<< Added by Jacky(ID: jawang) on Oct.12nd, 2023
+    @staticmethod
+    def hide_accordion_tab_labels(page):
+        lhs_accordion: AccordionPage = AccordionPage(page)
+
+        if lhs_accordion.icon_hide_tab_labels.is_visible():
+            Helper.logger.debug('In Left Accordion: <Hide tab labels> icon is visible')
+            lhs_accordion.icon_hide_tab_labels.click()
+            Helper.logger.debug('Have clicked <Hide tab labels> icon')
+
     @staticmethod
     def show_accordion_tab_labels(page):
-        acc: AccordionPage = AccordionPage(page)
-        acc.show_tab_labels()
+        lhs_accordion: AccordionPage = AccordionPage(page)
 
-    # Added by Jacky(ID: jawang) on Oct.12nd, 2023 >>>
+        if lhs_accordion.icon_show_tab_labels.is_visible():
+            Helper.logger.debug('In Left Accordion: <Show tab labels> icon is visible')
+            lhs_accordion.icon_show_tab_labels.click()
+            Helper.logger.debug('Have clicked <Show tab labels> icon')
 
     """added by Alice on 10/26/2023 start"""
 
@@ -817,7 +829,9 @@ class PageHelper:
 
         if topMenuItem == TopMenuItem.view_submission_status or topMenuItem == TopMenuItem.view_deployed_and_scheduled_jobs or topMenuItem == TopMenuItem.view_startup_initialization_log:
             center_page = get_center_page(page, transform_from_TopMenuItem_to_CenterPageType(topMenuItem))
-            time.sleep(1)
+            center_page.wait_for_page_load()
+            # time.sleep(1)
+
             return center_page
         else:
             return None
@@ -866,10 +880,12 @@ class PageHelper:
 
     @staticmethod
     def init_environments(page: Page):
+        PageHelper.remove_all_recent_items_in_start_page(page)
         PageHelper.clear_customcode(page)
         PageHelper.clear_autoexec(page)
         PageHelper.switch_to_standard_perspective(page)
         PageHelper.reset_settings_dialog(page)
+        PageHelper.hide_accordion_tab_labels(page)
 
     def reset_all_settings_dialog(page: Page):
         top_right = TopRightToolbar(page)
@@ -885,3 +901,12 @@ class PageHelper:
         PageHelper.show_accordion(page, AccordionType.steps)
         step_page = StepsPage(page)
         step_page.add_to_flow(step_path)
+
+    @staticmethod
+    def remove_all_recent_items_in_start_page(page: Page):
+        """
+        RMC on list of 'Recents' and then select 'Clear all'
+        """
+        # src.Pages.StudioNext.Center.start_page.StartPage
+        PageHelper.show_start_page(page)
+        StartPage(page).remove_all_recent_items()

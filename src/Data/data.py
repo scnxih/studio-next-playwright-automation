@@ -63,7 +63,7 @@ class Data:
     INTERACTIVE = "Interactive"
     RESET_SAS_SESSION = "Reset SAS session"
     SEARCH = "Search"
-    SUBMISSION_STATUS = "Submission status"
+    SUBMISSION_STATUS = "Submissions and job status"
     DEPLOYED_AND_SCHEDULED_JOBS = "Deployed and scheduled jobs"
     COMMAND = "Command"
     CONSOLE = "Console"
@@ -483,6 +483,10 @@ class Data:
     STEP_SERIES_PLOT = "Series Plot"
     STEP_TEXT_MAP = "Text Map"
     STEP_MOSAIC_PLOT = "Mosaic Plot"
+
+    STEP_CATEGORY_FORECASTING = "Forecasting"
+    STEP_MODELING_AND_FORECASTING = "Modeling And Forecasting"
+    STEP_MOTIF_SCORING = "Motif Scoring"
 
     """Steps end"""
     # ADD
@@ -1389,20 +1393,36 @@ class Data:
     INCLUDE_INSET_TABLE = "Include inset table"
 
     SELECT_A_SERVER_FOR_THIS_STEP = "Select a server for this step"
-    COLLAPSE = "折叠"
+    COLLAPSE = "Colla[se"
 
-    RECENT = "最近"
-
+    RECENTS = "Recents"
+    REMOVE_ALL = "Remove all"
+    DELETE_SUBMITTED_JOB = "Delete submitted job"
     """
     Trial on Jan 8 2025
     //div[@data-landmark-label= "certain-region-name"]
     //div[@data-landmark-label= "Status Bar"]
     """
     STATUS_BAR = "Status Bar"
+    UTF_8 = "UTF-8"
+    SUBMIT = ""
     PREAMBLE = "Preamble"
     POSTAMBLE = "Postamble"
     COPY_TO_FLOW = "Copy to flow"
 
+    SHOW_TAB_LABELS = "Show tab labels"
+    HIDE_TAB_LABELS = "Hide tab labels"
+
+    PRODUCE_PDF_OUTPUT = "Produce PDF output"
+
+    MONITORING_JOBS = "Monitoring Jobs"
+    DEPLOYED_JOBS = "Deployed Jobs"
+    SCHEDULED_JOBS = "Scheduled Jobs"
+
+    DELETE_SELECTION = "Delete selection"
+    REFRESH_SELECTION = "Refresh selection"
+
+    RUN_NOW = "Run now"
     """Added by Jacky end"""
 
     """Added by Percy start"""

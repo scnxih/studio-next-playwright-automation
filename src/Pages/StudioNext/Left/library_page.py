@@ -27,7 +27,6 @@ class LibraryPage(AccordionPage):
         table_path = [Helper.data_locale.CONNECTED_LIBRARIES, library_name, table_name]
         self.tree.navigate_to_element_and_dblclick(table_path)
 
-
     def delete_table_btn(self, library_name, table_name):
         self.collapse_all()
         time.sleep(1)
@@ -48,6 +47,9 @@ class LibraryPage(AccordionPage):
         self.click_menu_item(Helper.data_locale.DELETE)
         delete_table = Alert(self.page, Helper.data_locale.DELETE)
         delete_table.click_button_in_footer(Helper.data_locale.DELETE)
+
+    def delete_btn(self):
+        self.toolbar.click_btn_by_title(Helper.data_locale.DELETE)
 
     def refresh_library_btn(self):
         self.toolbar.click_btn_by_title(Helper.data_locale.REFRESH)

@@ -20,6 +20,8 @@ def test_init(page, init):
 
 def test_01_add_page(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
+    custom_step.wait_for_page_load()
+
     custom_step.add_page_by_toolbar()
     custom_step.add_page_on_page("第 1 页")
     custom_step.screenshot_self("overwrite_vanilla")
@@ -29,33 +31,35 @@ def test_02_delete_page(page, init):
     whole = WholePage(page)
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     custom_step.add_page_by_toolbar()
-    time.sleep(1)
+    # time.sleep(1)
     whole.screenshot_self("page1")
     custom_step.prt_scn("page1")
-    custom_step.add_page_by_toolbar()
-    time.sleep(1)
 
     custom_step.add_page_by_toolbar()
-    time.sleep(1)
+    # time.sleep(1)
 
     custom_step.add_page_by_toolbar()
-    time.sleep(1)
+    # time.sleep(1)
+
+    custom_step.add_page_by_toolbar()
+    # time.sleep(1)
+
     whole.screenshot_self("page2")
     custom_step.prt_scn("page2")
 
     custom_step.delete_page_by_toolbar("第 1 页")
-    time.sleep(1)
+    # time.sleep(1)
     whole.screenshot_self("delete_page_1")
     custom_step.prt_scn("delete_page_1")
 
     custom_step.delete_page_by_toolbar("第 2 页")
-    time.sleep(1)
+    # time.sleep(1)
 
     custom_step.delete_page_by_keyboard("第 3 页")
-    time.sleep(1)
+    # time.sleep(1)
 
     custom_step.delete_page_by_keyboard("第 4 页")
-    time.sleep(1)
+    # time.sleep(1)
     whole.screenshot_self("delete_page_2")
     custom_step.prt_scn("delete_page_2")
 
@@ -63,12 +67,15 @@ def test_02_delete_page(page, init):
 def test_03_show_single_page_as_tab(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     whole = WholePage(page)
+
     custom_step.check_show_single_page_as_tab()
+
     whole.screenshot_self("single")
     custom_step.prt_scn("single")
-    time.sleep(1)
+
+    # time.sleep(1)
     custom_step.add_page_by_toolbar()
-    time.sleep(1)
+    # time.sleep(1)
 
     # Original
     # whole.screenshot_self("add_page")
@@ -79,7 +86,7 @@ def test_03_show_single_page_as_tab(page, init):
                           mask_color="#000000")
     custom_step.prt_scn("add_page")
     custom_step.uncheck_show_single_page_as_tab()
-    time.sleep(1)
+    # time.sleep(1)
 
     # Original
     # whole.screenshot_self("uncheck_single")
@@ -93,8 +100,10 @@ def test_03_show_single_page_as_tab(page, init):
 def test_04_page_context_menu(page, init):
     custom_step: CustomStepPage = PageHelper.new_item(page, TopMenuItem.new_custom_step)
     whole = WholePage(page)
+
+    custom_step.wait_for_page_load()
     custom_step.add_page_on_page("第 1 页")
-    time.sleep(1)
+    # time.sleep(1)
 
     whole.screenshot_self("01")
     custom_step.prt_scn("01")
@@ -399,13 +408,17 @@ def test_10_insert_checkbox_text_and_move_duplicate(page, init):
 
     designer_text2: DesignerText = custom_step.select_control(DesignerControlType.text, 2)
     str_section = "区段标签 1"
-    designer_text2.move_to_section(str_section)
 
-    designer_text2.move_to_end()
+    # Original
+    # designer_text2.move_to_section(str_section)
+    # designer_text2.move_to_end()
+
+    designer_text1.move_to_section(Helper.data_locale.NEW_SECTION)
+    designer_text1.move_to_end()
 
     designer_checkbox1.move_to_section(str_section)
-    designer_checkbox2.move_to_section(str_section)
-    designer_checkbox3.move_to_section(str_section)
+    designer_checkbox2.move_to_section("区段标签 2")
+    designer_checkbox3.move_to_section(Helper.data_locale.NEW_SECTION)
 
     designer_checkbox1.move_to_top()
     designer_checkbox2.move_down()

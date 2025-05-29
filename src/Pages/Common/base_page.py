@@ -51,6 +51,31 @@ class BasePage:
                                   Helper.data_locale.OPERATE_RECOVERY + "')]]")]
 
     @property
+    def success_status(self):
+        """
+        The success status in status bar.
+        XPATH: //span[contains(text(), '成功')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" +
+                                  Helper.data_locale.FILTER_COLUMN_MAPPING_SUCCESSFUL + "')]/../..")]
+
+    @property
+    def utf8_encoding(self):
+        """
+        The default UTF-8 encoding in status bar.
+        XPATH: //span[contains(text(), 'UTF-8')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" + Data.UTF_8 + "')]/../..")]
+
+    @property
+    def submit_number(self):
+        """
+        The success status in status bar.
+        XPATH: //span[contains(text(), '提交')]/../..
+        """
+        return [self.page.locator("//span[contains(text(), '" + Helper.data_locale.SUBMIT + "')]/../..")]
+
+    @property
     def status_bar(self):
         """
         Return: mask STRING of status bar locator by using @data-landmark-label
@@ -467,6 +492,12 @@ class BasePage:
     #     r_locator = self.transform_to_locator(locator_or_xpath)
     #     r_locator.scroll_into_view_if_needed()
 
+    # TODO
+    # It seems that scroll_if_needed() fails to work with the following testcase while searching in the Open dialog
+    # src.Tests.BaseLine.test_openitems_02_openfile.test_01_openfile
+
+    # Currently, work-around is adapted by adding 'A' into filename so that it appears at the top,
+    # which can be found without scrollbar handling.
     def scroll_if_needed(self, locator_or_xpath):
         self.scroll_vertical_if_needed(locator_or_xpath)
         self.scroll_horizontal_if_needed(locator_or_xpath)

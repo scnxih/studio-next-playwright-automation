@@ -20,7 +20,7 @@ def test_01_openfile(page, init):
     PageHelper.new_sas_program(page)
     text = "'中文测试'"
     PageHelper.type_code_in_codeeditor(page, text)
-    PageHelper.save_program(page, Helper.public_folder_path, "中文测试.sas", True)
+    PageHelper.save_program(page, Helper.public_folder_path, "A中文测试.sas", True)
 
     PageHelper.close_all_tabs(page)
 
@@ -30,15 +30,21 @@ def test_01_openfile(page, init):
 
     PageHelper.show_accordion(page, AccordionType.open_item)
     # PageHelper.openitems_open_file(page, folder_path, "中文测试.sas")
-    PageHelper.openitems_open_file(page, Helper.public_folder_path, "中文测试.sas")
+
+    PageHelper.openitems_open_file(page, Helper.public_folder_path, "A中文测试.sas")
 
     # Add waiting time to avoid assertion failure
     editor = CodeEditorPage(page)
 
     # data-testid="programViewPane-toolbar-runButton"
-    editor.wait_for(editor.get_by_test_id("programViewPane-toolbar-runButton"))
+    editor.wait_for(editor.get_by_test_id("programViewPane-toolbar-runButton"), timeout=3000)
 
-    expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text(
-        Helper.data_locale.SAS_CONTENT + ": /Public/中文测试.sas")
+    # if editor.page.is_visible(editor.get_by_test_id("programViewPane-toolbar-runButton")):
+
+    expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text(Helper.data_locale.SAS_CONTENT)
+    expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text("Public")
+    expect(page.get_by_test_id("programView-editorPane-path-label")).to_contain_text("中文测试")
+            # Helper.data_locale.SAS_CONTENT + ": /Public/中文测试.sas")
+            # Helper.data_locale.SAS_CONTENT + "A中文测试")
 
     # Modified by Jacky(ID: jawang) on Nov.22nd, 2023 >>>

@@ -10,8 +10,12 @@ from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
 from src.Pages.StudioNext.Dialog.customcode_dialog import CustomCodeDialog
 from src.Pages.Common.menu_page import MenuPage
 
-def test_init(page,init):
+
+def test_init(page, init):
     PageHelper.init_environments(page)
+
+
+# @pytest.mark.skipif(True, reason="Invisible code in all editor text-areas. SASSTUDIO-45556 SASSTUDIO-45562")
 def test_01_sas_program_editor_context_menu(page, init):
     """
     Test context menu in text area
@@ -31,7 +35,6 @@ def test_01_sas_program_editor_context_menu(page, init):
     sas_program_editor.fill_text_area_with(sas_program)
     # sas_program_editor.click_context_menu_by_right_click()
     # MenuPage(page).screenshot_self("editor_context_menu")
-
 
     # Click Run from context menu
     sas_program_editor.click_context_menu(sas_program_editor.div_first_line, Helper.data_locale.RUN)
