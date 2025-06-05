@@ -82,7 +82,12 @@ def test_04_whats_new_dialog(page, init):
     whats_new_dialog = Dialog(page)
 
     whats_new_dialog.page.wait_for_load_state("load")
+
+    # zh-CN
     expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("新功能")
+
+    # en-US
+    # expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("What's New")
 
     # whats_new_dialog.wait_for_page_load()
     # whats_new_dialog.key_press("Escape")
