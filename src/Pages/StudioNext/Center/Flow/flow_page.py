@@ -186,7 +186,8 @@ class FlowPage(MainCenterPage):
             case FlowNodeType.table:
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.TABLE)
             case FlowNodeType.file:
-                self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.FILE)
+                Helper.logger.debug("Step node FILE has been removed.")
+                # self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.FILE)
             case FlowNodeType.branch_rows:
                 self.toolbar.click_btn_menu_by_test_id(data_testid, Helper.data_locale.BRANCH_ROWS)
             case FlowNodeType.calculate_columns:

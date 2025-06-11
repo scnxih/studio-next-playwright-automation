@@ -476,7 +476,7 @@ def test_11_insert_list_numeric_stepper_and_move_duplicate_copy_paste(page, init
     designer_numeric_stepper2.move_to_section(Helper.data_locale.NEW_SECTION)
     time.sleep(1)
 
-    designer_list1.move_to_page(Helper.data_locale.NEW_PAGE)
+    designer_numeric_stepper2.move_to_page(Helper.data_locale.NEW_PAGE)
     time.sleep(1)
     whole.screenshot_self("01")
     custom_step.prt_scn("01")
