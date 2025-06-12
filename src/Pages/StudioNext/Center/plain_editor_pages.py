@@ -7,9 +7,11 @@ Date: September 5th, 2023
 from src.Pages.StudioNext.Center.base_editor import BaseEditor
 from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Utilities.enums import TopMenuItem
+
 # ADDED
 """<<< Added by Jacky(ID: jawang) on Sept.7th, 2023 """
 from src.Pages.StudioNext.Dialog.autoexec_dialog import AutoexecDialog
+
 # from src.Helper.page_helper import PageHelper
 """ Added by Jacky(ID: jawang) on Sept.7th, 2023 >>>"""
 
@@ -29,11 +31,14 @@ class TextEditor(BaseEditor):
 class WorkspaceEditor(BaseEditor):
     pass
 
+
 class AutoExecEditor(BaseEditor):
     pass
 
+
 class CustomCodeEditor(BaseEditor):
     pass
+
 
 class PlainEditorFactory:
     def create_editor(self, editor_type, page):

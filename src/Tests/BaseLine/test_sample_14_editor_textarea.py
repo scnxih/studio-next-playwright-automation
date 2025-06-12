@@ -17,6 +17,7 @@ def test_init(page, init):
     PageHelper.init_environments(page)
 
 
+@pytest.mark.skipif(True, reason="Duplicate of src/Tests/BaseLine/test_sample_13_editor_save_files.py")
 def test_01_central_editors(page, init):
     """
     Fill the central editor with text
@@ -24,7 +25,7 @@ def test_01_central_editors(page, init):
     :param init:
     :return:
     """
-    folder_path = ["SAS 内容", "Public"]
+    folder_path = Helper.public_folder_path
     # folder_path = ["SAS Content", "Public"]
 
     sas_program_editor = PageHelper.create_program_editor_factory().create_program_editor("sas_program", page)
@@ -51,6 +52,8 @@ def test_01_central_editors(page, init):
     wksp_editor.fill_text_area_with("This is workspace file.")
     wksp_editor.save_file(folder_path, "plain_factory_workspace_file.workspace", True)
 
+    PageHelper.close_all_tabs(page)
+
 
 def test_02_autoexec_editor(page, init):
     """
@@ -60,6 +63,7 @@ def test_02_autoexec_editor(page, init):
     :return:
     """
     PageHelper.click_options(page, TopMenuItem.options_autoexec_file)
+    autoexec_dialog = AutoexecDialog(page)
     autoexec_editor = PageHelper.create_plain_editor_factory().create_editor("autoexec", page)
     # autoexec_editor.fill_text_area_with(text)
     autoexec_editor.editor_text_area.human_mimic_typing("%macro print_current_date_with_weekday;\n")
@@ -76,7 +80,7 @@ def test_02_autoexec_editor(page, init):
     autoexec_editor.editor_text_area.human_mimic_typing("\n")
     autoexec_editor.editor_text_area.human_mimic_typing("%print_current_date_with_weekday;\n")
 
-    autoexec_dialog = AutoexecDialog(page)
+    # autoexec_dialog = AutoexecDialog(page)
     autoexec_dialog.run()
     autoexec_dialog.click_tab_log()
     autoexec_dialog.selfie('autoexec_log')

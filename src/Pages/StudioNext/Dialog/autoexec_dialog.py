@@ -101,8 +101,17 @@ class AutoexecDialog(Dialog):
         # self.fill(self.textarea, text)
 
     def run(self):
-        self.click(self.btn_run)
-        self.wait_for_page_load()
+        self.click_dialog_title_or_studionext_header()
+
+        if self.btn_run.is_enabled():
+            Helper.logger.debug("Enabled Run button")
+            self.click(self.btn_run)
+            self.wait_for_page_load()
+        else:
+            Helper.logger.debug("Disabled Run button")
+            self.close_dialog()
+
+        Helper.logger.debug("Exit Autoexec run")
 
     def save(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.SAVE))
