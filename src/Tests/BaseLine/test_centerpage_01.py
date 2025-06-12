@@ -145,6 +145,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("Enter")
 
     editor.format_program()
+    editor.click_dialog_title_or_studionext_header()
     editor.wait_for_page_load()
     editor.prt_scn('00')
 
@@ -156,6 +157,7 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     page1.keyboard.press("End")
     page1.keyboard.press("Enter")
     page1.keyboard.press("Enter")
+    editor.wait_for_page_load()
 
     # Replaced with press_consequentially
     editor.editor.human_mimic_typing("\n/* --- Mimic Human Typing --- */\n")
@@ -181,12 +183,16 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
         editor.undo()
         editor.wait_for_page_load()
 
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('03')
 
     for i in range(3):
         editor.redo()
         editor.wait_for_page_load()
 
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('04')
 
     editor.run(True)
@@ -195,6 +201,8 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     editor.format_program()
     editor.wait_for_page_load()
 
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('05')
 
     editor.wait_for_page_load()
@@ -202,16 +210,21 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
 
     # Added to eliminate noise caused by scrollbar
     editor.wait_for_page_load()
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('06')
 
     editor.copy_to_flow()
 
     editor.wait_for_page_load()
-
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('07')
 
     editor.wait_for_page_load()
     editor.add_to_snippets()
+    editor.click_dialog_title_or_studionext_header()
+    editor.wait_for_page_load()
     editor.prt_scn('08')
 
     editor.wait_for_page_load()

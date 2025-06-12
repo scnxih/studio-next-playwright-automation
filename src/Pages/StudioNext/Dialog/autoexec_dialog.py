@@ -175,7 +175,8 @@ class AutoexecDialog(Dialog):
         # Step-1: Click
         # NOTE: To avoid base_page.py/force_click problem, this wait_for is necessary.
         self.wait_for(textarea)
-        time.sleep(1)
+        self.click_dialog_title_or_studionext_header()
+        # time.sleep(1)
         self.force_click(textarea)
 
         # Step-2: Select all contents
@@ -191,6 +192,13 @@ class AutoexecDialog(Dialog):
         Clear contents in Autoexec dialog
         :return:
         """
+        if self.btn_run.is_disabled():
+            Helper.logger.debug("Disabled [Run] button in Autoexec dlg")
+            # return
+
+        else:
+            Helper.logger.debug("Enabled [Run] button in Autoexec dlg")
+            # return
 
         # Step-1: Switch to Code tab page
         self.click(self.tab_Code)
