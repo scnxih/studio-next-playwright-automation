@@ -394,8 +394,8 @@ def test_05_screenshot_top_menu_view(page, init):
 
     top.show_document_recovery()
     doc = DocumentRecoveryDialog(page)
-    time.sleep(1)
-
+    # time.sleep(1)
+    doc.wait_for_timeout(time_out=1000)
     # Original
     # doc.screenshot_self("document")
 
@@ -420,8 +420,8 @@ def test_05_screenshot_top_menu_view(page, init):
     doc.close_dialog()
 
     top.click_menu_item_view_navigation()
-    time.sleep(0.5)
-
+    # time.sleep(0.5)
+    MenuPage(page, data_test_id="appHeaderToolbar-navigationPanes-menu-content").wait_for_timeout(time_out=500)
     MenuPage(page, data_test_id="appHeaderToolbar-navigationPanes-menu-content").screenshot_self("navigation")
 
 
@@ -429,7 +429,8 @@ def test_06_screenshot_top_right_items(page, init):
     p: Page = page
     top = TopRightToolbar(page)
     top.click_search()
-    time.sleep(1)
+    # time.sleep(1)
+    Dialog(page).wait_for_timeout(time_out=3000)
 
     # Dialog(page).screenshot_self("search")
 
@@ -441,26 +442,30 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_unread_notifications()
-    time.sleep(1)
+    # time.sleep(1)
+    Dialog(page).wait_for_timeout(time_out=3000)
     Dialog(page).screenshot_self("unread_notification")
     Dialog(page).close_dialog()
 
     top.click_help()
-    time.sleep(1)
+    # time.sleep(1)
+    WholePage(page).wait_for_page_load(time_out=1000)
     WholePage(page).screenshot_self("help",
                                     mask=[
                                         "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
                                     mask_color='#000000')
 
-    time.sleep(1)
+    # time.sleep(1)
     top.click_new_features()
-    time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
+    # time.sleep(2)
     Dialog(page).screenshot_self("new_features")
 
     Dialog(page).close_dialog()
 
     top.click_about()
-    time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
+    # time.sleep(2)
     # Dialog(page).screenshot_self("about")
     Dialog(page).screenshot_self("about",
                                  mask=['//span[@id="release_sas_RC-about-field-0"]',
@@ -469,7 +474,8 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_manage_features()
-    time.sleep(2)
+    # time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
     Dialog(page).screenshot_self("manage_features")
     Dialog(page).screenshot_self("manage_features_clip",
                                  clip={'x': 196, 'y': 136, 'width': 1113, 'height': 679})
@@ -477,7 +483,8 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_user_option()
-    time.sleep(2)
+    # time.sleep(2)
+    WholePage(page).wait_for_page_load(time_out=3000)
 
     # WholePage(page).screenshot_self("user_option")
 
@@ -493,8 +500,9 @@ def test_06_screenshot_top_right_items(page, init):
 def test_07_mask(page, init):
     top_menu_page = TopMenuPage(page)
     top_menu_page.click_options(TopMenuItem.options_custom_code)
-    time.sleep(1)
+    # time.sleep(1)
     cus = CustomCodeDialog(page)
+    cus.wait_for_timeout(time_out=3000)
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
@@ -748,7 +756,7 @@ def test_09_accordion_steps(page, init):
     base: BasePage = BasePage(page)
     whole: WholePage = WholePage(page)
     PageHelper.show_accordion(page, AccordionType.steps)
-    time.sleep(1)
+    # time.sleep(1)
     # whole.screenshot_self("steps_pane")
     whole.screenshot_self("steps_pane",
                           mask=[
@@ -926,20 +934,28 @@ def test_10_flow_details_pane(page, init):
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
 
-    time.sleep(1)
+    # time.sleep(1)
     table = TablePane(page)
+    table.wait_for_timeout(time_out=3000)
     table.set_library("sashelp")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_table("class")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_node_name("class表")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_node_description("这是sashelp.class表。")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_notes("这是sashelp.class表的注释信息。")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.preview_data()
-    time.sleep(1)
+    # time.sleep(1)
+    table.wait_for_page_load()
+
     table.refresh_table()
 
 
