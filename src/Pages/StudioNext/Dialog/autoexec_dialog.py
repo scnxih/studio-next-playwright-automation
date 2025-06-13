@@ -125,31 +125,20 @@ class AutoexecDialog(Dialog):
         self.type_codes(text)
         Helper.logger.debug("complete type_codes:" + text)
         # time.sleep(1)
-        # Added by Jacky(ID: jawang) on Sept. 1st, 2023 '''
-        # self.generate_screenshot("//div[@data-testid='autoexecCodeEditor-editor']", inspect.currentframe().f_code.co_name)
-        # Added by Jacky(ID: jawang) on Sept. 1st, 2023 '''
 
-        # Added
-        # <<< by Jacky(ID: jawang) on Sept. 6th, 2023
         self.screenshot("//div[@data-testid='autoexecCodeEditor-editor']", "critical_user_autoexe")
-        # Added by Jacky(ID: jawang) on Sept. 6th, 2023 >>>
-
-        # ADDED
-        # Test __screenshot function with user assigned xpath
-        # <<< Added by Jacky(ID: jawang) on Sept.22nd, 2023
         self.screenshot("//div[@data-testid='basic-Dialog-header']", "uax_autoexec_header", user_assigned_xpath=True)
-        # Added by Jacky(ID: jawang) on Sept.22nd, 2023 >>>
+        self.wait_for_page_load()
 
-        time.sleep(1)
+        # time.sleep(1)
         self.run()
         Helper.logger.debug("complete run")
+        self.wait_for_page_load()
 
-        time.sleep(1)
+        # time.sleep(1)
         self.save()
         Helper.logger.debug("complete save")
 
-    # ADDED
-    # <<< Added by Jacky(ID: jawang) on Oct.27th, 2023
     def clear_for_editor(self, textarea):
         """
         Might be improved in the future.
@@ -215,9 +204,11 @@ class AutoexecDialog(Dialog):
 
     def turn_on_switch_button(self):
         self.switch_button.turn_on()
+        self.wait_for_page_load()
 
     def turn_off_switch_button(self):
         self.switch_button.turn_off()
+        self.wait_for_page_load()
 
     """Added by Alice on 09/19/2023 end"""
 
@@ -227,6 +218,8 @@ class AutoexecDialog(Dialog):
 
     def click_tab_log(self):
         self.click(self.tab_log)
+        self.wait_for_page_load()
 
     def click_tab_code(self):
         self.click(self.tab_Code)
+        self.wait_for_page_load()

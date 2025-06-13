@@ -264,22 +264,16 @@ def test_03_screenshot_navigation_panes(page, init):
 def test_04_screenshot_top_menu_options(page, init):
     top_menu_page: TopMenuPage = TopMenuPage(page)
     top_menu_page.click_options(TopMenuItem.options_autoexec_file)
-    time.sleep(1)
+
+    # time.sleep(1)
     auto = AutoexecDialog(page)
-
-    # Original
-    # auto.screenshot_self("auto_code")
-
-    # Mask the switch button to eliminate diffs
+    auto.wait_for_timeout(time_out=3000)
     auto.screenshot_self("auto_code",
                          mask=[auto.btn_bgSubmission_switch],
                          mask_color="#000000")
 
     auto.click_tab_log()
-    time.sleep(0.5)
-
-    # Original
-    # auto.screenshot_self("auto_log")
+    # time.sleep(0.5)
 
     auto.screenshot_self("auto_log",
                          mask=[auto.btn_bgSubmission_switch],
@@ -288,8 +282,10 @@ def test_04_screenshot_top_menu_options(page, init):
     auto.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_custom_code)
-    time.sleep(1)
+
     cus = CustomCodeDialog(page)
+    cus.wait_for_timeout(time_out=3000
+                         )
     cus.screenshot_self("custom_pre")
     cus.click_tab_postamble()
     time.sleep(0.5)
