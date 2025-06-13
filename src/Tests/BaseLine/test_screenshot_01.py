@@ -284,25 +284,29 @@ def test_04_screenshot_top_menu_options(page, init):
     top_menu_page.click_options(TopMenuItem.options_custom_code)
 
     cus = CustomCodeDialog(page)
-    cus.wait_for_timeout(time_out=3000
-                         )
+    cus.wait_for_timeout(time_out=3000)
     cus.screenshot_self("custom_pre")
+
     cus.click_tab_postamble()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     cus.screenshot_self("custom_post")
+
     cus.click_tab_option()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     cus.screenshot_self("custom_options")
+
     cus.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_manage_git_connections)
     git = ManageGitConnectionDialog(page)
-    time.sleep(0.5)
+    # time.sleep(0.5)
+    git.wait_for_timeout(time_out=3000)
     git.screenshot_self("git_profile")
     git.click_tab_repository()
     # Try to eliminate diff caused by focus indicator
     git.click_dialog_title_or_studionext_header()
-    time.sleep(1.0)
+    git.wait_for_page_load(time_out=3000)
+    # time.sleep(1.0)
     # //div[@data-testid="gitDialog-mgtConnection-spliter-splitterBar"]
     git.screenshot_self("git_repository")
 
@@ -310,8 +314,9 @@ def test_04_screenshot_top_menu_options(page, init):
 
     # Try to eliminate diff caused by focus indicator
     git.click_dialog_title_or_studionext_header()
+    git.wait_for_page_load(time_out=3000)
 
-    time.sleep(1.0)
+    # time.sleep(1.0)
     git.screenshot_self("git_options")
 
     git.close_dialog()

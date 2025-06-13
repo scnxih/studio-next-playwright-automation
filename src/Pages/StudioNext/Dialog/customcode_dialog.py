@@ -286,9 +286,12 @@ class CustomCodeDialog(Dialog):
 
     def click_tab_preamble(self):
         self.click(self.tab_preamble)
+        self.wait_for_page_load(time_out=3000)
 
     def click_tab_postamble(self):
         self.click(self.tab_postamble)
+        self.wait_for_page_load(time_out=3000)
 
     def click_tab_option(self):
         self.click(self.tab_vertical_option)
+        self.wait_for_page_load(time_out=3000)
