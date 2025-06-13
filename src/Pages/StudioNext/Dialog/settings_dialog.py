@@ -155,7 +155,8 @@ class SettingsDialog(Dialog):
             # alert = Alert(self.page, "重置为默认值")
 
             alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
-            time.sleep(1)
+            # time.sleep(1)
+            alert.wait_for_timeout(time_out=3000)
             if alert.is_open():
                 # alert.click_button_in_footer("重置")
                 alert.click_button_in_footer(Helper.data_locale.RESET)
@@ -501,7 +502,8 @@ class SettingsDialog(Dialog):
             self.enabled_reset_btn_in_current_tab_page.click()
 
             alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
-            time.sleep(1)
+            # time.sleep(1)
+            alert.wait_for_timeout(time_out=3000)
             if alert.is_open():
                 alert.click_button_in_footer(Helper.data_locale.RESET)
 
@@ -532,7 +534,8 @@ class SettingsDialog(Dialog):
             # Change to locale-dependent value
             # alert = Alert(self.page, "重置为默认值")
             alert = Alert(self.page, Helper.data_locale.RESET_TO_DEFAULT_VALUES)
-            time.sleep(1)
+            # time.sleep(1)
+            alert.wait_for_timeout(time_out=3000)
             if alert.is_open():
                 # alert.click_button_in_footer("重置")
                 alert.click_button_in_footer(Helper.data_locale.RESET)
@@ -598,7 +601,8 @@ class SettingsDialog(Dialog):
             self.click(self.locator('(//div[@role="treeitem"])[' + str(i) + ']'))
             # Formula: (xpath)[Number]
             # Exmaple: (//div[@role="treeitem"])[15]
-            time.sleep(2)
+            # time.sleep(2)
+            self.wait_for_page_load(time_out=3000)
 
             # Step-3: Click the reset button in the upper right corner
             # self.click_reset_button()
