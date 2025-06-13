@@ -74,7 +74,7 @@ def test_01_show_accordion_tab_labels(page, init):
     PageHelper.show_accordion(page, AccordionType.libraries)
     PageHelper.show_all_accordion(page)
 
-    time.sleep(3)
+    # time.sleep(3)
     # Click show tab labels in the right corner
     flow_page.tab_group.click_lower_right_show_corner_tab_labels_btn()
 

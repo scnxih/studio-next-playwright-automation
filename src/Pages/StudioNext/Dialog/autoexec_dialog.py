@@ -25,17 +25,8 @@ class AutoexecDialog(Dialog):
     def __init__(self, page):
         Dialog.__init__(self, page, Helper.data_locale.AUTOEXEC_FILE_F_Upper_Case)
         self.switch_button = SwitchButton(self.base_xpath, page)
-
-        # ADDED: Common Component-Code Editor Text Area
-        # <<< Added by Jacky(ID: jawang) on Sept.7th, 2023 """
         self.editor_text_area = EditorTextArea("", page)
-        # Added by Jacky(ID: jawang) on Sept.7th, 2023 >>>"""
-
-        # ADDED
-        # <<< Added by Jacky(ID: jawang) on Sept.12th, 2023 """
         self.tab_group = TabGroup("", page)
-        # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
-
 
     @property
     def time_info_in_log_tab(self):
