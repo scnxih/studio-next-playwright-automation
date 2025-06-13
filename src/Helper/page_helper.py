@@ -885,6 +885,7 @@ class PageHelper:
         PageHelper.clear_autoexec(page)
         PageHelper.switch_to_standard_perspective(page)
         PageHelper.reset_settings_dialog(page)
+        PageHelper.hide_all_accordion(page)
         PageHelper.hide_accordion_tab_labels(page)
 
     def reset_all_settings_dialog(page: Page):
