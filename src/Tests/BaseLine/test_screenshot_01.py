@@ -190,7 +190,8 @@ def test_01_screenshot_new_centerpages_more_options(page, init):
     MenuPage(page).screenshot_self("step_more_options")
 
 
-def test_02_screenshot_top_menu(page, init):
+@pytest.mark.skipif(True, reason="Works fine yet implemented hard-code pause")
+def test_11_screenshot_top_menu(page, init):
     top_menu_page: TopMenuPage = TopMenuPage(page)
     top_menu_page.click_menu_item_new()
     time.sleep(1)
@@ -344,7 +345,8 @@ def test_05_screenshot_top_menu_view(page, init):
 
     # Added Mask and Mask Color
     # src.Pages.StudioNext.Center.deployed_scheduled_job_page.DeployedScheduledJobPage.prt_scn
-    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page,
+                                                                                     TopMenuItem.view_deployed_and_scheduled_jobs)
     deployed_and_scheduled_jobs_page.prt_scn("deployed_and_scheduled_jobs_with_masks")
 
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
@@ -938,3 +940,44 @@ def test_10_flow_details_pane(page, init):
     table.preview_data()
     time.sleep(1)
     table.refresh_table()
+
+
+def test_02_screenshot_top_menu(page, init):
+    """
+    Same as src.Tests.BaseLine.test_screenshot_01.test_02_screenshot_top_menu
+    except dynamic waiting
+    """
+    top_menu_page: TopMenuPage = TopMenuPage(page)
+    top_menu_page.click_menu_item_new()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("new")
+
+    top_menu_page.click_menu_item_options()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("options")
+
+    top_menu_page.click_menu_item_view()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("view")
+
+    top_menu_page.click_menu_item_open()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    open_dlg = OpenDialog(page)
+    open_dlg.wait_for_timeout(time_out=1000)
+    # time.sleep(1)
+    open_dlg.screenshot_self("open_dialog")
+
+    open_dlg.close_dialog()
+    # time.sleep(1)
+    WholePage(page).wait_for_timeout(time_out=1000)
+    # WholePage(page).screenshot_self("close_open")
+    WholePage(page).screenshot_self("close_open",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')

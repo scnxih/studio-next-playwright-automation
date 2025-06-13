@@ -910,3 +910,19 @@ class PageHelper:
         # src.Pages.StudioNext.Center.start_page.StartPage
         PageHelper.show_start_page(page)
         StartPage(page).remove_all_recent_items()
+
+    @staticmethod
+    def remove_all_within_public(page: Page):
+        """
+        Remove all files and/or folders in SAS Content/Public
+        So that replace can be avoided and total running time shortened.
+        """
+        # Open SAS Content page
+        acc: AccordionPage = AccordionPage(page)
+        acc.show_accordion(AccordionType.sas_content)
+
+        # Navigate to /Public
+
+        # Remove files and/or folders in /Public
+
+
