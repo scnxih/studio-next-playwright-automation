@@ -899,16 +899,17 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
 
 
 def test_44_deployed_and_scheduled_job(page, init):
-    time.sleep(2)
-    # deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
-    #                                                                              TopMenuItem.view_deployed_and_scheduled_jobs)
+    """
 
+    """
+    PageHelper.hide_all_accordion(page)
     top = TopMenuPage(page)
+
     top.check_view_item(TopMenuItem.view_submission_status)
     deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
                                                                                  TopMenuItem.view_deployed_and_scheduled_jobs)
 
-    time.sleep(3)
+    deployed_page.wait_for_timeout(time_out=3000)
 
     deployed_page.tab_submissions.click()
     deployed_page.clear_all_completed_submissions()

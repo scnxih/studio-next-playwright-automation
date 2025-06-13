@@ -925,4 +925,16 @@ class PageHelper:
 
         # Remove files and/or folders in /Public
 
-
+    @staticmethod
+    def hide_all_accordion(page):
+        """
+        Hide all left accordions, so that noises can be avoided.
+        """
+        acc: AccordionPage = AccordionPage(page)
+        acc.hide_accordion(AccordionType.open_item)
+        acc.hide_accordion(AccordionType.sas_server)
+        acc.hide_accordion(AccordionType.sas_content)
+        acc.hide_accordion(AccordionType.steps)
+        acc.hide_accordion(AccordionType.snippets)
+        acc.hide_accordion(AccordionType.libraries)
+        acc.hide_accordion(AccordionType.git)

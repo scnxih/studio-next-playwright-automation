@@ -185,6 +185,28 @@ class AccordionPage(BasePage):
         # time.sleep(0.5)
         self.get_tab(accordion_type).page.wait_for_timeout(timeout=500)
 
+    def hide_accordion(self, accordion_type: AccordionType):
+        """
+        Hide Left Accordion to eliminate any possible noises.
+        """
+        pane: Locator = self.get_pane(accordion_type)
+        tab: Locator = self.get_tab(accordion_type)
+
+        if not self.is_visible(pane):
+            return
+
+        self.click(tab)
+
+        while True:
+            if not self.is_visible(pane):
+                break
+            self.click(tab)
+            # self.get_pane(accordion_type).page.wait_for_timeout(timeout=500)
+
+            # time.sleep(0.5)
+        # time.sleep(0.5)
+        # self.get_tab(accordion_type).page.wait_for_timeout(timeout=500)
+
     def collapse_all(self):
         self.toolbar.click_menu_in_more_options(Helper.data_locale.COLLAPSE_ALL)
 
