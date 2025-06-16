@@ -18,11 +18,13 @@ from src.Utilities.enums import SettingsTabPages
 from playwright.sync_api import Page, expect
 
 
+@pytest.mark.skipif(True, reason="No need to initilize, for all testcases run in Settings dialog")
 def test_init(page, init):
     PageHelper.init_environments(page)
 
 
 def test_01_reset_preference_dialog(page, init):
+# def test_01_reset_preference_dialog(page):
     """
     Change the language in Settings dialog and reset afterward
     :param page:
@@ -49,7 +51,8 @@ def test_01_reset_preference_dialog(page, init):
     setting_dialog.close_dialog()
 
 
-def test_02_none_modification_settings(page, init):
+# def test_02_none_modification_settings(page, init):
+def test_02_none_modification_settings(page):
     """
     Test if the reset method can work well if no modification has been made
     :param page:
@@ -77,7 +80,8 @@ def test_02_none_modification_settings(page, init):
     setting_dialog.close_dialog()
 
 
-def test_03_reset_region_and_language_settings(page, init):
+# def test_03_reset_region_and_language_settings(page, init):
+def test_03_reset_region_and_language_settings(page):
     """
     Reset settings in 'Region and Language' tab page
     :param page:
@@ -112,7 +116,8 @@ def test_03_reset_region_and_language_settings(page, init):
     setting_dialog.close_dialog()
 
 
-def test_04_reset_sas_studio_general_settings(page, init):
+# def test_04_reset_sas_studio_general_settings(page, init):
+def test_04_reset_sas_studio_general_settings(page):
     """
     Reset settings in 'SAS Studio/General' tab page
     :param page:
@@ -152,7 +157,8 @@ def test_04_reset_sas_studio_general_settings(page, init):
     setting_dialog.close_dialog()
 
 
-def test_05_reset_sas_studio_query_settings(page, init):
+# def test_05_reset_sas_studio_query_settings(page, init):
+def test_05_reset_sas_studio_query_settings(page):
     """
 
     :param page:

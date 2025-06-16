@@ -5,6 +5,7 @@ Contact: jiaqi.wang@sas.com
 Date: 2023/11/27 11:04 
 """
 import time
+import pytest
 
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
@@ -12,6 +13,7 @@ from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
 
 
+@pytest.mark.skipif(True, reason="No need to initilize, for all testcases run in Settings dialog")
 def test_init(page, init):
     PageHelper.init_environments(page)
 
@@ -39,7 +41,8 @@ def test_01_click_global_general_via_aria_xpath(page, init):
     setting_dialog.close_dialog()
 
 
-def test_02_click_sas_studio_general_via_aria_xpath(page, init):
+# def test_02_click_sas_studio_general_via_aria_xpath(page, init):
+def test_02_click_sas_studio_general_via_aria_xpath(page):
     """
 
     :param page:
@@ -76,7 +79,8 @@ def test_02_click_sas_studio_general_via_aria_xpath(page, init):
     setting_dialog.close_dialog()
 
 
-def test_03_click_tab_pages_via_aria_composation(page, init):
+# def test_03_click_tab_pages_via_aria_composation(page, init):
+def test_03_click_tab_pages_via_aria_composation(page):
     """
     Test aria-combination in Settingds dialog
     :param page:
@@ -123,7 +127,8 @@ def test_03_click_tab_pages_via_aria_composation(page, init):
     setting_dialog.close_dialog()
 
 
-def test_04_click_tab_pages_via_aria_composition(page, init):
+# def test_04_click_tab_pages_via_aria_composition(page, init):
+def test_04_click_tab_pages_via_aria_composition(page):
     # Step-1: Open Settings dialog
     top_right = TopRightToolbar(page)
     top_right.click_settings()

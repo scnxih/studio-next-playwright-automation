@@ -14,11 +14,13 @@ from src.Pages.StudioNext.Dialog.about_dialog import AboutDialog
 
 
 # \\huanghe\vtg\ECT\TESTCASE\SAS Studio\6.0\Automated\About0001_ShowAboutDialog.docx
+@pytest.mark.skipif(True, reason="No need for About dialog")
 def test_init(page, init):
     PageHelper.init_environments(page)
 
 
 def test_01_show_about_dialog(page, init):
+# def test_01_show_about_dialog(page):
     """
     Take a screenshot of the About dialog
     """
