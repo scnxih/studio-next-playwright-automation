@@ -1095,8 +1095,9 @@ run;
     PageHelper.close_all_tabs(page)
 
 
-# def test_48_run_big_program(page, init):
-def test_48_run_big_program(page):
+@pytest.mark.skipif(True, reason="Duplicate of src.Tests.BaseLine.test_centerpage_01.test_47_run_big_program")
+def test_48_run_big_program(page, init):
+    # def test_48_run_big_program(page):
     """
     Original
     """
@@ -1106,4 +1107,3 @@ def test_48_run_big_program(page):
     editor.run(True)
     time.sleep(2)
     PageHelper.close_all_tabs(page)
-
