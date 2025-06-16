@@ -1423,6 +1423,8 @@ class Data:
     REFRESH_SELECTION = "Refresh selection"
 
     RUN_NOW = "Run now"
+
+    INVALID = "invalid"
     """Added by Jacky end"""
 
     """Added by Percy start"""

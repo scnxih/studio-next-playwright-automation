@@ -4,6 +4,9 @@ from src.Pages.Common.text import *
 from src.Helper.page_factory import *
 from src.Pages.Common.whole_page import WholePage
 from src.Pages.StudioNext.Left.accordion_page import AccordionPage
+from src.Pages.Common.login_page import LoginPage
+from src.Pages.Common.singed_out_page import SignedOutPage
+from playwright.sync_api import Page, expect
 
 
 def test_init(page, init):
@@ -17,6 +20,50 @@ data test;
     set sashelp.class;
 run;'''
     PageHelper.type_code_in_codeeditor(page, text)
+
+
+# def test_00_logon(page, init):
+def test_00_logon(page):
+    """
+    Check logon & logout page
+    """
+    PageHelper.sign_out(page)
+
+    SignedOutPage(page).wait_for_page_load(time_out=3000)
+    SignedOutPage(page).prt_scn('logout')
+
+    expect(SignedOutPage(page).btn_sign_in).to_be_focused()
+
+    SignedOutPage(page).btn_sign_in.click()
+
+    LoginPage(page).prt_scn('sign_in')
+
+    expect(LoginPage(page).user_name).to_be_empty()
+    expect(LoginPage(page).user_name).to_be_editable()
+
+    expect(LoginPage(page).user_password).to_be_empty()
+    expect(LoginPage(page).user_password).to_be_editable()
+
+    expect(LoginPage(page).btn_submit).to_be_enabled()
+    expect(LoginPage(page).btn_compute_context).not_to_be_visible()
+
+    LoginPage(page).btn_submit.click()
+    expect(LoginPage(page).alert_message).to_contain_text(Helper.data_locale.PASSWORD)
+    expect(LoginPage(page).alert_message).to_contain_text(Helper.data_locale.USER_ID)
+    LoginPage(page).prt_scn('sign_in_wo_id')
+
+    LoginPage(page).user_name.fill(Helper.data_locale.USER_ID)
+    LoginPage(page).user_password.fill(Helper.data_locale.PASSWORD)
+    LoginPage(page).btn_submit.click()
+
+    LoginPage(page).alert_message.wait_for(timeout=3000)
+    expect(LoginPage(page).alert_message).to_contain_text(Helper.data_locale.PASSWORD)
+    expect(LoginPage(page).alert_message).to_contain_text(Helper.data_locale.USER_ID)
+    expect(LoginPage(page).alert_message).to_contain_text(Helper.data_locale.INVALID)
+
+    LoginPage(page).prt_scn('invalid_sign_in')
+
+    LoginPage(page).login_studionext()
 
 
 def test_01_type_code(page, init):
