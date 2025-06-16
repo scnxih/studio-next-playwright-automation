@@ -15,12 +15,13 @@ def test_init(page, init):
 
 
 # @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
-def test_23_download_with_default_setting(page, init):
+# def test_23_download_with_default_setting(page, init):
+def test_23_download_with_default_setting(page):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
 
-    editor.saveas(Helper.public_folder_path, "center01_test_28", True, True)
+    editor.saveas(Helper.public_folder_path, "center01_test_23", True, True)
 
     editor.run(True)
 
@@ -31,9 +32,11 @@ def test_23_download_with_default_setting(page, init):
     editor.download_ppt_file()
     editor.download_listing_file()
     editor.download_generated_data()
+    PageHelper.close_all_tabs(page)
 
 
-def test_24_central_toolbar_run_cancel_save_saveas(page, init):
+# def test_24_central_toolbar_run_cancel_save_saveas(page, init):
+def test_24_central_toolbar_run_cancel_save_saveas(page):
     """
     Supplemented a testcase to save files to SAS Server.
     
@@ -67,7 +70,7 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
                                      "print x;")
     editor.run(True, True)
 
-    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp", True, True)
+    editor.saveas(Helper.tmp_folder_path, "center_01_test_24-a", True, True)
 
     editor.editor.human_mimic_typing("\n")
     editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
@@ -78,13 +81,15 @@ def test_24_central_toolbar_run_cancel_save_saveas(page, init):
     editor.save()
     editor.run(True, True)
 
-    editor.saveas(Helper.tmp_folder_path, "test_sas_server_tmp2.sas", True, True)
+    editor.saveas(Helper.tmp_folder_path, "center_01_test_24-b.sas", True, True)
 
     # NOTE: Save again to SAS Content, otherwise position is incorrect.
-    editor.saveas(Helper.public_folder_path, "test.sas", True, True)
+    editor.saveas(Helper.public_folder_path, "center_01_test_24-c.sas", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_25_central_toolbar_run_cancel_save_saveas(page, init):
+# def test_25_central_toolbar_run_cancel_save_saveas(page, init):
+def test_25_central_toolbar_run_cancel_save_saveas(page):
     # Original
     WholePage(page).screenshot_self("login")
 
@@ -120,7 +125,7 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
                                      "print x;")
     editor.run(True)
 
-    editor.saveas(Helper.public_folder_path, "test.sas", True, True)
+    editor.saveas(Helper.public_folder_path, "center_01_test_25.sas", True, True)
 
     editor.editor.human_mimic_typing("\n")
     editor.editor.human_mimic_typing("\nproc print data=sashelp.class;"
@@ -129,10 +134,13 @@ def test_25_central_toolbar_run_cancel_save_saveas(page, init):
     SASProgramPage(page).format_program()
 
     editor.save()
-    editor.run(True)
+    editor.run(True, True)
+
+    PageHelper.close_all_tabs(page)
 
 
-def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
+# def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
+def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
 
@@ -258,8 +266,11 @@ def test_26_undo_redo_run_format_debug_codetoflow_snippets_clear(page, init):
     if WholePage(page).wait_toast_pop():
         editor.prt_scn('14')
 
+    PageHelper.close_all_tabs(page)
 
-def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
+
+# def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page, init):
+def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_to_my_favorites(page):
     """
     Run a *.sas program, then open summary/code/log/results/listing in a new tab.
     """
@@ -284,8 +295,11 @@ def test_27_run_open_in_browser_tab_schedule_as_job_analyze_and_create_flow_add_
     editor.open_in_browser_tab_results()
     editor.open_in_browser_tab_listing()
 
+    PageHelper.close_all_tabs(page)
 
-def test_28_run_download(page, init):
+
+# def test_28_run_download(page, init):
+def test_28_run_download(page):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
@@ -301,6 +315,7 @@ def test_28_run_download(page, init):
     editor.download_log_file_html()
     editor.download_log_file_text()
     editor.download_results_file()
+    PageHelper.close_all_tabs(page)
 
 
 # def test_29_tree_common_in_query(page, init):
@@ -326,7 +341,8 @@ def test_28_run_download(page, init):
 #     Alert(page).click_button_in_footer("关闭")
 
 
-def test_30_apply_detail_layout(page, init):
+# def test_30_apply_detail_layout(page, init):
+def test_30_apply_detail_layout(page):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("proc print data=sashelp.class;\n run;")
@@ -335,9 +351,11 @@ def test_30_apply_detail_layout(page, init):
     editor.apply_detail_layout_standard()
     editor.apply_detail_layout_horizontal()
     editor.apply_detail_layout_vertical()
+    PageHelper.close_all_tabs(page)
 
 
-def test_31_show_or_hide_details_tab(page, init):
+# def test_31_show_or_hide_details_tab(page, init):
+def test_31_show_or_hide_details_tab(page):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("proc print data=sashelp.class;\n run;")
@@ -354,30 +372,35 @@ def test_31_show_or_hide_details_tab(page, init):
     editor.show_detail_tabs_result()
     editor.show_detail_tabs_output_data()
     editor.show_detail_tabs_listing()
+    PageHelper.close_all_tabs(page)
 
 
-def test_32_close_all_tabs(page, init):
+# def test_32_close_all_tabs(page, init):
+def test_32_close_all_tabs(page):
     PageHelper.new_all_items(page)
     # PageHelper.new_item(page,TopMenuItem.new_quick_import)
     PageHelper.close_all_tabs(page)
 
 
-def test_33_email_refresh(page, init):
+# def test_33_email_refresh(page, init):
+def test_33_email_refresh(page):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("proc print data = sashelp.class;run;")
     editor.reload()
     editor.run(True, True)
     editor.email()
+    PageHelper.close_all_tabs(page)
 
 
-def test_34_sas_program(page, init):
+# def test_34_sas_program(page, init):
+def test_34_sas_program(page):
     sas_program: SASProgramPage = PageHelper.new_item(page, TopMenuItem.new_sas_program)
     sas_program.editor.type_into_text_area("proc print data = sashelp.class;run;")
     sas_program.run(True)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    sas_program.saveas(Helper.public_folder_path, "test_sas_program.sas", True, True)
+    sas_program.saveas(Helper.public_folder_path, "center_01_test_34.sas", True, True)
     sas_program.schedule_as_job()
     sas_program.analyze_and_create_flow()
     sas_program.add_to_my_favorites()
@@ -435,9 +458,11 @@ def test_34_sas_program(page, init):
     sas_program.clear_output_data()
     sas_program.clear_code()
     sas_program.clear_all()
+    PageHelper.close_all_tabs(page)
 
 
-def test_35_python(page, init):
+# def test_35_python(page, init):
+def test_35_python(page):
     python_program: PythonProgramPage = PageHelper.new_item(page, TopMenuItem.new_python_program)
 
     # Former Version
@@ -463,7 +488,7 @@ def test_35_python(page, init):
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
     # Thursday, Feb 13, 2025
-    python_program.saveas(Helper.tmp_folder_path, "test_python_program_sas_server_tmp.py", True, True)
+    python_program.saveas(Helper.tmp_folder_path, "center_01_test_35.py", True, True)
 
     python_program.schedule_as_job()
     python_program.add_to_my_favorites()
@@ -524,10 +549,12 @@ def test_35_python(page, init):
     python_program.clear_output_data()
     python_program.clear_code()
     python_program.clear_all()
-    python_program.saveas(Helper.public_folder_path, "test_python_program.py", True, True)
+    python_program.saveas(Helper.public_folder_path, "center_01_test_35.py", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_36_flow(page, init):
+# def test_36_flow(page, init):
+def test_36_flow(page):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.add_node(FlowNodeType.table)
     flow.add_node(FlowNodeType.file)
@@ -557,7 +584,7 @@ def test_36_flow(page, init):
     # flow.background_submit()
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    flow.saveas(Helper.tmp_folder_path, "test_flow_server_tmp", True, True)
+    flow.saveas(Helper.tmp_folder_path, "center_01_test_36", True, True)
 
     flow.copy_step()
     flow.paste_step()
@@ -608,7 +635,8 @@ def test_36_flow(page, init):
     flow.apply_main_layout_standard()
     flow.apply_main_layout_horizontal()
     flow.reload()
-    flow.saveas(Helper.public_folder_path, "test_flow_content_punlic", True, True)
+    flow.saveas(Helper.public_folder_path, "center_01_test_36_public", True, True)
+    PageHelper.close_all_tabs(page)
 
 
 # def test_37_query(page, init):
@@ -670,7 +698,8 @@ def test_36_flow(page, init):
 #     query.show_detail_tabs_output_data()
 
 
-def test_38_quick_import(page, init):
+# def test_38_quick_import(page, init):
+def test_38_quick_import(page):
     quick_import: QuickImportPage = PageHelper.new_item(page, TopMenuItem.new_quick_import)
 
     # Changed on Friday, Feb 21, 2025
@@ -723,12 +752,14 @@ def test_38_quick_import(page, init):
     quick_import.show_detail_tabs_submitted_code()
     quick_import.show_detail_tabs_result()
     quick_import.show_detail_tabs_output_data()
+    PageHelper.close_all_tabs(page)
 
 
-def test_39_JsonPage(page, init):
+# def test_39_JsonPage(page, init):
+def test_39_JsonPage(page):
     json: JsonPage = PageHelper.new_item(page, TopMenuItem.new_file_types_json)
     json.editor.type_into_text_area('''{"type":"json file","name":"json example"}''')
-    json.saveas(Helper.public_folder_path, "test_json.json", True, True)
+    json.saveas(Helper.public_folder_path, "center_01_test_39-a", True, True)
 
     json.wait_for_page_load()
 
@@ -739,15 +770,17 @@ def test_39_JsonPage(page, init):
     json.open_in_browser_tab()
     json.email()
     json.reload()
-    json.saveas(Helper.tmp_folder_path, "test_json", True, True)
+    json.saveas(Helper.tmp_folder_path, "center_01_test_39-b", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_40_TextPage(page, init):
+# def test_40_TextPage(page, init):
+def test_40_TextPage(page):
     text: TextPage = PageHelper.new_item(page, TopMenuItem.new_file_types_text)
     text.editor.type_into_text_area('This is text file.')
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    text.saveas(Helper.public_folder_path, "test_text.txt", True, True)
+    text.saveas(Helper.public_folder_path, "center_01_test_40-a", True, True)
     text.wait_for_page_load()
     text.undo()
     text.redo()
@@ -756,15 +789,17 @@ def test_40_TextPage(page, init):
     text.open_in_browser_tab()
     text.email()
     text.reload()
-    text.saveas(Helper.tmp_folder_path, "test_text", True, True)
+    text.saveas(Helper.tmp_folder_path, "center_01_test_40-b", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_41_XMLPage(page, init):
+# def test_41_XMLPage(page, init):
+def test_41_XMLPage(page):
     xml: XMLPage = PageHelper.new_item(page, TopMenuItem.new_file_types_xml)
     xml.editor.type_into_text_area('<?xml version="1.0" encoding="UTF-8"?>')
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    xml.saveas(Helper.public_folder_path, "test_xml_content_public", True, True)
+    xml.saveas(Helper.public_folder_path, "center_01_test_41-a", True, True)
     xml.wait_for_page_load()
     xml.undo()
     xml.redo()
@@ -773,15 +808,17 @@ def test_41_XMLPage(page, init):
     xml.open_in_browser_tab()
     xml.email()
     xml.reload()
-    xml.saveas(Helper.tmp_folder_path, "test_xml_server_tmp", True, True)
+    xml.saveas(Helper.tmp_folder_path, "center_01_test_41-b", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_42_WorkSapcePage(page, init):
+# def test_42_WorkSapcePage(page, init):
+def test_42_WorkSapcePage(page):
     work_space: WorkspacePage = PageHelper.new_item(page, TopMenuItem.new_file_types_workspace)
     work_space.editor.type_into_text_area('This is work space file.')
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
     # folder_path = ["SAS Content", "Public"]
-    work_space.saveas(Helper.public_folder_path, "test_workspace.workspace", True, True)
+    work_space.saveas(Helper.public_folder_path, "center_01_test_42-a", True, True)
     work_space.wait_for_page_load()
     work_space.undo()
     work_space.redo()
@@ -790,10 +827,12 @@ def test_42_WorkSapcePage(page, init):
     work_space.open_in_browser_tab()
     work_space.email()
     work_space.reload()
-    work_space.saveas(Helper.tmp_folder_path, "test_workspace", True, True)
+    work_space.saveas(Helper.tmp_folder_path, "center_01_test_42-b", True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_43_check_uncheck_menu_items_in_view(page, init):
+# def test_43_check_uncheck_menu_items_in_view(page, init):
+def test_43_check_uncheck_menu_items_in_view(page):
     top = TopMenuPage(page)
     top.check_view_item(TopMenuItem.view_submission_status)
     deployed_page: DeployedScheduledJobPage = PageHelper.check_menu_item_in_view(page,
@@ -896,9 +935,11 @@ def test_43_check_uncheck_menu_items_in_view(page, init):
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_clinical_repositories)
 
     PageHelper.show_accordion(page, AccordionType.open_item)
+    PageHelper.close_all_tabs(page)
 
 
-def test_44_deployed_and_scheduled_job(page, init):
+# def test_44_deployed_and_scheduled_job(page, init):
+def test_44_deployed_and_scheduled_job(page):
     """
 
     """
@@ -935,14 +976,16 @@ def test_44_deployed_and_scheduled_job(page, init):
     deployed_page.refresh_list()
     deployed_page.column_setting()
     """
+    PageHelper.close_all_tabs(page)
 
 
-def test_45_startup_initialization_log(page, init):
+# def test_45_startup_initialization_log(page, init):
+def test_45_startup_initialization_log(page):
     startup_page = PageHelper.show_view_startup_initialization_log(page)
     folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
 
     # NOTE: Saving initialization file does not work at the moment
-    startup_page.saveas(Helper.public_folder_path, "startup_initialization_log", True, True)
+    startup_page.saveas(Helper.public_folder_path, "center_01_test_45", True, True)
     startup_page.add_to_my_favorites()
 
     # Used the one with screenshot function
@@ -952,12 +995,14 @@ def test_45_startup_initialization_log(page, init):
     startup_page.prt_scn("open_in_browser_tab_page_masked")
     startup_page.email()
     startup_page.reload()
+    PageHelper.close_all_tabs(page)
 
 
-def test_46_job_definition(page, init):
+# def test_46_job_definition(page, init):
+def test_46_job_definition(page):
     job_page: JobDefinitionPage = PageHelper.new_item(page, TopMenuItem.new_job_definition)
     # folder_path = [Helper.data_locale.SAS_CONTENT, "Public"]
-    job_page.saveas(Helper.public_folder_path, "JobDefinition", True, True)
+    job_page.saveas(Helper.public_folder_path, "center_01_test46_JobDefinition", True, True)
 
     #
 
@@ -980,10 +1025,12 @@ def test_46_job_definition(page, init):
     job_page.apply_main_layout_horizontal()
     job_page.apply_main_layout_vertical()
     job_page.reload()
-    job_page.saveas(Helper.public_folder_path, 'JobDefinition', True, True)
+    job_page.saveas(Helper.public_folder_path, 'center_01_test46_JobDefinition', True, True)
+    PageHelper.close_all_tabs(page)
 
 
-def test_47_run_big_program(page, init):
+# def test_47_run_big_program(page, init):
+def test_47_run_big_program(page):
     """
     Mimic long-time execution
     """
@@ -1045,9 +1092,11 @@ run;
     editor.run(True)
     time.sleep(2)
     editor.prt_scn('long_time_execution')
+    PageHelper.close_all_tabs(page)
 
 
-def test_48_run_big_program(page, init):
+# def test_48_run_big_program(page, init):
+def test_48_run_big_program(page):
     """
     Original
     """
@@ -1056,3 +1105,5 @@ def test_48_run_big_program(page, init):
     editor.editor.type_into_text_area("data null; call sleep(5,1);run;")
     editor.run(True)
     time.sleep(2)
+    PageHelper.close_all_tabs(page)
+
