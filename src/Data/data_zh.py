@@ -1435,6 +1435,8 @@ class DataZH(Data):
     DELETE_SUBMITTED_JOB = "删除已提交的作业"
 
     INVALID = "无效"
+
+    DISCARD_AND_EXIT = "放弃并退出"
     """Added by Jacky end"""
 
     """Added by Percy start"""

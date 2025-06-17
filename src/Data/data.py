@@ -1425,6 +1425,9 @@ class Data:
     RUN_NOW = "Run now"
 
     INVALID = "invalid"
+
+    DISCARD_AND_EXIT = "Discard and exit"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""

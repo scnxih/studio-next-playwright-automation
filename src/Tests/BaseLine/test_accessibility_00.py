@@ -85,7 +85,7 @@ def test_04_whats_new_dialog(page):
     top_right.click_new_features()
     whats_new_dialog = Dialog(page)
 
-    whats_new_dialog.page.wait_for_load_state("load")
+    whats_new_dialog.wait_for_timeout(time_out=3000)
 
     # zh-CN
     expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("新功能")
