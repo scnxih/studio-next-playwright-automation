@@ -55,7 +55,8 @@ def test_01_central_editors(page, init):
     PageHelper.close_all_tabs(page)
 
 
-def test_02_autoexec_editor(page, init):
+# def test_02_autoexec_editor(page, init):
+def test_02_autoexec_editor(page):
     """
     Test editor Autoexec editor
     :param page:
@@ -84,7 +85,9 @@ def test_02_autoexec_editor(page, init):
     autoexec_dialog.run()
     autoexec_dialog.click_tab_log()
     autoexec_dialog.selfie('autoexec_log')
-    autoexec_dialog.save()
+
+    # Clear code
+    autoexec_dialog.clear_autoexec_thru_keyboard()
 
 
 def test_03_custom_code_editor(page, init):
