@@ -2,10 +2,12 @@ from src.Helper.page_helper import PageHelper, Helper
 from src.Pages.Common.login_page import LoginPage
 from src.Pages.Common.singed_out_page import SignedOutPage
 from src.Pages.StudioNext.Center.Flow.flow_page import FlowPage
+from src.Pages.StudioNext.Top.top_menu_page import TopMenuPage
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import TopMenuItem, FlowNodeType
 from playwright.sync_api import expect
 from src.Pages.Common.dialog import Alert
+from src.Pages.StudioNext.Center.start_page import StartPage
 
 
 def test_init(page, init):
@@ -63,7 +65,6 @@ def test_02_logout_wo_save(page, init):
     LoginPage(page).login_studionext()
 
 
-
 def test_03_logout_wo_save(page, init):
     flow: FlowPage = PageHelper.new_item(page, TopMenuItem.new_flow)
     flow.add_node(FlowNodeType.table)
@@ -104,3 +105,15 @@ def test_03_logout_wo_save(page, init):
     expect(LoginPage(page).btn_compute_context).not_to_be_visible()
 
     LoginPage(page).login_studionext()
+
+
+def test_04_tab_for_new_flow_tab(page, init):
+    """
+    SASSTUDIO-28847
+    With new flow, focus does not move to the tab header
+    https://rndjira.sas.com/browse/SASSTUDIO-28847
+    """
+    top = TopMenuPage(page)
+    top.check_view_item(TopMenuItem.view_start_page)
+    StartPage(page).wait_for_timeout(time_out=3000)
+    StartPage(page).build_a_flow()
