@@ -8,7 +8,7 @@ from src.Utilities.enums import TopMenuItem, FlowNodeType
 from playwright.sync_api import expect
 from src.Pages.Common.dialog import Alert
 from src.Pages.StudioNext.Center.start_page import StartPage
-
+from src.Pages.StudioNext.Center.main_center_page import MainCenterPage
 
 def test_init(page, init):
     PageHelper.init_environments(page)
@@ -117,3 +117,9 @@ def test_04_tab_for_new_flow_tab(page, init):
     top.check_view_item(TopMenuItem.view_start_page)
     StartPage(page).wait_for_timeout(time_out=3000)
     StartPage(page).build_a_flow()
+
+    MainCenterPage(page).wait_for_timeout(time_out=3000)
+
+    # tab of newly created flow
+    # XPATH: //div[@role='tab'][contains(@aria-label, 'flw')]
+    expect(MainCenterPage(page).tab_group.locate_xpath("//div[@role='tab'][contains(@aria-label, 'flw')]")).to_be_focused()
