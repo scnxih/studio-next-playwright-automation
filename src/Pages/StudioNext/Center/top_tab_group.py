@@ -11,7 +11,11 @@ class TopTabGroup(BasePage):
                                                                                           "@data-testid='tab-group-bar-_root_']]")
 
     def close_all_tabs(self):
-        if self.is_visible(self.tab_group.first_tab_page()):
+        # original
+        # if self.is_visible(self.tab_group.first_tab_page()):
+
+        # Revised on June 18, 2025
+        while self.is_visible(self.tab_group.first_tab_page()):
             # Original
             # self.click_context_menu_by_right_click(self.tab_group.first_tab_page(), Helper.data_locale.CLOSE_ALL)
 
