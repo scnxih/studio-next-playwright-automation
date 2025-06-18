@@ -1591,5 +1591,8 @@ class DataZH(Data):
     DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST="显示因子负荷（最大绝对负荷最先显示）"
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="不显示小的相关和因子负荷"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="要显示的最小因子负荷或相关"
+    NUMBER_OF_BINS="箱数"
+    SAVE_BINNED_DATA="保存分箱数据"
+    WINSOR_RATE="缩尾率"
     """Added by Percy end"""
 
