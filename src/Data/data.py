@@ -1585,4 +1585,7 @@ class Data:
     DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST="Display factor loadings with largest absolute loading first"
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="Do not display small correlations and factor loadings"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="Minimum factor loading or correlation to display"
+    NUMBER_OF_BINS="Number of bins"
+    SAVE_BINNED_DATA="Save binned data"
+    WINSOR_RATE="Winsor rate"
     """Added by Percy end"""
