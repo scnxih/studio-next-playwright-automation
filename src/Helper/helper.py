@@ -30,7 +30,7 @@ class Helper:
 
     # ADDED
     # BEGIN <<< Added by Jacky(ID: jawang) on September 12th, 2024
-    public_folder_path = [data_locale.SAS_CONTENT, "Public", "temp"]
+    public_folder_path = [data_locale.SAS_CONTENT, "Public"]
     # END Added by Jacky(ID: jawang) on September 12th, 2024 >>>
 
     # ADDED

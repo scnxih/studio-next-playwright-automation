@@ -880,7 +880,7 @@ class PageHelper:
 
     @staticmethod
     def init_environments(page: Page):
-        PageHelper.create_temp_folder(page)
+        # PageHelper.create_temp_folder(page)  # NOT WORK
         PageHelper.remove_all_recent_items_in_start_page(page)
         PageHelper.clear_customcode(page)
         PageHelper.clear_autoexec(page)
