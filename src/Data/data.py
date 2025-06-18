@@ -1009,6 +1009,8 @@ class Data:
     MINIMUM_POWER = "Minimum power"
     MAXIMUM_POWER = "Maximum power"
     SAMPLE_SIZE_BY_EFFECT_SIZE_PLOT = "Sample size by effect size plot"
+    MAP_INPUT_DATA = "Map Input Data"
+    MAP_RESPONSE_DATA = "Map Response Data"
     """Added by Dommy end"""
 
     """Added by Frank start"""

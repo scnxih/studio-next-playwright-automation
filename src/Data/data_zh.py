@@ -1014,6 +1014,8 @@ class DataZH(Data):
     MINIMUM_POWER = "最小功效"
     MAXIMUM_POWER = "最大功效"
     SAMPLE_SIZE_BY_EFFECT_SIZE_PLOT = "“效应大小-样本大小”图"
+    MAP_INPUT_DATA = "地图输入数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
 
     """Added by Dommy end"""
 
