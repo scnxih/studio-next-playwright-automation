@@ -15,6 +15,12 @@ class StartPage(CenterPage):
 
     # //div[contains(@class, "StartViewPane-RightView_list-full")]
     # [../../../descendant::span[text()="最近"]]
+    @property
+    def button_links_build_a_flow(self):
+        """
+
+        """
+        return self.locate_xpath("//button[@id='flow']")
 
     @property
     def recent_files_list(self):
@@ -64,4 +70,10 @@ class StartPage(CenterPage):
             Helper.logger.debug("[Remova all] 'Recents' list")
         else:
             Helper.logger.debug("Unavailable 'Recent' list")
+
+    def build_a_flow(self):
+        """
+
+        """
+        self.button_links_build_a_flow.click()
 

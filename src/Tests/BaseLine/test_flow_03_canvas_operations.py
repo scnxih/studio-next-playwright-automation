@@ -58,11 +58,16 @@ def test_01_flow_canvas_select_node_table_file_branchrows_calculatecolumns(page,
                                      mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
 
+    '''
+    # Step node FILE has been removed.
     select_node_in_flow_canvas(page, Helper.data_locale.FILE)
     time.sleep(1)
     CenterPage(page).screenshot_self("selected_file",
                                      mask=[flow.toolbar.btn_by_title(Helper.data_locale.PREVIEW_CODE)],
                                      mask_color="#000000")
+    
+    '''
+
 
     select_node_in_flow_canvas(page, Helper.data_locale.BRANCH_ROWS)
     time.sleep(1)

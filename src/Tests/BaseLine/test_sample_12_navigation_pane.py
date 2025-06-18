@@ -4,18 +4,20 @@ Author: Jacky(Jiaqi) Wang
 Contact: jiaqi.wang@sas.com
 Date: 2023/11/27 11:28 
 """
+import pytest
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
 from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 
 from src.Utilities.enums import SettingsTabPages
 
-
+@pytest.mark.skipif(True, reason="No need to initilize, for all testcases run in Settings dialog")
 def test_init(page, init):
     PageHelper.init_environments(page)
 
 
 def test_01_click_tab_pages_via_navigation_pane(page, init):
+# def test_01_click_tab_pages_via_navigation_pane(page):
     """
     Test tab-page navigation by using encapsulated navigation pane
     :param page:
@@ -58,7 +60,8 @@ def test_01_click_tab_pages_via_navigation_pane(page, init):
     setting_dialog.close_dialog()
 
 
-def test_02_count_expand_icons(page, init):
+# def test_02_count_expand_icons(page, init):
+def test_02_count_expand_icons(page):
     """
     Test counting the number of expand icons
     :param page:
@@ -77,7 +80,8 @@ def test_02_count_expand_icons(page, init):
     setting_dialog.close_dialog()
 
 
-def test_03_expand_collapse_icons(page, init):
+# def test_03_expand_collapse_icons(page, init):
+def test_03_expand_collapse_icons(page):
     """
     Test collapse and expand icons
     :param page:
@@ -100,7 +104,8 @@ def test_03_expand_collapse_icons(page, init):
     setting_dialog.close_dialog()
 
 
-def test_04_iterate_thru_tree_items(page, init):
+# def test_04_iterate_thru_tree_items(page, init):
+def test_04_iterate_thru_tree_items(page):
     """
     Tried to iterate thru tree-items.
     :param pange:
@@ -125,7 +130,8 @@ def test_04_iterate_thru_tree_items(page, init):
     setting_dialog.close_dialog()
 
 
-def test_05_reset_settingds_with_iteration(page, init):
+# def test_05_reset_settingds_with_iteration(page, init):
+def test_05_reset_settingds_with_iteration(page):
     """
 
     :param page:

@@ -25,17 +25,8 @@ class AutoexecDialog(Dialog):
     def __init__(self, page):
         Dialog.__init__(self, page, Helper.data_locale.AUTOEXEC_FILE_F_Upper_Case)
         self.switch_button = SwitchButton(self.base_xpath, page)
-
-        # ADDED: Common Component-Code Editor Text Area
-        # <<< Added by Jacky(ID: jawang) on Sept.7th, 2023 """
         self.editor_text_area = EditorTextArea("", page)
-        # Added by Jacky(ID: jawang) on Sept.7th, 2023 >>>"""
-
-        # ADDED
-        # <<< Added by Jacky(ID: jawang) on Sept.12th, 2023 """
         self.tab_group = TabGroup("", page)
-        # Added by Jacky(ID: jawang) on Sept.12th, 2023 >>>"""
-
 
     @property
     def time_info_in_log_tab(self):
@@ -101,8 +92,17 @@ class AutoexecDialog(Dialog):
         # self.fill(self.textarea, text)
 
     def run(self):
-        self.click(self.btn_run)
-        self.wait_for_page_load()
+        self.click_dialog_title_or_studionext_header()
+
+        if self.btn_run.is_enabled():
+            Helper.logger.debug("Enabled Run button")
+            self.click(self.btn_run)
+            self.wait_for_page_load()
+        else:
+            Helper.logger.debug("Disabled Run button")
+            self.close_dialog()
+
+        Helper.logger.debug("Exit Autoexec run")
 
     def save(self):
         self.click(self.btn_in_dialog_footer(Helper.data_locale.SAVE))
@@ -125,31 +125,20 @@ class AutoexecDialog(Dialog):
         self.type_codes(text)
         Helper.logger.debug("complete type_codes:" + text)
         # time.sleep(1)
-        # Added by Jacky(ID: jawang) on Sept. 1st, 2023 '''
-        # self.generate_screenshot("//div[@data-testid='autoexecCodeEditor-editor']", inspect.currentframe().f_code.co_name)
-        # Added by Jacky(ID: jawang) on Sept. 1st, 2023 '''
 
-        # Added
-        # <<< by Jacky(ID: jawang) on Sept. 6th, 2023
         self.screenshot("//div[@data-testid='autoexecCodeEditor-editor']", "critical_user_autoexe")
-        # Added by Jacky(ID: jawang) on Sept. 6th, 2023 >>>
-
-        # ADDED
-        # Test __screenshot function with user assigned xpath
-        # <<< Added by Jacky(ID: jawang) on Sept.22nd, 2023
         self.screenshot("//div[@data-testid='basic-Dialog-header']", "uax_autoexec_header", user_assigned_xpath=True)
-        # Added by Jacky(ID: jawang) on Sept.22nd, 2023 >>>
+        self.wait_for_page_load()
 
-        time.sleep(1)
+        # time.sleep(1)
         self.run()
         Helper.logger.debug("complete run")
+        self.wait_for_page_load()
 
-        time.sleep(1)
+        # time.sleep(1)
         self.save()
         Helper.logger.debug("complete save")
 
-    # ADDED
-    # <<< Added by Jacky(ID: jawang) on Oct.27th, 2023
     def clear_for_editor(self, textarea):
         """
         Might be improved in the future.
@@ -166,7 +155,8 @@ class AutoexecDialog(Dialog):
         # Step-1: Click
         # NOTE: To avoid base_page.py/force_click problem, this wait_for is necessary.
         self.wait_for(textarea)
-        time.sleep(1)
+        self.click_dialog_title_or_studionext_header()
+        # time.sleep(1)
         self.force_click(textarea)
 
         # Step-2: Select all contents
@@ -182,6 +172,13 @@ class AutoexecDialog(Dialog):
         Clear contents in Autoexec dialog
         :return:
         """
+        if self.btn_run.is_disabled():
+            Helper.logger.debug("Disabled [Run] button in Autoexec dlg")
+            # return
+
+        else:
+            Helper.logger.debug("Enabled [Run] button in Autoexec dlg")
+            # return
 
         # Step-1: Switch to Code tab page
         self.click(self.tab_Code)
@@ -207,9 +204,11 @@ class AutoexecDialog(Dialog):
 
     def turn_on_switch_button(self):
         self.switch_button.turn_on()
+        self.wait_for_page_load()
 
     def turn_off_switch_button(self):
         self.switch_button.turn_off()
+        self.wait_for_page_load()
 
     """Added by Alice on 09/19/2023 end"""
 
@@ -219,6 +218,8 @@ class AutoexecDialog(Dialog):
 
     def click_tab_log(self):
         self.click(self.tab_log)
+        self.wait_for_page_load()
 
     def click_tab_code(self):
         self.click(self.tab_Code)
+        self.wait_for_page_load()

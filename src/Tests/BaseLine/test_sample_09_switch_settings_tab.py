@@ -6,6 +6,7 @@ Date: 2023/11/27 10:15
 """
 
 import time
+import pytest
 
 from src.Helper.page_helper import PageHelper
 from src.Pages.StudioNext.Dialog.settings_dialog import SettingsDialog
@@ -14,11 +15,13 @@ from src.Pages.StudioNext.Top.top_right_toolbar import TopRightToolbar
 from src.Utilities.enums import SettingsTabPages
 
 
+@pytest.mark.skipif(True, reason="No need to initilize, for all testcases run in Settings dialog")
 def test_init(page, init):
     PageHelper.init_environments(page)
 
 
 def test_06_switch_to_global_general_tab_page(page, init):
+# def test_06_switch_to_global_general_tab_page(page):
     """
     Switch to Global/General tab page
     :param page:
@@ -46,7 +49,8 @@ def test_06_switch_to_global_general_tab_page(page, init):
     setting_dialog.close_dialog()
 
 
-def test_07_switch_to_all_tab_pages(page, init):
+# def test_07_switch_to_all_tab_pages(page, init):
+def test_07_switch_to_all_tab_pages(page):
     """
     Test switch to tab page methods
     NOTE: Two General tab pages are hard-coded, whereas other tab pages are accesed through tab page text.

@@ -190,7 +190,8 @@ def test_01_screenshot_new_centerpages_more_options(page, init):
     MenuPage(page).screenshot_self("step_more_options")
 
 
-def test_02_screenshot_top_menu(page, init):
+@pytest.mark.skipif(True, reason="Works fine yet implemented hard-code pause")
+def test_11_screenshot_top_menu(page, init):
     top_menu_page: TopMenuPage = TopMenuPage(page)
     top_menu_page.click_menu_item_new()
     time.sleep(1)
@@ -230,55 +231,49 @@ def test_03_screenshot_navigation_panes(page, init):
 
     acc: AccordionPage = AccordionPage(page)
     acc.show_accordion(AccordionType.open_item)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("open_item")
     acc.show_accordion(AccordionType.sas_server)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("sas_server")
     acc.show_accordion(AccordionType.sas_content)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("sas_content")
     acc.show_accordion(AccordionType.steps)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("steps")
     acc.show_accordion(AccordionType.snippets)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("snippets")
     acc.show_accordion(AccordionType.libraries)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("libraries")
     acc.show_accordion(AccordionType.git)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("git")
     # Jan 20 2025
     # acc.show_accordion(AccordionType.clinical_repository)
     # SASSTUDIO-42024 Clinical Repository navigation pane should not appear if unlicensed/no permissions
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("clinical_repository")
     acc.show_accordion(AccordionType.file_references)
-    time.sleep(1)
+    # time.sleep(1)
     acc.screenshot_self("file_reference")
 
 
 def test_04_screenshot_top_menu_options(page, init):
     top_menu_page: TopMenuPage = TopMenuPage(page)
     top_menu_page.click_options(TopMenuItem.options_autoexec_file)
-    time.sleep(1)
+
+    # time.sleep(1)
     auto = AutoexecDialog(page)
-
-    # Original
-    # auto.screenshot_self("auto_code")
-
-    # Mask the switch button to eliminate diffs
+    auto.wait_for_timeout(time_out=3000)
     auto.screenshot_self("auto_code",
                          mask=[auto.btn_bgSubmission_switch],
                          mask_color="#000000")
 
     auto.click_tab_log()
-    time.sleep(0.5)
-
-    # Original
-    # auto.screenshot_self("auto_log")
+    # time.sleep(0.5)
 
     auto.screenshot_self("auto_log",
                          mask=[auto.btn_bgSubmission_switch],
@@ -287,25 +282,31 @@ def test_04_screenshot_top_menu_options(page, init):
     auto.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_custom_code)
-    time.sleep(1)
+
     cus = CustomCodeDialog(page)
+    cus.wait_for_timeout(time_out=3000)
     cus.screenshot_self("custom_pre")
+
     cus.click_tab_postamble()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     cus.screenshot_self("custom_post")
+
     cus.click_tab_option()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     cus.screenshot_self("custom_options")
+
     cus.close_dialog()
 
     top_menu_page.click_options(TopMenuItem.options_manage_git_connections)
     git = ManageGitConnectionDialog(page)
-    time.sleep(0.5)
+    # time.sleep(0.5)
+    git.wait_for_timeout(time_out=3000)
     git.screenshot_self("git_profile")
     git.click_tab_repository()
     # Try to eliminate diff caused by focus indicator
     git.click_dialog_title_or_studionext_header()
-    time.sleep(1.0)
+    git.wait_for_page_load(time_out=3000)
+    # time.sleep(1.0)
     # //div[@data-testid="gitDialog-mgtConnection-spliter-splitterBar"]
     git.screenshot_self("git_repository")
 
@@ -313,8 +314,9 @@ def test_04_screenshot_top_menu_options(page, init):
 
     # Try to eliminate diff caused by focus indicator
     git.click_dialog_title_or_studionext_header()
+    git.wait_for_page_load(time_out=3000)
 
-    time.sleep(1.0)
+    # time.sleep(1.0)
     git.screenshot_self("git_options")
 
     git.close_dialog()
@@ -344,7 +346,8 @@ def test_05_screenshot_top_menu_view(page, init):
 
     # Added Mask and Mask Color
     # src.Pages.StudioNext.Center.deployed_scheduled_job_page.DeployedScheduledJobPage.prt_scn
-    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page, TopMenuItem.view_deployed_and_scheduled_jobs)
+    deployed_and_scheduled_jobs_page: DeployedScheduledJobPage = PageHelper.new_item(page,
+                                                                                     TopMenuItem.view_deployed_and_scheduled_jobs)
     deployed_and_scheduled_jobs_page.prt_scn("deployed_and_scheduled_jobs_with_masks")
 
     WholePage(page).screenshot_self("deployed_and_scheduled_jobs",
@@ -391,8 +394,8 @@ def test_05_screenshot_top_menu_view(page, init):
 
     top.show_document_recovery()
     doc = DocumentRecoveryDialog(page)
-    time.sleep(1)
-
+    # time.sleep(1)
+    doc.wait_for_timeout(time_out=1000)
     # Original
     # doc.screenshot_self("document")
 
@@ -417,8 +420,8 @@ def test_05_screenshot_top_menu_view(page, init):
     doc.close_dialog()
 
     top.click_menu_item_view_navigation()
-    time.sleep(0.5)
-
+    # time.sleep(0.5)
+    MenuPage(page, data_test_id="appHeaderToolbar-navigationPanes-menu-content").wait_for_timeout(time_out=500)
     MenuPage(page, data_test_id="appHeaderToolbar-navigationPanes-menu-content").screenshot_self("navigation")
 
 
@@ -426,7 +429,8 @@ def test_06_screenshot_top_right_items(page, init):
     p: Page = page
     top = TopRightToolbar(page)
     top.click_search()
-    time.sleep(1)
+    # time.sleep(1)
+    Dialog(page).wait_for_timeout(time_out=3000)
 
     # Dialog(page).screenshot_self("search")
 
@@ -438,26 +442,30 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_unread_notifications()
-    time.sleep(1)
+    # time.sleep(1)
+    Dialog(page).wait_for_timeout(time_out=3000)
     Dialog(page).screenshot_self("unread_notification")
     Dialog(page).close_dialog()
 
     top.click_help()
-    time.sleep(1)
+    # time.sleep(1)
+    WholePage(page).wait_for_page_load(time_out=1000)
     WholePage(page).screenshot_self("help",
                                     mask=[
                                         "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]"],
                                     mask_color='#000000')
 
-    time.sleep(1)
+    # time.sleep(1)
     top.click_new_features()
-    time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
+    # time.sleep(2)
     Dialog(page).screenshot_self("new_features")
 
     Dialog(page).close_dialog()
 
     top.click_about()
-    time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
+    # time.sleep(2)
     # Dialog(page).screenshot_self("about")
     Dialog(page).screenshot_self("about",
                                  mask=['//span[@id="release_sas_RC-about-field-0"]',
@@ -466,7 +474,8 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_manage_features()
-    time.sleep(2)
+    # time.sleep(2)
+    Dialog(page).wait_for_timeout(time_out=3000)
     Dialog(page).screenshot_self("manage_features")
     Dialog(page).screenshot_self("manage_features_clip",
                                  clip={'x': 196, 'y': 136, 'width': 1113, 'height': 679})
@@ -474,7 +483,8 @@ def test_06_screenshot_top_right_items(page, init):
     Dialog(page).close_dialog()
 
     top.click_user_option()
-    time.sleep(2)
+    # time.sleep(2)
+    WholePage(page).wait_for_page_load(time_out=3000)
 
     # WholePage(page).screenshot_self("user_option")
 
@@ -490,8 +500,9 @@ def test_06_screenshot_top_right_items(page, init):
 def test_07_mask(page, init):
     top_menu_page = TopMenuPage(page)
     top_menu_page.click_options(TopMenuItem.options_custom_code)
-    time.sleep(1)
+    # time.sleep(1)
     cus = CustomCodeDialog(page)
+    cus.wait_for_timeout(time_out=3000)
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
     cus.screenshot_self("custom_pre", mask=[cus.tab_Code, cus.tab_log, cus.tab_preamble, cus.btn_save])
@@ -745,7 +756,7 @@ def test_09_accordion_steps(page, init):
     base: BasePage = BasePage(page)
     whole: WholePage = WholePage(page)
     PageHelper.show_accordion(page, AccordionType.steps)
-    time.sleep(1)
+    # time.sleep(1)
     # whole.screenshot_self("steps_pane")
     whole.screenshot_self("steps_pane",
                           mask=[
@@ -923,18 +934,67 @@ def test_10_flow_details_pane(page, init):
     flow.apply_flow_layout_vertical()
     flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
 
-    time.sleep(1)
+    # time.sleep(1)
     table = TablePane(page)
+    table.wait_for_timeout(time_out=3000)
     table.set_library("sashelp")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_table("class")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_node_name("class表")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_node_description("这是sashelp.class表。")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.set_notes("这是sashelp.class表的注释信息。")
-    time.sleep(1)
+    table.wait_for_page_load()
+    # time.sleep(1)
     table.preview_data()
-    time.sleep(1)
+    # time.sleep(1)
+    table.wait_for_page_load()
+
     table.refresh_table()
+
+
+def test_02_screenshot_top_menu(page, init):
+    """
+    Same as src.Tests.BaseLine.test_screenshot_01.test_02_screenshot_top_menu
+    except dynamic waiting
+    """
+    top_menu_page: TopMenuPage = TopMenuPage(page)
+    top_menu_page.click_menu_item_new()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("new")
+
+    top_menu_page.click_menu_item_options()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("options")
+
+    top_menu_page.click_menu_item_view()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    MenuPage(page).screenshot_self("view")
+
+    top_menu_page.click_menu_item_open()
+    # time.sleep(1)
+    MenuPage(page).wait_for_timeout(time_out=1000)
+    open_dlg = OpenDialog(page)
+    open_dlg.wait_for_timeout(time_out=1000)
+    # time.sleep(1)
+    open_dlg.screenshot_self("open_dialog")
+
+    open_dlg.close_dialog()
+    # time.sleep(1)
+    WholePage(page).wait_for_timeout(time_out=1000)
+    # WholePage(page).screenshot_self("close_open")
+    WholePage(page).screenshot_self("close_open",
+                                    mask=[
+                                        "//button[@type='button'][.//span[contains(text(), '" + Helper.data_locale.OPERATE_RECOVERY + "')]]",
+                                        '//span[contains(@class,"BaseButton" )][contains(text(), "列")]',
+                                        '//button[@data-testid="programViewPane-toolbar-runButton"]'],
+                                    mask_color='#000000')

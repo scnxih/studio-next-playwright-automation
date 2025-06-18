@@ -24,6 +24,13 @@ class LoginPage(BasePage):
         return self.locate_xpath(
             '//button[@aria-disabled="false"][@data-testid="appHeaderToolbar-studioActiveServerButton"]')
 
+    @property
+    def alert_message(self):
+        """
+        Alert message 'Please enter a user ID and password.'
+        """
+        return self.locate_xpath("//div[@role='alert'][@id='message']")
+
     def _login(self):
         # Original
         url = "https://3xdaily.pgc.unx.sas.com/SASStudio/"
@@ -68,3 +75,15 @@ class LoginPage(BasePage):
 
     def force_login(self):
         self._login()
+
+    def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
+        """
+        Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
+        so that masks can be added, removed and modified in the same place.
+        """
+
+        Helper.logger.debug("Enter Logon page print screen ...")
+
+        self.screenshot("//div[@class='content']", pic_name, user_assigned_xpath=True, clip=clip)
+
+        Helper.logger.debug("... Exit Logon page print screen")

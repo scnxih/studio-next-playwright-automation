@@ -219,25 +219,38 @@ class CustomCodeDialog(Dialog):
 
         :return:
         """
+        if self.btn_run.is_disabled():
+            Helper.logger.debug("Disabled [Run] button in Custom Code dlg")
+            # return
+
+        else:
+            Helper.logger.debug("Enabled [Run] button in Custom Code dlg")
+            # return
+
         # Step-1: Clear Code Tab Page
         self.wait_for(self.tab_Code)
         # time.sleep(1)
+
         self.click(self.tab_Code)
-        time.sleep(0.5)
+        # time.sleep(0.5)
+        self.wait_for_page_load()
 
         # Step-2: Clear contents in editor
         self.clear_custom_code_editor_thru_keyboard(self.textarea)
-        time.sleep(0.5)
+        # time.sleep(0.5)
+        self.wait_for_page_load()
 
         # Step-3: Switch to the other tab page
         self.click(self.tab_vertical_back)
 
         self.click(self.tab_Code)
-        time.sleep(0.5)
+        # time.sleep(0.5)
+        self.wait_for_page_load()
 
         # Step-4: Clearn contents in editor
         self.clear_custom_code_editor_thru_keyboard(self.textarea)
-        time.sleep(0.5)
+        # time.sleep(0.5)
+        self.wait_for_page_load()
 
         self.save()
 
@@ -273,9 +286,12 @@ class CustomCodeDialog(Dialog):
 
     def click_tab_preamble(self):
         self.click(self.tab_preamble)
+        self.wait_for_page_load(time_out=3000)
 
     def click_tab_postamble(self):
         self.click(self.tab_postamble)
+        self.wait_for_page_load(time_out=3000)
 
     def click_tab_option(self):
         self.click(self.tab_vertical_option)
+        self.wait_for_page_load(time_out=3000)

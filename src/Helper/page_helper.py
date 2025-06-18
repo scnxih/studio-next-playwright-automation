@@ -885,6 +885,7 @@ class PageHelper:
         PageHelper.clear_autoexec(page)
         PageHelper.switch_to_standard_perspective(page)
         PageHelper.reset_settings_dialog(page)
+        PageHelper.hide_all_accordion(page)
         PageHelper.hide_accordion_tab_labels(page)
 
     def reset_all_settings_dialog(page: Page):
@@ -910,3 +911,31 @@ class PageHelper:
         # src.Pages.StudioNext.Center.start_page.StartPage
         PageHelper.show_start_page(page)
         StartPage(page).remove_all_recent_items()
+
+    @staticmethod
+    def remove_all_within_public(page: Page):
+        """
+        Remove all files and/or folders in SAS Content/Public
+        So that replace can be avoided and total running time shortened.
+        """
+        # Open SAS Content page
+        acc: AccordionPage = AccordionPage(page)
+        acc.show_accordion(AccordionType.sas_content)
+
+        # Navigate to /Public
+
+        # Remove files and/or folders in /Public
+
+    @staticmethod
+    def hide_all_accordion(page):
+        """
+        Hide all left accordions, so that noises can be avoided.
+        """
+        acc: AccordionPage = AccordionPage(page)
+        acc.hide_accordion(AccordionType.open_item)
+        acc.hide_accordion(AccordionType.sas_server)
+        acc.hide_accordion(AccordionType.sas_content)
+        acc.hide_accordion(AccordionType.steps)
+        acc.hide_accordion(AccordionType.snippets)
+        acc.hide_accordion(AccordionType.libraries)
+        acc.hide_accordion(AccordionType.git)

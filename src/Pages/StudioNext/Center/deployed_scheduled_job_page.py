@@ -111,7 +111,6 @@ class DeployedScheduledJobPage(CenterPage):
         self.click_context_menu_by_right_click(Helper.data_locale.DELETE_SUBMITTED_JOB)
         self.wait_for_page_load()
 
-
     def prt_scn(self, pic_name, clip=None, mask=None, mask_color=None):
         """
         Overwrite the screenshot_self function in src.Pages.Common.base_page.BasePage.screenshot_self
@@ -123,9 +122,7 @@ class DeployedScheduledJobPage(CenterPage):
         self.click_dialog_title_or_studionext_header()
 
         self.screenshot("//div[@id='app']", pic_name, user_assigned_xpath=True, clip=clip,
-                        mask=[self.locator(
-                            '//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')] +
-                             self.mask_last_refresh_label_time,  # self.mask_deployed_and_scheduled_jobs_treegrid,
+                        mask=[self.mask_deployed_and_scheduled_jobs_treegrid, self.locator('//div[@data-landmark-label="' + Helper.data_locale.STATUS_BAR + '"]')] + self.mask_last_refresh_label_time,
                         mask_color='#F5F4F6')
 
     def run_now(self):

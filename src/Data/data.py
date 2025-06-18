@@ -67,7 +67,7 @@ class Data:
     DEPLOYED_AND_SCHEDULED_JOBS = "Deployed and scheduled jobs"
     COMMAND = "Command"
     CONSOLE = "Console"
-    START_PAGE = "Start Page"
+    START_PAGE = "Start page"
     NAVIGATION_PANES = "Navigation panes"
     DOCUMENT_RECOVERY = "Document recovery"
     STARTUP_INITIALIZATION_LOG = "Startup initialization log"
@@ -221,7 +221,7 @@ class Data:
 
     """Add by Alice on 09/22/2023 Start"""
     USE_ANOTHER_SESSION_BRG_SUBMISSION = "Submit the program in the background using another session."
-    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio Next - Develop Code and Flows"
+    STUDIO_NEXT_DEV_CODE_AND_FLOW = "SAS® Studio - Develop Code and Flows"
     UNDO = "Undo"
     REDO = "Redo"
     FORMAT_PROGRAM = "Format program"
@@ -1423,6 +1423,11 @@ class Data:
     REFRESH_SELECTION = "Refresh selection"
 
     RUN_NOW = "Run now"
+
+    INVALID = "invalid"
+
+    DISCARD_AND_EXIT = "Discard and exit"
+
     """Added by Jacky end"""
 
     """Added by Percy start"""
