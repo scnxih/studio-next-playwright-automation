@@ -7,6 +7,7 @@ from src.Data.elements_ids import *
 from src.Pages.Common.dialog import *
 from src.Pages.Common.treegrid import *
 from src.Pages.Common.button import *
+from src.Pages.Common.grid import *
 import time
 
 
@@ -35,13 +36,10 @@ class SelectColumnDialog(Dialog):
         self.fill_input_search(col_name)
         self.key_press("Enter")
         time.sleep(1)
-        if self.is_visible(self.col_treegrid.row_in_treegrid(name_text=col_name)):
-            self.col_treegrid.select_a_row(name_text=col_name)
+        self.col_treegrid.select_a_row(name_text=col_name)
 
-            self.click_button_in_footer(Helper.data_locale.OK)
+        self.click_button_in_footer(Helper.data_locale.OK)
 
-        else:
-            Helper.logger.debug("The column is not exist, please provide an existing column name.")
 
     """Added by Alice on July 31, 2024 start"""
     def set_check_in_a_row(self,col_name:str):
