@@ -112,9 +112,9 @@ class StandardizeData(BasicStepPane):
 
         if item_index != None:
             get_radio_group(self.base_xpath, self.page,
-                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'要包括的变量')]]]").set_check_for_index(index=item_index)
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'"+ Helper.data_locale.VARIABLES_TO_INCLUDE +"')]]]").set_check_for_index(index=item_index)
 
         if item_value != None:
             get_radio_group(self.base_xpath, self.page,
-                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'要包括的变量')]]]").set_check(text=item_value)
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'"+ Helper.data_locale.VARIABLES_TO_INCLUDE +"')]]]").set_check(text=item_value)
         
