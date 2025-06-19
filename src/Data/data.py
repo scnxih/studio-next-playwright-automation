@@ -1442,6 +1442,7 @@ class Data:
     INVALID = "invalid"
 
     DISCARD_AND_EXIT = "Discard and exit"
+    STEP_COMMUNITY_DETECTION = "Community Detection"
 
     """Added by Jacky end"""
 

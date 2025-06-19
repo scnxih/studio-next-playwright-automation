@@ -1453,6 +1453,7 @@ class DataZH(Data):
     INVALID = "无效"
 
     DISCARD_AND_EXIT = "放弃并退出"
+    STEP_COMMUNITY_DETECTION = "社区发现"
     """Added by Jacky end"""
 
     """Added by Percy start"""
