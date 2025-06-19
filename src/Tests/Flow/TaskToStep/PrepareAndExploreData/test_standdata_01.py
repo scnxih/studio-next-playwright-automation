@@ -118,7 +118,7 @@ def test_03_standardize_data_in_flow_level1(page, init):
     standardize_data.set_tuning_constant("3.5")
 
     standardize_data.click_output_tab()
-    standardize_data.set_specify_prefix_radiobutton(item_index=1)
+    standardize_data.set_specify_prefix_radiobutton(item_value="指定前缀以重命名原始变量")
     standardize_data.set_prefix_for_original_variables(input_text="测试")
     standardize_data.set_specify_data_to_show(item_index=2)
     flow.run(False)
