@@ -813,6 +813,20 @@ class DataZH(Data):
     INTERVAL_INPUTS = '区间型输入'
     NORMINAL_INPUTS = '名义型输入'
     WEIGHT_VARIABLE = '权重变量'
+    RBF_BANDWIDTH_PARAMETER = 'RBF 带宽参数'
+    EXPECTED_OUTLIER_FRACTION = '期望的离群值小数'
+    SOLVER_TOLERANCE = '求解程序容差'
+    OPTIMIZATION_SOLVER = '优化求解程序'
+    STOCHASTIC_PARAMETERS = '随机参数'
+    MAXIMUM_SUPPORT_VECTORS = '最大支持向量数'
+    OBSERVATIONS_SAMPLED = '抽取的观测数'
+    THRESHOLD_TOLERANCE = '阈值容差'
+    CENTER_TOLERANCE = '中心容差'
+    CONVERGENCE_CRITERION = '收敛准则'
+    CREATE_SUPPORT_VECTORS_DATA = '创建支持向量数据'
+    SAVE_SCORING_MODEL = '保存评分模型'
+    INCLUDE_VARIABLES_FROM_THE_INPUT_DATA_SET = '包括输入数据集中的变量'
+    SUPPORT_VECTORS_DATA_TABLE = '支持向量数据表'
     """Added by Allison end"""
 
     """Added by Dommy start"""
