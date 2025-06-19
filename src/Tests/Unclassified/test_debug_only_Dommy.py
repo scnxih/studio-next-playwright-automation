@@ -11,10 +11,6 @@ from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
 
-
-
-
-
 def test_01_multiple_regression_statistical_power_in_flow_l0(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_STATISTICS,
