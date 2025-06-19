@@ -52,7 +52,7 @@ class MultipleRegressionStatisticalPowerPane(BasicStepPane):
         self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_FULL_MODEL_PREDICTORS, input_text=input_value)
 
     def set_number_of_reduced_model_predictors(self, input_value: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_REDUCED_MODEL_PREDICTORS, input_text=input_value)
+        self.set_text_for_text_control(parent_label=Helper.data_locale.NUMBER_OF_REDUCED_MODEL_PREDICTORS,input_text=input_value)
 
     def expand_windowshade_variance_accounted_for(self):
         self.expand_windowshade(parent_label=Helper.data_locale.VARIANCE_ACCOUNTED_FOR)
