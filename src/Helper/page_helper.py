@@ -880,7 +880,7 @@ class PageHelper:
 
     @staticmethod
     def init_environments(page: Page):
-        PageHelper.create_temp_folder(page)
+        # PageHelper.create_temp_folder(page)  # NOT WORK
         PageHelper.remove_all_recent_items_in_start_page(page)
         PageHelper.clear_customcode(page)
         PageHelper.clear_autoexec(page)
@@ -919,7 +919,7 @@ class PageHelper:
         Create temp folder under /Public to store all files
         """
         PageHelper.show_accordion(page, AccordionType.sas_content)
-        SASContentServerPage(page).delete_file([Helper.data_locale.SAS_CONTENT, "Public", "temp"])
+        # SASContentServerPage(page).delete_file([Helper.data_locale.SAS_CONTENT, "Public", "temp"])
         SASContentServerPage(page).new_folder("Toolbar", [Helper.data_locale.SAS_CONTENT, "Public"], 'temp')
 
     @staticmethod

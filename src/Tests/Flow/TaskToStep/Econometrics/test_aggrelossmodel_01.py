@@ -8,7 +8,6 @@ from src.Pages.StudioNext.Center.Flow.DetailsPane.Econometrics.aggregate_loss_mo
 from src.conftest import *
 from src.Helper.page_factory import *
 
-
 @pytest.mark.level0_step
 def test_01_new_severity_new_count(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
@@ -184,8 +183,7 @@ run;
     aggregate_pane.set_check_save_summary_statistics_of_aggregate_loss_sample_data()
     aggregate_pane.set_check_save_aggregate_loss_samples_data()
 
-
-
+    
 
 
 

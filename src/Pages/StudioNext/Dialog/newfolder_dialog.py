@@ -23,9 +23,16 @@ class NewFolderDialog(Dialog):
         self.input_folder_name.clear()
         self.fill(self.input_folder_name, folder_name)
         self.click_button_in_footer(Helper.data_locale.OK)
-        exist_alert = Alert(self.page, "SAS® Studio Next")
+
+        # Thursday, June 19, 2025,
+        # Title updated to current 'SAS Studio' from former 'SAS® Studio Next'.
+        # exist_alert = Alert(self.page, "SAS® Studio Next")
+
+        exist_alert = Alert(self.page, "SAS Studio")
         time.sleep(1)
         if exist_alert.is_open():
+            Helper.logger.debug("Path already exist.")
             exist_alert.click_button_in_footer(Helper.data_locale.CLOSE)
-            time.sleep(1)
+            # time.sleep(1)
+            self.wait_for_page_load(time_out=3000)
             self.click_button_in_footer(Helper.data_locale.CANCEL)

@@ -38,14 +38,14 @@ class RadioGroup(CommonComponent):
         return _is_div_class_contains_selected(div_class)
 
     def set_check(self, text):
-        if self.is_checked(text):
-            return
+        # if self.is_checked(text):
+        #     return
         self.click(self.div_radio_item(text))
 
     # index starts from 0.
     def set_check_for_index(self, index: int):
-        if self.is_checked_for_index(index):
-            return
+        # if self.is_checked_for_index(index):
+        #     return
         self.click(self.div_radio_item_for_index(index))
 
     def get_radio_items_count(self):
