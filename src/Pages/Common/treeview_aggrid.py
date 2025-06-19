@@ -126,17 +126,3 @@ class TreeViewAGGrid(CommonComponent):
     def navigate_to_element_and_dblclick(self, element_path: list):
         element = self.navigate_to_element(element_path)
         self.dblclick(element)
-
-    """Added by Frank at 2025/6/9 Begin"""
-
-    def grid_row(self, row_id: str):
-        if Helper.if_contain_quotation(row_id):
-            escaped_text = Helper.escape_quotation_for_xpath(row_id)
-            return self.locate_xpath(f"//div[@role='row'][@row-id='{escaped_text}']")
-        else:
-            return self.locate_xpath(f"//div[@role='row'][@row-id='{row_id}']")
-
-    def select_a_grid_row(self, row_id: str):
-        self.grid_row(row_id).click()
-
-    """Added by Frank at 2025/6/9 End"""
