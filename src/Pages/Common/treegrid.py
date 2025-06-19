@@ -14,7 +14,7 @@ class TreeGrid(CommonComponent):
     """Added by Alice on 15/09/2023"""
 
     def set_base_xpath(self):
-        self.base_xpath += "//div[@role='treegrid']"
+        self.base_xpath += "//div[@role='grid'or @role='treegrid']"
 
     """Modified by Alice on 15/09/2023"""
 

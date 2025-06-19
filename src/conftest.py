@@ -23,6 +23,9 @@ def page():
         browser = pw_objects[2]
         yield page
         # PageHelper.init_environments(page)
+        Helper.logger.debug('CONFIG MESSAGE::: A NEW MODULE')
+        # PageHelper.create_temp_folder(page)
+        Helper.logger.debug('CONFIG MESSAGE::: CREATED PATH: PUBLIC/TEMP/')
         PageHelper.sign_out(page)
         page.close()
         context.close()

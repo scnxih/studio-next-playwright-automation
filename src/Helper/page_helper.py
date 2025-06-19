@@ -880,6 +880,7 @@ class PageHelper:
 
     @staticmethod
     def init_environments(page: Page):
+        # PageHelper.create_temp_folder(page)  # NOT WORK
         PageHelper.remove_all_recent_items_in_start_page(page)
         PageHelper.clear_customcode(page)
         PageHelper.clear_autoexec(page)
@@ -913,18 +914,13 @@ class PageHelper:
         StartPage(page).remove_all_recent_items()
 
     @staticmethod
-    def remove_all_within_public(page: Page):
+    def create_temp_folder(page):
         """
-        Remove all files and/or folders in SAS Content/Public
-        So that replace can be avoided and total running time shortened.
+        Create temp folder under /Public to store all files
         """
-        # Open SAS Content page
-        acc: AccordionPage = AccordionPage(page)
-        acc.show_accordion(AccordionType.sas_content)
-
-        # Navigate to /Public
-
-        # Remove files and/or folders in /Public
+        PageHelper.show_accordion(page, AccordionType.sas_content)
+        SASContentServerPage(page).delete_file([Helper.data_locale.SAS_CONTENT, "Public", "temp"])
+        SASContentServerPage(page).new_folder("Toolbar", [Helper.data_locale.SAS_CONTENT, "Public"], 'temp')
 
     @staticmethod
     def hide_all_accordion(page):

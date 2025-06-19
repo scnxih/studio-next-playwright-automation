@@ -813,6 +813,20 @@ class DataZH(Data):
     INTERVAL_INPUTS = '区间型输入'
     NORMINAL_INPUTS = '名义型输入'
     WEIGHT_VARIABLE = '权重变量'
+    RBF_BANDWIDTH_PARAMETER = 'RBF 带宽参数'
+    EXPECTED_OUTLIER_FRACTION = '期望的离群值小数'
+    SOLVER_TOLERANCE = '求解程序容差'
+    OPTIMIZATION_SOLVER = '优化求解程序'
+    STOCHASTIC_PARAMETERS = '随机参数'
+    MAXIMUM_SUPPORT_VECTORS = '最大支持向量数'
+    OBSERVATIONS_SAMPLED = '抽取的观测数'
+    THRESHOLD_TOLERANCE = '阈值容差'
+    CENTER_TOLERANCE = '中心容差'
+    CONVERGENCE_CRITERION = '收敛准则'
+    CREATE_SUPPORT_VECTORS_DATA = '创建支持向量数据'
+    SAVE_SCORING_MODEL = '保存评分模型'
+    INCLUDE_VARIABLES_FROM_THE_INPUT_DATA_SET = '包括输入数据集中的变量'
+    SUPPORT_VECTORS_DATA_TABLE = '支持向量数据表'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -1014,6 +1028,8 @@ class DataZH(Data):
     MINIMUM_POWER = "最小功效"
     MAXIMUM_POWER = "最大功效"
     SAMPLE_SIZE_BY_EFFECT_SIZE_PLOT = "“效应大小-样本大小”图"
+    MAP_INPUT_DATA = "地图输入数据"
+    MAP_RESPONSE_DATA = "地图响应数据"
 
     """Added by Dommy end"""
 
@@ -1589,5 +1605,8 @@ class DataZH(Data):
     DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST="显示因子负荷（最大绝对负荷最先显示）"
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="不显示小的相关和因子负荷"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="要显示的最小因子负荷或相关"
+    NUMBER_OF_BINS="箱数"
+    SAVE_BINNED_DATA="保存分箱数据"
+    WINSOR_RATE="缩尾率"
     """Added by Percy end"""
 
