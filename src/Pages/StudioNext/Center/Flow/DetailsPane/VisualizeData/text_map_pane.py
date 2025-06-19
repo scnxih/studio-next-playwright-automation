@@ -99,7 +99,7 @@ class TextMapPane(BasicStepPane):
         self.set_uncheck_for_checkbox(label=Helper.data_locale.SPECIFY_PREDEFINED_STYLE)
 
     def set_style(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.STYLE, item_index=item_index,
+        self.set_option_for_combobox(parent_label=Helper.data_locale.STYLE, section_label=Helper.data_locale.TEXT, item_index=item_index,
                                      item_value=item_value)
 
     def set_check_specify_text_options(self):

@@ -809,6 +809,19 @@ class Data:
     INTERVAL_INPUTS = 'Interval inputs'
     NORMINAL_INPUTS = 'Nominal inputs'
     WEIGHT_VARIABLE = 'Weight variable'
+    RBF_BANDWIDTH_PARAMETER = 'RBF bandwidth parameter'
+    EXPECTED_OUTLIER_FRACTION = 'Expected outlier fraction'
+    SOLVER_TOLERANCE = 'Solver tolerance'
+    OPTIMIZATION_SOLVER ='Optimization solver'
+    STOCHASTIC_PARAMETERS ='Stochastic parameters'
+    MAXIMUM_SUPPORT_VECTORS = 'Maximum support vectors'
+    OBSERVATIONS_SAMPLED = 'Observations sampled'
+    THRESHOLD_TOLERANCE = 'Threshold tolerance'
+    CENTER_TOLERANCE = 'Center tolerance'
+    CONVERGENCE_CRITERION = 'Convergence criterion'
+    CREATE_SUPPORT_VECTORS_DATA = 'Create support vectors data'
+    SAVE_SCORING_MODEL = 'Save scoring model'
+    SUPPORT_VECTORS_DATA_TABLE = 'Support Vectors Data Table'
     """Added by Allison end"""
 
     """Added by Dommy start"""
@@ -1009,6 +1022,8 @@ class Data:
     MINIMUM_POWER = "Minimum power"
     MAXIMUM_POWER = "Maximum power"
     SAMPLE_SIZE_BY_EFFECT_SIZE_PLOT = "Sample size by effect size plot"
+    MAP_INPUT_DATA = "Map Input Data"
+    MAP_RESPONSE_DATA = "Map Response Data"
     """Added by Dommy end"""
 
     """Added by Frank start"""
@@ -1585,4 +1600,7 @@ class Data:
     DISPLAY_FACTOR_LOADINGS_WITH_LARGEST_ABSOLUTE_LOADING_FIRST="Display factor loadings with largest absolute loading first"
     DO_NOT_DISPLAY_SMALL_CORRELATIONS_FACTOR_LOADINGS="Do not display small correlations and factor loadings"
     MINIMUM_FACTOR_LOADING_OR_CORRELATION_TO_DISPLAY="Minimum factor loading or correlation to display"
+    NUMBER_OF_BINS="Number of bins"
+    SAVE_BINNED_DATA="Save binned data"
+    WINSOR_RATE="Winsor rate"
     """Added by Percy end"""

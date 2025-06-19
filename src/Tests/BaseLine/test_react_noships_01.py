@@ -1,3 +1,5 @@
+import time
+
 from src.Helper.page_helper import PageHelper, Helper
 from src.Pages.Common.login_page import LoginPage
 from src.Pages.Common.singed_out_page import SignedOutPage
@@ -201,10 +203,26 @@ run;\n
     PageHelper.close_all_tabs(MainCenterPage(page))
     PageHelper.open_file(page, Helper.public_folder_path, file_name)
     flow.wait_for_page_load()
+
+    flow.select_node_in_flow_canvas("班级")
+    flow.wait_for_page_load()
+
+    table_pane.refresh_table()
+    flow.wait_for_page_load()
+
     flow.prt_scn("reopen")
 
     top_right = TopRightToolbar(page)
     top_right.click_sign_out()
+
+    if Alert(page, Helper.data_locale.SIGN_OUT).is_open():
+        alert = Alert(page, Helper.data_locale.SIGN_OUT)
+        alert.wait_for_timeout(time_out=5000)
+
+        if alert.btn_in_dialog_footer(Helper.data_locale.DISCARD_AND_EXIT).is_enabled(timeout=3000):
+
+            alert.screenshot_self('unsaved_warning')
+            alert.click_button_in_footer(Helper.data_locale.DISCARD_AND_EXIT)
 
     SignedOutPage(page).wait_for_page_load(time_out=3000)
 
@@ -226,7 +244,12 @@ run;\n
     # Navigate to the file and open again
     PageHelper.open_file(page, Helper.public_folder_path, file_name)
 
+    flow.select_node_in_flow_canvas("班级")
     flow.wait_for_page_load()
+
+    table_pane.refresh_table()
+    flow.wait_for_page_load()
+
     flow.prt_scn("relogon_n_reopen")
 
 

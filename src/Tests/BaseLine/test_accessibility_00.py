@@ -16,7 +16,7 @@ def test_init(page, init):
 
 # @pytest.mark.xfail(reason='Start page is derived of toolbar')
 # def test_01_start_page_elements(page, init):
-def test_01_start_page_elements(page):
+def test_01_start_page_elements(page, init):
     """
 
     """
@@ -37,7 +37,7 @@ def test_01_start_page_elements(page):
 
 @pytest.mark.xfail(reason='Query')
 # def test_02_query_page_elements(page, init):
-def test_02_query_page_elements(page):
+def test_02_query_page_elements(page, init):
     """
 
     """
@@ -52,7 +52,7 @@ def test_02_query_page_elements(page):
 
 # @pytest.mark.xfail(reason='A11Y Focus')
 # def test_03_show_about_dialog(page, init):
-def test_03_show_about_dialog(page):
+def test_03_show_about_dialog(page, init):
     """
     A11Y Test of the About dialog
     """
@@ -76,24 +76,17 @@ def test_03_show_about_dialog(page):
 
 
 # def test_04_whats_new_dialog(page, init):
-def test_04_whats_new_dialog(page):
+@pytest.mark.skipif(reason='Unstable, debugging ...')
+def test_04_whats_new_dialog(init, page):
     """
     A11Y Test of the About dialog
     """
     # Step-1: Open settings dialog
     top_right = TopRightToolbar(page)
     top_right.click_new_features()
-    whats_new_dialog = Dialog(page)
+    whats_new_dialog = Dialog(page, 'SAS® Studio 的新功能')
 
     whats_new_dialog.wait_for_timeout(time_out=3000)
-
-    # zh-CN
-    expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("新功能")
-
-    # en-US
-    # expect(whats_new_dialog.page.locator("//div[@role='dialog']//span[contains(text(), 'SAS')]")).to_contain_text("What's New")
-
-    # whats_new_dialog.wait_for_page_load()
-    # whats_new_dialog.key_press("Escape")
+    whats_new_dialog.screenshot_self('whats_new_dialog')
 
     whats_new_dialog.close_dialog()

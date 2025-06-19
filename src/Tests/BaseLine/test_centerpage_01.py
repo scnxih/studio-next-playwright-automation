@@ -16,7 +16,7 @@ def test_init(page, init):
 
 # @pytest.mark.xfail(reason="Pre-requisite in Settings dialog for file-downloading")
 # def test_23_download_with_default_setting(page, init):
-def test_23_download_with_default_setting(page):
+def test_23_download_with_default_setting(page, init):
     PageHelper.new_sas_program(page)
     editor = CodeEditorPage(page)
     editor.type_code_in_codeeditor("data test;set sashelp.class;run;\n proc print data=sashelp.cars;run;")
