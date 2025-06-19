@@ -809,6 +809,19 @@ class Data:
     INTERVAL_INPUTS = 'Interval inputs'
     NORMINAL_INPUTS = 'Nominal inputs'
     WEIGHT_VARIABLE = 'Weight variable'
+    RBF_BANDWIDTH_PARAMETER = 'RBF bandwidth parameter'
+    EXPECTED_OUTLIER_FRACTION = 'Expected outlier fraction'
+    SOLVER_TOLERANCE = 'Solver tolerance'
+    OPTIMIZATION_SOLVER ='Optimization solver'
+    STOCHASTIC_PARAMETERS ='Stochastic parameters'
+    MAXIMUM_SUPPORT_VECTORS = 'Maximum support vectors'
+    OBSERVATIONS_SAMPLED = 'Observations sampled'
+    THRESHOLD_TOLERANCE = 'Threshold tolerance'
+    CENTER_TOLERANCE = 'Center tolerance'
+    CONVERGENCE_CRITERION = 'Convergence criterion'
+    CREATE_SUPPORT_VECTORS_DATA = 'Create support vectors data'
+    SAVE_SCORING_MODEL = 'Save scoring model'
+    SUPPORT_VECTORS_DATA_TABLE = 'Support Vectors Data Table'
     """Added by Allison end"""
 
     """Added by Dommy start"""

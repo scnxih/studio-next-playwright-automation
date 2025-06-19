@@ -1,8 +1,7 @@
 """This is test case file for step Standardize Data"""
+"""Added by Allison 8/21/2024 """
 import time
-
 import pytest
-
 from src.Pages.StudioNext.Center.CustomStep.custom_step_page import CustomStepPage
 from src.Pages.StudioNext.Center.CustomStep.custom_step_properties_page import CustomStepPropertiesPage
 from src.Pages.StudioNext.Center.Flow.DetailsPane.DataInputAndOutput.table_pane import TablePane
@@ -85,7 +84,7 @@ def test_02_standardize_data_in_flow_level1(page, init):
     flow.run(False)
     flow.screenshot_after_run_slow()
 
-
+#@pytest.mark.level1_step
 def test_03_standardize_data_in_flow_level1(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -119,13 +118,13 @@ def test_03_standardize_data_in_flow_level1(page, init):
     standardize_data.set_tuning_constant("3.5")
 
     standardize_data.click_output_tab()
-    # standardize_data.set_specify_prefix_radiobutton(item_index=1)
+    standardize_data.set_specify_prefix_radiobutton(item_index=1)
     standardize_data.set_prefix_for_original_variables(input_text="测试")
     standardize_data.set_specify_data_to_show(item_index=2)
     flow.run(False)
     flow.screenshot_after_run_slow()
 
-
+@pytest.mark.level1_step
 def test_04_standardize_data_in_flow_level1(page, init):
     PageHelper.new_sas_program(page)
     editor = SASProgramPage(page)
@@ -162,9 +161,7 @@ def test_04_standardize_data_in_flow_level1(page, init):
     standardize_data.set_custom_value("1000")
 
     standardize_data.click_output_tab()
-    # standardize_data.set_specify_prefix_radiobutton(item_index=0)
     standardize_data.set_prefix_for_standardized_variables(input_text="测试_std")
-    standardize_data.set_specify_data_to_show(item_index=0)
     flow.run(False)
     flow.screenshot_after_run_slow()
 
