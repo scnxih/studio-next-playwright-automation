@@ -10,11 +10,7 @@ from src.conftest import *
 from src.Helper.page_factory import *
 from src.Pages.StudioNext.Center.Flow.flow_canvas import *
 
-
-
-
-
-def test_16_text_map_in_flow_l1(page, init):
+def test_02_text_map_in_flow(page, init):
     flow: FlowPage = PageHelper.new_flow(page)
     step_path = [Helper.data_locale.STEP_CATEGORY_DEVELOP, Helper.data_locale.STEP_SAS_PROGRAM]
     flow.add_step_from_stepspane_to_flow(step_path)
@@ -48,7 +44,6 @@ libname AUTOLIB '/segatest/I18N/Dommy新文件夹ÀÁÂÌÍÎ/CS' ;
     table_pane.set_table("NEVADA'中文")
     flow.link_two_nodes_in_flow("NEVADA'中文", Helper.data_locale.STEP_TEXT_MAP)
     flow.arrange_nodes()
-
 
     flow.select_node_in_flow_canvas(Helper.data_locale.STEP_TEXT_MAP)
     text_map_pane = TextMapPane(page)
