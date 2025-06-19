@@ -6,6 +6,7 @@
 
 """
 from src.Helper.helper import Helper
+from src.Pages.Common.common_component_factory import get_radio_group
 from src.Pages.StudioNext.Center.Flow.DetailsPane.basic_step_pane import BasicStepPane
 
 
@@ -105,3 +106,15 @@ class StandardizeData(BasicStepPane):
 
     def set_specify_data_to_show(self, item_index: int= None, item_value: str = None):
         self.set_option_for_combobox(parent_label=Helper.data_locale.SPECIFY_DATA_TO_SHOW, item_index=item_index, item_value=item_value)
+
+    # Added by Alice on Jun 19, 2025
+    def set_specify_prefix_radiobutton_new(self, item_index: int = None, item_value: str = None):
+
+        if item_index != None:
+            get_radio_group(self.base_xpath, self.page,
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'要包括的变量')]]]").set_check_for_index(index=item_index)
+
+        if item_value != None:
+            get_radio_group(self.base_xpath, self.page,
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'要包括的变量')]]]").set_check(text=item_value)
+        

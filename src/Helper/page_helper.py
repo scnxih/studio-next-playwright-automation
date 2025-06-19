@@ -919,7 +919,7 @@ class PageHelper:
         Create temp folder under /Public to store all files
         """
         PageHelper.show_accordion(page, AccordionType.sas_content)
-        SASContentServerPage(page).delete_file([Helper.data_locale.SAS_CONTENT, "Public", "temp"])
+        # SASContentServerPage(page).delete_file([Helper.data_locale.SAS_CONTENT, "Public", "temp"])
         SASContentServerPage(page).new_folder("Toolbar", [Helper.data_locale.SAS_CONTENT, "Public"], 'temp')
 
     @staticmethod

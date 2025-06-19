@@ -52,6 +52,11 @@ class SASContentServerPage(AccordionPage):
         new_folder = NewFolderDialog(self.page)
         new_folder.new_folder(folder_name)
 
+        self.wait_for_page_load(time_out=3000)
+        self.collapse_all()
+        self.hide_accordion(AccordionType.sas_content)
+        self.hide_accordion(AccordionType.sas_server)
+
     def delete_single_item(self, entrance: str, folder_path: list):
         folder = self.navigate_to_folder_or_file(folder_path)
         if folder is None:

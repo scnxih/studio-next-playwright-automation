@@ -23,9 +23,10 @@ def page():
         browser = pw_objects[2]
         yield page
         # PageHelper.init_environments(page)
-        Helper.logger.debug('CONFIG MESSAGE::: A NEW MODULE')
-        # PageHelper.create_temp_folder(page)
-        Helper.logger.debug('CONFIG MESSAGE::: CREATED PATH: PUBLIC/TEMP/')
+        Helper.logger.debug('CONFIG MESSAGE::: A NEW SUIT OF TESTCASES :::')
+        PageHelper.create_temp_folder(page)
+        Helper.logger.debug('CONFIG MESSAGE::: CREATED PATH: PUBLIC/TEMP/ :::')
+
         PageHelper.sign_out(page)
         page.close()
         context.close()
@@ -60,3 +61,10 @@ def init(page):
     PageHelper.check_menu_item_in_view(page, TopMenuItem.view_navigation_panes_file_references)
     PageHelper.show_accordion(page, AccordionType.open_item)
     """Added by Alice on 2024/03/22 end"""
+
+    Helper.logger.debug('CONFIG MESSAGE::: A NEW TESTCASE')
+
+    '''
+    PageHelper.create_temp_folder(page)
+    Helper.logger.debug('CONFIG MESSAGE::: CREATED PATH: PUBLIC/TEMP/')
+    '''

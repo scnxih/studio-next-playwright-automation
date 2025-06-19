@@ -16,7 +16,7 @@ def test_init(page, init):
 
 # @pytest.mark.xfail(reason='Start page is derived of toolbar')
 # def test_01_start_page_elements(page, init):
-def test_01_start_page_elements(page):
+def test_01_start_page_elements(page, init):
     """
 
     """
@@ -37,7 +37,7 @@ def test_01_start_page_elements(page):
 
 @pytest.mark.xfail(reason='Query')
 # def test_02_query_page_elements(page, init):
-def test_02_query_page_elements(page):
+def test_02_query_page_elements(page, init):
     """
 
     """
@@ -52,7 +52,7 @@ def test_02_query_page_elements(page):
 
 # @pytest.mark.xfail(reason='A11Y Focus')
 # def test_03_show_about_dialog(page, init):
-def test_03_show_about_dialog(page):
+def test_03_show_about_dialog(page, init):
     """
     A11Y Test of the About dialog
     """
