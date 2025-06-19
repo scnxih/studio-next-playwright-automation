@@ -28,8 +28,8 @@ class Helper:
 
     data_locale = get_data_locale()
 
-    # public_folder_path = [data_locale.SAS_CONTENT, "Public", "temp"]
-    public_folder_path = [data_locale.SAS_CONTENT, "Public"]
+    public_folder_path = [data_locale.SAS_CONTENT, "Public", "temp"]
+    # public_folder_path = [data_locale.SAS_CONTENT, "Public"]
 
     tmp_folder_path = [data_locale.SAS_SERVER, data_locale.SAS_SERVER, "Home", "tmp"]
 
