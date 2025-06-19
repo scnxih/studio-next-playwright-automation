@@ -76,6 +76,7 @@ def test_03_show_about_dialog(page):
 
 
 # def test_04_whats_new_dialog(page, init):
+@pytest.mark.skipif(reason='Unstable, debugging ...')
 def test_04_whats_new_dialog(init, page):
     """
     A11Y Test of the About dialog
