@@ -5,7 +5,9 @@
 """
 from src.Data.elements_ids import *
 from src.Pages.Common.dialog import *
-from src.Pages.Common.treegrid import *
+from src.Pages.Common.treeview_aggrid import *
+from src.Pages.Common.combobox import *
+from src.Pages.Common.text import *
 from src.Pages.Common.button import *
 import time
 
@@ -18,7 +20,7 @@ class SelectColumnDialog(Dialog):
         self.combo_filter = Combobox(self.base_xpath, page, data_test_id=TestID.SELECT_A_COLUMN_DIALOG_FILTER_COMBO)
         self.input_search = Text(self.base_xpath, page, data_test_id=TestID.SELECT_A_COLUMN_DIALOG_SEARCH_INPUT)
         self.btn_search = Button(self.base_xpath, page, data_test_id=TestID.SELECT_A_COLUMN_DIALOG_SEARCH_BTN)
-        self.col_treegrid = TreeGrid(self.base_xpath, page)
+        self.treeview_aggrid = TreeViewAGGrid(self.base_xpath, page)
         self.alert_dialog = Alert(page, Helper.data_locale.SELECT_A_COLUMN)
 
     def fill_input_search(self, search_text: str):
@@ -35,25 +37,23 @@ class SelectColumnDialog(Dialog):
         self.fill_input_search(col_name)
         self.key_press("Enter")
         time.sleep(1)
-        if self.is_visible(self.col_treegrid.row_in_treegrid(name_text=col_name)):
-            self.col_treegrid.select_a_row(name_text=col_name)
-
-            self.click_button_in_footer(Helper.data_locale.OK)
-
-        else:
-            Helper.logger.debug("The column is not exist, please provide an existing column name.")
+        self.treeview_aggrid.select_a_grid_row(col_name)
+        self.click_button_in_footer(Helper.data_locale.OK)
 
     """Added by Alice on July 31, 2024 start"""
-    def set_check_in_a_row(self,col_name:str):
+
+    def set_check_in_a_row(self, col_name: str):
         self.clear_input_search()
         if self.is_visible(self.col_treegrid.row_in_treegrid(name_text=col_name)):
             self.col_treegrid.set_check_in_a_row(name_text=col_name)
         else:
             Helper.logger.debug("The column is not exist, please provide an existing column name.")
-    def set_uncheck_in_a_row(self,col_name:str):
+
+    def set_uncheck_in_a_row(self, col_name: str):
         self.clear_input_search()
         if self.is_visible(self.col_treegrid.row_in_treegrid(name_text=col_name)):
             self.col_treegrid.set_uncheck_in_a_row(name_text=col_name)
         else:
             Helper.logger.debug("The column is not exist, please provide an existing column name.")
+
     """Added by Alice on July 31, 2024 end"""
