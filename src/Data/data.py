@@ -822,6 +822,10 @@ class Data:
     CREATE_SUPPORT_VECTORS_DATA = 'Create support vectors data'
     SAVE_SCORING_MODEL = 'Save scoring model'
     SUPPORT_VECTORS_DATA_TABLE = 'Support Vectors Data Table'
+    CENTER_AND_SCALE = 'Center and Scale'
+    SELECT_COLUMN = 'Select column'
+    COLUMN_OPTIONS = 'Column options'
+    ADDITIONAL_CENTER_AND_SCALE = 'Additional Center and Scale'
     """Added by Allison end"""
 
     """Added by Dommy start"""

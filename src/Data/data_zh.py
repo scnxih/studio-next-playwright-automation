@@ -827,6 +827,10 @@ class DataZH(Data):
     SAVE_SCORING_MODEL = '保存评分模型'
     INCLUDE_VARIABLES_FROM_THE_INPUT_DATA_SET = '包括输入数据集中的变量'
     SUPPORT_VECTORS_DATA_TABLE = '支持向量数据表'
+    CENTER_AND_SCALE = '中心和尺度'
+    SELECT_COLUMN = '选择列'
+    COLUMN_OPTIONS = '列选项'
+    ADDITIONAL_CENTER_AND_SCALE = '其它中心和尺度'
     """Added by Allison end"""
 
     """Added by Dommy start"""

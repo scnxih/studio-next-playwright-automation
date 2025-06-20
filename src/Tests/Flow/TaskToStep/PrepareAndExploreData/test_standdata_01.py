@@ -213,3 +213,52 @@ def test_05_standardize_data_in_flow_level1(page, init):
     flow.link_two_nodes_in_flow(Helper.data_locale.STEP_STANDARDIZE_DATA, "out'标准化")
     flow.run(False)
     flow.screenshot_after_run_slow()
+
+@pytest.mark.level1_step
+def test_06_standardize_data_in_flow_level1(page, init):
+    PageHelper.new_sas_program(page)
+    sas_program_pane = SASProgramPage(page)
+    code = """
+libname autolib "/segatest/I18N/Autolib/";
+
+libname mycas cas;
+
+data mycas.'baseball''中文测试'n;
+    set AUTOLIB.'BASEBALL''中文测试'n;
+run;
+
+    """
+    sas_program_pane.editor.type_into_text_area(code)
+    sas_program_pane.run(True)
+
+    flow: FlowPage = PageHelper.new_flow(page)
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("BASEBALL'中文测试")
+    time.sleep(0.8)
+
+    step_path = [Helper.data_locale.STEP_CATEGORY_PREPARE_AND_EXPLORE_DATA, Helper.data_locale.STEP_STANDARDIZE_DATA]
+    flow.add_step_from_stepspane_to_flow(step_path)
+    flow.link_two_nodes_in_flow("BASEBALL'中文测试", Helper.data_locale.STEP_STANDARDIZE_DATA)
+    flow.select_node_in_flow_canvas(Helper.data_locale.STEP_STANDARDIZE_DATA)
+    flow.apply_flow_layout_vertical()
+
+    standardize_data = StandardizeData(page)
+    standardize_data.set_select_a_server_radiobutton(1)
+    standardize_data.set_filter_input_data("'nAtBat''中'n IS NOT MISSING")
+    # standardize_data.set_select_column_options_radiobutton(1)
+    standardize_data.set_new_column(input_text="new测试")
+    standardize_data.add_column_for_select_column(column_name="nHome'中")
+
+    flow.add_node(FlowNodeType.table)
+    flow.select_node_in_flow_canvas(Helper.data_locale.TABLE)
+    table_pane = TablePane(page)
+    table_pane.set_library("MYCAS")
+    table_pane.set_table("out'标准化")
+    time.sleep(0.6)
+
+    flow.link_two_nodes_in_flow(Helper.data_locale.STEP_STANDARDIZE_DATA, "out'标准化")
+    flow.run(False)
+    flow.screenshot_after_run_slow()

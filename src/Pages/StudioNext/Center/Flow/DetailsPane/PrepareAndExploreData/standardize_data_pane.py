@@ -86,6 +86,7 @@ class StandardizeData(BasicStepPane):
         self.set_uncheck_for_checkbox(Helper.data_locale.DISPLAY_LOCATION_AND_SCALE_MEASURES)
 
         """Output tab"""
+
     def set_check_replace_existing_output_table(self):
         self.set_check_for_checkbox(Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
 
@@ -93,28 +94,58 @@ class StandardizeData(BasicStepPane):
         self.set_uncheck_for_checkbox(Helper.data_locale.REPLACE_EXISTING_OUTPUT_TABLE)
 
     def set_variables_to_include(self, item_index: int = None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.VARIABLES_TO_INCLUDE, item_index=item_index, item_value=item_value)
+        self.set_option_for_combobox(parent_label=Helper.data_locale.VARIABLES_TO_INCLUDE, item_index=item_index,
+                                     item_value=item_value)
 
     def set_specify_prefix_radiobutton(self, item_index: int = None, item_value: str = None):
         self.set_option_for_radio_group(parent_label='', item_index=item_index, item_value=item_value)
 
     def set_prefix_for_standardized_variables(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.PREFIX_FOR_STANDARDIZED_VARIABLES, input_text=input_text)
+        self.set_text_for_text_control(parent_label=Helper.data_locale.PREFIX_FOR_STANDARDIZED_VARIABLES,
+                                       input_text=input_text)
 
     def set_prefix_for_original_variables(self, input_text: str):
-        self.set_text_for_text_control(parent_label=Helper.data_locale.PREFIX_FOR_ORIGINAL_VARIABLES, input_text=input_text)
+        self.set_text_for_text_control(parent_label=Helper.data_locale.PREFIX_FOR_ORIGINAL_VARIABLES,
+                                       input_text=input_text)
 
-    def set_specify_data_to_show(self, item_index: int= None, item_value: str = None):
-        self.set_option_for_combobox(parent_label=Helper.data_locale.SPECIFY_DATA_TO_SHOW, item_index=item_index, item_value=item_value)
+    def set_specify_data_to_show(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_combobox(parent_label=Helper.data_locale.SPECIFY_DATA_TO_SHOW, item_index=item_index,
+                                     item_value=item_value)
 
     # Added by Alice on Jun 19, 2025
     def set_specify_prefix_radiobutton_new(self, item_index: int = None, item_value: str = None):
 
         if item_index != None:
             get_radio_group(self.base_xpath, self.page,
-                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'"+ Helper.data_locale.VARIABLES_TO_INCLUDE +"')]]]").set_check_for_index(index=item_index)
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'" + Helper.data_locale.VARIABLES_TO_INCLUDE + "')]]]").set_check_for_index(
+                index=item_index)
 
         if item_value != None:
             get_radio_group(self.base_xpath, self.page,
-                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'"+ Helper.data_locale.VARIABLES_TO_INCLUDE +"')]]]").set_check(text=item_value)
-        
+                            supplement_base_xpath="[../../../preceding-sibling::div[1][.//label[contains(text(),'" + Helper.data_locale.VARIABLES_TO_INCLUDE + "')]]]").set_check(
+                text=item_value)
+
+    # Select CAS
+    def set_select_a_server_radiobutton(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.SELECT_A_SERVER_FOR_THIS_STEP, item_index=item_index, item_value=item_value)
+
+    def expand_windowshade_center_and_scale(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.CENTER_AND_SCALE)
+
+    def collapse_windowshade_center_and_scale(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.CENTER_AND_SCALE)
+
+    def add_column_for_select_column(self, column_name: str):
+        self.add_column(parent_label=Helper.data_locale.SELECT_COLUMN, column_name=column_name)
+
+    def set_select_column_options_radiobutton(self, item_index: int = None, item_value: str = None):
+        self.set_option_for_radio_group(parent_label=Helper.data_locale.COLUMN_OPTIONS, item_index=item_index, item_value=item_value)
+
+    def set_new_column(self, input_text: str, section_label: str = None):
+        self.set_text_for_text_control(parent_label=Helper.data_locale.NEW_COLUMN, input_text=input_text, section_label=section_label)
+
+    def expand_windowshade_additional_center_and_scale(self):
+        self.expand_windowshade(parent_label=Helper.data_locale.ADDITIONAL_CENTER_AND_SCALE)
+
+    def collapse_windowshade_additional_center_and_scale(self):
+        self.collapse_windowshade(parent_label=Helper.data_locale.ADDITIONAL_CENTER_AND_SCALE)
