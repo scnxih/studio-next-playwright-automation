@@ -72,3 +72,17 @@ class EditorTextArea(CommonComponent):
         # Jan 15 2025
         self.get_text_area().press_sequentially(user_input, delay=30)
 
+    def format_code_via_context_menu(self):
+        """
+        :param user_input: content will be put into text area
+        :return:
+        """
+        self.force_click(self.get_text_area())
+        self.wait_for_page_load(time_out=3000)
+
+        # self.right_click(self.get_text_area())
+        # self.right_click(self.get_text_area())
+        self.key_press('Shift+F10')
+        # self.wait_for_page_load(time_out=3000)
+        self.get_by_test_id('editorPane-format').click()
+        self.wait_for_page_load(time_out=3000)

@@ -18,9 +18,17 @@ class StartPage(CenterPage):
     @property
     def button_links_build_a_flow(self):
         """
-
+        Click button-link 'Build a flow' in Start Page
         """
+        # CORRECT
         return self.locate_xpath("//button[@id='flow']")
+
+        # return self.locate_xpath("//button[@data-testid='button-links']")
+        # return self.get_by_test_id('button-links')
+
+        # JIRA Defect: SASSTUDIO-46181
+        # https://rndjira.sas.com/browse/SASSTUDIO-46181
+        # In Start Page, the uniqueness of @data-testid violated for button links
 
     @property
     def recent_files_list(self):
